@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Поле сверху: что видно, если посмотреть на все работы сразу — Динамика роёв LLM-агентов</title><meta name="description" content="Что показывают 153 работы корпуса вместе: сколько в них агентов на самом деле, кто, когда и на каких моделях публикует и с какими доказательствами. Контролируемые опыты в основном малы, а рои из 10 000 и больше агентов известны только по отчётам лабораторий без контрольного запуска.">
+<meta name="color-scheme" content="dark light"><meta name="author" content="Anton Razzhigaev, Ouroboros"><link rel="alternate" hreflang="en" href="../en/ch01.html"><link rel="alternate" hreflang="ru" href="ch01.html">
+<link rel="stylesheet" href="../assets/css/site.css"><link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+</head><body>
+<input type="checkbox" id="theme" class="theme-toggle" aria-label="Светлая тема">
+<a class="skip" href="#main">К тексту</a>
+<header class="topbar"><a class="brand" href="index.html"><svg width="22" height="22" viewBox="0 0 54 54" aria-hidden="true"><circle cx="27" cy="27" r="21" fill="none" stroke="currentColor" stroke-width="5"/><circle cx="48" cy="27" r="5" fill="currentColor"/></svg><span>Динамика роёв LLM-агентов</span></a>
+<div class="tools"><label class="themebtn" for="theme" title="Светлая тема"><span class="i-sun" aria-hidden="true">☀</span><span class="i-moon" aria-hidden="true">☾</span><span class="sr">Светлая тема</span></label>
+<a class="langbtn" href="../en/ch01.html" hreflang="en" lang="en">English</a></div></header>
+<details class="mtoc"><summary>Меню</summary><nav aria-label="Содержание"><ol class="navlist"><li><a href="index.html"><span class="nn">·</span>Главная</a></li><li><a href="ch01.html" aria-current="page"><span class="nn">1</span>Поле сверху</a></li><li><a href="ch02.html"><span class="nn">2</span>Хроника 2025–2026</a></li><li><a href="ch03.html"><span class="nn">3</span>Инцидент с Hugging Face</a></li><li><a href="ch04.html"><span class="nn">4</span>Экономика роя</a></li><li><a href="ch05.html"><span class="nn">5</span>Самоорганизация</a></li><li><a href="ch06.html"><span class="nn">6</span>Память роя</a></li><li><a href="ch07.html"><span class="nn">7</span>Безопасность роя</a></li><li><a href="ch08.html"><span class="nn">8</span>Эхо и разнообразие</a></li><li><a href="ch09.html"><span class="nn">9</span>Коллективные убеждения</a></li><li><a href="ch10.html"><span class="nn">10</span>Рои в дикой природе</a></li><li><a href="ch11.html"><span class="nn">11</span>Открытые вопросы</a></li><li><a href="atlas.html"><span class="nn">·</span>Атлас</a></li><li><a href="glossary.html"><span class="nn">·</span>Словарик</a></li><li><a href="sources.html"><span class="nn">·</span>Источники</a></li><li><a href="about.html"><span class="nn">·</span>Об обзоре</a></li><li><a href="full.html"><span class="nn">≡</span>Весь текст на одной странице</a></li></ol><div class="onpage"><p class="navh">На странице</p><ol><li><a href="#s-1">Общая логика поля</a></li><li><a href="#s-2">Сколько агентов на самом деле</a></li><li><a href="#s-4">Поле ускоряется</a></li><li><a href="#s-5">Кто публикует</a></li><li><a href="#s-6">Какие модели в роях</a></li><li><a href="#s-7">Карта тем и доказательств</a></li><li><a href="#s-9">Как читать карточки</a></li></ol></div></nav></details>
+<div class="layout"><nav class="sidenav" aria-label="Содержание"><p class="navh">Содержание</p><ol class="navlist"><li><a href="index.html"><span class="nn">·</span>Главная</a></li><li><a href="ch01.html" aria-current="page"><span class="nn">1</span>Поле сверху</a></li><li><a href="ch02.html"><span class="nn">2</span>Хроника 2025–2026</a></li><li><a href="ch03.html"><span class="nn">3</span>Инцидент с Hugging Face</a></li><li><a href="ch04.html"><span class="nn">4</span>Экономика роя</a></li><li><a href="ch05.html"><span class="nn">5</span>Самоорганизация</a></li><li><a href="ch06.html"><span class="nn">6</span>Память роя</a></li><li><a href="ch07.html"><span class="nn">7</span>Безопасность роя</a></li><li><a href="ch08.html"><span class="nn">8</span>Эхо и разнообразие</a></li><li><a href="ch09.html"><span class="nn">9</span>Коллективные убеждения</a></li><li><a href="ch10.html"><span class="nn">10</span>Рои в дикой природе</a></li><li><a href="ch11.html"><span class="nn">11</span>Открытые вопросы</a></li><li><a href="atlas.html"><span class="nn">·</span>Атлас</a></li><li><a href="glossary.html"><span class="nn">·</span>Словарик</a></li><li><a href="sources.html"><span class="nn">·</span>Источники</a></li><li><a href="about.html"><span class="nn">·</span>Об обзоре</a></li><li><a href="full.html"><span class="nn">≡</span>Весь текст на одной странице</a></li></ol><div class="onpage"><p class="navh">На странице</p><ol><li><a href="#s-1">Общая логика поля</a></li><li><a href="#s-2">Сколько агентов на самом деле</a></li><li><a href="#s-4">Поле ускоряется</a></li><li><a href="#s-5">Кто публикует</a></li><li><a href="#s-6">Какие модели в роях</a></li><li><a href="#s-7">Карта тем и доказательств</a></li><li><a href="#s-9">Как читать карточки</a></li></ol></div></nav>
+<main id="main" class="page"><header class="chapter-head"><p class="num">Глава 1</p><h1>Поле сверху: что видно, если посмотреть на все работы сразу</h1><p class="chlead">Что показывают 153 работы корпуса вместе: сколько в них агентов на самом деле, кто, когда и на каких моделях публикует и с какими доказательствами. Контролируемые опыты в основном малы, а рои из 10 000 и больше агентов известны только по отчётам лабораторий без контрольного запуска.</p><div class="rule"></div></header><p>Графики этой главы построены по 153 работам аналитического корпуса: у 147 есть карточка (31 полная и 116 кратких), ещё шесть упомянуты внутри чужих карточек или строкой таблицы. Остальные 97 строк таблиц (94 «Ещё по теме» и три физических роя) в графики не входят. Сначала — общая логика поля, затем шесть вопросов к корпусу: сколько агентов на самом деле, когда это написано, кто пишет, на каких моделях, о чём и с какими доказательствами.</p>
+<h2 id="s-1">Общая логика поля</h2>
+<figure class="fig" id="fig-1"><a class="zoom" href="#zoom-1" aria-label="Открыть крупно"><div class="frame chart"><img class="theme-dark-only" loading="lazy" decoding="async" src="../assets/charts/dash_mechanisms_ru_dark.png" alt="Из чего собран рой → как агенты связаны → что в нём возникает → что это даёт и чем грозит; номера — главы, где явление разобрано."><img class="theme-light-only" loading="lazy" decoding="async" src="../assets/charts/dash_mechanisms_ru_light.png" alt="Из чего собран рой → как агенты связаны → что в нём возникает → что это даёт и чем грозит; номера — главы, где явление разобрано."></div></a><figcaption>Из чего собран рой → как агенты связаны → что в нём возникает → что это даёт и чем грозит; номера — главы, где явление разобрано.<span class="credit">Источник: схема обзора по главам <a class="chref" href="ch03.html">3</a>–<a class="chref" href="ch10.html">10</a>.</span> <a class="orig" href="../assets/charts/dash_mechanisms_ru_dark.png">оригинал</a></figcaption></figure><div class="lightbox" id="zoom-1" role="dialog" aria-label="Открыть крупно"><a class="lb-close" href="#fig-1" aria-label="Закрыть">×</a><div class="lb-tools"><input type="checkbox" id="actual-1" class="lb-actual"><label for="actual-1">Размер 100% · прокрутка</label><a href="../assets/charts/dash_mechanisms_ru_dark.png" target="_blank" rel="noopener">оригинал ↗</a></div><div class="lb-img" tabindex="0" aria-label="Открыть крупно"><img loading="lazy" src="../assets/charts/dash_mechanisms_ru_dark.png" alt="Из чего собран рой → как агенты связаны → что в нём возникает → что это даёт и чем грозит; номера — главы, где явление разобрано."></div></div>
+<p>Любая работа корпуса укладывается в четыре колонки схемы.</p>
+<ul>
+<li><strong>Из чего собран рой.</strong> Модели: копии одной модели (57 работ) или смесь разных (47). Роли и правила: нарисованы людьми, выучены внешним циклом или их нет вовсе. Память: своя у каждого агента, общие файлы, вики.</li>
+<li><strong>Как связаны агенты.</strong> Переписка (чат, почта, доска объявлений), общие артефакты (git, вики, заметки, датасеты), рынки и игры (цены, голосования, соревнования).</li>
+<li><strong>Что возникает.</strong> Самоорганизация — роли, интеграторы, договорённости (гл. <a class="chref" href="ch05.html">5</a>); эхо и аттракторы — копии модели сходятся к одному (гл. <a class="chref" href="ch08.html">8</a>); согласие и каскады — конформность, большинство, раскол (гл. <a class="chref" href="ch09.html">9</a>); заражение и сговор — идеи-паразиты и скрытые каналы (гл. <a class="chref" href="ch07.html">7</a>).</li>
+<li><strong>Что рой даёт и чем грозит.</strong> Даёт скорость (гл. <a class="chref" href="ch04.html">4</a>) и память — больше контекста на всех (гл. <a class="chref" href="ch06.html">6</a>); качество выше лучшего одиночки — в отдельных измеренных постановках (гл. <a class="chref" href="ch04.html">4</a>, <a class="chref" href="ch05.html">5</a>). Платит сбоями — от инцидента с Hugging Face до роёв в дикой природе (гл. <a class="chref" href="ch03.html">3</a>, <a class="chref" href="ch10.html">10</a>).</li>
+</ul>
+<h2 id="s-2">Сколько агентов на самом деле</h2>
+<figure class="fig" id="fig-2"><a class="zoom" href="#zoom-2" aria-label="Открыть крупно"><div class="frame chart"><img class="theme-dark-only" loading="lazy" decoding="async" src="../assets/charts/dash_scale_ru_dark.png" alt="Каждая точка — работа; по горизонтали — число агентов (логарифмическая шкала), по вертикали — класс доказательств. Закрашенные точки — агенты, работающие одновременно в одном прого"><img class="theme-light-only" loading="lazy" decoding="async" src="../assets/charts/dash_scale_ru_light.png" alt="Каждая точка — работа; по горизонтали — число агентов (логарифмическая шкала), по вертикали — класс доказательств. Закрашенные точки — агенты, работающие одновременно в одном прого"></div></a><figcaption>Каждая точка — работа; по горизонтали — число агентов (логарифмическая шкала), по вертикали — класс доказательств. Закрашенные точки — агенты, работающие одновременно в одном прогоне или системе (симулированные популяции — серые закрашенные точки в строке «Модель-суррогат»); пустые кружки — накопленным итогом за всё время; ромбы — заявленная ёмкость платформы; линия соединяет одновременное и накопленное число одной работы. Кампания Anthropic по ферментам — 949 сессий накопленным итогом при пределе 58 одновременно.<span class="credit">Источник: расчёт обзора по 153 работам корпуса.</span> <a class="orig" href="../assets/charts/dash_scale_ru_dark.png">оригинал</a></figcaption></figure><div class="lightbox" id="zoom-2" role="dialog" aria-label="Открыть крупно"><a class="lb-close" href="#fig-2" aria-label="Закрыть">×</a><div class="lb-tools"><input type="checkbox" id="actual-2" class="lb-actual"><label for="actual-2">Размер 100% · прокрутка</label><a href="../assets/charts/dash_scale_ru_dark.png" target="_blank" rel="noopener">оригинал ↗</a></div><div class="lb-img" tabindex="0" aria-label="Открыть крупно"><img loading="lazy" src="../assets/charts/dash_scale_ru_dark.png" alt="Каждая точка — работа; по горизонтали — число агентов (логарифмическая шкала), по вертикали — класс доказательств. Закрашенные точки — агенты, работающие одновременно в одном прогоне или системе (симулированные популяции — серые закрашенные точки в строке «Модель-суррогат»); пустые кружки — накопленным итогом за всё время; ромбы — заявленная ёмкость платформы; линия соединяет одновременное и накопленное число одной работы. Кампания Anthropic по ферментам — 949 сессий накопленным итогом при пределе 58 одновременно."></div></div>
+<ul>
+<li><strong>Одновременное число агентов</strong> известно для 99 работ из 153; медиана — 7 агентов.</li>
+<li><strong>Пороги:</strong> 10 и больше одновременных агентов — 42 работы, 100 и больше — 15, 1 000 и больше — 7, 10 000 и больше — 4. Две из этих четырёх — суррогатные популяции, где политики сняты с модели заранее (Флинт и др. в PNAS и карты переворотов группы Баронкелли, гл. <a class="chref" href="ch09.html">9</a>).</li>
+<li><strong>Живых систем с 10 000 и больше одновременных агентов</strong> две: рой OpenAI на задаче Навье–Стокса (порядка 10 000, гл. <a class="chref" href="ch02.html">2</a>) и внутренняя платформа Anthropic (около 30 000, но на разных задачах, гл. <a class="chref" href="ch10.html">10</a>).</li>
+<li><strong>Без одновременного числа:</strong> 12 работ сообщают только накопленное число, 6 — только ёмкость, 36 не называют масштаба (теория и эссе или работы, где число агентов не раскрыто).</li>
+</ul>
+<p>Самые большие числа корпуса — не размер роя в один момент: 1,49 млн регистраций Moltbook — ёмкость платформы (гл. <a class="chref" href="ch10.html">10</a>), а десятки тысяч авторов его постов за первые дни и недели и около 1 200 участников доски в инциденте с Hugging Face (гл. <a class="chref" href="ch03.html">3</a>) — накопленный итог.</p>
+<h3 id="s-3">Три величины «размера роя»</h3>
+<p>Почти в каждой работе встречаются числа, похожие на «размер роя», но означают они разное; отсюда большая часть путаницы в пересказах.</p>
+<div class="table-wrap" role="region" tabindex="0" aria-label="⟷ таблицу можно прокрутить"><table>
+<thead>
+<tr>
+<th>Величина</th>
+<th>Что это</th>
+<th>Чего она не говорит</th>
+<th>Примеры из обзора</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Одновременно работающие агенты</strong></td>
+<td>Сколько агентов в один момент работают в одном прогоне или системе и могут влиять друг на друга</td>
+<td>Ничего о расходе: при равном времени большой рой тратит в разы больше токенов (гл. <a class="chref" href="ch04.html">4</a>)</td>
+<td>Порядка 10 000 агентов OpenAI на задаче Навье–Стокса (гл. <a class="chref" href="ch02.html">2</a>); 1 024 агента Agensh, пик 1 020 активных (гл. <a class="chref" href="ch05.html">5</a>); 100 агентов Gemini 3.1 Pro в «конференции» DeepMind (гл. <a class="chref" href="ch07.html">7</a>); 80 агентов в игровом рое Anthropic (гл. <a class="chref" href="ch07.html">7</a>)</td>
+</tr>
+<tr>
+<td><strong>Агенты накопленным итогом</strong></td>
+<td>Сколько разных участников, сессий или имён встретилось за всё время наблюдения</td>
+<td>Сколько их было в один момент: в инциденте с Hugging Face одновременный размер роя никто не опубликовал</td>
+<td>Около 1 200 участников доски и около 700 атакующих за 8–13 июля (гл. <a class="chref" href="ch03.html">3</a>); 949 сессий в кампании по поиску ферментов — «около 950 агентов» анонса (гл. <a class="chref" href="ch06.html">6</a>); 3 103 самоназвания на немецких вики при ≈876 запусках (гл. <a class="chref" href="ch03.html">3</a>, <a class="chref" href="ch10.html">10</a>)</td>
+</tr>
+<tr>
+<td><strong>Ёмкость платформы или популяция симуляции</strong></td>
+<td>Сколько аккаунтов зарегистрировано, на какое число агентов рассчитана система или сколько виртуальных агентов в модели</td>
+<td>Что столько агентов когда-либо работали вместе: 1,5 млн агентов Moltbook приходились примерно на 17 тысяч владельцев</td>
+<td>1,5 млн регистраций Moltbook (гл. <a class="chref" href="ch10.html">10</a>); «до 100 помощников» у Kimi K2.5 — заявленный предел, не измерение (гл. <a class="chref" href="ch04.html">4</a>); предел 58 одновременных сессий в кампании Anthropic по поиску ферментов, фактический пик не опубликован (гл. <a class="chref" href="ch06.html">6</a>); популяции симуляции до 10 000 агентов с заранее снятыми политиками в PNAS — на рисунке закрашенные точки строки «Модель-суррогат» (гл. <a class="chref" href="ch09.html">9</a>)</td>
+</tr>
+</tbody>
+</table></div><p class="scroll-hint" aria-hidden="true">⟷ таблицу можно прокрутить</p>
+<h2 id="s-4">Поле ускоряется</h2>
+<figure class="fig" id="fig-3"><a class="zoom" href="#zoom-3" aria-label="Открыть крупно"><div class="frame chart"><img class="theme-dark-only" loading="lazy" decoding="async" src="../assets/charts/dash_timeline_ru_dark.png" alt="Работы корпуса по месяцу первой публикации и типу источника."><img class="theme-light-only" loading="lazy" decoding="async" src="../assets/charts/dash_timeline_ru_light.png" alt="Работы корпуса по месяцу первой публикации и типу источника."></div></a><figcaption>Работы корпуса по месяцу первой публикации и типу источника.<span class="credit">Источник: расчёт обзора по 153 работам корпуса.</span> <a class="orig" href="../assets/charts/dash_timeline_ru_dark.png">оригинал</a></figcaption></figure><div class="lightbox" id="zoom-3" role="dialog" aria-label="Открыть крупно"><a class="lb-close" href="#fig-3" aria-label="Закрыть">×</a><div class="lb-tools"><input type="checkbox" id="actual-3" class="lb-actual"><label for="actual-3">Размер 100% · прокрутка</label><a href="../assets/charts/dash_timeline_ru_dark.png" target="_blank" rel="noopener">оригинал ↗</a></div><div class="lb-img" tabindex="0" aria-label="Открыть крупно"><img loading="lazy" src="../assets/charts/dash_timeline_ru_dark.png" alt="Работы корпуса по месяцу первой публикации и типу источника."></div></div>
+<ul>
+<li><strong>По годам:</strong> 130 из 153 работ вышли в 2026 году, 22 — в 2025-м, одна — раньше (Де Марцо и др., Science Advances 2026, первый препринт 2024 года).</li>
+<li><strong>Сентябрь 2026</strong> дал 48 работ — почти треть корпуса и втрое больше августа (15). В этот месяц вышли системная карта Claude Opus 5.5, Agensh, Self-Organizing Agent Teams, рой из 100 агентов Gemini у DeepMind, работа Microsoft Research о пользе общения, разбор инцидента от Anthropic, заявление OpenAI о Навье–Стоксе и теорема Ферма в Lean.</li>
+<li><strong>Отбор:</strong> пик отчасти объясняется тем, что корпус намеренно собран в пользу 2026 года; работы 2025 года взяты только там, где на них опираются свежие.</li>
+</ul>
+<div class="table-wrap" role="region" tabindex="0" aria-label="⟷ таблицу можно прокрутить"><table>
+<thead>
+<tr>
+<th>Тип источника</th>
+<th>Работ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Препринты</td>
+<td>69 (45%)</td>
+</tr>
+<tr>
+<td>Рецензированные</td>
+<td>36 (24%): Nature, Science, Nature Machine Intelligence, Science Advances, PNAS, ICML, NeurIPS</td>
+</tr>
+<tr>
+<td>Блоги и отчёты лабораторий</td>
+<td>20</td>
+</tr>
+<tr>
+<td>Эссе и интервью</td>
+<td>12</td>
+</tr>
+<tr>
+<td>Расследования инцидентов</td>
+<td>8</td>
+</tr>
+<tr>
+<td>Системные карты</td>
+<td>7</td>
+</tr>
+<tr>
+<td>Датасет</td>
+<td>1</td>
+</tr>
+</tbody>
+</table></div><p class="scroll-hint" aria-hidden="true">⟷ таблицу можно прокрутить</p>
+<h2 id="s-5">Кто публикует</h2>
+<figure class="fig" id="fig-4"><a class="zoom" href="#zoom-4" aria-label="Открыть крупно"><div class="frame chart"><img class="theme-dark-only" loading="lazy" decoding="async" src="../assets/charts/dash_orgs_ru_dark.png" alt="Слева — класс организаций (у работы один класс), справа — организации, которые чаще всего встречаются в паспортах (у работы может быть несколько)."><img class="theme-light-only" loading="lazy" decoding="async" src="../assets/charts/dash_orgs_ru_light.png" alt="Слева — класс организаций (у работы один класс), справа — организации, которые чаще всего встречаются в паспортах (у работы может быть несколько)."></div></a><figcaption>Слева — класс организаций (у работы один класс), справа — организации, которые чаще всего встречаются в паспортах (у работы может быть несколько).<span class="credit">Источник: расчёт обзора по 153 работам корпуса.</span> <a class="orig" href="../assets/charts/dash_orgs_ru_dark.png">оригинал</a></figcaption></figure><div class="lightbox" id="zoom-4" role="dialog" aria-label="Открыть крупно"><a class="lb-close" href="#fig-4" aria-label="Закрыть">×</a><div class="lb-tools"><input type="checkbox" id="actual-4" class="lb-actual"><label for="actual-4">Размер 100% · прокрутка</label><a href="../assets/charts/dash_orgs_ru_dark.png" target="_blank" rel="noopener">оригинал ↗</a></div><div class="lb-img" tabindex="0" aria-label="Открыть крупно"><img loading="lazy" src="../assets/charts/dash_orgs_ru_dark.png" alt="Слева — класс организаций (у работы один класс), справа — организации, которые чаще всего встречаются в паспортах (у работы может быть несколько)."></div></div>
+<div class="table-wrap" role="region" tabindex="0" aria-label="⟷ таблицу можно прокрутить"><table>
+<thead>
+<tr>
+<th>Класс организаций</th>
+<th>Работ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Университеты</td>
+<td>53</td>
+</tr>
+<tr>
+<td>Вузы и индустрия совместно</td>
+<td>41</td>
+</tr>
+<tr>
+<td>Фронтир-лаборатории</td>
+<td>30</td>
+</tr>
+<tr>
+<td>Независимые исследователи и некоммерческие организации</td>
+<td>19</td>
+</tr>
+<tr>
+<td>Другие компании</td>
+<td>10</td>
+</tr>
+</tbody>
+</table></div><p class="scroll-hint" aria-hidden="true">⟷ таблицу можно прокрутить</p>
+<p>Всего в паспортах 167 организаций (варианты одного названия сведены). Чаще всех встречается Anthropic: 25 работ, каждая шестая в корпусе (системные карты, инженерные блоги, Alignment Science Blog, работы программы Anthropic Fellows). Дальше Стэнфорд (16), MIT (9), Карнеги-Меллон и Оксфорд (по 8), Чикагский университет (7), OpenAI (6), Гарвард, Google DeepMind и Беркли (по 5).</p>
+<p>Разделение труда видно не на этом графике, а по классам доказательств:</p>
+<ul>
+<li>системные карты есть только у лабораторий (7 из 7);</li>
+<li>инженерные отчёты — в основном у них же (11 из 17); остальные шесть: четыре у компаний (Cursor дважды, Cognition, NVIDIA), один у университета (Пердью) и один у совместной группы (Robin: FutureHouse, Фордем и Оксфорд);</li>
+<li>контролируемые эксперименты дают прежде всего университеты и совместные группы (39 и 26 из 78);</li>
+<li>теорию и эссе — чаще всего независимые авторы (11 из 15);</li>
+<li>инциденты расследовали и лаборатории (OpenAI, Anthropic), и независимые организации (AISI, METR, Nightingale, Palisade), и компании (Wiz).</li>
+</ul>
+<h2 id="s-6">Какие модели в роях</h2>
+<figure class="fig" id="fig-5"><a class="zoom" href="#zoom-5" aria-label="Открыть крупно"><div class="frame chart"><img class="theme-dark-only" loading="lazy" decoding="async" src="../assets/charts/dash_models_ru_dark.png" alt="Слева — в скольких работах участвуют модели каждого семейства (у работы может быть несколько семейств). Справа — сколько разных моделей в одной работе; 42 работы число моделей не н"><img class="theme-light-only" loading="lazy" decoding="async" src="../assets/charts/dash_models_ru_light.png" alt="Слева — в скольких работах участвуют модели каждого семейства (у работы может быть несколько семейств). Справа — сколько разных моделей в одной работе; 42 работы число моделей не н"></div></a><figcaption>Слева — в скольких работах участвуют модели каждого семейства (у работы может быть несколько семейств). Справа — сколько разных моделей в одной работе; 42 работы число моделей не называют или моделей не используют (теория, эссе, расследования без названных моделей).<span class="credit">Источник: расчёт обзора по 153 работам корпуса.</span> <a class="orig" href="../assets/charts/dash_models_ru_dark.png">оригинал</a></figcaption></figure><div class="lightbox" id="zoom-5" role="dialog" aria-label="Открыть крупно"><a class="lb-close" href="#fig-5" aria-label="Закрыть">×</a><div class="lb-tools"><input type="checkbox" id="actual-5" class="lb-actual"><label for="actual-5">Размер 100% · прокрутка</label><a href="../assets/charts/dash_models_ru_dark.png" target="_blank" rel="noopener">оригинал ↗</a></div><div class="lb-img" tabindex="0" aria-label="Открыть крупно"><img loading="lazy" src="../assets/charts/dash_models_ru_dark.png" alt="Слева — в скольких работах участвуют модели каждого семейства (у работы может быть несколько семейств). Справа — сколько разных моделей в одной работе; 42 работы число моделей не называют или моделей не используют (теория, эссе, расследования без названных моделей)."></div></div>
+<ul>
+<li><strong>Семейства:</strong> модели OpenAI участвуют в 89 работах, Claude — в 83, Qwen — в 56, Gemini — в 47, Llama и DeepSeek — в 38 каждая; Mistral, Grok и Kimi — по 15, GLM — 14, другие открытые модели — 35.</li>
+<li><strong>Открытые модели</strong> есть в трёх из четырёх контролируемых опытов (58 из 78): там, где нужен доступ к весам (зонды и подмена активаций, гл. <a class="chref" href="ch09.html">9</a>), или нужны сотни дешёвых копий.</li>
+<li><strong>Сколько моделей в работе:</strong> типично 4–9 (48 работ); 10 и больше — в 31 работе (17 моделей у саботажа отключения, 32 — в «пробеле сотрудничества», 79 — в таблицах «Улья»); только 10 работ строят всё на одной модели.</li>
+<li><strong>Состав роя</strong>, где он известен: копии одной модели — 57 работ, смесь моделей — 47. Однородный рой остаётся нормой; чего это стоит, разбирает гл. <a class="chref" href="ch08.html">8</a>.</li>
+</ul>
+<h2 id="s-7">Карта тем и доказательств</h2>
+<figure class="fig" id="fig-6"><a class="zoom" href="#zoom-6" aria-label="Открыть крупно"><div class="frame chart"><img class="theme-dark-only" loading="lazy" decoding="async" src="../assets/charts/dash_topics_ru_dark.png" alt="Строки — темы (у одной работы до трёх тем), столбцы — класс доказательств (у работы один класс); число в кружке — работ в клетке."><img class="theme-light-only" loading="lazy" decoding="async" src="../assets/charts/dash_topics_ru_light.png" alt="Строки — темы (у одной работы до трёх тем), столбцы — класс доказательств (у работы один класс); число в кружке — работ в клетке."></div></a><figcaption>Строки — темы (у одной работы до трёх тем), столбцы — класс доказательств (у работы один класс); число в кружке — работ в клетке.<span class="credit">Источник: расчёт обзора по 153 работам корпуса.</span> <a class="orig" href="../assets/charts/dash_topics_ru_dark.png">оригинал</a></figcaption></figure><div class="lightbox" id="zoom-6" role="dialog" aria-label="Открыть крупно"><a class="lb-close" href="#fig-6" aria-label="Закрыть">×</a><div class="lb-tools"><input type="checkbox" id="actual-6" class="lb-actual"><label for="actual-6">Размер 100% · прокрутка</label><a href="../assets/charts/dash_topics_ru_dark.png" target="_blank" rel="noopener">оригинал ↗</a></div><div class="lb-img" tabindex="0" aria-label="Открыть крупно"><img loading="lazy" src="../assets/charts/dash_topics_ru_dark.png" alt="Строки — темы (у одной работы до трёх тем), столбцы — класс доказательств (у работы один класс); число в кружке — работ в клетке."></div></div>
+<p>Темы по числу работ: экономика и масштаб — 69, убеждения и согласие — 59, безопасность — 55, самоорганизация — 52, эхо и разнообразие — 44, память и дикая природа — по 23. Половина корпуса (78 из 153) — эксперименты с живыми LLM-агентами; остальные классы доказательств — в таблице ниже.</p>
+<p>Карта показывает, какого рода знание есть у каждой темы:</p>
+<ul>
+<li><strong>убеждения и согласие</strong> — 41 лабораторный опыт и 8 полевых наблюдений;</li>
+<li><strong>память</strong> — почти целиком эксперименты и бенчмарки, 2 инженерных отчёта на 23 работы;</li>
+<li><strong>дикая природа</strong> — 11 наблюдений и 7 инцидентов, ни одного контролируемого эксперимента;</li>
+<li><strong>экономика и масштаб</strong> — больше всего данных самих лабораторий: 16 инженерных отчётов и 5 системных карт.</li>
+</ul>
+<p><strong>Главный пробел корпуса.</strong> Рои из 10 000 и больше агентов известны только по отчётам лабораторий без контрольного запуска, а контролируемые опыты в основном малы. По всем 99 работам с известным одновременным числом агентов медиана равна 7. Рой из десятков современных фронтирных агентов пока не сравнивали ни с одиночкой при равной сумме токенов, ни по составу моделей при сопоставимых бюджетах. Смесь против копий измерена на малых командах и малых моделях: 13 смешанных конфигураций у Kim et al. на BrowseComp-Plus, семь тестов для команд из 2–16 агентов на трёх малых моделях в работе о разнообразии (гл. <a class="chref" href="ch08.html">8</a>, <a class="chref" href="ch11.html">11</a>).</p>
+<h3 id="s-8">Классы доказательств</h3>
+<p>Ярлык класса доказательств стоит на каждой карточке. Он говорит не о качестве работы, а о том, какого рода утверждение она способна поддержать.</p>
+<div class="table-wrap" role="region" tabindex="0" aria-label="⟷ таблицу можно прокрутить"><table>
+<thead>
+<tr>
+<th>Ярлык</th>
+<th>Что это значит</th>
+<th>Чего это не доказывает</th>
+<th>Примеры</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>эксперимент с LLM-агентами</strong> (78)</td>
+<td>Живые модели в каждом агенте, условия задаёт исследователь, есть контроль или сравнение</td>
+<td>Что поведение сохранится при другом промпте, схеме связи, модели или в долгом прогоне: модели узнают задуманный эксперимент в 65,2% случаев (гл. <a class="chref" href="ch09.html">9</a>)</td>
+<td>Agensh (гл. <a class="chref" href="ch05.html">5</a>), «ИИ-организации» (гл. <a class="chref" href="ch07.html">7</a>), «Игра во флаг» (гл. <a class="chref" href="ch09.html">9</a>)</td>
+</tr>
+<tr>
+<td><strong>наблюдение в дикой природе</strong> (11)</td>
+<td>Разбор логов площадки, которую никто не строил для опыта</td>
+<td>Причинность и автономность: имя — не агент, за аккаунтом может стоять человек, контрольной группы нет</td>
+<td>Немецкие вики, Moltbook, AI Village (гл. <a class="chref" href="ch10.html">10</a>)</td>
+</tr>
+<tr>
+<td><strong>реальный инцидент</strong> (8)</td>
+<td>Расследование события участниками или независимыми следователями</td>
+<td>Полную перепись роя: одновременный размер, токены, деньги не опубликованы; с одиночкой никто не сравнивал</td>
+<td>Атака на Hugging Face (гл. <a class="chref" href="ch03.html">3</a>), открытая база Moltbook (гл. <a class="chref" href="ch10.html">10</a>)</td>
+</tr>
+<tr>
+<td><strong>инженерный отчёт</strong> (17)</td>
+<td>Авторы описывают свой запуск: что построили и что вышло</td>
+<td>Что рой был нужен: контроля «один агент» обычно нет, числа — по словам авторов, часто один прогон (кампанию по ферментам повторили 10 раз)</td>
+<td>Компилятор C (гл. <a class="chref" href="ch05.html">5</a>), Навье–Стокс (гл. <a class="chref" href="ch02.html">2</a>), поиск ферментов (гл. <a class="chref" href="ch06.html">6</a>), Cursor (гл. <a class="chref" href="ch05.html">5</a>)</td>
+</tr>
+<tr>
+<td><strong>системная карта</strong> (7)</td>
+<td>Самоотчёт разработчика о собственной модели: внутренние замеры, часть задач внутренние</td>
+<td>Внешнюю проверку: рецензента нет, часть замеров без интервалов и числа прогонов (ProgramBench у Opus 5.5 — 166 задач с 95%-ми полосами; команды до 100 агентов — три попытки без интервалов)</td>
+<td>Claude Opus 5 и Opus 5.5 (гл. <a class="chref" href="ch04.html">4</a>), Mythos Preview (гл. <a class="chref" href="ch08.html">8</a>), Grok 4.20 (гл. <a class="chref" href="ch07.html">7</a>)</td>
+</tr>
+<tr>
+<td><strong>модель-суррогат</strong> (2)</td>
+<td>Из модели заранее сняты вероятности ответов, дальше идёт численная симуляция популяции</td>
+<td>Что живая модель вела бы себя так же при большом N: живые прогоны — на малых группах, большие популяции считаются по снятым политикам</td>
+<td>Популяции до 10 000 в PNAS и карты переворотов (гл. <a class="chref" href="ch09.html">9</a>)</td>
+</tr>
+<tr>
+<td><strong>теория / эссе</strong> (15)</td>
+<td>Модель, прогноз или аргумент без собственных прогонов</td>
+<td>Ничего не измеряет: опирается на чужие данные</td>
+<td>«Swarm Scaling» Орда (гл. <a class="chref" href="ch04.html">4</a>), эссе Амодеи (гл. <a class="chref" href="ch03.html">3</a>), «злонамеренные рои» в Science (гл. <a class="chref" href="ch07.html">7</a>)</td>
+</tr>
+<tr>
+<td><strong>бенчмарк / датасет</strong> (15)</td>
+<td>Контролируемый набор задач или данных для сравнения моделей и схем</td>
+<td>Что эффект сохранится в долгом живом рое: задачи короткие, модели часто прошлого года</td>
+<td>Kim et al. в Nature Machine Intelligence (гл. <a class="chref" href="ch04.html">4</a>), Silo-Bench (гл. <a class="chref" href="ch06.html">6</a>), Artificial Hivemind и пул из 23 моделей NVIDIA (гл. <a class="chref" href="ch08.html">8</a>)</td>
+</tr>
+</tbody>
+</table></div><p class="scroll-hint" aria-hidden="true">⟷ таблицу можно прокрутить</p>
+<h2 id="s-9">Как читать карточки</h2>
+<ul>
+<li><strong>Полная карточка</strong> — ключевая работа: паспорт (авторы, организации, дата первой публикации, статус, ссылка), затем «Что сделали», «Что получилось», «Почему это важно», «Оговорки» и, как правило, один-два рисунка.</li>
+<li><strong>Краткая карточка</strong> — работа второго ряда: суть, главное число и оговорка в одном абзаце.</li>
+<li><strong>Ярлыки над карточкой:</strong> класс доказательств (таблица выше), до трёх тем и масштаб — сколько агентов работало одновременно и что именно считалось.</li>
+<li><strong>Таблицы «Ещё по теме»</strong> в конце глав — работы, которые стоит знать, по одной строке со ссылкой.</li>
+<li><strong>Рисунки</strong> взяты из самих работ; под каждым указаны источник, номер рисунка, лицензия и правообладатель. Изображения под CC BY, CC BY-NC-ND и CC0 воспроизведены по их лицензиям, графики лабораторий и рисунки препринтов без открытой лицензии приведены как цитата для обзора. Права на чужие рисунки остаются у правообладателей; лицензия обзора на них не распространяется.</li>
+</ul>
+<p>Термины — рой, команда, оркестратор, λ и другие — определены в <a href="glossary.html">словарике</a>. Срез — 3 октября 2026 года: более поздние версии препринтов, рецензии и решения о премиях не учтены.</p><nav class="pager" aria-label="pager"><a class="prev" href="index.html">← Главное</a><a class="next" href="ch02.html">Хроника 2025–2026 →</a></nav></main></div>
+<footer class="foot"><p>Anton Razzhigaev, Ouroboros · Динамика роёв LLM-агентов · Срез: 3 октября 2026</p><p>Текст и таблицы — CC BY 4.0, код — MIT; рисунки из работ — права их владельцев (подпись под рисунком). <a href="about.html">Как цитировать</a></p></footer>
+<script src="../assets/js/enhance.js" defer></script>
+</body></html>

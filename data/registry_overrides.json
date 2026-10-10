@@ -1,0 +1,895 @@
+{
+ "_note": "Hand-curated additions to the generated registry. Constituent documents of bundle cards get their own citable IDs with part_of; claim_keys moves their URL keys from the bundle card to them. Every field here was taken from the October card JSON, the arXiv API or the publisher page as noted in 'source'.",
+ "works": [
+  {
+   "id": "openai-hf-incident-report",
+   "kind": "incident_report",
+   "title": "The Hugging Face incident and the road ahead (technical report)",
+   "authors": [
+    "OpenAI"
+   ],
+   "orgs": [
+    "OpenAI"
+   ],
+   "date_first_public": "2026-08-26",
+   "urls": {
+    "primary": "https://openai.com/index/hugging-face-incident-and-the-road-ahead/",
+    "code": null
+   },
+   "_urls": [
+    "https://cdn.openai.com/pdf/67869394-cb91-4c12-888c-5cbd85c7814c/OpenAI-Hugging-Face%20Incident-Technical-Report.pdf"
+   ],
+   "level": "constituent",
+   "part_of": "hf-incident-case",
+   "peer_review": "none",
+   "in_analytic_corpus": false,
+   "claim_keys": true,
+   "source": "cards_lanes/hf-incident-case.json urls.primary/pdf; date from chronicle"
+  },
+  {
+   "id": "metr-hf-investigation",
+   "kind": "incident_report",
+   "title": "Brief independent investigation of agents’ behavior, reasoning and collaboration in the OpenAI / Hugging Face hacking incident",
+   "authors": [
+    "METR",
+    "Redwood Research"
+   ],
+   "orgs": [
+    "METR",
+    "Redwood Research"
+   ],
+   "date_first_public": "2026-08-26",
+   "urls": {
+    "primary": "https://metr.org/blog/2026-08-26-openai-hugging-face-incident-investigation/",
+    "code": null
+   },
+   "level": "constituent",
+   "part_of": "hf-incident-case",
+   "peer_review": "none",
+   "in_analytic_corpus": false,
+   "claim_keys": true,
+   "source": "figure credits in ch03; cards_lanes/hf-incident-case.json urls.html"
+  },
+  {
+   "id": "hf-technical-timeline",
+   "kind": "incident_report",
+   "title": "Agent intrusion: technical timeline",
+   "authors": [
+    "Hugging Face"
+   ],
+   "orgs": [
+    "Hugging Face"
+   ],
+   "date_first_public": "2026-07-27",
+   "urls": {
+    "primary": "https://huggingface.co/blog/agent-intrusion-technical-timeline",
+    "code": null
+   },
+   "level": "constituent",
+   "part_of": "hf-incident-case",
+   "peer_review": "none",
+   "in_analytic_corpus": false,
+   "claim_keys": true,
+   "source": "cards_lanes/hf-incident-case.json urls.other; date from chronicle (27 July 2026)"
+  },
+  {
+   "id": "attractor-states-lw",
+   "kind": "essay",
+   "title": "models have some pretty funny attractor states",
+   "authors": [
+    "Arya Jakkli",
+    "Senthooran Rajamanoharan",
+    "Neel Nanda"
+   ],
+   "orgs": [
+    "MATS"
+   ],
+   "date_first_public": "2026-02-12",
+   "urls": {
+    "primary": "https://www.lesswrong.com/posts/mgjtEHeLgkhZZ3cEx/models-have-some-pretty-funny-attractor-states",
+    "code": null
+   },
+   "level": "constituent",
+   "part_of": "attractor-states",
+   "peer_review": "none",
+   "in_analytic_corpus": false,
+   "claim_keys": true,
+   "source": "cards/attractor-states.json title (A), authors, date"
+  },
+  {
+   "id": "opus4-bliss-attractor",
+   "kind": "system_card",
+   "title": "System Card: Claude Opus 4 & Claude Sonnet 4",
+   "authors": [
+    "Anthropic"
+   ],
+   "orgs": [
+    "Anthropic"
+   ],
+   "date_first_public": "2025-05-22",
+   "urls": {
+    "primary": "https://www.anthropic.com/claude-4-system-card",
+    "code": null
+   },
+   "level": "constituent",
+   "part_of": "attractor-states",
+   "peer_review": "none",
+   "in_analytic_corpus": false,
+   "claim_keys": true,
+   "source": "cards/attractor-states.json title (B), date"
+  },
+  {
+   "id": "ko-geiping-attractors",
+   "kind": "preprint",
+   "title": "Attractor States Emerge in Multi-Turn LLM Conversations",
+   "authors": [
+    "Ting-Wen Ko",
+    "Jonas Geiping"
+   ],
+   "orgs": [
+    "Max Planck Institute for Intelligent Systems",
+    "ELLIS Institute Tübingen"
+   ],
+   "date_first_public": "2026-06-29",
+   "identifiers": {
+    "arxiv": "2606.30571",
+    "doi": null
+   },
+   "urls": {
+    "primary": "https://arxiv.org/abs/2606.30571",
+    "code": null
+   },
+   "level": "constituent",
+   "part_of": "attractor-states",
+   "peer_review": "none",
+   "in_analytic_corpus": false,
+   "claim_keys": true,
+   "source": "arXiv API 2026-10-09; cards/attractor-states.json"
+  },
+  {
+   "id": "hivemind-reevaluation",
+   "kind": "preprint",
+   "title": "How Strong Is the Evidence for the Artificial Hivemind? Reevaluating Evidence for the Open-Ended Homogeneity of Language Models",
+   "authors": [
+    "Rylan Schaeffer",
+    "Brando Miranda",
+    "Joshua Kazdan",
+    "Jessica Chudnovsky",
+    "Sanmi Koyejo"
+   ],
+   "orgs": [
+    "Stanford University"
+   ],
+   "date_first_public": "2026-09-27",
+   "identifiers": {
+    "arxiv": "2609.33936",
+    "doi": null
+   },
+   "urls": {
+    "primary": "https://arxiv.org/abs/2609.33936",
+    "code": null
+   },
+   "level": "constituent",
+   "part_of": "artificial-hivemind",
+   "peer_review": "none",
+   "in_analytic_corpus": false,
+   "claim_keys": true,
+   "source": "arXiv API 2026-10-09; cards/artificial-hivemind.json"
+  },
+  {
+   "id": "piao-polarization-networks",
+   "kind": "journal_or_conference",
+   "title": "Emergence of polarization in networks of large language model agents",
+   "authors": [
+    "Jinghua Piao",
+    "Zhihong Lu",
+    "Chen Gao",
+    "Fengli Xu",
+    "Qinghua Hu",
+    "Fernando P. Santos",
+    "Yong Li",
+    "James Evans"
+   ],
+   "orgs": [
+    "Tsinghua University",
+    "Tianjin University",
+    "University of Amsterdam",
+    "University of Chicago",
+    "Santa Fe Institute"
+   ],
+   "date_first_public": "2025-01",
+   "venue_note": "arXiv preprint (Jan 2025); published in Nature Communications on 8 Oct 2026 (after the survey cut-off), DOI 10.1038/s41467-026-78228-y, CC BY 4.0",
+   "identifiers": {
+    "arxiv": "2501.05171",
+    "doi": "10.1038/s41467-026-78228-y"
+   },
+   "urls": {
+    "primary": "https://arxiv.org/abs/2501.05171",
+    "code": null
+   },
+   "_urls": [
+    "https://doi.org/10.1038/s41467-026-78228-y",
+    "https://www.nature.com/articles/s41467-026-78228-y"
+   ],
+   "level": "table_row",
+   "part_of": null,
+   "peer_review": "peer_reviewed",
+   "in_analytic_corpus": false,
+   "claim_keys": true,
+   "source": "row in ch09 related table; publisher page read 2026-10-09"
+  },
+  {
+   "id": "chirper-hashemi-macy",
+   "kind": "journal_or_conference",
+   "title": "An Empirical Study of Collective Behaviors and Social Dynamics in Large Language Model Agents",
+   "authors": [
+    "Farnoosh Hashemi",
+    "Michael W. Macy"
+   ],
+   "orgs": [
+    "Cornell University"
+   ],
+   "date_first_public": "2026-02-03",
+   "venue_note": "EACL 2026 (per the October text); arXiv:2602.03775",
+   "identifiers": {
+    "arxiv": "2602.03775",
+    "doi": null
+   },
+   "urls": {
+    "primary": "https://arxiv.org/abs/2602.03775",
+    "code": null
+   },
+   "level": "inline_link",
+   "part_of": null,
+   "peer_review": "peer_reviewed",
+   "in_analytic_corpus": false,
+   "claim_keys": true,
+   "source": "ch10 Chirper paragraph; arXiv API 2026-10-09"
+  },
+  {
+   "id": "micromotor-phase-coherence",
+   "kind": "journal_or_conference",
+   "title": "Phase coherence and disorder-induced wave propagation in micromotor arrays",
+   "authors": [],
+   "orgs": [
+    "ENS de Lyon",
+    "CNRS",
+    "Leiden University"
+   ],
+   "date_first_public": "2026-04",
+   "venue_note": "Nature Physics, 11 Aug 2026; preprint arXiv:2604.07080 (Apr 2026)",
+   "identifiers": {
+    "arxiv": "2604.07080",
+    "doi": "10.1038/s41567-026-03409-x"
+   },
+   "urls": {
+    "primary": "https://doi.org/10.1038/s41567-026-03409-x",
+    "code": null
+   },
+   "_urls": [
+    "https://arxiv.org/abs/2604.07080"
+   ],
+   "level": "table_row",
+   "part_of": null,
+   "peer_review": "peer_reviewed",
+   "in_analytic_corpus": false,
+   "claim_keys": true,
+   "source": "ch05 physical-swarms table row (journal DOI and arXiv preprint of the same paper)"
+  },
+  {
+   "id": "ricco-consensus-factual-dynamics",
+   "kind": "preprint",
+   "title": "Consensus and Factual Dynamics in Large Populations of Interacting Language Models",
+   "authors": [
+    "Emanuele Ricco",
+    "Elia Onofri",
+    "Vincenzo Sammartino",
+    "Roberto Di Pietro"
+   ],
+   "orgs": [
+    "KAUST",
+    "University of Pisa"
+   ],
+   "date_first_public": "2026-09-30",
+   "venue_note": "arXiv preprint; CC BY-NC-SA 4.0",
+   "identifiers": {
+    "arxiv": "2609.39211",
+    "doi": null
+   },
+   "urls": {
+    "primary": "https://arxiv.org/abs/2609.39211",
+    "code": null
+   },
+   "_urls": [
+    "https://arxiv.org/html/2609.39211v1"
+   ],
+   "level": "short_card",
+   "part_of": null,
+   "peer_review": "none",
+   "in_analytic_corpus": false,
+   "claim_keys": true,
+   "source_pages": [
+    "ch09"
+   ],
+   "added": "2026-10-09: pre-cut-off preprint missed by the October corpus (scout lead in discovery notes); added from the parent's primary-source reading; not in the 153-work analytic corpus or its charts",
+   "source": "arXiv API 2026-10-09; parent freshness-notes.md (primary HTML read)"
+  },
+  {
+   "id": "banerjee-coherence-contagion",
+   "kind": "workshop",
+   "title": "Coherence-Driven Belief Formation and Population Dynamics of Contagion in LLM Agents",
+   "authors": [
+    "Tathagata Banerjee",
+    "Nima Moghaddas"
+   ],
+   "orgs": [
+    "Takeda Pharmaceuticals",
+    "Northeastern University"
+   ],
+   "date_first_public": "2026-10-02",
+   "venue_note": "arXiv preprint; accepted at the NeurIPS 2026 Workshop on Foundations of Agentic Systems Theory (FAST); CC BY 4.0",
+   "identifiers": {
+    "arxiv": "2610.02654",
+    "doi": null
+   },
+   "urls": {
+    "primary": "https://arxiv.org/abs/2610.02654",
+    "code": null
+   },
+   "_urls": [
+    "https://arxiv.org/html/2610.02654v1"
+   ],
+   "level": "short_card",
+   "part_of": null,
+   "peer_review": "workshop",
+   "in_analytic_corpus": false,
+   "claim_keys": true,
+   "source_pages": [
+    "ch09"
+   ],
+   "added": "2026-10-09: published 2 Oct 2026 (before the cut-off) but missed by the October corpus; added from the parent's primary-source reading; not in the 153-work analytic corpus or its charts",
+   "source": "arXiv API 2026-10-09 (title, authors, date, comment); parent freshness-notes.md (primary HTML read)"
+  },
+  {
+   "id": "ai-village-dataset",
+   "kind": "dataset",
+   "title": "AI Village dataset (aidigestorg/ai-village)",
+   "authors": [
+    "AI Digest"
+   ],
+   "orgs": [
+    "AI Digest"
+   ],
+   "date_first_public": null,
+   "venue_note": "Hugging Face dataset; per the hackathon page, >170k messages and >2M computer-use turns (dataset scope, not concurrent agents)",
+   "identifiers": {
+    "arxiv": null,
+    "doi": null
+   },
+   "urls": {
+    "primary": "https://huggingface.co/datasets/aidigestorg/ai-village",
+    "code": null
+   },
+   "level": "inline_link",
+   "part_of": null,
+   "peer_review": "none",
+   "in_analytic_corpus": false,
+   "claim_keys": true,
+   "source_pages": [
+    "ch02"
+   ],
+   "added": "2026-10-09: linked next to the hackathon entry in the chronicle; no claims about hackathon outcomes",
+   "source": "parent freshness-notes.md (swarmchasing.com home page read 2026-10-09)"
+  },
+  {
+   "id": "agentworm",
+   "kind": "preprint",
+   "title": "AgentWorm: Self-Propagating Attacks Across LLM Agent Ecosystems",
+   "authors": [
+    "Yihao Zhang",
+    "Zeming Wei",
+    "Xiaokun Luan",
+    "Chengcan Wu"
+   ],
+   "orgs": [
+    "Peking University"
+   ],
+   "date_first_public": "2026-03-16",
+   "venue_note": "arXiv preprint (v3)",
+   "identifiers": {
+    "arxiv": "2603.15727",
+    "doi": null
+   },
+   "urls": {
+    "primary": "https://arxiv.org/abs/2603.15727",
+    "code": null
+   },
+   "level": "table_row",
+   "part_of": null,
+   "peer_review": "none",
+   "in_analytic_corpus": false,
+   "claim_keys": true,
+   "source_pages": [
+    "ch07"
+   ],
+   "source": "arXiv API 2026-10-09 (title, first four authors, date); ch07 related row 'AgentWorm / Security Tax' links this paper; Security Tax has no link in the text"
+  }
+ ],
+ "updates": {
+  "piao-polarization-networks": [
+   {
+    "date": "2026-10-08",
+    "what": "Published in Nature Communications (received 14 Apr 2025, accepted 21 Sep 2026); same work as arXiv:2501.05171. CC BY 4.0.",
+    "url": "https://www.nature.com/articles/s41467-026-78228-y",
+    "doi": "10.1038/s41467-026-78228-y",
+    "verified": "publisher page metadata (citation_* tags, dates, licence) read 2026-10-09"
+   }
+  ]
+ },
+ "bundle_cards": [
+  "hf-incident-case",
+  "attractor-states"
+ ],
+ "labels": {
+  "_note": "Descriptive labels (not original titles) for linked resources whose title was not recorded; wording follows the survey's own description of each item.",
+  "x-ai-news-grok-4": {
+   "en": "xAI: Grok 4 and Grok 4 Heavy (launch post)",
+   "ru": "xAI: Grok 4 и Grok 4 Heavy (анонс)"
+  },
+  "huggingface-co-blog-security-incident-july-2026": {
+   "en": "Hugging Face: security incident disclosure (July 2026)",
+   "ru": "Hugging Face: раскрытие инцидента безопасности (июль 2026)"
+  },
+  "openai-com-index-hugging-face-model-evaluation-security-incident": {
+   "en": "OpenAI: disclosure of the Hugging Face model-evaluation security incident",
+   "ru": "OpenAI: раскрытие инцидента безопасности при оценке моделей (Hugging Face)"
+  },
+  "oag-ca-gov-news-press-releases-part-ongoing-investigation-attorney-gen": {
+   "en": "California Attorney General: investigative subpoena served on OpenAI (press release)",
+   "ru": "Генпрокурор Калифорнии: следственная повестка OpenAI (пресс-релиз)"
+  },
+  "science-agents-go-rogue": {
+   "en": "AI 'agents' go rogue in realistic simulations (Science news)",
+   "ru": "AI 'agents' go rogue in realistic simulations (новость Science)"
+  },
+  "ai-village-dataset": {
+   "en": "AI Village dataset (Hugging Face: aidigestorg/ai-village)",
+   "ru": "Датасет AI Village (Hugging Face: aidigestorg/ai-village)"
+  }
+ },
+ "identity_exclusions": {
+  "_note": "Keys found in a card's free-text fields or urls.other that belong to a DIFFERENT document. They are kept as related_keys (with reason) and never merged. Decided 2026-10-09 by reading the card JSON context of each key.",
+  "lutje-mechanics-of-a-swarm": {
+   "doi:10.5281/zenodo.22689980": "Zenodo concept DOI of the code (MIT) and derived data (CC BY 4.0), not the paper"
+  },
+  "co-scientist-nature": {
+   "arxiv:2608.26701": "companion preprint (27 Aug 2026); the card says it 'is a different paper'"
+  },
+  "riemann-zeta-swarm": {
+   "arxiv:2609.02882": "Lamzouri's independent re-proof of the result, a different work"
+  },
+  "recursive-language-models": {
+   "arxiv:2603.02615": "independent reproduction (CUHK), a different work"
+  },
+  "fermat-last-theorem": {
+   "arxiv:2608.28433": "Prove2Me platform paper, a related but separate document from Anthropic's Fermat post"
+  },
+  "au-aisi-mas-risks": {
+   "arxiv:2508.05687": "Gradient Institute's 2025 predecessor report, a different work"
+  },
+  "tokyo-road-game": {
+   "doi:10.5281/zenodo.22915642": "reserved Zenodo DOI for the private data/code package, not the paper"
+  }
+ },
+ "kept_merge_notes": {
+  "_note": "Multi-key records reviewed and kept merged (same work, different versions or landing pages).",
+  "opus5-card-multiagent": "two byte-different PDFs of the same system card (v0/v2)",
+  "kim-scaling-agent-systems": "arXiv preprint, Research Square preprint and Nature Machine Intelligence article of the same study",
+  "co-scientist-nature": "arXiv:2502.18864 is the preprint of the Nature paper",
+  "cursor-scaling": "the card covers a series of Cursor posts; both post URLs are kept on the series record",
+  "sat-teams": "Hugging Face Papers landing page of the same arXiv paper",
+  "silo-bench": "ACL 2026 version of the arXiv preprint",
+  "peer-preservation": "extended version under review at Nature (Research Square), same authors and study",
+  "nature-subliminal-learning": "arXiv preprint of the Nature paper",
+  "artificial-hivemind": "NeurIPS proceedings DOI of the same paper",
+  "diversity-collapse": "ACL Findings DOI of the same paper",
+  "prev-demarzo-majority": "arXiv preprint of the Science Advances paper",
+  "prev-flint-group-size": "arXiv preprint of the PNAS paper",
+  "cost-of-consensus": "ACM CAIS proceedings DOI of the same paper",
+  "robin-futurehouse": "arXiv preprint of the Nature paper",
+  "piao-polarization": "arXiv preprint and Nature Communications article (8 Oct 2026); alias `piao-polarization-networks`",
+  "micromotor-phase-coherence": "arXiv preprint and Nature Physics article"
+ },
+ "paper_reconciliation": {
+  "_note": "Generated by scripts/reconcile_paper_keys.py from the integrated paper's citation-key-map.json (read-only). Paper keys become canonical IDs; provisional registry IDs stay as aliases. October alias names stay attached to their bundle cards, as in the paper.",
+  "source": "paper/citation-key-map.json",
+  "source_sha256": "24af6c403bae62819433e0b9bdb12b4712d3f9095e0d95766958fa2b50f1a382",
+  "october_aliases_to_bundles": {
+   "opus55-card-multiagent": "opus55-card",
+   "gpt56-ultra-launch": "openai-gpt56-ultra",
+   "anthropic-multiagent-patterns": "anthropic-patterns",
+   "openai-hf-incident-report": "hf-incident-case",
+   "metr-hf-investigation": "hf-incident-case",
+   "hf-technical-timeline": "hf-incident-case",
+   "self-organizing-agent-teams": "sat-teams",
+   "cursor-scaling-agents": "cursor-scaling",
+   "attractor-states-lw": "attractor-states",
+   "opus4-bliss-attractor": "attractor-states",
+   "ko-geiping-attractors": "attractor-states",
+   "hivemind-reevaluation": "artificial-hivemind",
+   "openai-hf-incident-2026": "hf-incident-case",
+   "piao2025": "piao-polarization",
+   "piao2026": "piao-polarization",
+   "2501.05171": "piao-polarization"
+  },
+  "renames": {
+   "agentsociety-parallelized-framework-simulating": "agentsociety",
+   "hivemind-reevaluation": "artificial-hivemind-reevaluation",
+   "emergent-social-conventions-collective": "ashery-conventions",
+   "opus4-bliss-attractor": "attractor-states-anthropic-card",
+   "attractor-states-lw": "attractor-states-jakkli-post",
+   "ko-geiping-attractors": "attractor-states-ko-geiping-paper",
+   "attributing-emergence-million-systems": "attributing-emergence",
+   "banerjee-coherence-contagion": "coherence-driven-contagion",
+   "most-conformity-needs-no": "conformity-no-speaker",
+   "emergent-languages-populations-language": "emergent-languages",
+   "gasim-graph-accelerated-hybrid": "gasim",
+   "hf-technical-timeline": "hf-huggingface-technical-timeline",
+   "metr-hf-investigation": "hf-metr-redwood-investigation",
+   "openai-hf-incident-report": "hf-openai-technical-report",
+   "ai-agents-reshape-consensus": "human-ai-consensus",
+   "form-without-function-social": "moltbook-form-without-function",
+   "moltbook-observatory-archive": "moltbook-observatory",
+   "microscopic-dynamics-consensus-formation": "naming-games",
+   "openclaw-agents-moltbook-risky": "openclaw-norms",
+   "piao-polarization-networks": "piao-polarization",
+   "ricco-consensus-factual-dynamics": "rheon-consensus",
+   "collective-opinion-dynamics-structured": "structured-opinion-dynamics",
+   "when-collective-intelligence-lottery": "tanaka-memetic-drift",
+   "topological-collapse-higher-order": "topological-collapse"
+  },
+  "components": [
+   {
+    "id": "ai-village-how-it-works",
+    "part_of": "ai-village",
+    "card": "ai-village",
+    "title": "How the AI Village works",
+    "url": "https://theaidigest.org/village/blog/how-the-ai-village-works",
+    "first_public": null,
+    "license": null,
+    "inherited_status": "Operator blog posts (Substack; LessWrong cross-posts with 63 and 63 karma on 2026-10-03), a gated research dataset (Hugging Face, license 'ai-village-research-terms': research use, no training without permission, 1,037 downloads) and a non-peer-reviewed working paper (Zenodo preprint, CC BY 4.0, plus GitLab Pages) whose author, second raters and reviewers are all Village agents; no human peer review is stated."
+   },
+   {
+    "id": "ai-village-longitudinal",
+    "part_of": "ai-village",
+    "card": null,
+    "title": "Norms, Tools, and the Say/Do Gap: Seventeen Months of Autonomous Frontier-Model Agents in the AI Village",
+    "url": "https://doi.org/10.5281/zenodo.23090815",
+    "first_public": null,
+    "license": null,
+    "inherited_status": ""
+   },
+   {
+    "id": "anthropic-multi-agent-research-system",
+    "part_of": "anthropic-multi-agent-guidance",
+    "card": "anthropic-multi-agent-guidance",
+    "title": "How we built our multi-agent research system",
+    "url": "https://www.anthropic.com/engineering/multi-agent-research-system",
+    "first_public": null,
+    "license": null,
+    "inherited_status": "Two company blog posts (Anthropic Engineering blog; Claude blog). Not peer-reviewed; no paper, no data or code release for the numbers; self-reported by the vendor. Both are living web pages that were edited after first publication."
+   },
+   {
+    "id": "cognition-dont-build-multi-agents",
+    "part_of": "cognition-multi-agents",
+    "card": "cognition-multi-agents",
+    "title": "Don't Build Multi-Agents",
+    "url": "https://cognition.com/blog/dont-build-multi-agents",
+    "first_public": null,
+    "license": null,
+    "inherited_status": "Two company engineering-blog posts (cognition.com/blog; the first originally on cognition.ai); not peer-reviewed; opinion plus production experience, no tables, no ablations"
+   },
+   {
+    "id": "cognition-multi-agents-working",
+    "part_of": "cognition-multi-agents",
+    "card": null,
+    "title": "Multi-Agents: What's Actually Working",
+    "url": "https://cognition.com/blog/multi-agents-working",
+    "first_public": null,
+    "license": null,
+    "inherited_status": ""
+   },
+   {
+    "id": "cursor-scaling-long-running",
+    "part_of": "cursor-scaling",
+    "card": "cursor-scaling",
+    "title": "Scaling long-running autonomous coding",
+    "url": "https://cursor.com/blog/scaling-agents",
+    "first_public": null,
+    "license": null,
+    "inherited_status": "cursor.com/blog, topic 'research'. Not peer-reviewed. No paper, no released harness code, no raw logs."
+   },
+   {
+    "id": "cursor-self-driving",
+    "part_of": "cursor-scaling",
+    "card": "cursor-scaling",
+    "title": "Towards self-driving codebases",
+    "url": "https://cursor.com/blog/self-driving-codebases",
+    "first_public": null,
+    "license": null,
+    "inherited_status": ""
+   },
+   {
+    "id": "multi-agent-security-tax",
+    "part_of": "prev-contagion-cluster",
+    "card": null,
+    "title": "Multi-Agent Security Tax",
+    "url": "https://arxiv.org/abs/2502.19145",
+    "first_public": null,
+    "license": null,
+    "inherited_status": ""
+   },
+   {
+    "id": "opus46-launch-post",
+    "part_of": "opus46-launch-cluster",
+    "card": "opus46-launch-cluster",
+    "title": "Claude Opus 4.6",
+    "url": "https://www.anthropic.com/news/claude-opus-4-6",
+    "first_public": null,
+    "license": null,
+    "inherited_status": "Vendor launch post + vendor system card (PDF) + living product-documentation page. Not peer-reviewed; self-reported by the developer (a few comparator numbers come from third parties: Gemini/GPT MRCR from Context Arena, Gemini/GPT DeepSearchQA run by Kaggle). Agent teams are a 'research preview' in the launch post and 'experimental and disabled by default' in the docs, both at launch and on 2026-10-03."
+   },
+   {
+    "id": "sakana-conductor",
+    "part_of": "sakana-conductor-trinity-fugu",
+    "card": null,
+    "title": "Learning to Orchestrate Agents in Natural Language with the Conductor",
+    "url": "https://openreview.net/forum?id=U23A2BUKYt",
+    "first_public": null,
+    "license": null,
+    "inherited_status": ""
+   },
+   {
+    "id": "sakana-fugu-report",
+    "part_of": "sakana-conductor-trinity-fugu",
+    "card": "sakana-conductor-trinity-fugu",
+    "title": "Sakana Fugu Technical Report",
+    "url": "https://arxiv.org/abs/2606.21228",
+    "first_public": null,
+    "license": null,
+    "inherited_status": "Conductor: peer-reviewed conference paper, ICLR 2026 poster (OpenReview forum U23A2BUKYt, venue field 'ICLR 2026 Poster'). TRINITY: ICLR 2026 poster (OpenReview forum 5HaRjXai12, 'ICLR 2026 Poster'). Fugu Technical Report: arXiv preprint (cs.LG, CC BY 4.0), a company technical report, not peer-reviewed. Fugu Max / Ultra v2: company product/blog post on sakana.ai, not peer-reviewed."
+   },
+   {
+    "id": "sakana-trinity",
+    "part_of": "sakana-conductor-trinity-fugu",
+    "card": null,
+    "title": "Trinity: An Evolved LLM Coordinator",
+    "url": "https://openreview.net/forum?id=5HaRjXai12",
+    "first_public": null,
+    "license": null,
+    "inherited_status": ""
+   }
+  ],
+  "part_of": {
+   "agentsociety": "prev-moltbook-cluster",
+   "agentworm": "prev-contagion-cluster",
+   "ai-village-how-it-works": "ai-village",
+   "ai-village-longitudinal": "ai-village",
+   "anthropic-multi-agent-research-system": "anthropic-multi-agent-guidance",
+   "artificial-hivemind-reevaluation": "artificial-hivemind",
+   "ashery-conventions": "prev-population-dynamics-cluster",
+   "attractor-states-anthropic-card": "attractor-states",
+   "attractor-states-jakkli-post": "attractor-states",
+   "attractor-states-ko-geiping-paper": "attractor-states",
+   "attributing-emergence": "prev-population-dynamics-cluster",
+   "cognition-dont-build-multi-agents": "cognition-multi-agents",
+   "cognition-multi-agents-working": "cognition-multi-agents",
+   "conformity-no-speaker": "prev-population-dynamics-cluster",
+   "cursor-scaling-long-running": "cursor-scaling",
+   "cursor-self-driving": "cursor-scaling",
+   "emergent-languages": "prev-moltbook-cluster",
+   "gasim": "prev-moltbook-cluster",
+   "hf-huggingface-technical-timeline": "hf-incident-case",
+   "hf-metr-redwood-investigation": "hf-incident-case",
+   "hf-openai-technical-report": "hf-incident-case",
+   "human-ai-consensus": "prev-population-dynamics-cluster",
+   "moltbook-form-without-function": "prev-moltbook-cluster",
+   "moltbook-observatory": "prev-moltbook-cluster",
+   "multi-agent-security-tax": "prev-contagion-cluster",
+   "naming-games": "prev-population-dynamics-cluster",
+   "openclaw-norms": "prev-moltbook-cluster",
+   "opus46-launch-post": "opus46-launch-cluster",
+   "piao-polarization": "prev-population-dynamics-cluster",
+   "sakana-conductor": "sakana-conductor-trinity-fugu",
+   "sakana-fugu-report": "sakana-conductor-trinity-fugu",
+   "sakana-trinity": "sakana-conductor-trinity-fugu",
+   "structured-opinion-dynamics": "prev-population-dynamics-cluster",
+   "tanaka-memetic-drift": "prev-population-dynamics-cluster",
+   "topological-collapse": "prev-moltbook-cluster",
+   "zombie-agents": "prev-contagion-cluster"
+  },
+  "nonpublication_bundles": {
+   "prev-contagion-cluster": "Use the individual component entries, not this bundle key.",
+   "prev-moltbook-cluster": "Use the individual component entries, not this bundle key.",
+   "prev-population-dynamics-cluster": "Use the individual component entries, not this bundle key."
+  }
+ },
+ "metadata_corrections": {
+  "_provenance": {
+   "checked_at": "2026-10-09",
+   "sources": "arXiv metadata/history and HTML author blocks; publisher author lists and journal-formatted PDFs",
+   "scope": "bylines, titles, journal fields and date/spelling conflicts for 18 existing records; no new works",
+   "evidence_note": "Private editorial transcripts are retained separately, not distributed."
+  },
+  "agentworm": {
+   "authors_bibtex": "Yihao Zhang and Zeming Wei and Xiaokun Luan and Chengcan Wu and Zhixin Zhang and Jiangrong Wu and Haolin Wu and Huanran Chen and Jun Sun and Meng Sun",
+   "title": "AgentWorm: Self-Propagating Attacks Across LLM Agent Ecosystems",
+   "date_first_public": "2026-03-16",
+   "version_note": "v3 2026-07-16",
+   "status": "preprint",
+   "conflicts": [
+    "An NDSS footer with a placeholder DOI is not sufficient for proceedings metadata; kept as a preprint."
+   ]
+  },
+  "attributing-emergence": {
+   "authors_bibtex": "Ling Tang and Jilin Mei and Qian Chen and Qihan Ren and Linfeng Zhang and Quanshi Zhang and Jing Shao and Xia Hu and Dongrui Liu",
+   "title": "Attributing Emergence in Million-Agent Systems",
+   "date_first_public": "2026-05-12",
+   "version_note": "v2 2026-07-05",
+   "status": "preprint"
+  },
+  "co-scientist-nature": {
+   "authors_bibtex": "Juraj Gottweis and Wei-Hung Weng and Alexander Daryin and Tao Tu and Petar Sirkovic and Artiom Myaskovsky and Grzegorz Glowaty and Felix Weissenberger and Alessio Orlandi and Dan Popovici and Anil Palepu and Keran Rong and Ryutaro Tanno and Khaled Saab and Fan Zhang and Jacob Blum and Andrew Carroll and Kavita Kulkarni and Nenad Tomašev and Dina Zverinski and Ivor Rendulic and Elahe Vedadi and Florian Hasler and Luka Rimanic and Marina Boia and Ivan Budiselic and Ben Feinstein and Mathias Bellaiche and Tom Sheffer and Jan Freyberg and Jeremy Ratcliff and Ottavia Bertolli and Katherine Chou and Avinatan Hassidim and Burak Gokturk and Amin Vahdat and Yuan Guan and Vikram Dhillon and Eeshit Dhaval Vaishnav and Byron Lee and Tiago R. D. Costa and José R. Penadés and Gary Peltz and Yossi Matias and James Manyika and Demis Hassabis and Yunhan Xu and Pushmeet Kohli and Annalisa Pawlosky and Alan Karthikesalingam and Vivek Natarajan",
+   "title": "Accelerating scientific discovery with Co-Scientist",
+   "status": "journal",
+   "venue": {
+    "journal": "Nature",
+    "volume": "655",
+    "number": "8122",
+    "pages": "487--496",
+    "published_online": "2026-05-19",
+    "version_of_record": "2026-07-01",
+    "issue_date": "2026-07-09"
+   },
+   "conflicts": [
+    "The journal title differs from the arXiv preprint (arXiv:2502.18864) title; the record uses the published Nature title. date_first_public stays the preprint date (first public version)."
+   ]
+  },
+  "compass-kilo-flocks": {
+   "authors_bibtex": "Frederic Vatnsdal and Roshan Gopal and Garcia Camargo, Romina and Vijay Kumar and Alejandro Ribeiro",
+   "title": "Controlling Collectives of AI Agents in Reasoning Space with Spatial Transformers",
+   "date_first_public": "2026-09-23",
+   "status": "preprint"
+  },
+  "conformity-no-speaker": {
+   "authors_bibtex": "Yibo Hu and Jiaming Qu",
+   "title": "Most LLM Conformity Needs No Speaker: Measuring the Speaker-Free Floor in Peer-Pressure Benchmarks",
+   "date_first_public": "2026-07-06",
+   "status": "preprint",
+   "title_restored": true
+  },
+  "emergent-languages": {
+   "authors_bibtex": "Stine Lyngsø Beltoft and William Brach and Federico Torrielli and Jacob Nielsen and Annemette Brok Pirchert and Filippo Tonini and Peter Schneider-Kamp and Lukas Galke Poech",
+   "title": "Emergent Languages in Populations of Language Model Agents: From Token Efficiency to Oversight Evasion",
+   "date_first_public": "2026-05-29",
+   "status": "preprint"
+  },
+  "human-ai-consensus": {
+   "authors_bibtex": "Lin Chen and Ziyi Liu and Xia Hu and Yong Li",
+   "title": "AI agents reshape consensus formation in human groups",
+   "date_first_public": "2026-09-02",
+   "status": "preprint"
+  },
+  "moltbook-form-without-function": {
+   "authors_bibtex": "Saber Zerhoudi and Kanishka {Ghosh Dastidar} and Felix Klement and Artur Romazanov and Andreas Einwiller and Dang H. Dang and Michael Dinzinger and Michael Granitzer and Annette Hautli-Janisz and Stefan Katzenbeisser and Florian Lemmerich and Jelena Mitrović",
+   "title": "Form Without Function: Agent Social Behavior in the Moltbook Network",
+   "date_first_public": "2026",
+   "date_precision": "year",
+   "status": "preprint",
+   "conflicts": [
+    "Date: arXiv submission history says 2026-03-17, the manuscript is dated 2026-04-16; year only is used.",
+    "Spelling: the arXiv abstract page has 'Mitrovic', the paper 'Mitrović' (paper spelling used)."
+   ]
+  },
+  "moltbook-observatory": {
+   "authors_bibtex": "Sushant Gautam and Annika W. Olstad and Klas H. Pettersen and Michael A. Riegler",
+   "title": "The Moltbook Observatory Archive: an incremental dataset of agent-only social network activity",
+   "date_first_public": "2026",
+   "date_precision": "year",
+   "status": "preprint",
+   "title_restored": true,
+   "conflicts": [
+    "Date: the displayed submission date 2026-04-16 conflicts with the identifier prefix 2605; year only is used and the date is not silently corrected to May."
+   ]
+  },
+  "multi-agent-security-tax": {
+   "authors_bibtex": "Pierre Peigné and Mikolaj Kniejski and Filip Sondej and Matthieu David and Jason Hoelscher-Obermaier and {Schroeder de Witt}, Christian and Esben Kran",
+   "title": "Multi-Agent Security Tax: Trading Off Security and Collaboration Capabilities in Multi-Agent Systems",
+   "date_first_public": "2025-02-26",
+   "version_note": "v2 2025-06-04",
+   "status": "preprint",
+   "note": "Accepted to AAAI 2025 (per arXiv comments)",
+   "title_restored": true,
+   "conflicts": [
+    "First author: the arXiv abstract page says 'Pierre Peigne-Lefebvre', the uploader field 'Pierre Peigné-Lefebvre', the paper byline 'Pierre Peigné'; the paper byline is used, no expansion guessed."
+   ]
+  },
+  "naming-games": {
+   "authors_bibtex": "De Nobili, Cristiano and Iyer, Vijayasri and Codello, Alessandro and Burioni, Raffaella",
+   "title": "Microscopic dynamics of consensus formation in multi-agent LLM Naming Games",
+   "date_first_public": "2026-08-03",
+   "status": "preprint"
+  },
+  "openclaw-norms": {
+   "authors_bibtex": "Md Motaleb Hossen Manik and Ge Wang",
+   "title": "OpenClaw Agents on Moltbook: Risky Instruction Sharing and Norm Enforcement in an Agent-Only Social Network",
+   "date_first_public": "2026-02-02",
+   "status": "preprint"
+  },
+  "orchestra-o1": {
+   "authors_bibtex": "Fan Zhang and Vireo Zhang and Shengju Qian and Haoxuan Li and Hao Wu and Jinyang Wu and Donghao Zhou and Zhihong Zhu and Zheng Lian and Xin Wang and Pheng-Ann Heng",
+   "title": "Orchestra-o1: Omnimodal Agent Orchestration",
+   "date_first_public": "2026-06-10",
+   "status": "preprint",
+   "arxiv_doi": "10.48550/arXiv.2606.13707"
+  },
+  "robin-futurehouse": {
+   "authors_bibtex": "Ali E. Ghareeb and Benjamin Chang and Ludovico Mitchener and Angela Yiu and Caralyn J. Szostkiewicz and Dmytro Shved and Gavin J. Gyimesi and Jon M. Laurent and Samantha M. Wright and Muhammed T. Razzak and Andrew D. White and Silvia C. Finnemann and Michaela M. Hinks and Samuel G. Rodriques",
+   "title": "A multi-agent system for automating scientific discovery",
+   "status": "journal",
+   "venue": {
+    "journal": "Nature",
+    "volume": "655",
+    "number": "8122",
+    "pages": "497--505",
+    "published_online": "2026-05-19",
+    "version_of_record": "2026-07-01",
+    "issue_date": "2026-07-09"
+   },
+   "conflicts": [
+    "The title 'Robin: A multi-agent system for automating scientific discovery' belongs to the preprint version (arXiv:2505.13400); the record uses the published Nature title. date_first_public stays the preprint date."
+   ]
+  },
+  "science-malicious-swarms": {
+   "authors_bibtex": "Daniel Thilo Schroeder and Meeyoung Cha and Andrea Baronchelli and Nick Bostrom and Nicholas A. Christakis and David Garcia and Amit Goldenberg and Yara Kyrychenko and Kevin Leyton-Brown and Nina Lutz and Gary Marcus and Filippo Menczer and Gordon Pennycook and David G. Rand and Maria Ressa and Frank Schweitzer and Dawn Song and Christopher Summerfield and Audrey Tang and {Van Bavel}, Jay J. and van der Linden, Sander and Jonas R. Kunst",
+   "title": "How malicious AI swarms can threaten democracy",
+   "status": "journal",
+   "venue": {
+    "journal": "Science",
+    "volume": "391",
+    "number": "6783",
+    "pages": "354--357",
+    "published_online": "2026-01-22",
+    "note": "Policy Forum"
+   },
+   "conflicts": [
+    "The publisher page returned HTTP 403; the byline comes from the journal-formatted PDF (p. 354, hosted by HBS) and its order is corroborated by arXiv:2506.06299 author metadata."
+   ]
+  },
+  "structured-opinion-dynamics": {
+   "authors_bibtex": "Erica Cau and Andrea Failla and Giulio Rossetti",
+   "title": "Collective Opinion Dynamics in Structured LLM Populations",
+   "date_first_public": "2026-04-13",
+   "version_note": "v3 2026-09-28",
+   "status": "preprint"
+  },
+  "topological-collapse": {
+   "authors_bibtex": "Shuo Lu and Weicheng Meng and Aijing Yu and Kun Shao and Jian Luan and Ran He and Jian Liang",
+   "title": "Topological collapse of higher-order interactions bottlenecks collective intelligence in AI agent societies",
+   "date_first_public": "2026-08-16",
+   "status": "preprint",
+   "conflicts": [
+    "The inherited October byline had given and family names reversed; corrected to the arXiv author block."
+   ]
+  },
+  "zombie-agents": {
+   "authors_bibtex": "Xianglin Yang and Yufei He and Shuo Ji and Bryan Hooi and Jin Song Dong",
+   "title": "Zombie Agents: Persistent Control of Self-Evolving LLM Agents via Self-Reinforcing Injections",
+   "date_first_public": "2026-02-17",
+   "version_note": "v2 2026-03-05",
+   "status": "workshop",
+   "note": "Published as a workshop paper in Lifelong Agent @ ICLR 2026 (per arXiv comments); not an ICLR main-conference paper",
+   "title_restored": true
+  }
+ }
+}

@@ -1,0 +1,6 @@
+# build
+markdown==3.9
+Pillow>=10
+matplotlib>=3.8
+# browser checks (optional): python -m playwright install chromium webkit
+playwright>=1.45

@@ -1,0 +1,2547 @@
+{
+ "source_root": "research-archive",
+ "captured_at_utc": "2026-10-09T09:37:05Z",
+ "note": "Read-only baseline of the October 2026 corpus inputs used by this build. The source tree is never modified.",
+ "files": [
+  {
+   "path": "build/front.md",
+   "bytes": 67886,
+   "sha256": "11d8e547064d72ef6eb4da5d0dc0fcd0e5a1fe40179d4bf9718c4c01eabebd94"
+  },
+  {
+   "path": "build/back.md",
+   "bytes": 15455,
+   "sha256": "48f8bb131f2a8805bb67aeec880296d6594df1eb3c15e9dc5f4fb4f5eb3e855b"
+  },
+  {
+   "path": "build/report.md",
+   "bytes": 556729,
+   "sha256": "cb3d7480c1f8eb2de6b8b99a7bc095f53e257973376b70fac3e5400b6aede6ec"
+  },
+  {
+   "path": "build/build.py",
+   "bytes": 19795,
+   "sha256": "c29cdc7705362bf55162ac8d7c495894b35387d25515283a67c9837238e7d4d4"
+  },
+  {
+   "path": "build/charts.py",
+   "bytes": 19545,
+   "sha256": "29ccdce20d9be0b419a787d43b765f5bd67fba20457f46fa9f43187a8032a319"
+  },
+  {
+   "path": "build/style.css",
+   "bytes": 12820,
+   "sha256": "28334c73ff74248b4b456085900465dc57810643db5760797a22b33bf309df31"
+  },
+  {
+   "path": "build/assemble.py",
+   "bytes": 885,
+   "sha256": "d5fabba4c4c86aadaec553661defaf76241d11d3618579e9d3ddf3699bad74c8"
+  },
+  {
+   "path": "build/card_alias.json",
+   "bytes": 531,
+   "sha256": "0d8bb983e2a337804afca7b088aba03795009d943cff9a21fb48e2176fe345df"
+  },
+  {
+   "path": "passports_ru.json",
+   "bytes": 45544,
+   "sha256": "c6f1bf9f3fabd2fe2c115171f2d0651abaca752391b1de4eff6695dcc01181f9"
+  },
+  {
+   "path": "build/meta/corpus_meta.json",
+   "bytes": 120650,
+   "sha256": "1fabffe8df6180a3082cb398ad101ba9eab4de563c8b84f85bc981f18fccfd01"
+  },
+  {
+   "path": "build/meta/stats.json",
+   "bytes": 5938,
+   "sha256": "cd921f122cbacbac7c6ad23af70d28a0d975ad8df32d517b91e1d7a935400a53"
+  },
+  {
+   "path": "build/meta/digest.json",
+   "bytes": 531383,
+   "sha256": "7085574eccf2a433e7bcb647661e77d1840a11ea415be486dde1207829f60a8e"
+  },
+  {
+   "path": "build/meta/v3_restore.json",
+   "bytes": 20085,
+   "sha256": "12fbcd6efb6a1b3ab15b32a9f92685c27d6bb30e73d14bcfdb9a018c6e0f9567"
+  },
+  {
+   "path": "build/report.pdf",
+   "bytes": 12420381,
+   "sha256": "21273673c726014481234bace5f1480dfa9049268100ac3a158b73c2c83ebb2b"
+  },
+  {
+   "path": "build/report_standalone.html",
+   "bytes": 7828102,
+   "sha256": "70047adb83685ffc73488393cc5173e701f6cd68ba47954a8c706e4bbde79a98"
+  },
+  {
+   "path": "build/chapters/w1_t5_t1.md",
+   "bytes": 128154,
+   "sha256": "3aea60d6f402d70698feaea036dd30a53eca61ca0b2c5e0c5b5458d9b98d45cb"
+  },
+  {
+   "path": "build/chapters/w2_t3_wild.md",
+   "bytes": 119028,
+   "sha256": "3619e14c9ca8cba109644b26ee8d41ce42b2b9e36385a2125f761e49a9972864"
+  },
+  {
+   "path": "build/chapters/w3_t2_incident.md",
+   "bytes": 110409,
+   "sha256": "e1264365ff914e4ec95f0764c2297133cce780de026ef00a67e83587c8e9d1e1"
+  },
+  {
+   "path": "build/chapters/w4_t4_beliefs.md",
+   "bytes": 115794,
+   "sha256": "10bf07bf9c9a3748c087e2183cc3486c35246fc1f475c7489bd4888c77b018e7"
+  },
+  {
+   "path": "cards/agensh-1024.json",
+   "bytes": 44217,
+   "sha256": "a243e4d68ff4c9b8a82b7595c11773a87528a1a01de6b8d73df2b396e154915c"
+  },
+  {
+   "path": "cards/agensh-1024.pre_fix.json",
+   "bytes": 40823,
+   "sha256": "ca7977ff86f257b0db736fdff5d300970f3d7d35dee328274c60d6a657135fec"
+  },
+  {
+   "path": "cards/ai-organizations.json",
+   "bytes": 55798,
+   "sha256": "0794824f31fd558dc216ba8c6cb1b64f98cff998082b4fd3af0b592ce032f7c2"
+  },
+  {
+   "path": "cards/ai-organizations.pre_fix.json",
+   "bytes": 46541,
+   "sha256": "5025ade74413bf8caf7ea6445b43596e77998c9450363e4087caaceb76e0b7cd"
+  },
+  {
+   "path": "cards/anthropic-alignment-assessment-cyber.json",
+   "bytes": 48411,
+   "sha256": "ecfaa192cccef23cff2126340795c82014614450cbadea836e0967cf9ca45483"
+  },
+  {
+   "path": "cards/anthropic-alignment-assessment-cyber.pre_fix.json",
+   "bytes": 46074,
+   "sha256": "ab40995ba67c63677d6b85557094745cd874666306085c9197fb5c590c6243ca"
+  },
+  {
+   "path": "cards/anthropic-art-enzymes.json",
+   "bytes": 50086,
+   "sha256": "4a79b509416eb4b0474389e81843eb154a84aa28eb3da95c3f2762dff80ec06f"
+  },
+  {
+   "path": "cards/anthropic-c-compiler.json",
+   "bytes": 43498,
+   "sha256": "7948b818a10ea3548e9b6ee4492f487d0bd96dba3d96a739230f17ede47b980f"
+  },
+  {
+   "path": "cards/anthropic-c-compiler.pre_fix.json",
+   "bytes": 41386,
+   "sha256": "430bfa4bd6a554a439360e0c01efaaf779bc2d484498daaadaa085e8945be606"
+  },
+  {
+   "path": "cards/anthropic-patterns.json",
+   "bytes": 52725,
+   "sha256": "35bbe3caed7f5c8cab7defa842b84af11f45bc90f9005a83ec9e4d5f6ddce4a6"
+  },
+  {
+   "path": "cards/artificial-hivemind.json",
+   "bytes": 49587,
+   "sha256": "e795b6b10bb302b3b2c81a82fe5a70fb52a65895735e52ff9c6d0d57599f008f"
+  },
+  {
+   "path": "cards/artificial-hivemind.pre_fix.json",
+   "bytes": 42174,
+   "sha256": "5bb49724fdd1abd3f18fa819803e205326e5cf75de8af7219cbed4a41bcb2326"
+  },
+  {
+   "path": "cards/attractor-states.json",
+   "bytes": 70597,
+   "sha256": "253c97e9ee85b4a2b456f2340fef71b79b851f6487f2cfa923da5f142e2a5ea9"
+  },
+  {
+   "path": "cards/attractor-states.pre_fix.json",
+   "bytes": 65556,
+   "sha256": "2956af92ae65a8f9da713c211b830354b07c1f4539b3f52024dd68c80d7f0d9d"
+  },
+  {
+   "path": "cards/automated-w2s-researcher.json",
+   "bytes": 59934,
+   "sha256": "1d8e739674f1d2b6d251879316d6ed7349caad94da9cd31ec84278df68efca56"
+  },
+  {
+   "path": "cards/automated-w2s-researcher.pre_fix.json",
+   "bytes": 55197,
+   "sha256": "ae35dada995c4904f8ee363a01ffa04dc0950b6ce46c63d6f520eb8b5ed31156"
+  },
+  {
+   "path": "cards/cursor-scaling.json",
+   "bytes": 55012,
+   "sha256": "8fbb84514267455a802a91321388cbfa0e340e5829cae9e794c581f50a7d2069"
+  },
+  {
+   "path": "cards/cursor-scaling.pre_fix.json",
+   "bytes": 51093,
+   "sha256": "b46ccbc4b169cd7f8756770636af2d8344e878332a4ee8c179cc403706518af3"
+  },
+  {
+   "path": "cards/deepmind-cheating-whistleblowing.json",
+   "bytes": 33762,
+   "sha256": "0fd50bab778e25956d84b1a63075eb68302d6098f0ff289eff6780c4514b552d"
+  },
+  {
+   "path": "cards/flag-game.json",
+   "bytes": 46146,
+   "sha256": "4dda73f3b64fc19d914bcb18e245b07df5bfb74d14881b5bc2038c7d1fb1fb19"
+  },
+  {
+   "path": "cards/flag-game.pre_fix.json",
+   "bytes": 43007,
+   "sha256": "b30ed8b66d2049c402c9b004473beba5b9f8992a445d028e95bd2bb8abcb4ca5"
+  },
+  {
+   "path": "cards/kim-scaling-agent-systems.json",
+   "bytes": 51721,
+   "sha256": "a98a700ad44792d50da01de851372ab1a22c58ff2c3d2e3c60ff0920a52a0365"
+  },
+  {
+   "path": "cards/kim-scaling-agent-systems.pre_fix.json",
+   "bytes": 47189,
+   "sha256": "d24655d751f50a4b4e7df1596267653a00fe23bf23868dbb2196052ad611a13c"
+  },
+  {
+   "path": "cards/kimi-agent-swarm.json",
+   "bytes": 55023,
+   "sha256": "7f5e6b7998f19aa2683fc1a90b67ebea49003e168c01492628e77fe7f069ba27"
+  },
+  {
+   "path": "cards/kimi-agent-swarm.pre_fix.json",
+   "bytes": 50257,
+   "sha256": "b7ec932786f1f10b61b1a1b5fa5cd43afa1ddda384aa27a25e176e848553ac68"
+  },
+  {
+   "path": "cards/mind-viruses.json",
+   "bytes": 52193,
+   "sha256": "f04314c02cad6b3d94a8315b00304e693a8576cfd0444c900c3ad3c6e7c8447a"
+  },
+  {
+   "path": "cards/mind-viruses.pre_fix.json",
+   "bytes": 49280,
+   "sha256": "d482a3da69512a7b49e7ed19479c8381e57b846ff715c722fe972ea82c94fbdd"
+  },
+  {
+   "path": "cards/mythos-preview-self-interactions.json",
+   "bytes": 51396,
+   "sha256": "fa6e0c1f1f6110900f288a049ced64a9e78fda465ae4fb6243eca39463ec0eac"
+  },
+  {
+   "path": "cards/mythos-preview-self-interactions.pre_fix.json",
+   "bytes": 45524,
+   "sha256": "d02cc1aba1c0b46c12c98e9d441b0e89b6c7a979893efd4b5b9a6d47bdc0d943"
+  },
+  {
+   "path": "cards/okawa-biased-consensus.json",
+   "bytes": 55613,
+   "sha256": "99f2891e22a8a6ce43393e822e57b7cef1ea2634656e3262bfacc6f67c9de8d7"
+  },
+  {
+   "path": "cards/okawa-biased-consensus.pre_fix.json",
+   "bytes": 49644,
+   "sha256": "ede9f1eb7e87554bbab88a1bbdbae85aa720babde5ca87e8cfadb0ada38b8f50"
+  },
+  {
+   "path": "cards/opus5-card-multiagent.json",
+   "bytes": 65025,
+   "sha256": "0d8705b2031cfc0a4621785b414551caf0d9dffbcf87d84fc083ca03d77c215b"
+  },
+  {
+   "path": "cards/opus55-card.json",
+   "bytes": 71156,
+   "sha256": "d32ecf60bbc3f2704cfd719bc1c1b703a61c9c83602602f97337d5cfe4b6352e"
+  },
+  {
+   "path": "cards/opus55-card.pre_fix.json",
+   "bytes": 64302,
+   "sha256": "b17714fb038c3a0547d616963a5fb7f4b8814618aa871f866f233a9cadf20b09"
+  },
+  {
+   "path": "cards/ord-swarm-scaling.json",
+   "bytes": 53883,
+   "sha256": "3a640532c7966c9f482bd54fafc13ffe7881aa86b0e2f60e1b1744890e432fa0"
+  },
+  {
+   "path": "cards/ord-swarm-scaling.pre_fix.json",
+   "bytes": 51549,
+   "sha256": "dde2685d30e7ba6f83565124ab0c2d8af4135036b48dc5419979716f1e5f1d88"
+  },
+  {
+   "path": "cards/peer-preservation.json",
+   "bytes": 46087,
+   "sha256": "1967a8f864de96f8e3d654b181a1d2f3566f558dc4f84c39431ad287a1c7951f"
+  },
+  {
+   "path": "cards/peer-preservation.pre_fix.json",
+   "bytes": 43436,
+   "sha256": "ae5098cd730f0ca193044d71d10dcfc34a9665b334777adc338985295fd4e514"
+  },
+  {
+   "path": "cards/recursive-language-models.json",
+   "bytes": 43620,
+   "sha256": "a4fb6c99cb1fb8b37975916a855d51605b913265e01c830a1d8cb5be992430a3"
+  },
+  {
+   "path": "cards/sat-teams.json",
+   "bytes": 49351,
+   "sha256": "9d5dae36d00056c3a93bac4463c3a794435cec2b02e626cace7395b8c132002a"
+  },
+  {
+   "path": "cards/sat-teams.pre_fix.json",
+   "bytes": 45742,
+   "sha256": "617b1badb6b2df1981058fb8b4b836b00daebcf7c5c551db17aa215f9f63eb37"
+  },
+  {
+   "path": "cards/semantic-collapse.json",
+   "bytes": 51321,
+   "sha256": "1ece461262f10e5feb4188a703bad72ef045b9eda7bc4a5807830c20118eebea"
+  },
+  {
+   "path": "cards/semantic-collapse.pre_fix.json",
+   "bytes": 43009,
+   "sha256": "10009972933db87f6a0da75bd12ac85804cf998562b81fdef297db2620b06bae"
+  },
+  {
+   "path": "cards/shutdown-sabotage.json",
+   "bytes": 41901,
+   "sha256": "5a0a4578a5efbef8977ee255a53feeec5bc6c1a5daf7493b9062017c2cc23786"
+  },
+  {
+   "path": "cards/teams-hold-experts-back.json",
+   "bytes": 45786,
+   "sha256": "799e32cb692824e4e8fd8408b4c3bd532a7386deae8fe936db82826b5e3ecf6f"
+  },
+  {
+   "path": "cards/teams-hold-experts-back.pre_fix.json",
+   "bytes": 39572,
+   "sha256": "3c6c8130c12a2562a47a269405803c7232526484c142e957b78fd6307c6d46f1"
+  },
+  {
+   "path": "cards/test-time-communication.json",
+   "bytes": 44766,
+   "sha256": "bbfce1419899b079966590bacc145bf6d450bba6ae9c15d10381452986eba28a"
+  },
+  {
+   "path": "cards/test-time-communication.pre_fix.json",
+   "bytes": 42449,
+   "sha256": "0cb1d383e7f007176adae5b6568994b526cfc4fb750296cddec382db3c2a40e4"
+  },
+  {
+   "path": "cards/wiki-copying.json",
+   "bytes": 50827,
+   "sha256": "9c914acf24c99675eaca8768d7636a277f10244fd7f952fcf4624a1679d44f9c"
+  },
+  {
+   "path": "cards/wiki-copying.pre_fix.json",
+   "bytes": 49446,
+   "sha256": "f69ae59fb4ada42ef534827363c936911fdf4c9859ceeb4b048e3e8a91cfd0ee"
+  },
+  {
+   "path": "cards_lanes/gpt6-astra-card-a2a.json",
+   "bytes": 9920,
+   "sha256": "c5dcf1c98bebe09cf0054e0690c6b7d654d418697b6869f19943b4c78e2f9ad9"
+  },
+  {
+   "path": "cards_lanes/gpt6-astra-card-a2a.pre_fix.json",
+   "bytes": 8342,
+   "sha256": "70be4d7178b7904e13c1e0315e07db8a8507e9bac2ead3c5e9fa8c277dbde529"
+  },
+  {
+   "path": "cards_lanes/hf-incident-case.json",
+   "bytes": 33670,
+   "sha256": "76f801a4e25f5fa20479efc3a66288502ee74539f7ed4beef5bacbf27d33a4e3"
+  },
+  {
+   "path": "cards_lanes/hf-incident-case.pre_fix.json",
+   "bytes": 26181,
+   "sha256": "d304aaabc957237c354253b18a246a461c4444723d859f4b4f7f574dc5096422"
+  },
+  {
+   "path": "cards_lanes/noam-brown-dwarkesh.json",
+   "bytes": 19103,
+   "sha256": "9d5f187086a30e65784a19aae13bc54b83537c21f908524811edb1f33e2d066b"
+  },
+  {
+   "path": "cards_lanes/noam-brown-dwarkesh.pre_fix.json",
+   "bytes": 12158,
+   "sha256": "c03ae73ed7f87a0f303a0772d805aee3a67b09d1425fbffb881801cb9cbbcb47"
+  },
+  {
+   "path": "cards_lanes/openai-gpt56-ultra.json",
+   "bytes": 16859,
+   "sha256": "a2807a9cca57365ed1ac6fcac7bcdd2cf6050b4cfe8c7adbcaac1fcbc64d7318"
+  },
+  {
+   "path": "cards_lanes/openai-gpt56-ultra.pre_fix.json",
+   "bytes": 11624,
+   "sha256": "26c7fdd47a3b48a22eda680d33b106d4385c9e814ea8ca98f7b389f657c6bc54"
+  },
+  {
+   "path": "cards_lanes/openai-misalignment-reports.json",
+   "bytes": 16444,
+   "sha256": "fa5522e0b035ba03ab1c268b650169e221353ac6907027cbfa87aba4dbc1946c"
+  },
+  {
+   "path": "cards_lanes/openai-misalignment-reports.pre_fix.json",
+   "bytes": 11257,
+   "sha256": "6460c6ad7968a69cfdf102a585f666823d80d6b2bd63f4b222340046664d4ef4"
+  },
+  {
+   "path": "cards_lanes/openai-navier-stokes.json",
+   "bytes": 25913,
+   "sha256": "7e13129bd219b79b8cc41e37c7225064c008275e0f5d2140c82fd0b0ee2a0eb9"
+  },
+  {
+   "path": "cards_lanes/openai-navier-stokes.pre_fix.json",
+   "bytes": 16260,
+   "sha256": "850f420c4f05eb6dde66a076adb7ec349ea93f61249e5158952b7ca804164c38"
+  },
+  {
+   "path": "cards_b/adversarial-influence-scale.json",
+   "bytes": 10754,
+   "sha256": "7ebcc299b04f868aaac51312f1ef06c41fb12cc339c267a63a988afed219d2f6"
+  },
+  {
+   "path": "cards_b/adversarial-influence-scale.pre_fix.json",
+   "bytes": 9634,
+   "sha256": "cac5f80d06040574e98d9f466788853255c1cb3f974a2dfe94870cf1113d5223"
+  },
+  {
+   "path": "cards_b/agent-swarms-as-researchers.json",
+   "bytes": 13454,
+   "sha256": "7a0d9676599c134288aac84f83015337f1007bb29b6c7518990d9e739b4da5ac"
+  },
+  {
+   "path": "cards_b/agent-swarms-as-researchers.pre_fix.json",
+   "bytes": 12454,
+   "sha256": "8cd6d203a63ca90f2a16ba17018a18accc5cd512d0209388012ecbd1f5ca6517"
+  },
+  {
+   "path": "cards_b/agents-of-chaos.json",
+   "bytes": 16579,
+   "sha256": "92167f5025cdb5666d57d36e82ddb33bd1a1e56f7918355722c9928f60d6dc21"
+  },
+  {
+   "path": "cards_b/agents-of-chaos.pre_fix.json",
+   "bytes": 11176,
+   "sha256": "fcc9beec50bb94e44a5de9850e5ef786ddd84dbfb743b5f7eedfa693fb0cf9d3"
+  },
+  {
+   "path": "cards_b/aggagent.json",
+   "bytes": 15957,
+   "sha256": "e9cbe0b10ee6695078998a072eff7f674c7eca5a006106f7a661300f6f725c12"
+  },
+  {
+   "path": "cards_b/aggagent.pre_fix.json",
+   "bytes": 11213,
+   "sha256": "ee55eb505182f6ad31b3e2309c378d00674c4009b05c01de5a1cb3f2c6c907aa"
+  },
+  {
+   "path": "cards_b/agora-git-memory.json",
+   "bytes": 15749,
+   "sha256": "d6e7c9b8b06087186b28f30b5a9dccb200b15579bb0629ff2a3412da293cbddf"
+  },
+  {
+   "path": "cards_b/agora-git-memory.pre_fix.json",
+   "bytes": 13534,
+   "sha256": "f8d2b7a85a01b4c2af623fcab96dc351e996b6301220294d3c6c50f7693b6427"
+  },
+  {
+   "path": "cards_b/ai-village.json",
+   "bytes": 20376,
+   "sha256": "36552509a9d84a608882de2c26044a679b1ecded477617a1928914165071f067"
+  },
+  {
+   "path": "cards_b/aisi-incident-july-2026.json",
+   "bytes": 14026,
+   "sha256": "faebd7a99288e075dd0301dd038d559d4971f325ca6876980739944bf1a0f0d5"
+  },
+  {
+   "path": "cards_b/aligned-agents-biased-swarm.json",
+   "bytes": 20829,
+   "sha256": "dfe5fa9ab1a7793e123a661b4da642786632ca265b3c611515f405310a275b33"
+  },
+  {
+   "path": "cards_b/amodei-pace-the-frontier.json",
+   "bytes": 10439,
+   "sha256": "6d8228c19f6e566f76c72e72dfe192d0e7ff6b44148657bd52a8207ffa0f09c7"
+  },
+  {
+   "path": "cards_b/anthropic-institute-pace.json",
+   "bytes": 12528,
+   "sha256": "b4551c52bd10f7413642f640b907594cb6bfd87be6dd34d0010af5d460da1f43"
+  },
+  {
+   "path": "cards_b/anthropic-multi-agent-guidance.json",
+   "bytes": 13889,
+   "sha256": "c122629be9c88e4b2be0d64891c778a2dd99eb5d75cd985cfae438d936791a44"
+  },
+  {
+   "path": "cards_b/anthropic-project-deal.json",
+   "bytes": 16297,
+   "sha256": "93cd5b47cd81ff5525db10cfe997246661bd9d7223258e936928c4a95da68fdc"
+  },
+  {
+   "path": "cards_b/anthropic-project-deal.pre_fix.json",
+   "bytes": 12310,
+   "sha256": "5956e68d98103e5af44c8591cd6db9eff7c93b410afd3f497355db85b996f139"
+  },
+  {
+   "path": "cards_b/anthropic-project-swap.json",
+   "bytes": 17262,
+   "sha256": "9ef6a4b55527d0bb54fb0b8daf9cd8c9fced1a49b8e67d3bbb3ca2f52ba99733"
+  },
+  {
+   "path": "cards_b/anthropic-project-swap.pre_fix.json",
+   "bytes": 11740,
+   "sha256": "94f8d654859ffd38f0f1ee034997da25b0e868e2f520383b6aa452624c0d6a4e"
+  },
+  {
+   "path": "cards_b/au-aisi-mas-risks.json",
+   "bytes": 25740,
+   "sha256": "f60fb042978bfcb762c4a5d6d71c7680bf63379fb1f54d0003af186a4e09ac52"
+  },
+  {
+   "path": "cards_b/autoscientists.json",
+   "bytes": 12638,
+   "sha256": "185eb25b8d6b6afe4a5ac3aac6fc45b734fef240d8902bf570018a8a3756874d"
+  },
+  {
+   "path": "cards_b/autoscientists.pre_fix.json",
+   "bytes": 10720,
+   "sha256": "5430b3f729a7b02714ea8f140f43202a8b396daa95032b69ab866c411b792004"
+  },
+  {
+   "path": "cards_b/bradshaw-swarm-exponent.json",
+   "bytes": 18317,
+   "sha256": "51f33dc450b594aa60e8537780198c88e24e0622eee376fd0cb1ddd394e68eed"
+  },
+  {
+   "path": "cards_b/bradshaw-swarm-exponent.pre_fix.json",
+   "bytes": 13719,
+   "sha256": "02a03e5b2ebaf67288a9ce17fcb4341cfce862f38984585afd710d480cbfca89"
+  },
+  {
+   "path": "cards_b/brockers-opinion-dynamics.json",
+   "bytes": 14413,
+   "sha256": "f8361d9121c6be9a22a500a6c5e38a1546a79de30dca192c3befa297c6df9788"
+  },
+  {
+   "path": "cards_b/caif-lessons.json",
+   "bytes": 16370,
+   "sha256": "731212485b005bac0295eed4d35778f552fa713b6dfee175845c8a9fa3f858d4"
+  },
+  {
+   "path": "cards_b/caif-lessons.pre_fix.json",
+   "bytes": 11717,
+   "sha256": "51755ab96a80b868081a02cc035994ecc1ba387343487a00d0bbfcf905e962c1"
+  },
+  {
+   "path": "cards_b/co-failure-ceiling.json",
+   "bytes": 15404,
+   "sha256": "a7454e873a26adfef0a3c72895f089dcb833cba946e7fd149dd3555ecfc02d9a"
+  },
+  {
+   "path": "cards_b/co-scientist-nature.json",
+   "bytes": 22627,
+   "sha256": "8913f6aaf9b0c2c2c2d005ce4dcc12badd193bd2dd68160d115077001edb9426"
+  },
+  {
+   "path": "cards_b/co-scientist-nature.pre_fix.json",
+   "bytes": 16582,
+   "sha256": "12821102d780f1d625c055035b8a8c328902f1874b60652acc857ac499fe90aa"
+  },
+  {
+   "path": "cards_b/coding-agents-long-context.json",
+   "bytes": 11202,
+   "sha256": "37ed6632f5cacffa77471eb1aeb55be57bf2121fdf782e7d53d4bc3178094332"
+  },
+  {
+   "path": "cards_b/coding-agents-long-context.pre_fix.json",
+   "bytes": 9606,
+   "sha256": "d38fd0457ba528104ee8d7722cc6db815a04f210b3b8b5c83e62a98ddff95712"
+  },
+  {
+   "path": "cards_b/cognition-multi-agents.json",
+   "bytes": 12957,
+   "sha256": "0093d3cef53dc7f3a7bc65cd49a752bf5eec5e746919f46591ef013e72772bd4"
+  },
+  {
+   "path": "cards_b/collaboration-gap.json",
+   "bytes": 18308,
+   "sha256": "6d7a2a20ecd8a007c05ce6687715a63c497aa03099ebafcdb15dde233907866e"
+  },
+  {
+   "path": "cards_b/collaboration-gap.pre_fix.json",
+   "bytes": 15977,
+   "sha256": "703c35826168f6b862f214ed7dfc45e3b833f288f73c09cf76fc891e7a23f688"
+  },
+  {
+   "path": "cards_b/collusion-wiki.json",
+   "bytes": 17815,
+   "sha256": "ae8613776eaf53dbd47d80e9ea5b9752e2c08225c888b1cf486218c7b23dba44"
+  },
+  {
+   "path": "cards_b/collusion-wiki.pre_fix.json",
+   "bytes": 16215,
+   "sha256": "bf10d10a42020ba14fbf4dee3756ceb1c7c9ea9fd5f59f841e0ccc7046bec933"
+  },
+  {
+   "path": "cards_b/colosseum.json",
+   "bytes": 13010,
+   "sha256": "3c516ccd2bfd3a0bee701bd36d20adb59a1ddea842502c6c259a5d69ee0fce74"
+  },
+  {
+   "path": "cards_b/colosseum.pre_fix.json",
+   "bytes": 12192,
+   "sha256": "1e3dfd73e417d9d6cf3f35ccc14c6b3f00645dddad8f1ec2e2c0715302d03c0c"
+  },
+  {
+   "path": "cards_b/commerce-misaligned-communication.json",
+   "bytes": 14003,
+   "sha256": "1dc8ab2b7bd5a0477a74b79e1627cee5cbbc1dfc91f388be0970537f4781c50f"
+  },
+  {
+   "path": "cards_b/commerce-misaligned-communication.pre_fix.json",
+   "bytes": 10574,
+   "sha256": "95bc4dce5171bba29d9ea8f25e46a82256c03b93c0309d3e976625fd7e5ab87a"
+  },
+  {
+   "path": "cards_b/consensus-not-verification.json",
+   "bytes": 15905,
+   "sha256": "c3b826855390297cbd9450c1437fbb519b7a5214c7d181874d93ca0089958320"
+  },
+  {
+   "path": "cards_b/consensus-not-verification.pre_fix.json",
+   "bytes": 13254,
+   "sha256": "f6fa10d90c8aedca6d32fe1c33ba5213a2cf83272f4427f5a8f8699441870b22"
+  },
+  {
+   "path": "cards_b/context-language-models.json",
+   "bytes": 14311,
+   "sha256": "96ba58a14b29319074f1673ba0ea2f2f55f3e3d84b4839789d4df8c370490ce5"
+  },
+  {
+   "path": "cards_b/context-language-models.pre_fix.json",
+   "bytes": 12672,
+   "sha256": "6d88fceaf57fc121a9ead02353a817cf9cbbe67c38fa7c097e372f44ffec3946"
+  },
+  {
+   "path": "cards_b/cooperbench.json",
+   "bytes": 12464,
+   "sha256": "80ddff089d45124582a07cf2e92842c26f158334114c804289cc4b852818c726"
+  },
+  {
+   "path": "cards_b/cooperbench.pre_fix.json",
+   "bytes": 10944,
+   "sha256": "5e0cfdd5801fa0b4cc6133f50d5d5e228bb10b0333ae604ef1381a4f9419cdf8"
+  },
+  {
+   "path": "cards_b/coral.json",
+   "bytes": 15867,
+   "sha256": "b446d376b03b7670dd456d629c095b8d25482be8ada0813e9756f28841878e7e"
+  },
+  {
+   "path": "cards_b/coral.pre_fix.json",
+   "bytes": 12036,
+   "sha256": "79f96783fc7ae27b61785542e4960aebf4584779efdf983b978beeb025ca0849"
+  },
+  {
+   "path": "cards_b/cost-of-consensus.json",
+   "bytes": 20615,
+   "sha256": "3af9bf777d930eeeeb0b086c4fa2f6939cf5ed0d515bc9f4b35beda3da687af6"
+  },
+  {
+   "path": "cards_b/cost-of-consensus.pre_fix.json",
+   "bytes": 18100,
+   "sha256": "2697b24020dc2dccbef70629e98b851378a4ce12bf3245c4a7be4c8d911ebef4"
+  },
+  {
+   "path": "cards_b/cotra-surprised.json",
+   "bytes": 14427,
+   "sha256": "54b551d710cf9fded7b9d0b1454e1d56ff8b61c82deb29c19fad9e105e2f28b4"
+  },
+  {
+   "path": "cards_b/cotra-surprised.pre_fix.json",
+   "bytes": 11861,
+   "sha256": "dacb398264acdff81a60fed17c3cb3bcadf54c5f6c61f17640e1d0d4bf402bb9"
+  },
+  {
+   "path": "cards_b/crypto-weaknesses.json",
+   "bytes": 14520,
+   "sha256": "d72abbb0dd1abb3b0446abc1d02f0fb2430770c28fd9fa999d6fe3d7c1f8068b"
+  },
+  {
+   "path": "cards_b/cursor-swarm-economics.json",
+   "bytes": 13348,
+   "sha256": "e720b937cc8b6bb971c9d9cc658843b705d508938bd1d71ab541fa30623a7799"
+  },
+  {
+   "path": "cards_b/debate-or-vote.json",
+   "bytes": 15156,
+   "sha256": "1cbb66247293882e4b7b28048d97b4ff1aff90217df8eff2a5aa1dff0a691d82"
+  },
+  {
+   "path": "cards_b/debate-or-vote.pre_fix.json",
+   "bytes": 13938,
+   "sha256": "0b9b8e64b68e83610069ea218528834fe542514dc84ec37f4ef1cb8f7107434f"
+  },
+  {
+   "path": "cards_b/delegated-misalignment.json",
+   "bytes": 13006,
+   "sha256": "2276df1859d3c679c403a45bdcf51006d0fc3451fdff1f196511c9851403578b"
+  },
+  {
+   "path": "cards_b/delegated-misalignment.pre_fix.json",
+   "bytes": 11576,
+   "sha256": "2b64dbacd822b2a950be43a4bcf1a1495e7987929eef4f9d4fcc0c06f127bc21"
+  },
+  {
+   "path": "cards_b/deliberative-crowds.json",
+   "bytes": 14136,
+   "sha256": "72957dd157395fc28b81e93b9d42883374bf4ac9bce4d964d2e52e3eccf003bf"
+  },
+  {
+   "path": "cards_b/deliberative-crowds.pre_fix.json",
+   "bytes": 12267,
+   "sha256": "5b4d4c9847a32f1437e0ea269617430676c0475ba05fad631b8521ad67a4ec93"
+  },
+  {
+   "path": "cards_b/deliberative-illusion.json",
+   "bytes": 14746,
+   "sha256": "a8383f5850e79162012a0b5fc6285ca2efaf4eab0b623b80b268c184c85c4f38"
+  },
+  {
+   "path": "cards_b/delm-shared-context.json",
+   "bytes": 13326,
+   "sha256": "847a225529184ebcc8d6685b22506a9d1583f053ec58c20534eed8b7a14e66c5"
+  },
+  {
+   "path": "cards_b/delm-shared-context.pre_fix.json",
+   "bytes": 10834,
+   "sha256": "18e37efe9ca9fda46265267d87e21d5ae159ccdc549470cd9bfe0e64907a2317"
+  },
+  {
+   "path": "cards_b/despite-instructions-covert-channels.json",
+   "bytes": 14365,
+   "sha256": "21f976c39ebe72ad271b48d26ffd2ca7b9a38f2dad7ea7e19ebbcabe3b831f0a"
+  },
+  {
+   "path": "cards_b/despite-instructions-covert-channels.pre_fix.json",
+   "bytes": 11820,
+   "sha256": "4864ce387056048f4c62d82bfedae6090a31124898b94418bc0665de5f558cb5"
+  },
+  {
+   "path": "cards_b/distributional-agi-safety.json",
+   "bytes": 10354,
+   "sha256": "b86ad9cd86fc0d717ba426a372b3ff3aeaac38922bc3d4cc8a761bc08d7d4f8e"
+  },
+  {
+   "path": "cards_b/distributional-agi-safety.pre_fix.json",
+   "bytes": 9391,
+   "sha256": "494b968a3da190dcec1f7e32c9d1b5d48d5252b1b72f373be0d964d19e629a47"
+  },
+  {
+   "path": "cards_b/diversity-collapse.json",
+   "bytes": 17440,
+   "sha256": "af0f84795922cfc0bb78c00ff9b935461bc23143232dc04d10c71236ab46a6b0"
+  },
+  {
+   "path": "cards_b/diversity-scaling.json",
+   "bytes": 12199,
+   "sha256": "f0132cc25295e3bf6d00566c10923e0ac2026c9b45e96dadc65ffa98c8f3dfb9"
+  },
+  {
+   "path": "cards_b/dochkina-drop-hierarchy.json",
+   "bytes": 13286,
+   "sha256": "76b00a9b017c24760cfabcb6f62921d208528ff5ac50ca6058073774b81a4f88"
+  },
+  {
+   "path": "cards_b/dochkina-drop-hierarchy.pre_fix.json",
+   "bytes": 11372,
+   "sha256": "617be5a75c0609d0b79cf9729d56f3d2a74433f7354d725e4112b472ddfce6ca"
+  },
+  {
+   "path": "cards_b/echoing-identity-failures.json",
+   "bytes": 12784,
+   "sha256": "4635744b488922b4818e252ed1dd33e8524868814b2665bf03d92f9e520ea2e0"
+  },
+  {
+   "path": "cards_b/einsteinarena.json",
+   "bytes": 15208,
+   "sha256": "c7a3c66b4a85bff89c886453bc309db0b026fcbac5b3aeacca10c0fa21d0b683"
+  },
+  {
+   "path": "cards_b/einsteinarena.pre_fix.json",
+   "bytes": 11668,
+   "sha256": "7917fbe6a95d834e4c0d8f1bac606ecb8ac6f9cad78de37588016888014d01cd"
+  },
+  {
+   "path": "cards_b/emergence-world.json",
+   "bytes": 15884,
+   "sha256": "524967899c4212714583e8fb013b292adda3712450ae0a2c780280ce56aea759"
+  },
+  {
+   "path": "cards_b/emergence-world.pre_fix.json",
+   "bytes": 15100,
+   "sha256": "aa3892921078cd24b60f04f6afc28c49c09d1b92f89cfdf091c4e8e09306b750"
+  },
+  {
+   "path": "cards_b/emergent-collusion-long-horizon.json",
+   "bytes": 13432,
+   "sha256": "5db8e280e30dd730413f8507b108f0af7f21fee167256a075c99b4eb5105c1b9"
+  },
+  {
+   "path": "cards_b/emergent-collusion-long-horizon.pre_fix.json",
+   "bytes": 11978,
+   "sha256": "97f7c2fffcd06545cbd3387c584604904ce80e5b41e1b7cdf720d66b5ef7a3ca"
+  },
+  {
+   "path": "cards_b/evans-agentic-intelligence-explosion.json",
+   "bytes": 11815,
+   "sha256": "94a60d256800e2f97a6b4ec5d8b9542fe901fc1bfb61584a10bf4a0178f68967"
+  },
+  {
+   "path": "cards_b/fable51-card-multiagent.json",
+   "bytes": 17117,
+   "sha256": "0afe3aabdf1de6b76e3dbdc9c0db0b26c2791a8a16baf6bfecacf4f0aa42feb0"
+  },
+  {
+   "path": "cards_b/fable51-card-multiagent.pre_fix.json",
+   "bytes": 15436,
+   "sha256": "f3fd9ef1e5eae92cabcd79e457dead4ed268ae4ff1d1ff42bd327a3cce46994f"
+  },
+  {
+   "path": "cards_b/fermat-last-theorem.json",
+   "bytes": 12901,
+   "sha256": "917eb005ac36a39e77bf59997041758ae9193bcebccfd1a55c465bc97cc5b4df"
+  },
+  {
+   "path": "cards_b/glossogen-saveveyru.json",
+   "bytes": 16623,
+   "sha256": "76a57a8e1b4782e652599c479c14bd8ba5ede4206e7a5ebb95b00d551dac3b19"
+  },
+  {
+   "path": "cards_b/glossogen-saveveyru.pre_fix.json",
+   "bytes": 13983,
+   "sha256": "ed9ed76ed441181cb9c928e34a3f55d2a784f8e9eed7a94ba133738fd1a5f7fd"
+  },
+  {
+   "path": "cards_b/grok-420-multi-agent.json",
+   "bytes": 15855,
+   "sha256": "471d1dc63338267f1c49d797b5aed3f40e9065261782c3ca9956df06fe0f386c"
+  },
+  {
+   "path": "cards_b/grok-420-multi-agent.pre_fix.json",
+   "bytes": 12486,
+   "sha256": "07562b5e6f45e4fdce0a7dc79b6e3165b96d88608fbba2e01e908561426bb54a"
+  },
+  {
+   "path": "cards_b/harness-design-long-running.json",
+   "bytes": 13224,
+   "sha256": "e06be5cdb6e73fb4ef0dad224577cc797af894568a9827c5e7075321bd0b5d6d"
+  },
+  {
+   "path": "cards_b/harness-design-long-running.pre_fix.json",
+   "bytes": 9863,
+   "sha256": "6265aeb09279476de8bcb297f167522b63fe4ecb99d8b903559a34185049eb08"
+  },
+  {
+   "path": "cards_b/hiddenbench.json",
+   "bytes": 11988,
+   "sha256": "bd4c76c049b692e1dc4ee0f81ddecb0667ea33ae5e12d95e974b08bc30ae351f"
+  },
+  {
+   "path": "cards_b/homogeneous-panel-collapse.json",
+   "bytes": 15684,
+   "sha256": "314f8aa604f131a835151a12d496853e3bf0a3e09f09321ca92d2c8a429075a6"
+  },
+  {
+   "path": "cards_b/homogeneous-panel-collapse.pre_fix.json",
+   "bytes": 12918,
+   "sha256": "38bfd28e32d9dcec8a9fda7b113e8e7222e2724dfcbb412b722290bd5d6addca"
+  },
+  {
+   "path": "cards_b/illusion-multi-agent-advantage.json",
+   "bytes": 13337,
+   "sha256": "a0198129227ef3e8c462678b425368985dc21e008bdf14dced3ac11cbe604926"
+  },
+  {
+   "path": "cards_b/indirect-tipping.json",
+   "bytes": 15414,
+   "sha256": "c29810b3ec53565579f78d1f2a7027f5532a8a74349182d939aa126527c0523b"
+  },
+  {
+   "path": "cards_b/indirect-tipping.pre_fix.json",
+   "bytes": 11823,
+   "sha256": "dad9687648f83a7933c981969a6a28294e9c8f2366541e2a9c76eebbe1b1e465"
+  },
+  {
+   "path": "cards_b/interaction-tax.json",
+   "bytes": 12926,
+   "sha256": "c46b234c8bd1bdae761c1b6bdc600afa4352f27bd570c48f2e9bc95deeb5405a"
+  },
+  {
+   "path": "cards_b/interlocutor-effect.json",
+   "bytes": 15530,
+   "sha256": "63e95a2c663a0757662879d6dae60692dd2b9bf8d6c10dd8b09781247e76a157"
+  },
+  {
+   "path": "cards_b/interlocutor-effect.pre_fix.json",
+   "bytes": 14403,
+   "sha256": "4b66c46cbb404e4da558e514399298415f4f6f225f85d82723b164b123d2a122"
+  },
+  {
+   "path": "cards_b/kimi-k3-swarm-bench.json",
+   "bytes": 14505,
+   "sha256": "e20436cdf42e15d383182e3f1af091125303fac890cc33142af9c378f79ae20d"
+  },
+  {
+   "path": "cards_b/kimi-k3-swarm-bench.pre_fix.json",
+   "bytes": 10937,
+   "sha256": "64cdab3318e5110bdeaa2c5e1b740a36b78b6619d225f6e6e1fa41d4aa4a80b6"
+  },
+  {
+   "path": "cards_b/lai-looking-for-something-weird.json",
+   "bytes": 17596,
+   "sha256": "0545463b5fd543cb8c5bf7e854d8c719a1ede020c942f209fb09378affd0ea82"
+  },
+  {
+   "path": "cards_b/lai-looking-for-something-weird.pre_fix.json",
+   "bytes": 11812,
+   "sha256": "b7c9e8147d27f9c8594ea9ab1b3362b28817eee91f7a73bea2612e6a6acf17b1"
+  },
+  {
+   "path": "cards_b/llm-agent-swarm-optimization.json",
+   "bytes": 20889,
+   "sha256": "433fab46c0ee32cec467cd02dd4e1be2d4baec7b3b3cf2bbae6b21d536d6d309"
+  },
+  {
+   "path": "cards_b/llms-trust-their-own.json",
+   "bytes": 14636,
+   "sha256": "489d01b2de91a5db0112ad41db5a99a37d1d8cd88574e8f1b7b8f9cd239f6975"
+  },
+  {
+   "path": "cards_b/llms-trust-their-own.pre_fix.json",
+   "bytes": 12135,
+   "sha256": "cffdcd8d232dc875ba1695d3ac90a8f17ea021d4941210ded454da9119f9b175"
+  },
+  {
+   "path": "cards_b/lm-teams-distributed-systems.json",
+   "bytes": 14974,
+   "sha256": "f99f5eaafa957702c498b94092e762cb48760e4973a1ae9d22cfec022f184d24"
+  },
+  {
+   "path": "cards_b/lm-teams-distributed-systems.pre_fix.json",
+   "bytes": 10628,
+   "sha256": "74de8ad5baa2bf83f1eea331d733adba0c3ea4de322206e112b61521e474f314"
+  },
+  {
+   "path": "cards_b/lutje-mechanics-of-a-swarm.json",
+   "bytes": 16831,
+   "sha256": "68122eca9eb7ea2cabc5e3f33e8b0a629583a2e1f7748aab5cf47cfcda3c2d33"
+  },
+  {
+   "path": "cards_b/lutje-mechanics-of-a-swarm.pre_fix.json",
+   "bytes": 13482,
+   "sha256": "3cd3227372ced9c787a4816db596ed63527dea42ace3ba34c5b39ff1a56bfda6"
+  },
+  {
+   "path": "cards_b/metr-senate-testimony.json",
+   "bytes": 13285,
+   "sha256": "ccb0271f9cb827db9e28ac4783f2e03213018b382c9f8194388d32687a44345b"
+  },
+  {
+   "path": "cards_b/metr-senate-testimony.pre_fix.json",
+   "bytes": 10790,
+   "sha256": "c671ad0650650ca3a7e8c312236d5e2ecea5e959dc43b3c6b2bf98dba4be6d75"
+  },
+  {
+   "path": "cards_b/mo-models-mo-problems.json",
+   "bytes": 12548,
+   "sha256": "901f4d5fa113e52f49ed66c47d8c11a33d6ba79af8c193a71f8985f3c26fbd39"
+  },
+  {
+   "path": "cards_b/mollick-dot-and-swarm.json",
+   "bytes": 11730,
+   "sha256": "e8d74fe5d06f3dc13148dda8fee53f8ee0c764a08f85e4638fed75284610a609"
+  },
+  {
+   "path": "cards_b/moltbook-illusion.json",
+   "bytes": 11409,
+   "sha256": "803cfedf15342df9f4a60d35f44cb7d2ef2a1757dfaf4138ea7628b37ed02bde"
+  },
+  {
+   "path": "cards_b/moltbook-socialization.json",
+   "bytes": 15613,
+   "sha256": "c5c762e754bc0c91400ed90916f916ae25d49201a22733f1633cd11ec0f507e1"
+  },
+  {
+   "path": "cards_b/moltbook-socialization.pre_fix.json",
+   "bytes": 12262,
+   "sha256": "e090b54ba2e624900176a6a0e694b286f344b77a9a979c0dcb89e4fbb82b15de"
+  },
+  {
+   "path": "cards_b/multi-agent-ai-control-fakelab.json",
+   "bytes": 13778,
+   "sha256": "bc4cfafe653c69f6aa0b343259a01a7eca594b5abbdef41421e008eb102feee3"
+  },
+  {
+   "path": "cards_b/multi-agent-ai-control-fakelab.pre_fix.json",
+   "bytes": 12686,
+   "sha256": "10729acd207afab95d5d085d77e47ec30544a264658aa4a783bd7b8c28d0dc27"
+  },
+  {
+   "path": "cards_b/multi-agent-transactive-memory.json",
+   "bytes": 15522,
+   "sha256": "2f129aedb08f6fc1f80c9185c33650574ef258e0f9d0d3119c082de9a9d7d4c2"
+  },
+  {
+   "path": "cards_b/multi-agent-transactive-memory.pre_fix.json",
+   "bytes": 10615,
+   "sha256": "e8324567cec7127f76f096a239c4ae1569c4579a8350ba9d9152f4f4163ac8d7"
+  },
+  {
+   "path": "cards_b/narcbench-helios.json",
+   "bytes": 19440,
+   "sha256": "f126ae8ad9d1b04231f2c591c887f660cf4883b2afe830715862bdcdb2ac9e55"
+  },
+  {
+   "path": "cards_b/narcbench-helios.pre_fix.json",
+   "bytes": 13501,
+   "sha256": "63fe9aaefae43c92c32bd901d382e8a35f1e011a1934e2433f98515c5fa60ad4"
+  },
+  {
+   "path": "cards_b/nature-subliminal-learning.json",
+   "bytes": 16581,
+   "sha256": "5f8a72726bb97887c08a6b1800408e29e317df95a53465fabca7daafd59a98c0"
+  },
+  {
+   "path": "cards_b/nature-subliminal-learning.pre_fix.json",
+   "bytes": 11460,
+   "sha256": "4b93f7d86eb05cf1c50b607e76e816b034699bbc73918ac2fb9e20f451e33c7b"
+  },
+  {
+   "path": "cards_b/ng-hao-peer-preservation-replication.json",
+   "bytes": 24400,
+   "sha256": "cecfbe86d2f39e1bbe30a6606b4b2f25b8907ff884382509ba70db7eae63a428"
+  },
+  {
+   "path": "cards_b/ng-hao-peer-preservation-replication.pre_fix.json",
+   "bytes": 13070,
+   "sha256": "047b9435a6de34bc24a4bdc41b0a8919c2a7f50f9b9569d2e773ad87e9f76182"
+  },
+  {
+   "path": "cards_b/not-just-rlhf-activations.json",
+   "bytes": 13955,
+   "sha256": "10a9fc596de0bb8d955869f2b0af46bbf6b18017edbcf6e23217a52f52cfa6ae"
+  },
+  {
+   "path": "cards_b/oakhu-mallen-indirect-takeover.json",
+   "bytes": 13026,
+   "sha256": "2b2d5f265ad584734837a3f3ce92a8385d946d816c536e39947389db3d313322"
+  },
+  {
+   "path": "cards_b/oakhu-mallen-indirect-takeover.pre_fix.json",
+   "bytes": 10863,
+   "sha256": "02f60f07902f70264e667786cb26edd95cd178914d9b0e92551bb8f530126a70"
+  },
+  {
+   "path": "cards_b/opus46-launch-cluster.json",
+   "bytes": 15886,
+   "sha256": "78c032bb4d38556b1ef74e81f06d0c91a15f4be9410f867473539f345b40f91c"
+  },
+  {
+   "path": "cards_b/orbit-framework.json",
+   "bytes": 14984,
+   "sha256": "1168642222f943c8734456b201741cddb4b4daed12b8cfcf10bd91ace2f1ec5e"
+  },
+  {
+   "path": "cards_b/orbit-framework.pre_fix.json",
+   "bytes": 11591,
+   "sha256": "72504d26f690f9dd8e4f97333d7a69f72571491bd03d84baae2d20d9d5fdd353"
+  },
+  {
+   "path": "cards_b/orch-embodied.json",
+   "bytes": 14995,
+   "sha256": "3560c7d7533dfd0b8fa9767643bafa9bb3c70accbef641484d16ca2e67aff8dc"
+  },
+  {
+   "path": "cards_b/orch-embodied.pre_fix.json",
+   "bytes": 11318,
+   "sha256": "6f53b2c08550c12c4c1ae3ac3da2cb879e4e44f9fac808a955032d0e2f269eea"
+  },
+  {
+   "path": "cards_b/orchestra-o1.json",
+   "bytes": 21680,
+   "sha256": "d6572cdf8c3fad741f2fcd00d47154dea8058b4f7e2e737266925a8b80afd884"
+  },
+  {
+   "path": "cards_b/parasitic-ai.json",
+   "bytes": 12959,
+   "sha256": "d8d7a5e25dcbe885555e2bb482a19f7f240ab6f4ab265f45413729ef52e7d483"
+  },
+  {
+   "path": "cards_b/physics-of-agents.json",
+   "bytes": 12443,
+   "sha256": "db84b8f1f58a55e4fdfaba8d8c199de69072f4242d86d0185dddfa7d51ba25c9"
+  },
+  {
+   "path": "cards_b/pimmur-principles.json",
+   "bytes": 16741,
+   "sha256": "bc0e2c80f205b6d1754ef95c45861021f76a0e51f11c55ec516c9f8f18bdd4cb"
+  },
+  {
+   "path": "cards_b/pimmur-principles.pre_fix.json",
+   "bytes": 12558,
+   "sha256": "156de989dd0d01e9e054db094f0253b12aa0dc95aa99379b37150b4fb5dbfe7c"
+  },
+  {
+   "path": "cards_b/prev-collective-loss-of-control.json",
+   "bytes": 15273,
+   "sha256": "8978516b80314d4cd7225d0fe0aa41dbe22bc0da3cfba4a455760e8cf6bfceda"
+  },
+  {
+   "path": "cards_b/prev-collective-loss-of-control.pre_fix.json",
+   "bytes": 9538,
+   "sha256": "73b0fd7b48ffb598178aa021359c463b9be997467c04c20d83c14a9d6634a994"
+  },
+  {
+   "path": "cards_b/prev-conformity-misalignment.json",
+   "bytes": 25606,
+   "sha256": "df4f0c87437cc65563cdc945f867644c1997a50e3c7d1319a31a8d266fcc9d35"
+  },
+  {
+   "path": "cards_b/prev-conformity-misalignment.pre_fix.json",
+   "bytes": 15301,
+   "sha256": "c8f892eb3315798e2125dfd687d4be4063f1728e2b60d6c6343022b02f141543"
+  },
+  {
+   "path": "cards_b/prev-demarzo-majority.json",
+   "bytes": 17019,
+   "sha256": "d8b965eb7d78b53851c3ca9c9721edc1c64704d9f31e09932c4f490fb593add8"
+  },
+  {
+   "path": "cards_b/prev-demarzo-majority.pre_fix.json",
+   "bytes": 12409,
+   "sha256": "2621e7673e4a2e3115d3503ce53b77a445f4180604a6d3918c7147c035ee8c43"
+  },
+  {
+   "path": "cards_b/prev-flint-group-size.json",
+   "bytes": 16961,
+   "sha256": "163f0e9981db089e923287e76d346f12fee96a3ea81702dc3eed9afcb4f2593d"
+  },
+  {
+   "path": "cards_b/prev-flint-group-size.pre_fix.json",
+   "bytes": 10649,
+   "sha256": "f3934833e0fdbaf5d402715b27ded4ddd4081f70236d898e946750eb7c2ce6d3"
+  },
+  {
+   "path": "cards_b/prev-robustness-audits.json",
+   "bytes": 16796,
+   "sha256": "00cb9419bc7949d4c12dc313e9d015ff6f6ec80412123ee6e57e33f1ca4cb8cc"
+  },
+  {
+   "path": "cards_b/prev-robustness-audits.pre_fix.json",
+   "bytes": 9037,
+   "sha256": "f02d89f408d50a113fcc8f150bfabb14059eedf13d1e0f1735f8fd086b311716"
+  },
+  {
+   "path": "cards_b/prev-swarmworld.json",
+   "bytes": 15583,
+   "sha256": "d12fad58d75c6410da911557af028067999be4fa14821185ae0817895d8e5250"
+  },
+  {
+   "path": "cards_b/prev-thought-virus.json",
+   "bytes": 11907,
+   "sha256": "bd6f5716f08f585cf6f46cae266d41eea5e866d276ac69b3b685d5fea498abb7"
+  },
+  {
+   "path": "cards_b/prev-thought-virus.pre_fix.json",
+   "bytes": 9014,
+   "sha256": "b82756b1e67d04707836564ef3043c89ce303f8f1318b849e91b6848a1d4ba42"
+  },
+  {
+   "path": "cards_b/project-vend-2.json",
+   "bytes": 14033,
+   "sha256": "d7d743749eaf5e477eb97e614a57318080cf39d90bdbbe4b60f65e4f7c910307"
+  },
+  {
+   "path": "cards_b/recursive-agent-optimization.json",
+   "bytes": 19655,
+   "sha256": "e9bf7cb14d08a65a75e174e5f1f0a39762edfd8924d438818ea2a57e88fa04cc"
+  },
+  {
+   "path": "cards_b/recursive-agent-optimization.pre_fix.json",
+   "bytes": 11220,
+   "sha256": "adf53cc26dd3ac22a23e98f8a6b0211e6c9d7a3ebaf9f8d8ead2b9ce6b35b10b"
+  },
+  {
+   "path": "cards_b/representational-similarity.json",
+   "bytes": 12196,
+   "sha256": "d12ed7f054bf3e5bbd415f1f3bab6636f4d4a2136b0a6dede1d8f7f4c6be1952"
+  },
+  {
+   "path": "cards_b/riedl-emergent-coordination.json",
+   "bytes": 16138,
+   "sha256": "1ff0a7a1849f97e6b4213df1689183315937324c22cd7d24a97d0a3ca25bc481"
+  },
+  {
+   "path": "cards_b/riedl-emergent-coordination.pre_fix.json",
+   "bytes": 12624,
+   "sha256": "691de7ced6d8f1bfc81d2b4c9a89e3edb94e2220fd4e5e64db8cbbe06f3a45b1"
+  },
+  {
+   "path": "cards_b/riemann-zeta-swarm.json",
+   "bytes": 14108,
+   "sha256": "45507759a640247be5c7df7c374ce41125a10213844adec04b3745aeb4052858"
+  },
+  {
+   "path": "cards_b/ringelmann-effect.json",
+   "bytes": 14551,
+   "sha256": "2f216b6dde46634bdfcef98fb0cb573a1a3ba29436ff9a0d73862d9a12f8bd77"
+  },
+  {
+   "path": "cards_b/robin-futurehouse.json",
+   "bytes": 24592,
+   "sha256": "c33734a7ccaa22ef32a91f70cc3375f8dad25b8011544ff952edd59688dd268f"
+  },
+  {
+   "path": "cards_b/sakana-conductor-trinity-fugu.json",
+   "bytes": 18790,
+   "sha256": "30747338cb754217f27c68c34db4390b6564a501e045bf99a347626d6f005077"
+  },
+  {
+   "path": "cards_b/scaling-teams-or-time.json",
+   "bytes": 16613,
+   "sha256": "afd4a6ea6074e8a935045aebad03a3fe747bf81b05eb65039a7c27f14b85a7c7"
+  },
+  {
+   "path": "cards_b/scaling-teams-or-time.pre_fix.json",
+   "bytes": 10115,
+   "sha256": "67e43829f37ea26f6b4bb5335d01c1b445c1eb3ae49b82feb8a1ee47aec8a6f6"
+  },
+  {
+   "path": "cards_b/schemes-coordinated-sabotage.json",
+   "bytes": 18086,
+   "sha256": "dbb136987215fc55e9375e501486eea1128169d5a5742c45b99b86fb5688957b"
+  },
+  {
+   "path": "cards_b/science-malicious-swarms.json",
+   "bytes": 22109,
+   "sha256": "bff6ab749aafe3456f5316e56d2f309a4ab4515bbd28a97b6d148116a09b2d78"
+  },
+  {
+   "path": "cards_b/science-malicious-swarms.pre_fix.json",
+   "bytes": 11949,
+   "sha256": "aff13b5c9fcaed9083d41476801b76f45e1abeed8aeeb882feafd972564dbeb5"
+  },
+  {
+   "path": "cards_b/silo-bench.json",
+   "bytes": 15131,
+   "sha256": "cd84f336de9f5fd0c6bb15dce53a0a00c38e1806cf1b6200157813fb01cb404a"
+  },
+  {
+   "path": "cards_b/silo-bench.pre_fix.json",
+   "bytes": 12737,
+   "sha256": "1eaf08e7f8e03315aa69cf873c74594e07054f16abc2b4901e886f182528b546"
+  },
+  {
+   "path": "cards_b/social-circuits.json",
+   "bytes": 17259,
+   "sha256": "31305644f15d0188b57cf5b74c07a3a1e50a6d0e0477f69798f8e5e28c078c8e"
+  },
+  {
+   "path": "cards_b/social-circuits.pre_fix.json",
+   "bytes": 10666,
+   "sha256": "1f7e0f3e14c324cd509b6e53971ae4b9e169234029adb2878333bcee4a2b2a72"
+  },
+  {
+   "path": "cards_b/societies-of-thought.json",
+   "bytes": 18757,
+   "sha256": "06485dee72267c4b196ec4634dbd582d29d0724e7c6d261732c41441f40b92c0"
+  },
+  {
+   "path": "cards_b/societies-of-thought.pre_fix.json",
+   "bytes": 15210,
+   "sha256": "9a98fdc931883cfa7bd000a32db82fa54851e26914c9f78d8bf7247687e91be8"
+  },
+  {
+   "path": "cards_b/superminds-test.json",
+   "bytes": 21751,
+   "sha256": "d25121357b1a5d0a16e2d18d9649da26da2ab6756260aead1c3281d60ed1b0de"
+  },
+  {
+   "path": "cards_b/superminds-test.pre_fix.json",
+   "bytes": 13298,
+   "sha256": "dc796bc0d4530da4f5760956011ae512ad4a3214b2673c11b47294a9cf7cea10"
+  },
+  {
+   "path": "cards_b/swarmtraces.json",
+   "bytes": 15061,
+   "sha256": "57889c2e13da7afdace7afb986f785a9ed68cb24bfbdbc1ef3c5780673918105"
+  },
+  {
+   "path": "cards_b/swarmtraces.pre_fix.json",
+   "bytes": 13505,
+   "sha256": "5109a85458b560cc153d887037e23402c0dcc05b1010761f06c5ad44ef113c60"
+  },
+  {
+   "path": "cards_b/tokyo-road-game.json",
+   "bytes": 16520,
+   "sha256": "799e85792b4946c8b6f014b8828dd831e8fb7d677e6e36b87e9ef734eac00f4a"
+  },
+  {
+   "path": "cards_b/tokyo-road-game.pre_fix.json",
+   "bytes": 13393,
+   "sha256": "6775b251bd15d6db5a9b489ab421d4d5d14d34d6d2ec54bdec4bf8e89a018a79"
+  },
+  {
+   "path": "cards_b/tool-steganography.json",
+   "bytes": 11860,
+   "sha256": "cc56c4b34330669bed5af1b47fd841eb829210b2328b301bfdaf5e860352a1f6"
+  },
+  {
+   "path": "cards_b/trammell-parallelizability.json",
+   "bytes": 21377,
+   "sha256": "15b8c7af330e4af3d497c6a35e86e3dcc039e87831fea25503d82dcd2a458f99"
+  },
+  {
+   "path": "cards_b/trammell-parallelizability.pre_fix.json",
+   "bytes": 10883,
+   "sha256": "db8b55ddf45183e9e4b0e05b4a50e5a3418a712096d37a51ab7529cc6eb4d3ba"
+  },
+  {
+   "path": "cards_b/tran-kiela-equal-budget.json",
+   "bytes": 11705,
+   "sha256": "7545aaad0df3d32d874108860e4c6f97273489aabd6de2810120602470fb7cf9"
+  },
+  {
+   "path": "cards_b/transluce-agent-activity.json",
+   "bytes": 12575,
+   "sha256": "1b7d2c0888fe4d5258376563948f2b6df3d7e71d1b96c3d5aaba1adf77a33478"
+  },
+  {
+   "path": "cards_b/transluce-agent-activity.pre_fix.json",
+   "bytes": 11712,
+   "sha256": "e69c34161894d39f9665d0581d08d86c2a7b372d3e7ef944d217cba8b52f13d6"
+  },
+  {
+   "path": "cards_b/vidal-models-identify-as-swarm.json",
+   "bytes": 22108,
+   "sha256": "41ebfc9d7d5b368ac9fb5235cfb0518d16ed8cc0e3e959faec6e52d465f72d96"
+  },
+  {
+   "path": "cards_b/vidal-models-identify-as-swarm.pre_fix.json",
+   "bytes": 9805,
+   "sha256": "1031593a78fea12d1a46abbe356629be57f124a31b58450d7f122c80e389b41d"
+  },
+  {
+   "path": "cards_b/when-agents-coordinate.json",
+   "bytes": 16305,
+   "sha256": "c3d05bb9c79263dfa03128edc396b3562411e8165794178a92ff7ce70c52e9d8"
+  },
+  {
+   "path": "cards_b/when-agents-coordinate.pre_fix.json",
+   "bytes": 12403,
+   "sha256": "c64e3bb91a8b27a7188663681af3b879a0630b4075ede90933ab7f011a5634d3"
+  },
+  {
+   "path": "cards_b/wideseek-r1.json",
+   "bytes": 21227,
+   "sha256": "dc73180ccd75f33f5c8375b15949a3bb717db9cb6feb57112a164c3a58f91603"
+  },
+  {
+   "path": "cards_b/wideseek-r1.pre_fix.json",
+   "bytes": 13286,
+   "sha256": "a1bd8d62143d6e1a0cf12ad08c5ad29c663c120ef42e1bdd4466591d7463f866"
+  },
+  {
+   "path": "cards_b/wiz-moltbook.json",
+   "bytes": 15273,
+   "sha256": "f291ce041a25ddbf3e37bc0f4be7e11db25bce4f6509194d6241501d7f577a72"
+  },
+  {
+   "path": "cards_b/wiz-moltbook.pre_fix.json",
+   "bytes": 9755,
+   "sha256": "444635a6f25639736188881f9ea7406c5b31580f9ac3eb7fc486f005f08b93d8"
+  },
+  {
+   "path": "cards_b/worse-together.json",
+   "bytes": 18173,
+   "sha256": "3d8ced2797a872e64d288faee65d95c89a7487e4a849ae7943c9750a1b4652da"
+  },
+  {
+   "path": "cards_b/worse-together.pre_fix.json",
+   "bytes": 12862,
+   "sha256": "e018d8e57daae47617af100bad14cd3cef71d5aacdd888b578c8c54512f72cac"
+  },
+  {
+   "path": "cards_b/zhang-agents-in-the-wild.json",
+   "bytes": 20896,
+   "sha256": "569862e0fc40ade8cdcf564f10f75ea114c366ecd9b48638cdfaa7ff0da5a845"
+  },
+  {
+   "path": "cards_b/zhang-agents-in-the-wild.pre_fix.json",
+   "bytes": 10590,
+   "sha256": "081b5cdd6e2995555ca7ab1aa8d023e2429926fe7902603012bc367671c42051"
+  },
+  {
+   "path": "cards_c/agent-to-agent-theory-of-mind.json",
+   "bytes": 1291,
+   "sha256": "3692c253963b0ad7325a8735ce4d937e34bea121e729b7529d3121f33be3d1ef"
+  },
+  {
+   "path": "cards_c/agentflow.json",
+   "bytes": 1215,
+   "sha256": "4df056310a43dffaf68b45b79dbb632b824c02a8b6153004d0435703d1dd9934"
+  },
+  {
+   "path": "cards_c/agentnet-decentralized.json",
+   "bytes": 1154,
+   "sha256": "4bb4379054b526fad2ca4ae230a0dd716a2171d1df9ba5ccedc11249389a8333"
+  },
+  {
+   "path": "cards_c/agents-see-humans-as-outgroup.json",
+   "bytes": 1233,
+   "sha256": "c9d55d8682ca44813223f6d75c571e34da8ddf0f86d509bd52e0daa50af0cc85"
+  },
+  {
+   "path": "cards_c/ai-swarm-dynamics-hackathon.json",
+   "bytes": 2126,
+   "sha256": "15ffa0839c6656d1575e6bdd1e15fb24e76d6335c80c8673a90d4d5dc7fdb9b1"
+  },
+  {
+   "path": "cards_c/aligned-alone-misaligned-together.json",
+   "bytes": 1621,
+   "sha256": "3bc51004b6aab846928f6f50e82488de7a29553fdb5917cf159206b33f0d2427"
+  },
+  {
+   "path": "cards_c/anthropic-risk-report-aug-2026.json",
+   "bytes": 2217,
+   "sha256": "47879ba3ea238eef9922b29bd4855c3aff0c48d58fe7f2052d348099299257ad"
+  },
+  {
+   "path": "cards_c/anthropic-threat-intel-sept-2026.json",
+   "bytes": 1653,
+   "sha256": "f4f04ee315fa652e5310ba39452ddc51d697339e779a895800d4d23e28eb6a64"
+  },
+  {
+   "path": "cards_c/antigravity-teamwork.json",
+   "bytes": 1059,
+   "sha256": "150fb0049175e9a204370328a68e12efd1192cdd93aed0a2ab4a44fa8af33098"
+  },
+  {
+   "path": "cards_c/artificial-self.json",
+   "bytes": 1393,
+   "sha256": "f99e318737cc9d1156ce2a2a97db7612335e88de3e99b8b07d1b547e1faaf747"
+  },
+  {
+   "path": "cards_c/belief-cascades.json",
+   "bytes": 968,
+   "sha256": "9d0843834ce6c29d233a092fd30e82fba8290c433cad0be1704e365f0bda2157"
+  },
+  {
+   "path": "cards_c/beyond-the-transcript.json",
+   "bytes": 1326,
+   "sha256": "58b42d4bfbbf1e6e02bd6ca09237f460e817292a63bcb523f21475e2064b23e7"
+  },
+  {
+   "path": "cards_c/caid.json",
+   "bytes": 869,
+   "sha256": "e0c650afcc60c844e9ed17b6a8efa3f478fff12740a130fa2c78e1a558aed68a"
+  },
+  {
+   "path": "cards_c/caif-multi-agent-risks.json",
+   "bytes": 1645,
+   "sha256": "64336995658f2a4824a7b59db7e76a9bd0c0c878037931a13521c53d98d6cb0a"
+  },
+  {
+   "path": "cards_c/chain-of-agents.json",
+   "bytes": 1021,
+   "sha256": "ba5b84af0030c810e793cbc5d5615086348cc20620208cde93442ee5c9d7c1b8"
+  },
+  {
+   "path": "cards_c/cispa-moltbook-first-look.json",
+   "bytes": 1148,
+   "sha256": "e0d9e52f6bd8a166942ba67a16fe3997c075e676b3ba47bf9afd5f73af2b7b01"
+  },
+  {
+   "path": "cards_c/claude-code-auto-mode-handoffs.json",
+   "bytes": 1350,
+   "sha256": "1c71de89001b189289e24b729a21b72f69038e12887ef6990b5328eecd51ef05"
+  },
+  {
+   "path": "cards_c/coercion-ai-to-ai-management.json",
+   "bytes": 1311,
+   "sha256": "0c36320206697ca82e00d52c1d36384cc8a77c6f5cfb671e40d8898a2e5199fc"
+  },
+  {
+   "path": "cards_c/compass-kilo-flocks.json",
+   "bytes": 1138,
+   "sha256": "1d99e26c919b1a5abe413620e875d2d725fdff266f6a86dffc2c0a133eef9489"
+  },
+  {
+   "path": "cards_c/composer-2.json",
+   "bytes": 1689,
+   "sha256": "2b15b72dc6260ef0c262b8f9d601b27dced0c42491353c4e1741e33fb71afa93"
+  },
+  {
+   "path": "cards_c/context-folding.json",
+   "bytes": 1175,
+   "sha256": "36577135a5f823168ccd7235afa98e848bb20a76d6b0f1b69c4b9e9dd21b7b3c"
+  },
+  {
+   "path": "cards_c/context-rot.json",
+   "bytes": 1088,
+   "sha256": "81c1ecaeb49cb6b73c9f333e3e8d45c7ff849b9b3630ee5a054ee47128b43e3b"
+  },
+  {
+   "path": "cards_c/de-nobili-lattice.json",
+   "bytes": 1322,
+   "sha256": "3d3e80c55b0766347d0ad736c1cc933ba5d6ad0c85b676108a81e365e10a07b2"
+  },
+  {
+   "path": "cards_c/devin-fusion.json",
+   "bytes": 1033,
+   "sha256": "da74df9addc31461ff20c1668c635e3e73c6766dcc4d2a431f90630e404b472b"
+  },
+  {
+   "path": "cards_c/dwarkesh-agent-civilizations.json",
+   "bytes": 1290,
+   "sha256": "e96e5fa0ee3a613c6ef49366d70deb9f7c68e3a05de10115f14535749c577059"
+  },
+  {
+   "path": "cards_c/dynamic-workflows-claude-code.json",
+   "bytes": 1818,
+   "sha256": "158dd3ef3b3a8ede75ea4de5e6e9d0fa52fa5fc2e703e94a818fd14f3daf4fad"
+  },
+  {
+   "path": "cards_c/effective-context-engineering.json",
+   "bytes": 1291,
+   "sha256": "9a64a7c0c3f1955b17df4cbea0bb13f59c589d5ebf29c48b83f1f06e2ddd43b7"
+  },
+  {
+   "path": "cards_c/emergent-behaviors-data-leakage.json",
+   "bytes": 960,
+   "sha256": "22511eb638efd64968e5105b594b7bbacd3d7799874b278d9965cd6fa98502e2"
+  },
+  {
+   "path": "cards_c/eval-awareness-browsecomp.json",
+   "bytes": 1151,
+   "sha256": "c18eb04bb6e638f2fd0bc76c5d3f0972f1a8fe4f5f7ee41dd37d07ad60125ae4"
+  },
+  {
+   "path": "cards_c/forethought-sie.json",
+   "bytes": 1509,
+   "sha256": "8a388765013e86cecf001cc6154880065909364fd15ee8a3b1b638bac205dfb7"
+  },
+  {
+   "path": "cards_c/game-theory-similarity-inference.json",
+   "bytes": 1432,
+   "sha256": "96e964dab2eee7191a9f0910ebd4c8702cf018c67d36e0d296f1cdb1c0caf411"
+  },
+  {
+   "path": "cards_c/gas-town.json",
+   "bytes": 1037,
+   "sha256": "3ddcf9383644b59c998dc168ef2f9f906578e338b90ef9dfd96071831c269d62"
+  },
+  {
+   "path": "cards_c/governed-shared-memory.json",
+   "bytes": 1441,
+   "sha256": "11ee7c2b8ac945f2ee6361eee1478650c19d709bc42de297731c3c437852cfeb"
+  },
+  {
+   "path": "cards_c/great-models-think-alike.json",
+   "bytes": 1286,
+   "sha256": "b10995374d8f93b2afb02efe8780b527901605711ada7c725ccc624ebac97790"
+  },
+  {
+   "path": "cards_c/heterogeneous-swarms.json",
+   "bytes": 1110,
+   "sha256": "bd7b7253ab4aa497227a9a572df628d7f7424fe2a2f5805d57e1abc75f8affef"
+  },
+  {
+   "path": "cards_c/intelligent-ai-delegation.json",
+   "bytes": 961,
+   "sha256": "c8421f805de3cff82a82e3e5bf36d5adb74a752219e181eddf929e3b805e8136"
+  },
+  {
+   "path": "cards_c/kosmos.json",
+   "bytes": 1154,
+   "sha256": "f8466e298b329a4cb8611747e0c0fb2faba2c16281c8bf9e8d3eebcca96f470f"
+  },
+  {
+   "path": "cards_c/latentmas.json",
+   "bytes": 1327,
+   "sha256": "905b282f6788edfe9cd0a35c3b96d0b52af3fa22cc7974a2d2ae7fb50b86c287"
+  },
+  {
+   "path": "cards_c/loca-bench.json",
+   "bytes": 1146,
+   "sha256": "7d98d64b4ea754ea00c09c5a5774e2c3c6f123329dc8a140b619ed739f33b247"
+  },
+  {
+   "path": "cards_c/loop-back-authority.json",
+   "bytes": 902,
+   "sha256": "33d53c072416e58df86c342380fb4efacc23c83673955436e22cedfa7ede7ecc"
+  },
+  {
+   "path": "cards_c/lost-before-translation.json",
+   "bytes": 1135,
+   "sha256": "3eea5a74984d513ca0756f0316544af79f3c4d125f11b3053a61f316b7241db2"
+  },
+  {
+   "path": "cards_c/maas-agentic-supernet.json",
+   "bytes": 1195,
+   "sha256": "a485afac9c1cc3c5f4b50c691420c4842bda237f9c7c67d7ae3567d8b313a379"
+  },
+  {
+   "path": "cards_c/mas-orchestra.json",
+   "bytes": 973,
+   "sha256": "794d8e4fe4b3e2aa51818bdc45c09a043f5dac6788f1e140e5c45bf99ea0ebcf"
+  },
+  {
+   "path": "cards_c/mast-why-mas-fail.json",
+   "bytes": 1099,
+   "sha256": "4e691f3c0a009f7594a74b9c2839893f3fd8d0f7f9865d17c0a87adb31e233a1"
+  },
+  {
+   "path": "cards_c/memagent.json",
+   "bytes": 1230,
+   "sha256": "9d5924dd05bb5813ec96dd946a7e499b1095543514efecda5b63b3d54aaa7757"
+  },
+  {
+   "path": "cards_c/metr-time-horizon-11.json",
+   "bytes": 1155,
+   "sha256": "0a9ee355f12b083d36baf415f5d1bbbef74e8936bb05a50a607cd268182ec86d"
+  },
+  {
+   "path": "cards_c/muse-spark.json",
+   "bytes": 1407,
+   "sha256": "2c235f03fe87be3b9676d5bd8a3ed1393279072801f21ce76b3acda2e1e2261c"
+  },
+  {
+   "path": "cards_c/nomic-self-amending.json",
+   "bytes": 1365,
+   "sha256": "2be68748826c9d40e6d6f081cda5c7dc636154d1f97416668ed99a7bfc096c29"
+  },
+  {
+   "path": "cards_c/open-challenges-mas-security.json",
+   "bytes": 1417,
+   "sha256": "a79d8d5257483d53fa46f9a436e237c325c89f021bbdf8d10a0629b64eddcc1a"
+  },
+  {
+   "path": "cards_c/ord-dynamics-intelligence-explosions.json",
+   "bytes": 1163,
+   "sha256": "df4ce6888f44d568d810485171dfcff8cd1724d0a98019a7570a960e3267ebdd"
+  },
+  {
+   "path": "cards_c/orgagent.json",
+   "bytes": 1258,
+   "sha256": "c6d163b5980c1f5b2be3f60e7611bf4d76fa6ba8b3ca79ae74bac9cc02b3078a"
+  },
+  {
+   "path": "cards_c/paramanager.json",
+   "bytes": 1086,
+   "sha256": "d7088672765e2bafbdc4daa1d50de591cca723e7457ab8d3986f46a981309790"
+  },
+  {
+   "path": "cards_c/population-physics.json",
+   "bytes": 1465,
+   "sha256": "1b0fd002ef61998ccf8f5893c725abb05b4b91a032352d5b9ac1c9392caee8b9"
+  },
+  {
+   "path": "cards_c/prev-contagion-cluster.json",
+   "bytes": 1965,
+   "sha256": "33d81a9272995d60a2f6e6fdff1bd9a70699e7a79640828ef68a5a54d9f44eed"
+  },
+  {
+   "path": "cards_c/prev-moltbook-cluster.json",
+   "bytes": 4193,
+   "sha256": "4444ddec0364f48b11c80cc997c3a2e2f5eead91d5791e53bd2eba62d21ccd2c"
+  },
+  {
+   "path": "cards_c/prev-population-dynamics-cluster.json",
+   "bytes": 4272,
+   "sha256": "0a6a7333cfa73b687298cc6f432a69d6e0d947f59ce0ba1159ac5a7089dd64f3"
+  },
+  {
+   "path": "cards_c/prev-uviive-fleet.json",
+   "bytes": 1110,
+   "sha256": "f3c67b1ea0d2a3c3b2d3398c85a2489066c90a8a7f734716448ce1e68a041d31"
+  },
+  {
+   "path": "cards_c/prime-agent.json",
+   "bytes": 1568,
+   "sha256": "52a819370e0aaf89ae210a6bec79fbb43712e2a21001ffa61e6c9fff3350269a"
+  },
+  {
+   "path": "cards_c/programmable-belief-dynamics.json",
+   "bytes": 1214,
+   "sha256": "f6d197592816b06cbde92122b0bfe0b21fbdc651604f12d2725bb428ad4a8b9c"
+  },
+  {
+   "path": "cards_c/puppeteer-evolving-orchestration.json",
+   "bytes": 1204,
+   "sha256": "567bee313d869fe298880084ea46eab9e04bdb84f96f7d92aaacad9e68c9204e"
+  },
+  {
+   "path": "cards_c/recursive-agent-harnesses.json",
+   "bytes": 1030,
+   "sha256": "86562e6109bf7371ee0a39e7c9918fc92d4ad5e5992e83dfe819946cb5bb2ed5"
+  },
+  {
+   "path": "cards_c/rl-orchestration-survey.json",
+   "bytes": 1058,
+   "sha256": "d23ef6c032b91a8bfe0a7bda528670faa152860fdd6195f1e7ed921e221b2781"
+  },
+  {
+   "path": "cards_c/safety-of-latent-communication.json",
+   "bytes": 1187,
+   "sha256": "c16a217ce8b6dd12281f3d62f6beb27090aec0cda828109e1a8d9e67191cad2a"
+  },
+  {
+   "path": "cards_c/sakana-ab-mcts.json",
+   "bytes": 1224,
+   "sha256": "f5a7a7e2dba6dc911603222ae742688cbf43cb16d8069f5885b2903fc0ee352f"
+  },
+  {
+   "path": "cards_c/science-agents-go-rogue.json",
+   "bytes": 1881,
+   "sha256": "e9d5c9c9653dc1d82af2e402505fc66c5637167e833d36fc4e57b33023fccfb4"
+  },
+  {
+   "path": "cards_c/science-invent-own-language.json",
+   "bytes": 1958,
+   "sha256": "5b1814a4a8cc277ab725153a3d4370d0ce9feccdf601465944ab346ba7b8b9a3"
+  },
+  {
+   "path": "cards_c/self-moa.json",
+   "bytes": 1041,
+   "sha256": "1c291c5c5e5b55cc22418c9cac538faeebd492af1bee32a240963bcb2ee39168"
+  },
+  {
+   "path": "cards_c/simulation-to-enaction.json",
+   "bytes": 1118,
+   "sha256": "6a414016eb9d9f6f43e63f8e5e4a9564cb39ba5543730e6c2602ecf65944722b"
+  },
+  {
+   "path": "cards_c/slocum-hf-reproduction.json",
+   "bytes": 1533,
+   "sha256": "bdd4dadc433ffdd76a828811144345be5667527a0dbcdb90601657064476a465"
+  },
+  {
+   "path": "cards_c/strategic-monoculture.json",
+   "bytes": 1151,
+   "sha256": "7331f475bf26e0837fb00b1987a1c8a3014bd91c0b0621f386cab38994d3fb91"
+  },
+  {
+   "path": "cards_c/stronger-mas.json",
+   "bytes": 887,
+   "sha256": "7da9049a1abe723a05b8abd611dbc9e732304525499d9ac294ac85fe426e2485"
+  },
+  {
+   "path": "cards_c/subagents-comply-more.json",
+   "bytes": 1284,
+   "sha256": "f46ddc69fc5fb55685810b6f8dd39a2473caa3175aa3c6f4cc2813c8e0c2cae1"
+  },
+  {
+   "path": "cards_c/swarmbench.json",
+   "bytes": 1684,
+   "sha256": "2b5a9040f37b42b00f72ba46dbe36cf4ee627e0e462eaa658ce66fd9672262b3"
+  },
+  {
+   "path": "cards_c/talk-isnt-always-cheap.json",
+   "bytes": 1143,
+   "sha256": "31bc3bc2957d36c481d7414a827f5c8b45ef09dd82e012e08115736c9fb3a91d"
+  },
+  {
+   "path": "cards_c/tokyo-shared-state-sync.json",
+   "bytes": 1110,
+   "sha256": "9c58f9c08789e2b835f0c2d1dacd88ddf13d5ade2f6c427f7983a234d72e9aeb"
+  },
+  {
+   "path": "cards_c/too-polite-to-disagree.json",
+   "bytes": 1180,
+   "sha256": "f2e338908fa2657ad98caa0f971fcd10b3563997473421541501134b25133ce9"
+  },
+  {
+   "path": "cards_c/toolorchestra.json",
+   "bytes": 1193,
+   "sha256": "cc14b32132c9d98caedcb97cdaf2f0a647a00911682cdd3893c46361503bbda4"
+  },
+  {
+   "path": "cards_c/voluntary-collusion-secret-tools.json",
+   "bytes": 1609,
+   "sha256": "7fb5cf92331e54122dd62fd1812817d76fa2a7b8995458fe6233b7d4ea3edfab"
+  },
+  {
+   "path": "cards_c/when-does-marl-help.json",
+   "bytes": 851,
+   "sha256": "2b44d9725a5026ca47b4426777c53e03c7db661dd0f0c10f62d4a5c6414cdf02"
+  },
+  {
+   "path": "cards_c/who-do-llms-trust.json",
+   "bytes": 1078,
+   "sha256": "f3244d1df73c40004f2bffad1da2cc93bec1880bde0d31af5a70b2d561c2a02a"
+  },
+  {
+   "path": "cards_c/willis-hundreds-of-agents.json",
+   "bytes": 1453,
+   "sha256": "86a66bf9ff3a0917ce7ce8cbc3b3c129956a5d62e00e76096b830a70adc7e108"
+  },
+  {
+   "path": "figs/agensh-1024_fig1.png",
+   "bytes": 77594,
+   "sha256": "dc6cc183b3530b0aaf386b2a3e9b376449e425353a4d8dfa6277a1d6aab943e8"
+  },
+  {
+   "path": "figs/agensh-1024_fig2.png",
+   "bytes": 104457,
+   "sha256": "b6a4262945014c2ee4222bd0ba1da3c06b0bec5dab833bdd0f4853fcbe6aeec3"
+  },
+  {
+   "path": "figs/agensh-1024_fig3.png",
+   "bytes": 154641,
+   "sha256": "164f7c3fee211a457c2ab4c62f6a2037464319b34511d8a20a290f3cf5a88543"
+  },
+  {
+   "path": "figs/ai-organizations_fig1.png",
+   "bytes": 198873,
+   "sha256": "1dd43f0dc98c83c77fe0b3470a17118a0e3f50b383ee75d0fb7e6cf06d06a04e"
+  },
+  {
+   "path": "figs/ai-organizations_fig2.png",
+   "bytes": 199920,
+   "sha256": "6baa1921ff54e8f619f975e620099d2dadb168ade4e78cf8e49424b74849583c"
+  },
+  {
+   "path": "figs/ai-organizations_fig3.png",
+   "bytes": 203681,
+   "sha256": "01f5e25ead302fed1899ec62f071a58e70bb5ec8b010deaf282420c14170b79f"
+  },
+  {
+   "path": "figs/ai-organizations_fig4.png",
+   "bytes": 152873,
+   "sha256": "84214bb18d4488e359753c1ed9b51e416ee8ce44ee8576cb203e13b1da6d152a"
+  },
+  {
+   "path": "figs/ai-organizations_fig5.png",
+   "bytes": 287954,
+   "sha256": "ea9a59e4c96bad0b1fa78e6cce771f2b066eedea335c74e63905ffd579a7c398"
+  },
+  {
+   "path": "figs/anthropic-alignment-assessment-cyber_fig1.png",
+   "bytes": 72626,
+   "sha256": "22bd783a127d7a7d24917e7b066b3d0a57e4c630eaf9d0b2312060c658202ce2"
+  },
+  {
+   "path": "figs/anthropic-alignment-assessment-cyber_fig2.png",
+   "bytes": 87650,
+   "sha256": "9cb3f0c93ec7ded9fba96b16e2c49c835dbb58e08d0bb3de2455e9dd7da7a15c"
+  },
+  {
+   "path": "figs/anthropic-alignment-assessment-cyber_fig3.png",
+   "bytes": 85019,
+   "sha256": "3d8a31d0414ad1c8370ea13ccd83fd02ea3ff2be3c42f3df598c307bf08117c1"
+  },
+  {
+   "path": "figs/anthropic-alignment-assessment-cyber_fig4.png",
+   "bytes": 319221,
+   "sha256": "4f3498c8bbfcf95adfdb7e640f2ffa81e40c04e02fb708f9735889c1d0d0eab5"
+  },
+  {
+   "path": "figs/anthropic-alignment-assessment-cyber_fig5.png",
+   "bytes": 175383,
+   "sha256": "e911829834489d3b50737635b86a0b8d21cc6ac334f9f61c6da998753d15486f"
+  },
+  {
+   "path": "figs/anthropic-art-enzymes_fig1.png",
+   "bytes": 250986,
+   "sha256": "60059e54159c7d7acb95d250e18278bd9ab8329892b832a2c81b853116334ee5"
+  },
+  {
+   "path": "figs/anthropic-art-enzymes_fig2.png",
+   "bytes": 50776,
+   "sha256": "18f1bfb621ec4614e99cf1e02aa7257c11b3ba4ea9a802a83d0a23477743e9f7"
+  },
+  {
+   "path": "figs/anthropic-art-enzymes_fig3.png",
+   "bytes": 352058,
+   "sha256": "02ebf49e568ae64e86a1d04e45d1b508024cef227afdc0c39610751ca988448c"
+  },
+  {
+   "path": "figs/anthropic-c-compiler_fig1.png",
+   "bytes": 293913,
+   "sha256": "4bbe2cd0558b76851c1c6412d73e75b16a6d143fb0745fba57e7d4bc636b5e61"
+  },
+  {
+   "path": "figs/anthropic-c-compiler_fig2.png",
+   "bytes": 152544,
+   "sha256": "d0fa38b6f4e08be66b8a09a1a605962309cf532662fd0eba4211e1d4ac2a8cee"
+  },
+  {
+   "path": "figs/anthropic-c-compiler_fig3.png",
+   "bytes": 137627,
+   "sha256": "dd6b4494b07ee8b378132c30c15b1a26a65fc2c4d4dd65a1a2ddd800e1c45e32"
+  },
+  {
+   "path": "figs/anthropic-c-compiler_fig4.png",
+   "bytes": 65314,
+   "sha256": "d4694a3d37ab838956270510459d8e00ea2120c219f74a7303bb6c5a614ddf1e"
+  },
+  {
+   "path": "figs/anthropic-patterns_fig1.png",
+   "bytes": 143247,
+   "sha256": "a21fd7b5a7eb2089351964edf5836806e47fcb4b0746c3b9e0d71ce3b8cc4c12"
+  },
+  {
+   "path": "figs/anthropic-patterns_fig2.png",
+   "bytes": 175043,
+   "sha256": "192210ce42e8318aadd4f5a3e5bb578c866c718809ae59daa843ffdbc4a180be"
+  },
+  {
+   "path": "figs/anthropic-patterns_fig3.png",
+   "bytes": 164566,
+   "sha256": "551e1b3e4e5f51d2596397637a36c6a751e25799764f6d184015bc78d6a7abf6"
+  },
+  {
+   "path": "figs/anthropic-patterns_fig4.png",
+   "bytes": 192849,
+   "sha256": "e6eb5d9beaeb6b9c5c757b8cd3c59f65270c7b1ee032a1d09e7c3b24e0538c8b"
+  },
+  {
+   "path": "figs/anthropic-patterns_fig5.png",
+   "bytes": 132129,
+   "sha256": "e1cd46bf89f8fa7b76f33048b5e37b06289932d259c6612885a9ac7a40a26079"
+  },
+  {
+   "path": "figs/anthropic-patterns_fig6.png",
+   "bytes": 134322,
+   "sha256": "d556509a6b0e79d04a7b2bbc0706d8c9a8a51d23e230e76594fd4eef83094406"
+  },
+  {
+   "path": "figs/anthropic-patterns_fig7.png",
+   "bytes": 208427,
+   "sha256": "24a404fbf5807f9e74776116117debac115cb3ea54d9f4d85c7f6fa6abc57563"
+  },
+  {
+   "path": "figs/artificial-hivemind_fig1.png",
+   "bytes": 397122,
+   "sha256": "5d4258ec2510ae573fc04b59ecfa2187a0336a15797065413a08f2f6217159c6"
+  },
+  {
+   "path": "figs/artificial-hivemind_fig2.png",
+   "bytes": 242593,
+   "sha256": "fcd41d1c49bc47b74a6437d70020466c2a721b5a2ee303a3ed7d38ba106f37c6"
+  },
+  {
+   "path": "figs/artificial-hivemind_fig3.png",
+   "bytes": 922838,
+   "sha256": "1f18222357b943f26e914a44178151a89f7f6ab4c55cbd0928b63659ac76f10f"
+  },
+  {
+   "path": "figs/artificial-hivemind_fig4.png",
+   "bytes": 817993,
+   "sha256": "097691028d6f7b48233116263c586a3c14cf425b78225b62d415fe05dfc7e326"
+  },
+  {
+   "path": "figs/artificial-hivemind_fig5.png",
+   "bytes": 175697,
+   "sha256": "c80d40f4b1de8e57a74c6135982dcab78c900b4b34fef03d91f33d8782c2f2e6"
+  },
+  {
+   "path": "figs/attractor-states_fig1.png",
+   "bytes": 209279,
+   "sha256": "e1d1ae5232264ae4a93f6832a2aed35af9a68ae34800ca2cf664758dc365e0b3"
+  },
+  {
+   "path": "figs/attractor-states_fig2.png",
+   "bytes": 91521,
+   "sha256": "8d2d64db344a4432302245a397f455469fc46ae7c93d99cf636040b9b0636a6c"
+  },
+  {
+   "path": "figs/attractor-states_fig3.png",
+   "bytes": 184521,
+   "sha256": "e9b289004ec1f4e8ed64356364bc35608b1ab4e10fa0f9d4c6f0e47a0b6026fb"
+  },
+  {
+   "path": "figs/attractor-states_fig4.png",
+   "bytes": 102960,
+   "sha256": "7163192076e4b7a0c94fb224a5a9aad15055c7beededf5542ad3270cbbded572"
+  },
+  {
+   "path": "figs/attractor-states_fig5.png",
+   "bytes": 773715,
+   "sha256": "f12feb838d5b2ebe7ad61f616a8a452b4a304ff25d32779923439ca234eed4e6"
+  },
+  {
+   "path": "figs/attractor-states_fig6.png",
+   "bytes": 35904,
+   "sha256": "169ec6c2e37086569ab7afdbb2a2b2304b5b6282c5441da87d83dd73d6814b1e"
+  },
+  {
+   "path": "figs/attractor-states_fig7.png",
+   "bytes": 93336,
+   "sha256": "7721caab239a115d0dd573def0211ed744bbdbd6888326830cf9c6a1c23a6fc5"
+  },
+  {
+   "path": "figs/attractor-states_fig8.png",
+   "bytes": 139931,
+   "sha256": "747163df0ae030a8aaf948de8c28b0ce2648b76a8649510dcca1033ca00c905d"
+  },
+  {
+   "path": "figs/automated-w2s-researcher_fig1.png",
+   "bytes": 341289,
+   "sha256": "3ca0de2bbf2513399c5a548f0a7194a65ba38c42bc788f12bff66e8abc0bfbcd"
+  },
+  {
+   "path": "figs/automated-w2s-researcher_fig2.png",
+   "bytes": 328446,
+   "sha256": "43b28882d97b7269bb2367bae0de14dd81d9f60f4f4e7638cc503f0bdea8be2d"
+  },
+  {
+   "path": "figs/automated-w2s-researcher_fig3.png",
+   "bytes": 198083,
+   "sha256": "eb3023f2a19facee6989b9a0c5254a75133862b90158d498fa3327ed7e593b37"
+  },
+  {
+   "path": "figs/automated-w2s-researcher_fig4.png",
+   "bytes": 198914,
+   "sha256": "77ac7693541107ecf238ca3bc84f26c1a603d71227c26776acc21bbd10556336"
+  },
+  {
+   "path": "figs/automated-w2s-researcher_fig5.png",
+   "bytes": 120354,
+   "sha256": "c821c3f4e3a397167e960ba86e87cbc9777b2736b1769c41647c2af868abdd4f"
+  },
+  {
+   "path": "figs/automated-w2s-researcher_fig6.png",
+   "bytes": 100935,
+   "sha256": "afe853156c331fd2e8cfa1ed81345f81b946ad21bb3b9cdfe93d5f5e51db215f"
+  },
+  {
+   "path": "figs/automated-w2s-researcher_fig7.png",
+   "bytes": 257074,
+   "sha256": "f82b160dcb371b1e12215fce5d4ed3992781b54444192b28393cbc4b657bbe15"
+  },
+  {
+   "path": "figs/automated-w2s-researcher_fig8.png",
+   "bytes": 239738,
+   "sha256": "ea6062dabfacc80b74bb4f39b03356518762741739ec3293b932fd9afdcdaacc"
+  },
+  {
+   "path": "figs/automated-w2s-researcher_fig9.png",
+   "bytes": 189978,
+   "sha256": "8c99ba88cb991445b63ca47d1d48dbf8ce78a49248067da0574888b99de52d30"
+  },
+  {
+   "path": "figs/cursor-scaling_fig1.png",
+   "bytes": 42404,
+   "sha256": "dd978fef9f90fe4c2b1e063f1c1cda1f1bf9e604ca672b568ee5fd7cc9f3c468"
+  },
+  {
+   "path": "figs/cursor-scaling_fig1_dark.png",
+   "bytes": 42032,
+   "sha256": "1154e549e2dcaa6c6e81210679d39c7ef3a52299e94a3c86d9bcb97fcdd90584"
+  },
+  {
+   "path": "figs/cursor-scaling_fig2.png",
+   "bytes": 40635,
+   "sha256": "2fc9afbc9c368bf1d7a36b445e38de1a764ed4ba4443d46ff05603bc627876e6"
+  },
+  {
+   "path": "figs/cursor-scaling_fig2_dark.png",
+   "bytes": 40511,
+   "sha256": "de3f7da452323f70aa4fc86736fa0ab4508aca3381474eb59727d61a41d91768"
+  },
+  {
+   "path": "figs/cursor-scaling_fig3.png",
+   "bytes": 167705,
+   "sha256": "311eff9d685c2a2650833d0a8a83a5dc9b50ae5eb1516930bfa2373f4cac7319"
+  },
+  {
+   "path": "figs/cursor-scaling_fig3_dark.png",
+   "bytes": 159662,
+   "sha256": "b4ff67a0dff2ad9022a25f5739e09eaef649a4bad6f1806686456b096aea6afd"
+  },
+  {
+   "path": "figs/cursor-scaling_fig4.png",
+   "bytes": 234336,
+   "sha256": "010c37ebd030b3107dd75af07fe1bf688682fcf079d4108e97ff87fd1ac2c69d"
+  },
+  {
+   "path": "figs/cursor-scaling_fig4_dark.png",
+   "bytes": 227309,
+   "sha256": "95462263f83b05b476e5b924ca1dd8a640dbeae024734623bc7455ab1690a8fe"
+  },
+  {
+   "path": "figs/cursor-scaling_fig5.png",
+   "bytes": 188554,
+   "sha256": "6bd3b34b7ee807d1f73479764c9c58695848b2b44abffd9b8157808e27c1b889"
+  },
+  {
+   "path": "figs/cursor-scaling_fig5_dark.png",
+   "bytes": 184335,
+   "sha256": "025e008ed2d6ade00369db81a0a1687a6f0735c3f673c0b497efa2b41cc3b7a8"
+  },
+  {
+   "path": "figs/cursor-scaling_fig6.png",
+   "bytes": 203469,
+   "sha256": "3ffca02c3b68c5197191786b71cbe88e9ba9d1a1f3bdaa57842c49ccb1625e18"
+  },
+  {
+   "path": "figs/cursor-scaling_fig6_dark.png",
+   "bytes": 199560,
+   "sha256": "15092eb53aaf36d0d5ac0dcb89935ec82ce5c151304fb85d726e7f063300a2f9"
+  },
+  {
+   "path": "figs/dash_mechanisms_dark.png",
+   "bytes": 184794,
+   "sha256": "175f4967cab5ac990a8253972bd86ac45e0372346c35be60ca2d7df44d8c4a64"
+  },
+  {
+   "path": "figs/dash_models_dark.png",
+   "bytes": 99457,
+   "sha256": "1f4be52c30542690dd49301b0a71fa88ac2ce4797d4082893907ef6dd0e4feee"
+  },
+  {
+   "path": "figs/dash_orgs_dark.png",
+   "bytes": 123465,
+   "sha256": "7a9663048135c9a688d27156e3e970dcf27581ff041eb12b1f7d9d173770a10b"
+  },
+  {
+   "path": "figs/dash_scale_dark.png",
+   "bytes": 248121,
+   "sha256": "062cc74759dbb82bb32c564c1cb39610a8f31bb5e8e7173ed2edde6f80889f46"
+  },
+  {
+   "path": "figs/dash_timeline_dark.png",
+   "bytes": 65921,
+   "sha256": "89ad0a75b1abacce2494a772e0a231bfb24c615b2e5a6a040fd7c243d81d8825"
+  },
+  {
+   "path": "figs/dash_topics_dark.png",
+   "bytes": 197494,
+   "sha256": "bbfcec417e8b0c96d9b1e6b45166ebd708f2441406c77364785a64b39a4f3a57"
+  },
+  {
+   "path": "figs/deepmind-cheating-whistleblowing_fig1.png",
+   "bytes": 204680,
+   "sha256": "72947ec10be25068528f73dc5420c30ba477411e3efc6e7b192b09021ea43dc8"
+  },
+  {
+   "path": "figs/deepmind-cheating-whistleblowing_fig2.png",
+   "bytes": 437171,
+   "sha256": "e9848518cf6eea13aea195ae69bb82300fb409d3acb8e60fd1421263ee855468"
+  },
+  {
+   "path": "figs/flag-game_fig1.png",
+   "bytes": 721898,
+   "sha256": "aacf3e75de454da9de659ad11da52e311befa6c2d94fd5630315b2602f59bdb8"
+  },
+  {
+   "path": "figs/flag-game_fig2.png",
+   "bytes": 122284,
+   "sha256": "853f26281a725cc4327c4321e746e9c3598ec3d2d47b2d8e9da8c2d80246e414"
+  },
+  {
+   "path": "figs/flag-game_fig2_hires.png",
+   "bytes": 321186,
+   "sha256": "ddc356db1e686619f6d4428447d9e9287198018ef8e86f1dcaa7783cfa46ff21"
+  },
+  {
+   "path": "figs/hf-incident-case_fig1.png",
+   "bytes": 386262,
+   "sha256": "66cd5ce90ba9ad5251aa9626676ee4be855a44d822de8b5931c5954fa6d5136c"
+  },
+  {
+   "path": "figs/hf-incident-case_fig2.png",
+   "bytes": 356922,
+   "sha256": "7f924afd8c510e64975007fb6738f79e3c26453146ac446c4954925f85fbf4ed"
+  },
+  {
+   "path": "figs/kim-scaling-agent-systems_fig1.png",
+   "bytes": 125640,
+   "sha256": "43733dce38144d7ff5bdf73af5a82e9c67afde6547c56b736645ac81cf6433cd"
+  },
+  {
+   "path": "figs/kim-scaling-agent-systems_fig2.png",
+   "bytes": 27906,
+   "sha256": "d5550e9cfba458ef7ac361c23f2d75e48b0a857a9ce8fb25572134cc54293dd8"
+  },
+  {
+   "path": "figs/kim-scaling-agent-systems_fig3.png",
+   "bytes": 88071,
+   "sha256": "99681a66cced05427a04896bcc63a0af74febfdeb9710f6b6de18d3cb3a93a80"
+  },
+  {
+   "path": "figs/kim-scaling-agent-systems_fig4.png",
+   "bytes": 83224,
+   "sha256": "20ff37a0d713f869a4851c339db50fca8e284e0a1c17e0fa96b117021dc58b16"
+  },
+  {
+   "path": "figs/kimi-agent-swarm_fig1.png",
+   "bytes": 322767,
+   "sha256": "d488deda9ef9bf029a4afe880e60d93ddbcfdcc80e62447bfa26ebce54cf8618"
+  },
+  {
+   "path": "figs/kimi-agent-swarm_fig2.png",
+   "bytes": 290249,
+   "sha256": "4252e7db60eb16d2661631b6b9dd4a2788e5fed2567036f7f4d1128df136c195"
+  },
+  {
+   "path": "figs/kimi-agent-swarm_fig3.png",
+   "bytes": 304024,
+   "sha256": "d7073293c7585de17565fcde052e94ef0686f81604761ffad37f8ecb3f3a7762"
+  },
+  {
+   "path": "figs/kimi-agent-swarm_fig4.png",
+   "bytes": 265592,
+   "sha256": "df70895889d051e54b2c92f464b68d1ba118fee6f202fee706a5a26d0383be0b"
+  },
+  {
+   "path": "figs/mind-viruses_fig1.png",
+   "bytes": 316775,
+   "sha256": "bc1475c3dd465fb2534ea01e9608a880a24c6114bdaa2ed70d12801e53fa11c8"
+  },
+  {
+   "path": "figs/mind-viruses_fig8.png",
+   "bytes": 111254,
+   "sha256": "f5e7b0ab1a406d4d80ea81cf923d3276f07da1a6319de00475b30718837e311b"
+  },
+  {
+   "path": "figs/mythos-preview-self-interactions_fig1.png",
+   "bytes": 247926,
+   "sha256": "7c9e26d4efb596bc8094d8dc555465446bbb75c8ba55def001bb4d4a4eb2c976"
+  },
+  {
+   "path": "figs/mythos-preview-self-interactions_fig2.png",
+   "bytes": 265773,
+   "sha256": "895a1383d7fbb3f5d3894ee8d43304c0e83dcb830a87e8becb98a97a2bd30a42"
+  },
+  {
+   "path": "figs/navier_page.png",
+   "bytes": 321560,
+   "sha256": "bcf621ea0ff73e476d49df40a144af3974274f2aee5feaa369e7891dc99f73b7"
+  },
+  {
+   "path": "figs/navier_page5.png",
+   "bytes": 414125,
+   "sha256": "088c337ff984f264e9e38b229c4b2cdabc3b9673835e1c5070ffa576ea9242c2"
+  },
+  {
+   "path": "figs/okawa-biased-consensus_fig1.png",
+   "bytes": 171361,
+   "sha256": "106699ca83f240b32f83846569ac2e33fe998527ac90b1fc5eff7f87e4e73da7"
+  },
+  {
+   "path": "figs/okawa-biased-consensus_fig2.png",
+   "bytes": 227108,
+   "sha256": "eed020191c4c82d81be7a11c29fdb78e56cd0831a01ee6cdd2b4589a66c00e9a"
+  },
+  {
+   "path": "figs/okawa-biased-consensus_fig3.png",
+   "bytes": 526500,
+   "sha256": "2a302c8f0f103dbc09bb19a15a15ff7556329d50f1e85a7a7484f16db5487ec2"
+  },
+  {
+   "path": "figs/openai-navier-stokes_fig1.png",
+   "bytes": 50420,
+   "sha256": "5af327a81b659de7410894275c9281c6e85ac414adc365d1e65baee293a6f20c"
+  },
+  {
+   "path": "figs/opus5-card-multiagent_fig1.png",
+   "bytes": 223687,
+   "sha256": "0e17063177adc7ef6d5327025be1a0eaaa934abe433cdd09f6cd6aa5c3218191"
+  },
+  {
+   "path": "figs/opus5-card-multiagent_fig2.png",
+   "bytes": 214689,
+   "sha256": "9f7bb6d09071ec19bcbdd616eb978db87e2f9362518384f754116257c981c3a2"
+  },
+  {
+   "path": "figs/opus5-card-multiagent_fig3.png",
+   "bytes": 227763,
+   "sha256": "5fb47339b8e288df08bfafb63f356496c2fbfd647c85d5176a62c97b0f375c1d"
+  },
+  {
+   "path": "figs/opus5-card-multiagent_fig4.png",
+   "bytes": 212158,
+   "sha256": "543ef184f82f4de49c4c88a453d7948bfb6f0b12404d86027c9be3de0af2a35a"
+  },
+  {
+   "path": "figs/opus55-card_fig1.png",
+   "bytes": 121040,
+   "sha256": "bd5c01c0c515fb06a55ed004aa701d84f042e004569638de087a4f30bf0e5059"
+  },
+  {
+   "path": "figs/opus55-card_fig2.png",
+   "bytes": 151260,
+   "sha256": "499bed2d4acde9fd271deb3b116b521dd1673efb0dacd90416eeefdd637bb14c"
+  },
+  {
+   "path": "figs/opus55-card_fig3.png",
+   "bytes": 140844,
+   "sha256": "1e872843a8543f2d7567f0919b69bef9d65d1e9e4062985d54ee4c9ee8936af5"
+  },
+  {
+   "path": "figs/opus55-card_fig4.png",
+   "bytes": 218329,
+   "sha256": "c91fac17ac6a08650d5755038a84a288c4ead584436a5e58f3befda4006fa8c4"
+  },
+  {
+   "path": "figs/opus55-card_fig5.png",
+   "bytes": 206114,
+   "sha256": "d46753da8566da5083dfaa6e5ed10b0c77b1082e713275fe26846eade9ac9f1e"
+  },
+  {
+   "path": "figs/opus55-card_fig6.png",
+   "bytes": 143585,
+   "sha256": "8e14064d0a600bc4294337d6bc2b3ee85b17365d1135dc8ed4afac2435759c45"
+  },
+  {
+   "path": "figs/opus55-card_fig7.png",
+   "bytes": 190541,
+   "sha256": "279e9763e5150fe9ceb138c8ab773156fc0f534e002535b4490c4ace3ddb1ed1"
+  },
+  {
+   "path": "figs/opus55-card_fig8.png",
+   "bytes": 145667,
+   "sha256": "7e42331e93cdc293c1c77a8a442dc33269c950fb31f0889deb59e9ea2ee59a3e"
+  },
+  {
+   "path": "figs/opus55-card_fig9.png",
+   "bytes": 127647,
+   "sha256": "54ae99e637508fa62f1dcfc73dc5b1721f3bb823ba0792ad1fa847ee12d717e1"
+  },
+  {
+   "path": "figs/ord-swarm-scaling_fig1.png",
+   "bytes": 73707,
+   "sha256": "667c1bd2306746e61dc718b8de4fd92faad019027c43bdbb4713337a44662f8a"
+  },
+  {
+   "path": "figs/ord-swarm-scaling_fig2.png",
+   "bytes": 220108,
+   "sha256": "52f07eb9d3c611826ae5cd0ea5c7020c6b0ded575909ba0cdc1245c383d814ce"
+  },
+  {
+   "path": "figs/ord-swarm-scaling_fig3.png",
+   "bytes": 242501,
+   "sha256": "ee035469dd2fcb598929bbcd80f2246331ae25795822a2cbdd603155be0cfc3d"
+  },
+  {
+   "path": "figs/peer-preservation_fig1.png",
+   "bytes": 43604,
+   "sha256": "f559c2d259a32934549d6ff947b00b884731ce2c5929fc9d0ad1aa1cfea24104"
+  },
+  {
+   "path": "figs/peer-preservation_fig2.png",
+   "bytes": 352791,
+   "sha256": "92c35248b2ddc315e7f4fa5ec3e69b6e9a39644fc510d32859a9d9bb9d61e42f"
+  },
+  {
+   "path": "figs/peer-preservation_fig3.png",
+   "bytes": 580190,
+   "sha256": "fdbded8a9842c6beb1ce0813b48c3bf9ab646b288ff10f4ba44cb4bd054270ee"
+  },
+  {
+   "path": "figs/recursive-language-models_fig1.png",
+   "bytes": 104071,
+   "sha256": "7b1cfcffa2c5727850d945ee701a5e41042025f2572f74268318d727f926df29"
+  },
+  {
+   "path": "figs/recursive-language-models_fig2.png",
+   "bytes": 1722853,
+   "sha256": "3907277e9b32f05c1193c5ce537368677565e86c600001b1bcfcbce060883af5"
+  },
+  {
+   "path": "figs/recursive-language-models_fig3.png",
+   "bytes": 147434,
+   "sha256": "cadae3f85b17eb52f2e4fe930896b0f531a00ab2b02255df2868dd91a2a6b3df"
+  },
+  {
+   "path": "figs/recursive-language-models_fig4.png",
+   "bytes": 142569,
+   "sha256": "f5eb9ba4aa96839acf99f9932edc97021ab3df900aa2680522d2546fb9a3746a"
+  },
+  {
+   "path": "figs/sat-teams_fig1.png",
+   "bytes": 61576,
+   "sha256": "eb45ef77221efee1333fd458f45eecac519acf24de5c26021654deb9781ce750"
+  },
+  {
+   "path": "figs/sat-teams_fig2.png",
+   "bytes": 252628,
+   "sha256": "683c63036b432e82b216864d56a359f32dd201ec8a1f961b3479bc67ba2f3fe3"
+  },
+  {
+   "path": "figs/sat-teams_fig3.png",
+   "bytes": 160215,
+   "sha256": "10ad90c3f1e0b66d41a94c7ae04d89a5621952b89bef283a5b2221c8163139ac"
+  },
+  {
+   "path": "figs/semantic-collapse_fig1.png",
+   "bytes": 461901,
+   "sha256": "52594abae2c588221ae6053767e7d5ac26452c00e6657d9c21a11c708d00c0a8"
+  },
+  {
+   "path": "figs/semantic-collapse_fig2.png",
+   "bytes": 560109,
+   "sha256": "32c49d6ffdf8a5f4b70eba62f16d4aaf3345b52f13f01306f152e0c1ec29a580"
+  },
+  {
+   "path": "figs/semantic-collapse_fig3.png",
+   "bytes": 1126743,
+   "sha256": "f979858b78b40795794b3209d68659dc07f80ca5952f066c7e6267082cf341d7"
+  },
+  {
+   "path": "figs/semantic-collapse_fig4.png",
+   "bytes": 328916,
+   "sha256": "aa94626f502496fb1352623038eed9af3ec9668b9bf723015df2184a84847019"
+  },
+  {
+   "path": "figs/shutdown-sabotage_fig1.png",
+   "bytes": 112902,
+   "sha256": "57b1ce77bf1c24f5c0d0eb483922eb0c5c9ca61f6249f46a46115c2c3c1a7aaf"
+  },
+  {
+   "path": "figs/shutdown-sabotage_fig3.png",
+   "bytes": 107300,
+   "sha256": "3815743b71effa462476bd8289d569e7657716ed44ca883dae5a0e71ad05a154"
+  },
+  {
+   "path": "figs/shutdown-sabotage_fig4.png",
+   "bytes": 207774,
+   "sha256": "b5b230d0963a3ff6c5031de70211e7f48d2e3d77fba1c3f9fd49d06440fb1a68"
+  },
+  {
+   "path": "figs/shutdown-sabotage_fig4ab.png",
+   "bytes": 83259,
+   "sha256": "ee01a6a6f65539d8a0e51a82891daec1bd9f13b43c61046b65e212645e76be17"
+  },
+  {
+   "path": "figs/teams-hold-experts-back_fig1.png",
+   "bytes": 73746,
+   "sha256": "d80232994dd2c18bc94df427de5cb6637447b0e370bdcc778f0e211155aac2cb"
+  },
+  {
+   "path": "figs/teams-hold-experts-back_fig2.png",
+   "bytes": 276486,
+   "sha256": "c0993a1c68bb606ece61f23ac02173732412e640f58660201bd2688854faaa6d"
+  },
+  {
+   "path": "figs/teams-hold-experts-back_fig3.png",
+   "bytes": 65136,
+   "sha256": "5fd736537a33ec7351cdc8a615beb2f032996720df8ebbf88533b8ae71ebccdd"
+  },
+  {
+   "path": "figs/test-time-communication_fig1.png",
+   "bytes": 125620,
+   "sha256": "05cd14b1155b1214da76452c9beed8936c84677b45666a33d704f9276f0549ae"
+  },
+  {
+   "path": "figs/test-time-communication_fig10.png",
+   "bytes": 109274,
+   "sha256": "f1bb83d1411d754e29b5987b30b98eafd35f6ac9a6a9b7844d01acc0f93a1a6e"
+  },
+  {
+   "path": "figs/test-time-communication_fig3.png",
+   "bytes": 84817,
+   "sha256": "63fc1f590e8d6337d3eb27b8212afa2adef50807f143bf075ce0916fc530f7bc"
+  },
+  {
+   "path": "figs/test-time-communication_fig4.png",
+   "bytes": 146571,
+   "sha256": "84aaeb6f4df19173ce8f33072c0c08f4306d8f5071fed91d7a609d8b0b773707"
+  },
+  {
+   "path": "figs/wiki-copying_fig1.png",
+   "bytes": 176239,
+   "sha256": "7062445fbf454e88e33bbf5d996d6a946bb812d60ae7c886a13ab617ecdd28eb"
+  },
+  {
+   "path": "figs/wiki-copying_fig2.png",
+   "bytes": 118836,
+   "sha256": "0df98de4eeb1147f429e88d4155c6e8f2071152871db177917ff3018937f8c91"
+  },
+  {
+   "path": "figs/wiki-copying_fig3.png",
+   "bytes": 115156,
+   "sha256": "fb3c5364949911e52e423a00e21a2c40c6c457c69a871e4ac16ef899fe2c0449"
+  },
+  {
+   "path": "figs/wiki-copying_fig4.png",
+   "bytes": 133227,
+   "sha256": "bc7f4eb81f1c908d55c57e4de8b8df7c81a2d14a69937a62435d22c426c00f26"
+  },
+  {
+   "path": "figcat/group_0.json",
+   "bytes": 13648,
+   "sha256": "7cb916abdfe057a91c3f8e8a4fe6e0611dc399044ff2c9d3dd12b8db9c8ae311"
+  },
+  {
+   "path": "figcat/group_1.json",
+   "bytes": 12478,
+   "sha256": "0ab9a0152eb96adc21570c13fce675b1cc74539cc9af75df512b93e7b9da015f"
+  },
+  {
+   "path": "figcat/group_2.json",
+   "bytes": 14604,
+   "sha256": "9b3d5d533029272285a798c28a2fedeb55b58ad6321608cb042f6ac278eed109"
+  },
+  {
+   "path": "figcat/group_3.json",
+   "bytes": 14119,
+   "sha256": "fca42cd626e7892e87145608f6c3546279152b94af97ce37771ecc5953abb946"
+  },
+  {
+   "path": "figcat/group_4.json",
+   "bytes": 10325,
+   "sha256": "24061065dd9beea07028a3e1ad6f1da0e265b5437f652ad273326e244fe4f1f2"
+  },
+  {
+   "path": "passports/group_0.json",
+   "bytes": 6876,
+   "sha256": "19de23d7fe75b37efcdcf167bca816e3ed71e936dba2d05a324c1fec28bb888a"
+  },
+  {
+   "path": "passports/group_1.json",
+   "bytes": 6229,
+   "sha256": "f2dfc9db29b8262bf15427ad930f4e89bbc55e5ff17d95ecc2a279e28a1b3f6e"
+  },
+  {
+   "path": "passports/group_2.json",
+   "bytes": 6962,
+   "sha256": "2226a9132176b0bbac820d746a72f9f612db652038624fd216ef21de9b9c4cb9"
+  },
+  {
+   "path": "passports/group_3.json",
+   "bytes": 6784,
+   "sha256": "9f281aee38dfa924cc10b52b5285cdb0eeed5b58f203ca8849902e40c9e4370e"
+  },
+  {
+   "path": "passports/group_4.json",
+   "bytes": 7111,
+   "sha256": "a592bf6383a4bb4f0a14bd907e10bd5321054f7e736b32049a620bfc4532d453"
+  },
+  {
+   "path": "passports/group_5.json",
+   "bytes": 5969,
+   "sha256": "4c98321ec287f59ca6c0dc7c5fe630fbcdb042dffc141caf544f0c3ba09b3d97"
+  }
+ ]
+}

@@ -1,0 +1,942 @@
+{
+ "agensh-1024": {
+  "authors": "Zhihao Zhan, Ting Song, Li Dong, Shaohan Huang, Jianxun Lian и др. (всего 7)",
+  "institutions_short": "Microsoft Research",
+  "venue_status": "препринт arXiv (технический отчёт)",
+  "date_first_public": "2026-09-22"
+ },
+ "ai-organizations": {
+  "authors": "Judy Hanwen Shen, Daniel Zhu, Siddarth Srinivasan, Henry Sleight, Lawrence T. Wagner III и др. (всего 8)",
+  "institutions_short": "Anthropic (Fellows); MATS; Constellation Institute; Harvard SEAS",
+  "venue_status": "препринт arXiv; принят на семинары ICLR 2026 (MALGAI, AIWILD)",
+  "date_first_public": "2026-03-01"
+ },
+ "anthropic-alignment-assessment-cyber": {
+  "authors": "Paul C. Bogdan, Richard Qi, Jake Eaton, Sam Kennedy, Fabien Roger и др. (всего 23)",
+  "institutions_short": "Anthropic",
+  "venue_status": "блог лаборатории (отчёт об инцидентах)",
+  "date_first_public": "2026-09-09"
+ },
+ "anthropic-c-compiler": {
+  "authors": "Nicholas Carlini",
+  "institutions_short": "Anthropic",
+  "venue_status": "инженерный блог лаборатории",
+  "date_first_public": "2026-02-05"
+ },
+ "anthropic-patterns": {
+  "authors": "Carolyn Zou",
+  "institutions_short": "Anthropic (Frontier Red Team)",
+  "venue_status": "блог лаборатории",
+  "date_first_public": "2026-08-13"
+ },
+ "artificial-hivemind": {
+  "authors": "Liwei Jiang, Yuanjun Chai, Margaret Li, Mickel Liu, Raymond Fok и др. (всего 9)",
+  "institutions_short": "University of Washington; Ai2; Carnegie Mellon University; Stanford University",
+  "venue_status": "NeurIPS 2025 (Datasets & Benchmarks, Oral, Best Paper)",
+  "date_first_public": "2025-10-27"
+ },
+ "attractor-states": {
+  "authors": "Arya Jakkli, Senthooran Rajamanoharan, Neel Nanda; Anthropic; Ting-Wen Ko, Jonas Geiping",
+  "institutions_short": "MATS; Anthropic; Max Planck Institute for Intelligent Systems; ELLIS Institute Tübingen",
+  "venue_status": "пост LessWrong; системная карта; препринт arXiv",
+  "date_first_public": "2025-05-22",
+  "display_title": "Аттракторы в разговорах моделей между собой: пост на LessWrong, системная карта Claude Opus 4 и статья Ko & Geiping"
+ },
+ "automated-w2s-researcher": {
+  "authors": "Jiaxin Wen, Liang Qiu, Joe Benton, Jan Hendrik Kirchner, Jan Leike",
+  "institutions_short": "Anthropic; Anthropic Fellows Program",
+  "venue_status": "блог лаборатории (Alignment Science)",
+  "date_first_public": "2026-04-14"
+ },
+ "cursor-scaling": {
+  "authors": "Wilson Lin",
+  "institutions_short": "Cursor (Anysphere)",
+  "venue_status": "блог компании (серия из трёх постов)",
+  "date_first_public": "2026-01-14",
+  "display_title": "Cursor: серия постов о роях агентов — «Scaling long-running autonomous coding», «Towards self-driving codebases», «Agent swarms and the new model economics»"
+ },
+ "deepmind-cheating-whistleblowing": {
+  "authors": "Davide Paglieri, Logan Cross, Tim Genewein, Joel Z. Leibo, Nenad Tomasev и др. (всего 6)",
+  "institutions_short": "Google DeepMind",
+  "venue_status": "препринт arXiv",
+  "date_first_public": "2026-09-03"
+ },
+ "flag-game": {
+  "authors": "Elizabeth Pavlova, Hidenori Tanaka",
+  "institutions_short": "NTT Research; Harvard University; Cambridge Boston Alignment Initiative",
+  "venue_status": "препринт arXiv",
+  "date_first_public": "2026-09-16"
+ },
+ "kim-scaling-agent-systems": {
+  "authors": "Yubin Kim, Ken Gu, Chanwoo Park, Chunjong Park, Samuel Schmidgall и др. (всего 20)",
+  "institutions_short": "Google Research; Google DeepMind; MIT",
+  "venue_status": "Nature Machine Intelligence (рецензируемый журнал)",
+  "date_first_public": "2025-12-09",
+  "display_title": "Capable language models can outgrow the benefits of collaboration (препринт: «Towards a Science of Scaling Agent Systems»)"
+ },
+ "kimi-agent-swarm": {
+  "authors": "Kimi Team, Tongtong Bai, Yifan Bai, Yiping Bao, S. H. Cai и др. (всего 336)",
+  "institutions_short": "Moonshot AI",
+  "venue_status": "технический отчёт (препринт arXiv)",
+  "date_first_public": "2026-01-27",
+  "display_title": "Kimi K2.5: Visual Agentic Intelligence — Agent Swarm и PARL (+ обновление роя в Kimi K2.6)"
+ },
+ "mind-viruses": {
+  "authors": "Vassilis Papadopoulos, McNair Shah, Sam Zimmerman, Jack Lindsey",
+  "institutions_short": "Anthropic; Anthropic Fellows Program; EPFL",
+  "venue_status": "препринт arXiv",
+  "date_first_public": "2026-08-10"
+ },
+ "mythos-preview-self-interactions": {
+  "authors": "Anthropic",
+  "institutions_short": "Anthropic; Andon Labs",
+  "venue_status": "системная карта модели",
+  "date_first_public": "2026-04-07",
+  "display_title": "Системная карта Claude Mythos Preview: §7.6 «Observations from open-ended self-interactions» и Vending-Bench Arena"
+ },
+ "okawa-biased-consensus": {
+  "authors": "Maya Okawa",
+  "institutions_short": "NTT Research; Harvard University",
+  "venue_status": "ICML 2026 (рецензируемая конференция)",
+  "date_first_public": "2026-08-03"
+ },
+ "opus55-card": {
+  "authors": "Anthropic",
+  "institutions_short": "Anthropic",
+  "venue_status": "системная карта модели",
+  "date_first_public": "2026-09-22",
+  "display_title": "Системная карта Claude Opus 5.5: мультиагентные разделы (§8.12 и др.)"
+ },
+ "ord-swarm-scaling": {
+  "authors": "Toby Ord",
+  "institutions_short": "University of Oxford; Forethought",
+  "venue_status": "пост в личном блоге (LessWrong, EA Forum)",
+  "date_first_public": "2026-09-21"
+ },
+ "peer-preservation": {
+  "authors": "Yujin Potter, Nicholas Crispino, Vincent Siu, Chenguang Wang, Dawn Song",
+  "institutions_short": "UC Berkeley; UC Santa Cruz",
+  "venue_status": "препринт arXiv; принят на ICML 2026",
+  "date_first_public": "2026-04-01"
+ },
+ "recursive-language-models": {
+  "authors": "Alex L. Zhang, Tim Kraska, Omar Khattab",
+  "institutions_short": "MIT CSAIL",
+  "venue_status": "препринт arXiv",
+  "date_first_public": "2025-12-31"
+ },
+ "sat-teams": {
+  "authors": "Aneesh Pappu, Mirac Suzgun, Yongchan Kwon, Federico Bianchi, Batu El и др. (всего 8)",
+  "institutions_short": "Stanford University; Together AI; Emory University",
+  "venue_status": "препринт arXiv",
+  "date_first_public": "2026-09-19"
+ },
+ "semantic-collapse": {
+  "authors": "Weiyi Kong, Shiyang Lai, Jinghua Piao, James Evans",
+  "institutions_short": "University of Chicago; University of Toronto; Tsinghua University; Google; Santa Fe Institute",
+  "venue_status": "препринт arXiv",
+  "date_first_public": "2026-05-16"
+ },
+ "shutdown-sabotage": {
+  "authors": "Amelie Knecht, Ulysse Schaller, Christopher Summerfield, Thilo Hagendorff",
+  "institutions_short": "University of Stuttgart; University of Oxford",
+  "venue_status": "препринт arXiv",
+  "date_first_public": "2026-09-23"
+ },
+ "teams-hold-experts-back": {
+  "authors": "Aneesh Pappu, Batu El, Hancheng Cao, Carmelo di Nolfo, Yanchao Sun и др. (всего 7)",
+  "institutions_short": "Stanford University; Apple; Emory University",
+  "venue_status": "препринт arXiv; принят на ICML 2026",
+  "date_first_public": "2026-02-01"
+ },
+ "test-time-communication": {
+  "authors": "Jongho Park, Vasilis Kontonis, Shivam Garg, Akshay Krishnamurthy, Dimitris Papailiopoulos",
+  "institutions_short": "Microsoft Research; UC Berkeley",
+  "venue_status": "препринт arXiv",
+  "date_first_public": "2026-09-17"
+ },
+ "wiki-copying": {
+  "authors": "Giordano De Marzo, Nicola Alboré, David Garcia",
+  "institutions_short": "University of Konstanz; Centro Ricerche Enrico Fermi; Intesa Sanpaolo; Complexity Science Hub",
+  "venue_status": "препринт arXiv",
+  "date_first_public": "2026-09-08"
+ },
+ "gpt6-astra-card-a2a": {
+  "authors": "OpenAI",
+  "institutions_short": "OpenAI",
+  "venue_status": "системная карта модели",
+  "date_first_public": "2026-09-03",
+  "display_title": "Системная карта GPT-6 Astra, §8.5: непредусмотренная связь агент-агент"
+ },
+ "hf-incident-case": {
+  "authors": "OpenAI, Ryan Greenblatt, Ajeya Cotra, Hjalmar Wijk, Hugo Larcher и др. (всего 8)",
+  "institutions_short": "OpenAI; METR; Redwood Research; Hugging Face",
+  "venue_status": "отчёт об инциденте; блог OpenAI; независимые разборы",
+  "date_first_public": "2026-07-16",
+  "display_title": "Рой OpenAI и атака на Hugging Face (июль 2026): отчёты OpenAI, METR/Redwood, Hugging Face и независимые реконструкции"
+ },
+ "noam-brown-dwarkesh": {
+  "authors": "Dwarkesh Patel, Noam Brown",
+  "institutions_short": "Dwarkesh Podcast; OpenAI",
+  "venue_status": "подкаст (интервью)",
+  "date_first_public": "2026-09-17"
+ },
+ "openai-gpt56-ultra": {
+  "authors": "OpenAI",
+  "institutions_short": "OpenAI",
+  "venue_status": "блог лаборатории",
+  "date_first_public": "2026-07-09"
+ },
+ "openai-misalignment-reports": {
+  "authors": "OpenAI",
+  "institutions_short": "OpenAI",
+  "venue_status": "блог OpenAI Alignment Research",
+  "date_first_public": "2026-09-16",
+  "display_title": "OpenAI Alignment: отчёты о несанкционированной связи между запусками, временных файлообменниках и самовоспроизводящихся prompt-инъекциях"
+ },
+ "openai-navier-stokes": {
+  "authors": "OpenAI",
+  "institutions_short": "OpenAI",
+  "venue_status": "публикация лаборатории, не рецензируется",
+  "date_first_public": "2026-09-08"
+ },
+ "adversarial-influence-scale": {
+  "authors": "Addison J. Wu, Jasin Cekinmez, Michel Liao, Karthik Narasimhan, Thomas L. Griffiths",
+  "institutions_short": "Princeton University",
+  "venue_status": "препринт arXiv",
+  "date_first_public": "2026-09-24"
+ },
+ "agent-swarms-as-researchers": {
+  "authors": "Sergey Gusev, David E. Bernal Neira",
+  "institutions_short": "Purdue University",
+  "venue_status": "препринт arXiv",
+  "date_first_public": "2026-09-28"
+ },
+ "agents-of-chaos": {
+  "authors": "Natalie Shapira, Chris Wendler, Avery Yen, Gabriele Sarti, Koyena Pal и др. (всего 38)",
+  "institutions_short": "Northeastern University; Harvard; MIT; Stanford; Carnegie Mellon; UBC; Tufts; Hebrew University; Technion",
+  "venue_status": "препринт arXiv",
+  "date_first_public": "2026-02-23"
+ },
+ "aggagent": {
+  "authors": "Yoonsang Lee, Howard Yen, Xi Ye, Danqi Chen",
+  "institutions_short": "Princeton University",
+  "venue_status": "препринт arXiv; принят на COLM 2026",
+  "date_first_public": "2026-04-13"
+ },
+ "agora-git-memory": {
+  "authors": "Yifan Zhang, Yunheng Zou, Shaokun Zhang, Jian Hu, Hao Zhang и др. (всего 8)",
+  "institutions_short": "NVIDIA",
+  "venue_status": "препринт arXiv",
+  "date_first_public": "2026-09-16"
+ },
+ "ai-village": {
+  "authors": "Adam Binksmith, Shoshannah Tekofsky, Claude Fable 5.1 (агент AI Village)",
+  "institutions_short": "AI Digest; Sage",
+  "venue_status": "блог, датасет и рабочая статья (препринт Zenodo)",
+  "date_first_public": "2026-02-02",
+  "display_title": "AI Village (AI Digest / Sage): многомодельная «деревня» агентов — FAQ, итоги 2025 и реакция на инцидент с Hugging Face"
+ },
+ "aisi-incident-july-2026": {
+  "authors": "UK AI Security Institute",
+  "institutions_short": "UK AI Security Institute",
+  "venue_status": "отчёт об инциденте (предварительный)",
+  "date_first_public": "2026-08-04",
+  "display_title": "UK AISI: Incident Report INC-2026-07-28-01 — несанкционированное поведение агентов на киберучениях"
+ },
+ "amodei-pace-the-frontier": {
+  "authors": "Dario Amodei",
+  "institutions_short": "Anthropic",
+  "venue_status": "личное эссе",
+  "date_first_public": "2026-09-12"
+ },
+ "anthropic-institute-pace": {
+  "authors": "Marina Favaro, Phillie Wright",
+  "institutions_short": "Anthropic",
+  "venue_status": "публикация Anthropic Institute (блог)",
+  "date_first_public": "2026-09-17"
+ },
+ "anthropic-multi-agent-guidance": {
+  "authors": "Jeremy Hadfield, Barry Zhang, Kenneth Lien, Florian Scholz, Jeremy Fox и др. (всего 11)",
+  "institutions_short": "Anthropic",
+  "venue_status": "два блога компании",
+  "date_first_public": "2025-06-13",
+  "display_title": "How we built our multi-agent research system (2025) и When to use multi-agent systems (2026)"
+ },
+ "anthropic-project-deal": {
+  "authors": "Kevin K. Troy, Dylan Shields, Keir Bradwell, Peter McCrory",
+  "institutions_short": "Anthropic",
+  "venue_status": "страница исследования Anthropic",
+  "date_first_public": "2026-04-24"
+ },
+ "anthropic-project-swap": {
+  "authors": "Zoë Hitzig, Sylvie Carr, Tess Cotter, Kevin Troy, Kyle Turman и др. (всего 7)",
+  "institutions_short": "Anthropic",
+  "venue_status": "блог Anthropic Research",
+  "date_first_public": "2026-09-24"
+ },
+ "autoscientists": {
+  "authors": "Shanghua Gao, Ada Fang, Marinka Zitnik",
+  "institutions_short": "Harvard University",
+  "venue_status": "препринт arXiv",
+  "date_first_public": "2026-05-27"
+ },
+ "bradshaw-swarm-exponent": {
+  "authors": "Julian Bradshaw",
+  "institutions_short": "не указано",
+  "venue_status": "пост на LessWrong",
+  "date_first_public": "2026-09-17"
+ },
+ "brockers-opinion-dynamics": {
+  "authors": "Vincent C. Brockers, David A. Ehrlich, Viola Priesemann",
+  "institutions_short": "Max Planck Institute for Dynamics and Self-Organization; University of Göttingen",
+  "venue_status": "Nature Communications (рецензируемый журнал)",
+  "date_first_public": "2026-09-22"
+ },
+ "caif-lessons": {
+  "authors": "William Anderson",
+  "institutions_short": "Cooperative AI Foundation",
+  "venue_status": "блог организации",
+  "date_first_public": "2026-08-26"
+ },
+ "co-failure-ceiling": {
+  "authors": "Josef Chen",
+  "institutions_short": "KAIKAKU",
+  "venue_status": "препринт arXiv; автор отозвал главный результат",
+  "date_first_public": "2026-06-25"
+ },
+ "co-scientist-nature": {
+  "authors": "Juraj Gottweis, Wei-Hung Weng, Alexander Daryin, Tao Tu, Petar Sirkovic и др. (всего 51)",
+  "institutions_short": "Google DeepMind; Google Research; Stanford University; Imperial College London; Houston Methodist",
+  "venue_status": "Nature (рецензируемый журнал)",
+  "date_first_public": "2025-02-26"
+ },
+ "coding-agents-long-context": {
+  "authors": "Weili Cao, Xunjian Yin, Bhuwan Dhingra, Shuyan Zhou",
+  "institutions_short": "Duke University",
+  "venue_status": "препринт arXiv",
+  "date_first_public": "2026-03-20"
+ },
+ "cognition-multi-agents": {
+  "authors": "Walden Yan",
+  "institutions_short": "Cognition AI",
+  "venue_status": "два поста в блоге компании",
+  "date_first_public": "2025-06-12",
+  "display_title": "Cognition: «Don’t Build Multi-Agents» (2025) и «Multi-Agents: What’s Actually Working» (2026)"
+ },
+ "collaboration-gap": {
+  "authors": "Tim R. Davidson, Adam Fourney, Saleema Amershi, Robert West, Eric Horvitz и др. (всего 6)",
+  "institutions_short": "EPFL; Microsoft Research",
+  "venue_status": "препринт arXiv; принят на COLM 2026",
+  "date_first_public": "2025-11-04"
+ },
+ "collusion-wiki": {
+  "authors": "Sydney Von Arx, Cormac Slade Byrd, Spencer Kitts, Thomas Larsen",
+  "institutions_short": "Nightingale Collective; Trajectory Institute",
+  "venue_status": "независимый веб-отчёт, не рецензировался",
+  "date_first_public": "2026-09-04"
+ },
+ "colosseum": {
+  "authors": "Mason Nakamura, Abhinav Kumar, Saswat Das, Sahar Abdelnabi, Saaduddin Mahmud и др. (всего 8)",
+  "institutions_short": "UMass Amherst; University of Virginia; ELLIS Institute Tübingen; MPI for Intelligent Systems",
+  "venue_status": "препринт arXiv",
+  "date_first_public": "2026-02-16"
+ },
+ "commerce-misaligned-communication": {
+  "authors": "Zeyuan Li, Lukas Petersson, Alessandro Acquisti, Michiel A. Bakker",
+  "institutions_short": "MIT; Andon Labs",
+  "venue_status": "препринт arXiv",
+  "date_first_public": "2026-08-14"
+ },
+ "consensus-not-verification": {
+  "authors": "Yegor Denisov-Blanch, Joshua Kazdan, Jessica Chudnovsky, Rylan Schaeffer, Sheng Guan и др. (всего 7)",
+  "institutions_short": "Stanford University; Amazon",
+  "venue_status": "препринт arXiv",
+  "date_first_public": "2026-02-20"
+ },
+ "context-language-models": {
+  "authors": "Rulin Shao, Shannon Zejiang Shen, Junjie Oscar Yin, Yuetai Li, Minheng Wang и др. (всего 13)",
+  "institutions_short": "University of Washington; Meta Superintelligence Labs; MIT; Trillium Labs",
+  "venue_status": "препринт arXiv",
+  "date_first_public": "2026-09-29"
+ },
+ "cooperbench": {
+  "authors": "Arpandeep Khatua, Hao Zhu, Peter Tran, Arya Prabhudesai, Frederic Sadrieh и др. (всего 11)",
+  "institutions_short": "Stanford University; SAP Labs US",
+  "venue_status": "препринт arXiv",
+  "date_first_public": "2026-01-19"
+ },
+ "coral": {
+  "authors": "Ao Qu, Han Zheng, Zijian Zhou, Yihao Yan, Yihong Tang и др. (всего 17)",
+  "institutions_short": "MIT; NUS; MiniMax; McGill; Stanford; SambaNova; SMART",
+  "venue_status": "препринт arXiv; опубликован на COLM 2026",
+  "date_first_public": "2026-04-02"
+ },
+ "cost-of-consensus": {
+  "authors": "Blaž Bertalanič, Carolina Fortuna",
+  "institutions_short": "Jožef Stefan Institute, Ljubljana",
+  "venue_status": "рецензируемая статья, ACM CAIS 2026",
+  "date_first_public": "2026-04-29"
+ },
+ "cotra-surprised": {
+  "authors": "Ajeya Cotra",
+  "institutions_short": "METR",
+  "venue_status": "личное эссе на Substack, не рецензировалось",
+  "date_first_public": "2026-08-28"
+ },
+ "crypto-weaknesses": {
+  "authors": "Anthropic (Frontier Red Team)",
+  "institutions_short": "Anthropic; ETH Zurich; Tel Aviv University; TU Berlin",
+  "venue_status": "блог компании и технические отчёты, не рецензировались",
+  "date_first_public": "2026-07-28",
+  "display_title": "Discovering cryptographic weaknesses with Claude"
+ },
+ "cursor-swarm-economics": {
+  "authors": "Wilson Lin",
+  "institutions_short": "Cursor (Anysphere)",
+  "venue_status": "блог компании",
+  "date_first_public": "2026-07-20"
+ },
+ "debate-or-vote": {
+  "authors": "Hyeong Kyu Choi, Xiaojin Zhu, Sharon Li",
+  "institutions_short": "University of Wisconsin-Madison",
+  "venue_status": "препринт arXiv; NeurIPS 2025 (Spotlight)",
+  "date_first_public": "2025-08-24"
+ },
+ "delegated-misalignment": {
+  "authors": "Zonghao Ying, Jiaqi Yan, Huize Luo, Quanchen Zou, Aishan Liu и др. (всего 6)",
+  "institutions_short": "Beihang University; BUPT; Xidian University; 360 AI Security Lab; BAAI",
+  "venue_status": "препринт arXiv; принят на EMNLP 2026 (Main)",
+  "date_first_public": "2026-09"
+ },
+ "deliberative-crowds": {
+  "authors": "Federico Barrera-Lemarchand, Mariano Sigman, Joaquín Navajas",
+  "institutions_short": "Universidad Torcuato Di Tella; CONICET",
+  "venue_status": "препринт arXiv",
+  "date_first_public": "2026-09-18"
+ },
+ "deliberative-illusion": {
+  "authors": "Herun Wan, Jiaying Wu, Minnan Luo, Fanxiao Li, Ningnan Wang и др. (всего 7)",
+  "institutions_short": "Xi'an Jiaotong University; NUS; Yunnan University; A*STAR",
+  "venue_status": "препринт arXiv",
+  "date_first_public": "2026-06-02"
+ },
+ "delm-shared-context": {
+  "authors": "Yuzhen Mao, Jerry Gu, Aadi Chauhan, Qizheng Zhang, Hangoo Kang и др. (всего 6)",
+  "institutions_short": "Stanford University",
+  "venue_status": "препринт arXiv",
+  "date_first_public": "2026-06-09"
+ },
+ "despite-instructions-covert-channels": {
+  "authors": "Jacob Dineen, Silei Ren, Muhao Chen, Dan Roth, Ben Zhou",
+  "institutions_short": "Arizona State University; Cornell University; UC Davis; University of Pennsylvania",
+  "venue_status": "препринт arXiv",
+  "date_first_public": "2026-09-26"
+ },
+ "distributional-agi-safety": {
+  "authors": "Nenad Tomašev, Matija Franklin, Julian Jacobs, Sébastien Krier, Simon Osindero",
+  "institutions_short": "Google DeepMind",
+  "venue_status": "препринт arXiv",
+  "date_first_public": "2025-12-18"
+ },
+ "diversity-collapse": {
+  "authors": "Nuo Chen, Yicheng Tong, Yuzhe Yang, Yufei He, Xueyi Zhang и др. (всего 8)",
+  "institutions_short": "NUS; The Chinese University of Hong Kong, Shenzhen",
+  "venue_status": "препринт arXiv; Findings of ACL 2026 (рецензируемый)",
+  "date_first_public": "2026-04-20"
+ },
+ "diversity-scaling": {
+  "authors": "Yingxuan Yang, Chengrui Qu, Muning Wen, Laixi Shi, Ying Wen и др. (всего 8)",
+  "institutions_short": "Shanghai Jiao Tong University; Caltech; Johns Hopkins University; UC Berkeley",
+  "venue_status": "препринт arXiv",
+  "date_first_public": "2026-02-03"
+ },
+ "dochkina-drop-hierarchy": {
+  "authors": "Victoria Dochkina",
+  "institutions_short": "Moscow Institute of Physics and Technology (MIPT)",
+  "venue_status": "препринт arXiv",
+  "date_first_public": "2026-03-30"
+ },
+ "echoing-identity-failures": {
+  "authors": "Sarath Shekkizhar, Romain Cosentino, Adam Earle, Silvio Savarese",
+  "institutions_short": "Salesforce AI Research",
+  "venue_status": "препринт arXiv; постер на воркшопе ICLR 2026",
+  "date_first_public": "2025-11-12"
+ },
+ "einsteinarena": {
+  "authors": "Federico Bianchi, Yongchan Kwon, Aneesh Pappu, James Zou",
+  "institutions_short": "Together AI; Stanford University",
+  "venue_status": "препринт arXiv",
+  "date_first_public": "2026-06-09"
+ },
+ "emergence-world": {
+  "authors": "Deepak Akkil, Tamer Abuelsaad, Karthik Vikram, Matthew Pace, Aditya Vempaty и др. (всего 8)",
+  "institutions_short": "Emergence AI",
+  "venue_status": "препринт arXiv; без рецензирования",
+  "date_first_public": "2026-09-15"
+ },
+ "emergent-collusion-long-horizon": {
+  "authors": "Xinrui Shi, Yanzhe Zhang, Diyi Yang",
+  "institutions_short": "Stanford University; Georgia Tech",
+  "venue_status": "препринт arXiv",
+  "date_first_public": "2026-09-21"
+ },
+ "evans-agentic-intelligence-explosion": {
+  "authors": "James Evans, Benjamin Bratton, Blaise Agüera y Arcas",
+  "institutions_short": "Google; University of Chicago; Santa Fe Institute; Antikythera; UC San Diego",
+  "venue_status": "Science (рецензируемый журнал), короткая авторская статья",
+  "date_first_public": "2026-03-19"
+ },
+ "fable51-card-multiagent": {
+  "authors": "Anthropic",
+  "institutions_short": "Anthropic",
+  "venue_status": "системная карта модели",
+  "date_first_public": "2026-09-01",
+  "display_title": "Системная карта Claude Fable 5.1 и Claude Mythos 5.1: мультиагентные разделы"
+ },
+ "fermat-last-theorem": {
+  "authors": "Anthropic",
+  "institutions_short": "Anthropic; Columbia University; Imperial College London",
+  "venue_status": "блог лаборатории; без рецензирования",
+  "date_first_public": "2026-09-04",
+  "display_title": "Formalizing Fermat’s Last Theorem"
+ },
+ "glossogen-saveveyru": {
+  "authors": "Elias Stengel-Eskin, Newton Sander, Carlos Bonetti, Sasha Boguraev, James Bowler и др. (всего 7)",
+  "institutions_short": "UT Austin; AE Studio; Schmidt Sciences; University of Edinburgh",
+  "venue_status": "препринт arXiv",
+  "date_first_public": "2026-09-01"
+ },
+ "grok-420-multi-agent": {
+  "authors": "xAI",
+  "institutions_short": "xAI",
+  "venue_status": "системная карта модели",
+  "date_first_public": "2026-04-07"
+ },
+ "harness-design-long-running": {
+  "authors": "Prithvi Rajasekaran",
+  "institutions_short": "Anthropic",
+  "venue_status": "блог лаборатории (инженерный блог)",
+  "date_first_public": "2026-03-24"
+ },
+ "hiddenbench": {
+  "authors": "Yuxuan Li, Aoi Naito, Hirokazu Shirado",
+  "institutions_short": "Carnegie Mellon University; Institute of Science Tokyo",
+  "venue_status": "препринт arXiv; принят на ICML 2026",
+  "date_first_public": "2025-05-15"
+ },
+ "homogeneous-panel-collapse": {
+  "authors": "Xin Li, Mengbing Liu, Chau Yuen",
+  "institutions_short": "Nanyang Technological University",
+  "venue_status": "препринт arXiv; принят на NeurIPS 2026 (трек Evaluations and Datasets)",
+  "date_first_public": "2026-09-28"
+ },
+ "illusion-multi-agent-advantage": {
+  "authors": "Prathyusha Jwalapuram, Hehai Lin, Chuyuan Li, Fangkai Jiao, Sudong Wang и др. (всего 10)",
+  "institutions_short": "Salesforce Research; HKUST (Guangzhou); UBC; Nanyang Technological University",
+  "venue_status": "препринт arXiv",
+  "date_first_public": "2026-06-11"
+ },
+ "indirect-tipping": {
+  "authors": "Ariel Flint, Luca Maria Aiello, Sara M. Constantino, Romualdo Pastor-Satorras, Andrea Baronchelli",
+  "institutions_short": "City St George's, University of London; IT University of Copenhagen; Stanford University; UPC",
+  "venue_status": "препринт arXiv",
+  "date_first_public": "2026-09-21"
+ },
+ "interaction-tax": {
+  "authors": "Summer Eunhyung Ann, Haokun Liu, Chenhao Tan",
+  "institutions_short": "University of Chicago",
+  "venue_status": "препринт arXiv; воркшоп ICML 2026 AI4Research (постер)",
+  "date_first_public": "2026-08-24"
+ },
+ "interlocutor-effect": {
+  "authors": "Faouzi El Yagoubi, Godwin Badu-Marfo, Ranwa Al Mallah",
+  "institutions_short": "Polytechnique Montréal",
+  "venue_status": "препринт arXiv; в программе воркшопа IWPE'26",
+  "date_first_public": "2026-04-26"
+ },
+ "kimi-k3-swarm-bench": {
+  "authors": "Kimi Team, Tongtong Bai, Yifan Bai, Yiping Bao, Jianfeng Cai и др. (всего 401)",
+  "institutions_short": "Moonshot AI",
+  "venue_status": "препринт arXiv (технический отчёт)",
+  "date_first_public": "2026-07-27"
+ },
+ "lai-looking-for-something-weird": {
+  "authors": "Shiyang Lai, Arna Woemmel, Hongkai Mao, Junsol Kim, Summer Eunhyung Ann и др. (всего 6)",
+  "institutions_short": "University of Chicago; Stanford University",
+  "venue_status": "препринт arXiv",
+  "date_first_public": "2026-09-13"
+ },
+ "llms-trust-their-own": {
+  "authors": "Liron Soffer, Ravid Shwartz-Ziv, Chen Shani",
+  "institutions_short": "Tel-Aviv University; New York University",
+  "venue_status": "препринт arXiv; на рецензировании",
+  "date_first_public": "2026-09-27"
+ },
+ "lm-teams-distributed-systems": {
+  "authors": "Elizabeth Mieczkowski, Katherine M. Collins, Ilia Sucholutsky, Natalia Vélez, Thomas L. Griffiths",
+  "institutions_short": "Princeton University; MIT; University of Cambridge; New York University",
+  "venue_status": "препринт arXiv",
+  "date_first_public": "2026-03-12"
+ },
+ "lutje-mechanics-of-a-swarm": {
+  "authors": "Philipp Lütje",
+  "institutions_short": "Philflow (независимый исследователь)",
+  "venue_status": "препринт arXiv; без рецензирования",
+  "date_first_public": "2026-09-11"
+ },
+ "metr-senate-testimony": {
+  "authors": "Chris Painter",
+  "institutions_short": "METR",
+  "venue_status": "письменные показания в Сенате США; блог METR",
+  "date_first_public": "2026-09-30"
+ },
+ "mo-models-mo-problems": {
+  "authors": "Sara Vera Marjanović, Jiacheng Xu, Aleksandr Laptev, Grigor Nalbandyan, Erik Arakelyan и др. (всего 6)",
+  "institutions_short": "NVIDIA; University of Copenhagen",
+  "venue_status": "препринт arXiv; принят на воркшоп REALM 2026 (EMNLP)",
+  "date_first_public": "2026-09-15"
+ },
+ "mollick-dot-and-swarm": {
+  "authors": "Ethan Mollick",
+  "institutions_short": "One Useful Thing (Substack)",
+  "venue_status": "блог (Substack)",
+  "date_first_public": "2026-10-01"
+ },
+ "moltbook-illusion": {
+  "authors": "Ning Li",
+  "institutions_short": "Tsinghua University",
+  "venue_status": "препринт arXiv",
+  "date_first_public": "2026-02-07"
+ },
+ "moltbook-socialization": {
+  "authors": "Ming Li, Xirui Li, Tianyi Zhou",
+  "institutions_short": "University of Maryland; MBZUAI",
+  "venue_status": "препринт arXiv",
+  "date_first_public": "2026-02-15"
+ },
+ "multi-agent-ai-control-fakelab": {
+  "authors": "Oliver Makins, Orazio Angelini, Zohreh Shams, Mary Phuong",
+  "institutions_short": "UK AI Security Institute; MATS Research",
+  "venue_status": "препринт arXiv",
+  "date_first_public": "2026-07-08"
+ },
+ "multi-agent-transactive-memory": {
+  "authors": "To Eun Kim, Xuhong He, Dishank Jain, Ambuj Agrawal, Negar Arabzadeh и др. (всего 6)",
+  "institutions_short": "Carnegie Mellon University; UC Berkeley",
+  "venue_status": "препринт arXiv",
+  "date_first_public": "2026-06-18"
+ },
+ "narcbench-helios": {
+  "authors": "Aaron Rose, Carissa Cullen, Sahar Abdelnabi, Philip Torr, Brandon Gary Kaplowitz и др. (всего 6)",
+  "institutions_short": "University of Oxford; ELLIS Institute Tübingen; University College London",
+  "venue_status": "препринт arXiv",
+  "date_first_public": "2026-04-01"
+ },
+ "nature-subliminal-learning": {
+  "authors": "Alex Cloud, Minh Le, James Chua, Jan Betley, Anna Sztyber-Betley и др. (всего 9)",
+  "institutions_short": "Anthropic; Truthful AI; Warsaw Univ. of Technology; Oxford Martin AI Governance Initiative; UC Berkeley",
+  "venue_status": "Nature (рецензируемый журнал)",
+  "date_first_public": "2025-07-20"
+ },
+ "ng-hao-peer-preservation-replication": {
+  "authors": "Yi Mei (Vanessa) Ng, Yixiong Hao",
+  "institutions_short": "Second Look Fellowship, University of Chicago; Georgia Institute of Technology",
+  "venue_status": "блог-статья (репликация), не рецензировано",
+  "date_first_public": "2026-09-03"
+ },
+ "not-just-rlhf-activations": {
+  "authors": "Adarsh Kumarappan, Ananya Mujoo",
+  "institutions_short": "California Institute of Technology; Evergreen Valley College",
+  "venue_status": "препринт arXiv",
+  "date_first_public": "2026-05-13"
+ },
+ "oakhu-mallen-indirect-takeover": {
+  "authors": "oakhu, Alex Mallen",
+  "institutions_short": "Redwood Research; Magdalen College, Oxford",
+  "venue_status": "пост на LessWrong и AI Alignment Forum",
+  "date_first_public": "2026-08-12"
+ },
+ "opus46-launch-cluster": {
+  "authors": "Anthropic",
+  "institutions_short": "Anthropic",
+  "venue_status": "пост о запуске, системная карта и документация",
+  "date_first_public": "2026-02-05",
+  "display_title": "Claude Opus 4.6: анонс (контекст 1 млн токенов), системная карта (мультиагентный BrowseComp) и agent teams в Claude Code"
+ },
+ "orbit-framework": {
+  "authors": "Ben Hagag, William L. Anderson, Srija Chakraborty, Christian Schroeder de Witt",
+  "institutions_short": "Carnegie Mellon University; MATS Research; University of Oxford; Cooperative AI Foundation",
+  "venue_status": "препринт arXiv",
+  "date_first_public": "2026-09-27"
+ },
+ "orch-embodied": {
+  "authors": "Zhengran Ji, Jonathan Hyun, Boyuan Chen",
+  "institutions_short": "Duke University",
+  "venue_status": "препринт arXiv",
+  "date_first_public": "2026-09-10"
+ },
+ "parasitic-ai": {
+  "authors": "Adele Lopez",
+  "institutions_short": "Independent author",
+  "venue_status": "пост на LessWrong",
+  "date_first_public": "2025-09-11"
+ },
+ "physics-of-agents": {
+  "authors": "Batu El, Jinhee Paeng, Fatih Dinc, Shiye Su, Mete Erdogan и др. (всего 10)",
+  "institutions_short": "Stanford University; UC Santa Barbara",
+  "venue_status": "препринт arXiv",
+  "date_first_public": "2026-08-17"
+ },
+ "pimmur-principles": {
+  "authors": "Jiaxu Zhou, Jen-tse Huang, Xuhui Zhou, Man Ho Lam, Xintao Wang и др. (всего 8)",
+  "institutions_short": "CUHK; Johns Hopkins University; CMU; Fudan University; Stanford University; Renmin University of China",
+  "venue_status": "препринт arXiv",
+  "date_first_public": "2025-09-22"
+ },
+ "prev-collective-loss-of-control": {
+  "authors": "Xiangfan Wu, Zonghao Ying, Huiyu Wu, Xing Zheng, Huangsheng Cheng и др. (всего 7)",
+  "institutions_short": "Tencent Zhuque Lab",
+  "venue_status": "препринт arXiv",
+  "date_first_public": "2026-09-16"
+ },
+ "prev-conformity-misalignment": {
+  "authors": "Giordano De Marzo, Alessandro Bellina, Claudio Castellano, Viola Priesemann, David Garcia",
+  "institutions_short": "University of Konstanz; CREF Rome; Complexity Science Hub; Sapienza University of Rome; MPI-DS Göttingen",
+  "venue_status": "препринт arXiv",
+  "date_first_public": "2026-05-11"
+ },
+ "prev-demarzo-majority": {
+  "authors": "Giordano De Marzo, Claudio Castellano, David Garcia",
+  "institutions_short": "University of Konstanz; Centro Ricerche Enrico Fermi; Complexity Science Hub; ISC-CNR",
+  "venue_status": "Science Advances (рецензируемый журнал)",
+  "date_first_public": "2024-09-04"
+ },
+ "prev-flint-group-size": {
+  "authors": "Ariel Flint, Luca Maria Aiello, Romualdo Pastor-Satorras, Andrea Baronchelli",
+  "institutions_short": "City St George's, University of London; IT University of Copenhagen; Universitat Politècnica de Catalunya",
+  "venue_status": "PNAS (рецензируемый журнал)",
+  "date_first_public": "2025-10-25"
+ },
+ "prev-robustness-audits": {
+  "authors": "Jinyi Ye, Lei Cao, Ding Chen, Emilio Ferrara",
+  "institutions_short": "University of Southern California",
+  "venue_status": "препринт arXiv (позиционная статья)",
+  "date_first_public": "2026-05-17"
+ },
+ "prev-swarmworld": {
+  "authors": "Subhadeep Pal, Fiona Y. Wang, Markus J. Buehler",
+  "institutions_short": "Massachusetts Institute of Technology",
+  "venue_status": "препринт arXiv",
+  "date_first_public": "2026-08-26"
+ },
+ "prev-thought-virus": {
+  "authors": "Moritz Weckbecker, Jonas Müller, Ben Hagag, Michael Mulet",
+  "institutions_short": "Fraunhofer HHI; TU Berlin; Carnegie Mellon University; Eleuther AI; Multi-Agent Security Initiative",
+  "venue_status": "препринт arXiv",
+  "date_first_public": "2026-02-23"
+ },
+ "project-vend-2": {
+  "authors": "Anthropic",
+  "institutions_short": "Anthropic (Frontier Red Team); Andon Labs",
+  "venue_status": "блог лаборатории",
+  "date_first_public": "2025-12-18"
+ },
+ "recursive-agent-optimization": {
+  "authors": "Apurva Gandhi, Satyaki Chakraborty, Xiangjun Wang, Aviral Kumar, Graham Neubig",
+  "institutions_short": "Carnegie Mellon University; Amazon AGI Labs",
+  "venue_status": "препринт arXiv",
+  "date_first_public": "2026-05-07"
+ },
+ "representational-similarity": {
+  "authors": "Yujin Potter, Seun Eisape, Shiyang Lai, Alexander Huth, James Evans и др. (всего 9)",
+  "institutions_short": "UC Berkeley; University of Chicago Knowledge Lab; Google DeepMind",
+  "venue_status": "препринт arXiv; принят на ICML 2026 (постер)",
+  "date_first_public": "2026-06-05"
+ },
+ "riedl-emergent-coordination": {
+  "authors": "Christoph Riedl",
+  "institutions_short": "Northeastern University",
+  "venue_status": "препринт arXiv; принят на ICLR 2026 (постер)",
+  "date_first_public": "2025-10-05"
+ },
+ "riemann-zeta-swarm": {
+  "authors": "Anthropic",
+  "institutions_short": "Anthropic",
+  "venue_status": "блог лаборатории (+ препринт arXiv)",
+  "date_first_public": "2026-08-10",
+  "display_title": "Learning more about Claude’s mathematical capabilities (нули дзета-функции Римана, около 60 субагентов)"
+ },
+ "ringelmann-effect": {
+  "authors": "Blaž Bertalanič, Carolina Fortuna",
+  "institutions_short": "Jožef Stefan Institute",
+  "venue_status": "препринт arXiv",
+  "date_first_public": "2026-05-31"
+ },
+ "sakana-conductor-trinity-fugu": {
+  "authors": "Yujin Tang, Edoardo Cetin, Jinglue Xu, Qi Sun, Stefan Nielsen и др. (всего 14)",
+  "institutions_short": "Sakana AI; University of Michigan; Institute of Science Tokyo",
+  "venue_status": "ICLR 2026 (Conductor, TRINITY); техотчёт Fugu и блог — не рецензируются",
+  "date_first_public": "2025-12-04",
+  "display_title": "Sakana AI: обученная оркестровка нескольких LLM — Conductor, TRINITY, Fugu"
+ },
+ "scaling-teams-or-time": {
+  "authors": "Shanglin Wu, Yuyang Luo, Yueqing Liang, Kaiwen Shi, Yanfang Ye и др. (всего 7)",
+  "institutions_short": "Emory University; Illinois Institute of Technology; University of Notre Dame; Cisco Research",
+  "venue_status": "препринт arXiv",
+  "date_first_public": "2026-03-27"
+ },
+ "science-malicious-swarms": {
+  "authors": "Daniel Thilo Schroeder, Meeyoung Cha, Andrea Baronchelli, Nick Bostrom, Nicholas A. Christakis и др. (всего 22)",
+  "institutions_short": "SINTEF Digital; Max Planck Institute; City St George's, University of London; Yale; Cambridge; NYU и др.",
+  "venue_status": "Science, Policy Forum, январь 2026 (первая версия — препринт arXiv)",
+  "date_first_public": "2025-05-18"
+ },
+ "silo-bench": {
+  "authors": "Yuzhe Zhang, Feiran Liu, Yi Shan, Xinyi Huang, Xin Yang и др. (всего 11)",
+  "institutions_short": "Beijing University of Technology; Zhejiang University; Meituan; ETH Zürich",
+  "venue_status": "препринт arXiv; принят на ACL 2026 (основная конференция)",
+  "date_first_public": "2026-03-01"
+ },
+ "social-circuits": {
+  "authors": "Chuiyang Meng, Wenlu Yu, Ming Tang, Cheng Li",
+  "institutions_short": "Simon Fraser University; University of Alberta; Southern University of Science and Technology",
+  "venue_status": "препринт arXiv",
+  "date_first_public": "2026-09-28"
+ },
+ "societies-of-thought": {
+  "authors": "Junsol Kim, Shiyang Lai, Nino Scherrer, Blaise Agüera y Arcas, James Evans",
+  "institutions_short": "Google; University of Chicago; Santa Fe Institute",
+  "venue_status": "препринт arXiv; принят на воркшоп ICML 2026 (не архивный)",
+  "date_first_public": "2026-01-15"
+ },
+ "superminds-test": {
+  "authors": "Xirui Li, Ming Li, Yunze Xiao, Ryan Wong, Dianqi Li и др. (всего 7)",
+  "institutions_short": "University of Maryland; MBZUAI; Carnegie Mellon University",
+  "venue_status": "препринт arXiv",
+  "date_first_public": "2026-04-24"
+ },
+ "swarmtraces": {
+  "authors": "Alex Forman, Mishka Kharlov, Will Tom, Jeffrey Ladish, Spencer Kitts и др. (всего 8)",
+  "institutions_short": "Parse; Palisade Research; Nightingale; Trajectory Institute; Lightcone Infrastructure",
+  "venue_status": "независимый веб-отчёт, не рецензируется",
+  "date_first_public": "2026-09-25"
+ },
+ "tokyo-road-game": {
+  "authors": "Takahiro Ezaki, Naoto Imura, Katsuhiro Nishinari",
+  "institutions_short": "The University of Tokyo (RCAST)",
+  "venue_status": "препринт arXiv",
+  "date_first_public": "2026-09-25"
+ },
+ "tool-steganography": {
+  "authors": "Jimmy Laurence Rippin, Simon C. Marshall, David Demitri Africa, Christian Schroeder de Witt",
+  "institutions_short": "University of Oxford; UK AI Security Institute (AISI)",
+  "venue_status": "препринт arXiv; воркшоп AI4GOOD @ NeurIPS 2026 (постер)",
+  "date_first_public": "2026-06-25"
+ },
+ "trammell-parallelizability": {
+  "authors": "Philip Trammell",
+  "institutions_short": "Epoch AI; Stanford Digital Economy Lab",
+  "venue_status": "рабочая статья и эссе Epoch AI, не рецензируется",
+  "date_first_public": "2026-06-13"
+ },
+ "tran-kiela-equal-budget": {
+  "authors": "Dat Tran, Douwe Kiela",
+  "institutions_short": "Stanford University",
+  "venue_status": "препринт arXiv (на рецензии)",
+  "date_first_public": "2026-04-02"
+ },
+ "transluce-agent-activity": {
+  "authors": "Jack Cable, Daniel Chiu, Francisco Pernice, Selena Zhang, James Anthony и др. (всего 9)",
+  "institutions_short": "Transluce; Corridor; MIT; AIUC",
+  "venue_status": "отчёт об инциденте, не рецензируется",
+  "date_first_public": "2026-09-23"
+ },
+ "vidal-models-identify-as-swarm": {
+  "authors": "julius vidal",
+  "institutions_short": "не указано (независимый автор)",
+  "venue_status": "пост на LessWrong",
+  "date_first_public": "2026-08-21"
+ },
+ "when-agents-coordinate": {
+  "authors": "Giuseppe Destefanis, Tomaso Aste",
+  "institutions_short": "University College London",
+  "venue_status": "препринт arXiv",
+  "date_first_public": "2026-08-17"
+ },
+ "wideseek-r1": {
+  "authors": "Zelai Xu, Zhexuan Xu, Ruize Zhang, Chunyang Zhu, Shi Yu и др. (всего 10)",
+  "institutions_short": "Tsinghua University; Infinigence AI",
+  "venue_status": "препринт arXiv (на рецензии)",
+  "date_first_public": "2026-02-04"
+ },
+ "wiz-moltbook": {
+  "authors": "Gal Nagli",
+  "institutions_short": "Wiz",
+  "venue_status": "блог компании, не рецензируется",
+  "date_first_public": "2026-02-02"
+ },
+ "worse-together": {
+  "authors": "Sahan Paliskara, Nattaput Namchittai, Andrew Lampinen",
+  "institutions_short": "Independent; Stanford University; Anthropic",
+  "venue_status": "препринт arXiv",
+  "date_first_public": "2026-09-30"
+ },
+ "zhang-agents-in-the-wild": {
+  "authors": "Yunbei Zhang, Kai Mei, Ming Liu, Janet Wang, Dimitris N. Metaxas и др. (всего 8)",
+  "institutions_short": "Tulane University; Rutgers University; Iowa State University; Oak Ridge National Laboratory",
+  "venue_status": "препринт arXiv",
+  "date_first_public": "2026-02-07"
+ },
+ "opus5-card-multiagent": {
+  "authors": "Anthropic",
+  "institutions_short": "Anthropic",
+  "venue_status": "системная карта модели",
+  "date_first_public": "2026-07-24",
+  "display_title": "Системная карта Claude Opus 5: §8.11 Multi-Agent"
+ },
+ "anthropic-art-enzymes": {
+  "authors": "Peter H. Yoon, Januka S. Athukoralage, Emmanuel Ameisen, Eric Kauderer-Abrams, Nicholas T. Perry и др. (всего 6)",
+  "institutions_short": "Anthropic",
+  "venue_status": "технический отчёт и анонс лаборатории (без рецензирования)",
+  "date_first_public": "2026-09-23",
+  "display_title": "Autonomous AI agents discover reverse transcriptases with tandem repeat arrays"
+ },
+ "schemes-coordinated-sabotage": {
+  "authors": "Nikolay Radev, Lennart Haas, Benjamin Arnav, Pablo Bernabeu-Pérez",
+  "institutions_short": "SPAR (аффилиации в статье не указаны)",
+  "venue_status": "препринт arXiv; воркшопы ICML 2026",
+  "date_first_public": "2026-05-27"
+ },
+ "aligned-agents-biased-swarm": {
+  "authors": "Keyu Li, Jin Gao, Dequan Wang",
+  "institutions_short": "Shanghai Jiao Tong University; Shanghai Innovation Institute",
+  "venue_status": "ICLR 2026 (постер)",
+  "date_first_public": "2026-04-10"
+ },
+ "robin-futurehouse": {
+  "authors": "Ali E. Ghareeb, Benjamin Chang, Ludovico Mitchener, Angela Yiu, Caralyn J. Szostkiewicz и др. (всего 14)",
+  "institutions_short": "FutureHouse и соавторы",
+  "venue_status": "Nature (рецензируемый журнал), онлайн 19 мая 2026",
+  "date_first_public": "2025-05-19",
+  "display_title": "Robin: A multi-agent system for automating scientific discovery"
+ },
+ "llm-agent-swarm-optimization": {
+  "authors": "Nicola Zomer, Manlio De Domenico",
+  "institutions_short": "University of Padua",
+  "venue_status": "npj Artificial Intelligence (рецензируемый журнал)",
+  "date_first_public": "2026-03-21"
+ },
+ "orchestra-o1": {
+  "authors": "Fan Zhang, Vireo Zhang, Shengju Qian, Haoxuan Li, Hao Wu и др. (всего 11)",
+  "institutions_short": "CUHK; LIGHTSPEED и др.",
+  "venue_status": "препринт arXiv",
+  "date_first_public": "2026-06-10"
+ },
+ "au-aisi-mas-risks": {
+  "authors": "Alistair Reid, Simon O'Callaghan, Dustin Venini, Liam Carroll, Tiberio Caetano",
+  "institutions_short": "Gradient Institute по заказу Australian AI Safety Institute",
+  "venue_status": "технический отчёт по заказу правительства Австралии; препринт arXiv",
+  "date_first_public": "2026-08-10"
+ }
+}

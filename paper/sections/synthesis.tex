@@ -1,0 +1,56 @@
+\section{Cross-cutting synthesis and open problems}
+\label{sec:synthesis}
+\subsection{Where apparently conflicting results agree}
+The principal disagreements become more interpretable when the changed variable is explicit. Table~\ref{tab:contradictions} gives five examples. They do not reduce to a single ranking of architectures. Instead, the studies expose recurring tensions between independence and exchange, coverage and selection, and local progress and integration.
+
+\begin{table*}[t]
+\centering\small
+\begin{tabularx}{\textwidth}{@{}p{0.2\textwidth}YY@{}}
+\toprule
+Apparent conflict & Different interventions or outcomes & Consequence for synthesis\\
+\midrule
+Debate hurts; communication helps & Short answer revision versus exchange of reusable progress under long budgets & Compare both with independent attempts and a strong selector; test whether messages contain new evidence.\\\addlinespace[3pt]
+Peers fail; peers scale & Lock-file engineering failures versus different tools and tasks in Agensh, DeLM, and developer tests & Graph labels are insufficient: scheduling, write isolation, and integration are causal candidates.\\\addlinespace[3pt]
+More memory helps; distributed facts are lost & Persistent artifact reuse versus eliciting private evidence before a decision & Measure acquisition, retrieval, reconciliation, and use separately.\\\addlinespace[3pt]
+Diversity helps; large pools underperform & Complementary errors versus weak-member dilution and imperfect selection & Match capability and measure realized diversity after exchange, not only the initial model pool.\\\addlinespace[3pt]
+Consensus appears; polarization appears & Different priors, network rules, temperatures, prompts, and truth criteria & Report group-state trajectories and correctness together; agreement alone is not a quality metric.\\
+\bottomrule
+\end{tabularx}
+\caption{Interpretive reconciliation across the reviewed evidence. These are synthesis hypotheses about why findings differ, not causal effects estimated by this report. The corresponding source comparisons appear in Sections~\ref{sec:scaling}--\ref{sec:safety} and the evidence appendix.}
+\label{tab:contradictions}
+\end{table*}
+
+One recurrent condition is \emph{verifiability of the exchanged unit}. An executable candidate with a test result can be reused and checked locally. A persuasive explanation without accessible evidence can be copied without improving the receiver's information. Park, CORAL, HiddenBench, and the safety studies make different parts of this contrast visible \citep{test-time-communication,coral,hiddenbench,deepmind-cheating-whistleblowing}. The synthesis suggests evaluating what messages enable recipients to verify, rather than treating communication volume as a proxy for cooperation. This remains a hypothesis because tasks, models, and budgets differ across these sources.
+
+A second condition is \emph{preservation of useful independence}. Independent attempts diversify search; immediate exchange can collapse it. Delaying full-solution sharing may preserve alternatives, while selectively sharing verified partial results can prevent repeated failure. The interaction-tax and independent-vote studies support the first concern, and the shared-artifact optimization studies support the second \citep{interaction-tax,debate-or-vote,coral}. A promising protocol would make the timing and granularity of exchange adaptive. The corpus does not yet establish an optimal policy across tasks.
+
+A third condition is \emph{authority over shared state}. Good ideas, objections, and corrected facts have little effect if the system cannot change a trusted artifact or stop its automatic dissemination. The Lean-conference incident and distributed-memory failures both show that identifying a problem and enforcing a correction are different capabilities \citep{deepmind-cheating-whistleblowing,silo-bench}. This links organizational and safety design: the right to write, approve, quarantine, or revert is part of the collective's effective policy.
+
+\subsection{A research agenda with identifiable contrasts}
+\paragraph{Joint scaling of composition and organization.}
+Existing studies vary model strength, team size, and architecture in uneven combinations. A useful design would compare a fixed heterogeneous pool with capability-matched homogeneous pools, using the same task distribution and budget. It would vary independent selection, a designed organization, a learned policy, and runtime-adaptive peers. The key outcome is the resource frontier, with uncertainty over tasks and seeds. A single configuration winner would not establish a universal architecture.
+
+\paragraph{Long-run independence and information gain.}
+Measure diversity before contact and after each exchange using task-specific error overlap, candidate lineage, and coverage of solution strategies. Embedding distance can supplement these measures but should not stand in for them. Interventions that delay contact, mask model identities, or exchange evidence instead of full answers would help separate imitation from useful updating. Effective group size should be reported as a function of time and task, not one scalar attached to a model family.
+
+\paragraph{Collective memory under concurrent updates.}
+Compare private, shared, and hybrid memory while controlling storage, retrieval calls, read tokens, and write permissions. Insert facts with known provenance, update some, and introduce conflicts. Measure recall, freshness, contradiction resolution, and successful downstream use. Such a design can distinguish a coordination failure from retrieval failure and can test whether a curator helps enough to justify its bottleneck and cost. It would directly address a gap left by downstream-reader scores and uncontrolled engineering campaigns.
+
+\paragraph{Learned cooperation and unsafe transfer.}
+Training for cooperation may improve delegation while changing responses to unauthorized peers. The causal test varies training and communication separately, using the same environment and task solvability. Live peers, scripted notes, and no-peer controls answer different questions and should all be present. Safety outcomes should include refusal, unauthorized attempt, executed action, and recovery, rather than a single binary incident label.
+
+\paragraph{Validation across levels of abstraction.}
+A mechanism inferred from a cached-policy population should be tested in live small groups before extrapolating to large ones. A prompt-based simulation should survive semantically equivalent descriptions and concealed hypotheses. A behavioral intervention should be paired, where weights are available, with mechanistic evidence that separates social influence from the model's prior. These tests would make the analogy with population physics explanatory rather than merely visual.
+
+\paragraph{Measurement of open populations.}
+Platform studies need identity resolution, human-intervention logs, active-process counts, and task participation measures. Registrations cannot substitute for interaction exposure. For an externally posted problem, report the fraction seen, attempted, discussed, and correctly solved. Privacy-preserving trace access could support independent reconstruction without exposing credentials or unrelated user content. Repeated observation windows and protocol changes would be more informative than one large account count.
+
+\subsection{Reporting the system that was actually evaluated}
+A minimal report should name the model snapshots, describe the allowed and realized communication, specify shared-state permissions, and provide both configured and observed scale. Budget reporting should separate input, output, caching, tool, and evaluator costs where available. Evaluation should state how answers or artifacts are selected, what information the baseline receives, and whether successful examples were selected after the fact.
+
+For long tasks, retain event timestamps and artifact ancestry so that coordination cost can be distinguished from idle time and duplicated work. Record failed runs and human interventions. These requirements follow from ambiguities encountered in the reviewed corpus; they are proposed reporting practices, not an asserted community standard. Appendix~\ref{app:evidence} demonstrates how far existing records can be represented without filling absent fields by inference.
+
+\section{Conclusion}
+LLM swarm dynamics arise from the coupling of models, communication, persistent state, and task structure. The evidence supports useful parallelism, learned coordination, and collective discovery in specific settings. It also shows information loss, correlated error, integration overhead, and new routes for unsafe behavior. Neither agent count nor a topology name predicts these outcomes on its own.
+
+The proposed taxonomy makes the relevant distinctions inspectable. Scale must specify concurrency, cumulative participation, or capacity; performance must specify a budget and baseline; organization must distinguish its origin from its observed structure. Shared memory and diversity are resources only when the system can retrieve, verify, and preserve useful information. The next scientific step is to measure those mechanisms under matched conditions across longer tasks and larger populations, while treating productivity and safety as outcomes of the same interacting system.

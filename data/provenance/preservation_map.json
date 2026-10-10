@@ -1,0 +1,567 @@
+[
+ {
+  "page": "about",
+  "title": "Об обзоре: авторы, метод, права, цитирование",
+  "src_words": 0,
+  "ru_words": 410,
+  "ru_lead_words": 0,
+  "en_words": 456,
+  "cards": [
+   0,
+   0,
+   0
+  ],
+  "figures": [
+   0,
+   0,
+   0
+  ],
+  "table_rows": [
+   0,
+   0,
+   0
+  ],
+  "urls": [
+   0,
+   4,
+   4
+  ],
+  "numbers_src": 0,
+  "numbers_kept_on_page": 0,
+  "numbers_moved_elsewhere": 0,
+  "numbers_lost": [],
+  "numbers_ru_missing_in_en": [],
+  "cards_added": [],
+  "changelog": "data/provenance/editorial/about.md"
+ },
+ {
+  "page": "atlas",
+  "title": "Атлас работ",
+  "src_words": 77,
+  "ru_words": 67,
+  "ru_lead_words": 0,
+  "en_words": 82,
+  "cards": [
+   0,
+   0,
+   0
+  ],
+  "figures": [
+   0,
+   0,
+   0
+  ],
+  "table_rows": [
+   0,
+   0,
+   0
+  ],
+  "urls": [
+   0,
+   0,
+   0
+  ],
+  "numbers_src": 2,
+  "numbers_kept_on_page": 1,
+  "numbers_moved_elsewhere": 1,
+  "numbers_lost": [],
+  "numbers_ru_missing_in_en": [],
+  "cards_added": [],
+  "changelog": "data/provenance/editorial/atlas.md"
+ },
+ {
+  "page": "ch01",
+  "title": "Поле сверху: что видно, если посмотреть на все работы сразу",
+  "src_words": 2091,
+  "ru_words": 2042,
+  "ru_lead_words": 0,
+  "en_words": 2440,
+  "cards": [
+   0,
+   0,
+   0
+  ],
+  "figures": [
+   6,
+   6,
+   6
+  ],
+  "table_rows": [
+   11,
+   23,
+   23
+  ],
+  "urls": [
+   0,
+   0,
+   0
+  ],
+  "numbers_src": 80,
+  "numbers_kept_on_page": 80,
+  "numbers_moved_elsewhere": 0,
+  "numbers_lost": [],
+  "numbers_ru_missing_in_en": [],
+  "cards_added": [],
+  "changelog": "data/provenance/editorial/ch01.md"
+ },
+ {
+  "page": "ch02",
+  "title": "Хроника: 2025–2026 в событиях",
+  "src_words": 2529,
+  "ru_words": 2495,
+  "ru_lead_words": 30,
+  "en_words": 2975,
+  "cards": [
+   1,
+   1,
+   1
+  ],
+  "figures": [
+   1,
+   1,
+   1
+  ],
+  "table_rows": [
+   0,
+   0,
+   0
+  ],
+  "urls": [
+   66,
+   67,
+   67
+  ],
+  "numbers_src": 91,
+  "numbers_kept_on_page": 91,
+  "numbers_moved_elsewhere": 0,
+  "numbers_lost": [],
+  "numbers_ru_missing_in_en": [],
+  "cards_added": [],
+  "changelog": "data/provenance/editorial/ch02.md"
+ },
+ {
+  "page": "ch03",
+  "title": "Рой OpenAI и атака на Hugging Face",
+  "src_words": 3305,
+  "ru_words": 3580,
+  "ru_lead_words": 443,
+  "en_words": 4382,
+  "cards": [
+   15,
+   15,
+   15
+  ],
+  "figures": [
+   3,
+   3,
+   3
+  ],
+  "table_rows": [
+   3,
+   3,
+   3
+  ],
+  "urls": [
+   4,
+   4,
+   4
+  ],
+  "numbers_src": 79,
+  "numbers_kept_on_page": 79,
+  "numbers_moved_elsewhere": 0,
+  "numbers_lost": [],
+  "numbers_ru_missing_in_en": [],
+  "cards_added": [],
+  "changelog": "data/provenance/editorial/ch03.md"
+ },
+ {
+  "page": "ch04",
+  "title": "Экономика роя: что покупает параллельность",
+  "src_words": 7536,
+  "ru_words": 7824,
+  "ru_lead_words": 634,
+  "en_words": 9141,
+  "cards": [
+   24,
+   24,
+   24
+  ],
+  "figures": [
+   9,
+   9,
+   9
+  ],
+  "table_rows": [
+   14,
+   24,
+   24
+  ],
+  "urls": [
+   21,
+   21,
+   21
+  ],
+  "numbers_src": 287,
+  "numbers_kept_on_page": 287,
+  "numbers_moved_elsewhere": 0,
+  "numbers_lost": [],
+  "numbers_ru_missing_in_en": [],
+  "cards_added": [],
+  "changelog": "data/provenance/editorial/ch04.md"
+ },
+ {
+  "page": "ch05",
+  "title": "Самоорганизация: структура без начальника",
+  "src_words": 6328,
+  "ru_words": 6248,
+  "ru_lead_words": 358,
+  "en_words": 7439,
+  "cards": [
+   16,
+   16,
+   16
+  ],
+  "figures": [
+   10,
+   10,
+   10
+  ],
+  "table_rows": [
+   27,
+   27,
+   27
+  ],
+  "urls": [
+   30,
+   30,
+   30
+  ],
+  "numbers_src": 234,
+  "numbers_kept_on_page": 233,
+  "numbers_moved_elsewhere": 1,
+  "numbers_lost": [],
+  "numbers_ru_missing_in_en": [],
+  "cards_added": [],
+  "changelog": "data/provenance/editorial/ch05.md"
+ },
+ {
+  "page": "ch06",
+  "title": "Память роя",
+  "src_words": 4470,
+  "ru_words": 4554,
+  "ru_lead_words": 439,
+  "en_words": 5370,
+  "cards": [
+   15,
+   15,
+   15
+  ],
+  "figures": [
+   3,
+   3,
+   3
+  ],
+  "table_rows": [
+   13,
+   13,
+   13
+  ],
+  "urls": [
+   13,
+   13,
+   13
+  ],
+  "numbers_src": 224,
+  "numbers_kept_on_page": 221,
+  "numbers_moved_elsewhere": 3,
+  "numbers_lost": [],
+  "numbers_ru_missing_in_en": [],
+  "cards_added": [],
+  "changelog": "data/provenance/editorial/ch06.md"
+ },
+ {
+  "page": "ch07",
+  "title": "Безопасность роя: команда ведёт себя не так, как модель",
+  "src_words": 5835,
+  "ru_words": 6631,
+  "ru_lead_words": 867,
+  "en_words": 8048,
+  "cards": [
+   30,
+   30,
+   30
+  ],
+  "figures": [
+   6,
+   6,
+   6
+  ],
+  "table_rows": [
+   15,
+   15,
+   15
+  ],
+  "urls": [
+   17,
+   17,
+   17
+  ],
+  "numbers_src": 172,
+  "numbers_kept_on_page": 171,
+  "numbers_moved_elsewhere": 1,
+  "numbers_lost": [],
+  "numbers_ru_missing_in_en": [],
+  "cards_added": [],
+  "changelog": "data/provenance/editorial/ch07.md"
+ },
+ {
+  "page": "ch08",
+  "title": "Эхо, аттракторы и разнообразие моделей",
+  "src_words": 5840,
+  "ru_words": 6007,
+  "ru_lead_words": 558,
+  "en_words": 7117,
+  "cards": [
+   20,
+   20,
+   20
+  ],
+  "figures": [
+   9,
+   9,
+   9
+  ],
+  "table_rows": [
+   10,
+   10,
+   10
+  ],
+  "urls": [
+   12,
+   12,
+   12
+  ],
+  "numbers_src": 222,
+  "numbers_kept_on_page": 222,
+  "numbers_moved_elsewhere": 0,
+  "numbers_lost": [],
+  "numbers_ru_missing_in_en": [],
+  "cards_added": [],
+  "changelog": "data/provenance/editorial/ch08.md"
+ },
+ {
+  "page": "ch09",
+  "title": "Коллективные убеждения: согласие, конформность, раскол",
+  "src_words": 4286,
+  "ru_words": 4973,
+  "ru_lead_words": 444,
+  "en_words": 5910,
+  "cards": [
+   14,
+   16,
+   16
+  ],
+  "figures": [
+   3,
+   3,
+   3
+  ],
+  "table_rows": [
+   19,
+   19,
+   19
+  ],
+  "urls": [
+   19,
+   20,
+   20
+  ],
+  "numbers_src": 154,
+  "numbers_kept_on_page": 154,
+  "numbers_moved_elsewhere": 0,
+  "numbers_lost": [],
+  "numbers_ru_missing_in_en": [],
+  "cards_added": [
+   "coherence-driven-contagion",
+   "rheon-consensus"
+  ],
+  "changelog": "data/provenance/editorial/ch09.md"
+ },
+ {
+  "page": "ch10",
+  "title": "Рои в дикой природе",
+  "src_words": 3981,
+  "ru_words": 3973,
+  "ru_lead_words": 300,
+  "en_words": 4717,
+  "cards": [
+   12,
+   12,
+   12
+  ],
+  "figures": [
+   2,
+   2,
+   2
+  ],
+  "table_rows": [
+   17,
+   17,
+   17
+  ],
+  "urls": [
+   19,
+   19,
+   19
+  ],
+  "numbers_src": 181,
+  "numbers_kept_on_page": 181,
+  "numbers_moved_elsewhere": 0,
+  "numbers_lost": [],
+  "numbers_ru_missing_in_en": [],
+  "cards_added": [],
+  "changelog": "data/provenance/editorial/ch10.md"
+ },
+ {
+  "page": "ch11",
+  "title": "Открытые вопросы",
+  "src_words": 799,
+  "ru_words": 846,
+  "ru_lead_words": 0,
+  "en_words": 1034,
+  "cards": [
+   0,
+   0,
+   0
+  ],
+  "figures": [
+   0,
+   0,
+   0
+  ],
+  "table_rows": [
+   0,
+   0,
+   0
+  ],
+  "urls": [
+   0,
+   0,
+   0
+  ],
+  "numbers_src": 46,
+  "numbers_kept_on_page": 46,
+  "numbers_moved_elsewhere": 0,
+  "numbers_lost": [],
+  "numbers_ru_missing_in_en": [],
+  "cards_added": [],
+  "changelog": "data/provenance/editorial/ch11.md"
+ },
+ {
+  "page": "glossary",
+  "title": "Словарик",
+  "src_words": 422,
+  "ru_words": 470,
+  "ru_lead_words": 0,
+  "en_words": 578,
+  "cards": [
+   0,
+   0,
+   0
+  ],
+  "figures": [
+   0,
+   0,
+   0
+  ],
+  "table_rows": [
+   0,
+   0,
+   0
+  ],
+  "urls": [
+   0,
+   0,
+   0
+  ],
+  "numbers_src": 6,
+  "numbers_kept_on_page": 6,
+  "numbers_moved_elsewhere": 0,
+  "numbers_lost": [],
+  "numbers_ru_missing_in_en": [],
+  "cards_added": [],
+  "changelog": "data/provenance/editorial/glossary.md"
+ },
+ {
+  "page": "index",
+  "title": "Динамика роёв LLM-агентов",
+  "src_words": 1361,
+  "ru_words": 1037,
+  "ru_lead_words": 0,
+  "en_words": 1151,
+  "cards": [
+   0,
+   0,
+   0
+  ],
+  "figures": [
+   0,
+   0,
+   0
+  ],
+  "table_rows": [
+   0,
+   0,
+   0
+  ],
+  "urls": [
+   0,
+   0,
+   0
+  ],
+  "numbers_src": 101,
+  "numbers_kept_on_page": 60,
+  "numbers_moved_elsewhere": 40,
+  "numbers_lost": [
+   "247"
+  ],
+  "numbers_ru_missing_in_en": [],
+  "cards_added": [],
+  "changelog": "data/provenance/editorial/index.md"
+ },
+ {
+  "page": "sources",
+  "title": "Источники",
+  "src_words": 0,
+  "ru_words": 0,
+  "ru_lead_words": 0,
+  "en_words": 0,
+  "cards": [
+   0,
+   0,
+   0
+  ],
+  "figures": [
+   0,
+   0,
+   0
+  ],
+  "table_rows": [
+   0,
+   0,
+   0
+  ],
+  "urls": [
+   0,
+   0,
+   0
+  ],
+  "numbers_src": 0,
+  "numbers_kept_on_page": 0,
+  "numbers_moved_elsewhere": 0,
+  "numbers_lost": [],
+  "numbers_ru_missing_in_en": [],
+  "cards_added": [],
+  "changelog": null
+ }
+]

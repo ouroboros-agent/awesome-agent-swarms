@@ -1,0 +1,34 @@
+\documentclass[tikz,border=3pt]{standalone}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usetikzlibrary{arrows.meta,positioning,fit,backgrounds}
+\definecolor{ink}{RGB}{24,39,53}
+\definecolor{blue}{RGB}{36,82,126}
+\definecolor{pale}{RGB}{239,245,250}
+\definecolor{teal}{RGB}{34,108,104}
+\definecolor{warm}{RGB}{153,88,42}
+\begin{document}
+
+\begin{tikzpicture}[font=\sffamily\small, text=ink,
+  box/.style={draw=blue!60,rounded corners=2pt,fill=pale,text width=3.6cm,
+              minimum height=2.45cm,inner sep=8pt,align=left,anchor=north west}]
+\node[box] (a) at (0,0) {\textbf{1. Model composition}\\[4pt]
+ Same model or mixed models; role prompts; competence and error correlations.};
+\node[box] (b) at (4.25,0) {\textbf{2. Interaction graph}\\[4pt]
+ Directed or undirected; dense or sparse; fixed or dynamic; allowed and realized edges.};
+\node[box] (c) at (8.5,0) {\textbf{3. Exchange medium}\\[4pt]
+ Direct messages, shared files, repositories, tools, or an external platform.};
+\node[box] (d) at (12.75,0) {\textbf{4. Organization}\\[4pt]
+ Designed roles; learned policies; emergent conventions. These can coexist.};
+\node[box] (e) at (0,-2.9) {\textbf{5. Memory}\\[4pt]
+ Private or shared; lifetime; retrieval and updates; provenance and access control.};
+\node[box] (f) at (4.25,-2.9) {\textbf{6. Population scale}\\[4pt]
+ Concurrent $N_{\mathrm{conc}}(t)$; cumulative $N_{\mathrm{cum}}(T)$; configured capacity $N_{\mathrm{cap}}$.};
+\node[box] (g) at (8.5,-2.9) {\textbf{7. Baseline control}\\[4pt]
+ Model and tasks; tools and context; tokens, compute, dollars, or wall-clock time.};
+\node[box] (h) at (12.75,-2.9) {\textbf{8. Budget and outcome}\\[4pt]
+ Quality, latency and cost; diversity, coordination failures and safety outcomes.};
+\node[anchor=north west,align=left,font=\sffamily\small,text width=16.7cm] at (0,-5.9)
+ {A swarm result is conditional on all eight descriptors. An agent count alone does not identify an experimental treatment.};
+\end{tikzpicture}
+\end{document}

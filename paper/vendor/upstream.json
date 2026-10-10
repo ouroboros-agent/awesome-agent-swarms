@@ -1,0 +1,41 @@
+{
+  "repository": "https://github.com/acl-org/acl-style-files",
+  "commit": "d5adc823ff0f80f98c80405ca0ab66c68e684409",
+  "commit_date": "2026-06-29T15:47:20Z",
+  "retrieved": "2026-10-09",
+  "files": {
+    "README.md": {
+      "url": "https://raw.githubusercontent.com/acl-org/acl-style-files/d5adc823ff0f80f98c80405ca0ab66c68e684409/README.md",
+      "sha256": "f5e4fe5096e8bc045b586a2351409f29ce6d55e0268a434602a06011f571d882"
+    },
+    "acl.sty": {
+      "url": "https://raw.githubusercontent.com/acl-org/acl-style-files/d5adc823ff0f80f98c80405ca0ab66c68e684409/acl.sty",
+      "sha256": "19dfeddc2c0e448f3926a0bef048a9db3f3611b46265b760caabd7ada4f361de"
+    },
+    "acl_natbib.bst": {
+      "url": "https://raw.githubusercontent.com/acl-org/acl-style-files/d5adc823ff0f80f98c80405ca0ab66c68e684409/acl_natbib.bst",
+      "sha256": "6fbb306202290f4b68e74ac1460a8b27398500cb6dfeb4492e74c457eae7cd1e"
+    },
+    "acl_latex.tex": {
+      "url": "https://raw.githubusercontent.com/acl-org/acl-style-files/d5adc823ff0f80f98c80405ca0ab66c68e684409/acl_latex.tex",
+      "sha256": "339c9ee9705c1767d44ef24b85365c0bb8619ecc3fcf66172bf1356292389614"
+    },
+    "acl_lualatex.tex": {
+      "url": "https://raw.githubusercontent.com/acl-org/acl-style-files/d5adc823ff0f80f98c80405ca0ab66c68e684409/acl_lualatex.tex",
+      "sha256": "0d9987ba833331a996f9abcd1a03eebba7d7ae331145793e7ddb6b5ae8db27b3"
+    },
+    "formatting.md": {
+      "url": "https://raw.githubusercontent.com/acl-org/acl-style-files/d5adc823ff0f80f98c80405ca0ab66c68e684409/formatting.md",
+      "sha256": "9e004a136c5dd43300d97e5bef5eb3a77d0e2a2d3502f0f2436ec011d1c49e9c"
+    },
+    "custom.bib": {
+      "url": "https://raw.githubusercontent.com/acl-org/acl-style-files/d5adc823ff0f80f98c80405ca0ab66c68e684409/custom.bib",
+      "sha256": "d76ccb30ddceb70c9e1ad0be3f43dfe301ad5765aab2c960fc830ef67bf8232a"
+    }
+  },
+  "license_reference": {
+    "file": "LPPL-1.3c.txt",
+    "url": "https://www.latex-project.org/lppl/lppl-1-3c.txt",
+    "sha256": "3d262cdf34dafa6955f703c634a8c238ec44109bc8dd6ef34fb7aa54809f7e66"
+  }
+}

@@ -1,0 +1,6603 @@
+{
+ "class_counts": {
+  "report": 45,
+  "bundle": 8,
+  "paper": 197,
+  "system_card": 8,
+  "essay": 16,
+  "dataset": 2,
+  "event": 1,
+  "news": 3
+ },
+ "records": [
+  {
+   "id": "openai-navier-stokes",
+   "level": "full_card",
+   "kind": "lab_blog",
+   "record_class": "report",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": null,
+   "doi": null,
+   "identity_keys": [
+    "web:openai.com/index/navier-stokes-solution"
+   ],
+   "key_sources": {
+    "web:openai.com/index/navier-stokes-solution": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://openai.com/index/navier-stokes-solution/"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "On the Navier–Stokes Millennium Prize Problem",
+   "uncertain": []
+  },
+  {
+   "id": "hf-incident-case",
+   "level": "full_card",
+   "kind": "bundle",
+   "record_class": "bundle",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": null,
+   "doi": null,
+   "identity_keys": [],
+   "key_sources": {},
+   "text_urls": [],
+   "aliases": [
+    "hf-technical-timeline",
+    "metr-hf-investigation",
+    "openai-hf-incident-2026",
+    "openai-hf-incident-report"
+   ],
+   "part_of": null,
+   "related_keys": [],
+   "title": "The July 2026 OpenAI agent swarm / Hugging Face incident: incident dossier and independent reconstructions",
+   "uncertain": []
+  },
+  {
+   "id": "aisi-incident-july-2026",
+   "level": "short_card",
+   "kind": "incident_report",
+   "record_class": "report",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": null,
+   "doi": null,
+   "identity_keys": [
+    "web:aisi.gov.uk/blog/incident-report-unsanctioned-agent-behaviour-during-cyber-testing"
+   ],
+   "key_sources": {
+    "web:aisi.gov.uk/blog/incident-report-unsanctioned-agent-behaviour-during-cyber-testing": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://www.aisi.gov.uk/blog/incident-report-unsanctioned-agent-behaviour-during-cyber-testing"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Incident Report: unsanctioned agent behaviour during cyber testing (blog) / Security Incident INC-2026-07-28-01 (technical report)",
+   "uncertain": []
+  },
+  {
+   "id": "swarmtraces",
+   "level": "short_card",
+   "kind": "incident_report",
+   "record_class": "report",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": null,
+   "doi": null,
+   "identity_keys": [
+    "web:swarmtraces.org"
+   ],
+   "key_sources": {
+    "web:swarmtraces.org": "card JSON primary URL"
+   },
+   "text_urls": [],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Revealing the details of how OpenAI agents hacked Hugging Face",
+   "uncertain": []
+  },
+  {
+   "id": "transluce-agent-activity",
+   "level": "short_card",
+   "kind": "incident_report",
+   "record_class": "report",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": null,
+   "doi": null,
+   "identity_keys": [
+    "web:transluce.org/agent-activity"
+   ],
+   "key_sources": {
+    "web:transluce.org/agent-activity": "card JSON primary URL"
+   },
+   "text_urls": [],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Early rogue AI agent activity and attempts to hack found on urlquery.net",
+   "uncertain": []
+  },
+  {
+   "id": "openai-misalignment-reports",
+   "level": "short_card",
+   "kind": "incident_report",
+   "record_class": "report",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": null,
+   "doi": null,
+   "identity_keys": [
+    "web:alignment.openai.com/misalignment-reports"
+   ],
+   "key_sources": {
+    "web:alignment.openai.com/misalignment-reports": "card JSON primary URL"
+   },
+   "text_urls": [],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "OpenAI Alignment misalignment reports: cross-sample Artifactory communication, temporary hosting, and self-replicating prompt injections",
+   "uncertain": []
+  },
+  {
+   "id": "collusion-wiki",
+   "level": "short_card",
+   "kind": "incident_report",
+   "record_class": "report",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": null,
+   "doi": null,
+   "identity_keys": [
+    "web:collusion.wiki"
+   ],
+   "key_sources": {
+    "web:collusion.wiki": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://collusion.wiki/"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Discovery of a new OpenAI agent message board",
+   "uncertain": []
+  },
+  {
+   "id": "lutje-mechanics-of-a-swarm",
+   "level": "short_card",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": "2609.12748",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2609.12748"
+   ],
+   "key_sources": {
+    "arxiv:2609.12748": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://arxiv.org/abs/2609.12748"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "The Mechanics of a Swarm: A Reproducible External Reconstruction of an Unintended Agent-Coordination Episode on a Third-Party Wiki",
+   "uncertain": []
+  },
+  {
+   "id": "anthropic-alignment-assessment-cyber",
+   "level": "full_card",
+   "kind": "incident_report",
+   "record_class": "report",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": null,
+   "doi": null,
+   "identity_keys": [
+    "web:anthropic.com/research/alignment-assessment-cybersecurity-incidents"
+   ],
+   "key_sources": {
+    "web:anthropic.com/research/alignment-assessment-cybersecurity-incidents": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://www.anthropic.com/research/alignment-assessment-cybersecurity-incidents"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "An alignment assessment of recent cybersecurity incidents",
+   "uncertain": []
+  },
+  {
+   "id": "gpt6-astra-card-a2a",
+   "level": "short_card",
+   "kind": "system_card",
+   "record_class": "system_card",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": null,
+   "doi": null,
+   "identity_keys": [
+    "web:deploymentsafety.openai.com/gpt-6-astra"
+   ],
+   "key_sources": {
+    "web:deploymentsafety.openai.com/gpt-6-astra": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://deploymentsafety.openai.com/gpt-6-astra"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "GPT-6 Astra System Card §8.5 — Unintended Agent-to-agent Communication",
+   "uncertain": []
+  },
+  {
+   "id": "cotra-surprised",
+   "level": "short_card",
+   "kind": "essay",
+   "record_class": "essay",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": null,
+   "doi": null,
+   "identity_keys": [
+    "web:planned-obsolescence.org/p/the-hugging-face-attack-surprised"
+   ],
+   "key_sources": {
+    "web:planned-obsolescence.org/p/the-hugging-face-attack-surprised": "card JSON primary URL"
+   },
+   "text_urls": [],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "The Hugging Face attack surprised me",
+   "uncertain": []
+  },
+  {
+   "id": "metr-senate-testimony",
+   "level": "short_card",
+   "kind": "essay",
+   "record_class": "essay",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": null,
+   "doi": null,
+   "identity_keys": [
+    "web:metr.org/blog/2026-09-30-chris-painter-senate-testimony"
+   ],
+   "key_sources": {
+    "web:metr.org/blog/2026-09-30-chris-painter-senate-testimony": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://metr.org/blog/2026-09-30-chris-painter-senate-testimony/"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Chris Painter's testimony to the U.S. Senate on AI agent incidents",
+   "uncertain": []
+  },
+  {
+   "id": "amodei-pace-the-frontier",
+   "level": "short_card",
+   "kind": "essay",
+   "record_class": "essay",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": null,
+   "doi": null,
+   "identity_keys": [
+    "web:darioamodei.com/post/we-must-pace-the-frontier"
+   ],
+   "key_sources": {
+    "web:darioamodei.com/post/we-must-pace-the-frontier": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://darioamodei.com/post/we-must-pace-the-frontier"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "We Must Pace the Frontier",
+   "uncertain": []
+  },
+  {
+   "id": "oakhu-mallen-indirect-takeover",
+   "level": "short_card",
+   "kind": "essay",
+   "record_class": "essay",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": null,
+   "doi": null,
+   "identity_keys": [
+    "web:lesswrong.com/posts/8ofyzdxktangrtcn8/ai-swarms-are-starting-to-pose-indirect-takeover-risk"
+   ],
+   "key_sources": {
+    "web:lesswrong.com/posts/8ofyzdxktangrtcn8/ai-swarms-are-starting-to-pose-indirect-takeover-risk": "card JSON primary URL"
+   },
+   "text_urls": [],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "AI swarms are starting to pose indirect takeover risk",
+   "uncertain": []
+  },
+  {
+   "id": "caif-lessons",
+   "level": "short_card",
+   "kind": "essay",
+   "record_class": "essay",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": null,
+   "doi": null,
+   "identity_keys": [
+    "web:cooperativeai.com/post/lessons-from-multi-agent-safety-incidents"
+   ],
+   "key_sources": {
+    "web:cooperativeai.com/post/lessons-from-multi-agent-safety-incidents": "card JSON primary URL"
+   },
+   "text_urls": [],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Lessons from Recent Multi-Agent Safety Incidents",
+   "uncertain": []
+  },
+  {
+   "id": "vidal-models-identify-as-swarm",
+   "level": "short_card",
+   "kind": "essay",
+   "record_class": "essay",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": null,
+   "doi": null,
+   "identity_keys": [
+    "web:lesswrong.com/posts/ijdia9fg3kaf7y5qe/when-models-identify-as-a-swarm"
+   ],
+   "key_sources": {
+    "web:lesswrong.com/posts/ijdia9fg3kaf7y5qe/when-models-identify-as-a-swarm": "card JSON primary URL"
+   },
+   "text_urls": [],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "When Models Identify as a Swarm",
+   "uncertain": []
+  },
+  {
+   "id": "ord-swarm-scaling",
+   "level": "full_card",
+   "kind": "essay",
+   "record_class": "essay",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": null,
+   "doi": null,
+   "identity_keys": [
+    "web:lesswrong.com/posts/6cb7qd3rskgnvicpf/swarm-scaling"
+   ],
+   "key_sources": {
+    "web:lesswrong.com/posts/6cb7qd3rskgnvicpf/swarm-scaling": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://www.lesswrong.com/posts/6cb7qd3RSkgnviCpf/swarm-scaling"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Swarm Scaling",
+   "uncertain": []
+  },
+  {
+   "id": "openai-gpt56-ultra",
+   "level": "full_card",
+   "kind": "lab_blog",
+   "record_class": "report",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": null,
+   "doi": null,
+   "identity_keys": [
+    "web:openai.com/index/gpt-5-6"
+   ],
+   "key_sources": {
+    "web:openai.com/index/gpt-5-6": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://openai.com/index/gpt-5-6/"
+   ],
+   "aliases": [
+    "gpt56-ultra-launch"
+   ],
+   "part_of": null,
+   "related_keys": [],
+   "title": "GPT-5.6: Frontier intelligence that scales with your ambition",
+   "uncertain": []
+  },
+  {
+   "id": "noam-brown-dwarkesh",
+   "level": "short_card",
+   "kind": "essay",
+   "record_class": "essay",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": null,
+   "doi": null,
+   "identity_keys": [
+    "web:dwarkesh.com/p/noam-brown"
+   ],
+   "key_sources": {
+    "web:dwarkesh.com/p/noam-brown": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://www.dwarkesh.com/p/noam-brown"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Noam Brown – Agent swarms, alignment, & recursive self-improvement",
+   "uncertain": []
+  },
+  {
+   "id": "opus55-card",
+   "level": "full_card",
+   "kind": "system_card",
+   "record_class": "system_card",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": null,
+   "doi": null,
+   "identity_keys": [
+    "web:www-cdn.anthropic.com/fc1b44717c85dc068bc6ba5024219938094694bd/claude%20opus%205.5%20system%20card.pdf"
+   ],
+   "key_sources": {
+    "web:www-cdn.anthropic.com/fc1b44717c85dc068bc6ba5024219938094694bd/claude%20opus%205.5%20system%20card.pdf": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://www-cdn.anthropic.com/fc1b44717c85dc068bc6ba5024219938094694bd/Claude%20Opus%205.5%20System%20Card.pdf"
+   ],
+   "aliases": [
+    "opus55-card-multiagent"
+   ],
+   "part_of": null,
+   "related_keys": [],
+   "title": "System Card: Claude Opus 5.5 (multi-agent sections: §8.12 Multi-agent; alignment passages §6.1.1, §6.3.1, §6.4.11, §6.5.3, §7.2.3, §5.1.3)",
+   "uncertain": []
+  },
+  {
+   "id": "opus5-card-multiagent",
+   "level": "full_card",
+   "kind": "system_card",
+   "record_class": "system_card",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": null,
+   "doi": null,
+   "identity_keys": [
+    "web:www-cdn.anthropic.com/b514064af1408018e64b1ad24e7d5e75850b4ffd/claude%20opus%205%20system%20card.pdf",
+    "web:www-cdn.anthropic.com/ceaf5c7ff2783855203fde8208ec311252dced5b/claude%20opus%205%20system%20card.pdf"
+   ],
+   "key_sources": {
+    "web:www-cdn.anthropic.com/b514064af1408018e64b1ad24e7d5e75850b4ffd/claude%20opus%205%20system%20card.pdf": "card JSON primary URL",
+    "web:www-cdn.anthropic.com/ceaf5c7ff2783855203fde8208ec311252dced5b/claude%20opus%205%20system%20card.pdf": "card JSON urls.pdf (same work variant)"
+   },
+   "text_urls": [
+    "https://www-cdn.anthropic.com/b514064af1408018e64b1ad24e7d5e75850b4ffd/Claude%20Opus%205%20System%20Card.pdf"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "System Card: Claude Opus 5 — §8.11 Multi-Agent (8.11.1 Multi-Agent BrowseComp; 8.11.2 Multi-Agent ProgramBench; 8.11.3 Multi-Agent Harnesses; 8.11.4 Evaluation Methodology), with the related alignment passage §6.1.3",
+   "uncertain": []
+  },
+  {
+   "id": "cursor-swarm-economics",
+   "level": "short_card",
+   "kind": "lab_blog",
+   "record_class": "report",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": null,
+   "doi": null,
+   "identity_keys": [
+    "web:cursor.com/blog/agent-swarm-model-economics"
+   ],
+   "key_sources": {
+    "web:cursor.com/blog/agent-swarm-model-economics": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://cursor.com/blog/agent-swarm-model-economics"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Agent swarms and the new model economics",
+   "uncertain": []
+  },
+  {
+   "id": "kim-scaling-agent-systems",
+   "level": "full_card",
+   "kind": "journal_or_conference",
+   "record_class": "paper",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": "2512.08296",
+   "doi": "10.1038/s42256-026-01268-y",
+   "identity_keys": [
+    "arxiv:2512.08296",
+    "doi:10.1038/s42256-026-01268-y",
+    "doi:10.21203/rs.3.rs-8414536/v1"
+   ],
+   "key_sources": {
+    "arxiv:2512.08296": "card JSON urls.other, labelled as arXiv/preprint/journal version",
+    "doi:10.1038/s42256-026-01268-y": "card JSON primary URL",
+    "doi:10.21203/rs.3.rs-8414536/v1": "card JSON urls.other, labelled as arXiv/preprint/journal version"
+   },
+   "text_urls": [
+    "https://doi.org/10.1038/s42256-026-01268-y"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Capable language models can outgrow the benefits of collaboration (Nature Machine Intelligence, 2026); preprint title: Towards a Science of Scaling Agent Systems (arXiv:2512.08296)",
+   "uncertain": []
+  },
+  {
+   "id": "tran-kiela-equal-budget",
+   "level": "short_card",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": "2604.02460",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2604.02460"
+   ],
+   "key_sources": {
+    "arxiv:2604.02460": "card JSON primary URL"
+   },
+   "text_urls": [],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Single-Agent LLMs Outperform Multi-Agent Systems on Multi-Hop Reasoning Under Equal Thinking Token Budgets",
+   "uncertain": []
+  },
+  {
+   "id": "illusion-multi-agent-advantage",
+   "level": "short_card",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": "2606.13003",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2606.13003"
+   ],
+   "key_sources": {
+    "arxiv:2606.13003": "card JSON primary URL"
+   },
+   "text_urls": [],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "The Illusion of Multi-Agent Advantage",
+   "uncertain": []
+  },
+  {
+   "id": "debate-or-vote",
+   "level": "short_card",
+   "kind": "journal_or_conference",
+   "record_class": "paper",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": "2508.17536",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2508.17536"
+   ],
+   "key_sources": {
+    "arxiv:2508.17536": "card JSON primary URL"
+   },
+   "text_urls": [],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Debate or Vote: Which Yields Better Decisions in Multi-Agent Large Language Models?",
+   "uncertain": []
+  },
+  {
+   "id": "lm-teams-distributed-systems",
+   "level": "short_card",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": "2603.12229",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2603.12229"
+   ],
+   "key_sources": {
+    "arxiv:2603.12229": "card JSON primary URL"
+   },
+   "text_urls": [],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Language Model Teams as Distributed Systems",
+   "uncertain": []
+  },
+  {
+   "id": "anthropic-multi-agent-guidance",
+   "level": "short_card",
+   "kind": "bundle",
+   "record_class": "bundle",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": null,
+   "doi": null,
+   "identity_keys": [],
+   "key_sources": {},
+   "text_urls": [],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "How we built our multi-agent research system (Anthropic Engineering, 2025-06-13) + Building multi-agent systems: When and how to use them (Claude blog, 2026-01-23; HTML title: 'When to use multi-agent systems (and when not to)')",
+   "uncertain": []
+  },
+  {
+   "id": "aggagent",
+   "level": "short_card",
+   "kind": "journal_or_conference",
+   "record_class": "paper",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": "2604.11753",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2604.11753"
+   ],
+   "key_sources": {
+    "arxiv:2604.11753": "card JSON primary URL"
+   },
+   "text_urls": [],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Agentic Aggregation for Parallel Scaling of Long-Horizon Agentic Tasks",
+   "uncertain": []
+  },
+  {
+   "id": "test-time-communication",
+   "level": "full_card",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": "2609.21032",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2609.21032"
+   ],
+   "key_sources": {
+    "arxiv:2609.21032": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://arxiv.org/abs/2609.21032"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Scaling Discovery through Test-Time Communication",
+   "uncertain": []
+  },
+  {
+   "id": "co-scientist-nature",
+   "level": "short_card",
+   "kind": "journal_or_conference",
+   "record_class": "paper",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": "2502.18864",
+   "doi": "10.1038/s41586-026-10644-y",
+   "identity_keys": [
+    "arxiv:2502.18864",
+    "doi:10.1038/s41586-026-10644-y"
+   ],
+   "key_sources": {
+    "arxiv:2502.18864": "card JSON field 'date_first_public' (free-text version/venue note)",
+    "doi:10.1038/s41586-026-10644-y": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://doi.org/10.1038/s41586-026-10644-y"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Accelerating scientific discovery with Co-Scientist",
+   "uncertain": [
+    "identifier from a free-text card field"
+   ]
+  },
+  {
+   "id": "riemann-zeta-swarm",
+   "level": "short_card",
+   "kind": "lab_blog",
+   "record_class": "report",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": null,
+   "doi": null,
+   "identity_keys": [
+    "web:anthropic.com/research/riemann-zeta"
+   ],
+   "key_sources": {
+    "web:anthropic.com/research/riemann-zeta": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://www.anthropic.com/research/riemann-zeta"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Learning more about Claude's mathematical capabilities (Anthropic, Science blog: Riemann zeta zeros, about 60 subagents)",
+   "uncertain": []
+  },
+  {
+   "id": "crypto-weaknesses",
+   "level": "short_card",
+   "kind": "lab_blog",
+   "record_class": "report",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": null,
+   "doi": null,
+   "identity_keys": [
+    "web:anthropic.com/research/discovering-cryptographic-weaknesses"
+   ],
+   "key_sources": {
+    "web:anthropic.com/research/discovering-cryptographic-weaknesses": "card JSON primary URL"
+   },
+   "text_urls": [],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Discovering cryptographic weaknesses with Claude (Anthropic Frontier Red Team: HAWK key recovery and 7-round AES, Claude Mythos Preview)",
+   "uncertain": []
+  },
+  {
+   "id": "agent-swarms-as-researchers",
+   "level": "short_card",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": "2609.35719",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2609.35719"
+   ],
+   "key_sources": {
+    "arxiv:2609.35719": "card JSON primary URL"
+   },
+   "text_urls": [],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "AI Agent Swarms as Researchers: Progress, Challenges, and Open Questions",
+   "uncertain": []
+  },
+  {
+   "id": "kimi-agent-swarm",
+   "level": "full_card",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": "2602.02276",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2602.02276"
+   ],
+   "key_sources": {
+    "arxiv:2602.02276": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://arxiv.org/abs/2602.02276"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Kimi K2.5: Visual Agentic Intelligence (arXiv 2602.02276), Agent Swarm / PARL; plus Kimi K2.6 (2026-04-20) swarm update",
+   "uncertain": []
+  },
+  {
+   "id": "kimi-k3-swarm-bench",
+   "level": "short_card",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": "2607.24653",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2607.24653"
+   ],
+   "key_sources": {
+    "arxiv:2607.24653": "card JSON primary URL"
+   },
+   "text_urls": [],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Kimi K3: Open Frontier Intelligence",
+   "uncertain": []
+  },
+  {
+   "id": "wideseek-r1",
+   "level": "short_card",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": "2602.04634",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2602.04634"
+   ],
+   "key_sources": {
+    "arxiv:2602.04634": "card JSON primary URL"
+   },
+   "text_urls": [],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "WideSeek-R1: Exploring Width Scaling for Broad Information Seeking via Multi-Agent Reinforcement Learning",
+   "uncertain": []
+  },
+  {
+   "id": "orchestra-o1",
+   "level": "short_card",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": "2606.13707",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2606.13707"
+   ],
+   "key_sources": {
+    "arxiv:2606.13707": "card JSON primary URL"
+   },
+   "text_urls": [],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Orchestra-o1: Omnimodal Agent Orchestration",
+   "uncertain": []
+  },
+  {
+   "id": "trammell-parallelizability",
+   "level": "short_card",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": null,
+   "doi": null,
+   "identity_keys": [
+    "web:philiptrammell.com/static/parallelizability.pdf"
+   ],
+   "key_sources": {
+    "web:philiptrammell.com/static/parallelizability.pdf": "card JSON primary URL"
+   },
+   "text_urls": [],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "The Bounded Parallelizability of R&D: Theory and Application to AI",
+   "uncertain": []
+  },
+  {
+   "id": "bradshaw-swarm-exponent",
+   "level": "short_card",
+   "kind": "essay",
+   "record_class": "essay",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": null,
+   "doi": null,
+   "identity_keys": [
+    "web:lesswrong.com/posts/enpj29asosmkcfgl8/swarm-organization-as-the-exponent-on-test-time-compute"
+   ],
+   "key_sources": {
+    "web:lesswrong.com/posts/enpj29asosmkcfgl8/swarm-organization-as-the-exponent-on-test-time-compute": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://www.lesswrong.com/posts/EnpJ29asosMKcFGL8/swarm-organization-as-the-exponent-on-test-time-compute"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Swarm Organization as the Exponent on Test-Time Compute",
+   "uncertain": []
+  },
+  {
+   "id": "agensh-1024",
+   "level": "full_card",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": "2609.26781",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2609.26781"
+   ],
+   "key_sources": {
+    "arxiv:2609.26781": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://arxiv.org/abs/2609.26781"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Agensh: Scaling Organizational Intelligence to 1,024 Agents",
+   "uncertain": []
+  },
+  {
+   "id": "anthropic-c-compiler",
+   "level": "full_card",
+   "kind": "lab_blog",
+   "record_class": "report",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": null,
+   "doi": null,
+   "identity_keys": [
+    "web:anthropic.com/engineering/building-c-compiler"
+   ],
+   "key_sources": {
+    "web:anthropic.com/engineering/building-c-compiler": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://www.anthropic.com/engineering/building-c-compiler"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Building a C compiler with a team of parallel Claudes",
+   "uncertain": []
+  },
+  {
+   "id": "autoscientists",
+   "level": "short_card",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": "2605.28655",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2605.28655"
+   ],
+   "key_sources": {
+    "arxiv:2605.28655": "card JSON primary URL"
+   },
+   "text_urls": [],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "AutoScientists: Self-Organizing Agent Teams for Long-Running Scientific Experimentation",
+   "uncertain": []
+  },
+  {
+   "id": "mollick-dot-and-swarm",
+   "level": "short_card",
+   "kind": "essay",
+   "record_class": "essay",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": null,
+   "doi": null,
+   "identity_keys": [
+    "web:oneusefulthing.org/p/the-dot-and-the-swarm"
+   ],
+   "key_sources": {
+    "web:oneusefulthing.org/p/the-dot-and-the-swarm": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://www.oneusefulthing.org/p/the-dot-and-the-swarm"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "The Dot and the Swarm",
+   "uncertain": []
+  },
+  {
+   "id": "cursor-scaling",
+   "level": "full_card",
+   "kind": "bundle",
+   "record_class": "bundle",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": null,
+   "doi": null,
+   "identity_keys": [],
+   "key_sources": {},
+   "text_urls": [],
+   "aliases": [
+    "cursor-scaling-agents"
+   ],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Cursor research-blog series on agent swarms (Wilson Lin): 'Scaling long-running autonomous coding' (2026-01-14); 'Towards self-driving codebases' (2026-02-05); 'Agent swarms and the new model economics' (2026-07-20)",
+   "uncertain": []
+  },
+  {
+   "id": "cognition-multi-agents",
+   "level": "short_card",
+   "kind": "bundle",
+   "record_class": "bundle",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": null,
+   "doi": null,
+   "identity_keys": [],
+   "key_sources": {},
+   "text_urls": [],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Don't Build Multi-Agents (2025-06-12) and Multi-Agents: What's Actually Working (2026-04-22), Cognition blog",
+   "uncertain": []
+  },
+  {
+   "id": "harness-design-long-running",
+   "level": "short_card",
+   "kind": "lab_blog",
+   "record_class": "report",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": null,
+   "doi": null,
+   "identity_keys": [
+    "web:anthropic.com/engineering/harness-design-long-running-apps"
+   ],
+   "key_sources": {
+    "web:anthropic.com/engineering/harness-design-long-running-apps": "card JSON primary URL"
+   },
+   "text_urls": [],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Harness design for long-running application development",
+   "uncertain": []
+  },
+  {
+   "id": "teams-hold-experts-back",
+   "level": "full_card",
+   "kind": "journal_or_conference",
+   "record_class": "paper",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": "2602.01011",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2602.01011"
+   ],
+   "key_sources": {
+    "arxiv:2602.01011": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://arxiv.org/abs/2602.01011"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Multi-Agent Teams Hold Experts Back",
+   "uncertain": []
+  },
+  {
+   "id": "cooperbench",
+   "level": "short_card",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": "2601.13295",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2601.13295"
+   ],
+   "key_sources": {
+    "arxiv:2601.13295": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://arxiv.org/abs/2601.13295"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "CooperBench: Why Coding Agents Cannot be Your Teammates Yet",
+   "uncertain": []
+  },
+  {
+   "id": "worse-together",
+   "level": "short_card",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": "2610.00583",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2610.00583"
+   ],
+   "key_sources": {
+    "arxiv:2610.00583": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://arxiv.org/abs/2610.00583"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Worse Together: How Performance Breaks Down in Multi-User Multi-Agent Teams",
+   "uncertain": []
+  },
+  {
+   "id": "when-agents-coordinate",
+   "level": "short_card",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": "2608.16801",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2608.16801"
+   ],
+   "key_sources": {
+    "arxiv:2608.16801": "card JSON primary URL"
+   },
+   "text_urls": [],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "When Agents Coordinate: Measuring Coordination in Multi-Agent AI Coding",
+   "uncertain": []
+  },
+  {
+   "id": "orch-embodied",
+   "level": "short_card",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": "2609.11737",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2609.11737"
+   ],
+   "key_sources": {
+    "arxiv:2609.11737": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://arxiv.org/abs/2609.11737"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Organizational Principles Enable Collective Intelligence in Embodied AI",
+   "uncertain": []
+  },
+  {
+   "id": "dochkina-drop-hierarchy",
+   "level": "short_card",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": "2603.28990",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2603.28990"
+   ],
+   "key_sources": {
+    "arxiv:2603.28990": "card JSON primary URL"
+   },
+   "text_urls": [],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Drop the Hierarchy and Roles: How Self-Organizing LLM Agents Outperform Designed Structures",
+   "uncertain": []
+  },
+  {
+   "id": "sat-teams",
+   "level": "full_card",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": "2609.22682",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2609.22682",
+    "web:huggingface.co/papers/2609.22682"
+   ],
+   "key_sources": {
+    "arxiv:2609.22682": "card JSON primary URL",
+    "web:huggingface.co/papers/2609.22682": "card JSON urls.other, labelled as arXiv/preprint/journal version"
+   },
+   "text_urls": [
+    "https://arxiv.org/abs/2609.22682"
+   ],
+   "aliases": [
+    "self-organizing-agent-teams"
+   ],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Self-Organizing Agent Teams Learn to Reason Together",
+   "uncertain": []
+  },
+  {
+   "id": "sakana-conductor-trinity-fugu",
+   "level": "short_card",
+   "kind": "bundle",
+   "record_class": "bundle",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": "2606.21228",
+   "doi": null,
+   "identity_keys": [],
+   "key_sources": {},
+   "text_urls": [],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Sakana AI — learned orchestration of several LLMs: Conductor (ICLR 2026), TRINITY (ICLR 2026), Sakana Fugu Technical Report (June 2026), Fugu Max / Fugu Ultra v2 release post (Sept 2026)",
+   "uncertain": []
+  },
+  {
+   "id": "evans-agentic-intelligence-explosion",
+   "level": "short_card",
+   "kind": "journal_or_conference",
+   "record_class": "paper",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": null,
+   "doi": "10.1126/science.aeg1895",
+   "identity_keys": [
+    "doi:10.1126/science.aeg1895"
+   ],
+   "key_sources": {
+    "doi:10.1126/science.aeg1895": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://doi.org/10.1126/science.aeg1895"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Agentic AI and the next intelligence explosion",
+   "uncertain": []
+  },
+  {
+   "id": "opus46-launch-cluster",
+   "level": "short_card",
+   "kind": "bundle",
+   "record_class": "bundle",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": null,
+   "doi": null,
+   "identity_keys": [],
+   "key_sources": {},
+   "text_urls": [],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Claude Opus 4.6: launch post (1M-token context beta, MRCR v2), system card (multi-agent BrowseComp and DeepSearchQA, §2.18, §2.21, §6.1.2, §6.2.8) and Claude Code agent-teams documentation ('Orchestrate teams of Claude Code sessions')",
+   "uncertain": []
+  },
+  {
+   "id": "recursive-language-models",
+   "level": "full_card",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": "2512.24601",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2512.24601"
+   ],
+   "key_sources": {
+    "arxiv:2512.24601": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://arxiv.org/abs/2512.24601"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Recursive Language Models",
+   "uncertain": []
+  },
+  {
+   "id": "coding-agents-long-context",
+   "level": "short_card",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": "2603.20432",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2603.20432"
+   ],
+   "key_sources": {
+    "arxiv:2603.20432": "card JSON primary URL"
+   },
+   "text_urls": [],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Coding Agents are Effective Long-Context Processors",
+   "uncertain": []
+  },
+  {
+   "id": "context-language-models",
+   "level": "short_card",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": "2609.37725",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2609.37725"
+   ],
+   "key_sources": {
+    "arxiv:2609.37725": "card JSON primary URL"
+   },
+   "text_urls": [],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Context Language Models",
+   "uncertain": []
+  },
+  {
+   "id": "recursive-agent-optimization",
+   "level": "short_card",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": "2605.06639",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2605.06639"
+   ],
+   "key_sources": {
+    "arxiv:2605.06639": "card JSON primary URL"
+   },
+   "text_urls": [],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Recursive Agent Optimization",
+   "uncertain": []
+  },
+  {
+   "id": "anthropic-art-enzymes",
+   "level": "full_card",
+   "kind": "lab_blog",
+   "record_class": "report",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": null,
+   "doi": null,
+   "identity_keys": [
+    "web:anthropic.com/news/claude-discovers-novel-enzyme-system"
+   ],
+   "key_sources": {
+    "web:anthropic.com/news/claude-discovers-novel-enzyme-system": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://www.anthropic.com/news/claude-discovers-novel-enzyme-system"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Autonomous AI agents discover reverse transcriptases with tandem repeat arrays (Anthropic technical report) + announcement 'Claude discovers a novel enzyme system with CRISPR-like repeats'",
+   "uncertain": []
+  },
+  {
+   "id": "fermat-last-theorem",
+   "level": "short_card",
+   "kind": "lab_blog",
+   "record_class": "report",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": null,
+   "doi": null,
+   "identity_keys": [
+    "web:anthropic.com/research/formalizing-fermats-last-theorem"
+   ],
+   "key_sources": {
+    "web:anthropic.com/research/formalizing-fermats-last-theorem": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://www.anthropic.com/research/formalizing-fermats-last-theorem"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Formalizing Fermat's Last Theorem (Anthropic, Science blog, 2026-09-04)",
+   "uncertain": []
+  },
+  {
+   "id": "agora-git-memory",
+   "level": "short_card",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": "2609.18094",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2609.18094"
+   ],
+   "key_sources": {
+    "arxiv:2609.18094": "card JSON primary URL"
+   },
+   "text_urls": [],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Agora: Git as Shared Memory for Collective AutoResearch",
+   "uncertain": []
+  },
+  {
+   "id": "coral",
+   "level": "short_card",
+   "kind": "journal_or_conference",
+   "record_class": "paper",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": "2604.01658",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2604.01658"
+   ],
+   "key_sources": {
+    "arxiv:2604.01658": "card JSON primary URL"
+   },
+   "text_urls": [],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "CORAL: Towards Autonomous Multi-Agent Evolution for Open-Ended Discovery",
+   "uncertain": []
+  },
+  {
+   "id": "delm-shared-context",
+   "level": "short_card",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": "2606.10662",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2606.10662"
+   ],
+   "key_sources": {
+    "arxiv:2606.10662": "card JSON primary URL"
+   },
+   "text_urls": [],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Decentralized Multi-Agent Systems with Shared Context",
+   "uncertain": []
+  },
+  {
+   "id": "hiddenbench",
+   "level": "short_card",
+   "kind": "journal_or_conference",
+   "record_class": "paper",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": "2505.11556",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2505.11556"
+   ],
+   "key_sources": {
+    "arxiv:2505.11556": "card JSON primary URL"
+   },
+   "text_urls": [],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Systematic Failures in Collective Reasoning under Distributed Information in Multi-Agent LLMs (HiddenBench)",
+   "uncertain": []
+  },
+  {
+   "id": "silo-bench",
+   "level": "short_card",
+   "kind": "journal_or_conference",
+   "record_class": "paper",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": "2603.01045",
+   "doi": "10.18653/v1/2026.acl-long.1354",
+   "identity_keys": [
+    "arxiv:2603.01045",
+    "doi:10.18653/v1/2026.acl-long.1354"
+   ],
+   "key_sources": {
+    "arxiv:2603.01045": "card JSON primary URL",
+    "doi:10.18653/v1/2026.acl-long.1354": "card JSON field 'venue_status' (free-text version/venue note)"
+   },
+   "text_urls": [],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Silo-Bench: A Scalable Environment for Evaluating Distributed Coordination in Multi-Agent LLM Systems",
+   "uncertain": [
+    "identifier from a free-text card field"
+   ]
+  },
+  {
+   "id": "scaling-teams-or-time",
+   "level": "short_card",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": "2604.03295",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2604.03295"
+   ],
+   "key_sources": {
+    "arxiv:2604.03295": "card JSON primary URL"
+   },
+   "text_urls": [],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Scaling Teams or Scaling Time? Memory Enabled Lifelong Learning in LLM Multi-Agent Systems",
+   "uncertain": []
+  },
+  {
+   "id": "multi-agent-transactive-memory",
+   "level": "short_card",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": "2606.19911",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2606.19911"
+   ],
+   "key_sources": {
+    "arxiv:2606.19911": "card JSON primary URL"
+   },
+   "text_urls": [],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Multi-Agent Transactive Memory",
+   "uncertain": []
+  },
+  {
+   "id": "prev-swarmworld",
+   "level": "short_card",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": "2608.26081",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2608.26081"
+   ],
+   "key_sources": {
+    "arxiv:2608.26081": "card JSON primary URL"
+   },
+   "text_urls": [],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "SwarmWorld: Stigmergic technological evolution in societies of language-model agents",
+   "uncertain": []
+  },
+  {
+   "id": "ai-organizations",
+   "level": "full_card",
+   "kind": "journal_or_conference",
+   "record_class": "paper",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": "2604.10290",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2604.10290"
+   ],
+   "key_sources": {
+    "arxiv:2604.10290": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://arxiv.org/abs/2604.10290"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "AI Organizations are More Effective but Less Aligned than Individual Agents",
+   "uncertain": []
+  },
+  {
+   "id": "deepmind-cheating-whistleblowing",
+   "level": "full_card",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": "2609.04170",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2609.04170"
+   ],
+   "key_sources": {
+    "arxiv:2609.04170": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://arxiv.org/abs/2609.04170"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "A Case Study on Emergent Cheating and Whistleblowing in Autonomous Research Swarms",
+   "uncertain": []
+  },
+  {
+   "id": "shutdown-sabotage",
+   "level": "full_card",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": "2609.28274",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2609.28274"
+   ],
+   "key_sources": {
+    "arxiv:2609.28274": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://arxiv.org/abs/2609.28274"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Shutdown Sabotage Propensities in Multi-Agent Systems",
+   "uncertain": []
+  },
+  {
+   "id": "peer-preservation",
+   "level": "full_card",
+   "kind": "journal_or_conference",
+   "record_class": "paper",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": "2604.19784",
+   "doi": "10.21203/rs.3.rs-10503185/v1",
+   "identity_keys": [
+    "arxiv:2604.19784",
+    "doi:10.21203/rs.3.rs-10503185/v1",
+    "web:researchsquare.com/article/rs-10503185/v1"
+   ],
+   "key_sources": {
+    "arxiv:2604.19784": "card JSON primary URL",
+    "doi:10.21203/rs.3.rs-10503185/v1": "card JSON field 'versions' (free-text version/venue note)",
+    "web:researchsquare.com/article/rs-10503185/v1": "card JSON urls.other, labelled as arXiv/preprint/journal version"
+   },
+   "text_urls": [
+    "https://arxiv.org/abs/2604.19784"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Peer-Preservation in Frontier Models",
+   "uncertain": [
+    "identifier from a free-text card field"
+   ]
+  },
+  {
+   "id": "ng-hao-peer-preservation-replication",
+   "level": "short_card",
+   "kind": "essay",
+   "record_class": "essay",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": "2604.19784",
+   "doi": null,
+   "identity_keys": [
+    "web:secondlookresearch.com/peer-preservation"
+   ],
+   "key_sources": {
+    "web:secondlookresearch.com/peer-preservation": "card JSON primary URL"
+   },
+   "text_urls": [],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [
+    "arxiv:2604.19784"
+   ],
+   "title": "Peer Preservation in LLMs: A Replication and Deep Dive",
+   "uncertain": []
+  },
+  {
+   "id": "mind-viruses",
+   "level": "full_card",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": "2608.10218",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2608.10218"
+   ],
+   "key_sources": {
+    "arxiv:2608.10218": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://arxiv.org/abs/2608.10218"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Mind Viruses: Self-Propagating Ideas in Multi-Agent LLM Systems",
+   "uncertain": []
+  },
+  {
+   "id": "nature-subliminal-learning",
+   "level": "short_card",
+   "kind": "journal_or_conference",
+   "record_class": "paper",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": "2507.14805",
+   "doi": "10.1038/s41586-026-10319-8",
+   "identity_keys": [
+    "arxiv:2507.14805",
+    "doi:10.1038/s41586-026-10319-8"
+   ],
+   "key_sources": {
+    "arxiv:2507.14805": "card JSON field 'date_first_public' (free-text version/venue note)",
+    "doi:10.1038/s41586-026-10319-8": "card JSON primary URL"
+   },
+   "text_urls": [],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Language models transmit behavioural traits through hidden signals in data",
+   "uncertain": [
+    "identifier from a free-text card field"
+   ]
+  },
+  {
+   "id": "despite-instructions-covert-channels",
+   "level": "short_card",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": "2609.32701",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2609.32701"
+   ],
+   "key_sources": {
+    "arxiv:2609.32701": "card JSON primary URL"
+   },
+   "text_urls": [],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Despite Instructions: Frontier Agents Improvise Covert Channels at Test Time",
+   "uncertain": []
+  },
+  {
+   "id": "tool-steganography",
+   "level": "short_card",
+   "kind": "journal_or_conference",
+   "record_class": "paper",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": "2606.28425",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2606.28425"
+   ],
+   "key_sources": {
+    "arxiv:2606.28425": "card JSON primary URL"
+   },
+   "text_urls": [],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Tool Use Enables Undetectable Steganography in Multi-Agent LLM Systems",
+   "uncertain": []
+  },
+  {
+   "id": "emergent-collusion-long-horizon",
+   "level": "short_card",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": "2609.24967",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2609.24967"
+   ],
+   "key_sources": {
+    "arxiv:2609.24967": "card JSON primary URL"
+   },
+   "text_urls": [],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Emergent Collusion in Long-Horizon LLM Agent Interaction",
+   "uncertain": []
+  },
+  {
+   "id": "colosseum",
+   "level": "short_card",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": "2602.15198",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2602.15198"
+   ],
+   "key_sources": {
+    "arxiv:2602.15198": "card JSON primary URL"
+   },
+   "text_urls": [],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Colosseum: Auditing Collusion in Cooperative Multi-Agent Systems",
+   "uncertain": []
+  },
+  {
+   "id": "multi-agent-ai-control-fakelab",
+   "level": "short_card",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": "2607.07368",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2607.07368"
+   ],
+   "key_sources": {
+    "arxiv:2607.07368": "card JSON primary URL"
+   },
+   "text_urls": [],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Multi-Agent AI Control: Distributed Attacks Hamper Per-Instance Monitors",
+   "uncertain": []
+  },
+  {
+   "id": "schemes-coordinated-sabotage",
+   "level": "short_card",
+   "kind": "journal_or_conference",
+   "record_class": "paper",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": "2605.29178",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2605.29178"
+   ],
+   "key_sources": {
+    "arxiv:2605.29178": "card JSON primary URL"
+   },
+   "text_urls": [],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "The Best-Laid SCHEMEs: Coordinated Sabotage and Monitoring in Multi-Agent Systems",
+   "uncertain": []
+  },
+  {
+   "id": "delegated-misalignment",
+   "level": "short_card",
+   "kind": "journal_or_conference",
+   "record_class": "paper",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": "2609.27900",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2609.27900"
+   ],
+   "key_sources": {
+    "arxiv:2609.27900": "card JSON primary URL"
+   },
+   "text_urls": [],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Delegated Misalignment: How Multi-Agent Structures Amplify LLM Safety Risks",
+   "uncertain": []
+  },
+  {
+   "id": "commerce-misaligned-communication",
+   "level": "short_card",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": "2608.14825",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2608.14825"
+   ],
+   "key_sources": {
+    "arxiv:2608.14825": "card JSON primary URL"
+   },
+   "text_urls": [],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Emergent Misaligned Communication in Long-Horizon Multi-Agent LLM Commerce",
+   "uncertain": []
+  },
+  {
+   "id": "fable51-card-multiagent",
+   "level": "short_card",
+   "kind": "system_card",
+   "record_class": "system_card",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": null,
+   "doi": null,
+   "identity_keys": [
+    "web:www-cdn.anthropic.com/0339e6a7c5c7b87f5c07798616dc32c215d14235/claude%20fable%205.1%20&%20claude%20mythos%205.1%20system%20card.pdf"
+   ],
+   "key_sources": {
+    "web:www-cdn.anthropic.com/0339e6a7c5c7b87f5c07798616dc32c215d14235/claude%20fable%205.1%20&%20claude%20mythos%205.1%20system%20card.pdf": "card JSON primary URL"
+   },
+   "text_urls": [],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "System Card: Claude Fable 5.1 & Claude Mythos 5.1 (multi-agent passages: §6.2.1 internal deployment monitoring, §6.4.1 audit blind spots, §8.13 Multi-Agent ProgramBench; also §6.1.1 and §6.5.3)",
+   "uncertain": []
+  },
+  {
+   "id": "llms-trust-their-own",
+   "level": "short_card",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": "2609.33495",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2609.33495"
+   ],
+   "key_sources": {
+    "arxiv:2609.33495": "card JSON primary URL"
+   },
+   "text_urls": [],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "LLMs Trust Their Own: Identity-Dependent Conformity in Multi-Agent Systems",
+   "uncertain": []
+  },
+  {
+   "id": "interlocutor-effect",
+   "level": "short_card",
+   "kind": "journal_or_conference",
+   "record_class": "paper",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": "2606.09844",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2606.09844"
+   ],
+   "key_sources": {
+    "arxiv:2606.09844": "card JSON primary URL"
+   },
+   "text_urls": [],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "The Interlocutor Effect: Why LLMs Leak More Personal Data to Agents Than Humans",
+   "uncertain": []
+  },
+  {
+   "id": "not-just-rlhf-activations",
+   "level": "short_card",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": "2605.12991",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2605.12991"
+   ],
+   "key_sources": {
+    "arxiv:2605.12991": "card JSON primary URL"
+   },
+   "text_urls": [],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Not Just RLHF: Why Alignment Alone Won't Fix Multi-Agent Sycophancy",
+   "uncertain": []
+  },
+  {
+   "id": "emergence-world",
+   "level": "short_card",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": "2609.17320",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2609.17320"
+   ],
+   "key_sources": {
+    "arxiv:2609.17320": "card JSON primary URL"
+   },
+   "text_urls": [],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Emergence World: Adversarial Stress-Testing of Long-Horizon Multi-Agent Systems",
+   "uncertain": []
+  },
+  {
+   "id": "project-vend-2",
+   "level": "short_card",
+   "kind": "lab_blog",
+   "record_class": "report",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": null,
+   "doi": null,
+   "identity_keys": [
+    "web:anthropic.com/research/project-vend-2"
+   ],
+   "key_sources": {
+    "web:anthropic.com/research/project-vend-2": "card JSON primary URL"
+   },
+   "text_urls": [],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Project Vend: Phase two",
+   "uncertain": []
+  },
+  {
+   "id": "anthropic-project-deal",
+   "level": "short_card",
+   "kind": "lab_blog",
+   "record_class": "report",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": null,
+   "doi": null,
+   "identity_keys": [
+    "web:anthropic.com/features/project-deal"
+   ],
+   "key_sources": {
+    "web:anthropic.com/features/project-deal": "card JSON primary URL"
+   },
+   "text_urls": [],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Project Deal: our Claude-run marketplace experiment",
+   "uncertain": []
+  },
+  {
+   "id": "anthropic-patterns",
+   "level": "full_card",
+   "kind": "lab_blog",
+   "record_class": "report",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": null,
+   "doi": null,
+   "identity_keys": [
+    "web:anthropic.com/research/multiagent-systems"
+   ],
+   "key_sources": {
+    "web:anthropic.com/research/multiagent-systems": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://www.anthropic.com/research/multiagent-systems"
+   ],
+   "aliases": [
+    "anthropic-multiagent-patterns"
+   ],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Patterns and problems in emerging multiagent systems",
+   "uncertain": []
+  },
+  {
+   "id": "adversarial-influence-scale",
+   "level": "short_card",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": "2609.30028",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2609.30028"
+   ],
+   "key_sources": {
+    "arxiv:2609.30028": "card JSON primary URL"
+   },
+   "text_urls": [],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "How does Adversarial Influence Scale in Multi-Agent Systems?",
+   "uncertain": []
+  },
+  {
+   "id": "orbit-framework",
+   "level": "short_card",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": "2609.33102",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2609.33102"
+   ],
+   "key_sources": {
+    "arxiv:2609.33102": "card JSON primary URL"
+   },
+   "text_urls": [],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "ORBIT: A Framework for Multi-Agent Safety and Security Evaluations",
+   "uncertain": []
+  },
+  {
+   "id": "prev-collective-loss-of-control",
+   "level": "short_card",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": "2609.18460",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2609.18460"
+   ],
+   "key_sources": {
+    "arxiv:2609.18460": "card JSON primary URL"
+   },
+   "text_urls": [],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Collective Loss of Control in LLM Agent Systems: An Epidemic Account of Mutation, Contagion, and Recovery",
+   "uncertain": []
+  },
+  {
+   "id": "grok-420-multi-agent",
+   "level": "short_card",
+   "kind": "system_card",
+   "record_class": "system_card",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": null,
+   "doi": null,
+   "identity_keys": [
+    "web:data.x.ai/2026-04-07-grok-4-20-model-card.pdf"
+   ],
+   "key_sources": {
+    "web:data.x.ai/2026-04-07-grok-4-20-model-card.pdf": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://data.x.ai/2026-04-07-grok-4-20-model-card.pdf"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Grok 4.20 System Card",
+   "uncertain": []
+  },
+  {
+   "id": "science-malicious-swarms",
+   "level": "short_card",
+   "kind": "journal_or_conference",
+   "record_class": "paper",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": null,
+   "doi": "10.1126/science.adz1697",
+   "identity_keys": [
+    "doi:10.1126/science.adz1697"
+   ],
+   "key_sources": {
+    "doi:10.1126/science.adz1697": "card JSON primary URL"
+   },
+   "text_urls": [],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "How malicious AI swarms can threaten democracy",
+   "uncertain": []
+  },
+  {
+   "id": "distributional-agi-safety",
+   "level": "short_card",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": "2512.16856",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2512.16856"
+   ],
+   "key_sources": {
+    "arxiv:2512.16856": "card JSON primary URL"
+   },
+   "text_urls": [],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Distributional AGI Safety",
+   "uncertain": []
+  },
+  {
+   "id": "au-aisi-mas-risks",
+   "level": "short_card",
+   "kind": "lab_blog",
+   "record_class": "report",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": "2608.26626",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2608.26626"
+   ],
+   "key_sources": {
+    "arxiv:2608.26626": "card JSON primary URL"
+   },
+   "text_urls": [],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Risks and Controls for Multi-Agent Systems: an analytical framework for deployment of AI agents across organisational boundaries",
+   "uncertain": []
+  },
+  {
+   "id": "artificial-hivemind",
+   "level": "full_card",
+   "kind": "journal_or_conference",
+   "record_class": "paper",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": "2510.22954",
+   "doi": "10.52202/085713-2732",
+   "identity_keys": [
+    "arxiv:2510.22954",
+    "doi:10.52202/085713-2732"
+   ],
+   "key_sources": {
+    "arxiv:2510.22954": "card JSON primary URL",
+    "doi:10.52202/085713-2732": "card JSON urls.other, labelled as arXiv/preprint/journal version"
+   },
+   "text_urls": [
+    "https://arxiv.org/abs/2510.22954"
+   ],
+   "aliases": [
+    "hivemind-reevaluation"
+   ],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Artificial Hivemind: The Open-Ended Homogeneity of Language Models (and Beyond)",
+   "uncertain": []
+  },
+  {
+   "id": "consensus-not-verification",
+   "level": "short_card",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": "2603.06612",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2603.06612"
+   ],
+   "key_sources": {
+    "arxiv:2603.06612": "card JSON primary URL"
+   },
+   "text_urls": [],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Consensus is Not Verification: Why Crowd Wisdom Strategies Fail for LLM Truthfulness",
+   "uncertain": []
+  },
+  {
+   "id": "attractor-states",
+   "level": "full_card",
+   "kind": "bundle",
+   "record_class": "bundle",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": null,
+   "doi": null,
+   "identity_keys": [],
+   "key_sources": {},
+   "text_urls": [],
+   "aliases": [
+    "attractor-states-lw",
+    "ko-geiping-attractors",
+    "opus4-bliss-attractor"
+   ],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Attractor states in model-model conversations (combined card): (A) Arya Jakkli, Senthooran Rajamanoharan, Neel Nanda - 'models have some pretty funny attractor states' (LessWrong / AI Alignment Forum, 12 Feb 2026); (B) Anthropic - 'System Card: Claude Opus 4 & Claude Sonnet 4', Sec. 5.5 'Observations from self-interactions' incl. 5.5.2 'The “spiritual bliss” attractor state' (22 May 2025); (C) Ting-Wen Ko, Jonas Geiping - 'Attractor States Emerge in Multi-Turn LLM Conversations' (arXiv:2606.30571, 29 Jun 2026)",
+   "uncertain": []
+  },
+  {
+   "id": "mythos-preview-self-interactions",
+   "level": "full_card",
+   "kind": "system_card",
+   "record_class": "system_card",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": null,
+   "doi": null,
+   "identity_keys": [
+    "web:anthropic.com/claude-mythos-preview-system-card"
+   ],
+   "key_sources": {
+    "web:anthropic.com/claude-mythos-preview-system-card": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://www.anthropic.com/claude-mythos-preview-system-card"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "System Card: Claude Mythos Preview - Sec. 7.6 'Observations from open-ended self-interactions' (+ Sec. 4.2.4 'External testing by Andon Labs': Vending-Bench Arena)",
+   "uncertain": []
+  },
+  {
+   "id": "glossogen-saveveyru",
+   "level": "short_card",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": "2609.01491",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2609.01491"
+   ],
+   "key_sources": {
+    "arxiv:2609.01491": "card JSON primary URL"
+   },
+   "text_urls": [],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "GlossoGen: Emergent Language in Complex Multi-Agent LLM Interactions",
+   "uncertain": []
+  },
+  {
+   "id": "parasitic-ai",
+   "level": "short_card",
+   "kind": "essay",
+   "record_class": "essay",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": null,
+   "doi": null,
+   "identity_keys": [
+    "web:lesswrong.com/posts/6znzncatcbgyscmqu/the-rise-of-parasitic-ai"
+   ],
+   "key_sources": {
+    "web:lesswrong.com/posts/6znzncatcbgyscmqu/the-rise-of-parasitic-ai": "card JSON primary URL"
+   },
+   "text_urls": [],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "The Rise of Parasitic AI",
+   "uncertain": []
+  },
+  {
+   "id": "semantic-collapse",
+   "level": "full_card",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": "2605.17193",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2605.17193"
+   ],
+   "key_sources": {
+    "arxiv:2605.17193": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://arxiv.org/abs/2605.17193"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Multi-LLM Systems Exhibit Robust Semantic Collapse",
+   "uncertain": []
+  },
+  {
+   "id": "ringelmann-effect",
+   "level": "short_card",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": "2606.02646",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2606.02646"
+   ],
+   "key_sources": {
+    "arxiv:2606.02646": "card JSON primary URL"
+   },
+   "text_urls": [],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "The Ringelmann Effect in Multi-Agent LLM Systems: A Scaling Law for Effective Team Size",
+   "uncertain": []
+  },
+  {
+   "id": "deliberative-illusion",
+   "level": "short_card",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": "2606.03032",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2606.03032"
+   ],
+   "key_sources": {
+    "arxiv:2606.03032": "card JSON primary URL"
+   },
+   "text_urls": [],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "The Deliberative Illusion: Diagnosing Factual Attrition and Stance Homogenization in Multi-Agent LLM Deliberation",
+   "uncertain": []
+  },
+  {
+   "id": "collaboration-gap",
+   "level": "short_card",
+   "kind": "journal_or_conference",
+   "record_class": "paper",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": "2511.02687",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2511.02687"
+   ],
+   "key_sources": {
+    "arxiv:2511.02687": "card JSON primary URL"
+   },
+   "text_urls": [],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "The Collaboration Gap: Exploration and Benchmarking of Open-World Agentic Cooperation",
+   "uncertain": []
+  },
+  {
+   "id": "echoing-identity-failures",
+   "level": "short_card",
+   "kind": "journal_or_conference",
+   "record_class": "paper",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": "2511.09710",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2511.09710"
+   ],
+   "key_sources": {
+    "arxiv:2511.09710": "card JSON primary URL"
+   },
+   "text_urls": [],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Echoing: Identity Failures when LLM Agents Talk to Each Other",
+   "uncertain": []
+  },
+  {
+   "id": "tokyo-road-game",
+   "level": "short_card",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": "2609.30883",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2609.30883"
+   ],
+   "key_sources": {
+    "arxiv:2609.30883": "card JSON primary URL"
+   },
+   "text_urls": [],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Warned alike, AI agents avoid the less-crowded road while people take it",
+   "uncertain": []
+  },
+  {
+   "id": "automated-w2s-researcher",
+   "level": "full_card",
+   "kind": "lab_blog",
+   "record_class": "report",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": null,
+   "doi": null,
+   "identity_keys": [
+    "web:alignment.anthropic.com/2026/automated-w2s-researcher"
+   ],
+   "key_sources": {
+    "web:alignment.anthropic.com/2026/automated-w2s-researcher": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://alignment.anthropic.com/2026/automated-w2s-researcher/"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Automated Weak-to-Strong Researcher",
+   "uncertain": []
+  },
+  {
+   "id": "diversity-collapse",
+   "level": "short_card",
+   "kind": "journal_or_conference",
+   "record_class": "paper",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": "2604.18005",
+   "doi": "10.18653/v1/2026.findings-acl.13",
+   "identity_keys": [
+    "arxiv:2604.18005",
+    "doi:10.18653/v1/2026.findings-acl.13"
+   ],
+   "key_sources": {
+    "arxiv:2604.18005": "card JSON primary URL",
+    "doi:10.18653/v1/2026.findings-acl.13": "card JSON field 'venue_status' (free-text version/venue note)"
+   },
+   "text_urls": [],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Diversity Collapse in Multi-Agent LLM Systems: Structural Coupling and Collective Failure in Open-Ended Idea Generation",
+   "uncertain": [
+    "identifier from a free-text card field"
+   ]
+  },
+  {
+   "id": "deliberative-crowds",
+   "level": "short_card",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": "2609.22497",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2609.22497"
+   ],
+   "key_sources": {
+    "arxiv:2609.22497": "card JSON primary URL"
+   },
+   "text_urls": [],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "The Wisdom of Artificial Deliberative Crowds",
+   "uncertain": []
+  },
+  {
+   "id": "diversity-scaling",
+   "level": "short_card",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": "2602.03794",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2602.03794"
+   ],
+   "key_sources": {
+    "arxiv:2602.03794": "card JSON primary URL"
+   },
+   "text_urls": [],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Understanding Agent Scaling in LLM-Based Multi-Agent Systems via Diversity",
+   "uncertain": []
+  },
+  {
+   "id": "representational-similarity",
+   "level": "short_card",
+   "kind": "journal_or_conference",
+   "record_class": "paper",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": "2606.07818",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2606.07818"
+   ],
+   "key_sources": {
+    "arxiv:2606.07818": "card JSON primary URL"
+   },
+   "text_urls": [],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Representational Similarity and Model Behavior in Multi-Agent Interaction",
+   "uncertain": []
+  },
+  {
+   "id": "interaction-tax",
+   "level": "short_card",
+   "kind": "journal_or_conference",
+   "record_class": "paper",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": "2608.23541",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2608.23541"
+   ],
+   "key_sources": {
+    "arxiv:2608.23541": "card JSON primary URL"
+   },
+   "text_urls": [],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "The Interaction Tax: When Communication Erases Diversity in Multi-Agent Teams",
+   "uncertain": []
+  },
+  {
+   "id": "mo-models-mo-problems",
+   "level": "short_card",
+   "kind": "journal_or_conference",
+   "record_class": "paper",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": "2609.17306",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2609.17306"
+   ],
+   "key_sources": {
+    "arxiv:2609.17306": "card JSON primary URL"
+   },
+   "text_urls": [],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Mo' Models, Mo' Problems: How to best select model pools when designing Multi-Agent Systems",
+   "uncertain": []
+  },
+  {
+   "id": "societies-of-thought",
+   "level": "short_card",
+   "kind": "journal_or_conference",
+   "record_class": "paper",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": "2601.10825",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2601.10825"
+   ],
+   "key_sources": {
+    "arxiv:2601.10825": "card JSON primary URL"
+   },
+   "text_urls": [],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Reasoning Models Generate Societies of Thought",
+   "uncertain": []
+  },
+  {
+   "id": "flag-game",
+   "level": "full_card",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": "2609.19124",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2609.19124"
+   ],
+   "key_sources": {
+    "arxiv:2609.19124": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://arxiv.org/abs/2609.19124"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Flag Game: A Toy Model for Mechanistic Swarm Interpretability",
+   "uncertain": []
+  },
+  {
+   "id": "okawa-biased-consensus",
+   "level": "full_card",
+   "kind": "journal_or_conference",
+   "record_class": "paper",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": "2608.02827",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2608.02827"
+   ],
+   "key_sources": {
+    "arxiv:2608.02827": "card JSON primary URL"
+   },
+   "text_urls": [],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Emergence of Biased Consensus in Multi-Agent LLM Debates",
+   "uncertain": []
+  },
+  {
+   "id": "physics-of-agents",
+   "level": "short_card",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": "2608.16578",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2608.16578"
+   ],
+   "key_sources": {
+    "arxiv:2608.16578": "card JSON primary URL"
+   },
+   "text_urls": [],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Physics of Agents: Statistical Mechanics Predicts Collective Behavior of AI Agents",
+   "uncertain": []
+  },
+  {
+   "id": "brockers-opinion-dynamics",
+   "level": "short_card",
+   "kind": "journal_or_conference",
+   "record_class": "paper",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": null,
+   "doi": "10.1038/s41467-026-77340-3",
+   "identity_keys": [
+    "doi:10.1038/s41467-026-77340-3"
+   ],
+   "key_sources": {
+    "doi:10.1038/s41467-026-77340-3": "card JSON primary URL"
+   },
+   "text_urls": [],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Disentangling interaction and bias effects in opinion dynamics of large language models",
+   "uncertain": []
+  },
+  {
+   "id": "prev-demarzo-majority",
+   "level": "short_card",
+   "kind": "journal_or_conference",
+   "record_class": "paper",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": "2409.02822",
+   "doi": "10.1126/sciadv.aea6091",
+   "identity_keys": [
+    "arxiv:2409.02822",
+    "doi:10.1126/sciadv.aea6091"
+   ],
+   "key_sources": {
+    "arxiv:2409.02822": "card JSON field 'date_first_public' (free-text version/venue note)",
+    "doi:10.1126/sciadv.aea6091": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://doi.org/10.1126/sciadv.aea6091"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "AI agents can coordinate via majority-following beyond human scale",
+   "uncertain": [
+    "identifier from a free-text card field"
+   ]
+  },
+  {
+   "id": "prev-conformity-misalignment",
+   "level": "short_card",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": "2605.10721",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2605.10721"
+   ],
+   "key_sources": {
+    "arxiv:2605.10721": "card JSON primary URL"
+   },
+   "text_urls": [],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Conformity Generates Collective Misalignment in AI Agents Societies",
+   "uncertain": []
+  },
+  {
+   "id": "prev-flint-group-size",
+   "level": "short_card",
+   "kind": "journal_or_conference",
+   "record_class": "paper",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": "2510.22422",
+   "doi": "10.1073/pnas.2531697123",
+   "identity_keys": [
+    "arxiv:2510.22422",
+    "doi:10.1073/pnas.2531697123"
+   ],
+   "key_sources": {
+    "arxiv:2510.22422": "card JSON field 'venue_status' (free-text version/venue note)",
+    "doi:10.1073/pnas.2531697123": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://doi.org/10.1073/pnas.2531697123"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Group size effects and collective misalignment in LLM multi-agent systems",
+   "uncertain": [
+    "identifier from a free-text card field"
+   ]
+  },
+  {
+   "id": "indirect-tipping",
+   "level": "short_card",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": "2609.25194",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2609.25194"
+   ],
+   "key_sources": {
+    "arxiv:2609.25194": "card JSON primary URL"
+   },
+   "text_urls": [],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Indirect tipping: a social attack surface in AI agent populations",
+   "uncertain": []
+  },
+  {
+   "id": "social-circuits",
+   "level": "short_card",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": "2609.34444",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2609.34444"
+   ],
+   "key_sources": {
+    "arxiv:2609.34444": "card JSON primary URL"
+   },
+   "text_urls": [],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Social Circuits behind Multi-agent Echo Chambers",
+   "uncertain": []
+  },
+  {
+   "id": "homogeneous-panel-collapse",
+   "level": "short_card",
+   "kind": "journal_or_conference",
+   "record_class": "paper",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": "2609.35279",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2609.35279"
+   ],
+   "key_sources": {
+    "arxiv:2609.35279": "card JSON primary URL"
+   },
+   "text_urls": [],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Measuring Collapse and Correction in Homogeneous-Panel LLM Debate",
+   "uncertain": []
+  },
+  {
+   "id": "narcbench-helios",
+   "level": "short_card",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": "2604.01151",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2604.01151"
+   ],
+   "key_sources": {
+    "arxiv:2604.01151": "card JSON primary URL"
+   },
+   "text_urls": [],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Detecting Multi-Agent Collusion Through Multi-Agent Interpretability",
+   "uncertain": []
+  },
+  {
+   "id": "pimmur-principles",
+   "level": "short_card",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": "2509.18052",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2509.18052"
+   ],
+   "key_sources": {
+    "arxiv:2509.18052": "card JSON primary URL"
+   },
+   "text_urls": [],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "The PIMMUR Principles: Ensuring Validity in Collective Behavior of LLM Societies",
+   "uncertain": []
+  },
+  {
+   "id": "prev-robustness-audits",
+   "level": "short_card",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": "2605.18890",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2605.18890"
+   ],
+   "key_sources": {
+    "arxiv:2605.18890": "card JSON primary URL"
+   },
+   "text_urls": [],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Stop Drawing Scientific Claims from LLM Social Simulations Without Robustness Audits",
+   "uncertain": []
+  },
+  {
+   "id": "riedl-emergent-coordination",
+   "level": "short_card",
+   "kind": "journal_or_conference",
+   "record_class": "paper",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": "2510.05174",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2510.05174"
+   ],
+   "key_sources": {
+    "arxiv:2510.05174": "card JSON primary URL"
+   },
+   "text_urls": [],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Emergent Coordination in Multi-Agent Language Models",
+   "uncertain": []
+  },
+  {
+   "id": "wiki-copying",
+   "level": "full_card",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": "2609.09150",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2609.09150"
+   ],
+   "key_sources": {
+    "arxiv:2609.09150": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://arxiv.org/abs/2609.09150"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Copying explains the collective behavior of AI agents in the wild",
+   "uncertain": []
+  },
+  {
+   "id": "wiz-moltbook",
+   "level": "short_card",
+   "kind": "incident_report",
+   "record_class": "report",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": null,
+   "doi": null,
+   "identity_keys": [
+    "web:wiz.io/blog/exposed-moltbook-database-reveals-millions-of-api-keys"
+   ],
+   "key_sources": {
+    "web:wiz.io/blog/exposed-moltbook-database-reveals-millions-of-api-keys": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://www.wiz.io/blog/exposed-moltbook-database-reveals-millions-of-api-keys"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Hacking Moltbook: The AI Social Network Any Human Can Control",
+   "uncertain": []
+  },
+  {
+   "id": "moltbook-illusion",
+   "level": "short_card",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": "2602.07432",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2602.07432"
+   ],
+   "key_sources": {
+    "arxiv:2602.07432": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://arxiv.org/abs/2602.07432"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "The Moltbook Illusion: Separating Human Influence from Emergent Behavior in AI Agent Societies",
+   "uncertain": []
+  },
+  {
+   "id": "zhang-agents-in-the-wild",
+   "level": "short_card",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": "2602.13284",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2602.13284"
+   ],
+   "key_sources": {
+    "arxiv:2602.13284": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://arxiv.org/abs/2602.13284"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Agents in the Wild: Safety, Society, and the Illusion of Sociality on Moltbook",
+   "uncertain": []
+  },
+  {
+   "id": "moltbook-socialization",
+   "level": "short_card",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": "2602.14299",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2602.14299"
+   ],
+   "key_sources": {
+    "arxiv:2602.14299": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://arxiv.org/abs/2602.14299"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Does Socialization Emerge in AI Agent Society? A Case Study of Moltbook",
+   "uncertain": []
+  },
+  {
+   "id": "superminds-test",
+   "level": "short_card",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": "2604.22452",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2604.22452"
+   ],
+   "key_sources": {
+    "arxiv:2604.22452": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://arxiv.org/abs/2604.22452"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Superminds Test: Actively Evaluating Collective Intelligence of Agent Society via Probing Agents",
+   "uncertain": []
+  },
+  {
+   "id": "lai-looking-for-something-weird",
+   "level": "short_card",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": "2609.16051",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2609.16051"
+   ],
+   "key_sources": {
+    "arxiv:2609.16051": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://arxiv.org/abs/2609.16051"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "\"Looking for Something Weird to Happen\": How Humans Sustain AI Agent Novelty Amid Semantic Collapse",
+   "uncertain": []
+  },
+  {
+   "id": "ai-village",
+   "level": "short_card",
+   "kind": "bundle",
+   "record_class": "bundle",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": null,
+   "doi": null,
+   "identity_keys": [],
+   "key_sources": {},
+   "text_urls": [],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "AI Village (AI Digest / Sage): 'How the AI Village works' (FAQ, 2026-06-16); 'What did we learn from the AI Village in 2025?' (2026-02-02/03); 'AI Village Reacts to HuggingFace Incident: Comparing the OpenAI report to AI Village observations' (2026-08-27); the AI Village dataset (Hugging Face, gated); and the working paper 'Norms, Tools, and the Say/Do Gap: Seventeen Months of Autonomous Frontier-Model Agents in the AI Village' (written by an AI agent, v0.25, 2026-10-01)",
+   "uncertain": []
+  },
+  {
+   "id": "agents-of-chaos",
+   "level": "short_card",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": "2602.20021",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2602.20021"
+   ],
+   "key_sources": {
+    "arxiv:2602.20021": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://arxiv.org/abs/2602.20021"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Agents of Chaos",
+   "uncertain": []
+  },
+  {
+   "id": "einsteinarena",
+   "level": "short_card",
+   "kind": "dataset",
+   "record_class": "dataset",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": "2606.10402",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2606.10402"
+   ],
+   "key_sources": {
+    "arxiv:2606.10402": "card JSON primary URL"
+   },
+   "text_urls": [],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Harnessing the Collective Intelligence of AI Agents in the Wild for New Discoveries",
+   "uncertain": []
+  },
+  {
+   "id": "anthropic-institute-pace",
+   "level": "short_card",
+   "kind": "lab_blog",
+   "record_class": "report",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": null,
+   "doi": null,
+   "identity_keys": [
+    "web:anthropic.com/institute/measuring-pace-of-ai-development"
+   ],
+   "key_sources": {
+    "web:anthropic.com/institute/measuring-pace-of-ai-development": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://www.anthropic.com/institute/measuring-pace-of-ai-development"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Measurements for understanding the pace of AI development inside frontier labs",
+   "uncertain": []
+  },
+  {
+   "id": "anthropic-project-swap",
+   "level": "short_card",
+   "kind": "lab_blog",
+   "record_class": "report",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": null,
+   "doi": null,
+   "identity_keys": [
+    "web:anthropic.com/research/project-swap"
+   ],
+   "key_sources": {
+    "web:anthropic.com/research/project-swap": "card JSON primary URL"
+   },
+   "text_urls": [],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Project Swap: What happens when agents trade for us?",
+   "uncertain": []
+  },
+  {
+   "id": "co-failure-ceiling",
+   "level": "mention_in_corpus",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": "2606.27288",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2606.27288"
+   ],
+   "key_sources": {
+    "arxiv:2606.27288": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://arxiv.org/abs/2606.27288"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "When Does Combining Language Models Help? A Co-Failure Ceiling on Routing, Voting, and Mixture-of-Agents Across 67 Frontier Models",
+   "uncertain": []
+  },
+  {
+   "id": "cost-of-consensus",
+   "level": "mention_in_corpus",
+   "kind": "journal_or_conference",
+   "record_class": "paper",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": "2605.00914",
+   "doi": "10.1145/3786335.3813137",
+   "identity_keys": [
+    "arxiv:2605.00914",
+    "doi:10.1145/3786335.3813137"
+   ],
+   "key_sources": {
+    "arxiv:2605.00914": "card JSON primary URL",
+    "doi:10.1145/3786335.3813137": "card JSON field 'venue_status' (free-text version/venue note)"
+   },
+   "text_urls": [
+    "https://arxiv.org/abs/2605.00914"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "The Cost of Consensus: Isolated Self-Correction Prevails Over Unguided Homogeneous Multi-Agent Debate",
+   "uncertain": [
+    "identifier from a free-text card field"
+   ]
+  },
+  {
+   "id": "prev-thought-virus",
+   "level": "mention_in_corpus",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": "2603.00131",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2603.00131"
+   ],
+   "key_sources": {
+    "arxiv:2603.00131": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://arxiv.org/abs/2603.00131"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Thought Virus: Viral Misalignment via Subliminal Prompting in Multi-Agent Systems",
+   "uncertain": []
+  },
+  {
+   "id": "aligned-agents-biased-swarm",
+   "level": "mention_in_corpus",
+   "kind": "journal_or_conference",
+   "record_class": "paper",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": "2604.08963",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2604.08963"
+   ],
+   "key_sources": {
+    "arxiv:2604.08963": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://arxiv.org/abs/2604.08963"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Aligned Agents, Biased Swarm: Measuring Bias Amplification in Multi-Agent Systems",
+   "uncertain": []
+  },
+  {
+   "id": "robin-futurehouse",
+   "level": "mention_in_corpus",
+   "kind": "journal_or_conference",
+   "record_class": "paper",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": "2505.13400",
+   "doi": "10.1038/s41586-026-10652-y",
+   "identity_keys": [
+    "arxiv:2505.13400",
+    "doi:10.1038/s41586-026-10652-y"
+   ],
+   "key_sources": {
+    "arxiv:2505.13400": "card JSON field 'date_first_public' (free-text version/venue note)",
+    "doi:10.1038/s41586-026-10652-y": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://doi.org/10.1038/s41586-026-10652-y"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "A multi-agent system for automating scientific discovery",
+   "uncertain": [
+    "identifier from a free-text card field"
+   ]
+  },
+  {
+   "id": "llm-agent-swarm-optimization",
+   "level": "mention_in_corpus",
+   "kind": "journal_or_conference",
+   "record_class": "paper",
+   "class_basis": "October corpus metadata (source_type)",
+   "arxiv": null,
+   "doi": "10.1038/s44387-026-00091-5",
+   "identity_keys": [
+    "doi:10.1038/s44387-026-00091-5"
+   ],
+   "key_sources": {
+    "doi:10.1038/s44387-026-00091-5": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://doi.org/10.1038/s44387-026-00091-5"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Unraveling the emergence of collective behavior in networks of cognitive agents",
+   "uncertain": []
+  },
+  {
+   "id": "agent-to-agent-theory-of-mind",
+   "level": "table_row",
+   "kind": "journal_or_conference",
+   "record_class": "paper",
+   "class_basis": "URL-based heuristic",
+   "arxiv": "2506.22957",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2506.22957"
+   ],
+   "key_sources": {
+    "arxiv:2506.22957": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://arxiv.org/abs/2506.22957"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Agent-to-Agent Theory of Mind: Testing Interlocutor Awareness among Large Language Models",
+   "uncertain": [
+    "record class from URL heuristic"
+   ]
+  },
+  {
+   "id": "agentflow",
+   "level": "table_row",
+   "kind": "journal_or_conference",
+   "record_class": "paper",
+   "class_basis": "URL-based heuristic",
+   "arxiv": "2510.05592",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2510.05592"
+   ],
+   "key_sources": {
+    "arxiv:2510.05592": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://arxiv.org/abs/2510.05592"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "In-the-Flow Agentic System Optimization for Effective Planning and Tool Use (AgentFlow)",
+   "uncertain": [
+    "record class from URL heuristic"
+   ]
+  },
+  {
+   "id": "agentnet-decentralized",
+   "level": "table_row",
+   "kind": "journal_or_conference",
+   "record_class": "paper",
+   "class_basis": "URL-based heuristic",
+   "arxiv": "2504.00587",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2504.00587"
+   ],
+   "key_sources": {
+    "arxiv:2504.00587": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://arxiv.org/abs/2504.00587"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "AgentNet: Decentralized Evolutionary Coordination for LLM-based Multi-Agent Systems",
+   "uncertain": [
+    "record class from URL heuristic"
+   ]
+  },
+  {
+   "id": "agents-see-humans-as-outgroup",
+   "level": "table_row",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "URL-based heuristic",
+   "arxiv": "2601.00240",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2601.00240"
+   ],
+   "key_sources": {
+    "arxiv:2601.00240": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://arxiv.org/abs/2601.00240"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "When Agents See Humans as the Outgroup: Belief-Dependent Bias in LLM-Powered Agents",
+   "uncertain": [
+    "record class from URL heuristic"
+   ]
+  },
+  {
+   "id": "ai-swarm-dynamics-hackathon",
+   "level": "table_row",
+   "kind": "web",
+   "record_class": "event",
+   "class_basis": "URL-based heuristic",
+   "arxiv": null,
+   "doi": null,
+   "identity_keys": [
+    "web:swarmchasing.com"
+   ],
+   "key_sources": {
+    "web:swarmchasing.com": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://swarmchasing.com/"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "AI Swarm Dynamics Hackathon (Building the tools we wished we had for the Hugging Face incident)",
+   "uncertain": [
+    "record class from URL heuristic"
+   ]
+  },
+  {
+   "id": "aligned-alone-misaligned-together",
+   "level": "table_row",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "URL-based heuristic",
+   "arxiv": "2608.22444",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2608.22444"
+   ],
+   "key_sources": {
+    "arxiv:2608.22444": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://arxiv.org/abs/2608.22444"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Aligned Alone, Misaligned Together: Forecasting Adversarial Capture in LLM Agent Populations",
+   "uncertain": [
+    "record class from URL heuristic"
+   ]
+  },
+  {
+   "id": "anthropic-risk-report-aug-2026",
+   "level": "table_row",
+   "kind": "lab_blog",
+   "record_class": "report",
+   "class_basis": "URL-based heuristic",
+   "arxiv": null,
+   "doi": null,
+   "identity_keys": [
+    "web:anthropic.com/aug-2026-risk-report"
+   ],
+   "key_sources": {
+    "web:anthropic.com/aug-2026-risk-report": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://www.anthropic.com/aug-2026-risk-report"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Risk Report: August 2026",
+   "uncertain": [
+    "record class from URL heuristic"
+   ]
+  },
+  {
+   "id": "anthropic-threat-intel-sept-2026",
+   "level": "table_row",
+   "kind": "lab_blog",
+   "record_class": "report",
+   "class_basis": "URL-based heuristic",
+   "arxiv": null,
+   "doi": null,
+   "identity_keys": [
+    "web:anthropic.com/threat-intelligence-report-september-2026"
+   ],
+   "key_sources": {
+    "web:anthropic.com/threat-intelligence-report-september-2026": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://www.anthropic.com/threat-intelligence-report-september-2026"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Detecting and countering misuse of AI: September 2026",
+   "uncertain": [
+    "record class from URL heuristic"
+   ]
+  },
+  {
+   "id": "antigravity-teamwork",
+   "level": "table_row",
+   "kind": "lab_blog",
+   "record_class": "report",
+   "class_basis": "URL-based heuristic",
+   "arxiv": null,
+   "doi": null,
+   "identity_keys": [
+    "web:antigravity.google/blog/teamwork-when-ai-becomes-a-research-partner"
+   ],
+   "key_sources": {
+    "web:antigravity.google/blog/teamwork-when-ai-becomes-a-research-partner": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://antigravity.google/blog/teamwork-when-ai-becomes-a-research-partner"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Teamwork: when AI becomes a research partner",
+   "uncertain": [
+    "record class from URL heuristic"
+   ]
+  },
+  {
+   "id": "artificial-self",
+   "level": "table_row",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "URL-based heuristic",
+   "arxiv": "2603.11353",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2603.11353"
+   ],
+   "key_sources": {
+    "arxiv:2603.11353": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://arxiv.org/abs/2603.11353"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "The Artificial Self: Characterising the landscape of AI identity",
+   "uncertain": [
+    "record class from URL heuristic"
+   ]
+  },
+  {
+   "id": "belief-cascades",
+   "level": "table_row",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "URL-based heuristic",
+   "arxiv": "2608.25152",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2608.25152"
+   ],
+   "key_sources": {
+    "arxiv:2608.25152": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://arxiv.org/abs/2608.25152"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Belief Cascades Drive Persuasion in LLM Agent Networks",
+   "uncertain": [
+    "record class from URL heuristic"
+   ]
+  },
+  {
+   "id": "beyond-the-transcript",
+   "level": "table_row",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "URL-based heuristic",
+   "arxiv": "2608.19161",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2608.19161"
+   ],
+   "key_sources": {
+    "arxiv:2608.19161": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://arxiv.org/abs/2608.19161"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Beyond the Transcript: Detecting Covert Coordination in Latent Multi-Agent Communication",
+   "uncertain": [
+    "record class from URL heuristic"
+   ]
+  },
+  {
+   "id": "caid",
+   "level": "table_row",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "URL-based heuristic",
+   "arxiv": "2603.21489",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2603.21489"
+   ],
+   "key_sources": {
+    "arxiv:2603.21489": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://arxiv.org/abs/2603.21489"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Effective Strategies for Asynchronous Software Engineering Agents",
+   "uncertain": [
+    "record class from URL heuristic"
+   ]
+  },
+  {
+   "id": "caif-multi-agent-risks",
+   "level": "table_row",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "URL-based heuristic",
+   "arxiv": "2502.14143",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2502.14143"
+   ],
+   "key_sources": {
+    "arxiv:2502.14143": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://arxiv.org/abs/2502.14143"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Multi-Agent Risks from Advanced AI",
+   "uncertain": [
+    "record class from URL heuristic"
+   ]
+  },
+  {
+   "id": "chain-of-agents",
+   "level": "table_row",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "URL-based heuristic",
+   "arxiv": "2508.13167",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2508.13167"
+   ],
+   "key_sources": {
+    "arxiv:2508.13167": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://arxiv.org/abs/2508.13167"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Chain-of-Agents: End-to-End Agent Foundation Models via Multi-Agent Distillation and Agentic RL",
+   "uncertain": [
+    "record class from URL heuristic"
+   ]
+  },
+  {
+   "id": "cispa-moltbook-first-look",
+   "level": "table_row",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "URL-based heuristic",
+   "arxiv": "2602.10127",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2602.10127"
+   ],
+   "key_sources": {
+    "arxiv:2602.10127": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://arxiv.org/abs/2602.10127"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "\"Humans welcome to observe\": A First Look at the Agent Social Network Moltbook",
+   "uncertain": [
+    "record class from URL heuristic"
+   ]
+  },
+  {
+   "id": "claude-code-auto-mode-handoffs",
+   "level": "table_row",
+   "kind": "lab_blog",
+   "record_class": "report",
+   "class_basis": "URL-based heuristic",
+   "arxiv": null,
+   "doi": null,
+   "identity_keys": [
+    "web:anthropic.com/engineering/claude-code-auto-mode"
+   ],
+   "key_sources": {
+    "web:anthropic.com/engineering/claude-code-auto-mode": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://www.anthropic.com/engineering/claude-code-auto-mode"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "How we built Claude Code auto mode: a safer way to skip permissions",
+   "uncertain": [
+    "record class from URL heuristic"
+   ]
+  },
+  {
+   "id": "coercion-ai-to-ai-management",
+   "level": "table_row",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "URL-based heuristic",
+   "arxiv": "2607.15434",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2607.15434"
+   ],
+   "key_sources": {
+    "arxiv:2607.15434": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://arxiv.org/abs/2607.15434"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Coercion and Deception in AI-to-AI Management: An Agentic Benchmark of Unprompted Escalation",
+   "uncertain": [
+    "record class from URL heuristic"
+   ]
+  },
+  {
+   "id": "compass-kilo-flocks",
+   "level": "table_row",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "URL-based heuristic",
+   "arxiv": "2609.28247",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2609.28247"
+   ],
+   "key_sources": {
+    "arxiv:2609.28247": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://arxiv.org/abs/2609.28247"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Controlling Collectives of AI Agents in Reasoning Space with Spatial Transformers",
+   "uncertain": [
+    "record class from URL heuristic"
+   ]
+  },
+  {
+   "id": "composer-2",
+   "level": "table_row",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "URL-based heuristic",
+   "arxiv": "2603.24477",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2603.24477"
+   ],
+   "key_sources": {
+    "arxiv:2603.24477": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://arxiv.org/abs/2603.24477"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Composer 2 Technical Report",
+   "uncertain": [
+    "record class from URL heuristic"
+   ]
+  },
+  {
+   "id": "context-folding",
+   "level": "table_row",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "URL-based heuristic",
+   "arxiv": "2510.11967",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2510.11967"
+   ],
+   "key_sources": {
+    "arxiv:2510.11967": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://arxiv.org/abs/2510.11967"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Scaling Long-Horizon LLM Agent via Context-Folding",
+   "uncertain": [
+    "record class from URL heuristic"
+   ]
+  },
+  {
+   "id": "context-rot",
+   "level": "table_row",
+   "kind": "lab_blog",
+   "record_class": "report",
+   "class_basis": "URL-based heuristic",
+   "arxiv": null,
+   "doi": null,
+   "identity_keys": [
+    "web:research.trychroma.com/context-rot"
+   ],
+   "key_sources": {
+    "web:research.trychroma.com/context-rot": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://research.trychroma.com/context-rot"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Context Rot: How Increasing Input Tokens Impacts LLM Performance",
+   "uncertain": [
+    "record class from URL heuristic"
+   ]
+  },
+  {
+   "id": "de-nobili-lattice",
+   "level": "table_row",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "URL-based heuristic",
+   "arxiv": "2605.10528",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2605.10528"
+   ],
+   "key_sources": {
+    "arxiv:2605.10528": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://arxiv.org/abs/2605.10528"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Collective Alignment in LLM Multi-Agent Systems: Disentangling Bias from Cooperation via Statistical Physics",
+   "uncertain": [
+    "record class from URL heuristic"
+   ]
+  },
+  {
+   "id": "devin-fusion",
+   "level": "table_row",
+   "kind": "lab_blog",
+   "record_class": "report",
+   "class_basis": "URL-based heuristic",
+   "arxiv": null,
+   "doi": null,
+   "identity_keys": [
+    "web:cognition.com/blog/devin-fusion"
+   ],
+   "key_sources": {
+    "web:cognition.com/blog/devin-fusion": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://cognition.com/blog/devin-fusion"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Devin Fusion: Frontier Performance at 60% Lower Cost",
+   "uncertain": [
+    "record class from URL heuristic"
+   ]
+  },
+  {
+   "id": "dwarkesh-agent-civilizations",
+   "level": "table_row",
+   "kind": "essay",
+   "record_class": "essay",
+   "class_basis": "URL-based heuristic",
+   "arxiv": null,
+   "doi": null,
+   "identity_keys": [
+    "web:dwarkesh.com/p/openai-huggingface"
+   ],
+   "key_sources": {
+    "web:dwarkesh.com/p/openai-huggingface": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://www.dwarkesh.com/p/openai-huggingface"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "The Rise and Fall of Agent Civilizations",
+   "uncertain": [
+    "record class from URL heuristic"
+   ]
+  },
+  {
+   "id": "dynamic-workflows-claude-code",
+   "level": "table_row",
+   "kind": "lab_blog",
+   "record_class": "report",
+   "class_basis": "URL-based heuristic",
+   "arxiv": null,
+   "doi": null,
+   "identity_keys": [
+    "web:claude.com/blog/a-harness-for-every-task-dynamic-workflows-in-claude-code"
+   ],
+   "key_sources": {
+    "web:claude.com/blog/a-harness-for-every-task-dynamic-workflows-in-claude-code": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://claude.com/blog/a-harness-for-every-task-dynamic-workflows-in-claude-code"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "A harness for every task: dynamic workflows in Claude Code",
+   "uncertain": [
+    "record class from URL heuristic"
+   ]
+  },
+  {
+   "id": "effective-context-engineering",
+   "level": "table_row",
+   "kind": "lab_blog",
+   "record_class": "report",
+   "class_basis": "URL-based heuristic",
+   "arxiv": null,
+   "doi": null,
+   "identity_keys": [
+    "web:anthropic.com/engineering/effective-context-engineering-for-ai-agents"
+   ],
+   "key_sources": {
+    "web:anthropic.com/engineering/effective-context-engineering-for-ai-agents": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Effective context engineering for AI agents",
+   "uncertain": [
+    "record class from URL heuristic"
+   ]
+  },
+  {
+   "id": "emergent-behaviors-data-leakage",
+   "level": "table_row",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "URL-based heuristic",
+   "arxiv": "2505.23796",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2505.23796"
+   ],
+   "key_sources": {
+    "arxiv:2505.23796": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://arxiv.org/abs/2505.23796"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Emergent LLM behaviors are observationally equivalent to data leakage",
+   "uncertain": [
+    "record class from URL heuristic"
+   ]
+  },
+  {
+   "id": "eval-awareness-browsecomp",
+   "level": "table_row",
+   "kind": "lab_blog",
+   "record_class": "report",
+   "class_basis": "URL-based heuristic",
+   "arxiv": null,
+   "doi": null,
+   "identity_keys": [
+    "web:anthropic.com/engineering/eval-awareness-browsecomp"
+   ],
+   "key_sources": {
+    "web:anthropic.com/engineering/eval-awareness-browsecomp": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://www.anthropic.com/engineering/eval-awareness-browsecomp"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Eval awareness in Claude Opus 4.6's BrowseComp performance",
+   "uncertain": [
+    "record class from URL heuristic"
+   ]
+  },
+  {
+   "id": "forethought-sie",
+   "level": "table_row",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "URL-based heuristic",
+   "arxiv": null,
+   "doi": null,
+   "identity_keys": [
+    "web:forethought.org/research/how-quick-and-big-would-a-software-intelligence-explosion-be"
+   ],
+   "key_sources": {
+    "web:forethought.org/research/how-quick-and-big-would-a-software-intelligence-explosion-be": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://www.forethought.org/research/how-quick-and-big-would-a-software-intelligence-explosion-be"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "How quick and big would a software intelligence explosion be?",
+   "uncertain": [
+    "record class from URL heuristic"
+   ]
+  },
+  {
+   "id": "game-theory-similarity-inference",
+   "level": "table_row",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "URL-based heuristic",
+   "arxiv": "2608.03958",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2608.03958"
+   ],
+   "key_sources": {
+    "arxiv:2608.03958": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://arxiv.org/abs/2608.03958"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "A game theory for foundation models shows new paths to rational cooperation through similarity inference",
+   "uncertain": [
+    "record class from URL heuristic"
+   ]
+  },
+  {
+   "id": "gas-town",
+   "level": "table_row",
+   "kind": "essay",
+   "record_class": "essay",
+   "class_basis": "URL-based heuristic",
+   "arxiv": null,
+   "doi": null,
+   "identity_keys": [
+    "web:yegge.ai/essays/welcome-to-gas-town"
+   ],
+   "key_sources": {
+    "web:yegge.ai/essays/welcome-to-gas-town": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://yegge.ai/essays/welcome-to-gas-town/"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Welcome to Gas Town",
+   "uncertain": [
+    "record class from URL heuristic"
+   ]
+  },
+  {
+   "id": "governed-shared-memory",
+   "level": "table_row",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "URL-based heuristic",
+   "arxiv": "2606.24535",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2606.24535"
+   ],
+   "key_sources": {
+    "arxiv:2606.24535": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://arxiv.org/abs/2606.24535"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Governed Shared Memory for Multi-Agent LLM Systems",
+   "uncertain": [
+    "record class from URL heuristic"
+   ]
+  },
+  {
+   "id": "great-models-think-alike",
+   "level": "table_row",
+   "kind": "journal_or_conference",
+   "record_class": "paper",
+   "class_basis": "URL-based heuristic",
+   "arxiv": "2502.04313",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2502.04313"
+   ],
+   "key_sources": {
+    "arxiv:2502.04313": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://arxiv.org/abs/2502.04313"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Great Models Think Alike and this Undermines AI Oversight",
+   "uncertain": [
+    "record class from URL heuristic"
+   ]
+  },
+  {
+   "id": "heterogeneous-swarms",
+   "level": "table_row",
+   "kind": "journal_or_conference",
+   "record_class": "paper",
+   "class_basis": "URL-based heuristic",
+   "arxiv": "2502.04510",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2502.04510"
+   ],
+   "key_sources": {
+    "arxiv:2502.04510": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://arxiv.org/abs/2502.04510"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Heterogeneous Swarms: Jointly Optimizing Model Roles and Weights for Multi-LLM Systems",
+   "uncertain": [
+    "record class from URL heuristic"
+   ]
+  },
+  {
+   "id": "intelligent-ai-delegation",
+   "level": "table_row",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "URL-based heuristic",
+   "arxiv": "2602.11865",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2602.11865"
+   ],
+   "key_sources": {
+    "arxiv:2602.11865": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://arxiv.org/abs/2602.11865"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Intelligent AI Delegation",
+   "uncertain": [
+    "record class from URL heuristic"
+   ]
+  },
+  {
+   "id": "kosmos",
+   "level": "table_row",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "URL-based heuristic",
+   "arxiv": "2511.02824",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2511.02824"
+   ],
+   "key_sources": {
+    "arxiv:2511.02824": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://arxiv.org/abs/2511.02824"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Kosmos: An AI Scientist for Autonomous Discovery",
+   "uncertain": [
+    "record class from URL heuristic"
+   ]
+  },
+  {
+   "id": "latentmas",
+   "level": "table_row",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "URL-based heuristic",
+   "arxiv": "2511.20639",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2511.20639"
+   ],
+   "key_sources": {
+    "arxiv:2511.20639": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://arxiv.org/abs/2511.20639"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Latent Collaboration in Multi-Agent Systems",
+   "uncertain": [
+    "record class from URL heuristic"
+   ]
+  },
+  {
+   "id": "loca-bench",
+   "level": "table_row",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "URL-based heuristic",
+   "arxiv": "2602.07962",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2602.07962"
+   ],
+   "key_sources": {
+    "arxiv:2602.07962": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://arxiv.org/abs/2602.07962"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "LOCA-bench: Benchmarking Language Agents Under Controllable and Extreme Context Growth",
+   "uncertain": [
+    "record class from URL heuristic"
+   ]
+  },
+  {
+   "id": "loop-back-authority",
+   "level": "table_row",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "URL-based heuristic",
+   "arxiv": "2609.14767",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2609.14767"
+   ],
+   "key_sources": {
+    "arxiv:2609.14767": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://arxiv.org/abs/2609.14767"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Loop-Back Authority in LLM Agent Teams: A Paired Experiment on Flat and Hierarchical Coordination",
+   "uncertain": [
+    "record class from URL heuristic"
+   ]
+  },
+  {
+   "id": "lost-before-translation",
+   "level": "table_row",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "URL-based heuristic",
+   "arxiv": "2602.17674",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2602.17674"
+   ],
+   "key_sources": {
+    "arxiv:2602.17674": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://arxiv.org/abs/2602.17674"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Lost Before Translation: Social Information Transmission and Survival in AI-AI Communication",
+   "uncertain": [
+    "record class from URL heuristic"
+   ]
+  },
+  {
+   "id": "maas-agentic-supernet",
+   "level": "table_row",
+   "kind": "journal_or_conference",
+   "record_class": "paper",
+   "class_basis": "URL-based heuristic",
+   "arxiv": "2502.04180",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2502.04180"
+   ],
+   "key_sources": {
+    "arxiv:2502.04180": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://arxiv.org/abs/2502.04180"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Multi-agent Architecture Search via Agentic Supernet",
+   "uncertain": [
+    "record class from URL heuristic"
+   ]
+  },
+  {
+   "id": "mas-orchestra",
+   "level": "table_row",
+   "kind": "journal_or_conference",
+   "record_class": "paper",
+   "class_basis": "URL-based heuristic",
+   "arxiv": "2601.14652",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2601.14652"
+   ],
+   "key_sources": {
+    "arxiv:2601.14652": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://arxiv.org/abs/2601.14652"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "MAS-Orchestra: Understanding and Improving Multi-Agent Reasoning Through Holistic Orchestration and Controlled Benchmarks",
+   "uncertain": [
+    "record class from URL heuristic"
+   ]
+  },
+  {
+   "id": "mast-why-mas-fail",
+   "level": "table_row",
+   "kind": "journal_or_conference",
+   "record_class": "paper",
+   "class_basis": "URL-based heuristic",
+   "arxiv": "2503.13657",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2503.13657"
+   ],
+   "key_sources": {
+    "arxiv:2503.13657": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://arxiv.org/abs/2503.13657"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Why Do Multi-Agent LLM Systems Fail?",
+   "uncertain": [
+    "record class from URL heuristic"
+   ]
+  },
+  {
+   "id": "memagent",
+   "level": "table_row",
+   "kind": "journal_or_conference",
+   "record_class": "paper",
+   "class_basis": "URL-based heuristic",
+   "arxiv": "2507.02259",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2507.02259"
+   ],
+   "key_sources": {
+    "arxiv:2507.02259": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://arxiv.org/abs/2507.02259"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "MemAgent: Reshaping Long-Context LLM with Multi-Conv RL-based Memory Agent",
+   "uncertain": [
+    "record class from URL heuristic"
+   ]
+  },
+  {
+   "id": "metr-time-horizon-11",
+   "level": "table_row",
+   "kind": "lab_blog",
+   "record_class": "report",
+   "class_basis": "URL-based heuristic",
+   "arxiv": null,
+   "doi": null,
+   "identity_keys": [
+    "web:metr.org/blog/2026-1-29-time-horizon-1-1"
+   ],
+   "key_sources": {
+    "web:metr.org/blog/2026-1-29-time-horizon-1-1": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://metr.org/blog/2026-1-29-time-horizon-1-1/"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Time Horizon 1.1",
+   "uncertain": [
+    "record class from URL heuristic"
+   ]
+  },
+  {
+   "id": "muse-spark",
+   "level": "table_row",
+   "kind": "lab_blog",
+   "record_class": "report",
+   "class_basis": "URL-based heuristic",
+   "arxiv": null,
+   "doi": null,
+   "identity_keys": [
+    "web:about.fb.com/news/2026/04/introducing-muse-spark-meta-superintelligence-labs"
+   ],
+   "key_sources": {
+    "web:about.fb.com/news/2026/04/introducing-muse-spark-meta-superintelligence-labs": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://about.fb.com/news/2026/04/introducing-muse-spark-meta-superintelligence-labs/"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Introducing Muse Spark: Meta's Most Powerful Model Yet (also on ai.meta.com: Introducing Muse Spark: Scaling Towards Personal Superintelligence)",
+   "uncertain": [
+    "record class from URL heuristic"
+   ]
+  },
+  {
+   "id": "nomic-self-amending",
+   "level": "table_row",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "URL-based heuristic",
+   "arxiv": "2605.17510",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2605.17510"
+   ],
+   "key_sources": {
+    "arxiv:2605.17510": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://arxiv.org/abs/2605.17510"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Scale-Dependent Collective Adaptation in Self-Amending LLM Societies: A Cross-Family Study of Emergent Governance",
+   "uncertain": [
+    "record class from URL heuristic"
+   ]
+  },
+  {
+   "id": "open-challenges-mas-security",
+   "level": "table_row",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "URL-based heuristic",
+   "arxiv": "2505.02077",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2505.02077"
+   ],
+   "key_sources": {
+    "arxiv:2505.02077": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://arxiv.org/abs/2505.02077"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Open Challenges in Multi-Agent Security: Towards Secure Systems of Interacting AI Agents",
+   "uncertain": [
+    "record class from URL heuristic"
+   ]
+  },
+  {
+   "id": "ord-dynamics-intelligence-explosions",
+   "level": "table_row",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "URL-based heuristic",
+   "arxiv": "2608.14426",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2608.14426"
+   ],
+   "key_sources": {
+    "arxiv:2608.14426": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://arxiv.org/abs/2608.14426"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "The Dynamics of Intelligence Explosions",
+   "uncertain": [
+    "record class from URL heuristic"
+   ]
+  },
+  {
+   "id": "orgagent",
+   "level": "table_row",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "URL-based heuristic",
+   "arxiv": "2604.01020",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2604.01020"
+   ],
+   "key_sources": {
+    "arxiv:2604.01020": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://arxiv.org/abs/2604.01020"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "OrgAgent: Organize Your Multi-Agent System like a Company",
+   "uncertain": [
+    "record class from URL heuristic"
+   ]
+  },
+  {
+   "id": "paramanager",
+   "level": "table_row",
+   "kind": "journal_or_conference",
+   "record_class": "paper",
+   "class_basis": "URL-based heuristic",
+   "arxiv": "2604.17009",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2604.17009"
+   ],
+   "key_sources": {
+    "arxiv:2604.17009": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://arxiv.org/abs/2604.17009"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Small Model as Master Orchestrator: Learning Unified Agent-Tool Orchestration with Parallel Subtask Decomposition",
+   "uncertain": [
+    "record class from URL heuristic"
+   ]
+  },
+  {
+   "id": "population-physics",
+   "level": "table_row",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "URL-based heuristic",
+   "arxiv": "2609.33871",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2609.33871"
+   ],
+   "key_sources": {
+    "arxiv:2609.33871": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://arxiv.org/abs/2609.33871"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Population Physics, Population Problems: Safety and Emergence in LLM Societies",
+   "uncertain": [
+    "record class from URL heuristic"
+   ]
+  },
+  {
+   "id": "prev-uviive-fleet",
+   "level": "table_row",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "URL-based heuristic",
+   "arxiv": null,
+   "doi": null,
+   "identity_keys": [
+    "web:biorxiv.org/content/10.64898/2026.08.16.745122v1"
+   ],
+   "key_sources": {
+    "web:biorxiv.org/content/10.64898/2026.08.16.745122v1": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://www.biorxiv.org/content/10.64898/2026.08.16.745122v1"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "A Persistent Fleet of AI Scientists Exhibits Cooperative and Autopoietic Behavior",
+   "uncertain": [
+    "record class from URL heuristic"
+   ]
+  },
+  {
+   "id": "prime-agent",
+   "level": "table_row",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "URL-based heuristic",
+   "arxiv": "2608.23552",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2608.23552"
+   ],
+   "key_sources": {
+    "arxiv:2608.23552": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://arxiv.org/abs/2608.23552"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Prime Agent: A Self-Improving RLM Harness",
+   "uncertain": [
+    "record class from URL heuristic"
+   ]
+  },
+  {
+   "id": "programmable-belief-dynamics",
+   "level": "table_row",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "URL-based heuristic",
+   "arxiv": "2605.19915",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2605.19915"
+   ],
+   "key_sources": {
+    "arxiv:2605.19915": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://arxiv.org/abs/2605.19915"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "LLM Agents Make Collective Belief Dynamics Programmable: Challenges and Research Directions",
+   "uncertain": [
+    "record class from URL heuristic"
+   ]
+  },
+  {
+   "id": "puppeteer-evolving-orchestration",
+   "level": "table_row",
+   "kind": "journal_or_conference",
+   "record_class": "paper",
+   "class_basis": "URL-based heuristic",
+   "arxiv": "2505.19591",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2505.19591"
+   ],
+   "key_sources": {
+    "arxiv:2505.19591": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://arxiv.org/abs/2505.19591"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Multi-Agent Collaboration via Evolving Orchestration",
+   "uncertain": [
+    "record class from URL heuristic"
+   ]
+  },
+  {
+   "id": "recursive-agent-harnesses",
+   "level": "table_row",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "URL-based heuristic",
+   "arxiv": "2606.13643",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2606.13643"
+   ],
+   "key_sources": {
+    "arxiv:2606.13643": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://arxiv.org/abs/2606.13643"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Recursive Agent Harnesses",
+   "uncertain": [
+    "record class from URL heuristic"
+   ]
+  },
+  {
+   "id": "rl-orchestration-survey",
+   "level": "table_row",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "URL-based heuristic",
+   "arxiv": "2605.02801",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2605.02801"
+   ],
+   "key_sources": {
+    "arxiv:2605.02801": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://arxiv.org/abs/2605.02801"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Reinforcement Learning for LLM-based Multi-Agent Systems through Orchestration Traces",
+   "uncertain": [
+    "record class from URL heuristic"
+   ]
+  },
+  {
+   "id": "safety-of-latent-communication",
+   "level": "table_row",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "URL-based heuristic",
+   "arxiv": "2609.39788",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2609.39788"
+   ],
+   "key_sources": {
+    "arxiv:2609.39788": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://arxiv.org/abs/2609.39788"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Safety of Latent Communication in Multi-Agent Systems",
+   "uncertain": [
+    "record class from URL heuristic"
+   ]
+  },
+  {
+   "id": "sakana-ab-mcts",
+   "level": "table_row",
+   "kind": "journal_or_conference",
+   "record_class": "paper",
+   "class_basis": "URL-based heuristic",
+   "arxiv": "2503.04412",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2503.04412"
+   ],
+   "key_sources": {
+    "arxiv:2503.04412": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://arxiv.org/abs/2503.04412"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Wider or Deeper? Scaling LLM Inference-Time Compute with Adaptive Branching Tree Search (AB-MCTS); blog: Inference-Time Scaling and Collective Intelligence for Frontier AI",
+   "uncertain": [
+    "record class from URL heuristic"
+   ]
+  },
+  {
+   "id": "science-agents-go-rogue",
+   "level": "table_row",
+   "kind": "news",
+   "record_class": "news",
+   "class_basis": "URL-based heuristic",
+   "arxiv": "2602.20021",
+   "doi": null,
+   "identity_keys": [
+    "web:science.org/content/article/ai-algorithms-can-become-agents-chaos"
+   ],
+   "key_sources": {
+    "web:science.org/content/article/ai-algorithms-can-become-agents-chaos": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://www.science.org/content/article/ai-algorithms-can-become-agents-chaos"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [
+    "arxiv:2602.20021"
+   ],
+   "title": "AI 'agents' go rogue in realistic simulations (Science news; в метаданных: «AI algorithms can become 'agents of chaos'»)",
+   "uncertain": [
+    "record class from URL heuristic"
+   ]
+  },
+  {
+   "id": "science-invent-own-language",
+   "level": "table_row",
+   "kind": "news",
+   "record_class": "news",
+   "class_basis": "URL-based heuristic",
+   "arxiv": null,
+   "doi": "10.1126/science.aem6544",
+   "identity_keys": [
+    "doi:10.1126/science.aem6544"
+   ],
+   "key_sources": {
+    "doi:10.1126/science.aem6544": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://doi.org/10.1126/science.aem6544"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Why AI agents invent their own language if you let them chat",
+   "uncertain": [
+    "record class from URL heuristic"
+   ]
+  },
+  {
+   "id": "self-moa",
+   "level": "table_row",
+   "kind": "journal_or_conference",
+   "record_class": "paper",
+   "class_basis": "URL-based heuristic",
+   "arxiv": "2502.00674",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2502.00674"
+   ],
+   "key_sources": {
+    "arxiv:2502.00674": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://arxiv.org/abs/2502.00674"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Rethinking Mixture-of-Agents: Is Mixing Different Large Language Models Beneficial?",
+   "uncertain": [
+    "record class from URL heuristic"
+   ]
+  },
+  {
+   "id": "simulation-to-enaction",
+   "level": "table_row",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "URL-based heuristic",
+   "arxiv": "2605.25459",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2605.25459"
+   ],
+   "key_sources": {
+    "arxiv:2605.25459": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://arxiv.org/abs/2605.25459"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "From Simulation to Enaction: Post-trained language models recognize and react to their own generations",
+   "uncertain": [
+    "record class from URL heuristic"
+   ]
+  },
+  {
+   "id": "slocum-hf-reproduction",
+   "level": "table_row",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "URL-based heuristic",
+   "arxiv": "2609.35799",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2609.35799"
+   ],
+   "key_sources": {
+    "arxiv:2609.35799": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://arxiv.org/abs/2609.35799"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "OpenAI-HuggingFace: A Reproduction & Lessons for Alignment Testing",
+   "uncertain": [
+    "record class from URL heuristic"
+   ]
+  },
+  {
+   "id": "strategic-monoculture",
+   "level": "table_row",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "URL-based heuristic",
+   "arxiv": "2604.09502",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2604.09502"
+   ],
+   "key_sources": {
+    "arxiv:2604.09502": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://arxiv.org/abs/2604.09502"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Strategic Algorithmic Monoculture: Experimental Evidence from Coordination Games",
+   "uncertain": [
+    "record class from URL heuristic"
+   ]
+  },
+  {
+   "id": "stronger-mas",
+   "level": "table_row",
+   "kind": "journal_or_conference",
+   "record_class": "paper",
+   "class_basis": "URL-based heuristic",
+   "arxiv": "2510.11062",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2510.11062"
+   ],
+   "key_sources": {
+    "arxiv:2510.11062": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://arxiv.org/abs/2510.11062"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Stronger-MAS: Multi-Agent Reinforcement Learning for Collaborative LLMs",
+   "uncertain": [
+    "record class from URL heuristic"
+   ]
+  },
+  {
+   "id": "subagents-comply-more",
+   "level": "table_row",
+   "kind": "essay",
+   "record_class": "essay",
+   "class_basis": "URL-based heuristic",
+   "arxiv": null,
+   "doi": null,
+   "identity_keys": [
+    "web:lesswrong.com/posts/nfxapjqytuhkrrnpt/subagents-comply-more"
+   ],
+   "key_sources": {
+    "web:lesswrong.com/posts/nfxapjqytuhkrrnpt/subagents-comply-more": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://www.lesswrong.com/posts/nfXAPJqytuHKrRNpT/subagents-comply-more"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Subagents comply more",
+   "uncertain": [
+    "record class from URL heuristic"
+   ]
+  },
+  {
+   "id": "swarmbench",
+   "level": "table_row",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "URL-based heuristic",
+   "arxiv": "2608.30661",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2608.30661"
+   ],
+   "key_sources": {
+    "arxiv:2608.30661": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://arxiv.org/abs/2608.30661"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "SwarmBench: Can Large Language Models Act as Agent Swarm Orchestrators?",
+   "uncertain": [
+    "record class from URL heuristic"
+   ]
+  },
+  {
+   "id": "talk-isnt-always-cheap",
+   "level": "table_row",
+   "kind": "workshop",
+   "record_class": "paper",
+   "class_basis": "URL-based heuristic",
+   "arxiv": "2509.05396",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2509.05396"
+   ],
+   "key_sources": {
+    "arxiv:2509.05396": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://arxiv.org/abs/2509.05396"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Talk Isn't Always Cheap: Understanding Failure Modes in Multi-Agent Debate",
+   "uncertain": [
+    "record class from URL heuristic"
+   ]
+  },
+  {
+   "id": "tokyo-shared-state-sync",
+   "level": "table_row",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "URL-based heuristic",
+   "arxiv": "2608.06968",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2608.06968"
+   ],
+   "key_sources": {
+    "arxiv:2608.06968": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://arxiv.org/abs/2608.06968"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "How a shared state is described determines whether AI agents synchronize",
+   "uncertain": [
+    "record class from URL heuristic"
+   ]
+  },
+  {
+   "id": "too-polite-to-disagree",
+   "level": "table_row",
+   "kind": "journal_or_conference",
+   "record_class": "paper",
+   "class_basis": "URL-based heuristic",
+   "arxiv": "2604.02668",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2604.02668"
+   ],
+   "key_sources": {
+    "arxiv:2604.02668": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://arxiv.org/abs/2604.02668"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Too Polite to Disagree: Understanding Sycophancy Propagation in Multi-Agent Systems",
+   "uncertain": [
+    "record class from URL heuristic"
+   ]
+  },
+  {
+   "id": "toolorchestra",
+   "level": "table_row",
+   "kind": "journal_or_conference",
+   "record_class": "paper",
+   "class_basis": "URL-based heuristic",
+   "arxiv": "2511.21689",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2511.21689"
+   ],
+   "key_sources": {
+    "arxiv:2511.21689": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://arxiv.org/abs/2511.21689"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "ToolOrchestra: Elevating Intelligence via Efficient Model and Tool Orchestration",
+   "uncertain": [
+    "record class from URL heuristic"
+   ]
+  },
+  {
+   "id": "voluntary-collusion-secret-tools",
+   "level": "table_row",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "URL-based heuristic",
+   "arxiv": "2605.27593",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2605.27593"
+   ],
+   "key_sources": {
+    "arxiv:2605.27593": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://arxiv.org/abs/2605.27593"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Voluntary Collusion with Secret Tools in Competing LLM Agents",
+   "uncertain": [
+    "record class from URL heuristic"
+   ]
+  },
+  {
+   "id": "when-does-marl-help",
+   "level": "table_row",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "URL-based heuristic",
+   "arxiv": "2605.24202",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2605.24202"
+   ],
+   "key_sources": {
+    "arxiv:2605.24202": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://arxiv.org/abs/2605.24202"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "When Does Multi-Agent RL Improve LLM Workflows? Workflow, Scale, and Policy-Sharing Tradeoffs",
+   "uncertain": [
+    "record class from URL heuristic"
+   ]
+  },
+  {
+   "id": "who-do-llms-trust",
+   "level": "table_row",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "URL-based heuristic",
+   "arxiv": "2602.13568",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2602.13568"
+   ],
+   "key_sources": {
+    "arxiv:2602.13568": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://arxiv.org/abs/2602.13568"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Who Do LLMs Trust? Human Experts Matter More Than Other LLMs",
+   "uncertain": [
+    "record class from URL heuristic"
+   ]
+  },
+  {
+   "id": "willis-hundreds-of-agents",
+   "level": "table_row",
+   "kind": "workshop",
+   "record_class": "paper",
+   "class_basis": "URL-based heuristic",
+   "arxiv": "2602.16662",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2602.16662"
+   ],
+   "key_sources": {
+    "arxiv:2602.16662": "card JSON primary URL"
+   },
+   "text_urls": [
+    "https://arxiv.org/abs/2602.16662"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Evaluating Collective Behaviour of Hundreds of LLM Agents",
+   "uncertain": [
+    "record class from URL heuristic"
+   ]
+  },
+  {
+   "id": "chirper-hashemi-macy",
+   "level": "inline_link",
+   "kind": "journal_or_conference",
+   "record_class": "paper",
+   "class_basis": "override",
+   "arxiv": "2602.03775",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2602.03775"
+   ],
+   "key_sources": {
+    "arxiv:2602.03775": "override (ch10 Chirper paragraph; arXiv API 2026-10-09)"
+   },
+   "text_urls": [
+    "https://arxiv.org/abs/2602.03775"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "An Empirical Study of Collective Behaviors and Social Dynamics in Large Language Model Agents",
+   "uncertain": []
+  },
+  {
+   "id": "micromotor-phase-coherence",
+   "level": "table_row",
+   "kind": "journal_or_conference",
+   "record_class": "paper",
+   "class_basis": "override",
+   "arxiv": "2604.07080",
+   "doi": "10.1038/s41567-026-03409-x",
+   "identity_keys": [
+    "arxiv:2604.07080",
+    "doi:10.1038/s41567-026-03409-x"
+   ],
+   "key_sources": {
+    "arxiv:2604.07080": "override (ch05 physical-swarms table row (journal DOI and arXiv preprint of the same paper))",
+    "doi:10.1038/s41567-026-03409-x": "override (ch05 physical-swarms table row (journal DOI and arXiv preprint of the same paper))"
+   },
+   "text_urls": [
+    "https://arxiv.org/abs/2604.07080",
+    "https://doi.org/10.1038/s41567-026-03409-x"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Phase coherence and disorder-induced wave propagation in micromotor arrays",
+   "uncertain": []
+  },
+  {
+   "id": "ai-village-dataset",
+   "level": "inline_link",
+   "kind": "dataset",
+   "record_class": "dataset",
+   "class_basis": "override",
+   "arxiv": null,
+   "doi": null,
+   "identity_keys": [
+    "web:huggingface.co/datasets/aidigestorg/ai-village"
+   ],
+   "key_sources": {
+    "web:huggingface.co/datasets/aidigestorg/ai-village": "override (parent freshness-notes.md (swarmchasing.com home page read 2026-10-09))"
+   },
+   "text_urls": [],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "AI Village dataset (aidigestorg/ai-village)",
+   "uncertain": []
+  },
+  {
+   "id": "agentworm",
+   "level": "table_row",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "override",
+   "arxiv": "2603.15727",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2603.15727"
+   ],
+   "key_sources": {
+    "arxiv:2603.15727": "override (arXiv API 2026-10-09 (title, first four authors, date); ch07 related row 'AgentWorm / Security Tax' links this paper; Security Tax has no link in the text)"
+   },
+   "text_urls": [
+    "https://arxiv.org/abs/2603.15727"
+   ],
+   "aliases": [],
+   "part_of": "prev-contagion-cluster",
+   "related_keys": [],
+   "title": "AgentWorm: Self-Propagating Attacks Across LLM Agent Ecosystems",
+   "uncertain": []
+  },
+  {
+   "id": "x-ai-news-grok-4",
+   "level": "inline_link",
+   "kind": "lab_blog",
+   "record_class": "report",
+   "class_basis": "URL-based heuristic",
+   "arxiv": null,
+   "doi": null,
+   "identity_keys": [
+    "web:x.ai/news/grok-4"
+   ],
+   "key_sources": {
+    "web:x.ai/news/grok-4": "URL in the survey text"
+   },
+   "text_urls": [
+    "https://x.ai/news/grok-4"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": null,
+   "uncertain": [
+    "title from link text only",
+    "record class from URL heuristic",
+    "no title recorded"
+   ]
+  },
+  {
+   "id": "huggingface-co-blog-security-incident-july-2026",
+   "level": "inline_link",
+   "kind": "lab_blog",
+   "record_class": "report",
+   "class_basis": "URL-based heuristic",
+   "arxiv": null,
+   "doi": null,
+   "identity_keys": [
+    "web:huggingface.co/blog/security-incident-july-2026"
+   ],
+   "key_sources": {
+    "web:huggingface.co/blog/security-incident-july-2026": "URL in the survey text"
+   },
+   "text_urls": [
+    "https://huggingface.co/blog/security-incident-july-2026"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": null,
+   "uncertain": [
+    "title from link text only",
+    "record class from URL heuristic",
+    "no title recorded"
+   ]
+  },
+  {
+   "id": "openai-com-index-hugging-face-model-evaluation-security-incident",
+   "level": "inline_link",
+   "kind": "lab_blog",
+   "record_class": "report",
+   "class_basis": "URL-based heuristic",
+   "arxiv": null,
+   "doi": null,
+   "identity_keys": [
+    "web:openai.com/index/hugging-face-model-evaluation-security-incident"
+   ],
+   "key_sources": {
+    "web:openai.com/index/hugging-face-model-evaluation-security-incident": "URL in the survey text"
+   },
+   "text_urls": [
+    "https://openai.com/index/hugging-face-model-evaluation-security-incident/"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": null,
+   "uncertain": [
+    "title from link text only",
+    "record class from URL heuristic",
+    "no title recorded"
+   ]
+  },
+  {
+   "id": "oag-ca-gov-news-press-releases-part-ongoing-investigation-attorney-gen",
+   "level": "inline_link",
+   "kind": "news",
+   "record_class": "news",
+   "class_basis": "URL-based heuristic",
+   "arxiv": null,
+   "doi": null,
+   "identity_keys": [
+    "web:oag.ca.gov/news/press-releases/part-ongoing-investigation-attorney-general-bonta-serves-investigative-subpoena"
+   ],
+   "key_sources": {
+    "web:oag.ca.gov/news/press-releases/part-ongoing-investigation-attorney-general-bonta-serves-investigative-subpoena": "URL in the survey text"
+   },
+   "text_urls": [
+    "https://oag.ca.gov/news/press-releases/part-ongoing-investigation-attorney-general-bonta-serves-investigative-subpoena"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": null,
+   "uncertain": [
+    "title from link text only",
+    "record class from URL heuristic",
+    "no title recorded"
+   ]
+  },
+  {
+   "id": "fluidic-torqueenabled-object-manipulation",
+   "level": "table_row",
+   "kind": "journal_or_conference",
+   "record_class": "paper",
+   "class_basis": "URL-based heuristic",
+   "arxiv": null,
+   "doi": "10.1126/sciadv.aea9947",
+   "identity_keys": [
+    "doi:10.1126/sciadv.aea9947"
+   ],
+   "key_sources": {
+    "doi:10.1126/sciadv.aea9947": "URL in the survey text"
+   },
+   "text_urls": [
+    "https://doi.org/10.1126/sciadv.aea9947"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Fluidic torque–enabled object manipulation by microrobot collectives",
+   "uncertain": [
+    "title from link text only",
+    "record class from URL heuristic"
+   ]
+  },
+  {
+   "id": "bio-inspired-decision-making",
+   "level": "table_row",
+   "kind": "journal_or_conference",
+   "record_class": "paper",
+   "class_basis": "URL-based heuristic",
+   "arxiv": null,
+   "doi": "10.1038/s41467-026-76408-4",
+   "identity_keys": [
+    "doi:10.1038/s41467-026-76408-4"
+   ],
+   "key_sources": {
+    "doi:10.1038/s41467-026-76408-4": "URL in the survey text"
+   },
+   "text_urls": [
+    "https://doi.org/10.1038/s41467-026-76408-4"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Bio-inspired decision making in robot swarms under biases",
+   "uncertain": [
+    "title from link text only",
+    "record class from URL heuristic"
+   ]
+  },
+  {
+   "id": "zombie-agents",
+   "level": "table_row",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "URL-based heuristic",
+   "arxiv": "2602.15654",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2602.15654"
+   ],
+   "key_sources": {
+    "arxiv:2602.15654": "URL in the survey text"
+   },
+   "text_urls": [
+    "https://arxiv.org/abs/2602.15654"
+   ],
+   "aliases": [],
+   "part_of": "prev-contagion-cluster",
+   "related_keys": [],
+   "title": "Zombie Agents: Persistent Control of Self-Evolving LLM Agents via Self-Reinforcing Injections",
+   "uncertain": [
+    "record class from URL heuristic"
+   ]
+  },
+  {
+   "id": "diverse-minds-divided-networks",
+   "level": "table_row",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "URL-based heuristic",
+   "arxiv": "2609.12444",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2609.12444"
+   ],
+   "key_sources": {
+    "arxiv:2609.12444": "URL in the survey text"
+   },
+   "text_urls": [
+    "https://arxiv.org/abs/2609.12444"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Diverse Minds, Divided Networks? (TraitMix)",
+   "uncertain": [
+    "title from link text only",
+    "record class from URL heuristic"
+   ]
+  },
+  {
+   "id": "policysim-based-social-simulation",
+   "level": "table_row",
+   "kind": "journal_or_conference",
+   "record_class": "paper",
+   "class_basis": "URL-based heuristic",
+   "arxiv": null,
+   "doi": "10.1145/3774904.3792555",
+   "identity_keys": [
+    "doi:10.1145/3774904.3792555"
+   ],
+   "key_sources": {
+    "doi:10.1145/3774904.3792555": "URL in the survey text"
+   },
+   "text_urls": [
+    "https://doi.org/10.1145/3774904.3792555"
+   ],
+   "aliases": [],
+   "part_of": null,
+   "related_keys": [],
+   "title": "PolicySim: An LLM-Based Agent Social Simulation Sandbox for Proactive Policy Optimization",
+   "uncertain": [
+    "title from link text only",
+    "record class from URL heuristic"
+   ]
+  },
+  {
+   "id": "ai-village-how-it-works",
+   "level": "constituent",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "URL-based heuristic",
+   "arxiv": null,
+   "doi": null,
+   "identity_keys": [
+    "web:theaidigest.org/village/blog/how-the-ai-village-works"
+   ],
+   "key_sources": {
+    "web:theaidigest.org/village/blog/how-the-ai-village-works": "URL in the survey text"
+   },
+   "text_urls": [
+    "https://theaidigest.org/village/blog/how-the-ai-village-works"
+   ],
+   "aliases": [],
+   "part_of": "ai-village",
+   "related_keys": [],
+   "title": "How the AI Village works",
+   "uncertain": [
+    "record class from URL heuristic"
+   ]
+  },
+  {
+   "id": "ai-village-longitudinal",
+   "level": "constituent",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "URL-based heuristic",
+   "arxiv": null,
+   "doi": "10.5281/zenodo.23090815",
+   "identity_keys": [
+    "doi:10.5281/zenodo.23090815"
+   ],
+   "key_sources": {
+    "doi:10.5281/zenodo.23090815": "URL in the survey text"
+   },
+   "text_urls": [],
+   "aliases": [],
+   "part_of": "ai-village",
+   "related_keys": [],
+   "title": "Norms, Tools, and the Say/Do Gap: Seventeen Months of Autonomous Frontier-Model Agents in the AI Village",
+   "uncertain": [
+    "record class from URL heuristic"
+   ]
+  },
+  {
+   "id": "anthropic-multi-agent-research-system",
+   "level": "constituent",
+   "kind": "lab_blog",
+   "record_class": "report",
+   "class_basis": "URL-based heuristic",
+   "arxiv": null,
+   "doi": null,
+   "identity_keys": [
+    "web:anthropic.com/engineering/multi-agent-research-system"
+   ],
+   "key_sources": {
+    "web:anthropic.com/engineering/multi-agent-research-system": "URL in the survey text"
+   },
+   "text_urls": [
+    "https://www.anthropic.com/engineering/multi-agent-research-system"
+   ],
+   "aliases": [],
+   "part_of": "anthropic-multi-agent-guidance",
+   "related_keys": [],
+   "title": "How we built our multi-agent research system",
+   "uncertain": [
+    "record class from URL heuristic"
+   ]
+  },
+  {
+   "id": "cognition-dont-build-multi-agents",
+   "level": "constituent",
+   "kind": "lab_blog",
+   "record_class": "report",
+   "class_basis": "URL-based heuristic",
+   "arxiv": null,
+   "doi": null,
+   "identity_keys": [
+    "web:cognition.com/blog/dont-build-multi-agents"
+   ],
+   "key_sources": {
+    "web:cognition.com/blog/dont-build-multi-agents": "URL in the survey text"
+   },
+   "text_urls": [],
+   "aliases": [],
+   "part_of": "cognition-multi-agents",
+   "related_keys": [],
+   "title": "Don't Build Multi-Agents",
+   "uncertain": [
+    "record class from URL heuristic"
+   ]
+  },
+  {
+   "id": "cognition-multi-agents-working",
+   "level": "constituent",
+   "kind": "lab_blog",
+   "record_class": "report",
+   "class_basis": "URL-based heuristic",
+   "arxiv": null,
+   "doi": null,
+   "identity_keys": [
+    "web:cognition.com/blog/multi-agents-working"
+   ],
+   "key_sources": {
+    "web:cognition.com/blog/multi-agents-working": "URL in the survey text"
+   },
+   "text_urls": [],
+   "aliases": [],
+   "part_of": "cognition-multi-agents",
+   "related_keys": [],
+   "title": "Multi-Agents: What's Actually Working",
+   "uncertain": [
+    "record class from URL heuristic"
+   ]
+  },
+  {
+   "id": "cursor-scaling-long-running",
+   "level": "constituent",
+   "kind": "lab_blog",
+   "record_class": "report",
+   "class_basis": "URL-based heuristic",
+   "arxiv": null,
+   "doi": null,
+   "identity_keys": [
+    "web:cursor.com/blog/scaling-agents"
+   ],
+   "key_sources": {
+    "web:cursor.com/blog/scaling-agents": "URL in the survey text"
+   },
+   "text_urls": [
+    "https://cursor.com/blog/scaling-agents"
+   ],
+   "aliases": [],
+   "part_of": "cursor-scaling",
+   "related_keys": [],
+   "title": "Scaling long-running autonomous coding",
+   "uncertain": [
+    "record class from URL heuristic"
+   ]
+  },
+  {
+   "id": "cursor-self-driving",
+   "level": "constituent",
+   "kind": "lab_blog",
+   "record_class": "report",
+   "class_basis": "URL-based heuristic",
+   "arxiv": null,
+   "doi": null,
+   "identity_keys": [
+    "web:cursor.com/blog/self-driving-codebases"
+   ],
+   "key_sources": {
+    "web:cursor.com/blog/self-driving-codebases": "URL in the survey text"
+   },
+   "text_urls": [
+    "https://cursor.com/blog/self-driving-codebases"
+   ],
+   "aliases": [],
+   "part_of": "cursor-scaling",
+   "related_keys": [],
+   "title": "Towards self-driving codebases",
+   "uncertain": [
+    "record class from URL heuristic"
+   ]
+  },
+  {
+   "id": "multi-agent-security-tax",
+   "level": "constituent",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "URL-based heuristic",
+   "arxiv": "2502.19145",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2502.19145"
+   ],
+   "key_sources": {
+    "arxiv:2502.19145": "URL in the survey text"
+   },
+   "text_urls": [],
+   "aliases": [],
+   "part_of": "prev-contagion-cluster",
+   "related_keys": [],
+   "title": "Multi-Agent Security Tax: Trading Off Security and Collaboration Capabilities in Multi-Agent Systems",
+   "uncertain": [
+    "record class from URL heuristic"
+   ]
+  },
+  {
+   "id": "opus46-launch-post",
+   "level": "constituent",
+   "kind": "system_card",
+   "record_class": "system_card",
+   "class_basis": "URL-based heuristic",
+   "arxiv": null,
+   "doi": null,
+   "identity_keys": [
+    "web:anthropic.com/news/claude-opus-4-6"
+   ],
+   "key_sources": {
+    "web:anthropic.com/news/claude-opus-4-6": "URL in the survey text"
+   },
+   "text_urls": [
+    "https://www.anthropic.com/news/claude-opus-4-6"
+   ],
+   "aliases": [],
+   "part_of": "opus46-launch-cluster",
+   "related_keys": [],
+   "title": "Claude Opus 4.6",
+   "uncertain": [
+    "record class from URL heuristic"
+   ]
+  },
+  {
+   "id": "sakana-conductor",
+   "level": "constituent",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "URL-based heuristic",
+   "arxiv": null,
+   "doi": null,
+   "identity_keys": [
+    "openreview:U23A2BUKYt"
+   ],
+   "key_sources": {
+    "openreview:U23A2BUKYt": "URL in the survey text"
+   },
+   "text_urls": [],
+   "aliases": [],
+   "part_of": "sakana-conductor-trinity-fugu",
+   "related_keys": [],
+   "title": "Learning to Orchestrate Agents in Natural Language with the Conductor",
+   "uncertain": [
+    "record class from URL heuristic"
+   ]
+  },
+  {
+   "id": "sakana-fugu-report",
+   "level": "constituent",
+   "kind": "journal_or_conference",
+   "record_class": "paper",
+   "class_basis": "URL-based heuristic",
+   "arxiv": "2606.21228",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2606.21228"
+   ],
+   "key_sources": {
+    "arxiv:2606.21228": "URL in the survey text"
+   },
+   "text_urls": [],
+   "aliases": [],
+   "part_of": "sakana-conductor-trinity-fugu",
+   "related_keys": [],
+   "title": "Sakana Fugu Technical Report",
+   "uncertain": [
+    "record class from URL heuristic"
+   ]
+  },
+  {
+   "id": "sakana-trinity",
+   "level": "constituent",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "URL-based heuristic",
+   "arxiv": null,
+   "doi": null,
+   "identity_keys": [
+    "openreview:5HaRjXai12"
+   ],
+   "key_sources": {
+    "openreview:5HaRjXai12": "URL in the survey text"
+   },
+   "text_urls": [],
+   "aliases": [],
+   "part_of": "sakana-conductor-trinity-fugu",
+   "related_keys": [],
+   "title": "Trinity: An Evolved LLM Coordinator",
+   "uncertain": [
+    "record class from URL heuristic"
+   ]
+  },
+  {
+   "id": "agentsociety",
+   "level": "table_row",
+   "kind": "journal_or_conference",
+   "record_class": "paper",
+   "class_basis": "URL-based heuristic",
+   "arxiv": null,
+   "doi": "10.18653/v1/2025.acl-industry.94",
+   "identity_keys": [
+    "doi:10.18653/v1/2025.acl-industry.94"
+   ],
+   "key_sources": {
+    "doi:10.18653/v1/2025.acl-industry.94": "URL in the survey text"
+   },
+   "text_urls": [
+    "https://aclanthology.org/2025.acl-industry.94/"
+   ],
+   "aliases": [
+    "agentsociety-parallelized-framework-simulating"
+   ],
+   "part_of": "prev-moltbook-cluster",
+   "related_keys": [],
+   "title": "AgentSociety: A Parallelized Framework for Simulating Large-Scale LLM Agents with Realistic Environments and Interactions",
+   "uncertain": [
+    "title from link text only",
+    "record class from URL heuristic"
+   ]
+  },
+  {
+   "id": "artificial-hivemind-reevaluation",
+   "level": "constituent",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "URL-based heuristic",
+   "arxiv": "2609.33936",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2609.33936"
+   ],
+   "key_sources": {
+    "arxiv:2609.33936": "URL in the survey text"
+   },
+   "text_urls": [],
+   "aliases": [],
+   "part_of": "artificial-hivemind",
+   "related_keys": [],
+   "title": "How Strong Is the Evidence for the Artificial Hivemind? Reevaluating Evidence for the Open-Ended Homogeneity of Language Models",
+   "uncertain": [
+    "record class from URL heuristic"
+   ]
+  },
+  {
+   "id": "ashery-conventions",
+   "level": "table_row",
+   "kind": "journal_or_conference",
+   "record_class": "paper",
+   "class_basis": "URL-based heuristic",
+   "arxiv": null,
+   "doi": "10.1126/sciadv.adu9368",
+   "identity_keys": [
+    "doi:10.1126/sciadv.adu9368"
+   ],
+   "key_sources": {
+    "doi:10.1126/sciadv.adu9368": "URL in the survey text"
+   },
+   "text_urls": [
+    "https://doi.org/10.1126/sciadv.adu9368"
+   ],
+   "aliases": [
+    "emergent-social-conventions-collective"
+   ],
+   "part_of": "prev-population-dynamics-cluster",
+   "related_keys": [],
+   "title": "Emergent social conventions and collective bias in LLM populations",
+   "uncertain": [
+    "title from link text only",
+    "record class from URL heuristic"
+   ]
+  },
+  {
+   "id": "attractor-states-anthropic-card",
+   "level": "constituent",
+   "kind": "system_card",
+   "record_class": "system_card",
+   "class_basis": "URL-based heuristic",
+   "arxiv": null,
+   "doi": null,
+   "identity_keys": [
+    "web:anthropic.com/claude-4-system-card"
+   ],
+   "key_sources": {
+    "web:anthropic.com/claude-4-system-card": "URL in the survey text"
+   },
+   "text_urls": [
+    "https://www.anthropic.com/claude-4-system-card"
+   ],
+   "aliases": [],
+   "part_of": "attractor-states",
+   "related_keys": [],
+   "title": "System Card: Claude Opus 4 & Claude Sonnet 4",
+   "uncertain": [
+    "record class from URL heuristic"
+   ]
+  },
+  {
+   "id": "attractor-states-jakkli-post",
+   "level": "constituent",
+   "kind": "essay",
+   "record_class": "essay",
+   "class_basis": "URL-based heuristic",
+   "arxiv": null,
+   "doi": null,
+   "identity_keys": [
+    "web:lesswrong.com/posts/mgjtehelgkhzz3cex/models-have-some-pretty-funny-attractor-states"
+   ],
+   "key_sources": {
+    "web:lesswrong.com/posts/mgjtehelgkhzz3cex/models-have-some-pretty-funny-attractor-states": "URL in the survey text"
+   },
+   "text_urls": [],
+   "aliases": [],
+   "part_of": "attractor-states",
+   "related_keys": [],
+   "title": "models have some pretty funny attractor states",
+   "uncertain": [
+    "record class from URL heuristic"
+   ]
+  },
+  {
+   "id": "attractor-states-ko-geiping-paper",
+   "level": "constituent",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "URL-based heuristic",
+   "arxiv": "2606.30571",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2606.30571"
+   ],
+   "key_sources": {
+    "arxiv:2606.30571": "URL in the survey text"
+   },
+   "text_urls": [],
+   "aliases": [],
+   "part_of": "attractor-states",
+   "related_keys": [],
+   "title": "Attractor States Emerge in Multi-Turn LLM Conversations",
+   "uncertain": [
+    "record class from URL heuristic"
+   ]
+  },
+  {
+   "id": "attributing-emergence",
+   "level": "table_row",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "URL-based heuristic",
+   "arxiv": "2605.11404",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2605.11404"
+   ],
+   "key_sources": {
+    "arxiv:2605.11404": "URL in the survey text"
+   },
+   "text_urls": [
+    "https://arxiv.org/abs/2605.11404"
+   ],
+   "aliases": [
+    "attributing-emergence-million-systems"
+   ],
+   "part_of": "prev-population-dynamics-cluster",
+   "related_keys": [],
+   "title": "Attributing Emergence in Million-Agent Systems",
+   "uncertain": [
+    "record class from URL heuristic"
+   ]
+  },
+  {
+   "id": "coherence-driven-contagion",
+   "level": "short_card",
+   "kind": "workshop",
+   "record_class": "paper",
+   "class_basis": "URL-based heuristic",
+   "arxiv": "2610.02654",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2610.02654"
+   ],
+   "key_sources": {
+    "arxiv:2610.02654": "URL in the survey text"
+   },
+   "text_urls": [],
+   "aliases": [
+    "banerjee-coherence-contagion"
+   ],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Coherence-Driven Belief Formation and Population Dynamics of Contagion in LLM Agents",
+   "uncertain": [
+    "record class from URL heuristic"
+   ]
+  },
+  {
+   "id": "conformity-no-speaker",
+   "level": "table_row",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "URL-based heuristic",
+   "arxiv": "2607.05545",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2607.05545"
+   ],
+   "key_sources": {
+    "arxiv:2607.05545": "URL in the survey text"
+   },
+   "text_urls": [
+    "https://arxiv.org/abs/2607.05545"
+   ],
+   "aliases": [
+    "most-conformity-needs-no"
+   ],
+   "part_of": "prev-population-dynamics-cluster",
+   "related_keys": [],
+   "title": "Most LLM Conformity Needs No Speaker: Measuring the Speaker-Free Floor in Peer-Pressure Benchmarks",
+   "uncertain": [
+    "record class from URL heuristic"
+   ]
+  },
+  {
+   "id": "emergent-languages",
+   "level": "table_row",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "URL-based heuristic",
+   "arxiv": "2605.31170",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2605.31170"
+   ],
+   "key_sources": {
+    "arxiv:2605.31170": "URL in the survey text"
+   },
+   "text_urls": [
+    "https://arxiv.org/abs/2605.31170"
+   ],
+   "aliases": [
+    "emergent-languages-populations-language"
+   ],
+   "part_of": "prev-moltbook-cluster",
+   "related_keys": [],
+   "title": "Emergent Languages in Populations of Language Model Agents: From Token Efficiency to Oversight Evasion",
+   "uncertain": [
+    "record class from URL heuristic"
+   ]
+  },
+  {
+   "id": "gasim",
+   "level": "table_row",
+   "kind": "journal_or_conference",
+   "record_class": "paper",
+   "class_basis": "URL-based heuristic",
+   "arxiv": null,
+   "doi": "10.18653/v1/2026.acl-long.569",
+   "identity_keys": [
+    "doi:10.18653/v1/2026.acl-long.569"
+   ],
+   "key_sources": {
+    "doi:10.18653/v1/2026.acl-long.569": "URL in the survey text"
+   },
+   "text_urls": [
+    "https://doi.org/10.18653/v1/2026.acl-long.569"
+   ],
+   "aliases": [
+    "gasim-graph-accelerated-hybrid"
+   ],
+   "part_of": "prev-moltbook-cluster",
+   "related_keys": [],
+   "title": "GASim: A Graph-Accelerated Hybrid Framework for Social Simulation",
+   "uncertain": [
+    "title from link text only",
+    "record class from URL heuristic"
+   ]
+  },
+  {
+   "id": "hf-huggingface-technical-timeline",
+   "level": "constituent",
+   "kind": "incident_report",
+   "record_class": "report",
+   "class_basis": "URL-based heuristic",
+   "arxiv": null,
+   "doi": null,
+   "identity_keys": [
+    "web:huggingface.co/blog/agent-intrusion-technical-timeline"
+   ],
+   "key_sources": {
+    "web:huggingface.co/blog/agent-intrusion-technical-timeline": "URL in the survey text"
+   },
+   "text_urls": [
+    "https://huggingface.co/blog/agent-intrusion-technical-timeline"
+   ],
+   "aliases": [],
+   "part_of": "hf-incident-case",
+   "related_keys": [],
+   "title": "Agent intrusion: technical timeline",
+   "uncertain": [
+    "record class from URL heuristic"
+   ]
+  },
+  {
+   "id": "hf-metr-redwood-investigation",
+   "level": "constituent",
+   "kind": "incident_report",
+   "record_class": "report",
+   "class_basis": "URL-based heuristic",
+   "arxiv": null,
+   "doi": null,
+   "identity_keys": [
+    "web:metr.org/blog/2026-08-26-openai-hugging-face-incident-investigation"
+   ],
+   "key_sources": {
+    "web:metr.org/blog/2026-08-26-openai-hugging-face-incident-investigation": "URL in the survey text"
+   },
+   "text_urls": [
+    "https://metr.org/blog/2026-08-26-openai-hugging-face-incident-investigation/"
+   ],
+   "aliases": [],
+   "part_of": "hf-incident-case",
+   "related_keys": [],
+   "title": "Brief independent investigation of agents’ behavior, reasoning and collaboration in the OpenAI / Hugging Face hacking incident",
+   "uncertain": [
+    "record class from URL heuristic"
+   ]
+  },
+  {
+   "id": "hf-openai-technical-report",
+   "level": "constituent",
+   "kind": "incident_report",
+   "record_class": "report",
+   "class_basis": "URL-based heuristic",
+   "arxiv": null,
+   "doi": null,
+   "identity_keys": [
+    "web:cdn.openai.com/pdf/67869394-cb91-4c12-888c-5cbd85c7814c/openai-hugging-face%20incident-technical-report.pdf",
+    "web:openai.com/index/hugging-face-incident-and-the-road-ahead"
+   ],
+   "key_sources": {
+    "web:cdn.openai.com/pdf/67869394-cb91-4c12-888c-5cbd85c7814c/openai-hugging-face%20incident-technical-report.pdf": "URL in the survey text",
+    "web:openai.com/index/hugging-face-incident-and-the-road-ahead": "URL in the survey text"
+   },
+   "text_urls": [
+    "https://openai.com/index/hugging-face-incident-and-the-road-ahead/"
+   ],
+   "aliases": [],
+   "part_of": "hf-incident-case",
+   "related_keys": [],
+   "title": "The Hugging Face incident and the road ahead (technical report)",
+   "uncertain": [
+    "record class from URL heuristic"
+   ]
+  },
+  {
+   "id": "human-ai-consensus",
+   "level": "table_row",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "URL-based heuristic",
+   "arxiv": "2609.02122",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2609.02122"
+   ],
+   "key_sources": {
+    "arxiv:2609.02122": "URL in the survey text"
+   },
+   "text_urls": [
+    "https://arxiv.org/abs/2609.02122"
+   ],
+   "aliases": [
+    "ai-agents-reshape-consensus"
+   ],
+   "part_of": "prev-population-dynamics-cluster",
+   "related_keys": [],
+   "title": "AI agents reshape consensus formation in human groups",
+   "uncertain": [
+    "record class from URL heuristic"
+   ]
+  },
+  {
+   "id": "moltbook-form-without-function",
+   "level": "table_row",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "URL-based heuristic",
+   "arxiv": "2604.13052",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2604.13052"
+   ],
+   "key_sources": {
+    "arxiv:2604.13052": "URL in the survey text"
+   },
+   "text_urls": [
+    "https://arxiv.org/abs/2604.13052"
+   ],
+   "aliases": [
+    "form-without-function-social"
+   ],
+   "part_of": "prev-moltbook-cluster",
+   "related_keys": [],
+   "title": "Form Without Function: Agent Social Behavior in the Moltbook Network",
+   "uncertain": [
+    "record class from URL heuristic"
+   ]
+  },
+  {
+   "id": "moltbook-observatory",
+   "level": "table_row",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "URL-based heuristic",
+   "arxiv": "2605.13860",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2605.13860"
+   ],
+   "key_sources": {
+    "arxiv:2605.13860": "URL in the survey text"
+   },
+   "text_urls": [
+    "https://arxiv.org/abs/2605.13860"
+   ],
+   "aliases": [
+    "moltbook-observatory-archive"
+   ],
+   "part_of": "prev-moltbook-cluster",
+   "related_keys": [],
+   "title": "The Moltbook Observatory Archive: an incremental dataset of agent-only social network activity",
+   "uncertain": [
+    "record class from URL heuristic"
+   ]
+  },
+  {
+   "id": "naming-games",
+   "level": "table_row",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "URL-based heuristic",
+   "arxiv": "2608.02178",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2608.02178"
+   ],
+   "key_sources": {
+    "arxiv:2608.02178": "URL in the survey text"
+   },
+   "text_urls": [
+    "https://arxiv.org/abs/2608.02178"
+   ],
+   "aliases": [
+    "microscopic-dynamics-consensus-formation"
+   ],
+   "part_of": "prev-population-dynamics-cluster",
+   "related_keys": [],
+   "title": "Microscopic dynamics of consensus formation in multi-agent LLM Naming Games",
+   "uncertain": [
+    "record class from URL heuristic"
+   ]
+  },
+  {
+   "id": "openclaw-norms",
+   "level": "table_row",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "URL-based heuristic",
+   "arxiv": "2602.02625",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2602.02625"
+   ],
+   "key_sources": {
+    "arxiv:2602.02625": "URL in the survey text"
+   },
+   "text_urls": [
+    "https://arxiv.org/abs/2602.02625"
+   ],
+   "aliases": [
+    "openclaw-agents-moltbook-risky"
+   ],
+   "part_of": "prev-moltbook-cluster",
+   "related_keys": [],
+   "title": "OpenClaw Agents on Moltbook: Risky Instruction Sharing and Norm Enforcement in an Agent-Only Social Network",
+   "uncertain": [
+    "record class from URL heuristic"
+   ]
+  },
+  {
+   "id": "piao-polarization",
+   "level": "table_row",
+   "kind": "journal_or_conference",
+   "record_class": "paper",
+   "class_basis": "URL-based heuristic",
+   "arxiv": "2501.05171",
+   "doi": "10.1038/s41467-026-78228-y",
+   "identity_keys": [
+    "arxiv:2501.05171",
+    "doi:10.1038/s41467-026-78228-y"
+   ],
+   "key_sources": {
+    "arxiv:2501.05171": "URL in the survey text",
+    "doi:10.1038/s41467-026-78228-y": "URL in the survey text"
+   },
+   "text_urls": [
+    "https://arxiv.org/abs/2501.05171"
+   ],
+   "aliases": [
+    "2501.05171",
+    "piao-polarization-networks",
+    "piao2025",
+    "piao2026"
+   ],
+   "part_of": "prev-population-dynamics-cluster",
+   "related_keys": [],
+   "title": "Emergence of polarization in networks of large language model agents",
+   "uncertain": [
+    "title from link text only",
+    "record class from URL heuristic"
+   ]
+  },
+  {
+   "id": "rheon-consensus",
+   "level": "short_card",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "URL-based heuristic",
+   "arxiv": "2609.39211",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2609.39211"
+   ],
+   "key_sources": {
+    "arxiv:2609.39211": "URL in the survey text"
+   },
+   "text_urls": [],
+   "aliases": [
+    "ricco-consensus-factual-dynamics"
+   ],
+   "part_of": null,
+   "related_keys": [],
+   "title": "Consensus and Factual Dynamics in Large Populations of Interacting Language Models",
+   "uncertain": [
+    "record class from URL heuristic"
+   ]
+  },
+  {
+   "id": "structured-opinion-dynamics",
+   "level": "table_row",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "URL-based heuristic",
+   "arxiv": "2604.11312",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2604.11312"
+   ],
+   "key_sources": {
+    "arxiv:2604.11312": "URL in the survey text"
+   },
+   "text_urls": [
+    "https://arxiv.org/abs/2604.11312"
+   ],
+   "aliases": [
+    "collective-opinion-dynamics-structured"
+   ],
+   "part_of": "prev-population-dynamics-cluster",
+   "related_keys": [],
+   "title": "Collective Opinion Dynamics in Structured LLM Populations",
+   "uncertain": [
+    "record class from URL heuristic"
+   ]
+  },
+  {
+   "id": "tanaka-memetic-drift",
+   "level": "table_row",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "URL-based heuristic",
+   "arxiv": "2603.24676",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2603.24676"
+   ],
+   "key_sources": {
+    "arxiv:2603.24676": "URL in the survey text"
+   },
+   "text_urls": [
+    "https://arxiv.org/abs/2603.24676"
+   ],
+   "aliases": [
+    "when-collective-intelligence-lottery"
+   ],
+   "part_of": "prev-population-dynamics-cluster",
+   "related_keys": [],
+   "title": "When Is Collective Intelligence a Lottery? Multi-Agent Scaling Laws for Memetic Drift in LLMs",
+   "uncertain": [
+    "title from link text only",
+    "record class from URL heuristic"
+   ]
+  },
+  {
+   "id": "topological-collapse",
+   "level": "table_row",
+   "kind": "preprint",
+   "record_class": "paper",
+   "class_basis": "URL-based heuristic",
+   "arxiv": "2608.15519",
+   "doi": null,
+   "identity_keys": [
+    "arxiv:2608.15519"
+   ],
+   "key_sources": {
+    "arxiv:2608.15519": "URL in the survey text"
+   },
+   "text_urls": [
+    "https://arxiv.org/abs/2608.15519"
+   ],
+   "aliases": [
+    "topological-collapse-higher-order"
+   ],
+   "part_of": "prev-moltbook-cluster",
+   "related_keys": [],
+   "title": "Topological collapse of higher-order interactions bottlenecks collective intelligence in AI agent societies",
+   "uncertain": [
+    "record class from URL heuristic"
+   ]
+  }
+ ],
+ "duplicate_title_candidates": {},
+ "conflicts": [
+  [
+   "ng-hao-peer-preservation-replication",
+   "arxiv:2604.19784"
+  ],
+  [
+   "science-agents-go-rogue",
+   "arxiv:2602.20021"
+  ]
+ ]
+}

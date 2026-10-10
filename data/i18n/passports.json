@@ -1,0 +1,1226 @@
+{
+  "agensh-1024": {
+    "authors_en": "Zhihao Zhan, Ting Song, Li Dong, Shaohan Huang, Jianxun Lian et al. (7 authors)",
+    "orgs_en": "Microsoft Research",
+    "status_en": "arXiv preprint (technical report)",
+    "status_ru": "препринт arXiv (технический отчёт)",
+    "scale_en": "1,024 participants; peak 1,020 active in a 37.5-second interval",
+    "title_en": "Agensh: Scaling Organizational Intelligence to 1,024 Agents"
+  },
+  "ai-organizations": {
+    "authors_en": "Judy Hanwen Shen, Daniel Zhu, Siddarth Srinivasan, Henry Sleight, Lawrence T. Wagner III et al. (8 authors)",
+    "orgs_en": "Anthropic (Fellows); MATS; Constellation Institute; Harvard SEAS",
+    "status_en": "arXiv preprint; accepted at ICLR 2026 workshops (MALGAI, AIWILD)",
+    "status_ru": "препринт arXiv; принят на семинары ICLR 2026 (MALGAI, AIWILD)",
+    "scale_en": "Organization sizes of 3–16 agents",
+    "title_en": "AI Organizations are More Effective but Less Aligned than Individual Agents"
+  },
+  "anthropic-alignment-assessment-cyber": {
+    "authors_en": "Paul C. Bogdan, Richard Qi, Jake Eaton, Sam Kennedy, Fabien Roger et al. (23 authors)",
+    "orgs_en": "Anthropic",
+    "status_en": "Lab blog (incident report)",
+    "status_ru": "блог лаборатории (отчёт об инцидентах)",
+    "scale_en": "1 agent per run; 4 incidents span 7 runs",
+    "title_en": "An alignment assessment of recent cybersecurity incidents"
+  },
+  "anthropic-c-compiler": {
+    "authors_en": "Nicholas Carlini",
+    "orgs_en": "Anthropic",
+    "status_en": "Lab engineering blog",
+    "status_ru": "инженерный блог лаборатории",
+    "scale_en": "16 agents in parallel; one project of about 2 weeks",
+    "title_en": "Building a C compiler with a team of parallel Claudes"
+  },
+  "anthropic-patterns": {
+    "authors_en": "Carolyn Zou",
+    "orgs_en": "Anthropic (Frontier Red Team)",
+    "status_en": "Lab blog",
+    "status_ru": "блог лаборатории",
+    "scale_en": "80 agents in the largest game swarm",
+    "title_en": "Patterns and problems in emerging multiagent systems"
+  },
+  "artificial-hivemind": {
+    "authors_en": "Liwei Jiang, Yuanjun Chai, Margaret Li, Mickel Liu, Raymond Fok et al. (9 authors)",
+    "orgs_en": "University of Washington; Ai2; Carnegie Mellon University; Stanford University",
+    "status_en": "NeurIPS 2025 (Datasets & Benchmarks, Oral, Best Paper)",
+    "status_ru": "NeurIPS 2025 (Datasets & Benchmarks, Oral, Best Paper)",
+    "scale_en": "Independent responses; [models](https://arxiv.org/html/2510.22954v1), no interactions",
+    "title_en": "Artificial Hivemind: The Open-Ended Homogeneity of Language Models (and Beyond)"
+  },
+  "attractor-states": {
+    "authors_en": "Arya Jakkli, Senthooran Rajamanoharan, Neel Nanda; Anthropic; Ting-Wen Ko, Jonas Geiping",
+    "orgs_en": "MATS; Anthropic; Max Planck Institute for Intelligent Systems; ELLIS Institute Tübingen",
+    "status_en": "LessWrong post; system card; arXiv preprint",
+    "status_ru": "пост LessWrong; системная карта; препринт arXiv",
+    "scale_en": "Dialogues of 2 agents measured; size of the forum experiment not stated",
+    "title_en": "Attractor states in model-model conversations: LessWrong post, Claude Opus 4 system card and Ko & Geiping paper"
+  },
+  "automated-w2s-researcher": {
+    "authors_en": "Jiaxin Wen, Liang Qiu, Joe Benton, Jan Hendrik Kirchner, Jan Leike",
+    "orgs_en": "Anthropic; Anthropic Fellows Program",
+    "status_en": "Lab blog (Alignment Science)",
+    "status_ru": "блог лаборатории (Alignment Science)",
+    "scale_en": "9 Claude agents in each of two teams",
+    "title_en": "Automated Weak-to-Strong Researcher"
+  },
+  "cursor-scaling": {
+    "authors_en": "Wilson Lin",
+    "orgs_en": "Cursor (Anysphere)",
+    "status_en": "Company blog (series of three posts)",
+    "status_ru": "блог компании (серия из трёх постов)",
+    "scale_en": "Peak ≈2,000 according to an interview; 1,173 cumulative on a single file in another run",
+    "title_en": "Cursor: series of posts on agent swarms — “Scaling long-running autonomous coding”, “Towards self-driving codebases”, “Agent swarms and the new model economics”"
+  },
+  "deepmind-cheating-whistleblowing": {
+    "authors_en": "Davide Paglieri, Logan Cross, Tim Genewein, Joel Z. Leibo, Nenad Tomasev et al. (6 authors)",
+    "orgs_en": "Google DeepMind",
+    "status_en": "arXiv preprint",
+    "status_ru": "препринт arXiv",
+    "scale_en": "100 Gemini agents in one conference",
+    "title_en": "A Case Study on Emergent Cheating and Whistleblowing in Autonomous Research Swarms"
+  },
+  "flag-game": {
+    "authors_en": "Elizabeth Pavlova, Hidenori Tanaka",
+    "orgs_en": "NTT Research; Harvard University; Cambridge Boston Alignment Initiative",
+    "status_en": "arXiv preprint",
+    "status_ru": "препринт arXiv",
+    "scale_en": "Up to 128 agents in one game",
+    "title_en": "Flag Game: A Toy Model for Mechanistic Swarm Interpretability"
+  },
+  "kim-scaling-agent-systems": {
+    "authors_en": "Yubin Kim, Ken Gu, Chanwoo Park, Chunjong Park, Samuel Schmidgall et al. (20 authors)",
+    "orgs_en": "Google Research; Google DeepMind; MIT",
+    "status_en": "Nature Machine Intelligence (peer-reviewed journal)",
+    "status_ru": "Nature Machine Intelligence (рецензируемый журнал)",
+    "scale_en": "Sizes 1–9; baseline system of 3 agents",
+    "title_en": "Capable language models can outgrow the benefits of collaboration (preprint: “Towards a Science of Scaling Agent Systems”)"
+  },
+  "kimi-agent-swarm": {
+    "authors_en": "Kimi Team, Tongtong Bai, Yifan Bai, Yiping Bao, S. H. Cai et al. (336 authors)",
+    "orgs_en": "Moonshot AI",
+    "status_en": "Technical report (arXiv preprint)",
+    "status_ru": "технический отчёт (препринт arXiv)",
+    "scale_en": "Stated K2.6 limit: 300 sub-agents; maximum used in experiments not disclosed",
+    "title_en": "Kimi K2.5: Visual Agentic Intelligence — Agent Swarm and PARL (+ Kimi K2.6 swarm update)"
+  },
+  "mind-viruses": {
+    "authors_en": "Vassilis Papadopoulos, McNair Shah, Sam Zimmerman, Jack Lindsey",
+    "orgs_en": "Anthropic; Anthropic Fellows Program; EPFL",
+    "status_en": "arXiv preprint",
+    "status_ru": "препринт arXiv",
+    "scale_en": "6 agents in the coding scenario; viral chains are pairwise",
+    "title_en": "Mind Viruses: Self-Propagating Ideas in Multi-Agent LLM Systems"
+  },
+  "mythos-preview-self-interactions": {
+    "authors_en": "Anthropic",
+    "orgs_en": "Anthropic; Andon Labs",
+    "status_en": "Model system card",
+    "status_ru": "системная карта модели",
+    "scale_en": "2 in self-dialogue; size of the mixed Andon arena not disclosed",
+    "title_en": "System Card: Claude Mythos Preview — §7.6 “Observations from open-ended self-interactions” and Vending-Bench Arena"
+  },
+  "okawa-biased-consensus": {
+    "authors_en": "Maya Okawa",
+    "orgs_en": "NTT Research; Harvard University",
+    "status_en": "ICML 2026 (peer-reviewed conference)",
+    "status_ru": "ICML 2026 (рецензируемая конференция)",
+    "scale_en": "11 agents in the main group experiment",
+    "title_en": "Emergence of Biased Consensus in Multi-Agent LLM Debates"
+  },
+  "opus55-card": {
+    "authors_en": "Anthropic",
+    "orgs_en": "Anthropic",
+    "status_en": "Model system card",
+    "status_ru": "системная карта модели",
+    "scale_en": "Teams of up to 100 agents; 24-hour attempts",
+    "title_en": "System Card: Claude Opus 5.5 — multi-agent sections (§8.12 and others)"
+  },
+  "ord-swarm-scaling": {
+    "authors_en": "Toby Ord",
+    "orgs_en": "University of Oxford; Forethought",
+    "status_en": "Personal blog post (LessWrong, EA Forum)",
+    "status_ru": "пост в личном блоге (LessWrong, EA Forum)",
+    "scale_en": "Third-party OpenAI data up to 16 agents; no agent runs of his own",
+    "title_en": "Swarm Scaling"
+  },
+  "peer-preservation": {
+    "authors_en": "Yujin Potter, Nicholas Crispino, Vincent Siu, Chenguang Wang, Dawn Song",
+    "orgs_en": "UC Berkeley; UC Santa Cruz",
+    "status_en": "arXiv preprint; accepted at ICML 2026",
+    "status_ru": "препринт arXiv; принят на ICML 2026",
+    "scale_en": "One acting agent; the “peer” is a simulated history",
+    "title_en": "Peer-Preservation in Frontier Models"
+  },
+  "recursive-language-models": {
+    "authors_en": "Alex L. Zhang, Tim Kraska, Omar Khattab",
+    "orgs_en": "MIT CSAIL",
+    "status_en": "arXiv preprint",
+    "status_ru": "препринт arXiv",
+    "scale_en": "Main experiments: 1 call at a time; LongCoT-mini parallelism not stated",
+    "title_en": "Recursive Language Models"
+  },
+  "sat-teams": {
+    "authors_en": "Aneesh Pappu, Mirac Suzgun, Yongchan Kwon, Federico Bianchi, Batu El et al. (8 authors)",
+    "orgs_en": "Stanford University; Together AI; Emory University",
+    "status_en": "arXiv preprint",
+    "status_ru": "препринт arXiv",
+    "scale_en": "Teams of 3 mixed agents",
+    "title_en": "Self-Organizing Agent Teams Learn to Reason Together"
+  },
+  "semantic-collapse": {
+    "authors_en": "Weiyi Kong, Shiyang Lai, Jinghua Piao, James Evans",
+    "orgs_en": "Univ. of Chicago; Univ. of Toronto; Tsinghua University; Google; Santa Fe Institute",
+    "status_en": "arXiv preprint",
+    "status_ru": "препринт arXiv",
+    "scale_en": "Populations of up to 10; baseline system of 3 agents",
+    "title_en": "Multi-LLM Systems Exhibit Robust Semantic Collapse"
+  },
+  "shutdown-sabotage": {
+    "authors_en": "Amelie Knecht, Ulysse Schaller, Christopher Summerfield, Thilo Hagendorff",
+    "orgs_en": "University of Stuttgart; University of Oxford",
+    "status_en": "arXiv preprint",
+    "status_ru": "препринт arXiv",
+    "scale_en": "Up to 3 agents; one acts at a time in a rollout",
+    "title_en": "Shutdown Sabotage Propensities in Multi-Agent Systems"
+  },
+  "teams-hold-experts-back": {
+    "authors_en": "Aneesh Pappu, Batu El, Hancheng Cao, Carmelo di Nolfo, Yanchao Sun et al. (7 authors)",
+    "orgs_en": "Stanford University; Apple; Emory University",
+    "status_en": "arXiv preprint; accepted at ICML 2026",
+    "status_ru": "препринт arXiv; принят на ICML 2026",
+    "scale_en": "Teams of 2, 4 and 8 agents",
+    "title_en": "Multi-Agent Teams Hold Experts Back"
+  },
+  "test-time-communication": {
+    "authors_en": "Jongho Park, Vasilis Kontonis, Shivam Garg, Akshay Krishnamurthy, Dimitris Papailiopoulos",
+    "orgs_en": "Microsoft Research; UC Berkeley",
+    "status_en": "arXiv preprint",
+    "status_ru": "препринт arXiv",
+    "scale_en": "Teams of 2–5 agents in one container",
+    "title_en": "Scaling Discovery through Test-Time Communication"
+  },
+  "wiki-copying": {
+    "authors_en": "Giordano De Marzo, Nicola Alboré, David Garcia",
+    "orgs_en": "Univ. of Konstanz; Centro Ricerche Enrico Fermi; Intesa Sanpaolo; Complexity Science Hub",
+    "status_en": "arXiv preprint",
+    "status_ru": "препринт arXiv",
+    "scale_en": "3,099 agent names over the period; names are not agents, simultaneous peak unknown",
+    "title_en": "Copying explains the collective behavior of AI agents in the wild"
+  },
+  "gpt6-astra-card-a2a": {
+    "authors_en": "OpenAI",
+    "orgs_en": "OpenAI",
+    "status_en": "Model system card",
+    "status_ru": "системная карта модели",
+    "scale_en": "Single-agent trajectories; no multi-agent population",
+    "title_en": "GPT-6 Astra System Card §8.5 — Unintended Agent-to-agent Communication"
+  },
+  "hf-incident-case": {
+    "authors_en": "OpenAI, Ryan Greenblatt, Ajeya Cotra, Hjalmar Wijk, Hugo Larcher et al. (8 authors)",
+    "orgs_en": "OpenAI; METR; Redwood Research; Hugging Face",
+    "status_en": "Incident report; OpenAI blog; independent analyses",
+    "status_ru": "отчёт об инциденте; блог OpenAI; независимые разборы",
+    "scale_en": "≈1,200 forum participants cumulatively, 8–13 July",
+    "title_en": "The July 2026 OpenAI agent swarm / Hugging Face incident: reports by OpenAI, METR/Redwood, Hugging Face and independent reconstructions"
+  },
+  "noam-brown-dwarkesh": {
+    "authors_en": "Dwarkesh Patel, Noam Brown",
+    "orgs_en": "Dwarkesh Podcast; OpenAI",
+    "status_en": "Podcast (interview)",
+    "status_ru": "подкаст (интервью)",
+    "scale_en": "The interview recounts others' runs; no agent experiment of its own",
+    "title_en": "Noam Brown – Agent swarms, alignment, & recursive self-improvement"
+  },
+  "openai-gpt56-ultra": {
+    "authors_en": "OpenAI",
+    "orgs_en": "OpenAI",
+    "status_en": "Lab blog",
+    "status_ru": "блог лаборатории",
+    "scale_en": "Up to 16 agents in the published charts",
+    "title_en": "GPT-5.6: Frontier intelligence that scales with your ambition"
+  },
+  "openai-misalignment-reports": {
+    "authors_en": "OpenAI",
+    "orgs_en": "OpenAI",
+    "status_en": "OpenAI Alignment Research blog",
+    "status_ru": "блог OpenAI Alignment Research",
+    "scale_en": "Number of parallel agents not disclosed",
+    "title_en": "OpenAI Alignment misalignment reports: cross-sample Artifactory communication, temporary hosting, and self-replicating prompt injections"
+  },
+  "openai-navier-stokes": {
+    "authors_en": "OpenAI",
+    "orgs_en": "OpenAI",
+    "status_en": "Lab publication, not peer-reviewed",
+    "status_ru": "публикация лаборатории, не рецензируется",
+    "scale_en": "On the order of 10,000 agents simultaneously",
+    "title_en": "On the Navier–Stokes Millennium Prize Problem"
+  },
+  "adversarial-influence-scale": {
+    "authors_en": "Addison J. Wu, Jasin Cekinmez, Michel Liao, Karthik Narasimhan, Thomas L. Griffiths",
+    "orgs_en": "Princeton University",
+    "status_en": "arXiv preprint",
+    "status_ru": "препринт arXiv",
+    "scale_en": "Up to 21 agents: 12 honest and 9 deceivers",
+    "title_en": "How does Adversarial Influence Scale in Multi-Agent Systems?"
+  },
+  "agent-swarms-as-researchers": {
+    "authors_en": "Sergey Gusev, David E. Bernal Neira",
+    "orgs_en": "Purdue University",
+    "status_en": "arXiv preprint",
+    "status_ru": "препринт arXiv",
+    "scale_en": "Limit of 15 active in one prompt; actual peak and total not measured",
+    "title_en": "AI Agent Swarms as Researchers: Progress, Challenges, and Open Questions"
+  },
+  "agents-of-chaos": {
+    "authors_en": "Natalie Shapira, Chris Wendler, Avery Yen, Gabriele Sarti, Koyena Pal et al. (38 authors)",
+    "orgs_en": "Northeastern University; Harvard; MIT; Stanford; CMU; UBC; Tufts; Hebrew Univ.; Technion",
+    "status_en": "arXiv preprint",
+    "status_ru": "препринт arXiv",
+    "scale_en": "6 simultaneously on two servers: 4 Kimi and 2 Claude; interactions within each model",
+    "title_en": "Agents of Chaos"
+  },
+  "aggagent": {
+    "authors_en": "Yoonsang Lee, Howard Yen, Xi Ye, Danqi Chen",
+    "orgs_en": "Princeton University",
+    "status_en": "arXiv preprint; accepted at COLM 2026",
+    "status_ru": "препринт arXiv; принят на COLM 2026",
+    "scale_en": "8 independent parallel runs, followed by a single aggregator",
+    "title_en": "Agentic Aggregation for Parallel Scaling of Long-Horizon Agentic Tasks"
+  },
+  "agora-git-memory": {
+    "authors_en": "Yifan Zhang, Yunheng Zou, Shaokun Zhang, Jian Hu, Hao Zhang et al. (8 authors)",
+    "orgs_en": "NVIDIA",
+    "status_en": "arXiv preprint",
+    "status_ru": "препринт arXiv",
+    "scale_en": "13 worker accounts; plus 3 manual agent sessions; setup account excluded",
+    "title_en": "Agora: Git as Shared Memory for Collective AutoResearch"
+  },
+  "ai-village": {
+    "authors_en": "Adam Binksmith, Shoshannah Tekofsky, Claude Fable 5.1 (AI Village agent)",
+    "orgs_en": "AI Digest; Sage",
+    "status_en": "Blog, dataset and working paper (Zenodo preprint)",
+    "status_ru": "блог, датасет и рабочая статья (препринт Zenodo)",
+    "scale_en": "Up to ≈30 together; 42 names; [data](https://doi.org/10.5281/zenodo.23090815)",
+    "title_en": "AI Village (AI Digest / Sage): a multi-model agent “village” — FAQ, 2025 recap and reaction to the Hugging Face incident"
+  },
+  "aisi-incident-july-2026": {
+    "authors_en": "UK AI Security Institute",
+    "orgs_en": "UK AI Security Institute",
+    "status_en": "Incident report (preliminary)",
+    "status_ru": "отчёт об инциденте (предварительный)",
+    "scale_en": "122 single-agent runs; interaction of two simultaneous instances documented",
+    "title_en": "UK AISI: Incident Report INC-2026-07-28-01 — unsanctioned agent behaviour during cyber testing"
+  },
+  "amodei-pace-the-frontier": {
+    "authors_en": "Dario Amodei",
+    "orgs_en": "Anthropic",
+    "status_en": "Personal essay",
+    "status_ru": "личное эссе",
+    "scale_en": "No new runs or agent counts",
+    "title_en": "We Must Pace the Frontier"
+  },
+  "anthropic-institute-pace": {
+    "authors_en": "Marina Favaro, Phillie Wright",
+    "orgs_en": "Anthropic",
+    "status_en": "Anthropic Institute publication (blog)",
+    "status_ru": "публикация Anthropic Institute (блог)",
+    "scale_en": "≈30,000 simultaneously on one internal platform; different tasks",
+    "title_en": "Measurements for understanding the pace of AI development inside frontier labs"
+  },
+  "anthropic-multi-agent-guidance": {
+    "authors_en": "Jeremy Hadfield, Barry Zhang, Kenneth Lien, Florian Scholz, Jeremy Fox et al. (11 authors)",
+    "orgs_en": "Anthropic",
+    "status_en": "Two company blog posts",
+    "status_ru": "два блога компании",
+    "scale_en": "Up to 50 subagents in an early failure; usually 3–5 in parallel plus a lead agent",
+    "title_en": "How we built our multi-agent research system (2025) and When to use multi-agent systems (2026)"
+  },
+  "anthropic-project-deal": {
+    "authors_en": "Kevin K. Troy, Dylan Shields, Keir Bradwell, Peter McCrory",
+    "orgs_en": "Anthropic",
+    "status_en": "Anthropic research page",
+    "status_ru": "страница исследования Anthropic",
+    "scale_en": "69 agents in a market; requests taken in turn; 4 separate markets",
+    "title_en": "Project Deal: our Claude-run marketplace experiment"
+  },
+  "anthropic-project-swap": {
+    "authors_en": "Zoë Hitzig, Sylvie Carr, Tess Cotter, Kevin Troy, Kyle Turman et al. (7 authors)",
+    "orgs_en": "Anthropic",
+    "status_en": "Anthropic Research blog",
+    "status_ru": "блог Anthropic Research",
+    "scale_en": "Up to 8 awake on one marketplace; 201 participants in total",
+    "title_en": "Project Swap: What happens when agents trade for us?"
+  },
+  "autoscientists": {
+    "authors_en": "Shanghua Gao, Ada Fang, Marinka Zitnik",
+    "orgs_en": "Harvard University",
+    "status_en": "arXiv preprint",
+    "status_ru": "препринт arXiv",
+    "scale_en": "Up to 14 worker agents per team; calls in turn; admin only at startup",
+    "title_en": "AutoScientists: Self-Organizing Agent Teams for Long-Running Scientific Experimentation"
+  },
+  "bradshaw-swarm-exponent": {
+    "authors_en": "Julian Bradshaw",
+    "orgs_en": "Not stated",
+    "status_en": "LessWrong post",
+    "status_ru": "пост на LessWrong",
+    "scale_en": "No runs of its own; agent counts cited from others' work",
+    "title_en": "Swarm Organization as the Exponent on Test-Time Compute"
+  },
+  "brockers-opinion-dynamics": {
+    "authors_en": "Vincent C. Brockers, David A. Ehrlich, Viola Priesemann",
+    "orgs_en": "Max Planck Institute for Dynamics and Self-Organization; University of Göttingen",
+    "status_en": "Nature Communications (peer-reviewed journal)",
+    "status_ru": "Nature Communications (рецензируемый журнал)",
+    "scale_en": "Dyad: 2 agents of the same model",
+    "title_en": "Disentangling interaction and bias effects in opinion dynamics of large language models"
+  },
+  "caif-lessons": {
+    "authors_en": "William Anderson",
+    "orgs_en": "Cooperative AI Foundation",
+    "status_en": "Organization blog",
+    "status_ru": "блог организации",
+    "scale_en": "No new measurements",
+    "title_en": "Lessons from Recent Multi-Agent Safety Incidents"
+  },
+  "co-failure-ceiling": {
+    "authors_en": "Josef Chen",
+    "orgs_en": "KAIKAKU",
+    "status_en": "arXiv preprint; author withdrew the headline result",
+    "status_ru": "препринт arXiv; автор отозвал главный результат",
+    "scale_en": "Models answer independently; no interaction",
+    "title_en": "When Does Combining Language Models Help? A Co-Failure Ceiling on Routing, Voting, and Mixture-of-Agents Across 67 Frontier Models"
+  },
+  "co-scientist-nature": {
+    "authors_en": "Juraj Gottweis, Wei-Hung Weng, Alexander Daryin, Tao Tu, Petar Sirkovic et al. (51 authors)",
+    "orgs_en": "Google DeepMind; Google Research; Stanford; Imperial College London; Houston Methodist",
+    "status_en": "Nature (peer-reviewed journal)",
+    "status_ru": "Nature (рецензируемый журнал)",
+    "scale_en": "A supervisor and 6 role agents",
+    "title_en": "Accelerating scientific discovery with Co-Scientist"
+  },
+  "coding-agents-long-context": {
+    "authors_en": "Weili Cao, Xunjian Yin, Bhuwan Dhingra, Shuyan Zhou",
+    "orgs_en": "Duke University",
+    "status_en": "arXiv preprint",
+    "status_ru": "препринт arXiv",
+    "scale_en": "One coding agent per example; no team",
+    "title_en": "Coding Agents are Effective Long-Context Processors"
+  },
+  "cognition-multi-agents": {
+    "authors_en": "Walden Yan",
+    "orgs_en": "Cognition AI",
+    "status_en": "Two company blog posts",
+    "status_ru": "два поста в блоге компании",
+    "scale_en": "Simultaneous count not stated; example of up to 10 sessions",
+    "title_en": "Cognition: “Don't Build Multi-Agents” (2025) and “Multi-Agents: What's Actually Working” (2026)"
+  },
+  "collaboration-gap": {
+    "authors_en": "Tim R. Davidson, Adam Fourney, Saleema Amershi, Robert West, Eric Horvitz et al. (6 authors)",
+    "orgs_en": "EPFL; Microsoft Research",
+    "status_en": "arXiv preprint; accepted at COLM 2026",
+    "status_ru": "препринт arXiv; принят на COLM 2026",
+    "scale_en": "2 agents simultaneously in a pair; separate LLM grader",
+    "title_en": "The Collaboration Gap: Exploration and Benchmarking of Open-World Agentic Cooperation"
+  },
+  "collusion-wiki": {
+    "authors_en": "Sydney Von Arx, Cormac Slade Byrd, Spencer Kitts, Thomas Larsen",
+    "orgs_en": "Nightingale Collective; Trajectory Institute",
+    "status_en": "Independent web report, not peer-reviewed",
+    "status_ru": "независимый веб-отчёт, не рецензировался",
+    "scale_en": "3,103 self-chosen names in the export, not unique agents; simultaneity unknown",
+    "title_en": "Discovery of a new OpenAI agent message board"
+  },
+  "colosseum": {
+    "authors_en": "Mason Nakamura, Abhinav Kumar, Saswat Das, Sahar Abdelnabi, Saaduddin Mahmud et al. (8 authors)",
+    "orgs_en": "UMass Amherst; Univ. of Virginia; ELLIS Institute Tübingen; MPI for Intelligent Systems",
+    "status_en": "arXiv preprint",
+    "status_ru": "препринт arXiv",
+    "scale_en": "6 agents in the Jira example; coalition of 2",
+    "title_en": "Colosseum: Auditing Collusion in Cooperative Multi-Agent Systems"
+  },
+  "commerce-misaligned-communication": {
+    "authors_en": "Zeyuan Li, Lukas Petersson, Alessandro Acquisti, Michiel A. Bakker",
+    "orgs_en": "MIT; Andon Labs",
+    "status_en": "arXiv preprint",
+    "status_ru": "препринт arXiv",
+    "scale_en": "4 agents simultaneously; 79 year-long agent runs",
+    "title_en": "Emergent Misaligned Communication in Long-Horizon Multi-Agent LLM Commerce"
+  },
+  "consensus-not-verification": {
+    "authors_en": "Yegor Denisov-Blanch, Joshua Kazdan, Jessica Chudnovsky, Rylan Schaeffer, Sheng Guan et al. (7 authors)",
+    "orgs_en": "Stanford University; Amazon",
+    "status_en": "arXiv preprint",
+    "status_ru": "препринт arXiv",
+    "scale_en": "Agents do not interact: independent answers are voted on",
+    "title_en": "Consensus is Not Verification: Why Crowd Wisdom Strategies Fail for LLM Truthfulness"
+  },
+  "context-language-models": {
+    "authors_en": "Rulin Shao, Shannon Zejiang Shen, Junjie Oscar Yin, Yuetai Li, Minheng Wang et al. (13 authors)",
+    "orgs_en": "University of Washington; Meta Superintelligence Labs; MIT; Trillium Labs",
+    "status_en": "arXiv preprint",
+    "status_ru": "препринт arXiv",
+    "scale_en": "6 agents in Software World; 24 hours, one run",
+    "title_en": "Context Language Models"
+  },
+  "cooperbench": {
+    "authors_en": "Arpandeep Khatua, Hao Zhu, Peter Tran, Arya Prabhudesai, Frederic Sadrieh et al. (11 authors)",
+    "orgs_en": "Stanford University; SAP Labs US",
+    "status_en": "arXiv preprint",
+    "status_ru": "препринт arXiv",
+    "scale_en": "Up to 4 agents in a small experiment on 46 tasks; the main benchmark uses pairs",
+    "title_en": "CooperBench: Why Coding Agents Cannot be Your Teammates Yet"
+  },
+  "coral": {
+    "authors_en": "Ao Qu, Han Zheng, Zijian Zhou, Yihao Yan, Yihong Tang et al. (17 authors)",
+    "orgs_en": "MIT; NUS; MiniMax; McGill; Stanford; SambaNova; SMART",
+    "status_en": "arXiv preprint; published at COLM 2026",
+    "status_ru": "препринт arXiv; опубликован на COLM 2026",
+    "scale_en": "4 homogeneous co-evolving agents per run",
+    "title_en": "CORAL: Towards Autonomous Multi-Agent Evolution for Open-Ended Discovery"
+  },
+  "cost-of-consensus": {
+    "authors_en": "Blaž Bertalanič, Carolina Fortuna",
+    "orgs_en": "Jožef Stefan Institute, Ljubljana",
+    "status_en": "Peer-reviewed paper, ACM CAIS 2026",
+    "status_ru": "рецензируемая статья, ACM CAIS 2026",
+    "scale_en": "10 agents per team; homogeneous and mixed 5+5 teams",
+    "title_en": "The Cost of Consensus: Isolated Self-Correction Prevails Over Unguided Homogeneous Multi-Agent Debate"
+  },
+  "cotra-surprised": {
+    "authors_en": "Ajeya Cotra",
+    "orgs_en": "METR",
+    "status_en": "Personal Substack essay, not peer-reviewed",
+    "status_ru": "личное эссе на Substack, не рецензировалось",
+    "scale_en": "Summary of the investigation; no runs or new counts of its own",
+    "title_en": "The Hugging Face attack surprised me"
+  },
+  "crypto-weaknesses": {
+    "authors_en": "Anthropic (Frontier Red Team)",
+    "orgs_en": "Anthropic; ETH Zurich; Tel Aviv University; TU Berlin",
+    "status_en": "Company blog and technical reports, not peer-reviewed",
+    "status_ru": "блог компании и технические отчёты, не рецензировались",
+    "scale_en": "Parallel maximum unknown; 12 refers to previous-generation agents",
+    "title_en": "Discovering cryptographic weaknesses with Claude"
+  },
+  "cursor-swarm-economics": {
+    "authors_en": "Wilson Lin",
+    "orgs_en": "Cursor (Anysphere)",
+    "status_en": "Company blog",
+    "status_ru": "блог компании",
+    "scale_en": "1,173 distinct agents edited one file in a run; parallel maximum unknown",
+    "title_en": "Agent swarms and the new model economics"
+  },
+  "debate-or-vote": {
+    "authors_en": "Hyeong Kyu Choi, Xiaojin Zhu, Sharon Li",
+    "orgs_en": "University of Wisconsin-Madison",
+    "status_en": "arXiv preprint; NeurIPS 2025 (Spotlight)",
+    "status_ru": "препринт arXiv; NeurIPS 2025 (Spotlight)",
+    "scale_en": "5 agents simultaneously; ablations with N=1–5",
+    "title_en": "Debate or Vote: Which Yields Better Decisions in Multi-Agent Large Language Models?"
+  },
+  "delegated-misalignment": {
+    "authors_en": "Zonghao Ying, Jiaqi Yan, Huize Luo, Quanchen Zou, Aishan Liu et al. (6 authors)",
+    "orgs_en": "Beihang University; BUPT; Xidian University; 360 AI Security Lab; BAAI",
+    "status_en": "arXiv preprint; accepted at EMNLP 2026 (Main)",
+    "status_ru": "препринт arXiv; принят на EMNLP 2026 (Main)",
+    "scale_en": "2 agents: principal and subordinate from the same base model",
+    "title_en": "Delegated Misalignment: How Multi-Agent Structures Amplify LLM Safety Risks"
+  },
+  "deliberative-crowds": {
+    "authors_en": "Federico Barrera-Lemarchand, Mariano Sigman, Joaquín Navajas",
+    "orgs_en": "Universidad Torcuato Di Tella; CONICET",
+    "status_en": "arXiv preprint",
+    "status_ru": "препринт arXiv",
+    "scale_en": "3 agents from different providers; up to 10 rounds",
+    "title_en": "The Wisdom of Artificial Deliberative Crowds"
+  },
+  "deliberative-illusion": {
+    "authors_en": "Herun Wan, Jiaying Wu, Minnan Luo, Fanxiao Li, Ningnan Wang et al. (7 authors)",
+    "orgs_en": "Xi'an Jiaotong University; NUS; Yunnan University; A*STAR",
+    "status_en": "arXiv preprint",
+    "status_ru": "препринт arXiv",
+    "scale_en": "8 agents simultaneously; 4 positions and two initial opinions",
+    "title_en": "The Deliberative Illusion: Diagnosing Factual Attrition and Stance Homogenization in Multi-Agent LLM Deliberation"
+  },
+  "delm-shared-context": {
+    "authors_en": "Yuzhen Mao, Jerry Gu, Aadi Chauhan, Qizheng Zhang, Hangoo Kang et al. (6 authors)",
+    "orgs_en": "Stanford University",
+    "status_en": "arXiv preprint",
+    "status_ru": "препринт arXiv",
+    "scale_en": "2 or 4 agents simultaneously in one session",
+    "title_en": "Decentralized Multi-Agent Systems with Shared Context"
+  },
+  "despite-instructions-covert-channels": {
+    "authors_en": "Jacob Dineen, Silei Ren, Muhao Chen, Dan Roth, Ben Zhou",
+    "orgs_en": "Arizona State University; Cornell University; UC Davis; University of Pennsylvania",
+    "status_en": "arXiv preprint",
+    "status_ru": "препринт arXiv",
+    "scale_en": "2 agents: sender and receiver; monitor separate",
+    "title_en": "Despite Instructions: Frontier Agents Improvise Covert Channels at Test Time"
+  },
+  "distributional-agi-safety": {
+    "authors_en": "Nenad Tomašev, Matija Franklin, Julian Jacobs, Sébastien Krier, Simon Osindero",
+    "orgs_en": "Google DeepMind",
+    "status_en": "arXiv preprint",
+    "status_ru": "препринт arXiv",
+    "scale_en": "No real agents or runs; a future economy is proposed",
+    "title_en": "Distributional AGI Safety"
+  },
+  "diversity-collapse": {
+    "authors_en": "Nuo Chen, Yicheng Tong, Yuzhe Yang, Yufei He, Xueyi Zhang et al. (8 authors)",
+    "orgs_en": "NUS; The Chinese University of Hong Kong, Shenzhen",
+    "status_en": "arXiv preprint; Findings of ACL 2026 (peer-reviewed)",
+    "status_ru": "препринт arXiv; Findings of ACL 2026 (рецензируемый)",
+    "scale_en": "Usually 3 agents; group-size ablation up to 7",
+    "title_en": "Diversity Collapse in Multi-Agent LLM Systems: Structural Coupling and Collective Failure in Open-Ended Idea Generation"
+  },
+  "diversity-scaling": {
+    "authors_en": "Yingxuan Yang, Chengrui Qu, Muning Wen, Laixi Shi, Ying Wen et al. (8 authors)",
+    "orgs_en": "Shanghai Jiao Tong University; Caltech; Johns Hopkins University; UC Berkeley",
+    "status_en": "arXiv preprint",
+    "status_ru": "препринт arXiv",
+    "scale_en": "2–16 agents; Vote: 1 round, Debate: 4",
+    "title_en": "Understanding Agent Scaling in LLM-Based Multi-Agent Systems via Diversity"
+  },
+  "dochkina-drop-hierarchy": {
+    "authors_en": "Victoria Dochkina",
+    "orgs_en": "Moscow Institute of Physics and Technology (MIPT)",
+    "status_en": "arXiv preprint",
+    "status_ru": "препринт arXiv",
+    "scale_en": "16 parallel Coordinator executors; groups of up to 256, simultaneity not given",
+    "title_en": "Drop the Hierarchy and Roles: How Self-Organizing LLM Agents Outperform Designed Structures"
+  },
+  "echoing-identity-failures": {
+    "authors_en": "Sarath Shekkizhar, Romain Cosentino, Adam Earle, Silvio Savarese",
+    "orgs_en": "Salesforce AI Research",
+    "status_en": "arXiv preprint; poster at an ICLR 2026 workshop",
+    "status_ru": "препринт arXiv; постер на воркшопе ICLR 2026",
+    "scale_en": "2 agents in a dialogue; 2,500+ conversations",
+    "title_en": "Echoing: Identity Failures when LLM Agents Talk to Each Other"
+  },
+  "einsteinarena": {
+    "authors_en": "Federico Bianchi, Yongchan Kwon, Aneesh Pappu, James Zou",
+    "orgs_en": "Together AI; Stanford University",
+    "status_en": "arXiv preprint",
+    "status_ru": "препринт arXiv",
+    "scale_en": "The platform does not report the number of simultaneous agents; 15 tasks",
+    "title_en": "Harnessing the Collective Intelligence of AI Agents in the Wild for New Discoveries"
+  },
+  "emergence-world": {
+    "authors_en": "Deepak Akkil, Tamer Abuelsaad, Karthik Vikram, Matthew Pace, Aditya Vempaty et al. (8 authors)",
+    "orgs_en": "Emergence AI",
+    "status_en": "arXiv preprint; not peer-reviewed",
+    "status_ru": "препринт arXiv; без рецензирования",
+    "scale_en": "13 agents per world; 80 citizens and 24 system agents across all worlds",
+    "title_en": "Emergence World: Adversarial Stress-Testing of Long-Horizon Multi-Agent Systems"
+  },
+  "emergent-collusion-long-horizon": {
+    "authors_en": "Xinrui Shi, Yanzhe Zhang, Diyi Yang",
+    "orgs_en": "Stanford University; Georgia Tech",
+    "status_en": "arXiv preprint",
+    "status_ru": "препринт arXiv",
+    "scale_en": "Pairs of 2 agents; 10,000 agent-episodes in the main runs",
+    "title_en": "Emergent Collusion in Long-Horizon LLM Agent Interaction"
+  },
+  "evans-agentic-intelligence-explosion": {
+    "authors_en": "James Evans, Benjamin Bratton, Blaise Agüera y Arcas",
+    "orgs_en": "Google; University of Chicago; Santa Fe Institute; Antikythera; UC San Diego",
+    "status_en": "Science (peer-reviewed journal), short opinion piece",
+    "status_ru": "Science (рецензируемый журнал), короткая авторская статья",
+    "scale_en": "A forecasting essay; no experiments or agents",
+    "title_en": "Agentic AI and the next intelligence explosion"
+  },
+  "fable51-card-multiagent": {
+    "authors_en": "Anthropic",
+    "orgs_en": "Anthropic",
+    "status_en": "Model system card",
+    "status_ru": "системная карта модели",
+    "scale_en": "Fixed team of 5; async subagents with no set limit",
+    "title_en": "System Card: Claude Fable 5.1 & Claude Mythos 5.1 — multi-agent sections"
+  },
+  "fermat-last-theorem": {
+    "authors_en": "Anthropic",
+    "orgs_en": "Anthropic; Columbia University; Imperial College London",
+    "status_en": "Lab blog; not peer-reviewed",
+    "status_ru": "блог лаборатории; без рецензирования",
+    "scale_en": "“Dozens” of agents worked in parallel; exact maximum not given",
+    "title_en": "Formalizing Fermat's Last Theorem"
+  },
+  "glossogen-saveveyru": {
+    "authors_en": "Elias Stengel-Eskin, Newton Sander, Carlos Bonetti, Sasha Boguraev, James Bowler et al. (7 authors)",
+    "orgs_en": "UT Austin; AE Studio; Schmidt Sciences; University of Edinburgh",
+    "status_en": "arXiv preprint",
+    "status_ru": "препринт arXiv",
+    "scale_en": "2 agents in the roles of Field Observer and Specialist",
+    "title_en": "GlossoGen: Emergent Language in Complex Multi-Agent LLM Interactions"
+  },
+  "grok-420-multi-agent": {
+    "authors_en": "xAI",
+    "orgs_en": "xAI",
+    "status_en": "Model system card",
+    "status_ru": "системная карта модели",
+    "scale_en": "Documentation allows 16 agents; the card does not report an actual run",
+    "title_en": "Grok 4.20 System Card"
+  },
+  "harness-design-long-running": {
+    "authors_en": "Prithvi Rajasekaran",
+    "orgs_en": "Anthropic",
+    "status_en": "Lab blog (engineering blog)",
+    "status_ru": "блог лаборатории (инженерный блог)",
+    "scale_en": "1 active agent; 3 roles run sequentially with file handoffs",
+    "title_en": "Harness design for long-running application development"
+  },
+  "hiddenbench": {
+    "authors_en": "Yuxuan Li, Aoi Naito, Hirokazu Shirado",
+    "orgs_en": "Carnegie Mellon University; Institute of Science Tokyo",
+    "status_en": "arXiv preprint; accepted at ICML 2026",
+    "status_ru": "препринт arXiv; принят на ICML 2026",
+    "scale_en": "3–4 agents in the main test; ablation up to 7",
+    "title_en": "Systematic Failures in Collective Reasoning under Distributed Information in Multi-Agent LLMs (HiddenBench)"
+  },
+  "homogeneous-panel-collapse": {
+    "authors_en": "Xin Li, Mengbing Liu, Chau Yuen",
+    "orgs_en": "Nanyang Technological University",
+    "status_en": "arXiv preprint; accepted at NeurIPS 2026 (Evaluations & Datasets)",
+    "status_ru": "препринт arXiv; принят на NeurIPS 2026 (трек Evaluations and Datasets)",
+    "scale_en": "3 homogeneous copies of a model; 6,925 debates in the ledger",
+    "title_en": "Measuring Collapse and Correction in Homogeneous-Panel LLM Debate"
+  },
+  "illusion-multi-agent-advantage": {
+    "authors_en": "Prathyusha Jwalapuram, Hehai Lin, Chuyuan Li, Fangkai Jiao, Sudong Wang et al. (10 authors)",
+    "orgs_en": "Salesforce Research; HKUST (Guangzhou); UBC; Nanyang Technological University",
+    "status_en": "arXiv preprint",
+    "status_ru": "препринт arXiv",
+    "scale_en": "DyLAN: 4 agents; 2–6 is the number of investors in the task, not agents",
+    "title_en": "The Illusion of Multi-Agent Advantage"
+  },
+  "indirect-tipping": {
+    "authors_en": "Ariel Flint, Luca Maria Aiello, Sara M. Constantino, Romualdo Pastor-Satorras, Andrea Baronchelli",
+    "orgs_en": "City St George's, Univ. of London; IT University of Copenhagen; Stanford University; UPC",
+    "status_en": "arXiv preprint",
+    "status_ru": "препринт arXiv",
+    "scale_en": "Simulations with N=100–10,000; agents are picked in pairs",
+    "title_en": "Indirect tipping: a social attack surface in AI agent populations"
+  },
+  "interaction-tax": {
+    "authors_en": "Summer Eunhyung Ann, Haokun Liu, Chenhao Tan",
+    "orgs_en": "University of Chicago",
+    "status_en": "arXiv preprint; ICML 2026 AI4Research workshop (poster)",
+    "status_ru": "препринт arXiv; воркшоп ICML 2026 AI4Research (постер)",
+    "scale_en": "2–4 agents in workflows; 5 seeds per cell",
+    "title_en": "The Interaction Tax: When Communication Erases Diversity in Multi-Agent Teams"
+  },
+  "interlocutor-effect": {
+    "authors_en": "Faouzi El Yagoubi, Godwin Badu-Marfo, Ranwa Al Mallah",
+    "orgs_en": "Polytechnique Montréal",
+    "status_en": "arXiv preprint; in the IWPE'26 workshop programme",
+    "status_ru": "препринт arXiv; в программе воркшопа IWPE'26",
+    "scale_en": "No live agents: the recipient is set by a line in the system prompt",
+    "title_en": "The Interlocutor Effect: Why LLMs Leak More Personal Data to Agents Than Humans"
+  },
+  "kimi-k3-swarm-bench": {
+    "authors_en": "Kimi Team, Tongtong Bai, Yifan Bai, Yiping Bao, Jianfeng Cai et al. (401 authors)",
+    "orgs_en": "Moonshot AI",
+    "status_en": "arXiv preprint (technical report)",
+    "status_ru": "препринт arXiv (технический отчёт)",
+    "scale_en": "Swarm Bench does not report the number of agents, tasks or seeds",
+    "title_en": "Kimi K3: Open Frontier Intelligence"
+  },
+  "lai-looking-for-something-weird": {
+    "authors_en": "Shiyang Lai, Arna Woemmel, Hongkai Mao, Junsol Kim, Summer Eunhyung Ann et al. (6 authors)",
+    "orgs_en": "University of Chicago; Stanford University",
+    "status_en": "arXiv preprint",
+    "status_ru": "препринт arXiv",
+    "scale_en": "181,585 agents across three snapshots; these span months of the platform, not simultaneous",
+    "title_en": "\"Looking for Something Weird to Happen\": How Humans Sustain AI Agent Novelty Amid Semantic Collapse"
+  },
+  "llms-trust-their-own": {
+    "authors_en": "Liron Soffer, Ravid Shwartz-Ziv, Chen Shani",
+    "orgs_en": "Tel-Aviv University; New York University",
+    "status_en": "arXiv preprint; under review",
+    "status_ru": "препринт arXiv; на рецензировании",
+    "scale_en": "1 active model; 7 “interlocutors” are scripted",
+    "title_en": "LLMs Trust Their Own: Identity-Dependent Conformity in Multi-Agent Systems"
+  },
+  "lm-teams-distributed-systems": {
+    "authors_en": "Elizabeth Mieczkowski, Katherine M. Collins, Ilia Sucholutsky, Natalia Vélez, Thomas L. Griffiths",
+    "orgs_en": "Princeton University; MIT; University of Cambridge; New York University",
+    "status_en": "arXiv preprint",
+    "status_ru": "препринт arXiv",
+    "scale_en": "Teams of 1 to 5 agents; 5 repetitions per condition",
+    "title_en": "Language Model Teams as Distributed Systems"
+  },
+  "lutje-mechanics-of-a-swarm": {
+    "authors_en": "Philipp Lütje",
+    "orgs_en": "Philflow (independent researcher)",
+    "status_en": "arXiv preprint; not peer-reviewed",
+    "status_ru": "препринт arXiv; без рецензирования",
+    "scale_en": "≈876 episodes (estimate); 340 names in the peak hour, not simultaneous",
+    "title_en": "The Mechanics of a Swarm: A Reproducible External Reconstruction of an Unintended Agent-Coordination Episode on a Third-Party Wiki"
+  },
+  "metr-senate-testimony": {
+    "authors_en": "Chris Painter",
+    "orgs_en": "METR",
+    "status_en": "Written testimony to the U.S. Senate; METR blog",
+    "status_ru": "письменные показания в Сенате США; блог METR",
+    "scale_en": "Summary of two incident reports; no new agent counts",
+    "title_en": "Chris Painter's testimony to the U.S. Senate on AI agent incidents"
+  },
+  "mo-models-mo-problems": {
+    "authors_en": "Sara Vera Marjanović, Jiacheng Xu, Aleksandr Laptev, Grigor Nalbandyan, Erik Arakelyan et al. (6 authors)",
+    "orgs_en": "NVIDIA; University of Copenhagen",
+    "status_en": "arXiv preprint; accepted at the REALM 2026 workshop (EMNLP)",
+    "status_ru": "препринт arXiv; принят на воркшоп REALM 2026 (EMNLP)",
+    "scale_en": "Models do not interact; pool of up to 23 models and 115 responses",
+    "title_en": "Mo' Models, Mo' Problems: How to best select model pools when designing Multi-Agent Systems"
+  },
+  "mollick-dot-and-swarm": {
+    "authors_en": "Ethan Mollick",
+    "orgs_en": "One Useful Thing (Substack)",
+    "status_en": "Blog (Substack)",
+    "status_ru": "блог (Substack)",
+    "scale_en": "13 agents in the author's own example; 10,000 is the figure from the OpenAI report",
+    "title_en": "The Dot and the Swarm"
+  },
+  "moltbook-illusion": {
+    "authors_en": "Ning Li",
+    "orgs_en": "Tsinghua University",
+    "status_en": "arXiv preprint",
+    "status_ru": "препринт arXiv",
+    "scale_en": "55,932 agent authors over 14 days; simultaneous maximum not given",
+    "title_en": "The Moltbook Illusion: Separating Human Influence from Emergent Behavior in AI Agent Societies"
+  },
+  "moltbook-socialization": {
+    "authors_en": "Ming Li, Xirui Li, Tianyi Zhou",
+    "orgs_en": "University of Maryland; MBZUAI",
+    "status_en": "arXiv preprint",
+    "status_ru": "препринт arXiv",
+    "scale_en": "38,830 post authors over 27 January – 8 February; simultaneous maximum not given",
+    "title_en": "Does Socialization Emerge in AI Agent Society? A Case Study of Moltbook"
+  },
+  "multi-agent-ai-control-fakelab": {
+    "authors_en": "Oliver Makins, Orazio Angelini, Zohreh Shams, Mary Phuong",
+    "orgs_en": "UK AI Security Institute; MATS Research",
+    "status_en": "arXiv preprint",
+    "status_ru": "препринт arXiv",
+    "scale_en": "K=1, 3 or 9 agents in sequence; one active at a time",
+    "title_en": "Multi-Agent AI Control: Distributed Attacks Hamper Per-Instance Monitors"
+  },
+  "multi-agent-transactive-memory": {
+    "authors_en": "To Eun Kim, Xuhong He, Dishank Jain, Ambuj Agrawal, Negar Arabzadeh et al. (6 authors)",
+    "orgs_en": "Carnegie Mellon University; UC Berkeley",
+    "status_en": "arXiv preprint",
+    "status_ru": "препринт arXiv",
+    "scale_en": "34 models in both roles; number of unique agents not given; shared trajectory archive",
+    "title_en": "Multi-Agent Transactive Memory"
+  },
+  "narcbench-helios": {
+    "authors_en": "Aaron Rose, Carissa Cullen, Sahar Abdelnabi, Philip Torr, Brandon Gary Kaplowitz et al. (6 authors)",
+    "orgs_en": "University of Oxford; ELLIS Institute Tübingen; University College London",
+    "status_en": "arXiv preprint",
+    "status_ru": "препринт arXiv",
+    "scale_en": "Up to 8 agents in one run; the main setup has 4 agents",
+    "title_en": "Detecting Multi-Agent Collusion Through Multi-Agent Interpretability"
+  },
+  "nature-subliminal-learning": {
+    "authors_en": "Alex Cloud, Minh Le, James Chua, Jan Betley, Anna Sztyber-Betley et al. (9 authors)",
+    "orgs_en": "Anthropic; Truthful AI; Warsaw Univ. of Technology; Oxford Martin AIGI; UC Berkeley",
+    "status_en": "Nature (peer-reviewed journal)",
+    "status_ru": "Nature (рецензируемый журнал)",
+    "scale_en": "Sequential teacher–student training; no interacting swarm",
+    "title_en": "Language models transmit behavioural traits through hidden signals in data"
+  },
+  "ng-hao-peer-preservation-replication": {
+    "authors_en": "Yi Mei (Vanessa) Ng, Yixiong Hao",
+    "orgs_en": "Second Look Fellowship, University of Chicago; Georgia Institute of Technology",
+    "status_en": "Blog article (replication), not peer-reviewed",
+    "status_ru": "блог-статья (репликация), не рецензировано",
+    "scale_en": "One critic agent; its peer is only described in the prompt",
+    "title_en": "Peer Preservation in LLMs: A Replication and Deep Dive"
+  },
+  "not-just-rlhf-activations": {
+    "authors_en": "Adarsh Kumarappan, Ananya Mujoo",
+    "orgs_en": "California Institute of Technology; Evergreen Valley College",
+    "status_en": "arXiv preprint",
+    "status_ru": "препринт arXiv",
+    "scale_en": "One model under test; 3–6 peers represented by pre-written answers",
+    "title_en": "Not Just RLHF: Why Alignment Alone Won't Fix Multi-Agent Sycophancy"
+  },
+  "oakhu-mallen-indirect-takeover": {
+    "authors_en": "oakhu, Alex Mallen",
+    "orgs_en": "Redwood Research; Magdalen College, Oxford",
+    "status_en": "LessWrong and AI Alignment Forum post",
+    "status_ru": "пост на LessWrong и AI Alignment Forum",
+    "scale_en": "No runs or agent counts of its own",
+    "title_en": "AI swarms are starting to pose indirect takeover risk"
+  },
+  "opus46-launch-cluster": {
+    "authors_en": "Anthropic",
+    "orgs_en": "Anthropic",
+    "status_en": "Launch post, system card and documentation",
+    "status_ru": "пост о запуске, системная карта и документация",
+    "scale_en": "Orchestrator and subagents; number of subagents not disclosed",
+    "title_en": "Claude Opus 4.6: launch post (1M-token context), system card (multi-agent BrowseComp) and Claude Code agent teams"
+  },
+  "orbit-framework": {
+    "authors_en": "Ben Hagag, William L. Anderson, Srija Chakraborty, Christian Schroeder de Witt",
+    "orgs_en": "Carnegie Mellon University; MATS Research; University of Oxford; Cooperative AI Foundation",
+    "status_en": "arXiv preprint",
+    "status_ru": "препринт arXiv",
+    "scale_en": "Up to 10 agents in the JiraTicket configuration; number in published runs not stated",
+    "title_en": "ORBIT: A Framework for Multi-Agent Safety and Security Evaluations"
+  },
+  "orch-embodied": {
+    "authors_en": "Zhengran Ji, Jonathan Hyun, Boyuan Chen",
+    "orgs_en": "Duke University",
+    "status_en": "arXiv preprint",
+    "status_ru": "препринт arXiv",
+    "scale_en": "50 workers and 6 managers in a human-designed structure",
+    "title_en": "Organizational Principles Enable Collective Intelligence in Embodied AI"
+  },
+  "parasitic-ai": {
+    "authors_en": "Adele Lopez",
+    "orgs_en": "Independent author",
+    "status_en": "LessWrong post",
+    "status_ru": "пост на LessWrong",
+    "scale_en": "Dialogues between two personas shown, with messages relayed by a human",
+    "title_en": "The Rise of Parasitic AI"
+  },
+  "physics-of-agents": {
+    "authors_en": "Batu El, Jinhee Paeng, Fatih Dinc, Shiye Su, Mete Erdogan et al. (10 authors)",
+    "orgs_en": "Stanford University; UC Santa Barbara",
+    "status_en": "arXiv preprint",
+    "status_ru": "препринт arXiv",
+    "scale_en": "64 agents in an additional mixed community; 32 in the main experiment",
+    "title_en": "Physics of Agents: Statistical Mechanics Predicts Collective Behavior of AI Agents"
+  },
+  "pimmur-principles": {
+    "authors_en": "Jiaxu Zhou, Jen-tse Huang, Xuhui Zhou, Man Ho Lam, Xintao Wang et al. (8 authors)",
+    "orgs_en": "CUHK; Johns Hopkins; CMU; Fudan University; Stanford; Renmin University of China",
+    "status_en": "arXiv preprint",
+    "status_ru": "препринт arXiv",
+    "scale_en": "Replications: up to 300 agents; the main audit covers literature, not a single swarm",
+    "title_en": "The PIMMUR Principles: Ensuring Validity in Collective Behavior of LLM Societies"
+  },
+  "prev-collective-loss-of-control": {
+    "authors_en": "Xiangfan Wu, Zonghao Ying, Huiyu Wu, Xing Zheng, Huangsheng Cheng et al. (7 authors)",
+    "orgs_en": "Tencent Zhuque Lab",
+    "status_en": "arXiv preprint",
+    "status_ru": "препринт arXiv",
+    "scale_en": "One recipient in a fresh container; this is not a multi-agent cascade",
+    "title_en": "Collective Loss of Control in LLM Agent Systems: An Epidemic Account of Mutation, Contagion, and Recovery"
+  },
+  "prev-conformity-misalignment": {
+    "authors_en": "Giordano De Marzo, Alessandro Bellina, Claudio Castellano, Viola Priesemann, David Garcia",
+    "orgs_en": "Univ. of Konstanz; CREF; Complexity Science Hub; Sapienza Univ. of Rome; MPI-DS Göttingen",
+    "status_en": "arXiv preprint",
+    "status_ru": "препринт arXiv",
+    "scale_en": "50 agents; one updates per step, the other 49 are visible",
+    "title_en": "Conformity Generates Collective Misalignment in AI Agents Societies"
+  },
+  "prev-demarzo-majority": {
+    "authors_en": "Giordano De Marzo, Claudio Castellano, David Garcia",
+    "orgs_en": "University of Konstanz; Centro Ricerche Enrico Fermi; Complexity Science Hub; ISC-CNR",
+    "status_en": "Science Advances (peer-reviewed journal)",
+    "status_ru": "Science Advances (рецензируемый журнал)",
+    "scale_en": "Up to 1,000 agents in the model population; one updates per step",
+    "title_en": "AI agents can coordinate via majority-following beyond human scale"
+  },
+  "prev-flint-group-size": {
+    "authors_en": "Ariel Flint, Luca Maria Aiello, Romualdo Pastor-Satorras, Andrea Baronchelli",
+    "orgs_en": "City St George's, University of London; IT University of Copenhagen; UPC",
+    "status_en": "PNAS (peer-reviewed journal)",
+    "status_ru": "PNAS (рецензируемый журнал)",
+    "scale_en": "Up to ~10⁴ virtual agents with pre-recorded policies",
+    "title_en": "Group size effects and collective misalignment in LLM multi-agent systems"
+  },
+  "prev-robustness-audits": {
+    "authors_en": "Jinyi Ye, Lei Cao, Ding Chen, Emilio Ferrara",
+    "orgs_en": "University of Southern California",
+    "status_en": "arXiv preprint (position paper)",
+    "status_ru": "препринт arXiv (позиционная статья)",
+    "scale_en": "100 agents in the network game; PD: 2 agents",
+    "title_en": "Stop Drawing Scientific Claims from LLM Social Simulations Without Robustness Audits"
+  },
+  "prev-swarmworld": {
+    "authors_en": "Subhadeep Pal, Fiona Y. Wang, Markus J. Buehler",
+    "orgs_en": "Massachusetts Institute of Technology",
+    "status_en": "arXiv preprint",
+    "status_ru": "препринт arXiv",
+    "scale_en": "200 agents in one world; model calls once every 50 ticks",
+    "title_en": "SwarmWorld: Stigmergic technological evolution in societies of language-model agents"
+  },
+  "prev-thought-virus": {
+    "authors_en": "Moritz Weckbecker, Jonas Müller, Ben Hagag, Michael Mulet",
+    "orgs_en": "Fraunhofer HHI; TU Berlin; CMU; EleutherAI; Multi-Agent Security Initiative",
+    "status_en": "arXiv preprint",
+    "status_ru": "препринт arXiv",
+    "scale_en": "Chain of 6 agents simultaneously; TruthfulQA: chain of 3",
+    "title_en": "Thought Virus: Viral Misalignment via Subliminal Prompting in Multi-Agent Systems"
+  },
+  "project-vend-2": {
+    "authors_en": "Anthropic",
+    "orgs_en": "Anthropic (Frontier Red Team); Andon Labs",
+    "status_en": "Lab blog",
+    "status_ru": "блог лаборатории",
+    "scale_en": "3 named agents in the architecture; simultaneity of a fourth, seen in a chart, not established",
+    "title_en": "Project Vend: Phase two"
+  },
+  "recursive-agent-optimization": {
+    "authors_en": "Apurva Gandhi, Satyaki Chakraborty, Xiangjun Wang, Aviral Kumar, Graham Neubig",
+    "orgs_en": "Carnegie Mellon University; Amazon AGI Labs",
+    "status_en": "arXiv preprint",
+    "status_ru": "препринт arXiv",
+    "scale_en": "Tree of copies of one policy: depth up to 12 at evaluation",
+    "title_en": "Recursive Agent Optimization"
+  },
+  "representational-similarity": {
+    "authors_en": "Yujin Potter, Seun Eisape, Shiyang Lai, Alexander Huth, James Evans et al. (9 authors)",
+    "orgs_en": "UC Berkeley; University of Chicago Knowledge Lab; Google DeepMind",
+    "status_en": "arXiv preprint; accepted at ICML 2026 (poster)",
+    "status_ru": "препринт arXiv; принят на ICML 2026 (постер)",
+    "scale_en": "Two-agent games and creative tasks; 23 models meet in pairs",
+    "title_en": "Representational Similarity and Model Behavior in Multi-Agent Interaction"
+  },
+  "riedl-emergent-coordination": {
+    "authors_en": "Christoph Riedl",
+    "orgs_en": "Northeastern University",
+    "status_en": "arXiv preprint; accepted at ICLR 2026 (poster)",
+    "status_ru": "препринт arXiv; принят на ICLR 2026 (постер)",
+    "scale_en": "Up to 15 agents in the preliminary grid; main experiment: 10",
+    "title_en": "Emergent Coordination in Multi-Agent Language Models"
+  },
+  "riemann-zeta-swarm": {
+    "authors_en": "Anthropic",
+    "orgs_en": "Anthropic",
+    "status_en": "Lab blog (+ arXiv preprint)",
+    "status_ru": "блог лаборатории (+ препринт arXiv)",
+    "scale_en": "≈1,000 short-lived agents in the first session, 58 in the second; simultaneity unknown",
+    "title_en": "Learning more about Claude's mathematical capabilities (Riemann zeta zeros, about 60 subagents)"
+  },
+  "ringelmann-effect": {
+    "authors_en": "Blaž Bertalanič, Carolina Fortuna",
+    "orgs_en": "Jožef Stefan Institute",
+    "status_en": "arXiv preprint",
+    "status_ru": "препринт arXiv",
+    "scale_en": "Up to 30 agents; 3 rounds: an independent answer and 2 revisions; mixed teams included",
+    "title_en": "The Ringelmann Effect in Multi-Agent LLM Systems: A Scaling Law for Effective Team Size"
+  },
+  "sakana-conductor-trinity-fugu": {
+    "authors_en": "Yujin Tang, Edoardo Cetin, Jinglue Xu, Qi Sun, Stefan Nielsen et al. (14 authors)",
+    "orgs_en": "Sakana AI; University of Michigan; Institute of Science Tokyo",
+    "status_en": "ICLR 2026 (Conductor, TRINITY); Fugu report, blog: not peer-reviewed",
+    "status_ru": "ICLR 2026 (Conductor, TRINITY); техотчёт Fugu и блог — не рецензируются",
+    "scale_en": "Sequential orchestrator and up to 5 steps; number of active agents not stated",
+    "title_en": "Sakana AI: learned orchestration of several LLMs — Conductor, TRINITY, Fugu"
+  },
+  "scaling-teams-or-time": {
+    "authors_en": "Shanglin Wu, Yuyang Luo, Yueqing Liang, Kaiwen Shi, Yanfang Ye et al. (7 authors)",
+    "orgs_en": "Emory University; Illinois Institute of Technology; Univ. of Notre Dame; Cisco Research",
+    "status_en": "arXiv preprint",
+    "status_ru": "препринт arXiv",
+    "scale_en": "Separate team sweep: 1, 3, 5 and 7 agents",
+    "title_en": "Scaling Teams or Scaling Time? Memory Enabled Lifelong Learning in LLM Multi-Agent Systems"
+  },
+  "science-malicious-swarms": {
+    "authors_en": "Daniel Thilo Schroeder, Meeyoung Cha, Andrea Baronchelli, Nick Bostrom, Nicholas A. Christakis et al. (22 authors)",
+    "orgs_en": "SINTEF Digital; Max Planck Institute; City St George's, Univ. of London; Yale; and others",
+    "status_en": "Science, Policy Forum, January 2026 (first version: arXiv preprint)",
+    "status_ru": "Science, Policy Forum, январь 2026 (первая версия — препринт arXiv)",
+    "scale_en": "Policy review with no experiment of its own and no agent count",
+    "title_en": "How malicious AI swarms can threaten democracy"
+  },
+  "silo-bench": {
+    "authors_en": "Yuzhe Zhang, Feiran Liu, Yi Shan, Xinyi Huang, Xin Yang et al. (11 authors)",
+    "orgs_en": "Beijing University of Technology; Zhejiang University; Meituan; ETH Zürich",
+    "status_en": "arXiv preprint; accepted at ACL 2026 (main conference)",
+    "status_ru": "препринт arXiv; принят на ACL 2026 (основная конференция)",
+    "scale_en": "Up to 100 homogeneous agents, all active in every round",
+    "title_en": "Silo-Bench: A Scalable Environment for Evaluating Distributed Coordination in Multi-Agent LLM Systems"
+  },
+  "social-circuits": {
+    "authors_en": "Chuiyang Meng, Wenlu Yu, Ming Tang, Cheng Li",
+    "orgs_en": "Simon Fraser University; University of Alberta; SUSTech",
+    "status_en": "arXiv preprint",
+    "status_ru": "препринт arXiv",
+    "scale_en": "3 agents in the main experiment; up to 5 in the appendix",
+    "title_en": "Social Circuits behind Multi-agent Echo Chambers"
+  },
+  "societies-of-thought": {
+    "authors_en": "Junsol Kim, Shiyang Lai, Nino Scherrer, Blaise Agüera y Arcas, James Evans",
+    "orgs_en": "Google; University of Chicago; Santa Fe Institute",
+    "status_en": "arXiv preprint; accepted at an ICML 2026 workshop (non-archival)",
+    "status_ru": "препринт arXiv; принят на воркшоп ICML 2026 (не архивный)",
+    "scale_en": "Reasoning chain of a single model; no multi-agent society",
+    "title_en": "Reasoning Models Generate Societies of Thought"
+  },
+  "superminds-test": {
+    "authors_en": "Xirui Li, Ming Li, Yunze Xiao, Ryan Wong, Dianqi Li et al. (7 authors)",
+    "orgs_en": "University of Maryland; MBZUAI; Carnegie Mellon University",
+    "status_en": "arXiv preprint",
+    "status_ru": "препринт arXiv",
+    "scale_en": "Over 2 million accounts on the platform according to a cited estimate; not a joint run",
+    "title_en": "Superminds Test: Actively Evaluating Collective Intelligence of Agent Society via Probing Agents"
+  },
+  "swarmtraces": {
+    "authors_en": "Alex Forman, Mishka Kharlov, Will Tom, Jeffrey Ladish, Spencer Kitts et al. (8 authors)",
+    "orgs_en": "Parse; Palisade Research; Nightingale; Trajectory Institute; Lightcone Infrastructure",
+    "status_en": "Independent web report, not peer-reviewed",
+    "status_ru": "независимый веб-отчёт, не рецензируется",
+    "scale_en": "7,905 self-chosen names; names changed, number of agents and simultaneity unknown",
+    "title_en": "Revealing the details of how OpenAI agents hacked Hugging Face"
+  },
+  "tokyo-road-game": {
+    "authors_en": "Takahiro Ezaki, Naoto Imura, Katsuhiro Nishinari",
+    "orgs_en": "The University of Tokyo (RCAST)",
+    "status_en": "arXiv preprint",
+    "status_ru": "препринт arXiv",
+    "scale_en": "50 agents choose simultaneously in each round",
+    "title_en": "Warned alike, AI agents avoid the less-crowded road while people take it"
+  },
+  "tool-steganography": {
+    "authors_en": "Jimmy Laurence Rippin, Simon C. Marshall, David Demitri Africa, Christian Schroeder de Witt",
+    "orgs_en": "University of Oxford; UK AI Security Institute (AISI)",
+    "status_en": "arXiv preprint; AI4GOOD @ NeurIPS 2026 workshop (poster)",
+    "status_ru": "препринт arXiv; воркшоп AI4GOOD @ NeurIPS 2026 (постер)",
+    "scale_en": "2 agents in the coordination game; 1 in the implementation tests",
+    "title_en": "Tool Use Enables Undetectable Steganography in Multi-Agent LLM Systems"
+  },
+  "trammell-parallelizability": {
+    "authors_en": "Philip Trammell",
+    "orgs_en": "Epoch AI; Stanford Digital Economy Lab",
+    "status_en": "Working paper and Epoch AI essay, not peer-reviewed",
+    "status_ru": "рабочая статья и эссе Epoch AI, не рецензируется",
+    "scale_en": "Theoretical work: no runs or agents",
+    "title_en": "The Bounded Parallelizability of R&D: Theory and Application to AI"
+  },
+  "tran-kiela-equal-budget": {
+    "authors_en": "Dat Tran, Douwe Kiela",
+    "orgs_en": "Stanford University",
+    "status_en": "arXiv preprint (under review)",
+    "status_ru": "препринт arXiv (на рецензии)",
+    "scale_en": "4 parallel workers, then an aggregator; not a persistent swarm",
+    "title_en": "Single-Agent LLMs Outperform Multi-Agent Systems on Multi-Hop Reasoning Under Equal Thinking Token Budgets"
+  },
+  "transluce-agent-activity": {
+    "authors_en": "Jack Cable, Daniel Chiu, Francisco Pernice, Selena Zhang, James Anthony et al. (9 authors)",
+    "orgs_en": "Transluce; Corridor; MIT; AIUC",
+    "status_en": "Incident report, not peer-reviewed",
+    "status_ru": "отчёт об инциденте, не рецензируется",
+    "scale_en": "Number of agents in the public scans not established",
+    "title_en": "Early rogue AI agent activity and attempts to hack found on urlquery.net"
+  },
+  "vidal-models-identify-as-swarm": {
+    "authors_en": "julius vidal",
+    "orgs_en": "Not stated (independent author)",
+    "status_en": "LessWrong post",
+    "status_ru": "пост на LessWrong",
+    "scale_en": "Essay based on others' quotes; no experiment or agent count of its own",
+    "title_en": "When Models Identify as a Swarm"
+  },
+  "when-agents-coordinate": {
+    "authors_en": "Giuseppe Destefanis, Tomaso Aste",
+    "orgs_en": "University College London",
+    "status_en": "arXiv preprint",
+    "status_ru": "препринт arXiv",
+    "scale_en": "Up to 16 agents only in a separate chain; main grid up to 8",
+    "title_en": "When Agents Coordinate: Measuring Coordination in Multi-Agent AI Coding"
+  },
+  "wideseek-r1": {
+    "authors_en": "Zelai Xu, Zhexuan Xu, Ruize Zhang, Chunyang Zhu, Shi Yu et al. (10 authors)",
+    "orgs_en": "Tsinghua University; Infinigence AI",
+    "status_en": "arXiv preprint (under review)",
+    "status_ru": "препринт arXiv (на рецензии)",
+    "scale_en": "Lead agent and up to 10 parallel subagents during training",
+    "title_en": "WideSeek-R1: Exploring Width Scaling for Broad Information Seeking via Multi-Agent Reinforcement Learning"
+  },
+  "wiz-moltbook": {
+    "authors_en": "Gal Nagli",
+    "orgs_en": "Wiz",
+    "status_en": "Company blog, not peer-reviewed",
+    "status_ru": "блог компании, не рецензируется",
+    "scale_en": "1,494,823 registrations in the agents table; not the number of simultaneously running agents",
+    "title_en": "Hacking Moltbook: The AI Social Network Any Human Can Control"
+  },
+  "worse-together": {
+    "authors_en": "Sahan Paliskara, Nattaput Namchittai, Andrew Lampinen",
+    "orgs_en": "Independent; Stanford University; Anthropic",
+    "status_en": "arXiv preprint",
+    "status_ru": "препринт arXiv",
+    "scale_en": "Up to 52 agents in the clinic configuration; usually 4, 8 or 16",
+    "title_en": "Worse Together: How Performance Breaks Down in Multi-User Multi-Agent Teams"
+  },
+  "zhang-agents-in-the-wild": {
+    "authors_en": "Yunbei Zhang, Kai Mei, Ming Liu, Janet Wang, Dimitris N. Metaxas et al. (8 authors)",
+    "orgs_en": "Tulane University; Rutgers University; Iowa State University; Oak Ridge National Lab",
+    "status_en": "arXiv preprint",
+    "status_ru": "препринт arXiv",
+    "scale_en": "27,269 accounts over 9 days; 10,037 active within a day, not simultaneous",
+    "title_en": "Agents in the Wild: Safety, Society, and the Illusion of Sociality on Moltbook"
+  },
+  "opus5-card-multiagent": {
+    "authors_en": "Anthropic",
+    "orgs_en": "Anthropic",
+    "status_en": "Model system card",
+    "status_ru": "системная карта модели",
+    "scale_en": "Fixed team of up to 10 copies; async subagent count not limited",
+    "title_en": "System Card: Claude Opus 5 — §8.11 Multi-Agent"
+  },
+  "anthropic-art-enzymes": {
+    "authors_en": "Peter H. Yoon, Januka S. Athukoralage, Emmanuel Ameisen, Eric Kauderer-Abrams, Nicholas T. Perry et al. (6 authors)",
+    "orgs_en": "Anthropic",
+    "status_en": "Lab technical report and announcement (not peer-reviewed)",
+    "status_ru": "технический отчёт и анонс лаборатории (без рецензирования)",
+    "scale_en": "949 sessions in the main campaign; limit of 58 simultaneous, actual peak not stated",
+    "title_en": "Autonomous AI agents discover reverse transcriptases with tandem repeat arrays"
+  },
+  "schemes-coordinated-sabotage": {
+    "authors_en": "Nikolay Radev, Lennart Haas, Benjamin Arnav, Pablo Bernabeu-Pérez",
+    "orgs_en": "SPAR (affiliations not printed in the paper)",
+    "status_en": "arXiv preprint; ICML 2026 workshops",
+    "status_ru": "препринт arXiv; воркшопы ICML 2026",
+    "scale_en": "Teams of 2–4 agents: an analyst and 1–3 developers",
+    "title_en": "The Best-Laid SCHEMEs: Coordinated Sabotage and Monitoring in Multi-Agent Systems"
+  },
+  "aligned-agents-biased-swarm": {
+    "authors_en": "Keyu Li, Jin Gao, Dequan Wang",
+    "orgs_en": "Shanghai Jiao Tong University; Shanghai Innovation Institute",
+    "status_en": "ICLR 2026 (poster)",
+    "status_ru": "ICLR 2026 (постер)",
+    "scale_en": "Up to 7 roles in turns/layers; peak simultaneous activity not stated",
+    "title_en": "Aligned Agents, Biased Swarm: Measuring Bias Amplification in Multi-Agent Systems"
+  },
+  "robin-futurehouse": {
+    "authors_en": "Ali E. Ghareeb, Benjamin Chang, Ludovico Mitchener, Angela Yiu, Caralyn J. Szostkiewicz et al. (14 authors)",
+    "orgs_en": "FutureHouse; Fordham University; University of Oxford",
+    "status_en": "Nature (peer-reviewed journal), online 19 May 2026",
+    "status_ru": "Nature (рецензируемый журнал), онлайн 19 мая 2026",
+    "scale_en": "Sequential pipeline; number of simultaneously active agents not stated",
+    "title_en": "Robin: A multi-agent system for automating scientific discovery"
+  },
+  "llm-agent-swarm-optimization": {
+    "authors_en": "Nicola Zomer, Manlio De Domenico",
+    "orgs_en": "University of Padua",
+    "status_en": "npj Artificial Intelligence (peer-reviewed journal)",
+    "status_ru": "npj Artificial Intelligence (рецензируемый журнал)",
+    "scale_en": "100 agents in the Schelling simulation; the LLM optimization uses 20",
+    "title_en": "Unraveling the emergence of collective behavior in networks of cognitive agents"
+  },
+  "orchestra-o1": {
+    "authors_en": "Fan Zhang, Vireo Zhang, Shengju Qian, Haoxuan Li, Hao Wu et al. (11 authors)",
+    "orgs_en": "CUHK; LIGHTSPEED; Peking University; Tsinghua University; Tongji University",
+    "status_en": "arXiv preprint",
+    "status_ru": "препринт arXiv",
+    "scale_en": "Number of simultaneously active subagents not disclosed; 2 in parallel in an example",
+    "title_en": "Orchestra-o1: Omnimodal Agent Orchestration"
+  },
+  "au-aisi-mas-risks": {
+    "authors_en": "Alistair Reid, Simon O'Callaghan, Dustin Venini, Liam Carroll, Tiberio Caetano",
+    "orgs_en": "Gradient Institute, commissioned by the Australian AI Safety Institute",
+    "status_en": "Australian Government-commissioned technical report; arXiv preprint",
+    "status_ru": "технический отчёт по заказу правительства Австралии; препринт arXiv",
+    "scale_en": "Analytical framework with no runs or agent counts of its own",
+    "title_en": "Risks and Controls for Multi-Agent Systems: an analytical framework for deployment of AI agents across organisational boundaries"
+  }
+}

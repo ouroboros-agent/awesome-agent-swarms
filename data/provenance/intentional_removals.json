@@ -1,0 +1,8 @@
+{
+ "_note": "Numbers that the edit removed on purpose (checked by scripts/check_content.py --source). Each needs a reason.",
+ "numbers": {
+  "index": {
+   "247": "October cover count '247 работ' = 31 full + 116 short cards + 100 table rows, not unique works; replaced by measured counts from data/stats.json (owner-approved correction)"
+  }
+ }
+}

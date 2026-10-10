@@ -1,0 +1,49 @@
+\documentclass[11pt]{article}
+\usepackage[preprint]{acl}
+\usepackage{times}
+\usepackage{latexsym}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{microtype}
+\usepackage{inconsolata}
+\usepackage{graphicx}
+\usepackage{booktabs,tabularx,longtable,array,multirow}
+\usepackage{amsmath,amssymb}
+\usepackage{xcolor}
+\usepackage{url}
+\usepackage{enumitem}
+\usepackage{needspace}
+\graphicspath{{figures/}{figures/originals/}{figures/derived/}}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+\newcommand{\NR}{\textsc{nr}}
+\newcommand{\reportdate}{9 October 2026}
+\hyphenation{OpenAI}
+\title{On the Dynamics of LLM Agent Swarms:\\Scaling, Coordination, and Collective Behavior}
+\author{Anton Razzhigaev \and Ouroboros\\[0.5em]
+\small Human--AI collaboration\\
+\small Self-published technical report \quad | \quad \reportdate}
+\date{}
+\hypersetup{pdftitle={On the Dynamics of LLM Agent Swarms: Scaling, Coordination, and Collective Behavior},pdfauthor={Anton Razzhigaev and Ouroboros},pdfsubject={Self-published human-AI technical report},pdfkeywords={LLM agents, swarms, coordination, collective behavior, survey}}
+\begin{document}
+\maketitle
+\begin{abstract}
+LLM agent collectives combine parallel inference with communication, persistent artifacts, and mechanisms for allocating work. Their reported outcomes range from faster task completion to coordination failures, opinion polarization, and the propagation of unsafe behavior. These results are difficult to compare because agent count, compute budget, organization, and outcome measures change together. We synthesize a research corpus covering work available through 3 October 2026, with publication status updated to 8 October, and introduce a multidimensional evidence taxonomy. It distinguishes model composition, interaction graph, exchange medium, organizational origin, memory, three meanings of scale, baseline controls, and budget--outcome pairs. Across controlled studies, developer evaluations, engineering reports, simulations, and incidents, the evidence supports conditional benefits of communication and parallelism, not a universal scaling law. Shared artifacts can preserve discoveries while also spreading errors; heterogeneous models can add complementary information while interaction erodes that diversity. We identify comparisons that isolate these mechanisms and specify open questions about effective group size, collective memory, verification, and safety. This is a structured narrative synthesis, not a preregistered systematic review or a report of new experiments.
+\end{abstract}
+\input{sections/introduction}
+\input{sections/methods}
+\input{sections/taxonomy}
+\input{sections/scaling}
+\input{sections/organization}
+\input{sections/memory}
+\input{sections/collective}
+\input{sections/safety}
+\input{sections/synthesis}
+\input{sections/limitations}
+\clearpage
+\bibliography{references}
+\clearpage
+\appendix
+\input{appendix-evidence}
+\clearpage
+\input{appendix-figures}
+\end{document}

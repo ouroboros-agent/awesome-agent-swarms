@@ -1,0 +1,36 @@
+{
+ "atlas": [
+  {
+   "level": "INFO",
+   "msg": "[ru] numbers no longer on this page but present elsewhere (1): 153"
+  }
+ ],
+ "ch05": [
+  {
+   "level": "INFO",
+   "msg": "[ru] numbers no longer on this page but present elsewhere (1): 1200"
+  }
+ ],
+ "ch06": [
+  {
+   "level": "INFO",
+   "msg": "[ru] numbers no longer on this page but present elsewhere (3): 53 70 74"
+  }
+ ],
+ "ch07": [
+  {
+   "level": "INFO",
+   "msg": "[ru] numbers no longer on this page but present elsewhere (1): 38"
+  }
+ ],
+ "index": [
+  {
+   "level": "INFO",
+   "msg": "[ru] number 247 intentionally removed: October cover count '247 работ' = 31 full + 116 short cards + 100 table rows, not unique works; replaced by measured counts from data/stats.json (owner-approved correction)"
+  },
+  {
+   "level": "INFO",
+   "msg": "[ru] numbers no longer on this page but present elsewhere (40): 0.0 0.14 0.19 0.58 0.66 0.68 0.79 10000 11 116 15.7 167 17.91 18.1 20.31 2025 22 225 24 29.0 31 33 35 4.6 40 45 48.8 61.2 7.0 70.0 70000 71.2 80.8 81.67 90.5 91.3 93.33 93.6 98.8 99"
+  }
+ ]
+}

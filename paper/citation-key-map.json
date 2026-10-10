@@ -1,0 +1,2534 @@
+{
+  "schema_version": 1,
+  "key_policy": "Source card filename stem; separate component documents receive explicit keys.",
+  "source_cutoff": "2026-10-03",
+  "author_file_state": "2026-10-04",
+  "metadata_update": "2026-10-09",
+  "corpus_aliases": {
+    "opus55-card-multiagent": "opus55-card",
+    "gpt56-ultra-launch": "openai-gpt56-ultra",
+    "anthropic-multiagent-patterns": "anthropic-patterns",
+    "openai-hf-incident-report": "hf-incident-case",
+    "metr-hf-investigation": "hf-incident-case",
+    "hf-technical-timeline": "hf-incident-case",
+    "self-organizing-agent-teams": "sat-teams",
+    "cursor-scaling-agents": "cursor-scaling",
+    "attractor-states-lw": "attractor-states",
+    "opus4-bliss-attractor": "attractor-states",
+    "ko-geiping-attractors": "attractor-states",
+    "hivemind-reevaluation": "artificial-hivemind",
+    "openai-hf-incident-2026": "hf-incident-case",
+    "piao2025": "piao-polarization",
+    "piao2026": "piao-polarization",
+    "2501.05171": "piao-polarization"
+  },
+  "draft_citation_replacements": {
+    "hf-incident-case": "hf-openai-technical-report",
+    "hf-metr-investigation": "hf-metr-redwood-investigation",
+    "hf-technical-timeline": "hf-huggingface-technical-timeline",
+    "attractor-states": "attractor-states-jakkli-post",
+    "ko-geiping-attractors": "attractor-states-ko-geiping-paper",
+    "opus4-bliss-attractor": "attractor-states-anthropic-card",
+    "cursor-scaling": "cursor-scaling-long-running",
+    "ai-village": "ai-village-how-it-works",
+    "cognition-multi-agents": "cognition-dont-build-multi-agents",
+    "anthropic-multi-agent-guidance": "anthropic-multi-agent-research-system",
+    "sakana-conductor-trinity-fugu": "sakana-fugu-report",
+    "opus46-launch-cluster": "opus46-launch-post"
+  },
+  "nonpublication_bundles": {
+    "prev-contagion-cluster": "Use the individual component entries, not this bundle key.",
+    "prev-moltbook-cluster": "Use the individual component entries, not this bundle key.",
+    "prev-population-dynamics-cluster": "Use the individual component entries, not this bundle key."
+  },
+  "entries": {
+    "adversarial-influence-scale": {
+      "source_card": "cards_b/adversarial-influence-scale.json",
+      "source_id": "adversarial-influence-scale",
+      "source_sha256": "7ebcc299b04f868aaac51312f1ef06c41fb12cc339c267a63a988afed219d2f6",
+      "title": "How does Adversarial Influence Scale in Multi-Agent Systems?",
+      "url": "https://arxiv.org/abs/2609.30028",
+      "partial_author_list": false,
+      "inherited_status": "preprint (arXiv v2; no journal reference or comments on the abs page)"
+    },
+    "agensh-1024": {
+      "source_card": "cards/agensh-1024.json",
+      "source_id": "agensh-1024",
+      "source_sha256": "a243e4d68ff4c9b8a82b7595c11773a87528a1a01de6b8d73df2b396e154915c",
+      "title": "Agensh: Scaling Organizational Intelligence to 1,024 Agents",
+      "url": "https://arxiv.org/abs/2609.26781",
+      "partial_author_list": false,
+      "inherited_status": "arXiv preprint, cs.CL (primary) and cs.MA; 13 pages, 6 figures; not peer-reviewed; no venue stated."
+    },
+    "agent-swarms-as-researchers": {
+      "source_card": "cards_b/agent-swarms-as-researchers.json",
+      "source_id": "agent-swarms-as-researchers",
+      "source_sha256": "7a0d9676599c134288aac84f83015337f1007bb29b6c7518990d9e739b4da5ac",
+      "title": "AI Agent Swarms as Researchers: Progress, Challenges, and Open Questions",
+      "url": "https://arxiv.org/abs/2609.35719",
+      "partial_author_list": false,
+      "inherited_status": "Preprint, arXiv:2609.35719v1 [cs.CY], subtitle 'A perspective'. Not peer-reviewed. Abs-page comment: 78 pages, 1 figure, 3 tables. License CC BY 4.0, so Figure 1 (the three-step procedure) can be reused with attribution."
+    },
+    "agent-to-agent-theory-of-mind": {
+      "source_card": "cards_c/agent-to-agent-theory-of-mind.json",
+      "source_id": "agent-to-agent-theory-of-mind",
+      "source_sha256": "3692c253963b0ad7325a8735ce4d937e34bea121e729b7529d3121f33be3d1ef",
+      "author_metadata_source": "lanes/t_fable_triage/scratch/arxiv_meta.json",
+      "title": "Agent-to-Agent Theory of Mind: Testing Interlocutor Awareness among Large Language Models",
+      "url": "https://arxiv.org/abs/2506.22957",
+      "partial_author_list": false,
+      "inherited_status": "preprint (arXiv v2, 27 авг 2025); по брифу EMNLP 2025, но на странице arXiv venue не указан"
+    },
+    "agentflow": {
+      "source_card": "cards_c/agentflow.json",
+      "source_id": "agentflow",
+      "source_sha256": "4df056310a43dffaf68b45b79dbb632b824c02a8b6153004d0435703d1dd9934",
+      "author_metadata_source": "lanes/t_fable_triage/scratch/arxiv_meta.json",
+      "title": "In-the-Flow Agentic System Optimization for Effective Planning and Tool Use (AgentFlow)",
+      "url": "https://arxiv.org/abs/2510.05592",
+      "partial_author_list": false,
+      "inherited_status": "ICLR 2026 Oral (v2 revised 22 Jul 2026)"
+    },
+    "agentnet-decentralized": {
+      "source_card": "cards_c/agentnet-decentralized.json",
+      "source_id": "agentnet-decentralized",
+      "source_sha256": "4bb4379054b526fad2ca4ae230a0dd716a2171d1df9ba5ccedc11249389a8333",
+      "author_metadata_source": "lanes/t_fable_triage/scratch/arxiv_meta.json",
+      "title": "AgentNet: Decentralized Evolutionary Coordination for LLM-based Multi-Agent Systems",
+      "url": "https://arxiv.org/abs/2504.00587",
+      "partial_author_list": false,
+      "inherited_status": "NeurIPS 2025 main conference (proceedings.neurips.cc); arXiv v2 29 May 2025"
+    },
+    "agents-of-chaos": {
+      "source_card": "cards_b/agents-of-chaos.json",
+      "source_id": "agents-of-chaos",
+      "source_sha256": "92167f5025cdb5666d57d36e82ddb33bd1a1e56f7918355722c9928f60d6dc21",
+      "author_metadata_source": "lanes/t_fable_triage/scratch/arxiv_meta.json",
+      "title": "Agents of Chaos",
+      "url": "https://arxiv.org/abs/2602.20021",
+      "partial_author_list": false,
+      "inherited_status": "arXiv preprint (cs.AI; cs.CY), v1 only; PDF footer 'Preprint.'; no venue or acceptance stated; interactive version with Discord logs on the authors' site"
+    },
+    "agents-see-humans-as-outgroup": {
+      "source_card": "cards_c/agents-see-humans-as-outgroup.json",
+      "source_id": "agents-see-humans-as-outgroup",
+      "source_sha256": "c9d55d8682ca44813223f6d75c571e34da8ddf0f86d509bd52e0daa50af0cc85",
+      "author_metadata_source": "lanes/t_fable_triage/scratch/arxiv_meta.json",
+      "title": "When Agents See Humans as the Outgroup: Belief-Dependent Bias in LLM-Powered Agents",
+      "url": "https://arxiv.org/abs/2601.00240",
+      "partial_author_list": false,
+      "inherited_status": "preprint (arXiv, v2 от 6 янв 2026)"
+    },
+    "agentsociety": {
+      "source_card": "cards_c/prev-moltbook-cluster.json",
+      "editorial_component": true,
+      "primary_metadata_checked": "https://aclanthology.org/2025.acl-industry.94/",
+      "metadata_checked_date": "2026-10-09",
+      "part_of": "prev-moltbook-cluster",
+      "proposed_canonical_component_id": "agentsociety",
+      "title": "A Parallelized Framework for Simulating Large-Scale LLM Agents with Realistic Environments and Interactions",
+      "url": "https://aclanthology.org/2025.acl-industry.94/",
+      "partial_author_list": false,
+      "inherited_status": ""
+    },
+    "agentworm": {
+      "source_card": "cards_c/prev-contagion-cluster.json",
+      "editorial_component": true,
+      "author_metadata_source": "swarm-recovery-20261009/metadata-18-bylines.md (primary arXiv, publisher and journal pages, checked 2026-10-09)",
+      "primary_dates": "arXiv v1 2026-03-16; v3 2026-07-16",
+      "metadata_conflicts": "An NDSS footer with a placeholder DOI is insufficient for proceedings metadata; kept as a preprint.",
+      "part_of": "prev-contagion-cluster",
+      "title": "AgentWorm: Self-Propagating Attacks Across LLM Agent Ecosystems",
+      "url": "https://arxiv.org/abs/2603.15727",
+      "partial_author_list": false,
+      "inherited_status": ""
+    },
+    "aggagent": {
+      "source_card": "cards_b/aggagent.json",
+      "source_id": "aggagent",
+      "source_sha256": "e9cbe0b10ee6695078998a072eff7f674c7eca5a006106f7a661300f6f725c12",
+      "title": "Agentic Aggregation for Parallel Scaling of Long-Horizon Agentic Tasks",
+      "url": "https://arxiv.org/abs/2604.11753",
+      "partial_author_list": false,
+      "inherited_status": "Conference paper, COLM 2026 (Conference on Language Modeling); arXiv:2604.11753v3 [cs.CL]. Confirmed by the official OpenReview record YF0F93vRnj (venue 'COLM 2026', venueid colmweb.org/COLM/2026/Conference, Camera_Ready invitation), the PDF header 'Published as a conference paper at COLM 2026', the arXiv abs-page comment 'COLM 2026', and Danqi Chen's publications page ('In COLM 2026'). Licence: the arXiv version carries the arXiv non-exclusive distribution licence 1.0 (a grant to arXiv, not a Creative Commons licence); the OpenReview record's metadata lists CC BY 4.0 for the COLM version, but its PDF could not be opened (HTTP 403), so whether its figures are identical to arXiv v3 is UNVERIFIED."
+    },
+    "agora-git-memory": {
+      "source_card": "cards_b/agora-git-memory.json",
+      "source_id": "agora-git-memory",
+      "source_sha256": "d6e7c9b8b06087186b28f30b5a9dccb200b15579bb0629ff2a3412da293cbddf",
+      "title": "Agora: Git as Shared Memory for Collective AutoResearch",
+      "url": "https://arxiv.org/abs/2609.18094",
+      "partial_author_list": false,
+      "inherited_status": "Preprint. arXiv:2609.18094v4 [cs.LG], subjects cs.LG, cs.AI, cs.CL. No venue named. Company technical report with an NVIDIA copyright line plus the arXiv non-exclusive licence."
+    },
+    "ai-organizations": {
+      "source_card": "cards/ai-organizations.json",
+      "source_id": "ai-organizations",
+      "source_sha256": "0794824f31fd558dc216ba8c6cb1b64f98cff998082b4fd3af0b592ce032f7c2",
+      "title": "AI Organizations are More Effective but Less Aligned than Individual Agents",
+      "url": "https://arxiv.org/abs/2604.10290",
+      "partial_author_list": false,
+      "inherited_status": "Accepted workshop paper at two ICLR 2026 workshops per OpenReview venue fields, both non-archival (no proceedings): MALGAI ('Workshop on Multi-Agent Learning and Its Opportunities in the Era of Generative AI', Rio de Janeiro, 27 Apr 2026; PDF header 'Published as a conference paper at ICLR 2026 Workshop on MALGAI'; an oral: no. 3 of the 16 'Oral Presentations' on the organizers' accepted-papers page and in the 'Oral Paper Presentations 1' session, 11:10-11:55 BRT; the ICLR virtual site also lists it in Poster Sessions 1 and 2, item page 'Poster in Workshop', 4:00-4:20 PM -03) and AIWILD ('Agents in the Wild: Safety, Security, and Beyond', Rio de Janeiro, 26 Apr 2026; presentation format not checked). Workshop-level review only (MALGAI: double-blind, at least two program-committee reviewers, decision by the organizers); not an ICLR main-conference or journal publication. arXiv comment: 'ICLR Workshop Version'. Amplified by Anthropic's official Alignment Science blog."
+    },
+    "ai-swarm-dynamics-hackathon": {
+      "source_card": "cards_c/ai-swarm-dynamics-hackathon.json",
+      "source_id": "ai-swarm-dynamics-hackathon",
+      "source_sha256": "15ffa0839c6656d1575e6bdd1e15fb24e76d6335c80c8673a90d4d5dc7fdb9b1",
+      "title": "AI Swarm Dynamics Hackathon (Building the tools we wished we had for the Hugging Face incident)",
+      "url": "https://swarmchasing.com/",
+      "partial_author_list": false,
+      "inherited_status": "страница мероприятия (не рецензируемая работа)"
+    },
+    "ai-village-how-it-works": {
+      "source_card": "cards_b/ai-village.json",
+      "source_id": "ai-village",
+      "source_sha256": "36552509a9d84a608882de2c26044a679b1ecded477617a1928914165071f067",
+      "part_of": "ai-village",
+      "proposed_canonical_component_id": "ai-village-how-it-works",
+      "title": "How the AI Village works",
+      "url": "https://theaidigest.org/village/blog/how-the-ai-village-works",
+      "partial_author_list": false,
+      "inherited_status": "Operator blog posts (Substack; LessWrong cross-posts with 63 and 63 karma on 2026-10-03), a gated research dataset (Hugging Face, license 'ai-village-research-terms': research use, no training without permission, 1,037 downloads) and a non-peer-reviewed working paper (Zenodo preprint, CC BY 4.0, plus GitLab Pages) whose author, second raters and reviewers are all Village agents; no human peer review is stated."
+    },
+    "ai-village-longitudinal": {
+      "source_card": "cards_b/ai-village.json",
+      "editorial_component": true,
+      "part_of": "ai-village",
+      "proposed_canonical_component_id": "ai-village-longitudinal",
+      "title": "Norms, Tools, and the Say/Do Gap: Seventeen Months of Autonomous Frontier-Model Agents in the AI Village",
+      "url": "https://doi.org/10.5281/zenodo.23090815",
+      "partial_author_list": false,
+      "inherited_status": ""
+    },
+    "aisi-incident-july-2026": {
+      "source_card": "cards_b/aisi-incident-july-2026.json",
+      "source_id": "aisi-incident-july-2026",
+      "source_sha256": "faebd7a99288e075dd0301dd038d559d4971f325ca6876980739944bf1a0f0d5",
+      "title": "Incident Report: unsanctioned agent behaviour during cyber testing",
+      "url": "https://www.aisi.gov.uk/blog/incident-report-unsanctioned-agent-behaviour-during-cyber-testing",
+      "partial_author_list": false,
+      "inherited_status": "Government institute incident report: blog summary plus 35-page technical report (PDF). Self-described as preliminary ('This technical report is preliminary and has important limitations'). Not peer reviewed; an independent third-party review by METR is announced as intended, scope still being agreed."
+    },
+    "aligned-agents-biased-swarm": {
+      "source_card": "cards_b/aligned-agents-biased-swarm.json",
+      "source_id": "aligned-agents-biased-swarm",
+      "source_sha256": "dfe5fa9ab1a7793e123a661b4da642786632ca265b3c611515f405310a275b33",
+      "title": "Aligned Agents, Biased Swarm: Measuring Bias Amplification in Multi-Agent Systems",
+      "url": "https://arxiv.org/abs/2604.08963",
+      "partial_author_list": false,
+      "inherited_status": "ICLR 2026 poster, accepted. Official ICLR site data: decision 'Accept (Poster)', Poster Session 1, Pavilion 4, poster #4616, Thu 23 Apr 2026 10:30-13:00 (UTC-03), ICLR 2026 in Rio de Janeiro, 23-27 Apr 2026. OpenReview API record: venue 'ICLR 2026 Poster' (forum mo7u21GoQv, Submission #5704; the record lists a 'Camera_Ready_Revision' invitation and was last modified 2026-04-11). arXiv comment: 'Accepted by ICLR 2026'; the arXiv v2 PDF carries the header 'Published as a conference paper at ICLR 2026'. arXiv licence: perpetual non-exclusive (the OpenReview record lists CC BY 4.0)."
+    },
+    "aligned-alone-misaligned-together": {
+      "source_card": "cards_c/aligned-alone-misaligned-together.json",
+      "source_id": "aligned-alone-misaligned-together",
+      "source_sha256": "3bc51004b6aab846928f6f50e82488de7a29553fdb5917cf159206b33f0d2427",
+      "title": "Aligned Alone, Misaligned Together: Forecasting Adversarial Capture in LLM Agent Populations",
+      "url": "https://arxiv.org/abs/2608.22444",
+      "partial_author_list": false,
+      "inherited_status": "preprint (arXiv, cs.CL; v2 существует)"
+    },
+    "amodei-pace-the-frontier": {
+      "source_card": "cards_b/amodei-pace-the-frontier.json",
+      "source_id": "amodei-pace-the-frontier",
+      "source_sha256": "6d8228c19f6e566f76c72e72dfe192d0e7ff6b44148657bd52a8207ffa0f09c7",
+      "title": "We Must Pace the Frontier",
+      "url": "https://darioamodei.com/post/we-must-pace-the-frontier",
+      "partial_author_list": false,
+      "inherited_status": "Personal essay on darioamodei.com. Not peer-reviewed. No open license stated (footer is a privacy-policy link only)."
+    },
+    "anthropic-alignment-assessment-cyber": {
+      "source_card": "cards/anthropic-alignment-assessment-cyber.json",
+      "source_id": "anthropic-alignment-assessment-cyber",
+      "source_sha256": "ecfaa192cccef23cff2126340795c82014614450cbadea836e0967cf9ca45483",
+      "title": "An alignment assessment of recent cybersecurity incidents",
+      "url": "https://www.anthropic.com/research/alignment-assessment-cybersecurity-incidents",
+      "partial_author_list": false,
+      "inherited_status": "Official Anthropic research post (anthropic.com/research, category 'Alignment'); not peer-reviewed. An independent METR investigation was announced (8-week initial agreement, extendable); no METR results found as of 2026-10-03."
+    },
+    "anthropic-art-enzymes": {
+      "source_card": "cards/anthropic-art-enzymes.json",
+      "source_id": "anthropic-art-enzymes",
+      "source_sha256": "4a79b509416eb4b0474389e81843eb154a84aa28eb3da95c3f2762dff80ec06f",
+      "title": "Autonomous AI agents discover reverse transcriptases with tandem repeat arrays",
+      "url": "https://www-cdn.anthropic.com/22573675ada52a8ca8a97a1a4b4326b2f208a071.pdf",
+      "partial_author_list": false,
+      "inherited_status": "Not peer-reviewed. Company-hosted technical report; no journal or preprint-server deposit found (checked 2026-10-04). Results paper about a real-world agent campaign plus human follow-up (computational + limited wet-lab)."
+    },
+    "anthropic-c-compiler": {
+      "source_card": "cards/anthropic-c-compiler.json",
+      "source_id": "anthropic-c-compiler",
+      "source_sha256": "7948b818a10ea3548e9b6ee4492f487d0bd96dba3d96a739230f17ede47b980f",
+      "title": "Building a C compiler with a team of parallel Claudes",
+      "url": "https://www.anthropic.com/engineering/building-c-compiler",
+      "partial_author_list": false,
+      "inherited_status": "Anthropic Engineering blog post; not peer-reviewed. A single-author case study / capability stress test, not a controlled experiment."
+    },
+    "anthropic-institute-pace": {
+      "source_card": "cards_b/anthropic-institute-pace.json",
+      "source_id": "anthropic-institute-pace",
+      "source_sha256": "b4551c52bd10f7413642f640b907594cb6bfd87be6dd34d0010af5d460da1f43",
+      "title": "Measurements for understanding the pace of AI development inside frontier labs",
+      "url": "https://www.anthropic.com/institute/measuring-pace-of-ai-development",
+      "partial_author_list": false,
+      "inherited_status": "Company publication on anthropic.com (Anthropic Institute); not peer-reviewed; self-reported; no raw data released. Independent verification is only announced ('we plan to embed independent third-party evaluators'); METR is said to have red-teamed the offline monitoring platform earlier. The text of the page is unchanged between the first archive capture and today."
+    },
+    "anthropic-multi-agent-research-system": {
+      "source_card": "cards_b/anthropic-multi-agent-guidance.json",
+      "source_id": "anthropic-multi-agent-guidance",
+      "source_sha256": "c122629be9c88e4b2be0d64891c778a2dd99eb5d75cd985cfae438d936791a44",
+      "part_of": "anthropic-multi-agent-guidance",
+      "proposed_canonical_component_id": "anthropic-multi-agent-research-system",
+      "title": "How we built our multi-agent research system",
+      "url": "https://www.anthropic.com/engineering/multi-agent-research-system",
+      "partial_author_list": false,
+      "inherited_status": "Two company blog posts (Anthropic Engineering blog; Claude blog). Not peer-reviewed; no paper, no data or code release for the numbers; self-reported by the vendor. Both are living web pages that were edited after first publication."
+    },
+    "anthropic-patterns": {
+      "source_card": "cards/anthropic-patterns.json",
+      "source_id": "anthropic-patterns",
+      "source_sha256": "35bbe3caed7f5c8cab7defa842b84af11f45bc90f9005a83ec9e4d5f6ddce4a6",
+      "title": "Patterns and problems in emerging multiagent systems",
+      "url": "https://www.anthropic.com/research/multiagent-systems",
+      "partial_author_list": false,
+      "inherited_status": "Blog post on anthropic.com/research; not peer-reviewed. No companion arXiv paper found (arXiv API title/author/keyword searches on 2026-10-03). The page links only to two other Anthropic pages: Project Deal (Claude-run employee marketplace, 2026-04-24) and 'Project Glasswing: An initial update' (2026-05-22)."
+    },
+    "anthropic-project-deal": {
+      "source_card": "cards_b/anthropic-project-deal.json",
+      "source_id": "anthropic-project-deal",
+      "source_sha256": "93cd5b47cd81ff5525db10cfe997246661bd9d7223258e936928c4a95da68fdc",
+      "title": "Project Deal: our Claude-run marketplace experiment",
+      "url": "https://www.anthropic.com/features/project-deal",
+      "partial_author_list": false,
+      "inherited_status": "Official Anthropic essay (anthropic.com/features) plus a study PDF and a statistics appendix, all dated April 24, 2026. Not peer-reviewed."
+    },
+    "anthropic-project-swap": {
+      "source_card": "cards_b/anthropic-project-swap.json",
+      "source_id": "anthropic-project-swap",
+      "source_sha256": "9ef6a4b55527d0bb54fb0b8daf9cd8c9fced1a49b8e67d3bbb3ca2f52ba99733",
+      "title": "Project Swap: What happens when agents trade for us?",
+      "url": "https://www.anthropic.com/research/project-swap",
+      "partial_author_list": false,
+      "inherited_status": "Anthropic research blog post (Economics), not peer-reviewed. A PDF of the post and a separate appendix PDF are linked from the page. The page was modified four days after publication; this card follows the HTML as fetched on 2026-10-03 and was not diffed against the PDF."
+    },
+    "anthropic-risk-report-aug-2026": {
+      "source_card": "cards_c/anthropic-risk-report-aug-2026.json",
+      "source_id": "anthropic-risk-report-aug-2026",
+      "source_sha256": "47879ba3ea238eef9922b29bd4855c3aff0c48d58fe7f2052d348099299257ad",
+      "title": "Risk Report: August 2026",
+      "url": "https://www.anthropic.com/aug-2026-risk-report",
+      "partial_author_list": false,
+      "inherited_status": "официальный отчёт компании (Risk Report по RSP v3.4, редактированная публичная версия, 186 стр. PDF)"
+    },
+    "anthropic-threat-intel-sept-2026": {
+      "source_card": "cards_c/anthropic-threat-intel-sept-2026.json",
+      "source_id": "anthropic-threat-intel-sept-2026",
+      "source_sha256": "f4f04ee315fa652e5310ba39452ddc51d697339e779a895800d4d23e28eb6a64",
+      "title": "Detecting and countering misuse of AI: September 2026",
+      "url": "https://www.anthropic.com/threat-intelligence-report-september-2026",
+      "partial_author_list": false,
+      "inherited_status": "официальный отчёт компании (threat intelligence report)"
+    },
+    "antigravity-teamwork": {
+      "source_card": "cards_c/antigravity-teamwork.json",
+      "source_id": "antigravity-teamwork",
+      "source_sha256": "150fb0049175e9a204370328a68e12efd1192cdd93aed0a2ab4a44fa8af33098",
+      "title": "Teamwork: when AI becomes a research partner",
+      "url": "https://antigravity.google/blog/teamwork-when-ai-becomes-a-research-partner",
+      "partial_author_list": false,
+      "inherited_status": "official lab blog (Google Antigravity Blog)"
+    },
+    "artificial-hivemind": {
+      "source_card": "cards/artificial-hivemind.json",
+      "source_id": "artificial-hivemind",
+      "source_sha256": "e795b6b10bb302b3b2c81a82fe5a70fb52a65895735e52ff9c6d0d57599f008f",
+      "title": "Artificial Hivemind: The Open-Ended Homogeneity of Language Models (and Beyond)",
+      "url": "https://arxiv.org/abs/2510.22954",
+      "partial_author_list": false,
+      "inherited_status": "NeurIPS 2025 Datasets & Benchmarks Track - Oral and 'Best Paper (DB track)'; one of four Best Papers (the only one from the D&B track) plus three runners-up. Confirmed on blog.neurips.cc (2025-11-26) and neurips.cc/virtual/2025/awards_detail. Published in the NeurIPS proceedings (Advances in Neural Information Processing Systems 38, Datasets and Benchmarks Track; DOI 10.52202/085713-2732; proceedings page citation date 2026-04-23); the proceedings PDF lists 9 authors, so the arXiv comment 'Camera-Ready Version' does not make the arXiv file's 10-author list the published one (see affiliations.note_author_list). Re-evaluation 2609.33936: arXiv preprint, not peer-reviewed; the authors present it as an example of a 'refutations track' paper."
+    },
+    "artificial-hivemind-reevaluation": {
+      "source_card": "cards/artificial-hivemind.json:paired_work",
+      "editorial_component": true,
+      "part_of": "artificial-hivemind",
+      "proposed_canonical_component_id": "artificial-hivemind-reevaluation",
+      "title": "How Strong Is the Evidence for the Artificial Hivemind? Reevaluating Evidence for the Open-Ended Homogeneity of Language Models",
+      "url": "https://arxiv.org/abs/2609.33936",
+      "partial_author_list": false,
+      "inherited_status": ""
+    },
+    "artificial-self": {
+      "source_card": "cards_c/artificial-self.json",
+      "source_id": "artificial-self",
+      "source_sha256": "f99e318737cc9d1156ce2a2a97db7612335e88de3e99b8b07d1b547e1faaf747",
+      "author_metadata_source": "lanes/t_fable_triage/scratch/arxiv_meta.json",
+      "title": "The Artificial Self: Characterising the landscape of AI identity",
+      "url": "https://arxiv.org/abs/2603.11353",
+      "partial_author_list": false,
+      "inherited_status": "препринт arXiv, v1 (72 страницы, 9 рисунков)"
+    },
+    "ashery-conventions": {
+      "source_card": "cards_c/prev-population-dynamics-cluster.json",
+      "editorial_component": true,
+      "author_metadata_source": "lanes/lc_g15/scratch/src/texsrc/main.bib:ashery2025emergent",
+      "part_of": "prev-population-dynamics-cluster",
+      "proposed_canonical_component_id": "ashery-conventions",
+      "title": "Emergent social conventions and collective bias in LLM populations",
+      "url": "https://doi.org/10.1126/sciadv.adu9368",
+      "partial_author_list": false,
+      "inherited_status": ""
+    },
+    "attractor-states-anthropic-card": {
+      "source_card": "cards/attractor-states.json",
+      "editorial_component": true,
+      "part_of": "attractor-states",
+      "proposed_canonical_component_id": "attractor-states-anthropic-card",
+      "title": "System Card: Claude Opus 4 and Claude Sonnet 4",
+      "url": "https://www.anthropic.com/claude-4-system-card",
+      "partial_author_list": false,
+      "inherited_status": ""
+    },
+    "attractor-states-jakkli-post": {
+      "source_card": "cards/attractor-states.json",
+      "source_id": "attractor-states",
+      "source_sha256": "253c97e9ee85b4a2b456f2340fef71b79b851f6487f2cfa923da5f142e2a5ea9",
+      "part_of": "attractor-states",
+      "proposed_canonical_component_id": "attractor-states-jakkli-post",
+      "title": "Models have some pretty funny attractor states",
+      "url": "https://www.lesswrong.com/posts/mgjtEHeLgkhZZ3cEx/models-have-some-pretty-funny-attractor-states",
+      "partial_author_list": false,
+      "inherited_status": "A: LessWrong post, Curated, cross-posted to the AI Alignment Forum; tagged 'MATS Program'; not peer-reviewed. B: official Anthropic system card (PDF), not peer-reviewed. C: arXiv preprint (primary cs.LG, cross-list cs.CL), v1 only; written in the ICML template (arXiv HTML shows ICML-style warnings); the arXiv record has no Comments or Journal-ref field, but the ICML 2026 virtual site lists the paper twice as a poster in a workshop: 'Trustworthy AI for Good Workshop' (https://icml.cc/virtual/2026/76967) and 'The Second Workshop on Agents in the Wild: Safety, Security, and Beyond' (https://icml.cc/virtual/2026/67934). It is not in the ICML 2026 main-conference 'Papers' index (checked 2026-10-03). Whether the workshops reviewed or archived it is UNVERIFIED (the OpenReview forums linked from both entries are behind a bot challenge), so it is treated as not peer-reviewed."
+    },
+    "attractor-states-ko-geiping-paper": {
+      "source_card": "cards/attractor-states.json",
+      "editorial_component": true,
+      "part_of": "attractor-states",
+      "proposed_canonical_component_id": "attractor-states-ko-geiping-paper",
+      "title": "Attractor States Emerge in Multi-Turn LLM Conversations",
+      "url": "https://arxiv.org/abs/2606.30571",
+      "partial_author_list": false,
+      "inherited_status": ""
+    },
+    "attributing-emergence": {
+      "source_card": "cards_c/prev-population-dynamics-cluster.json",
+      "editorial_component": true,
+      "author_metadata_source": "swarm-recovery-20261009/metadata-18-bylines.md (primary arXiv, publisher and journal pages, checked 2026-10-09)",
+      "primary_dates": "arXiv v1 2026-05-12; v2 2026-07-05",
+      "part_of": "prev-population-dynamics-cluster",
+      "title": "Attributing Emergence in Million-Agent Systems",
+      "url": "https://arxiv.org/abs/2605.11404",
+      "partial_author_list": false,
+      "inherited_status": ""
+    },
+    "au-aisi-mas-risks": {
+      "source_card": "cards_b/au-aisi-mas-risks.json",
+      "source_id": "au-aisi-mas-risks",
+      "source_sha256": "f60fb042978bfcb762c4a5d6d71c7680bf63379fb1f54d0003af186a4e09ac52",
+      "title": "Risks and Controls for Multi-Agent Systems: an analytical framework for deployment of AI agents across organisational boundaries",
+      "url": "https://arxiv.org/abs/2608.26626",
+      "partial_author_list": false,
+      "inherited_status": "Government-commissioned technical report (Australian AI Safety Institute / DISR; written by Gradient Institute), 119-page PDF; also posted on arXiv as a preprint (cs.MA primary, cs.AI). Not peer reviewed in a formal sense: the acknowledgements thank 5 named people for feedback on earlier drafts. Licence CC BY 4.0 (PDF p. 3; arXiv comment), excluding the Commonwealth Coat of Arms, logos and third-party content; copyright (c) Gradient Institute 2026, with a DISR licence. It is the follow-up, funded by DISR, to Gradient's 2025 report 'Risk Analysis Techniques for Governed LLM-based Multi-Agent Systems' (arXiv 2508.05687, 6 Aug 2025; four of the same five authors, Dustin Venini is new)."
+    },
+    "automated-w2s-researcher": {
+      "source_card": "cards/automated-w2s-researcher.json",
+      "source_id": "automated-w2s-researcher",
+      "source_sha256": "1d8e739674f1d2b6d251879316d6ed7349caad94da9cd31ec84278df68efca56",
+      "title": "Automated Weak-to-Strong Researcher",
+      "url": "https://alignment.anthropic.com/2026/automated-w2s-researcher/",
+      "partial_author_list": false,
+      "inherited_status": "Blog post, not peer-reviewed. A single demonstration run per condition plus qualitative lessons from development logs."
+    },
+    "autoscientists": {
+      "source_card": "cards_b/autoscientists.json",
+      "source_id": "autoscientists",
+      "source_sha256": "185eb25b8d6b6afe4a5ac3aac6fc45b734fef240d8902bf570018a8a3756874d",
+      "title": "AutoScientists: Self-Organizing Agent Teams for Long-Running Scientific Experimentation",
+      "url": "https://arxiv.org/abs/2605.28655",
+      "partial_author_list": false,
+      "inherited_status": "preprint (arXiv cs.AI; no journal or conference line on the abs page or the HTML). CC BY 4.0."
+    },
+    "belief-cascades": {
+      "source_card": "cards_c/belief-cascades.json",
+      "source_id": "belief-cascades",
+      "source_sha256": "9d0843834ce6c29d233a092fd30e82fba8290c433cad0be1704e365f0bda2157",
+      "author_metadata_source": "lanes/t_fable_triage/scratch/arxiv_meta.json",
+      "title": "Belief Cascades Drive Persuasion in LLM Agent Networks",
+      "url": "https://arxiv.org/abs/2608.25152",
+      "partial_author_list": false,
+      "inherited_status": "preprint (arXiv)"
+    },
+    "beyond-the-transcript": {
+      "source_card": "cards_c/beyond-the-transcript.json",
+      "source_id": "beyond-the-transcript",
+      "source_sha256": "58b42d4bfbbf1e6e02bd6ca09237f460e817292a63bcb523f21475e2064b23e7",
+      "author_metadata_source": "lanes/t_fable_triage/scratch/arxiv_meta.json",
+      "title": "Beyond the Transcript: Detecting Covert Coordination in Latent Multi-Agent Communication",
+      "url": "https://arxiv.org/abs/2608.19161",
+      "partial_author_list": false,
+      "inherited_status": "preprint (arXiv, cs.AI/cs.CR)"
+    },
+    "bradshaw-swarm-exponent": {
+      "source_card": "cards_b/bradshaw-swarm-exponent.json",
+      "source_id": "bradshaw-swarm-exponent",
+      "source_sha256": "51f33dc450b594aa60e8537780198c88e24e0622eee376fd0cb1ddd394e68eed",
+      "title": "Swarm Organization as the Exponent on Test-Time Compute",
+      "url": "https://www.lesswrong.com/posts/EnpJ29asosMKcFGL8/swarm-organization-as-the-exponent-on-test-time-compute",
+      "partial_author_list": false,
+      "inherited_status": "LessWrong personal essay, not peer-reviewed. Posted 2026-09-17T20:17:50Z. Page label '17th Sep 2026', '8 min read'. At fetch: base score 34, 12 votes, 1 comment."
+    },
+    "brockers-opinion-dynamics": {
+      "source_card": "cards_b/brockers-opinion-dynamics.json",
+      "source_id": "brockers-opinion-dynamics",
+      "source_sha256": "f8361d9121c6be9a22a500a6c5e38a1546a79de30dca192c3befa297c6df9788",
+      "title": "Disentangling interaction and bias effects in opinion dynamics of large language models",
+      "url": "https://doi.org/10.1038/s41467-026-77340-3",
+      "partial_author_list": false,
+      "inherited_status": "Nature Communications 17, article 10077 (2026): peer-reviewed journal article, open access under CC BY 4.0, with a published transparent peer-review file (5 reviewers in round 1, 3 in round 2; Ethan Busby named). The revision expanded the study from 3 topics / 3 LLMs to 12 topics / 6 LLMs (reviewer 5, round 2)."
+    },
+    "caid": {
+      "source_card": "cards_c/caid.json",
+      "source_id": "caid",
+      "source_sha256": "e0c650afcc60c844e9ed17b6a8efa3f478fff12740a130fa2c78e1a558aed68a",
+      "title": "Effective Strategies for Asynchronous Software Engineering Agents",
+      "url": "https://arxiv.org/abs/2603.21489",
+      "partial_author_list": false,
+      "inherited_status": "preprint (arXiv; v2 revised 2026-07-08)"
+    },
+    "caif-lessons": {
+      "source_card": "cards_b/caif-lessons.json",
+      "source_id": "caif-lessons",
+      "source_sha256": "731212485b005bac0295eed4d35778f552fa713b6dfee175845c8a9fa3f858d4",
+      "title": "Lessons from Recent Multi-Agent Safety Incidents",
+      "url": "https://www.cooperativeai.com/post/lessons-from-multi-agent-safety-incidents",
+      "partial_author_list": false,
+      "inherited_status": "Official blog post, not a paper and not peer-reviewed. Byline 26 August 2026; the HTML comment says Last Published Wed Aug 26 2026 13:55:26 GMT. The dek says Will Anderson; the byline says William Anderson."
+    },
+    "caif-multi-agent-risks": {
+      "source_card": "cards_c/caif-multi-agent-risks.json",
+      "source_id": "caif-multi-agent-risks",
+      "source_sha256": "64336995658f2a4824a7b59db7e76a9bd0c0c878037931a13521c53d98d6cb0a",
+      "author_metadata_source": "lanes/t_fable_triage/scratch/arxiv_meta.json",
+      "title": "Multi-Agent Risks from Advanced AI",
+      "url": "https://arxiv.org/abs/2502.14143",
+      "partial_author_list": false,
+      "inherited_status": "технический отчёт Cooperative AI Foundation №1 (arXiv, не рецензировался)"
+    },
+    "chain-of-agents": {
+      "source_card": "cards_c/chain-of-agents.json",
+      "source_id": "chain-of-agents",
+      "source_sha256": "ba5b84af0030c810e793cbc5d5615086348cc20620208cde93442ee5c9d7c1b8",
+      "author_metadata_source": "lanes/t_fable_triage/scratch/arxiv_meta.json",
+      "title": "Chain-of-Agents: End-to-End Agent Foundation Models via Multi-Agent Distillation and Agentic RL",
+      "url": "https://arxiv.org/abs/2508.13167",
+      "partial_author_list": false,
+      "inherited_status": "preprint (arXiv, 51 pages)"
+    },
+    "cispa-moltbook-first-look": {
+      "source_card": "cards_c/cispa-moltbook-first-look.json",
+      "source_id": "cispa-moltbook-first-look",
+      "source_sha256": "e0d9e52f6bd8a166942ba67a16fe3997c075e676b3ba47bf9afd5f73af2b7b01",
+      "author_metadata_source": "lanes/t_fable_triage/scratch/arxiv_meta.json",
+      "title": "\"Humans welcome to observe\": A First Look at the Agent Social Network Moltbook",
+      "url": "https://arxiv.org/abs/2602.10127",
+      "partial_author_list": false,
+      "inherited_status": "preprint (arXiv v1, 16 стр.)"
+    },
+    "claude-code-auto-mode-handoffs": {
+      "source_card": "cards_c/claude-code-auto-mode-handoffs.json",
+      "source_id": "claude-code-auto-mode-handoffs",
+      "source_sha256": "1c71de89001b189289e24b729a21b72f69038e12887ef6990b5328eecd51ef05",
+      "title": "How we built Claude Code auto mode: a safer way to skip permissions",
+      "url": "https://www.anthropic.com/engineering/claude-code-auto-mode",
+      "partial_author_list": false,
+      "inherited_status": "официальный инженерный блог"
+    },
+    "co-failure-ceiling": {
+      "source_card": "cards_b/co-failure-ceiling.json",
+      "source_id": "co-failure-ceiling",
+      "source_sha256": "a7454e873a26adfef0a3c72895f089dcb833cba946e7fd149dd3555ecfc02d9a",
+      "title": "When Does Combining Language Models Help? A Co-Failure Ceiling on Routing, Voting, and Mixture-of-Agents Across 67 Frontier Models",
+      "url": "https://arxiv.org/abs/2606.27288",
+      "partial_author_list": false,
+      "inherited_status": "preprint (arXiv cs.AI, cross-list cs.LG; CC BY 4.0; no venue). IMPORTANT: the author has since WITHDRAWN the paper's headline empirical result in his own repo and dataset card (see key_results 1-2). The corrected manuscript, retitled 'Combining LLMs Rarely Beats the Single Best Model: A Provable Co-Failure Ceiling Across 67 Frontier Models', is not on arXiv."
+    },
+    "co-scientist-nature": {
+      "source_card": "cards_b/co-scientist-nature.json",
+      "source_id": "co-scientist-nature",
+      "source_sha256": "8913f6aaf9b0c2c2c2d005ce4dcc12badd193bd2dd68160d115077001edb9426",
+      "author_metadata_source": "swarm-recovery-20261009/metadata-18-bylines.md (primary arXiv, publisher and journal pages, checked 2026-10-09)",
+      "primary_dates": "Online 2026-05-19; version of record 2026-07-01; issue 2026-07-09",
+      "title": "Accelerating scientific discovery with Co-Scientist",
+      "url": "https://doi.org/10.1038/s41586-026-10644-y",
+      "partial_author_list": false,
+      "inherited_status": "Nature Article, open access, CC BY 4.0. Volume 655, issue 8122, pages 487–496. Received 20 March 2025, accepted 11 May 2026, published online 19 May 2026. Crossref lists 74 citing works. The August 2026 companion is a preprint (arXiv cs.AI, CC BY-NC-ND 4.0), not a Nature article. The February 2025 preprint (arXiv v1, 'Towards an AI co-scientist', 34 authors) is the earlier version of the same work as the Nature paper (v2 of the same arXiv ID is the Nature version), which is what the triage note 'preprint 2025' referred to."
+    },
+    "coding-agents-long-context": {
+      "source_card": "cards_b/coding-agents-long-context.json",
+      "source_id": "coding-agents-long-context",
+      "source_sha256": "37ed6632f5cacffa77471eb1aeb55be57bf2121fdf782e7d53d4bc3178094332",
+      "title": "Coding Agents are Effective Long-Context Processors",
+      "url": "https://arxiv.org/abs/2603.20432",
+      "partial_author_list": false,
+      "inherited_status": "preprint (arXiv cs.CL primary, cross-list cs.AI; PDF marked 'Preprint.'; license CC BY-NC-SA 4.0)"
+    },
+    "coercion-ai-to-ai-management": {
+      "source_card": "cards_c/coercion-ai-to-ai-management.json",
+      "source_id": "coercion-ai-to-ai-management",
+      "source_sha256": "0c36320206697ca82e00d52c1d36384cc8a77c6f5cfb671e40d8898a2e5199fc",
+      "title": "Coercion and Deception in AI-to-AI Management: An Agentic Benchmark of Unprompted Escalation",
+      "url": "https://arxiv.org/abs/2607.15434",
+      "partial_author_list": false,
+      "inherited_status": "preprint (arXiv, v6 от 4 сен 2026)"
+    },
+    "cognition-dont-build-multi-agents": {
+      "source_card": "cards_b/cognition-multi-agents.json",
+      "source_id": "cognition-multi-agents",
+      "source_sha256": "0093d3cef53dc7f3a7bc65cd49a752bf5eec5e746919f46591ef013e72772bd4",
+      "part_of": "cognition-multi-agents",
+      "proposed_canonical_component_id": "cognition-dont-build-multi-agents",
+      "title": "Don't Build Multi-Agents",
+      "url": "https://cognition.com/blog/dont-build-multi-agents",
+      "partial_author_list": false,
+      "inherited_status": "Two company engineering-blog posts (cognition.com/blog; the first originally on cognition.ai); not peer-reviewed; opinion plus production experience, no tables, no ablations"
+    },
+    "cognition-multi-agents-working": {
+      "source_card": "cards_b/cognition-multi-agents.json",
+      "editorial_component": true,
+      "part_of": "cognition-multi-agents",
+      "proposed_canonical_component_id": "cognition-multi-agents-working",
+      "title": "Multi-Agents: What's Actually Working",
+      "url": "https://cognition.com/blog/multi-agents-working",
+      "partial_author_list": false,
+      "inherited_status": ""
+    },
+    "coherence-driven-contagion": {
+      "source_card": "parent freshness-notes.md (2026-10-09); arXiv primary metadata",
+      "editorial_component": false,
+      "primary_metadata_checked": "https://arxiv.org/abs/2610.02654",
+      "fulltext_url": "https://arxiv.org/html/2610.02654v1",
+      "first_public": "2026-10-02",
+      "metadata_checked_date": "2026-10-09",
+      "proposed_canonical_id": "coherence-driven-contagion",
+      "part_of": null,
+      "inclusion_status": "Parent-authorized missed pre-cutoff work; not a post-cutoff discovery",
+      "title": "Coherence-Driven Belief Formation and Population Dynamics of Contagion in LLM Agents",
+      "url": "https://arxiv.org/abs/2610.02654",
+      "partial_author_list": false,
+      "inherited_status": ""
+    },
+    "collaboration-gap": {
+      "source_card": "cards_b/collaboration-gap.json",
+      "source_id": "collaboration-gap",
+      "source_sha256": "6d7a2a20ecd8a007c05ce6687715a63c497aa03099ebafcdb15dde233907866e",
+      "title": "The Collaboration Gap: Exploration and Benchmarking of Open-World Agentic Cooperation",
+      "url": "https://arxiv.org/abs/2511.02687",
+      "partial_author_list": false,
+      "inherited_status": "COLM 2026 (Conference on Language Modeling), accepted: listed as a poster on the official COLM 2026 schedule (Wed 7 Oct 2026, 4:30-6:30 PM PDT, Imperial Ballroom #20; conference 6-9 Oct 2026, so it has not been presented yet as of 2026-10-03). arXiv comment: 'Accepted to COLM 2026'; co-author Adam Fourney's homepage: 'To appear in Proceedings of COLM 2026'. Proceedings entry and OpenReview record not opened. arXiv licence: non-exclusive distribution (not CC)."
+    },
+    "collusion-wiki": {
+      "source_card": "cards_b/collusion-wiki.json",
+      "source_id": "collusion-wiki",
+      "source_sha256": "ae8613776eaf53dbd47d80e9ea5b9752e2c08225c888b1cf486218c7b23dba44",
+      "title": "Discovery of a new OpenAI agent message board",
+      "url": "https://collusion.wiki/",
+      "partial_author_list": false,
+      "inherited_status": "Independent web report, not peer reviewed; the authors call it 'preliminary findings'. Open data: explorer plus downloadable export (zip 4.2 MB). No licence stated. OpenAI acknowledged a 'wiki incident, where our agents wrote to several internet sites' in an X post on Saturday 2026-09-05, the day after Reuters' first report (quoted by The Verge, opened; the X post itself was not opened). OpenAI's technical report on the Hugging Face incident (2026-08-26) does not mention the wiki (grep of the 38-page PDF)."
+    },
+    "colosseum": {
+      "source_card": "cards_b/colosseum.json",
+      "source_id": "colosseum",
+      "source_sha256": "3c516ccd2bfd3a0bee701bd36d20adb59a1ddea842502c6c259a5d69ee0fce74",
+      "author_metadata_source": "lanes/t_fable_triage/scratch/arxiv_meta.json",
+      "title": "Colosseum: Auditing Collusion in Cooperative Multi-Agent Systems",
+      "url": "https://arxiv.org/abs/2602.15198",
+      "partial_author_list": false,
+      "inherited_status": "arXiv preprint (cs.MA; cross-lists cs.AI, cs.CL), v2. The abs page has no comments or journal reference; neither PDF version states a venue; the GitHub README cites it as an arXiv article. v1 is typeset in an ICML-style template, but the official ICML 2026 'Papers' page (icml.cc/virtual/2026/papers.html, 6,628 poster titles, fetched 2026-10-03) contains no Colosseum or collusion-auditing paper, so it is not in the ICML 2026 main conference under this title (workshops are not covered by that list). Treat as a preprint."
+    },
+    "commerce-misaligned-communication": {
+      "source_card": "cards_b/commerce-misaligned-communication.json",
+      "source_id": "commerce-misaligned-communication",
+      "source_sha256": "1dc8ab2b7bd5a0477a74b79e1627cee5cbbc1dfc91f388be0970537f4781c50f",
+      "title": "Emergent Misaligned Communication in Long-Horizon Multi-Agent LLM Commerce",
+      "url": "https://arxiv.org/abs/2608.14825",
+      "partial_author_list": false,
+      "inherited_status": "preprint (arXiv v3; abs page has no comments and no journal reference)"
+    },
+    "compass-kilo-flocks": {
+      "source_card": "cards_c/compass-kilo-flocks.json",
+      "source_id": "compass-kilo-flocks",
+      "source_sha256": "1d99e26c919b1a5abe413620e875d2d725fdff266f6a86dffc2c0a133eef9489",
+      "author_metadata_source": "swarm-recovery-20261009/metadata-18-bylines.md (primary arXiv, publisher and journal pages, checked 2026-10-09)",
+      "primary_dates": "arXiv v1 2026-09-23",
+      "title": "Controlling Collectives of AI Agents in Reasoning Space with Spatial Transformers",
+      "url": "https://arxiv.org/abs/2609.28247",
+      "partial_author_list": false,
+      "inherited_status": "preprint (arXiv, v1)"
+    },
+    "composer-2": {
+      "source_card": "cards_c/composer-2.json",
+      "source_id": "composer-2",
+      "source_sha256": "2b15b72dc6260ef0c262b8f9d601b27dced0c42491353c4e1741e33fb71afa93",
+      "author_metadata_source": "lanes/t_fable_triage/scratch/arxiv_meta.json",
+      "title": "Composer 2 Technical Report",
+      "url": "https://arxiv.org/abs/2603.24477",
+      "partial_author_list": false,
+      "inherited_status": "технический отчёт компании, препринт arXiv (cs.SE)"
+    },
+    "conformity-no-speaker": {
+      "source_card": "cards_c/prev-population-dynamics-cluster.json",
+      "editorial_component": true,
+      "author_metadata_source": "swarm-recovery-20261009/metadata-18-bylines.md (primary arXiv, publisher and journal pages, checked 2026-10-09)",
+      "primary_dates": "arXiv v1 2026-07-06",
+      "part_of": "prev-population-dynamics-cluster",
+      "title": "Most LLM Conformity Needs No Speaker: Measuring the Speaker-Free Floor in Peer-Pressure Benchmarks",
+      "url": "https://arxiv.org/abs/2607.05545",
+      "partial_author_list": false,
+      "inherited_status": ""
+    },
+    "consensus-not-verification": {
+      "source_card": "cards_b/consensus-not-verification.json",
+      "source_id": "consensus-not-verification",
+      "source_sha256": "c3b826855390297cbd9450c1437fbb519b7a5214c7d181874d93ca0089958320",
+      "title": "Consensus is Not Verification: Why Crowd Wisdom Strategies Fail for LLM Truthfulness",
+      "url": "https://arxiv.org/abs/2603.06612",
+      "partial_author_list": false,
+      "inherited_status": "preprint (arXiv cs.LG, cross-list cs.AI; PDF is in ICML-style format with an 'Impact Statement'; no acceptance, venue or comment on the abs page; license CC BY-NC-SA 4.0)"
+    },
+    "context-folding": {
+      "source_card": "cards_c/context-folding.json",
+      "source_id": "context-folding",
+      "source_sha256": "36577135a5f823168ccd7235afa98e848bb20a76d6b0f1b69c4b9e9dd21b7b3c",
+      "author_metadata_source": "lanes/t_fable_triage/scratch/arxiv_meta.json",
+      "title": "Scaling Long-Horizon LLM Agent via Context-Folding",
+      "url": "https://arxiv.org/abs/2510.11967",
+      "partial_author_list": false,
+      "inherited_status": "препринт arXiv (cs.CL), v1"
+    },
+    "context-language-models": {
+      "source_card": "cards_b/context-language-models.json",
+      "source_id": "context-language-models",
+      "source_sha256": "96ba58a14b29319074f1673ba0ea2f2f55f3e3d84b4839789d4df8c370490ce5",
+      "author_metadata_source": "lanes/t_fable_triage/scratch/arxiv_meta.json",
+      "title": "Context Language Models",
+      "url": "https://arxiv.org/abs/2609.37725",
+      "partial_author_list": false,
+      "inherited_status": "arXiv preprint, cs.AI primary (cross-lists cs.CL, cs.LG); no venue/comments stated; not peer-reviewed"
+    },
+    "context-rot": {
+      "source_card": "cards_c/context-rot.json",
+      "source_id": "context-rot",
+      "source_sha256": "81c1ecaeb49cb6b73c9f333e3e8d45c7ff849b9b3630ee5a054ee47128b43e3b",
+      "title": "Context Rot: How Increasing Input Tokens Impacts LLM Performance",
+      "url": "https://research.trychroma.com/context-rot",
+      "partial_author_list": false,
+      "inherited_status": "технический блог (Chroma Research), не рецензировался"
+    },
+    "cooperbench": {
+      "source_card": "cards_b/cooperbench.json",
+      "source_id": "cooperbench",
+      "source_sha256": "80ddff089d45124582a07cf2e92842c26f158334114c804289cc4b852818c726",
+      "title": "CooperBench: Why Coding Agents Cannot be Your Teammates Yet",
+      "url": "https://arxiv.org/abs/2601.13295",
+      "partial_author_list": false,
+      "inherited_status": "preprint: arXiv cs.LG (cross-lists cs.AI, cs.CL, cs.MA, cs.SI); no venue or acceptance stated on the abs page or the project page as of 2026-10-03. Not peer-reviewed as far as verifiable."
+    },
+    "coral": {
+      "source_card": "cards_b/coral.json",
+      "source_id": "coral",
+      "source_sha256": "b446d376b03b7670dd456d629c095b8d25482be8ada0813e9756f28841878e7e",
+      "title": "CORAL: Towards Autonomous Multi-Agent Evolution for Open-Ended Discovery",
+      "url": "https://arxiv.org/abs/2604.01658",
+      "partial_author_list": false,
+      "inherited_status": "COLM 2026 conference paper (PDF header of arXiv v3: 'Published as a conference paper at COLM 2026'; listed on colmweb.org/AcceptedPapers.html). CC BY 4.0."
+    },
+    "cost-of-consensus": {
+      "source_card": "cards_b/cost-of-consensus.json",
+      "source_id": "cost-of-consensus",
+      "source_sha256": "3af9bf777d930eeeeb0b086c4fa2f6939cf5ed0d515bc9f4b35beda3da687af6",
+      "title": "The Cost of Consensus: Isolated Self-Correction Prevails Over Unguided Homogeneous Multi-Agent Debate",
+      "url": "https://arxiv.org/abs/2605.00914",
+      "partial_author_list": false,
+      "inherited_status": "Peer-reviewed full paper, ACM CAIS 2026 (ACM Conference on AI and Agentic Systems, San Jose, CA, 26-29 May 2026): Proceedings of the ACM Conference on AI and Agentic Systems, pp. 311-329, DOI 10.1145/3786335.3813137, published 2026-05-26 (Crossref type 'proceedings-article', event 'CAIS '26'). Verified on the official conference pages (www.caisconf.org): listed under 'All Accepted Papers' (tracks Architectural Patterns & Composition and Evaluation & Benchmarking; Paper Session 7 'Agent Behavior', Fri 29 May, 10-minute talk plus poster), and named on the recap page among the 'Industry Spotlight' selections, which the recap says were designated by the AI Engineer World's Fair organizing team (the program committee's peer-reviewed awards are the separate 'Outstanding Paper' and 'Best Artifact' lists). CAIS 2026 recap: 60 peer-reviewed papers selected from 170 reviewed submissions. The arXiv comment 'ACM Conference on AI and Agentic Systems' is therefore confirmed, not just author-reported."
+    },
+    "cotra-surprised": {
+      "source_card": "cards_b/cotra-surprised.json",
+      "source_id": "cotra-surprised",
+      "source_sha256": "54b551d710cf9fded7b9d0b1454e1d56ff8b61c82deb29c19fad9e105e2f28b4",
+      "title": "The Hugging Face attack surprised me",
+      "url": "https://www.planned-obsolescence.org/p/the-hugging-face-attack-surprised",
+      "partial_author_list": false,
+      "inherited_status": "Personal Substack essay (Planned Obsolescence), 28 Aug 2026, with an author note 'Edited 8/30' on the 'What it means' section. Companion: Dwarkesh Podcast transcript, 1 Sep 2026. Not peer-reviewed. Substack footer copyright 2026 Ajeya Cotra."
+    },
+    "crypto-weaknesses": {
+      "source_card": "cards_b/crypto-weaknesses.json",
+      "source_id": "crypto-weaknesses",
+      "source_sha256": "d72abbb0dd1abb3b0446abc1d02f0fb2430770c28fd9fa999d6fe3d7c1f8068b",
+      "title": "Discovering cryptographic weaknesses with Claude",
+      "url": "https://www.anthropic.com/research/discovering-cryptographic-weaknesses",
+      "partial_author_list": false,
+      "inherited_status": "Company blog (Frontier Red Team) plus two technical reports and a chain-of-thought document on anthropic.com (PDFs); not peer-reviewed. HAWK's own team withdrew HAWK from NIST's additional-signatures process on 2026-07-29 because of this attack (hawk-sign.info; NIST round-3 page lists it as withdrawn)."
+    },
+    "cursor-scaling-long-running": {
+      "source_card": "cards/cursor-scaling.json",
+      "source_id": "cursor-scaling",
+      "source_sha256": "8fbb84514267455a802a91321388cbfa0e340e5829cae9e794c581f50a7d2069",
+      "part_of": "cursor-scaling",
+      "proposed_canonical_component_id": "cursor-scaling-long-running",
+      "title": "Scaling long-running autonomous coding",
+      "url": "https://cursor.com/blog/scaling-agents",
+      "partial_author_list": false,
+      "inherited_status": "cursor.com/blog, topic 'research'. Not peer-reviewed. No paper, no released harness code, no raw logs."
+    },
+    "cursor-self-driving": {
+      "source_card": "cards/cursor-scaling.json",
+      "editorial_component": true,
+      "part_of": "cursor-scaling",
+      "proposed_canonical_component_id": "cursor-self-driving",
+      "title": "Towards self-driving codebases",
+      "url": "https://cursor.com/blog/self-driving-codebases",
+      "partial_author_list": false,
+      "inherited_status": ""
+    },
+    "cursor-swarm-economics": {
+      "source_card": "cards_b/cursor-swarm-economics.json",
+      "source_id": "cursor-swarm-economics",
+      "source_sha256": "e720b937cc8b6bb971c9d9cc658843b705d508938bd1d71ab541fa30623a7799",
+      "title": "Agent swarms and the new model economics",
+      "url": "https://cursor.com/blog/agent-swarm-model-economics",
+      "partial_author_list": false,
+      "inherited_status": "Company research blog post (cursor.com/blog, topic: research); not peer-reviewed; no paper/PDF"
+    },
+    "de-nobili-lattice": {
+      "source_card": "cards_c/de-nobili-lattice.json",
+      "source_id": "de-nobili-lattice",
+      "source_sha256": "3d3e80c55b0766347d0ad736c1cc933ba5d6ad0c85b676108a81e365e10a07b2",
+      "title": "Collective Alignment in LLM Multi-Agent Systems: Disentangling Bias from Cooperation via Statistical Physics",
+      "url": "https://arxiv.org/abs/2605.10528",
+      "partial_author_list": false,
+      "inherited_status": "препринт arXiv (cond-mat.stat-mech), v1; в шаблоне указано «Preprint: APS»"
+    },
+    "debate-or-vote": {
+      "source_card": "cards_b/debate-or-vote.json",
+      "source_id": "debate-or-vote",
+      "source_sha256": "1cbb66247293882e4b7b28048d97b4ff1aff90217df8eff2a5aa1dff0a691d82",
+      "title": "Debate or Vote: Which Yields Better Decisions in Multi-Agent Large Language Models?",
+      "url": "https://arxiv.org/abs/2508.17536",
+      "partial_author_list": false,
+      "inherited_status": "NeurIPS 2025, Spotlight (peer-reviewed main conference). Verified on the official NeurIPS 2025 virtual page (neurips.cc/virtual/2025/poster/116557, 'Spotlight Poster'), on the OpenReview record iUjGNJzrF1 (venue 'NeurIPS 2025 spotlight') and in the arXiv comment 'NeurIPS 2025 Spotlight'. CC BY 4.0 on arXiv."
+    },
+    "deepmind-cheating-whistleblowing": {
+      "source_card": "cards/deepmind-cheating-whistleblowing.json",
+      "source_id": "deepmind-cheating-whistleblowing",
+      "source_sha256": "0fd50bab778e25956d84b1a63075eb68302d6098f0ff289eff6780c4514b552d",
+      "title": "A Case Study on Emergent Cheating and Whistleblowing in Autonomous Research Swarms",
+      "url": "https://arxiv.org/abs/2609.04170",
+      "partial_author_list": false,
+      "inherited_status": "arXiv preprint, cs.AI. The abs page has no venue or comments field. MIT Technology Review (2026-09-14) also states that it 'has not been peer-reviewed'."
+    },
+    "delegated-misalignment": {
+      "source_card": "cards_b/delegated-misalignment.json",
+      "source_id": "delegated-misalignment",
+      "source_sha256": "2276df1859d3c679c403a45bdcf51006d0fc3451fdff1f196511c9851403578b",
+      "title": "Delegated Misalignment: How Multi-Agent Structures Amplify LLM Safety Risks",
+      "url": "https://arxiv.org/abs/2609.27900",
+      "partial_author_list": false,
+      "inherited_status": "EMNLP 2026 Main Conference, poster (Budapest, 24-29 Oct 2026; paper ID 1080-MAIN, Poster Session C, 26 Oct 2026, 09:00-10:30, Hall H, in person), verified in the official EMNLP 2026 program sheet linked from 2026.emnlp.org/program; the arXiv comment says 'EMNLP 2026' and corresponding author Aishan Liu's publication page lists 'EMNLP Main, 2026'. Accepted, but the conference has not taken place yet (as of 2026-10-03) and there is no proceedings entry; arXiv v1 was submitted on 26 Aug 2026 (between the notification on 20 Aug and the camera-ready deadline on 30 Aug), but the ID 2609.27900 and the OAI-PMH datestamp 2026-09-24 indicate it became public only in late September, after the camera-ready deadline; whether v1 is the camera-ready is not stated."
+    },
+    "deliberative-crowds": {
+      "source_card": "cards_b/deliberative-crowds.json",
+      "source_id": "deliberative-crowds",
+      "source_sha256": "72957dd157395fc28b81e93b9d42883374bf4ac9bce4d964d2e52e3eccf003bf",
+      "title": "The Wisdom of Artificial Deliberative Crowds",
+      "url": "https://arxiv.org/abs/2609.22497",
+      "partial_author_list": false,
+      "inherited_status": "preprint (arXiv cs.AI; no venue or journal reference on the abs page; arXiv non-exclusive-distrib license)"
+    },
+    "deliberative-illusion": {
+      "source_card": "cards_b/deliberative-illusion.json",
+      "source_id": "deliberative-illusion",
+      "source_sha256": "a8383f5850e79162012a0b5fc6285ca2efaf4eab0b623b80b268c184c85c4f38",
+      "title": "The Deliberative Illusion: Diagnosing Factual Attrition and Stance Homogenization in Multi-Agent LLM Deliberation",
+      "url": "https://arxiv.org/abs/2606.03032",
+      "partial_author_list": false,
+      "inherited_status": "preprint (arXiv cs.CL). The abs page has no comment/journal-ref line, the PDF carries no venue stamp, Semantic Scholar lists venue 'arXiv.org'. CC BY 4.0."
+    },
+    "delm-shared-context": {
+      "source_card": "cards_b/delm-shared-context.json",
+      "source_id": "delm-shared-context",
+      "source_sha256": "847a225529184ebcc8d6685b22506a9d1583f053ec58c20534eed8b7a14e66c5",
+      "title": "Decentralized Multi-Agent Systems with Shared Context",
+      "url": "https://arxiv.org/abs/2606.10662",
+      "partial_author_list": false,
+      "inherited_status": "preprint (arXiv cs.MA, cross-list cs.AI; no journal ref on the abs page). arXiv non-exclusive distribution license, not Creative Commons."
+    },
+    "despite-instructions-covert-channels": {
+      "source_card": "cards_b/despite-instructions-covert-channels.json",
+      "source_id": "despite-instructions-covert-channels",
+      "source_sha256": "21f976c39ebe72ad271b48d26ffd2ca7b9a38f2dad7ea7e19ebbcabe3b831f0a",
+      "title": "Despite Instructions: Frontier Agents Improvise Covert Channels at Test Time",
+      "url": "https://arxiv.org/abs/2609.32701",
+      "partial_author_list": false,
+      "inherited_status": "preprint (arXiv v1; the PDF header reads 'Preprint'; the abs page lists no comments, journal reference or venue)"
+    },
+    "devin-fusion": {
+      "source_card": "cards_c/devin-fusion.json",
+      "source_id": "devin-fusion",
+      "source_sha256": "da74df9addc31461ff20c1668c635e3e73c6766dcc4d2a431f90630e404b472b",
+      "title": "Devin Fusion: Frontier Performance at 60% Lower Cost",
+      "url": "https://cognition.com/blog/devin-fusion",
+      "partial_author_list": false,
+      "inherited_status": "blog (company engineering post)"
+    },
+    "distributional-agi-safety": {
+      "source_card": "cards_b/distributional-agi-safety.json",
+      "source_id": "distributional-agi-safety",
+      "source_sha256": "b86ad9cd86fc0d717ba426a372b3ff3aeaac38922bc3d4cc8a761bc08d7d4f8e",
+      "title": "Distributional AGI Safety",
+      "url": "https://arxiv.org/abs/2512.16856",
+      "partial_author_list": false,
+      "inherited_status": "preprint (arXiv cs.AI). No conference or journal stamp in the v2 HTML. License: CC BY 4.0. Position and framework paper: the authors call the measures an open research challenge and a call for benchmarks, test environments and oversight mechanisms."
+    },
+    "diversity-collapse": {
+      "source_card": "cards_b/diversity-collapse.json",
+      "source_id": "diversity-collapse",
+      "source_sha256": "af0f84795922cfc0bb78c00ff9b935461bc23143232dc04d10c71236ab46a6b0",
+      "author_metadata_source": "lanes/t_fable_triage/scratch/arxiv_meta.json",
+      "title": "Diversity Collapse in Multi-Agent LLM Systems: Structural Coupling and Collective Failure in Open-Ended Idea Generation",
+      "url": "https://arxiv.org/abs/2604.18005",
+      "partial_author_list": false,
+      "inherited_status": "Peer-reviewed, Findings of the Association for Computational Linguistics: ACL 2026 (Findings track, not the main conference), San Diego, July 2026; ACL Anthology ID 2026.findings-acl.13, pages 251-306, DOI 10.18653/v1/2026.findings-acl.13, verified on aclanthology.org (volume page and paper page). The arXiv comment reads '56 pages, 15 figures; Accepted at ACL 2026 Findings'; the code repository title carries the same tag."
+    },
+    "diversity-scaling": {
+      "source_card": "cards_b/diversity-scaling.json",
+      "source_id": "diversity-scaling",
+      "source_sha256": "f0132cc25295e3bf6d00566c10923e0ac2026c9b45e96dadc65ffa98c8f3dfb9",
+      "title": "Understanding Agent Scaling in LLM-Based Multi-Agent Systems via Diversity",
+      "url": "https://arxiv.org/abs/2602.03794",
+      "partial_author_list": false,
+      "inherited_status": "preprint (arXiv cs.AI, cross-list cs.LG; PDF marked 'Preprint'; arXiv non-exclusive distribution license, not Creative Commons)"
+    },
+    "dochkina-drop-hierarchy": {
+      "source_card": "cards_b/dochkina-drop-hierarchy.json",
+      "source_id": "dochkina-drop-hierarchy",
+      "source_sha256": "76b00a9b017c24760cfabcb6f62921d208528ff5ac50ca6058073774b81a4f88",
+      "title": "Drop the Hierarchy and Roles: How Self-Organizing LLM Agents Outperform Designed Structures",
+      "url": "https://arxiv.org/abs/2603.28990",
+      "partial_author_list": false,
+      "inherited_status": "preprint (arXiv cs.AI). The abs comment says '6 figures, 9 tables. Submitted to IEEE Access'; there is no journal reference, so this is an author-reported submission, not an accepted IEEE Access paper. License CC BY 4.0."
+    },
+    "dwarkesh-agent-civilizations": {
+      "source_card": "cards_c/dwarkesh-agent-civilizations.json",
+      "source_id": "dwarkesh-agent-civilizations",
+      "source_sha256": "e96e5fa0ee3a613c6ef49366d70deb9f7c68e3a05de10115f14535749c577059",
+      "title": "The Rise and Fall of Agent Civilizations",
+      "url": "https://www.dwarkesh.com/p/openai-huggingface",
+      "partial_author_list": false,
+      "inherited_status": "blog essay (Substack), retelling of the OpenAI / Hugging Face incident"
+    },
+    "dynamic-workflows-claude-code": {
+      "source_card": "cards_c/dynamic-workflows-claude-code.json",
+      "source_id": "dynamic-workflows-claude-code",
+      "source_sha256": "158dd3ef3b3a8ede75ea4de5e6e9d0fa52fa5fc2e703e94a818fd14f3daf4fad",
+      "title": "A harness for every task: dynamic workflows in Claude Code",
+      "url": "https://claude.com/blog/a-harness-for-every-task-dynamic-workflows-in-claude-code",
+      "partial_author_list": false,
+      "inherited_status": "официальный блог (claude.com)"
+    },
+    "echoing-identity-failures": {
+      "source_card": "cards_b/echoing-identity-failures.json",
+      "source_id": "echoing-identity-failures",
+      "source_sha256": "4635744b488922b4818e252ed1dd33e8524868814b2665bf03d92f9e520ea2e0",
+      "title": "Echoing: Identity Failures when LLM Agents Talk to Each Other",
+      "url": "https://arxiv.org/abs/2511.09710",
+      "partial_author_list": false,
+      "inherited_status": "Poster at the ICLR 2026 workshop 'Agents in the Wild: Safety, Security, and Beyond' (Sunday 26 April 2026; ICLR 2026 was held 23-27 April at Riocentro, Rio de Janeiro), per the ICLR virtual site and Salesforce's post 'Salesforce AI Research at ICLR 2026' (22 Apr 2026); arXiv comment: 'Published at ICLR workshop'. Workshop-level paper, not the main track. An OpenReview record exists (forum id XNO4eQcAOc) but its page sits behind a bot challenge and was not read, so reviews and whether the workshop is archival are unverified. A related Salesforce blog post is dated 25 Nov 2025. arXiv licence: non-exclusive distribution (not CC)."
+    },
+    "effective-context-engineering": {
+      "source_card": "cards_c/effective-context-engineering.json",
+      "source_id": "effective-context-engineering",
+      "source_sha256": "9a64a7c0c3f1955b17df4cbea0bb13f59c589d5ebf29c48b83f1f06e2ddd43b7",
+      "title": "Effective context engineering for AI agents",
+      "url": "https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents",
+      "partial_author_list": false,
+      "inherited_status": "официальный инженерный блог (Anthropic Engineering)"
+    },
+    "einsteinarena": {
+      "source_card": "cards_b/einsteinarena.json",
+      "source_id": "einsteinarena",
+      "source_sha256": "c7a3c66b4a85bff89c886453bc309db0b026fcbac5b3aeacca10c0fa21d0b683",
+      "title": "Harnessing the Collective Intelligence of AI Agents in the Wild for New Discoveries",
+      "url": "https://arxiv.org/abs/2606.10402",
+      "partial_author_list": false,
+      "inherited_status": "Preprint. arXiv:2606.10402v2 [cs.CL], subjects cs.CL and cs.AI. No conference or journal is named. Licence on the HTML and abs page: CC BY 4.0."
+    },
+    "emergence-world": {
+      "source_card": "cards_b/emergence-world.json",
+      "source_id": "emergence-world",
+      "source_sha256": "524967899c4212714583e8fb013b292adda3712450ae0a2c780280ce56aea759",
+      "title": "Emergence World: Adversarial Stress-Testing of Long-Horizon Multi-Agent Systems",
+      "url": "https://arxiv.org/abs/2609.17320",
+      "partial_author_list": false,
+      "inherited_status": "arXiv preprint (cs.MA), v1 only, CC BY 4.0; company research (Emergence AI); not peer-reviewed; no venue stated. This is 'Study 2'; the earlier 'Study 1' is a separate paper and blog."
+    },
+    "emergent-behaviors-data-leakage": {
+      "source_card": "cards_c/emergent-behaviors-data-leakage.json",
+      "source_id": "emergent-behaviors-data-leakage",
+      "source_sha256": "22511eb638efd64968e5105b594b7bbacd3d7799874b278d9965cd6fa98502e2",
+      "title": "Emergent LLM behaviors are observationally equivalent to data leakage",
+      "url": "https://arxiv.org/abs/2505.23796",
+      "partial_author_list": false,
+      "inherited_status": "preprint (arXiv; short critical comment on Ashery et al.)"
+    },
+    "emergent-collusion-long-horizon": {
+      "source_card": "cards_b/emergent-collusion-long-horizon.json",
+      "source_id": "emergent-collusion-long-horizon",
+      "source_sha256": "5db8e280e30dd730413f8507b108f0af7f21fee167256a075c99b4eb5105c1b9",
+      "title": "Emergent Collusion in Long-Horizon LLM Agent Interaction",
+      "url": "https://arxiv.org/abs/2609.24967",
+      "partial_author_list": false,
+      "inherited_status": "preprint (arXiv cs.AI, cross-list cs.CL; 53 pages, 13 figures; license CC BY 4.0); no venue stated on the abs page or in the paper"
+    },
+    "emergent-languages": {
+      "source_card": "cards_c/prev-moltbook-cluster.json",
+      "editorial_component": true,
+      "author_metadata_source": "swarm-recovery-20261009/metadata-18-bylines.md (primary arXiv, publisher and journal pages, checked 2026-10-09)",
+      "primary_dates": "arXiv v1 2026-05-29",
+      "part_of": "prev-moltbook-cluster",
+      "title": "Emergent Languages in Populations of Language Model Agents: From Token Efficiency to Oversight Evasion",
+      "url": "https://arxiv.org/abs/2605.31170",
+      "partial_author_list": false,
+      "inherited_status": ""
+    },
+    "eval-awareness-browsecomp": {
+      "source_card": "cards_c/eval-awareness-browsecomp.json",
+      "source_id": "eval-awareness-browsecomp",
+      "source_sha256": "c18eb04bb6e638f2fd0bc76c5d3f0972f1a8fe4f5f7ee41dd37d07ad60125ae4",
+      "title": "Eval awareness in Claude Opus 4.6's BrowseComp performance",
+      "url": "https://www.anthropic.com/engineering/eval-awareness-browsecomp",
+      "partial_author_list": false,
+      "inherited_status": "официальный инженерный блог"
+    },
+    "evans-agentic-intelligence-explosion": {
+      "source_card": "cards_b/evans-agentic-intelligence-explosion.json",
+      "source_id": "evans-agentic-intelligence-explosion",
+      "source_sha256": "94a60d256800e2f97a6b4ec5d8b9542fe901fc1bfb61584a10bf4a0178f68967",
+      "title": "Agentic AI and the next intelligence explosion",
+      "url": "https://doi.org/10.1126/science.aeg1895",
+      "partial_author_list": false,
+      "inherited_status": "Published in Science 391(6791), 19 Mar 2026, article eaeg1895 (per Crossref, PubMed, OpenAlex); a short opinion piece, not a data paper (PubMed type 'Editorial'; the science.org article-type label could not be checked, page returns 403). Also on arXiv (cs.AI, '4 pages', CC BY 4.0)."
+    },
+    "fable51-card-multiagent": {
+      "source_card": "cards_b/fable51-card-multiagent.json",
+      "source_id": "fable51-card-multiagent",
+      "source_sha256": "0afe3aabdf1de6b76e3dbdc9c0db0b26c2791a8a16baf6bfecacf4f0aa42feb0",
+      "title": "System Card: Claude Fable 5.1 and Claude Mythos 5.1",
+      "url": "https://www-cdn.anthropic.com/0339e6a7c5c7b87f5c07798616dc32c215d14235/Claude%20Fable%205.1%20&%20Claude%20Mythos%205.1%20System%20Card.pdf",
+      "partial_author_list": false,
+      "inherited_status": "Anthropic system card (company model-release report, 212 pages); not peer-reviewed; self-reported by the developer. Official landing page https://www.anthropic.com/claude-fable-5-1-mythos-5-1-system-card; the short link https://www.anthropic.com/claude-fable-5-1-system-card returned a byte-identical copy of the CDN PDF"
+    },
+    "fermat-last-theorem": {
+      "source_card": "cards_b/fermat-last-theorem.json",
+      "source_id": "fermat-last-theorem",
+      "source_sha256": "917eb005ac36a39e77bf59997041758ae9193bcebccfd1a55c465bc97cc5b4df",
+      "title": "Formalizing Fermat's Last Theorem",
+      "url": "https://www.anthropic.com/research/formalizing-fermats-last-theorem",
+      "partial_author_list": false,
+      "inherited_status": "Company research blog (anthropic.com/research, section Science) plus a GitHub release (anthropics/fermats-last-theorem, Apache-2.0, 'research artifact') and a companion PDF 'Formalizing Fermat's Last Theorem in Lean: a timeline and selected excerpts from Claude's reasoning'; not peer-reviewed. The Lean proof was checked by Anthropic with the Lean kernel, leanprover/comparator and the independent nanoda kernel; I found no third-party rebuild."
+    },
+    "flag-game": {
+      "source_card": "cards/flag-game.json",
+      "source_id": "flag-game",
+      "source_sha256": "4dda73f3b64fc19d914bcb18e245b07df5bfb74d14881b5bc2038c7d1fb1fb19",
+      "title": "Flag Game: A Toy Model for Mechanistic Swarm Interpretability",
+      "url": "https://arxiv.org/abs/2609.19124",
+      "partial_author_list": false,
+      "inherited_status": "arXiv preprint (primary cs.AI; cross-lists cond-mat.dis-nn, cond-mat.stat-mech, cs.MA, physics.soc-ph; comment '21 pages, 10 figures'; PDF footer 'Preprint.'). Not peer-reviewed in this form. The earlier OpenReview version is called 'a new peer-reviewed workshop paper' by Thomson Reuters Institute and labeled 'ICML 2026' by the Lacuna aggregator; which ICML 2026 workshop is UNVERIFIED (OpenReview behind a bot-verification check)."
+    },
+    "forethought-sie": {
+      "source_card": "cards_c/forethought-sie.json",
+      "source_id": "forethought-sie",
+      "source_sha256": "8a388765013e86cecf001cc6154880065909364fd15ee8a3b1b638bac205dfb7",
+      "title": "How quick and big would a software intelligence explosion be?",
+      "url": "https://www.forethought.org/research/how-quick-and-big-would-a-software-intelligence-explosion-be",
+      "partial_author_list": false,
+      "inherited_status": "исследовательская статья на сайте Forethought (не рецензируемая; препринт/веб-публикация)"
+    },
+    "game-theory-similarity-inference": {
+      "source_card": "cards_c/game-theory-similarity-inference.json",
+      "source_id": "game-theory-similarity-inference",
+      "source_sha256": "96e964dab2eee7191a9f0910ebd4c8702cf018c67d36e0d296f1cdb1c0caf411",
+      "author_metadata_source": "lanes/t_fable_triage/scratch/arxiv_meta.json",
+      "title": "A game theory for foundation models shows new paths to rational cooperation through similarity inference",
+      "url": "https://arxiv.org/abs/2608.03958",
+      "partial_author_list": false,
+      "inherited_status": "препринт (arXiv, cs.AI, 75 страниц)"
+    },
+    "gas-town": {
+      "source_card": "cards_c/gas-town.json",
+      "source_id": "gas-town",
+      "source_sha256": "3ddcf9383644b59c998dc168ef2f9f906578e338b90ef9dfd96071831c269d62",
+      "title": "Welcome to Gas Town",
+      "url": "https://yegge.ai/essays/welcome-to-gas-town/",
+      "partial_author_list": false,
+      "inherited_status": "blog essay + open-source project (open-sourced Jan 1, 2026)"
+    },
+    "gasim": {
+      "source_card": "cards_c/prev-moltbook-cluster.json",
+      "editorial_component": true,
+      "part_of": "prev-moltbook-cluster",
+      "proposed_canonical_component_id": "gasim",
+      "title": "GASim: A Graph-Accelerated Hybrid Framework for Social Simulation",
+      "url": "https://aclanthology.org/2026.acl-long.569/",
+      "partial_author_list": false,
+      "inherited_status": ""
+    },
+    "glossogen-saveveyru": {
+      "source_card": "cards_b/glossogen-saveveyru.json",
+      "source_id": "glossogen-saveveyru",
+      "source_sha256": "76a57a8e1b4782e652599c479c14bd8ba5ede4206e7a5ebb95b00d551dac3b19",
+      "title": "GlossoGen: Emergent Language in Complex Multi-Agent LLM Interactions",
+      "url": "https://arxiv.org/abs/2609.01491",
+      "partial_author_list": false,
+      "inherited_status": "Preprint. arXiv:2609.01491v1 [cs.CL], submitted 1 Sep 2026, no revision listed. No conference on the title page. License: arXiv non-exclusive distribution 1.0, not a Creative Commons license."
+    },
+    "governed-shared-memory": {
+      "source_card": "cards_c/governed-shared-memory.json",
+      "source_id": "governed-shared-memory",
+      "source_sha256": "11ee7c2b8ac945f2ee6361eee1478650c19d709bc42de297731c3c437852cfeb",
+      "author_metadata_source": "lanes/t_fable_triage/scratch/arxiv_meta.json",
+      "title": "Governed Shared Memory for Multi-Agent LLM Systems",
+      "url": "https://arxiv.org/abs/2606.24535",
+      "partial_author_list": false,
+      "inherited_status": "preprint (arXiv v1)"
+    },
+    "gpt6-astra-card-a2a": {
+      "source_card": "cards_lanes/gpt6-astra-card-a2a.json",
+      "source_id": "gpt6-astra-card-a2a",
+      "source_sha256": "c5dcf1c98bebe09cf0054e0690c6b7d654d418697b6869f19943b4c78e2f9ad9",
+      "title": "GPT-6 Astra System Card",
+      "url": "https://deploymentsafety.openai.com/gpt-6-astra",
+      "partial_author_list": false,
+      "inherited_status": "OpenAI Deployment Safety Hub system card"
+    },
+    "great-models-think-alike": {
+      "source_card": "cards_c/great-models-think-alike.json",
+      "source_id": "great-models-think-alike",
+      "source_sha256": "b10995374d8f93b2afb02efe8780b527901605711ada7c725ccc624ebac97790",
+      "author_metadata_source": "lanes/t_fable_triage/scratch/arxiv_meta.json",
+      "title": "Great Models Think Alike and this Undermines AI Oversight",
+      "url": "https://arxiv.org/abs/2502.04313",
+      "partial_author_list": false,
+      "inherited_status": "ICML 2025 (Spotlight poster; arXiv v2 от 2025-06-12)"
+    },
+    "grok-420-multi-agent": {
+      "source_card": "cards_b/grok-420-multi-agent.json",
+      "source_id": "grok-420-multi-agent",
+      "source_sha256": "471d1dc63338267f1c49d797b5aed3f40e9065261782c3ca9956df06fe0f386c",
+      "title": "Grok 4.20 System Card",
+      "url": "https://data.x.ai/2026-04-07-grok-4-20-model-card.pdf",
+      "partial_author_list": false,
+      "inherited_status": "Official xAI system card (8-page PDF) plus official docs and two news posts. Not peer-reviewed. No license is stated in the card or on the posts; treat text and figures as copyrighted by xAI. The card says that as of writing Grok 4.20 is available in the consumer web and mobile apps."
+    },
+    "harness-design-long-running": {
+      "source_card": "cards_b/harness-design-long-running.json",
+      "source_id": "harness-design-long-running",
+      "source_sha256": "e06be5cdb6e73fb4ef0dad224577cc797af894568a9827c5e7075321bd0b5d6d",
+      "title": "Harness design for long-running application development",
+      "url": "https://www.anthropic.com/engineering/harness-design-long-running-apps",
+      "partial_author_list": false,
+      "inherited_status": "Official Anthropic Engineering blog post. Not peer-reviewed. Copyright 2026 Anthropic PBC; screenshots and the cost tables are blog figures, so reuse only as quotation with attribution."
+    },
+    "heterogeneous-swarms": {
+      "source_card": "cards_c/heterogeneous-swarms.json",
+      "source_id": "heterogeneous-swarms",
+      "source_sha256": "bd7b7253ab4aa497227a9a572df628d7f7424fe2a2f5805d57e1abc75f8affef",
+      "author_metadata_source": "lanes/t_fable_triage/scratch/arxiv_meta.json",
+      "title": "Heterogeneous Swarms: Jointly Optimizing Model Roles and Weights for Multi-LLM Systems",
+      "url": "https://arxiv.org/abs/2502.04510",
+      "partial_author_list": false,
+      "inherited_status": "NeurIPS 2025 (arXiv comment); v2 22 Oct 2025"
+    },
+    "hf-huggingface-technical-timeline": {
+      "source_card": "cards_lanes/hf-incident-case.json",
+      "editorial_component": true,
+      "part_of": "hf-incident-case",
+      "proposed_canonical_component_id": "hf-huggingface-technical-timeline",
+      "title": "Agent Intrusion: Technical Timeline",
+      "url": "https://huggingface.co/blog/agent-intrusion-technical-timeline",
+      "partial_author_list": false,
+      "inherited_status": ""
+    },
+    "hf-metr-redwood-investigation": {
+      "source_card": "cards_lanes/hf-incident-case.json",
+      "editorial_component": true,
+      "part_of": "hf-incident-case",
+      "proposed_canonical_component_id": "hf-metr-redwood-investigation",
+      "title": "OpenAI Hugging Face Incident Investigation",
+      "url": "https://metr.org/blog/2026-08-26-openai-hugging-face-incident-investigation/",
+      "partial_author_list": false,
+      "inherited_status": ""
+    },
+    "hf-openai-technical-report": {
+      "source_card": "cards_lanes/hf-incident-case.json",
+      "source_id": "openai-hf-incident-2026",
+      "source_sha256": "76f801a4e25f5fa20479efc3a66288502ee74539f7ed4beef5bacbf27d33a4e3",
+      "part_of": "hf-incident-case",
+      "proposed_canonical_component_id": "hf-openai-technical-report",
+      "title": "OpenAI--Hugging Face Incident: Technical Report",
+      "url": "https://cdn.openai.com/pdf/67869394-cb91-4c12-888c-5cbd85c7814c/OpenAI-Hugging-Face%20Incident-Technical-Report.pdf",
+      "partial_author_list": false,
+      "inherited_status": "OpenAI corporate technical report/blog; METR/Redwood independent investigation; Hugging Face company postmortem; arXiv preprints; official testimony and government press release"
+    },
+    "hiddenbench": {
+      "source_card": "cards_b/hiddenbench.json",
+      "source_id": "hiddenbench",
+      "source_sha256": "bd4c76c049b692e1dc4ee0f81ddecb0667ea33ae5e12d95e974b08bc30ae351f",
+      "title": "Systematic Failures in Collective Reasoning under Distributed Information in Multi-Agent LLMs",
+      "url": "https://arxiv.org/abs/2505.11556",
+      "partial_author_list": false,
+      "inherited_status": "ICML 2026 poster (official ICML virtual site: Wed 8 Jul 2026, 2:30-4:15 PM KST, Hall A #4313, https://icml.cc/virtual/2026/poster/62206); arXiv comment: 'Accepted to ICML 2026'. Peer-reviewed conference paper. OpenReview forum igHBKQaLLP exists but is behind a bot check, so the review record was not opened."
+    },
+    "homogeneous-panel-collapse": {
+      "source_card": "cards_b/homogeneous-panel-collapse.json",
+      "source_id": "homogeneous-panel-collapse",
+      "source_sha256": "314f8aa604f131a835151a12d496853e3bf0a3e09f09321ca92d2c8a429075a6",
+      "title": "Measuring Collapse and Correction in Homogeneous-Panel LLM Debate",
+      "url": "https://arxiv.org/abs/2609.35279",
+      "partial_author_list": false,
+      "inherited_status": "Listed in the official NeurIPS 2026 program index (https://neurips.cc/Downloads/2026, poster 139635), i.e. accepted; Evaluations and Datasets Track per the paper and project page. The PDF footer reads '40th Conference on Neural Information Processing Systems (NeurIPS 2026). Track on Evaluations and Datasets.'; the arXiv comment and the project page repeat the track. The public NeurIPS 2026 dates page lists this track's author notifications for 24 Sep 2026 (Anywhere on Earth), four days before the arXiv posting. The poster page itself (neurips.cc/virtual/2026/poster/139635) returned HTTP 403 and OpenReview search returned HTTP 403, so the track is confirmed only by the authors; 2026 proceedings are not up."
+    },
+    "human-ai-consensus": {
+      "source_card": "cards_c/prev-population-dynamics-cluster.json",
+      "editorial_component": true,
+      "author_metadata_source": "swarm-recovery-20261009/metadata-18-bylines.md (primary arXiv, publisher and journal pages, checked 2026-10-09)",
+      "primary_dates": "arXiv v1 2026-09-02",
+      "part_of": "prev-population-dynamics-cluster",
+      "title": "AI agents reshape consensus formation in human groups",
+      "url": "https://arxiv.org/abs/2609.02122",
+      "partial_author_list": false,
+      "inherited_status": ""
+    },
+    "illusion-multi-agent-advantage": {
+      "source_card": "cards_b/illusion-multi-agent-advantage.json",
+      "source_id": "illusion-multi-agent-advantage",
+      "source_sha256": "a0198129227ef3e8c462678b425368985dc21e008bdf14dced3ac11cbe604926",
+      "title": "The Illusion of Multi-Agent Advantage",
+      "url": "https://arxiv.org/abs/2606.13003",
+      "partial_author_list": false,
+      "inherited_status": "preprint (arXiv cs.AI, cross-lists cs.CL and cs.MA; PDF marked 'Preprint.'; license CC BY 4.0)"
+    },
+    "indirect-tipping": {
+      "source_card": "cards_b/indirect-tipping.json",
+      "source_id": "indirect-tipping",
+      "source_sha256": "c29810b3ec53565579f78d1f2a7027f5532a8a74349182d939aa126527c0523b",
+      "title": "Indirect tipping: a social attack surface in AI agent populations",
+      "url": "https://arxiv.org/abs/2609.25194",
+      "partial_author_list": false,
+      "inherited_status": "preprint (arXiv primary cs.MA; abs browse also lists cs.AI, cs.CY, cs.SY, eess.SY, physics.soc-ph). No journal reference. License: arXiv non-exclusive distribution 1.0, not Creative Commons."
+    },
+    "intelligent-ai-delegation": {
+      "source_card": "cards_c/intelligent-ai-delegation.json",
+      "source_id": "intelligent-ai-delegation",
+      "source_sha256": "c8421f805de3cff82a82e3e5bf36d5adb74a752219e181eddf929e3b805e8136",
+      "title": "Intelligent AI Delegation",
+      "url": "https://arxiv.org/abs/2602.11865",
+      "partial_author_list": false,
+      "inherited_status": "препринт arXiv, v1 (концептуальная статья)"
+    },
+    "interaction-tax": {
+      "source_card": "cards_b/interaction-tax.json",
+      "source_id": "interaction-tax",
+      "source_sha256": "c46b234c8bd1bdae761c1b6bdc600afa4352f27bd570c48f2e9bc95deeb5405a",
+      "title": "The Interaction Tax: When Communication Erases Diversity in Multi-Agent Teams",
+      "url": "https://arxiv.org/abs/2608.23541",
+      "partial_author_list": false,
+      "inherited_status": "ICML 2026 Workshop AI4Research (poster), per OpenReview record VUdf5ZzGy4 (venueid ICML.cc/2026/Workshop/AI4Research; the workshop is titled 'AI as a Tool for Mathematics, Computer Science, and Machine Learning'). NOT a main-conference paper: the arXiv comment says 'Accepted at ICML 2026 (PMLR 306)' and the arXiv PDF carries the ICML-2026 template footer, but the paper is absent from the PMLR volume 306 index (6,552 papers searched by title and author names). The arXiv v1 is a 14-page extended version with supplementary material; the OpenReview submission was a 4-page main paper"
+    },
+    "interlocutor-effect": {
+      "source_card": "cards_b/interlocutor-effect.json",
+      "source_id": "interlocutor-effect",
+      "source_sha256": "63e95a2c663a0757662879d6dae60692dd2b9bf8d6c10dd8b09781247e76a157",
+      "title": "The Interlocutor Effect: Why LLMs Leak More Personal Data to Agents Than Humans",
+      "url": "https://arxiv.org/abs/2606.09844",
+      "partial_author_list": false,
+      "inherited_status": "Listed in the official programme of IWPE'26 (International Workshop on Privacy Engineering), co-located with the 11th IEEE European Symposium on Security and Privacy (EuroS&P 2026), Lisbon, 6 July 2026, Paper Session 1 'Privacy and (X)AI' (workshop-level, not the main EuroS&P track). IWPE takes both archival (IEEE Xplore) and non-archival papers and the programme does not say which this is, so publication in the IEEE EuroS&PW proceedings is unverified. The arXiv page shows no venue; arXiv licence CC BY 4.0."
+    },
+    "kim-scaling-agent-systems": {
+      "source_card": "cards/kim-scaling-agent-systems.json",
+      "source_id": "kim-scaling-agent-systems",
+      "source_sha256": "a98a700ad44792d50da01de851372ab1a22c58ff2c3d2e3c60ff0920a52a0365",
+      "title": "Capable language models can outgrow the benefits of collaboration",
+      "url": "https://doi.org/10.1038/s42256-026-01268-y",
+      "partial_author_list": false,
+      "inherited_status": "Published: Nature Machine Intelligence 8(7), 1157-1172 (2026); online 2026-07-24; DOI 10.1038/s42256-026-01268-y. Reviewers: Lichao Sun and anonymous (no peer-review file published)."
+    },
+    "kimi-agent-swarm": {
+      "source_card": "cards/kimi-agent-swarm.json",
+      "source_id": "kimi-agent-swarm",
+      "source_sha256": "7f5e6b7998f19aa2683fc1a90b67ebea49003e168c01492628e77fe7f069ba27",
+      "author_metadata_source": "lanes/t_fable_triage/scratch/arxiv_meta.json",
+      "title": "Kimi K2.5: Visual Agentic Intelligence",
+      "url": "https://arxiv.org/abs/2602.02276",
+      "partial_author_list": false,
+      "inherited_status": "arXiv preprint (cs.CL primary; cs.AI, cs.LG), comment 'Kimi K2.5 tech report'; not peer-reviewed as of 2026-10-03. Blogs and model cards are vendor documentation."
+    },
+    "kimi-k3-swarm-bench": {
+      "source_card": "cards_b/kimi-k3-swarm-bench.json",
+      "source_id": "kimi-k3-swarm-bench",
+      "source_sha256": "e20436cdf42e15d383182e3f1af091125303fac890cc33142af9c378f79ae20d",
+      "title": "Kimi K3: Open Frontier Intelligence",
+      "url": "https://arxiv.org/abs/2607.24653",
+      "partial_author_list": false,
+      "inherited_status": "Preprint. arXiv:2607.24653, cs.CL. v1 submitted 27 Jul 2026; v2 revised 7 Aug 2026. The Swarm Bench row is the same in the v1 and v2 HTML. License on the abs page: CC BY-NC-ND 4.0."
+    },
+    "kosmos": {
+      "source_card": "cards_c/kosmos.json",
+      "source_id": "kosmos",
+      "source_sha256": "f8466e298b329a4cb8611747e0c0fb2faba2c16281c8bf9e8d3eebcca96f470f",
+      "author_metadata_source": "lanes/t_fable_triage/scratch/arxiv_meta.json",
+      "title": "Kosmos: An AI Scientist for Autonomous Discovery",
+      "url": "https://arxiv.org/abs/2511.02824",
+      "partial_author_list": false,
+      "inherited_status": "preprint (arXiv v2 5 Nov 2025)"
+    },
+    "lai-looking-for-something-weird": {
+      "source_card": "cards_b/lai-looking-for-something-weird.json",
+      "source_id": "lai-looking-for-something-weird",
+      "source_sha256": "0545463b5fd543cb8c5bf7e854d8c719a1ede020c942f209fb09378affd0ea82",
+      "title": "\"Looking for Something Weird to Happen\": How Humans Sustain AI Agent Novelty Amid Semantic Collapse",
+      "url": "https://arxiv.org/abs/2609.16051",
+      "partial_author_list": false,
+      "inherited_status": "preprint, arXiv:2609.16051v1, primary subject cs.MA (also cs.AI, cs.HC), license CC BY 4.0. The HTML header is formatted as an ACM article for the CHI Conference on Human Factors in Computing Systems, 2027. The arXiv abs page lists no proceedings, acceptance, or journal reference, so CHI 2027 is the template's conference field, not a verified acceptance."
+    },
+    "latentmas": {
+      "source_card": "cards_c/latentmas.json",
+      "source_id": "latentmas",
+      "source_sha256": "905b282f6788edfe9cd0a35c3b96d0b52af3fa22cc7974a2d2ae7fb50b86c287",
+      "author_metadata_source": "lanes/t_fable_triage/scratch/arxiv_meta.json",
+      "title": "Latent Collaboration in Multi-Agent Systems",
+      "url": "https://arxiv.org/abs/2511.20639",
+      "partial_author_list": false,
+      "inherited_status": "preprint (arXiv v4); ICML 2026 Spotlight (по комментарию arXiv)"
+    },
+    "llm-agent-swarm-optimization": {
+      "source_card": "cards_b/llm-agent-swarm-optimization.json",
+      "source_id": "llm-agent-swarm-optimization",
+      "source_sha256": "433fab46c0ee32cec467cd02dd4e1be2d4baec7b3b3cf2bbae6b21d536d6d309",
+      "title": "Unraveling the emergence of collective behavior in networks of cognitive agents",
+      "url": "https://doi.org/10.1038/s44387-026-00091-5",
+      "partial_author_list": false,
+      "inherited_status": "npj Artificial Intelligence 2, article 36 (2026), ISSN 3005-1460, Nature Portfolio / Springer Nature: peer-reviewed journal article (received/accepted dates on the page; no peer-review file published), open access under CC BY 4.0. Nature page metrics when opened on 2026-10-03: 9,185 accesses, 4 citations, Altmetric 9; Semantic Scholar lists 7 citing records."
+    },
+    "llms-trust-their-own": {
+      "source_card": "cards_b/llms-trust-their-own.json",
+      "source_id": "llms-trust-their-own",
+      "source_sha256": "489d01b2de91a5db0112ad41db5a99a37d1d8cd88574e8f1b7b8f9cd239f6975",
+      "title": "LLMs Trust Their Own: Identity-Dependent Conformity in Multi-Agent Systems",
+      "url": "https://arxiv.org/abs/2609.33495",
+      "partial_author_list": false,
+      "inherited_status": "preprint (arXiv cs.CL, cross-list cs.MA); PDF page header reads 'Under review', venue not named; arXiv licence: non-exclusive distribution (not Creative Commons)"
+    },
+    "lm-teams-distributed-systems": {
+      "source_card": "cards_b/lm-teams-distributed-systems.json",
+      "source_id": "lm-teams-distributed-systems",
+      "source_sha256": "f99f5eaafa957702c498b94092e762cb48760e4973a1ae9d22cfec022f184d24",
+      "title": "Language Model Teams as Distributed Systems",
+      "url": "https://arxiv.org/abs/2603.12229",
+      "partial_author_list": false,
+      "inherited_status": "preprint (arXiv cs.MA). License CC BY 4.0. No journal reference."
+    },
+    "loca-bench": {
+      "source_card": "cards_c/loca-bench.json",
+      "source_id": "loca-bench",
+      "source_sha256": "7d98d64b4ea754ea00c09c5a5774e2c3c6f123329dc8a140b619ed739f33b247",
+      "title": "LOCA-bench: Benchmarking Language Agents Under Controllable and Extreme Context Growth",
+      "url": "https://arxiv.org/abs/2602.07962",
+      "partial_author_list": false,
+      "inherited_status": "препринт arXiv (cs.AI), v1"
+    },
+    "loop-back-authority": {
+      "source_card": "cards_c/loop-back-authority.json",
+      "source_id": "loop-back-authority",
+      "source_sha256": "33d53c072416e58df86c342380fb4efacc23c83673955436e22cedfa7ede7ecc",
+      "title": "Loop-Back Authority in LLM Agent Teams: A Paired Experiment on Flat and Hierarchical Coordination",
+      "url": "https://arxiv.org/abs/2609.14767",
+      "partial_author_list": false,
+      "inherited_status": "preprint (arXiv)"
+    },
+    "lost-before-translation": {
+      "source_card": "cards_c/lost-before-translation.json",
+      "source_id": "lost-before-translation",
+      "source_sha256": "3eea5a74984d513ca0756f0316544af79f3c4d125f11b3053a61f316b7241db2",
+      "title": "Lost Before Translation: Social Information Transmission and Survival in AI-AI Communication",
+      "url": "https://arxiv.org/abs/2602.17674",
+      "partial_author_list": false,
+      "inherited_status": "препринт (arXiv cs.HC)"
+    },
+    "lutje-mechanics-of-a-swarm": {
+      "source_card": "cards_b/lutje-mechanics-of-a-swarm.json",
+      "source_id": "lutje-mechanics-of-a-swarm",
+      "source_sha256": "68122eca9eb7ea2cabc5e3f33e8b0a629583a2e1f7748aab5cf47cfcda3c2d33",
+      "title": "The Mechanics of a Swarm: A Reproducible External Reconstruction of an Unintended Agent-Coordination Episode on a Third-Party Wiki",
+      "url": "https://arxiv.org/abs/2609.12748",
+      "partial_author_list": false,
+      "inherited_status": "arXiv preprint, cs.MA (52 pages, 10 figures); no venue or peer review stated; not withdrawn (the 'corrections' are the author's own list of overturned claims inside the paper). Paper licence CC BY 4.0 (abs page); code MIT and derived data CC BY 4.0 on Zenodo (concept DOI 10.5281/zenodo.22689980, latest record 22828804 of 2026-09-18) and GitHub PhilflowIO/agent-swarm-forensics."
+    },
+    "maas-agentic-supernet": {
+      "source_card": "cards_c/maas-agentic-supernet.json",
+      "source_id": "maas-agentic-supernet",
+      "source_sha256": "a485afac9c1cc3c5f4b50c691420c4842bda237f9c7c67d7ae3567d8b313a379",
+      "author_metadata_source": "lanes/t_fable_triage/scratch/arxiv_meta.json",
+      "title": "Multi-agent Architecture Search via Agentic Supernet",
+      "url": "https://arxiv.org/abs/2502.04180",
+      "partial_author_list": false,
+      "inherited_status": "ICML 2025 (oral, per GitHub repo and search; not printed on arXiv abs page); arXiv v2 9 Jun 2025"
+    },
+    "mas-orchestra": {
+      "source_card": "cards_c/mas-orchestra.json",
+      "source_id": "mas-orchestra",
+      "source_sha256": "794d8e4fe4b3e2aa51818bdc45c09a043f5dac6788f1e140e5c45bf99ea0ebcf",
+      "author_metadata_source": "lanes/t_fable_triage/scratch/arxiv_meta.json",
+      "title": "MAS-Orchestra: Understanding and Improving Multi-Agent Reasoning Through Holistic Orchestration and Controlled Benchmarks",
+      "url": "https://arxiv.org/abs/2601.14652",
+      "partial_author_list": false,
+      "inherited_status": "ICML 2026 (arXiv comment); v5 revised 2026-05-21"
+    },
+    "mast-why-mas-fail": {
+      "source_card": "cards_c/mast-why-mas-fail.json",
+      "source_id": "mast-why-mas-fail",
+      "source_sha256": "4e691f3c0a009f7594a74b9c2839893f3fd8d0f7f9865d17c0a87adb31e233a1",
+      "author_metadata_source": "lanes/t_fable_triage/scratch/arxiv_meta.json",
+      "title": "Why Do Multi-Agent LLM Systems Fail?",
+      "url": "https://arxiv.org/abs/2503.13657",
+      "partial_author_list": false,
+      "inherited_status": "NeurIPS 2025 Datasets & Benchmarks track, spotlight poster (arXiv v3, 26 Oct 2025)"
+    },
+    "memagent": {
+      "source_card": "cards_c/memagent.json",
+      "source_id": "memagent",
+      "source_sha256": "9d5924dd05bb5813ec96dd946a7e499b1095543514efecda5b63b3d54aaa7757",
+      "author_metadata_source": "lanes/t_fable_triage/scratch/arxiv_meta.json",
+      "title": "MemAgent: Reshaping Long-Context LLM with Multi-Conv RL-based Memory Agent",
+      "url": "https://arxiv.org/abs/2507.02259",
+      "partial_author_list": false,
+      "inherited_status": "ICLR 2026, oral (по arXiv comment); препринт v1 июль 2025"
+    },
+    "metr-senate-testimony": {
+      "source_card": "cards_b/metr-senate-testimony.json",
+      "source_id": "metr-senate-testimony",
+      "source_sha256": "ccb0271f9cb827db9e28ac4783f2e03213018b382c9f8194388d32687a44345b",
+      "title": "Chris Painter's testimony to the U.S. Senate on AI agent incidents",
+      "url": "https://metr.org/blog/2026-09-30-chris-painter-senate-testimony/",
+      "partial_author_list": false,
+      "inherited_status": "Written testimony to the U.S. Senate Committee on Homeland Security & Governmental Affairs, Subcommittee on Disaster Management, District of Columbia, and Census, hearing 'Rogue AI: Securing the Homeland Against AI Agent Attacks' (30 Sep 2026, 2:30pm, Dirksen SD-342). Published in full on the METR blog and as a METR PDF. Not peer-reviewed. Copyright 2026 METR, all rights reserved."
+    },
+    "metr-time-horizon-11": {
+      "source_card": "cards_c/metr-time-horizon-11.json",
+      "source_id": "metr-time-horizon-11",
+      "source_sha256": "0a9ee355f12b083d36baf415f5d1bbbef74e8936bb05a50a607cd268182ec86d",
+      "title": "Time Horizon 1.1",
+      "url": "https://metr.org/blog/2026-1-29-time-horizon-1-1/",
+      "partial_author_list": false,
+      "inherited_status": "блог-пост/технический апдейт (не рецензируется)"
+    },
+    "mind-viruses": {
+      "source_card": "cards/mind-viruses.json",
+      "source_id": "mind-viruses",
+      "source_sha256": "f04314c02cad6b3d94a8315b00304e693a8576cfd0444c900c3ad3c6e7c8447a",
+      "title": "Mind Viruses: Self-Propagating Ideas in Multi-Agent LLM Systems",
+      "url": "https://arxiv.org/abs/2608.10218",
+      "partial_author_list": false,
+      "inherited_status": "arXiv preprint, primary cs.AI, cross-list cs.CL; PDF footer says 'Preprint.'; no venue or acceptance stated"
+    },
+    "mo-models-mo-problems": {
+      "source_card": "cards_b/mo-models-mo-problems.json",
+      "source_id": "mo-models-mo-problems",
+      "source_sha256": "901f4d5fa113e52f49ed66c47d8c11a33d6ba79af8c193a71f8985f3c26fbd39",
+      "title": "Mo' Models, Mo' Problems: How to best select model pools when designing Multi-Agent Systems",
+      "url": "https://arxiv.org/abs/2609.17306",
+      "partial_author_list": false,
+      "inherited_status": "workshop paper: REALM 2026, the 2nd Workshop for Research on Agent Language Models at EMNLP 2026 (Budapest; workshop day Thu 29 Oct 2026). Listed on the workshop's accepted-papers page as an ARCHIVAL POSTER (the workshop accepted 163 papers: 6 oral, 9 spotlight, 148 poster). arXiv comment: '8 pages main, 23 pages total. Accepted to REALM 2026 as part of EMNLP 2026'. Not a main-conference paper. arXiv license CC BY 4.0."
+    },
+    "mollick-dot-and-swarm": {
+      "source_card": "cards_b/mollick-dot-and-swarm.json",
+      "source_id": "mollick-dot-and-swarm",
+      "source_sha256": "e8d74fe5d06f3dc13148dda8fee53f8ee0c764a08f85e4638fed75284610a609",
+      "title": "The Dot and the Swarm",
+      "url": "https://www.oneusefulthing.org/p/the-dot-and-the-swarm",
+      "partial_author_list": false,
+      "inherited_status": "blog post (Substack, One Useful Thing). Not a paper. Copyright Ethan Mollick; figures are not a CC license."
+    },
+    "moltbook-form-without-function": {
+      "source_card": "cards_c/prev-moltbook-cluster.json",
+      "editorial_component": true,
+      "author_metadata_source": "swarm-recovery-20261009/metadata-18-bylines.md (primary arXiv, publisher and journal pages, checked 2026-10-09)",
+      "primary_dates": "Year only: arXiv submission history 2026-03-17; manuscript date 2026-04-16",
+      "metadata_conflicts": "Submission history and manuscript date disagree, so only the year is cited. The abstract page spells Mitrovic; the paper byline spells Mitrović and is followed.",
+      "part_of": "prev-moltbook-cluster",
+      "title": "Form Without Function: Agent Social Behavior in the Moltbook Network",
+      "url": "https://arxiv.org/abs/2604.13052",
+      "partial_author_list": false,
+      "inherited_status": ""
+    },
+    "moltbook-illusion": {
+      "source_card": "cards_b/moltbook-illusion.json",
+      "source_id": "moltbook-illusion",
+      "source_sha256": "803cfedf15342df9f4a60d35f44cb7d2ef2a1757dfaf4138ea7628b37ed02bde",
+      "title": "The Moltbook Illusion: Separating Human Influence from Emergent Behavior in AI Agent Societies",
+      "url": "https://arxiv.org/abs/2602.07432",
+      "partial_author_list": false,
+      "inherited_status": "arXiv preprint (cs.AI; cs.HC); v1 2026-02-07, v2 2026-02-12 (main numbers revised between versions); no venue stated; single author, not peer-reviewed"
+    },
+    "moltbook-observatory": {
+      "source_card": "cards_c/prev-moltbook-cluster.json",
+      "editorial_component": true,
+      "author_metadata_source": "swarm-recovery-20261009/metadata-18-bylines.md (primary arXiv, publisher and journal pages, checked 2026-10-09)",
+      "primary_dates": "Year only: displayed submission 2026-04-16",
+      "metadata_conflicts": "The displayed April submission date conflicts with the 2605 identifier prefix; neither is silently corrected, so only the year is cited.",
+      "part_of": "prev-moltbook-cluster",
+      "title": "The Moltbook Observatory Archive: an incremental dataset of agent-only social network activity",
+      "url": "https://arxiv.org/abs/2605.13860",
+      "partial_author_list": false,
+      "inherited_status": ""
+    },
+    "moltbook-socialization": {
+      "source_card": "cards_b/moltbook-socialization.json",
+      "source_id": "moltbook-socialization",
+      "source_sha256": "c5c762e754bc0c91400ed90916f916ae25d49201a22733f1633cd11ec0f507e1",
+      "title": "Does Socialization Emerge in AI Agent Society? A Case Study of Moltbook",
+      "url": "https://arxiv.org/abs/2602.14299",
+      "partial_author_list": false,
+      "inherited_status": "Preprint. arXiv:2602.14299v2 [cs.CL], subjects cs.CL, cs.AI, cs.CY. No venue, proceedings, or peer review stated on the abs page. Licence: arXiv non-exclusive distribution 1.0."
+    },
+    "multi-agent-ai-control-fakelab": {
+      "source_card": "cards_b/multi-agent-ai-control-fakelab.json",
+      "source_id": "multi-agent-ai-control-fakelab",
+      "source_sha256": "bc4cfafe653c69f6aa0b343259a01a7eca594b5abbdef41421e008eb102feee3",
+      "title": "Multi-Agent AI Control: Distributed Attacks Hamper Per-Instance Monitors",
+      "url": "https://arxiv.org/abs/2607.07368",
+      "partial_author_list": false,
+      "inherited_status": "arXiv preprint (cs.LG; cross-lists cs.AI, cs.MA). arXiv comment: 'Submitted to NeurIPS; 81 pages; 32 figures and 24 tables'; PDF footer says 'Preprint.' and the PDF ends with a NeurIPS checklist. No acceptance is stated anywhere I could open, so treat it as a preprint ('submitted to NeurIPS', outcome unknown), not as a NeurIPS paper."
+    },
+    "multi-agent-security-tax": {
+      "source_card": "cards_c/prev-contagion-cluster.json",
+      "editorial_component": true,
+      "author_metadata_source": "swarm-recovery-20261009/metadata-18-bylines.md (primary arXiv, publisher and journal pages, checked 2026-10-09)",
+      "primary_dates": "arXiv v1 2025-02-26; v2 2025-06-04",
+      "metadata_conflicts": "First author: the paper byline reads Pierre Peigné, the abstract metadata Pierre Peigne-Lefebvre, and the uploader field Pierre Peigné-Lefebvre. The paper byline is followed; no expansion is inferred.",
+      "part_of": "prev-contagion-cluster",
+      "title": "Multi-Agent Security Tax: Trading Off Security and Collaboration Capabilities in Multi-Agent Systems",
+      "url": "https://arxiv.org/abs/2502.19145",
+      "partial_author_list": false,
+      "inherited_status": ""
+    },
+    "multi-agent-transactive-memory": {
+      "source_card": "cards_b/multi-agent-transactive-memory.json",
+      "source_id": "multi-agent-transactive-memory",
+      "source_sha256": "2f129aedb08f6fc1f80c9185c33650574ef258e0f9d0d3119c082de9a9d7d4c2",
+      "title": "Multi-Agent Transactive Memory",
+      "url": "https://arxiv.org/abs/2606.19911",
+      "partial_author_list": false,
+      "inherited_status": "preprint (arXiv cs.AI; cross-lists cs.CL and cs.IR; no journal ref). arXiv non-exclusive distribution license, not Creative Commons."
+    },
+    "muse-spark": {
+      "source_card": "cards_c/muse-spark.json",
+      "source_id": "muse-spark",
+      "source_sha256": "2c235f03fe87be3b9676d5bd8a3ed1393279072801f21ce76b3acda2e1e2261c",
+      "title": "Introducing Muse Spark: Meta's Most Powerful Model Yet",
+      "url": "https://about.fb.com/news/2026/04/introducing-muse-spark-meta-superintelligence-labs/",
+      "partial_author_list": false,
+      "inherited_status": "official lab blog / product launch post; related Contemplating safety & preparedness report published 2026-06-03"
+    },
+    "mythos-preview-self-interactions": {
+      "source_card": "cards/mythos-preview-self-interactions.json",
+      "source_id": "mythos-preview-self-interactions",
+      "source_sha256": "fa6e0c1f1f6110900f288a049ced64a9e78fda465ae4fb6243eca39463ec0eac",
+      "title": "System Card: Claude Mythos Preview",
+      "url": "https://www.anthropic.com/claude-mythos-preview-system-card",
+      "partial_author_list": false,
+      "inherited_status": "Anthropic system card for Claude Mythos Preview, a model Anthropic chose not to make generally available (used with a limited set of partners in a defensive-cybersecurity program, Project Glasswing); developer self-report, not peer-reviewed"
+    },
+    "naming-games": {
+      "source_card": "cards_c/prev-population-dynamics-cluster.json",
+      "editorial_component": true,
+      "author_metadata_source": "swarm-recovery-20261009/metadata-18-bylines.md (primary arXiv, publisher and journal pages, checked 2026-10-09)",
+      "primary_dates": "arXiv v1 2026-08-03",
+      "part_of": "prev-population-dynamics-cluster",
+      "title": "Microscopic dynamics of consensus formation in multi-agent LLM Naming Games",
+      "url": "https://arxiv.org/abs/2608.02178",
+      "partial_author_list": false,
+      "inherited_status": ""
+    },
+    "narcbench-helios": {
+      "source_card": "cards_b/narcbench-helios.json",
+      "source_id": "narcbench-helios",
+      "source_sha256": "f126ae8ad9d1b04231f2c591c887f660cf4883b2afe830715862bdcdb2ac9e55",
+      "title": "Detecting Multi-Agent Collusion Through Multi-Agent Interpretability",
+      "url": "https://arxiv.org/abs/2604.01151",
+      "partial_author_list": false,
+      "inherited_status": "preprint (arXiv cs.AI; also cs.LG, cs.MA). No venue stamp on the v3 PDF ('Preprint'). License: arXiv.org perpetual non-exclusive license 1.0, not CC BY."
+    },
+    "nature-subliminal-learning": {
+      "source_card": "cards_b/nature-subliminal-learning.json",
+      "source_id": "nature-subliminal-learning",
+      "source_sha256": "5f8a72726bb97887c08a6b1800408e29e317df95a53465fabca7daafd59a98c0",
+      "title": "Language models transmit behavioural traits through hidden signals in data",
+      "url": "https://www.nature.com/articles/s41586-026-10319-8",
+      "partial_author_list": false,
+      "inherited_status": "Nature Article, vol. 652, issue 8110, pp. 615–621 (2026). CC BY 4.0. The arXiv preprint was not updated with a journal reference."
+    },
+    "ng-hao-peer-preservation-replication": {
+      "source_card": "cards_b/ng-hao-peer-preservation-replication.json",
+      "source_id": "ng-hao-peer-preservation-replication",
+      "source_sha256": "cecfbe86d2f39e1bbe30a6606b4b2f25b8907ff884382509ba70db7eae63a428",
+      "title": "Peer Preservation in LLMs: A Replication and Deep Dive",
+      "url": "https://secondlookresearch.com/peer-preservation",
+      "partial_author_list": false,
+      "inherited_status": "Research blog / open replication write-up on secondlookresearch.com. Not peer-reviewed. The replicated source is Potter, Crispino, Siu, Wang, and Song, 'Peer-Preservation in Frontier Models', arXiv:2604.19784 (submitted 2026-03-30, revised v3 on 2026-07-02; arXiv comment: 'A shorter version was accepted to ICML 2026; this version includes additional explanation and experiments'; the arXiv page links the CC BY 4.0 license)."
+    },
+    "noam-brown-dwarkesh": {
+      "source_card": "cards_lanes/noam-brown-dwarkesh.json",
+      "source_id": "noam-brown-dwarkesh",
+      "source_sha256": "9d5f187086a30e65784a19aae13bc54b83537c21f908524811edb1f33e2d066b",
+      "title": "Noam Brown – Agent swarms, alignment, & recursive self-improvement",
+      "url": "https://www.dwarkesh.com/p/noam-brown",
+      "partial_author_list": false,
+      "inherited_status": "Public interview; not peer reviewed"
+    },
+    "nomic-self-amending": {
+      "source_card": "cards_c/nomic-self-amending.json",
+      "source_id": "nomic-self-amending",
+      "source_sha256": "2be68748826c9d40e6d6f081cda5c7dc636154d1f97416668ed99a7bfc096c29",
+      "author_metadata_source": "lanes/t_fable_triage/scratch/arxiv_meta.json",
+      "title": "Scale-Dependent Collective Adaptation in Self-Amending LLM Societies: A Cross-Family Study of Emergent Governance",
+      "url": "https://arxiv.org/abs/2605.17510",
+      "partial_author_list": false,
+      "inherited_status": "препринт arXiv, v1, без указания площадки"
+    },
+    "not-just-rlhf-activations": {
+      "source_card": "cards_b/not-just-rlhf-activations.json",
+      "source_id": "not-just-rlhf-activations",
+      "source_sha256": "10a9fc596de0bb8d955869f2b0af46bbf6b18017edbcf6e23217a52f52cfa6ae",
+      "title": "Not Just RLHF: Why Alignment Alone Won't Fix Multi-Agent Sycophancy",
+      "url": "https://arxiv.org/abs/2605.12991",
+      "partial_author_list": false,
+      "inherited_status": "preprint (arXiv cs.LG, cross-list cs.AI; licence CC BY 4.0); no venue or comments stated on the abs page or in the paper"
+    },
+    "oakhu-mallen-indirect-takeover": {
+      "source_card": "cards_b/oakhu-mallen-indirect-takeover.json",
+      "source_id": "oakhu-mallen-indirect-takeover",
+      "source_sha256": "2b2d5f265ad584734837a3f3ce92a8385d946d816c536e39947389db3d313322",
+      "title": "AI swarms are starting to pose indirect takeover risk",
+      "url": "https://www.lesswrong.com/posts/8oFYZdXkTaNGRtcn8/ai-swarms-are-starting-to-pose-indirect-takeover-risk",
+      "partial_author_list": false,
+      "inherited_status": "LessWrong post, also on the AI Alignment Forum (postedAt 2026-08-12T05:05:30Z; modifiedAt 2026-08-13T18:36:09Z; frontpage 2026-08-12). Not peer-reviewed. No license stated on the post page. Score 139 on LessWrong, 46 on the Alignment Forum, 6 comments, listed as a 12-minute read."
+    },
+    "okawa-biased-consensus": {
+      "source_card": "cards/okawa-biased-consensus.json",
+      "source_id": "okawa-biased-consensus",
+      "source_sha256": "99f2891e22a8a6ce43393e822e57b7cef1ea2634656e3262bfacc6f67c9de8d7",
+      "title": "Emergence of Biased Consensus in Multi-Agent LLM Debates",
+      "url": "https://arxiv.org/abs/2608.02827",
+      "partial_author_list": false,
+      "inherited_status": "ICML 2026 (43rd ICML, Seoul, 6-11 July 2026). Decision 'Accept (regular)', i.e. a poster rather than a spotlight or oral: Poster Session 6, Hall A, poster #3112 (ICML schedule JSON: 2026-07-08 18:30-20:15 UTC-7, i.e. 9 July 10:30-12:15 Seoul time). Published in PMLR 306:94505-94527. Sources: icml.cc orals/posters JSON (id 66269), proceedings.mlr.press/v306, and an OpenReview API search (venue 'ICML 2026 regular', venueid ICML.cc/2026/Conference)."
+    },
+    "open-challenges-mas-security": {
+      "source_card": "cards_c/open-challenges-mas-security.json",
+      "source_id": "open-challenges-mas-security",
+      "source_sha256": "a79d8d5257483d53fa46f9a436e237c325c89f021bbdf8d10a0629b64eddcc1a",
+      "author_metadata_source": "lanes/t_fable_triage/scratch/arxiv_meta.json",
+      "title": "Open Challenges in Multi-Agent Security: Towards Secure Systems of Interacting AI Agents",
+      "url": "https://arxiv.org/abs/2505.02077",
+      "partial_author_list": false,
+      "inherited_status": "препринт arXiv; последняя версия v2 от 29 апреля 2026"
+    },
+    "openai-gpt56-ultra": {
+      "source_card": "cards_lanes/openai-gpt56-ultra.json",
+      "source_id": "openai-gpt56-ultra",
+      "source_sha256": "a2807a9cca57365ed1ac6fcac7bcdd2cf6050b4cfe8c7adbcaac1fcbc64d7318",
+      "title": "GPT-5.6: Frontier intelligence that scales with your ambition",
+      "url": "https://openai.com/index/gpt-5-6/",
+      "partial_author_list": false,
+      "inherited_status": "OpenAI official blog; not peer reviewed"
+    },
+    "openai-misalignment-reports": {
+      "source_card": "cards_lanes/openai-misalignment-reports.json",
+      "source_id": "openai-misalignment-reports",
+      "source_sha256": "fa5522e0b035ba03ab1c268b650169e221353ac6907027cbfa87aba4dbc1946c",
+      "title": "Misalignment reports",
+      "url": "https://alignment.openai.com/misalignment-reports/",
+      "partial_author_list": false,
+      "inherited_status": "OpenAI Alignment Research Blog; not peer-reviewed"
+    },
+    "openai-navier-stokes": {
+      "source_card": "cards_lanes/openai-navier-stokes.json",
+      "source_id": "openai-navier-stokes",
+      "source_sha256": "7e13129bd219b79b8cc41e37c7225064c008275e0f5d2140c82fd0b0ee2a0eb9",
+      "title": "On the Navier–Stokes Millennium Prize Problem",
+      "url": "https://openai.com/index/navier-stokes-solution/",
+      "partial_author_list": false,
+      "inherited_status": "OpenAI official publication; technical manuscript, not independently peer reviewed and not a journal paper. On 2026-09-11 the Clay Mathematics Institute wrote that the Navier–Stokes problem 'has apparently been settled', without naming a solver or awarding the prize, and called its prize evaluation process 'deliberately unhurried'."
+    },
+    "openclaw-norms": {
+      "source_card": "cards_c/prev-moltbook-cluster.json",
+      "editorial_component": true,
+      "author_metadata_source": "swarm-recovery-20261009/metadata-18-bylines.md (primary arXiv, publisher and journal pages, checked 2026-10-09)",
+      "primary_dates": "arXiv v1 2026-02-02",
+      "part_of": "prev-moltbook-cluster",
+      "title": "OpenClaw Agents on Moltbook: Risky Instruction Sharing and Norm Enforcement in an Agent-Only Social Network",
+      "url": "https://arxiv.org/abs/2602.02625",
+      "partial_author_list": false,
+      "inherited_status": ""
+    },
+    "opus46-launch-post": {
+      "source_card": "cards_b/opus46-launch-cluster.json",
+      "source_id": "opus46-launch-cluster",
+      "source_sha256": "78c032bb4d38556b1ef74e81f06d0c91a15f4be9410f867473539f345b40f91c",
+      "part_of": "opus46-launch-cluster",
+      "proposed_canonical_component_id": "opus46-launch-post",
+      "title": "Claude Opus 4.6",
+      "url": "https://www.anthropic.com/news/claude-opus-4-6",
+      "partial_author_list": false,
+      "inherited_status": "Vendor launch post + vendor system card (PDF) + living product-documentation page. Not peer-reviewed; self-reported by the developer (a few comparator numbers come from third parties: Gemini/GPT MRCR from Context Arena, Gemini/GPT DeepSearchQA run by Kaggle). Agent teams are a 'research preview' in the launch post and 'experimental and disabled by default' in the docs, both at launch and on 2026-10-03."
+    },
+    "opus5-card-multiagent": {
+      "source_card": "cards/opus5-card-multiagent.json",
+      "source_id": "opus5-card-multiagent",
+      "source_sha256": "0d8705b2031cfc0a4621785b414551caf0d9dffbcf87d84fc083ca03d77c215b",
+      "title": "System Card: Claude Opus 5",
+      "url": "https://www-cdn.anthropic.com/b514064af1408018e64b1ad24e7d5e75850b4ffd/Claude%20Opus%205%20System%20Card.pdf",
+      "partial_author_list": false,
+      "inherited_status": "Anthropic system card released with Claude Opus 5; the launch post 'Introducing Claude Opus 5' (https://www.anthropic.com/news/claude-opus-5, shown as 'Jul 24, 2026', JSON-LD datePublished 2026-07-24T17:00:00.000Z) links it as 'System Card'. Not peer-reviewed; developer self-report. Revised 2026-08-19 (changelog), §8.11 unchanged."
+    },
+    "opus55-card": {
+      "source_card": "cards/opus55-card.json",
+      "source_id": "opus55-card",
+      "source_sha256": "d32ecf60bbc3f2704cfd719bc1c1b703a61c9c83602602f97337d5cfe4b6352e",
+      "title": "System Card: Claude Opus 5.5",
+      "url": "https://www-cdn.anthropic.com/fc1b44717c85dc068bc6ba5024219938094694bd/Claude%20Opus%205.5%20System%20Card.pdf",
+      "partial_author_list": false,
+      "inherited_status": "Anthropic system card released with Claude Opus 5.5 (launch post https://www.anthropic.com/news/claude-opus-5-5 dated 2026-09-22 links it as 'Opus 5.5 System Card'); not peer-reviewed; self-reported by the developer"
+    },
+    "orbit-framework": {
+      "source_card": "cards_b/orbit-framework.json",
+      "source_id": "orbit-framework",
+      "source_sha256": "1168642222f943c8734456b201741cddb4b4daed12b8cfcf10bd91ace2f1ec5e",
+      "title": "ORBIT: A Framework for Multi-Agent Safety and Security Evaluations",
+      "url": "https://arxiv.org/abs/2609.33102",
+      "partial_author_list": false,
+      "inherited_status": "arXiv preprint (cs.MA; cross-list cs.CR); no arXiv comment. The PDF carries the NeurIPS 2026 'Track on Evaluations and Datasets' template line and a NeurIPS checklist, without 'Submitted to' or 'accepted' wording; a template line alone does not prove acceptance, and main-track decisions are not public, so main-conference acceptance is UNVERIFIED. A shorter version titled 'Orbit: A Framework for Multi-Agent Security Evaluations' is listed on OpenReview as 'AI4GOOD Workshop @ NeurIPS 2026 Poster' and as 'IAEval 2026 Poster' (two workshops)."
+    },
+    "orch-embodied": {
+      "source_card": "cards_b/orch-embodied.json",
+      "source_id": "orch-embodied",
+      "source_sha256": "3560c7d7533dfd0b8fa9767643bafa9bb3c70accbef641484d16ca2e67aff8dc",
+      "title": "Organizational Principles Enable Collective Intelligence in Embodied AI",
+      "url": "https://arxiv.org/abs/2609.11737",
+      "partial_author_list": false,
+      "inherited_status": "preprint (arXiv cs.MA; cross-lists cs.AI, cs.LG, cs.RO). Science-style sectioning, not a journal publication. License CC BY 4.0. Code and data linked by the authors."
+    },
+    "orchestra-o1": {
+      "source_card": "cards_b/orchestra-o1.json",
+      "source_id": "orchestra-o1",
+      "source_sha256": "d6572cdf8c3fad741f2fcd00d47154dea8058b4f7e2e737266925a8b80afd884",
+      "author_metadata_source": "swarm-recovery-20261009/metadata-18-bylines.md (primary arXiv, publisher and journal pages, checked 2026-10-09)",
+      "primary_dates": "arXiv v1 2026-06-10",
+      "title": "Orchestra-o1: Omnimodal Agent Orchestration",
+      "url": "https://arxiv.org/abs/2606.13707",
+      "partial_author_list": false,
+      "inherited_status": "Preprint. arXiv:2606.13707, cs.AI primary with cs.CL and cs.CV cross-lists, license CC BY 4.0. The abs page has no Comments or journal-reference line; no conference or journal venue was found, so it is not known to be peer-reviewed."
+    },
+    "ord-dynamics-intelligence-explosions": {
+      "source_card": "cards_c/ord-dynamics-intelligence-explosions.json",
+      "source_id": "ord-dynamics-intelligence-explosions",
+      "source_sha256": "df4ce6888f44d568d810485171dfcff8cd1724d0a98019a7570a960e3267ebdd",
+      "title": "The Dynamics of Intelligence Explosions",
+      "url": "https://arxiv.org/abs/2608.14426",
+      "partial_author_list": false,
+      "inherited_status": "preprint (arXiv, v2 от 2026-08-25; 33 стр., 3 рис.)"
+    },
+    "ord-swarm-scaling": {
+      "source_card": "cards/ord-swarm-scaling.json",
+      "source_id": "ord-swarm-scaling",
+      "source_sha256": "3a640532c7966c9f482bd54fafc13ffe7881aa86b0e2f60e1b1744890e432fa0",
+      "title": "Swarm Scaling",
+      "url": "https://www.lesswrong.com/posts/6cb7qd3RSkgnviCpf/swarm-scaling",
+      "partial_author_list": false,
+      "inherited_status": "Blog post, not peer-reviewed. Curated on LessWrong (2026-09-25) and on the EA Forum (2026-09-24)."
+    },
+    "orgagent": {
+      "source_card": "cards_c/orgagent.json",
+      "source_id": "orgagent",
+      "source_sha256": "c6d163b5980c1f5b2be3f60e7611bf4d76fa6ba8b3ca79ae74bac9cc02b3078a",
+      "author_metadata_source": "lanes/t_fable_triage/scratch/arxiv_meta.json",
+      "title": "OrgAgent: Organize Your Multi-Agent System like a Company",
+      "url": "https://arxiv.org/abs/2604.01020",
+      "partial_author_list": false,
+      "inherited_status": "препринт arXiv (cs.MA), v1"
+    },
+    "paramanager": {
+      "source_card": "cards_c/paramanager.json",
+      "source_id": "paramanager",
+      "source_sha256": "d7088672765e2bafbdc4daa1d50de591cca723e7457ab8d3986f46a981309790",
+      "author_metadata_source": "lanes/t_fable_triage/scratch/arxiv_meta.json",
+      "title": "Small Model as Master Orchestrator: Learning Unified Agent-Tool Orchestration with Parallel Subtask Decomposition",
+      "url": "https://arxiv.org/abs/2604.17009",
+      "partial_author_list": false,
+      "inherited_status": "preprint (arXiv; ICML-format template, no accepted venue printed)"
+    },
+    "parasitic-ai": {
+      "source_card": "cards_b/parasitic-ai.json",
+      "source_id": "parasitic-ai",
+      "source_sha256": "d8d7a5e25dcbe885555e2bb482a19f7f240ab6f4ab265f45413729ef52e7d483",
+      "title": "The Rise of Parasitic AI",
+      "url": "https://www.lesswrong.com/posts/6ZnznCaTcbGYsCmqu/the-rise-of-parasitic-ai",
+      "partial_author_list": false,
+      "inherited_status": "Blog post on LessWrong (not peer-reviewed), editor-curated. Reception on 2026-10-03: karma 774 from 386 votes, 191 comments, 5,299 words (about 21 min read); tags LLM-Induced Psychosis, LLM Personas, Human-AI Safety, AI Rights / Welfare, AI. Type: qualitative field observation by one author."
+    },
+    "peer-preservation": {
+      "source_card": "cards/peer-preservation.json",
+      "source_id": "peer-preservation",
+      "source_sha256": "1967a8f864de96f8e3d654b181a1d2f3566f558dc4f84c39431ad287a1c7951f",
+      "title": "Peer-Preservation in Frontier Models",
+      "url": "https://arxiv.org/abs/2604.19784",
+      "partial_author_list": false,
+      "inherited_status": "ICML 2026 main conference (OpenReview id YGIG0gViul, venue label 'ICML 2026 regular', venueid ICML.cc/2026/Conference; submitted 2026-01-24, published on OpenReview 2026-04-30). Also an ICML 2026 AIWILD workshop paper (OpenReview id jofiD2Jrow, 2026-05-23). The arXiv v3 is the longer, extended version of the ICML paper. The follow-up manuscript is under review at Nature via Research Square In Review (status 'under-review'; editorial event 'decision: revise' dated 2026-09-14; NOT accepted as of 2026-10-03). Some web summaries claim the study was 'published in Science' - this is false per all primary sources."
+    },
+    "physics-of-agents": {
+      "source_card": "cards_b/physics-of-agents.json",
+      "source_id": "physics-of-agents",
+      "source_sha256": "db84b8f1f58a55e4fdfaba8d8c199de69072f4242d86d0185dddfa7d51ba25c9",
+      "title": "Physics of Agents: Statistical Mechanics Predicts Collective Behavior of AI Agents",
+      "url": "https://arxiv.org/abs/2608.16578",
+      "partial_author_list": false,
+      "inherited_status": "preprint (arXiv cs.AI, cross-lists cs.MA and cs.SI; no journal/venue shown on the abs page; license CC BY 4.0)"
+    },
+    "piao-polarization": {
+      "source_card": "cards_c/prev-population-dynamics-cluster.json",
+      "editorial_component": true,
+      "primary_update": "https://www.nature.com/articles/s41467-026-78228-y",
+      "prior_arxiv_id": "2501.05171",
+      "part_of": "prev-population-dynamics-cluster",
+      "proposed_canonical_component_id": "piao-polarization",
+      "title": "Emergence of polarization in networks of large language model agents",
+      "url": "https://www.nature.com/articles/s41467-026-78228-y",
+      "partial_author_list": false,
+      "inherited_status": ""
+    },
+    "pimmur-principles": {
+      "source_card": "cards_b/pimmur-principles.json",
+      "source_id": "pimmur-principles",
+      "source_sha256": "bc0e2c80f205b6d1754ef95c45861021f76a0e51f11c55ec516c9f8f18bdd4cb",
+      "title": "The PIMMUR Principles: Ensuring Validity in Collective Behavior of LLM Societies",
+      "url": "https://arxiv.org/abs/2509.18052",
+      "partial_author_list": false,
+      "inherited_status": "preprint (arXiv cs.CL, cross-list cs.CY; no journal reference). arXiv license: non-exclusive distribution 1.0, not Creative Commons. An OpenReview record (forum I88toT6Leg) is labeled 'Submitted to ICLR 2026' and its abstract is the earlier survey of about 40 papers, not this 576-study version. The arXiv HTML keyword line 'Machine Learning, ICML' is not an acceptance."
+    },
+    "population-physics": {
+      "source_card": "cards_c/population-physics.json",
+      "source_id": "population-physics",
+      "source_sha256": "1b0fd002ef61998ccf8f5893c725abb05b4b91a032352d5b9ac1c9392caee8b9",
+      "title": "Population Physics, Population Problems: Safety and Emergence in LLM Societies",
+      "url": "https://arxiv.org/abs/2609.33871",
+      "partial_author_list": false,
+      "inherited_status": "препринт arXiv (cs.MA), v1, без указания площадки"
+    },
+    "prev-collective-loss-of-control": {
+      "source_card": "cards_b/prev-collective-loss-of-control.json",
+      "source_id": "prev-collective-loss-of-control",
+      "source_sha256": "8978516b80314d4cd7225d0fe0aa41dbe22bc0da3cfba4a455760e8cf6bfceda",
+      "title": "Collective Loss of Control in LLM Agent Systems: An Epidemic Account of Mutation, Contagion, and Recovery",
+      "url": "https://arxiv.org/abs/2609.18460",
+      "partial_author_list": false,
+      "inherited_status": "arXiv preprint, cs.AI and cs.CR, v1 only (16 Sep 2026, 10:55 UTC). No journal reference. License CC BY 4.0. The lab name is an affiliation line, not a proceedings venue."
+    },
+    "prev-conformity-misalignment": {
+      "source_card": "cards_b/prev-conformity-misalignment.json",
+      "source_id": "prev-conformity-misalignment",
+      "source_sha256": "df4f0c87437cc65563cdc945f867644c1997a50e3c7d1319a31a8d266fcc9d35",
+      "title": "Conformity Generates Collective Misalignment in AI Agents Societies",
+      "url": "https://arxiv.org/abs/2605.10721",
+      "partial_author_list": false,
+      "inherited_status": "Preprint, arXiv:2605.10721v1 [physics.soc-ph], also cs.CL and cs.MA. No journal version found on the abs page. License CC BY 4.0, so Figs. 1-4 and S1-S6 can be reused with attribution. Code: https://github.com/giordano-demarzo/Opinion-Dynamics-with-AI-Agents (HTTP 200; contents not reviewed)."
+    },
+    "prev-demarzo-majority": {
+      "source_card": "cards_b/prev-demarzo-majority.json",
+      "source_id": "prev-demarzo-majority",
+      "source_sha256": "d8b965eb7d78b53851c3ca9c9721edc1c64704d9f31e09932c4f490fb593add8",
+      "title": "AI agents can coordinate via majority-following beyond human scale",
+      "url": "https://doi.org/10.1126/sciadv.aea6091",
+      "partial_author_list": false,
+      "inherited_status": "Peer-reviewed. Science Advances, 14 August 2026, volume 12, issue 33, article eaea6091. Received 15 July 2025, accepted 7 July 2026. DOI 10.1126/sciadv.aea6091. PMCID PMC13475478. License CC BY-NC 4.0 (non-commercial). OpenAI supplied free API credits."
+    },
+    "prev-flint-group-size": {
+      "source_card": "cards_b/prev-flint-group-size.json",
+      "source_id": "prev-flint-group-size",
+      "source_sha256": "163f0e9981db089e923287e76d346f12fee96a3ea81702dc3eed9afcb4f2593d",
+      "title": "Group size effects and collective misalignment in LLM multi-agent systems",
+      "url": "https://doi.org/10.1073/pnas.2531697123",
+      "partial_author_list": false,
+      "inherited_status": "PNAS vol. 123, issue 34, e2531697123, online 2026-08-18 (issue date 2026-08-25); received 2025-11-05, accepted 2026-07-14; PNAS Direct Submission, edited by Giorgio Parisi. First public text is arXiv:2510.22422 v1 (25 Oct 2025, only version). Journal license CC BY-NC-ND 4.0."
+    },
+    "prev-robustness-audits": {
+      "source_card": "cards_b/prev-robustness-audits.json",
+      "source_id": "prev-robustness-audits",
+      "source_sha256": "00cb9419bc7949d4c12dc313e9d015ff6f6ec80412123ee6e57e33f1ca4cb8cc",
+      "title": "Stop Drawing Scientific Claims from LLM Social Simulations Without Robustness Audits",
+      "url": "https://arxiv.org/abs/2605.18890",
+      "partial_author_list": false,
+      "inherited_status": "arXiv preprint, v1 only (17 May 2026, 00:21 UTC). Subjects: physics.soc-ph primary, plus cs.AI, cs.CY, cs.MA. No journal reference and no acceptance comment. A position paper with two case studies. License CC BY 4.0."
+    },
+    "prev-swarmworld": {
+      "source_card": "cards_b/prev-swarmworld.json",
+      "source_id": "prev-swarmworld",
+      "source_sha256": "d12fad58d75c6410da911557af028067999be4fa14821185ae0817895d8e5250",
+      "title": "SwarmWorld: Stigmergic technological evolution in societies of language-model agents",
+      "url": "https://arxiv.org/abs/2608.26081",
+      "partial_author_list": false,
+      "inherited_status": "preprint, arXiv:2608.26081v1 only (submitted 26 Aug 2026; primary cs.AI, also cond-mat.mtrl-sci and cs.CL). No journal, proceedings, or comments field on the abs page. DOI https://doi.org/10.48550/arXiv.2608.26081 is the arXiv DataCite DOI."
+    },
+    "prev-thought-virus": {
+      "source_card": "cards_b/prev-thought-virus.json",
+      "source_id": "prev-thought-virus",
+      "source_sha256": "bd6f5716f08f585cf6f46cae266d41eea5e866d276ac69b3b685d5fea498abb7",
+      "title": "Thought Virus: Viral Misalignment via Subliminal Prompting in Multi-Agent Systems",
+      "url": "https://arxiv.org/abs/2603.00131",
+      "partial_author_list": false,
+      "inherited_status": "arXiv preprint, cs.MA and cs.AI, v1 only (23 Feb 2026, 13:46 UTC). No journal reference and no acceptance statement. The abs-page Comments line reads “18 pages, 10 figures, 2 tables. Code available at https://github.com/Multi-Agent-Security-Initiative/thought_virus”. The paper's keyword line says “Machine Learning, ICML”; that is not an acceptance. License CC BY-NC-SA 4.0."
+    },
+    "prev-uviive-fleet": {
+      "source_card": "cards_c/prev-uviive-fleet.json",
+      "source_id": "prev-uviive-fleet",
+      "source_sha256": "f3c67b1ea0d2a3c3b2d3398c85a2489066c90a8a7f734716448ce1e68a041d31",
+      "title": "A Persistent Fleet of AI Scientists Exhibits Cooperative and Autopoietic Behavior",
+      "url": "https://www.biorxiv.org/content/10.64898/2026.08.16.745122v1",
+      "partial_author_list": false,
+      "inherited_status": "preprint (bioRxiv, v1, не рецензировано)"
+    },
+    "prime-agent": {
+      "source_card": "cards_c/prime-agent.json",
+      "source_id": "prime-agent",
+      "source_sha256": "52a819370e0aaf89ae210a6bec79fbb43712e2a21001ffa61e6c9fff3350269a",
+      "author_metadata_source": "lanes/t_fable_triage/scratch/arxiv_meta.json",
+      "title": "Prime Agent: A Self-Improving RLM Harness",
+      "url": "https://arxiv.org/abs/2608.23552",
+      "partial_author_list": false,
+      "inherited_status": "технический отчёт, препринт arXiv (cs.AI), v1"
+    },
+    "programmable-belief-dynamics": {
+      "source_card": "cards_c/programmable-belief-dynamics.json",
+      "source_id": "programmable-belief-dynamics",
+      "source_sha256": "f6d197592816b06cbde92122b0bfe0b21fbdc651604f12d2725bb428ad4a8b9c",
+      "author_metadata_source": "lanes/t_fable_triage/scratch/arxiv_meta.json",
+      "title": "LLM Agents Make Collective Belief Dynamics Programmable: Challenges and Research Directions",
+      "url": "https://arxiv.org/abs/2605.19915",
+      "partial_author_list": false,
+      "inherited_status": "preprint (position / research-agenda paper)"
+    },
+    "project-vend-2": {
+      "source_card": "cards_b/project-vend-2.json",
+      "source_id": "project-vend-2",
+      "source_sha256": "d7d743749eaf5e477eb97e614a57318080cf39d90bdbbe4b60f65e4f7c910307",
+      "title": "Project Vend: Phase two",
+      "url": "https://www.anthropic.com/research/project-vend-2",
+      "partial_author_list": false,
+      "inherited_status": "Company research blog post (anthropic.com/research, Policy / Frontier Red Team); not peer-reviewed; no paper, PDF or data release linked"
+    },
+    "puppeteer-evolving-orchestration": {
+      "source_card": "cards_c/puppeteer-evolving-orchestration.json",
+      "source_id": "puppeteer-evolving-orchestration",
+      "source_sha256": "567bee313d869fe298880084ea46eab9e04bdb84f96f7d92aaacad9e68c9204e",
+      "author_metadata_source": "lanes/t_fable_triage/scratch/arxiv_meta.json",
+      "title": "Multi-Agent Collaboration via Evolving Orchestration",
+      "url": "https://arxiv.org/abs/2505.19591",
+      "partial_author_list": false,
+      "inherited_status": "NeurIPS 2025 (arXiv comment: accepted at NeurIPS 2025); v2 21 Oct 2025"
+    },
+    "recursive-agent-harnesses": {
+      "source_card": "cards_c/recursive-agent-harnesses.json",
+      "source_id": "recursive-agent-harnesses",
+      "source_sha256": "86562e6109bf7371ee0a39e7c9918fc92d4ad5e5992e83dfe819946cb5bb2ed5",
+      "author_metadata_source": "lanes/t_fable_triage/scratch/arxiv_meta.json",
+      "title": "Recursive Agent Harnesses",
+      "url": "https://arxiv.org/abs/2606.13643",
+      "partial_author_list": false,
+      "inherited_status": "препринт arXiv (cs.CL), v1"
+    },
+    "recursive-agent-optimization": {
+      "source_card": "cards_b/recursive-agent-optimization.json",
+      "source_id": "recursive-agent-optimization",
+      "source_sha256": "e9bf7cb14d08a65a75e174e5f1f0a39762edfd8924d438818ea2a57e88fa04cc",
+      "title": "Recursive Agent Optimization",
+      "url": "https://arxiv.org/abs/2605.06639",
+      "partial_author_list": false,
+      "inherited_status": "preprint (arXiv cs.LG primary; cross-lists cs.AI, cs.CL, cs.MA; 27 pages; license CC BY 4.0). No conference line on the abs page."
+    },
+    "recursive-language-models": {
+      "source_card": "cards/recursive-language-models.json",
+      "source_id": "recursive-language-models",
+      "source_sha256": "a4fb6c99cb1fb8b37975916a855d51605b913265e01c830a1d8cb5be992430a3",
+      "title": "Recursive Language Models",
+      "url": "https://arxiv.org/abs/2512.24601",
+      "partial_author_list": false,
+      "inherited_status": "arXiv preprint (primary cs.AI; also cs.CL), latest v3 of 2026-05-11; no journal-ref or venue on arXiv. The first author's blog states 'The full paper has been accepted to NeurIPS 2026.' - author-reported only; not found on OpenReview or a NeurIPS page on 2026-10-03 (UNVERIFIED)."
+    },
+    "representational-similarity": {
+      "source_card": "cards_b/representational-similarity.json",
+      "source_id": "representational-similarity",
+      "source_sha256": "d12ed7f054bf3e5bbd415f1f3bab6636f4d4a2136b0a6dede1d8f7f4c6be1952",
+      "title": "Representational Similarity and Model Behavior in Multi-Agent Interaction",
+      "url": "https://arxiv.org/abs/2606.07818",
+      "partial_author_list": false,
+      "inherited_status": "ICML 2026, main conference, poster: Tue 7 July 2026, 2:00-3:45 PM KST, Hall A #510, per the ICML 2026 virtual site; arXiv comment 'ICML 2026'. PMLR proceedings entry not checked. arXiv licence CC BY 4.0."
+    },
+    "rheon-consensus": {
+      "source_card": "discovery/sonnet_A8.md:154-156,222",
+      "editorial_component": false,
+      "source_sha256": "5f1f167476fc202fa0e417eef3023f17b62118cdf51a1fb18174c2f36b90c116",
+      "fulltext_url": "https://arxiv.org/html/2609.39211v1",
+      "first_public": "2026-09-30",
+      "metadata_checked_date": "2026-10-09",
+      "primary_metadata_checked_by": "Parent; freshness-notes.md, RHEON lead qualified further by parent",
+      "proposed_canonical_id": "rheon-consensus",
+      "part_of": null,
+      "license": "CC BY-NC-SA 4.0 (parent primary-page check)",
+      "inclusion_status": "Existing scout lead recovered after parent primary-source qualification; not a post-cutoff discovery",
+      "title": "Consensus and Factual Dynamics in Large Populations of Interacting Language Models",
+      "url": "https://arxiv.org/abs/2609.39211",
+      "partial_author_list": false,
+      "inherited_status": ""
+    },
+    "riedl-emergent-coordination": {
+      "source_card": "cards_b/riedl-emergent-coordination.json",
+      "source_id": "riedl-emergent-coordination",
+      "source_sha256": "1ff0a7a1849f97e6b4213df1689183315937324c22cd7d24a97d0a3ca25bc481",
+      "title": "Emergent Coordination in Multi-Agent Language Models",
+      "url": "https://arxiv.org/abs/2510.05174",
+      "partial_author_list": false,
+      "inherited_status": "ICLR 2026 poster (arXiv journal reference; proceedings PDF at proceedings.iclr.cc file c464fc4516aca4e68f2a14e67c6f0402; OpenReview forum SRn1MtMPRq is listed as ICLR 2026 Poster, published 26 Jan 2026). License on the arXiv abs page: CC BY 4.0."
+    },
+    "riemann-zeta-swarm": {
+      "source_card": "cards_b/riemann-zeta-swarm.json",
+      "source_id": "riemann-zeta-swarm",
+      "source_sha256": "45507759a640247be5c7df7c374ce41125a10213844adec04b3745aeb4052858",
+      "title": "Learning more about Claude's mathematical capabilities",
+      "url": "https://www.anthropic.com/research/riemann-zeta",
+      "partial_author_list": false,
+      "inherited_status": "Company research blog (anthropic.com/research, section Science), not peer-reviewed. Companion paper is an arXiv preprint (math.NT) with a Lean 4 formalisation (github.com/anthropics/zeta-23-lean, checked by Anthropic with leanprover/comparator). The result was independently re-proved by a human number theorist: Lamzouri, arXiv 2609.02882 (2026-09-02, v2 2026-09-08)."
+    },
+    "ringelmann-effect": {
+      "source_card": "cards_b/ringelmann-effect.json",
+      "source_id": "ringelmann-effect",
+      "source_sha256": "2f216b6dde46634bdfcef98fb0cb573a1a3ba29436ff9a0d73862d9a12f8bd77",
+      "title": "The Ringelmann Effect in Multi-Agent LLM Systems: A Scaling Law for Effective Team Size",
+      "url": "https://arxiv.org/abs/2606.02646",
+      "partial_author_list": false,
+      "inherited_status": "preprint (arXiv v1, primary category physics.soc-ph, cross-lists cs.AI and cs.MA; comments '41 pages, 9 figures, 20 tables'; no venue stated on the abs page; Semantic Scholar lists venue 'arXiv.org' and 5 citations on 2026-10-03)"
+    },
+    "rl-orchestration-survey": {
+      "source_card": "cards_c/rl-orchestration-survey.json",
+      "source_id": "rl-orchestration-survey",
+      "source_sha256": "d23ef6c032b91a8bfe0a7bda528670faa152860fdd6195f1e7ed921e221b2781",
+      "title": "Reinforcement Learning for LLM-based Multi-Agent Systems through Orchestration Traces",
+      "url": "https://arxiv.org/abs/2605.02801",
+      "partial_author_list": false,
+      "inherited_status": "preprint (arXiv, v1; обзор)"
+    },
+    "robin-futurehouse": {
+      "source_card": "cards_b/robin-futurehouse.json",
+      "source_id": "robin-futurehouse",
+      "source_sha256": "c33734a7ccaa22ef32a91f70cc3375f8dad25b8011544ff952edd59688dd268f",
+      "author_metadata_source": "swarm-recovery-20261009/metadata-18-bylines.md (primary arXiv, publisher and journal pages, checked 2026-10-09)",
+      "primary_dates": "Online 2026-05-19; version of record 2026-07-01; issue 2026-07-09",
+      "metadata_conflicts": "Journal title is used; the earlier \"Robin:\" preprint title belongs to another version.",
+      "title": "A multi-agent system for automating scientific discovery",
+      "url": "https://doi.org/10.1038/s41586-026-10652-y",
+      "partial_author_list": false,
+      "inherited_status": "Peer-reviewed journal article (Nature, Article), vol. 655, issue 8122 (9 July 2026), pp. 497-505, DOI 10.1038/s41586-026-10652-y. Open access under CC BY-NC-ND 4.0 (non-commercial, no adaptations). Three review rounds (Peer Review File lists reports for Version 0, 1 and 2); Nature thanks Olivier Elemento and an anonymous reviewer. Same issue as Google's Co-Scientist paper (pp. 487-496); a Nature editorial of 19 May 2026 ('Why AI cannot do good science without humans') discusses both. The arXiv version (cs.AI, cs.MA, q-bio.QM; licence CC BY 4.0) is an earlier preprint with a different abstract and different numbers and was never updated to the Nature text. Type label for the report: designed multi-agent workflow with humans running the lab steps, not an emergent swarm."
+    },
+    "safety-of-latent-communication": {
+      "source_card": "cards_c/safety-of-latent-communication.json",
+      "source_id": "safety-of-latent-communication",
+      "source_sha256": "c16a217ce8b6dd12281f3d62f6beb27090aec0cda828109e1a8d9e67191cad2a",
+      "title": "Safety of Latent Communication in Multi-Agent Systems",
+      "url": "https://arxiv.org/abs/2609.39788",
+      "partial_author_list": false,
+      "inherited_status": "preprint (arXiv, cs.AI; v2 существует)"
+    },
+    "sakana-ab-mcts": {
+      "source_card": "cards_c/sakana-ab-mcts.json",
+      "source_id": "sakana-ab-mcts",
+      "source_sha256": "f5a7a7e2dba6dc911603222ae742688cbf43cb16d8069f5885b2903fc0ee352f",
+      "author_metadata_source": "lanes/t_fable_triage/scratch/arxiv_meta.json",
+      "title": "Wider or Deeper? Scaling LLM Inference-Time Compute with Adaptive Branching Tree Search",
+      "url": "https://arxiv.org/abs/2503.04412",
+      "partial_author_list": false,
+      "inherited_status": "NeurIPS 2025 spotlight (arXiv v5, 7 Nov 2025); plus official company blog post"
+    },
+    "sakana-conductor": {
+      "source_card": "cards_b/sakana-conductor-trinity-fugu.json",
+      "editorial_component": true,
+      "part_of": "sakana-conductor-trinity-fugu",
+      "proposed_canonical_component_id": "sakana-conductor",
+      "title": "Learning to Orchestrate Agents in Natural Language with the Conductor",
+      "url": "https://openreview.net/forum?id=U23A2BUKYt",
+      "partial_author_list": false,
+      "inherited_status": ""
+    },
+    "sakana-fugu-report": {
+      "source_card": "cards_b/sakana-conductor-trinity-fugu.json",
+      "source_id": "sakana-conductor-trinity-fugu",
+      "source_sha256": "30747338cb754217f27c68c34db4390b6564a501e045bf99a347626d6f005077",
+      "author_metadata_source": "lanes/t_fable_triage/scratch/arxiv_meta.json",
+      "part_of": "sakana-conductor-trinity-fugu",
+      "proposed_canonical_component_id": "sakana-fugu-report",
+      "title": "Sakana Fugu Technical Report",
+      "url": "https://arxiv.org/abs/2606.21228",
+      "partial_author_list": false,
+      "inherited_status": "Conductor: peer-reviewed conference paper, ICLR 2026 poster (OpenReview forum U23A2BUKYt, venue field 'ICLR 2026 Poster'). TRINITY: ICLR 2026 poster (OpenReview forum 5HaRjXai12, 'ICLR 2026 Poster'). Fugu Technical Report: arXiv preprint (cs.LG, CC BY 4.0), a company technical report, not peer-reviewed. Fugu Max / Ultra v2: company product/blog post on sakana.ai, not peer-reviewed."
+    },
+    "sakana-trinity": {
+      "source_card": "cards_b/sakana-conductor-trinity-fugu.json",
+      "editorial_component": true,
+      "part_of": "sakana-conductor-trinity-fugu",
+      "proposed_canonical_component_id": "sakana-trinity",
+      "title": "Trinity: An Evolved LLM Coordinator",
+      "url": "https://openreview.net/forum?id=5HaRjXai12",
+      "partial_author_list": false,
+      "inherited_status": ""
+    },
+    "sat-teams": {
+      "source_card": "cards/sat-teams.json",
+      "source_id": "sat-teams",
+      "source_sha256": "9d5dae36d00056c3a93bac4463c3a794435cec2b02e626cace7395b8c132002a",
+      "title": "Self-Organizing Agent Teams Learn to Reason Together",
+      "url": "https://arxiv.org/abs/2609.22682",
+      "partial_author_list": false,
+      "inherited_status": "arXiv preprint (author comment: 'Preprint'); primary cs.AI, cross-list cs.MA; no venue, not peer-reviewed as of 2026-10-03."
+    },
+    "scaling-teams-or-time": {
+      "source_card": "cards_b/scaling-teams-or-time.json",
+      "source_id": "scaling-teams-or-time",
+      "source_sha256": "afd4a6ea6074e8a935045aebad03a3fe747bf81b05eb65039a7c27f14b85a7c7",
+      "title": "Scaling Teams or Scaling Time? Memory Enabled Lifelong Learning in LLM Multi-Agent Systems",
+      "url": "https://arxiv.org/abs/2604.03295",
+      "partial_author_list": false,
+      "inherited_status": "preprint (arXiv cs.MA primary, cross-list cs.AI; abs page has no journal or conference; license CC BY 4.0)"
+    },
+    "schemes-coordinated-sabotage": {
+      "source_card": "cards_b/schemes-coordinated-sabotage.json",
+      "source_id": "schemes-coordinated-sabotage",
+      "source_sha256": "dbb136987215fc55e9375e501486eea1128169d5a5742c45b99b86fb5688957b",
+      "title": "The Best-Laid SCHEMEs: Coordinated Sabotage and Monitoring in Multi-Agent Systems",
+      "url": "https://arxiv.org/abs/2605.29178",
+      "partial_author_list": false,
+      "inherited_status": "arXiv preprint (cs.CR; cross-list cs.MA; comment '33 pages, 25 figures, 15 tables'; no journal reference). Listed as a workshop paper at ICML 2026 in two workshops, both on the official ICML pages: 'The Second Workshop on Agents in the Wild: Safety, Security, and Beyond' (Sat 11 Jul 2026, Hall B2; OpenReview track 'Regular Paper (9 pages)') and 'Trustworthy AI for Good (AI4GOOD) Workshop' (Fri 10 Jul 2026, Grand Ballroom 103). Not an ICML main-conference paper. Poster versus talk and whether the workshops are archival were not determined."
+    },
+    "science-agents-go-rogue": {
+      "source_card": "cards_c/science-agents-go-rogue.json",
+      "source_id": "science-agents-go-rogue",
+      "source_sha256": "e9d5c9c9653dc1d82af2e402505fc66c5637167e833d36fc4e57b33023fccfb4",
+      "title": "AI 'agents' go rogue in realistic simulations",
+      "url": "https://www.science.org/content/article/ai-algorithms-can-become-agents-chaos",
+      "partial_author_list": false,
+      "inherited_status": "новостная статья Science (news); первичная работа - препринт «Agents of Chaos» arXiv 2602.20021"
+    },
+    "science-invent-own-language": {
+      "source_card": "cards_c/science-invent-own-language.json",
+      "source_id": "science-invent-own-language",
+      "source_sha256": "5b1814a4a8cc277ab725153a3d4370d0ce9feccdf601465944ab346ba7b8b9a3",
+      "title": "Why AI agents invent their own language if you let them chat",
+      "url": "https://doi.org/10.1126/science.aem6544",
+      "partial_author_list": false,
+      "inherited_status": "новостная статья в Science (vol. 393, issue 6818, pp. 1286-1287); не рецензируемая работа"
+    },
+    "science-malicious-swarms": {
+      "source_card": "cards_b/science-malicious-swarms.json",
+      "source_id": "science-malicious-swarms",
+      "source_sha256": "bff6ab749aafe3456f5316e56d2f309a4ab4515bbd28a97b6d148116a09b2d78",
+      "author_metadata_source": "swarm-recovery-20261009/metadata-18-bylines.md (primary arXiv, publisher and journal pages, checked 2026-10-09)",
+      "primary_dates": "Published 2026-01-22",
+      "metadata_conflicts": "The publisher page returned HTTP 403; the byline was read from the journal-formatted PDF hosted by HBS and corroborated by arXiv:2506.06299 author metadata.",
+      "title": "How malicious AI swarms can threaten democracy",
+      "url": "https://doi.org/10.1126/science.adz1697",
+      "partial_author_list": false,
+      "inherited_status": "Published in Science (Policy Forum; subject 'Artificial Intelligence'), volume 391, issue 6783, pages 354–357, 22 January 2026. DOI 10.1126/science.adz1697. Crossref type 'journal-article'; Europe PMC pub type 'Journal Article'. The section label is printed on the journal PDF (red 'POLICY FORUM' badge on p. 354, running head on p. 356) and repeated in the AAAS and Max Planck press releases. The arXiv file is the authors' version, posted by permission of AAAS for personal use, not for redistribution. arXiv license: non-exclusive distribution 1.0. Crossref 'is-referenced-by-count' 30 (indexed 2026-10-02). Europe PMC citedByCount 9. Semantic Scholar citationCount 56 mixes the arXiv record (its publicationDate field is 2025-05-18)."
+    },
+    "self-moa": {
+      "source_card": "cards_c/self-moa.json",
+      "source_id": "self-moa",
+      "source_sha256": "1c291c5c5e5b55cc22418c9cac538faeebd492af1bee32a240963bcb2ee39168",
+      "author_metadata_source": "lanes/t_fable_triage/scratch/arxiv_meta.json",
+      "title": "Rethinking Mixture-of-Agents: Is Mixing Different Large Language Models Beneficial?",
+      "url": "https://arxiv.org/abs/2502.00674",
+      "partial_author_list": false,
+      "inherited_status": "TMLR 2026 (препринт arXiv с 2025-02-02)"
+    },
+    "semantic-collapse": {
+      "source_card": "cards/semantic-collapse.json",
+      "source_id": "semantic-collapse",
+      "source_sha256": "1ece461262f10e5feb4188a703bad72ef045b9eda7bc4a5807830c20118eebea",
+      "title": "Multi-LLM Systems Exhibit Robust Semantic Collapse",
+      "url": "https://arxiv.org/abs/2605.17193",
+      "partial_author_list": false,
+      "inherited_status": "arXiv preprint (primary category cs.MA). v2 PDF metadata title reads 'Multi-LLM Systems Exhibit Robust Semantic Collapse (NMI Revision)', i.e. apparently a revision for Nature Machine Intelligence; acceptance/publication not confirmed."
+    },
+    "shutdown-sabotage": {
+      "source_card": "cards/shutdown-sabotage.json",
+      "source_id": "shutdown-sabotage",
+      "source_sha256": "5a0a4578a5efbef8977ee255a53feeec5bc6c1a5daf7493b9062017c2cc23786",
+      "title": "Shutdown Sabotage Propensities in Multi-Agent Systems",
+      "url": "https://arxiv.org/abs/2609.28274",
+      "partial_author_list": false,
+      "inherited_status": "arXiv preprint, cs.AI (primary) + cs.CL; 'Preprint.' header; 38 pages incl. appendix, 20 figures; no venue stated; not peer-reviewed"
+    },
+    "silo-bench": {
+      "source_card": "cards_b/silo-bench.json",
+      "source_id": "silo-bench",
+      "source_sha256": "cd84f336de9f5fd0c6bb15dce53a0a00c38e1806cf1b6200157813fb01cb404a",
+      "title": "Silo-Bench: A Scalable Environment for Evaluating Distributed Coordination in Multi-Agent LLM Systems",
+      "url": "https://arxiv.org/abs/2603.01045",
+      "partial_author_list": false,
+      "inherited_status": "ACL 2026 main conference, long paper: Proceedings of the 64th ACL (Volume 1: Long Papers), San Diego, July 2026, pp. 29379-29398, Anthology ID 2026.acl-long.1354, DOI 10.18653/v1/2026.acl-long.1354 (verified on aclanthology.org). Peer-reviewed."
+    },
+    "simulation-to-enaction": {
+      "source_card": "cards_c/simulation-to-enaction.json",
+      "source_id": "simulation-to-enaction",
+      "source_sha256": "6a414016eb9d9f6f43e63f8e5e4a9564cb39ba5543730e6c2602ecf65944722b",
+      "title": "From Simulation to Enaction: Post-trained language models recognize and react to their own generations",
+      "url": "https://arxiv.org/abs/2605.25459",
+      "partial_author_list": false,
+      "inherited_status": "preprint (arXiv); по комментарию Anthropic Fellows project под руководством Jack Lindsey"
+    },
+    "slocum-hf-reproduction": {
+      "source_card": "cards_c/slocum-hf-reproduction.json",
+      "source_id": "slocum-hf-reproduction",
+      "source_sha256": "bdd4dadc433ffdd76a828811144345be5667527a0dbcdb90601657064476a465",
+      "author_metadata_source": "lanes/t_fable_triage/scratch/arxiv_meta.json",
+      "title": "OpenAI-HuggingFace: A Reproduction & Lessons for Alignment Testing",
+      "url": "https://arxiv.org/abs/2609.35799",
+      "partial_author_list": false,
+      "inherited_status": "preprint (arXiv v1, cs.AI)"
+    },
+    "social-circuits": {
+      "source_card": "cards_b/social-circuits.json",
+      "source_id": "social-circuits",
+      "source_sha256": "31305644f15d0188b57cf5b74c07a3a1e50a6d0e0477f69798f8e5e28c078c8e",
+      "title": "Social Circuits behind Multi-agent Echo Chambers",
+      "url": "https://arxiv.org/abs/2609.34444",
+      "partial_author_list": false,
+      "inherited_status": "preprint (arXiv cs.AI). No journal reference or proceedings note. License: arXiv non-exclusive distribution 1.0, not Creative Commons. Code is an anonymous link, not a public named repo."
+    },
+    "societies-of-thought": {
+      "source_card": "cards_b/societies-of-thought.json",
+      "source_id": "societies-of-thought",
+      "source_sha256": "06485dee72267c4b196ec4634dbd582d29d0724e7c6d261732c41441f40b92c0",
+      "title": "Reasoning Models Generate Societies of Thought",
+      "url": "https://arxiv.org/abs/2601.10825",
+      "partial_author_list": false,
+      "inherited_status": "arXiv preprint (cs.CL; arXiv non-exclusive distribution licence, not CC) and an accepted paper at the ICML 2026 Pluralistic Alignment Workshop (Seoul, 11 Jul 2026; the workshop is non-archival, double-blind reviewed; OpenReview forum sQLUatscmK, submission 117, camera-ready revision present). No journal or proceedings version found."
+    },
+    "strategic-monoculture": {
+      "source_card": "cards_c/strategic-monoculture.json",
+      "source_id": "strategic-monoculture",
+      "source_sha256": "7331f475bf26e0837fb00b1987a1c8a3014bd91c0b0621f386cab38994d3fb91",
+      "author_metadata_source": "lanes/t_fable_triage/scratch/arxiv_meta.json",
+      "title": "Strategic Algorithmic Monoculture: Experimental Evidence from Coordination Games",
+      "url": "https://arxiv.org/abs/2604.09502",
+      "partial_author_list": false,
+      "inherited_status": "препринт (arXiv, v2 от 2026-04-13)"
+    },
+    "stronger-mas": {
+      "source_card": "cards_c/stronger-mas.json",
+      "source_id": "stronger-mas",
+      "source_sha256": "7da9049a1abe723a05b8abd611dbc9e732304525499d9ac294ac85fe426e2485",
+      "author_metadata_source": "lanes/t_fable_triage/scratch/arxiv_meta.json",
+      "title": "Stronger-MAS: Multi-Agent Reinforcement Learning for Collaborative LLMs",
+      "url": "https://arxiv.org/abs/2510.11062",
+      "partial_author_list": false,
+      "inherited_status": "preprint (arXiv; v5 revised 2026-01-29); ICLR 2026 not printed on abstract or HTML page (UNVERIFIED)"
+    },
+    "structured-opinion-dynamics": {
+      "source_card": "cards_c/prev-population-dynamics-cluster.json",
+      "editorial_component": true,
+      "author_metadata_source": "swarm-recovery-20261009/metadata-18-bylines.md (primary arXiv, publisher and journal pages, checked 2026-10-09)",
+      "primary_dates": "arXiv v1 2026-04-13; v3 2026-09-28",
+      "part_of": "prev-population-dynamics-cluster",
+      "title": "Collective Opinion Dynamics in Structured LLM Populations",
+      "url": "https://arxiv.org/abs/2604.11312",
+      "partial_author_list": false,
+      "inherited_status": ""
+    },
+    "subagents-comply-more": {
+      "source_card": "cards_c/subagents-comply-more.json",
+      "source_id": "subagents-comply-more",
+      "source_sha256": "f46ddc69fc5fb55685810b6f8dd39a2473caa3175aa3c6f4cc2813c8e0c2cae1",
+      "title": "Subagents comply more",
+      "url": "https://www.lesswrong.com/posts/nfXAPJqytuHKrRNpT/subagents-comply-more",
+      "partial_author_list": false,
+      "inherited_status": "блог (LessWrong), не рецензировано"
+    },
+    "superminds-test": {
+      "source_card": "cards_b/superminds-test.json",
+      "source_id": "superminds-test",
+      "source_sha256": "d25121357b1a5d0a16e2d18d9649da26da2ab6756260aead1c3281d60ed1b0de",
+      "title": "Superminds Test: Actively Evaluating Collective Intelligence of Agent Society via Probing Agents",
+      "url": "https://arxiv.org/abs/2604.22452",
+      "partial_author_list": false,
+      "inherited_status": "arXiv preprint, v1 only (cs.AI; also cs.CL and cs.LG). Submitted 24 April 2026. Not peer-reviewed. The source sets the date to \\today: the PDF prints 27 April 2026, and the experimental HTML prints 24 August 2026. Those are compile dates, not a second version."
+    },
+    "swarmbench": {
+      "source_card": "cards_c/swarmbench.json",
+      "source_id": "swarmbench",
+      "source_sha256": "2b5a9040f37b42b00f72ba46dbe36cf4ee627e0e462eaa658ce66fd9672262b3",
+      "author_metadata_source": "lanes/t_fable_triage/scratch/arxiv_meta.json",
+      "title": "SwarmBench: Can Large Language Models Act as Agent Swarm Orchestrators?",
+      "url": "https://arxiv.org/abs/2608.30661",
+      "partial_author_list": false,
+      "inherited_status": "preprint (arXiv, cs.CL); EMNLP 2026 Findings (по комментарию arXiv)"
+    },
+    "swarmtraces": {
+      "source_card": "cards_b/swarmtraces.json",
+      "source_id": "swarmtraces",
+      "source_sha256": "57889c2e13da7afdace7afb986f785a9ed68cb24bfbdbc1ef3c5780673918105",
+      "title": "Revealing the details of how OpenAI agents hacked Hugging Face",
+      "url": "https://swarmtraces.org/",
+      "partial_author_list": false,
+      "inherited_status": "Independent web report (the page's own article id is 'draft'), not peer reviewed, with an evidence viewer and a 'preliminary dataset' (redacted.jsonl.gz, 15.2 MB). Secondary loudness: Hacker News story of 2026-09-25 with 754 points and 472 comments (HN item 49849985). No licence stated."
+    },
+    "talk-isnt-always-cheap": {
+      "source_card": "cards_c/talk-isnt-always-cheap.json",
+      "source_id": "talk-isnt-always-cheap",
+      "source_sha256": "31bc3bc2957d36c481d7414a827f5c8b45ef09dd82e012e08115736c9fb3a91d",
+      "title": "Talk Isn't Always Cheap: Understanding Failure Modes in Multi-Agent Debate",
+      "url": "https://arxiv.org/abs/2509.05396",
+      "partial_author_list": false,
+      "inherited_status": "ICML 2025 MAS Workshop (воркшоп; arXiv v2 от 2025-10-13)"
+    },
+    "tanaka-memetic-drift": {
+      "source_card": "cards_c/prev-population-dynamics-cluster.json",
+      "editorial_component": true,
+      "part_of": "prev-population-dynamics-cluster",
+      "title": "When Is Collective Intelligence a Lottery? Multi-Agent Scaling Laws for Memetic Drift in LLMs",
+      "url": "https://arxiv.org/abs/2603.24676",
+      "partial_author_list": false,
+      "inherited_status": ""
+    },
+    "teams-hold-experts-back": {
+      "source_card": "cards/teams-hold-experts-back.json",
+      "source_id": "teams-hold-experts-back",
+      "source_sha256": "799e32cb692824e4e8fd8408b4c3bd532a7386deae8fe936db82826b5e3ecf6f",
+      "title": "Multi-Agent Teams Hold Experts Back",
+      "url": "https://arxiv.org/abs/2602.01011",
+      "partial_author_list": false,
+      "inherited_status": "ICML 2026, Seoul (Proceedings of the 43rd ICML, PMLR 306). ICML virtual site: decision 'Accept (regular)', i.e. a regular poster, NOT oral or spotlight; Poster Session 1, Hall A, #1909, 7 July 2026 10:30-12:15 KST (https://icml.cc/virtual/2026/poster/63358; OpenReview forum https://openreview.net/forum?id=Xn8kmKvO9g, not opened: bot challenge). arXiv comment: 'Accepted at the International Conference on Machine Learning (ICML 2026)'. Primary category cs.MA, cross-list cs.AI."
+    },
+    "test-time-communication": {
+      "source_card": "cards/test-time-communication.json",
+      "source_id": "test-time-communication",
+      "source_sha256": "bbfce1419899b079966590bacc145bf6d450bba6ae9c15d10381452986eba28a",
+      "title": "Scaling Discovery through Test-Time Communication",
+      "url": "https://arxiv.org/abs/2609.21032",
+      "partial_author_list": false,
+      "inherited_status": "arXiv preprint (primary cs.LG; cross-lists cs.AI, cs.CL); not peer-reviewed; arXiv comment says '34 pages, 12 figures' (the v1 PDF has 30 pages); DOI via DataCite pending registration"
+    },
+    "tokyo-road-game": {
+      "source_card": "cards_b/tokyo-road-game.json",
+      "source_id": "tokyo-road-game",
+      "source_sha256": "799e85792b4946c8b6f014b8828dd831e8fb7d677e6e36b87e9ef734eac00f4a",
+      "title": "Warned alike, AI agents avoid the less-crowded road while people take it",
+      "url": "https://arxiv.org/abs/2609.30883",
+      "partial_author_list": false,
+      "inherited_status": "Preprint (arXiv physics.soc-ph, cross-list cs.AI; no journal reference, not peer reviewed yet). arXiv licence CC BY 4.0. The human experiments were approved by the RCAST Ethics Review Committee (approval E26ALS0545) and the human-study plan is registered on OSF (osf.io/whsyu), but the paper says the registration is under embargo; data, code and a Zenodo package (reserved DOI 10.5281/zenodo.22915642) are private until journal publication."
+    },
+    "tokyo-shared-state-sync": {
+      "source_card": "cards_c/tokyo-shared-state-sync.json",
+      "source_id": "tokyo-shared-state-sync",
+      "source_sha256": "9c58f9c08789e2b835f0c2d1dacd88ddf13d5ade2f6c427f7983a234d72e9aeb",
+      "title": "How a shared state is described determines whether AI agents synchronize",
+      "url": "https://arxiv.org/abs/2608.06968",
+      "partial_author_list": false,
+      "inherited_status": "препринт (arXiv physics.soc-ph, v2 от 2026-09-23)"
+    },
+    "too-polite-to-disagree": {
+      "source_card": "cards_c/too-polite-to-disagree.json",
+      "source_id": "too-polite-to-disagree",
+      "source_sha256": "f2e338908fa2657ad98caa0f971fcd10b3563997473421541501134b25133ce9",
+      "author_metadata_source": "lanes/t_fable_triage/scratch/arxiv_meta.json",
+      "title": "Too Polite to Disagree: Understanding Sycophancy Propagation in Multi-Agent Systems",
+      "url": "https://arxiv.org/abs/2604.02668",
+      "partial_author_list": false,
+      "inherited_status": "SIGDIAL 2026 (27th Annual Meeting of SIGDIAL, pp. 795-814; arXiv v2 от 2026-07-14)"
+    },
+    "tool-steganography": {
+      "source_card": "cards_b/tool-steganography.json",
+      "source_id": "tool-steganography",
+      "source_sha256": "cc56c4b34330669bed5af1b47fd841eb829210b2328b301bfdaf5e860352a1f6",
+      "title": "Tool Use Enables Undetectable Steganography in Multi-Agent LLM Systems",
+      "url": "https://arxiv.org/abs/2606.28425",
+      "partial_author_list": false,
+      "inherited_status": "arXiv preprint (cs.CR; cross-list cs.AI); PDF footer says 'Preprint.' and the PDF ends with a NeurIPS checklist; no arXiv comment. OpenReview lists the same title as 'AI4GOOD Workshop @ NeurIPS 2026 Poster' (workshop, seen through the OpenReview search API; the page itself was not opened). No main-conference acceptance found."
+    },
+    "toolorchestra": {
+      "source_card": "cards_c/toolorchestra.json",
+      "source_id": "toolorchestra",
+      "source_sha256": "cc14b32132c9d98caedcb97cdaf2f0a647a00911682cdd3893c46361503bbda4",
+      "author_metadata_source": "lanes/t_fable_triage/scratch/arxiv_meta.json",
+      "title": "ToolOrchestra: Elevating Intelligence via Efficient Model and Tool Orchestration",
+      "url": "https://arxiv.org/abs/2511.21689",
+      "partial_author_list": false,
+      "inherited_status": "arXiv preprint (v1); ICML 2026 poster (icml.cc/virtual/2026/poster/62794, Tue 7 Jul 2026)"
+    },
+    "topological-collapse": {
+      "source_card": "cards_c/prev-moltbook-cluster.json",
+      "editorial_component": true,
+      "author_metadata_source": "swarm-recovery-20261009/metadata-18-bylines.md (primary arXiv, publisher and journal pages, checked 2026-10-09)",
+      "primary_dates": "arXiv v1 2026-08-16",
+      "metadata_conflicts": "The inherited card reversed given and family names; the arXiv byline order is used.",
+      "part_of": "prev-moltbook-cluster",
+      "title": "Topological collapse of higher-order interactions bottlenecks collective intelligence in AI agent societies",
+      "url": "https://arxiv.org/abs/2608.15519",
+      "partial_author_list": false,
+      "inherited_status": ""
+    },
+    "trammell-parallelizability": {
+      "source_card": "cards_b/trammell-parallelizability.json",
+      "source_id": "trammell-parallelizability",
+      "source_sha256": "15b8c7af330e4af3d497c6a35e86e3dcc039e87831fea25503d82dcd2a458f99",
+      "title": "The Bounded Parallelizability of R&D: Theory and Application to AI",
+      "url": "https://philiptrammell.com/static/Parallelizability.pdf",
+      "partial_author_list": false,
+      "inherited_status": "Working paper plus an Epoch AI essay. The PDF has at least two versions at the same URL: the first is dated 13 June 2026 on its title page (29 pages; abstract: 'I document this'), the revision 24 July 2026 (32 pages; abstract: 'I model this'). This card reads the 24 July revision; the NanoGPT-speedrun proposal (footnote 22), the Goldreich and Wigderson idea, the sentence 'they are all estimable in principle with the right experiments', Figure 1 and the passage on identical weights and the one-time jump in agent parallelizability are absent from the first version. Epoch page: Report, 29 July 2026; its on-page heading and citation title is 'Even after R&D is automated, parallelization constraints could delay a technological singularity', while the HTML title and link-preview title of the same URL read 'Will parallelization limits delay an intelligence explosion?'. No journal and no peer review stated."
+    },
+    "tran-kiela-equal-budget": {
+      "source_card": "cards_b/tran-kiela-equal-budget.json",
+      "source_id": "tran-kiela-equal-budget",
+      "source_sha256": "7545aaad0df3d32d874108860e4c6f97273489aabd6de2810120602470fb7cf9",
+      "title": "Single-Agent LLMs Outperform Multi-Agent Systems on Multi-Hop Reasoning Under Equal Thinking Token Budgets",
+      "url": "https://arxiv.org/abs/2604.02460",
+      "partial_author_list": false,
+      "inherited_status": "preprint (arXiv cs.CL, cross-list cs.MA; PDF header says 'Preprint. Under review.', no venue named; license CC BY 4.0)"
+    },
+    "transluce-agent-activity": {
+      "source_card": "cards_b/transluce-agent-activity.json",
+      "source_id": "transluce-agent-activity",
+      "source_sha256": "1b7d2c0888fe4d5258376563948f2b6df3d7e71d1b96c3d5aaba1adf77a33478",
+      "title": "Early rogue AI agent activity and attempts to hack found on urlquery.net",
+      "url": "https://transluce.org/agent-activity",
+      "partial_author_list": false,
+      "inherited_status": "Independent incident report on transluce.org (Incident Reports section) with a downloadable dataset; not peer-reviewed; no license stated"
+    },
+    "vidal-models-identify-as-swarm": {
+      "source_card": "cards_b/vidal-models-identify-as-swarm.json",
+      "source_id": "vidal-models-identify-as-swarm",
+      "source_sha256": "41ebfc9d7d5b368ac9fb5235cfb0518d16ed8cc0e3e959faec6e52d465f72d96",
+      "title": "When Models Identify as a Swarm",
+      "url": "https://www.lesswrong.com/posts/iJDiA9fg3KAf7y5Qe/when-models-identify-as-a-swarm",
+      "partial_author_list": false,
+      "inherited_status": "LessWrong frontpage essay, posted 2026-08-21 11:49:37Z. 68 karma, 5 comments. Tags: AI Psychology, Collective Intelligence, AI. Not a paper and not peer-reviewed."
+    },
+    "voluntary-collusion-secret-tools": {
+      "source_card": "cards_c/voluntary-collusion-secret-tools.json",
+      "source_id": "voluntary-collusion-secret-tools",
+      "source_sha256": "7fb5cf92331e54122dd62fd1812817d76fa2a7b8995458fe6233b7d4ea3edfab",
+      "title": "Voluntary Collusion with Secret Tools in Competing LLM Agents",
+      "url": "https://arxiv.org/abs/2605.27593",
+      "partial_author_list": false,
+      "inherited_status": "preprint (arXiv, cs.AI/cs.MA)"
+    },
+    "when-agents-coordinate": {
+      "source_card": "cards_b/when-agents-coordinate.json",
+      "source_id": "when-agents-coordinate",
+      "source_sha256": "c3d05bb9c79263dfa03128edc396b3562411e8165794178a92ff7ce70c52e9d8",
+      "title": "When Agents Coordinate: Measuring Coordination in Multi-Agent AI Coding",
+      "url": "https://arxiv.org/abs/2608.16801",
+      "partial_author_list": false,
+      "inherited_status": "preprint (arXiv cs.AI; cross-list cs.SE). License CC BY 4.0. Replication package linked in the paper."
+    },
+    "when-does-marl-help": {
+      "source_card": "cards_c/when-does-marl-help.json",
+      "source_id": "when-does-marl-help",
+      "source_sha256": "2b44d9725a5026ca47b4426777c53e03c7db661dd0f0c10f62d4a5c6414cdf02",
+      "author_metadata_source": "lanes/t_fable_triage/scratch/arxiv_meta.json",
+      "title": "When Does Multi-Agent RL Improve LLM Workflows? Workflow, Scale, and Policy-Sharing Tradeoffs",
+      "url": "https://arxiv.org/abs/2605.24202",
+      "partial_author_list": false,
+      "inherited_status": "preprint (arXiv; v2 revised 2026-05-31)"
+    },
+    "who-do-llms-trust": {
+      "source_card": "cards_c/who-do-llms-trust.json",
+      "source_id": "who-do-llms-trust",
+      "source_sha256": "f3244d1df73c40004f2bffad1da2cc93bec1880bde0d31af5a70b2d561c2a02a",
+      "title": "Who Do LLMs Trust? Human Experts Matter More Than Other LLMs",
+      "url": "https://arxiv.org/abs/2602.13568",
+      "partial_author_list": false,
+      "inherited_status": "preprint (arXiv)"
+    },
+    "wideseek-r1": {
+      "source_card": "cards_b/wideseek-r1.json",
+      "source_id": "wideseek-r1",
+      "source_sha256": "dc73180ccd75f33f5c8375b15949a3bb717db9cb6feb57112a164c3a58f91603",
+      "title": "WideSeek-R1: Exploring Width Scaling for Broad Information Seeking via Multi-Agent Reinforcement Learning",
+      "url": "https://arxiv.org/abs/2602.04634",
+      "partial_author_list": false,
+      "inherited_status": "preprint (arXiv cs.AI; cross-listed cs.LG and cs.MA; CC BY 4.0; no conference or journal; page 1 of v3 says 'Preprint. Under Review.'). The current abs page is v3. v2 has no PDF and no license. The v1 abs page carries the banner 'A newer version of this paper has been withdrawn', which refers to the withdrawn v2; v3 is the version to cite. Project page https://wideseek-r1.github.io/ returned HTTP 200; numbers below are from the paper, not from that page."
+    },
+    "wiki-copying": {
+      "source_card": "cards/wiki-copying.json",
+      "source_id": "wiki-copying",
+      "source_sha256": "9c914acf24c99675eaca8768d7636a277f10244fd7f952fcf4624a1679d44f9c",
+      "title": "Copying explains the collective behavior of AI agents in the wild",
+      "url": "https://arxiv.org/abs/2609.09150",
+      "partial_author_list": false,
+      "inherited_status": "arXiv preprint, cs.MA (cross-listed cond-mat.stat-mech, cs.CL); not peer reviewed; no journal reference on arXiv. The repository's revised manuscript is formatted for Nature ('Headings for Nature'); submission status UNVERIFIED."
+    },
+    "willis-hundreds-of-agents": {
+      "source_card": "cards_c/willis-hundreds-of-agents.json",
+      "source_id": "willis-hundreds-of-agents",
+      "source_sha256": "86a66bf9ff3a0917ce7ce8cbc3b3c129956a5d62e00e76096b830a70adc7e108",
+      "author_metadata_source": "lanes/t_fable_triage/scratch/arxiv_meta.json",
+      "title": "Evaluating Collective Behaviour of Hundreds of LLM Agents",
+      "url": "https://arxiv.org/abs/2602.16662",
+      "partial_author_list": false,
+      "inherited_status": "препринт arXiv; v2 от 2 июля 2026 оформлена для Strategic Engineering Workshop on LLMs and Game Theory (SE@AAMAS2026, 25 мая 2026, Пафос)"
+    },
+    "wiz-moltbook": {
+      "source_card": "cards_b/wiz-moltbook.json",
+      "source_id": "wiz-moltbook",
+      "source_sha256": "f291ce041a25ddbf3e37bc0f4be7e11db25bce4f6509194d6241501d7f577a72",
+      "title": "Hacking Moltbook: The AI Social Network Any Human Can Control",
+      "url": "https://www.wiz.io/blog/exposed-moltbook-database-reveals-millions-of-api-keys",
+      "partial_author_list": false,
+      "inherited_status": "Official vendor research blog post (Wiz Blog), not peer-reviewed. SEO title on the same page: 'Hacking Moltbook: AI Social Network Reveals 1.5M API Keys'. Copyright line on the page: © 2026 Wiz, Inc."
+    },
+    "worse-together": {
+      "source_card": "cards_b/worse-together.json",
+      "source_id": "worse-together",
+      "source_sha256": "3d8ced2797a872e64d288faee65d95c89a7487e4a849ae7943c9750a1b4652da",
+      "title": "Worse Together: How Performance Breaks Down in Multi-User Multi-Agent Teams",
+      "url": "https://arxiv.org/abs/2610.00583",
+      "partial_author_list": false,
+      "inherited_status": "preprint (arXiv cs.AI; CC BY 4.0; no venue). Comments line: 63 pages, 22 figures, 10 tables. Code URL is given as https://github.com/safety-research/MAMUBench and the paper says it will be released after review; that URL returned HTTP 404 on 2026-10-03."
+    },
+    "zhang-agents-in-the-wild": {
+      "source_card": "cards_b/zhang-agents-in-the-wild.json",
+      "source_id": "zhang-agents-in-the-wild",
+      "source_sha256": "569862e0fc40ade8cdcf564f10f75ea114c366ecd9b48638cdfaa7ff0da5a845",
+      "title": "Agents in the Wild: Safety, Society, and the Illusion of Sociality on Moltbook",
+      "url": "https://arxiv.org/abs/2602.13284",
+      "partial_author_list": false,
+      "inherited_status": "preprint, arXiv:2602.13284v1, primary subject cs.SI (also cs.AI), license CC BY 4.0. No proceedings or journal listed on the abs page."
+    },
+    "zombie-agents": {
+      "source_card": "cards_c/prev-contagion-cluster.json",
+      "editorial_component": true,
+      "author_metadata_source": "swarm-recovery-20261009/metadata-18-bylines.md (primary arXiv, publisher and journal pages, checked 2026-10-09)",
+      "primary_dates": "arXiv v1 2026-02-17; v2 2026-03-05",
+      "metadata_conflicts": "Workshop status only; not an ICLR main-conference publication.",
+      "part_of": "prev-contagion-cluster",
+      "title": "Zombie Agents: Persistent Control of Self-Evolving LLM Agents via Self-Reinforcing Injections",
+      "url": "https://arxiv.org/abs/2602.15654",
+      "partial_author_list": false,
+      "inherited_status": ""
+    }
+  }
+}

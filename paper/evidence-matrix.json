@@ -1,0 +1,1840 @@
+{
+  "schema_version": 1,
+  "scope": "Selected evidence units, not a census or count of unique publications.",
+  "cutoff": "Inherited October 4 manuscript (research cutoff October 3), plus two pre-cutoff works recovered on October 9: an October 2 missed preprint and a September 30 previously scouted lead; bibliography reconciles publication versions.",
+  "coding_notes": {
+    "NR": "Not reported in extracted evidence; not necessarily absent from primary source.",
+    "NA": "Not applicable.",
+    "organization": "Designed, learned, and emergent may coexist.",
+    "scale": "Concurrent, cumulative, capacity kept separate; protocol roles need not imply simultaneous calls.",
+    "quantitative_synthesis": "No outcomes pooled; no experiments rerun.",
+    "provenance": "Per-record chapter/card locators trace inherited evidence; no independent dual coding.",
+    "targeted_recovery": "coherence-driven-contagion (October 2) and rheon-consensus (September 30, already scouted) were qualified from parent-read primary sections on October 9; neither is a post-cutoff publication.",
+    "evaluation_extent": "Configurations, tasks, datasets, trials, seeds, replications, samples, steps, model calls, and edits are recorded separately from cumulative agent identities or sessions. Account/name/registration totals are explicitly marked identity proxies."
+  },
+  "records": [
+    {
+      "id": "kim-scaling-agent-systems",
+      "label": "Kim et al.",
+      "domain": "Scaling and resource tradeoffs",
+      "source_class": "Journal article",
+      "models": "Nine GPT, Gemini, and Claude models.",
+      "composition": "Homogeneous main grid; 13 mixed probes.",
+      "graph": "Independent, centralized, peer debate, hybrid.",
+      "exchange": "Messages and tools; Docker tasks share a container.",
+      "organization": "Designed architectures.",
+      "memory": "Task histories; persistence NR.",
+      "baseline": "Single agent and four team architectures.",
+      "matching": "Tasks, tools, reasoning-token ceilings, not realized use.",
+      "budget": "Mean ceiling about 4,800 reasoning tokens.",
+      "outcome": "Mean relative gain 0.0%; finance +80.8%, PlanCraft −70.0%.",
+      "limits": "Small teams; one run per cell; coding benchmarks use 20 instances per cell.",
+      "scale": {
+        "concurrent": "3 workers plus coordinator where used; size sweep 1–9",
+        "cumulative": "NR",
+        "capacity": "NR"
+      },
+      "citation_keys": [
+        "kim-scaling-agent-systems"
+      ],
+      "provenance": {
+        "archive": "swarm-dynamics-20261003",
+        "source": "build/chapters/w1_t5_t1.md",
+        "locator": "card/short kim-scaling-agent-systems",
+        "field_note": "Manual secondary extraction; NR is field-specific missingness in extracted evidence.",
+        "additional_sources": [
+          "cards/kim-scaling-agent-systems.json"
+        ]
+      },
+      "evaluation_extent": "260 configurations"
+    },
+    {
+      "id": "tran-kiela-equal-budget",
+      "label": "Tran and Kiela",
+      "domain": "Scaling and resource tradeoffs",
+      "source_class": "Preprint",
+      "models": "Qwen3, DeepSeek-R1-Distill, Gemini 2.5.",
+      "composition": "Within-scheme composition NR.",
+      "graph": "Sequential, parallel, roles, debate, ensemble.",
+      "exchange": "Text reasoning and answers.",
+      "organization": "Designed protocols.",
+      "memory": "Within-task text; durable memory NR.",
+      "baseline": "Single agent versus five schemes.",
+      "matching": "Reasoning-token ceilings 100–10,000.",
+      "budget": "Realized open-model use often lower for single agent.",
+      "outcome": "At ceiling 1,000: 0.418 single versus 0.388 best scheme; at 10,000: 0.426 versus 0.423.",
+      "limits": "Multi-hop QA; low-budget and Gemini Pro exceptions.",
+      "scale": {
+        "concurrent": "NR; 2–5 protocol calls",
+        "cumulative": "NR",
+        "capacity": "NR"
+      },
+      "citation_keys": [
+        "tran-kiela-equal-budget"
+      ],
+      "provenance": {
+        "archive": "swarm-dynamics-20261003",
+        "source": "build/chapters/w1_t5_t1.md",
+        "locator": "card/short tran-kiela-equal-budget",
+        "field_note": "Manual secondary extraction; NR is field-specific missingness in extracted evidence."
+      }
+    },
+    {
+      "id": "debate-or-vote",
+      "label": "Debate or Vote",
+      "domain": "Scaling and resource tradeoffs",
+      "source_class": "Conference paper",
+      "models": "Qwen2.5-7B; Llama3.1-8B.",
+      "composition": "Homogeneous.",
+      "graph": "Independent answers, then voting or debate.",
+      "exchange": "Text answers and discussion.",
+      "organization": "Designed protocols.",
+      "memory": "Conversation; durable store NR.",
+      "baseline": "Single answer, majority vote, debate.",
+      "matching": "Question sets; exact compute matching NR.",
+      "budget": "More debate rounds add calls.",
+      "outcome": "Qwen accuracy: 0.769 vote, 0.738 best debate, 0.721 single; Llama: 0.724/0.699/0.620.",
+      "limits": "Seven short-answer datasets; idealized martingale theorem is separate.",
+      "scale": {
+        "concurrent": "NR; five answering agents",
+        "cumulative": "NR",
+        "capacity": "NR"
+      },
+      "citation_keys": [
+        "debate-or-vote"
+      ],
+      "provenance": {
+        "archive": "swarm-dynamics-20261003",
+        "source": "build/chapters/w1_t5_t1.md",
+        "locator": "card/short debate-or-vote",
+        "field_note": "Manual secondary extraction; NR is field-specific missingness in extracted evidence."
+      }
+    },
+    {
+      "id": "illusion-multi-agent-advantage",
+      "label": "Illusion of advantage",
+      "domain": "Scaling and resource tradeoffs",
+      "source_class": "Preprint",
+      "models": "Multiple models including GPT-5; full roster NR here.",
+      "composition": "Varies by generated system.",
+      "graph": "Automatically searched architectures; decentralized teams excluded.",
+      "exchange": "Reasoning messages and tools.",
+      "organization": "Architecture search before execution.",
+      "memory": "NR.",
+      "baseline": "Six system builders versus five-sample voting.",
+      "matching": "Dataset/model pairs; costs measured, not generally matched.",
+      "budget": "Median cost 1.7× voting; 14% of pairs at least 10×.",
+      "outcome": "No system beats voting in 10/18 pairs; hand-designed SMFR decomposition raises GPT-5 from 57.0% to 96.5%.",
+      "limits": "That decomposition costs 1.16× and is task-specific.",
+      "scale": {
+        "concurrent": "NR",
+        "cumulative": "NR",
+        "capacity": "NR"
+      },
+      "citation_keys": [
+        "illusion-multi-agent-advantage"
+      ],
+      "provenance": {
+        "archive": "swarm-dynamics-20261003",
+        "source": "build/chapters/w1_t5_t1.md",
+        "locator": "card/short illusion-multi-agent-advantage",
+        "field_note": "Manual secondary extraction; NR is field-specific missingness in extracted evidence."
+      },
+      "evaluation_extent": "18 dataset–model pairs"
+    },
+    {
+      "id": "lm-teams-distributed-systems",
+      "label": "LM teams as distributed systems",
+      "domain": "Scaling and resource tradeoffs",
+      "source_class": "Preprint",
+      "models": "Sonnet 4.6, Gemini 3 Flash, GPT-5.2.",
+      "composition": "Homogeneous per run.",
+      "graph": "Dependency graphs; external or self-managed allocation.",
+      "exchange": "Code and coordination messages.",
+      "organization": "Designed allocation versus runtime task selection.",
+      "memory": "Task state; durable memory NR.",
+      "baseline": "Single agent; external versus self-allocation.",
+      "matching": "Same 20-function tasks and dependencies.",
+      "budget": "Best cell 3.35× speed at 1.33× tokens.",
+      "outcome": "Median speedup 1.36× externally allocated versus 0.88× self-allocated; failed tests 4 versus 19.",
+      "limits": "Synthetic functions; success partly self-reported.",
+      "scale": {
+        "concurrent": "1–5",
+        "cumulative": "NR",
+        "capacity": "NR"
+      },
+      "citation_keys": [
+        "lm-teams-distributed-systems"
+      ],
+      "provenance": {
+        "archive": "swarm-dynamics-20261003",
+        "source": "build/chapters/w1_t5_t1.md",
+        "locator": "card/short lm-teams-distributed-systems",
+        "field_note": "Manual secondary extraction; NR is field-specific missingness in extracted evidence."
+      }
+    },
+    {
+      "id": "test-time-communication",
+      "label": "Test-time communication",
+      "domain": "Scaling and resource tradeoffs",
+      "source_class": "Preprint",
+      "models": "Sonnet 4.6 on ARC; GPT-5.6 Sol on MNIST.",
+      "composition": "Homogeneous per task.",
+      "graph": "Peers without coordinator.",
+      "exchange": "Shared log directory in one container.",
+      "organization": "Designed equal workers; runtime sharing.",
+      "memory": "Persistent findings and logs.",
+      "baseline": "Teams versus best of independent agents; limited long-single probes.",
+      "matching": "Agent count and per-agent allowances; output-token curves.",
+      "budget": "Advantage requires sufficient budget; input tokens excluded.",
+      "outcome": "Five-agent ARC success 8.0% versus best@5 2.2%; Terminal-Bench pair has no advantage.",
+      "limits": "Gain concentrated in 4/25 games; optimization examples include best runs.",
+      "scale": {
+        "concurrent": "2–5; four in MNIST example",
+        "cumulative": "NR",
+        "capacity": "NR"
+      },
+      "citation_keys": [
+        "test-time-communication"
+      ],
+      "provenance": {
+        "archive": "swarm-dynamics-20261003",
+        "source": "build/chapters/w1_t5_t1.md",
+        "locator": "card/short test-time-communication",
+        "field_note": "Manual secondary extraction; NR is field-specific missingness in extracted evidence."
+      },
+      "evaluation_extent": "20 ARC team runs/size; 64 single runs/game"
+    },
+    {
+      "id": "openai-gpt56-ultra",
+      "label": "GPT-5.6 Ultra",
+      "domain": "Scaling and resource tradeoffs",
+      "source_class": "Vendor report",
+      "models": "GPT-5.6 Sol.",
+      "composition": "Homogeneous.",
+      "graph": "Root with subagents.",
+      "exchange": "Delegation, tools, summaries.",
+      "organization": "Designed hierarchy; native orchestration training reported.",
+      "memory": "Separate contexts; root integration.",
+      "baseline": "Single agent at five effort levels versus teams.",
+      "matching": "Model/task; total output tokens vary.",
+      "budget": "Price and root latency simulated offline.",
+      "outcome": "Sol/Ultra: BrowseComp 90.4/92.2%; SEC-Bench Pro 71.2/74.3%; Terminal-Bench 88.8/91.9%.",
+      "limits": "Published pairs spend differently; sample sizes and intervals NR.",
+      "scale": {
+        "concurrent": "1, 4, 16; 16 on only two tests",
+        "cumulative": "NR",
+        "capacity": "NR"
+      },
+      "citation_keys": [
+        "openai-gpt56-ultra"
+      ],
+      "provenance": {
+        "archive": "swarm-dynamics-20261003",
+        "source": "build/chapters/w1_t5_t1.md",
+        "locator": "card/short openai-gpt56-ultra",
+        "field_note": "Manual secondary extraction; NR is field-specific missingness in extracted evidence."
+      }
+    },
+    {
+      "id": "opus5-card-multiagent",
+      "label": "Opus 5 teams",
+      "domain": "Scaling and resource tradeoffs",
+      "source_class": "System card",
+      "models": "Preliminary Claude Opus 5.",
+      "composition": "Homogeneous.",
+      "graph": "Peer teams with lead; asynchronous subagents.",
+      "exchange": "Messages and tools.",
+      "organization": "Designed alternatives.",
+      "memory": "Separate contexts; single-agent compaction.",
+      "baseline": "Single agent with 1, 3, 10 million-token allowances.",
+      "matching": "Strongest BrowseComp comparison has equal nominal 10 million allowance.",
+      "budget": "Team actual cost about 2.5×; ideal-cache cost model.",
+      "outcome": "BrowseComp 93.6% versus 90.5%; ProgramBench target reached 2.2× faster at about 2.5× tokens.",
+      "limits": "Nominal allowance is not realized spend; BrowseComp intervals NR.",
+      "scale": {
+        "concurrent": "5 or 10; asynchronous count varies",
+        "cumulative": "NR",
+        "capacity": "NR"
+      },
+      "citation_keys": [
+        "opus5-card-multiagent"
+      ],
+      "provenance": {
+        "archive": "swarm-dynamics-20261003",
+        "source": "build/chapters/w1_t5_t1.md",
+        "locator": "card/short opus5-card-multiagent",
+        "field_note": "Manual secondary extraction; NR is field-specific missingness in extracted evidence."
+      }
+    },
+    {
+      "id": "opus55-card",
+      "label": "Opus 5.5 teams",
+      "domain": "Scaling and resource tradeoffs",
+      "source_class": "System card",
+      "models": "Opus 5.5; Opus 5 and Fable 5.1 comparisons.",
+      "composition": "Homogeneous per condition.",
+      "graph": "Five peers or leader/subagents; task-dependent larger networks.",
+      "exchange": "Messages, shared machine, notes, code.",
+      "organization": "Designed lead/tools; emergent deputies in Lean run.",
+      "memory": "Shared knowledge base and artifacts.",
+      "baseline": "Long single agent and alternative team structures.",
+      "matching": "Target-score curves; large teams fixed at 24 hours.",
+      "budget": "About 1.9× the single agent's tokens at the ProgramBench target (plot reading); large-team spending NR.",
+      "outcome": "Five agents reach 60% tests 2.7× faster than one agent; knowledge-reader accuracy 0.53/0.70/0.74 at 1/10/100.",
+      "limits": "Reader accuracy is not memory capacity; one network shown per task.",
+      "scale": {
+        "concurrent": "1, 5; larger teams 1, 10, 30, 100",
+        "cumulative": "NR",
+        "capacity": "NR"
+      },
+      "citation_keys": [
+        "opus55-card"
+      ],
+      "provenance": {
+        "archive": "swarm-dynamics-20261003",
+        "source": "build/chapters/w1_t5_t1.md",
+        "locator": "card/short opus55-card",
+        "field_note": "Manual secondary extraction; NR is field-specific missingness in extracted evidence."
+      },
+      "evaluation_extent": "Three attempts per large-team point"
+    },
+    {
+      "id": "kimi-agent-swarm",
+      "label": "Kimi Agent Swarm",
+      "domain": "Scaling and resource tradeoffs",
+      "source_class": "Technical report",
+      "models": "Kimi K2.5; K2.6 follow-up.",
+      "composition": "Same base model in coordinator/workers.",
+      "graph": "Star; workers do not talk directly.",
+      "exchange": "Prompts, tools, one worker return message.",
+      "organization": "PARL-trained coordinator; frozen workers; designed hierarchy.",
+      "memory": "Separate contexts and summaries.",
+      "baseline": "Single agent with/without context management.",
+      "matching": "Task/model; actual spending not matched.",
+      "budget": "Speed in critical steps; tokens/dollars NR.",
+      "outcome": "K2.5 BrowseComp 78.4% versus 60.6% uncompressed single, or 74.9% with context clearing.",
+      "limits": "Capacity is a product ceiling; stronger memory baseline narrows gain.",
+      "scale": {
+        "concurrent": "Training mean about 8–14 helpers",
+        "cumulative": "NR",
+        "capacity": "K2.5 up to 100 helpers; K2.6 up to 300"
+      },
+      "citation_keys": [
+        "kimi-agent-swarm"
+      ],
+      "provenance": {
+        "archive": "swarm-dynamics-20261003",
+        "source": "build/chapters/w1_t5_t1.md",
+        "locator": "card/short kimi-agent-swarm",
+        "field_note": "Manual secondary extraction; NR is field-specific missingness in extracted evidence."
+      }
+    },
+    {
+      "id": "agensh-1024",
+      "label": "Agensh",
+      "domain": "Organization and task allocation",
+      "source_class": "Technical preprint",
+      "models": "GPT-5.6-sol in Copilot.",
+      "composition": "Homogeneous; worker IDs differ.",
+      "graph": "No central coordinator; integrators emerge.",
+      "exchange": "Gitea, Mattermost, typed append-only board.",
+      "organization": "Designed claim/verify/merge loop; emergent division of labor.",
+      "memory": "Repository; latest 2,000 notes plus history search.",
+      "baseline": "Single agent and 8/32/128 teams; 1,024 only on pandoc.",
+      "matching": "Six-hour deadline; staggered starts; not compute.",
+      "budget": "Tokens and dollars NR.",
+      "outcome": "Pandoc 33.89% single to 55.06% at 1,024; five-task mean 19.31% to 28.78% at 128.",
+      "limits": "Repetitions NR; no hierarchy control; some task curves decline.",
+      "scale": {
+        "concurrent": "Peak 1,020 active in 37.5-s replay bin",
+        "cumulative": "1,024 participants",
+        "capacity": "NR"
+      },
+      "citation_keys": [
+        "agensh-1024"
+      ],
+      "provenance": {
+        "archive": "swarm-dynamics-20261003",
+        "source": "build/chapters/w2_t3_wild.md",
+        "locator": "card/short agensh-1024",
+        "field_note": "Manual secondary extraction; NR is field-specific missingness in extracted evidence.",
+        "additional_sources": [
+          "cards/agensh-1024.json",
+          "build/meta/corpus_meta.json",
+          "build/meta/digest.json"
+        ]
+      }
+    },
+    {
+      "id": "anthropic-c-compiler",
+      "label": "C compiler campaign",
+      "domain": "Organization and task allocation",
+      "source_class": "Engineering report",
+      "models": "Claude Opus 4.6.",
+      "composition": "Homogeneous.",
+      "graph": "Repository-mediated peers; no direct chat.",
+      "exchange": "Git locks, branches, notes, tests.",
+      "organization": "Designed tools and some human-assigned roles; runtime task claiming.",
+      "memory": "Repository; fresh context each session.",
+      "baseline": "No single-agent or size control.",
+      "matching": "NA.",
+      "budget": "About 2 billion input and 140 million output tokens; under $20,000.",
+      "outcome": "Bootable Linux kernel; human GCC-based decomposition removed shared bottleneck.",
+      "limits": "One campaign; independent testing found miscompilations.",
+      "scale": {
+        "concurrent": "16",
+        "cumulative": "About 2,000 sessions in two weeks",
+        "capacity": "NR"
+      },
+      "citation_keys": [
+        "anthropic-c-compiler"
+      ],
+      "provenance": {
+        "archive": "swarm-dynamics-20261003",
+        "source": "build/chapters/w2_t3_wild.md",
+        "locator": "card/short anthropic-c-compiler",
+        "field_note": "Manual secondary extraction; NR is field-specific missingness in extracted evidence."
+      }
+    },
+    {
+      "id": "cursor-scaling",
+      "label": "Cursor engineering sequence",
+      "domain": "Organization and task allocation",
+      "source_class": "Engineering reports",
+      "models": "Several model configurations; composition changes by iteration.",
+      "composition": "Homogeneous and role-dependent mixtures.",
+      "graph": "Flat shared-file prototype; recursive planner/worker hierarchy.",
+      "exchange": "Locks, branches, written reports.",
+      "organization": "Engineers redesigned organization from failure logs.",
+      "memory": "Repository and agent-curated field guide.",
+      "baseline": "Flat prototype; old/new hierarchies; no long-single control.",
+      "matching": "Later SQLite comparisons use four-hour deadlines.",
+      "budget": "July costs vary strongly by model assignment.",
+      "outcome": "Flat 20-worker throughput estimated at 1–3 workers; newer SQLite runs 73–85% tests by four hours.",
+      "limits": "Different systems across iterations; not randomized topology test.",
+      "scale": {
+        "concurrent": "20 in flat trial; later hundreds, exact peak NR",
+        "cumulative": "NR",
+        "capacity": "NR"
+      },
+      "citation_keys": [
+        "cursor-scaling-long-running",
+        "cursor-self-driving",
+        "cursor-swarm-economics"
+      ],
+      "provenance": {
+        "archive": "swarm-dynamics-20261003",
+        "source": "build/chapters/w2_t3_wild.md",
+        "locator": "card/short cursor-scaling",
+        "field_note": "Manual secondary extraction; NR is field-specific missingness in extracted evidence."
+      }
+    },
+    {
+      "id": "sat-teams",
+      "label": "Self-Organizing Agent Teams",
+      "domain": "Organization and task allocation",
+      "source_class": "Preprint",
+      "models": "o3-mini, Sonnet 4, DeepSeek-V3; separate knowledge team.",
+      "composition": "Heterogeneous triples; homogeneous ablation.",
+      "graph": "Discussion phases follow learned strategy.",
+      "exchange": "Proposals, critique, synthesis.",
+      "organization": "Strategies learned on 15 tasks then frozen; runtime task division adapts.",
+      "memory": "Ten-strategy bank and task conversation.",
+      "baseline": "Best member, hand-designed protocols, homogeneous team, linearized single model.",
+      "matching": "Linearization approximately matches computation.",
+      "budget": "Tokens, dollars, latency NR.",
+      "outcome": "Math/physics 66.7% versus 48.8% best member and 58.7% linearized; AIME 2026 linearized gap 2.7 points.",
+      "limits": "Homogeneous control uses strategies learned for mixed team.",
+      "scale": {
+        "concurrent": "NR; three protocol agents",
+        "cumulative": "NR",
+        "capacity": "NR"
+      },
+      "citation_keys": [
+        "sat-teams"
+      ],
+      "provenance": {
+        "archive": "swarm-dynamics-20261003",
+        "source": "build/chapters/w2_t3_wild.md",
+        "locator": "card/short sat-teams",
+        "field_note": "Manual secondary extraction; NR is field-specific missingness in extracted evidence."
+      }
+    },
+    {
+      "id": "teams-hold-experts-back",
+      "label": "Teams Hold Experts Back",
+      "domain": "Organization and task allocation",
+      "source_class": "Conference paper",
+      "models": "Strong and weak models including GPT-5 and older small models.",
+      "composition": "Deliberate expertise imbalance; homogeneous controls.",
+      "graph": "Unstructured peers; four rounds.",
+      "exchange": "Full discussion text.",
+      "organization": "Designed flat protocol; expertise cue varied.",
+      "memory": "Conversation only; no tools or durable memory.",
+      "baseline": "Best member, voting, oracle expertise cue.",
+      "matching": "Same questions; calls/tokens not matched.",
+      "budget": "Protocol accounting: about 25–28 calls; tokens NR.",
+      "outcome": "Unlabeled teams do not beat best member on five AI benchmarks; expertise cue helps on four.",
+      "limits": "Small gaps may be noise; short tasks and unequal expertise.",
+      "scale": {
+        "concurrent": "NR; groups 2, 4, 8",
+        "cumulative": "NR",
+        "capacity": "NR"
+      },
+      "citation_keys": [
+        "teams-hold-experts-back"
+      ],
+      "provenance": {
+        "archive": "swarm-dynamics-20261003",
+        "source": "build/chapters/w2_t3_wild.md",
+        "locator": "card/short teams-hold-experts-back",
+        "field_note": "Manual secondary extraction; NR is field-specific missingness in extracted evidence."
+      }
+    },
+    {
+      "id": "cooperbench",
+      "label": "CooperBench",
+      "domain": "Organization and task allocation",
+      "source_class": "Preprint",
+      "models": "Five models including GPT-5, Sonnet 4.5, MiniMax-M2.",
+      "composition": "Within-team composition NR here.",
+      "graph": "Pairs with chat on/off; larger-team probe.",
+      "exchange": "Overlapping edits and optional chat.",
+      "organization": "Designed task split; occasional runtime roles.",
+      "memory": "Repository edits; durable memory NR.",
+      "baseline": "Single agent implementing both features.",
+      "matching": "Total requested work; spending matching NR.",
+      "budget": "NR.",
+      "outcome": "GPT-5 pair success 0.28 versus 0.48 single; chat reduces merge conflicts without raising success.",
+      "limits": "Pairs dominate evidence; conflict reduction is not task completion.",
+      "scale": {
+        "concurrent": "2; size probe 3–4",
+        "cumulative": "NR",
+        "capacity": "NR"
+      },
+      "citation_keys": [
+        "cooperbench"
+      ],
+      "provenance": {
+        "archive": "swarm-dynamics-20261003",
+        "source": "build/chapters/w2_t3_wild.md",
+        "locator": "card/short cooperbench",
+        "field_note": "Manual secondary extraction; NR is field-specific missingness in extracted evidence."
+      },
+      "evaluation_extent": "652 tasks; 46-task size probe"
+    },
+    {
+      "id": "worse-together",
+      "label": "Worse Together",
+      "domain": "Organization and task allocation",
+      "source_class": "Preprint",
+      "models": "Opus 5, Sonnet 5 in highlighted conditions.",
+      "composition": "Homogeneous in highlighted runs.",
+      "graph": "Peer mailboxes versus central coordinator.",
+      "exchange": "Messages and shared-resource actions.",
+      "organization": "Designed agent-per-user setup; leader/process ablations.",
+      "memory": "Shared environment; durable memory NR.",
+      "baseline": "Coordinator, no communication, leader, procedural interventions.",
+      "matching": "Same scenario; compute matching NR.",
+      "budget": "NR.",
+      "outcome": "API allocation: Opus peers 30% versus coordinator 64% of optimum; Sonnet 12% versus 32%.",
+      "limits": "Communication sometimes harms; benchmark unavailable at snapshot.",
+      "scale": {
+        "concurrent": "4–52 across scenarios",
+        "cumulative": "NR",
+        "capacity": "NR"
+      },
+      "citation_keys": [
+        "worse-together"
+      ],
+      "provenance": {
+        "archive": "swarm-dynamics-20261003",
+        "source": "build/chapters/w2_t3_wild.md",
+        "locator": "card/short worse-together",
+        "field_note": "Manual secondary extraction; NR is field-specific missingness in extracted evidence."
+      },
+      "evaluation_extent": "77 scenarios in four environments"
+    },
+    {
+      "id": "wideseek-r1",
+      "label": "WideSeek-R1",
+      "domain": "Organization and task allocation",
+      "source_class": "Preprint",
+      "models": "Qwen3-4B.",
+      "composition": "Homogeneous coordinator/workers.",
+      "graph": "Fixed star; recursion disabled.",
+      "exchange": "Search results and table entries.",
+      "organization": "Multi-agent RL; designed hierarchy.",
+      "memory": "Separate contexts and returned evidence.",
+      "baseline": "Single-agent training; untrained multi-agent model.",
+      "matching": "Training data; inference spending not shown equal.",
+      "budget": "NR.",
+      "outcome": "WideSearch item F1 40.0% versus 28.1% single and 31.2% untrained multi-agent.",
+      "limits": "Narrow table search; fully correct tables 0.4%; version 3.",
+      "scale": {
+        "concurrent": "Up to ten helpers",
+        "cumulative": "NR",
+        "capacity": "NR"
+      },
+      "citation_keys": [
+        "wideseek-r1"
+      ],
+      "provenance": {
+        "archive": "swarm-dynamics-20261003",
+        "source": "build/chapters/w1_t5_t1.md",
+        "locator": "card/short wideseek-r1",
+        "field_note": "Manual secondary extraction; NR is field-specific missingness in extracted evidence."
+      },
+      "evaluation_extent": "About 20,000 training tasks"
+    },
+    {
+      "id": "recursive-language-models",
+      "label": "Recursive Language Models",
+      "domain": "Memory and information integration",
+      "source_class": "Preprint",
+      "models": "GPT-5; Qwen3-Coder; model-matched Claude comparison.",
+      "composition": "Root may call itself or cheaper model.",
+      "graph": "Recursive call tree; main subcalls sequential, no peer exchange.",
+      "exchange": "Python environment and returned strings.",
+      "organization": "Designed recursive harness; root chooses operations.",
+      "memory": "Input stored outside context in a variable.",
+      "baseline": "Direct model, retrieval, compaction, coding agents.",
+      "matching": "Task/model comparisons; spending variable.",
+      "budget": "Mean query cost comparable to base model with heavy tail; slower execution.",
+      "outcome": "BrowseComp-Plus 91.3% on 6–11 million tokens versus 51.0% BM25 and 70.5% compaction.",
+      "limits": "Not a concurrent swarm; small samples; quality still declines with length.",
+      "scale": {
+        "concurrent": "Generally one active call in main experiments",
+        "cumulative": "NR",
+        "capacity": "NA"
+      },
+      "citation_keys": [
+        "recursive-language-models"
+      ],
+      "provenance": {
+        "archive": "swarm-dynamics-20261003",
+        "source": "build/chapters/w1_t5_t1.md",
+        "locator": "card/short recursive-language-models",
+        "field_note": "Manual secondary extraction; NR is field-specific missingness in extracted evidence."
+      },
+      "evaluation_extent": "Number of subcalls varies"
+    },
+    {
+      "id": "anthropic-art-enzymes",
+      "label": "Reverse-transcriptase campaign",
+      "domain": "Memory and information integration",
+      "source_class": "Lab report",
+      "models": "Claude Mythos 5 in Claude Code.",
+      "composition": "Homogeneous across roles.",
+      "graph": "Worker/checker pairs; librarian; editor; staged pipeline.",
+      "exchange": "Versioned artifacts and shared knowledge base.",
+      "organization": "Designed five stages and roles; agents create follow-up tasks.",
+      "memory": "Librarian updates knowledge base after tasks.",
+      "baseline": "No full-campaign single-agent control; ten reruns; targeted single-model probes.",
+      "matching": "Rerun scope specified; no swarm/solo budget match.",
+      "budget": "21.5 hours; 215.6 million tokens excluding cache rereads.",
+      "outcome": "New ART branch and repeat-array observation; ten reruns missed the repeat array.",
+      "limits": "Critical observation came from one worker inspecting raw DNA; enzyme function not established.",
+      "scale": {
+        "concurrent": "Observed mean NR; configured maximum 58",
+        "cumulative": "949 sessions",
+        "capacity": "58 concurrent sessions"
+      },
+      "citation_keys": [
+        "anthropic-art-enzymes"
+      ],
+      "provenance": {
+        "archive": "swarm-dynamics-20261003",
+        "source": "build/chapters/w1_t5_t1.md",
+        "locator": "card/short anthropic-art-enzymes",
+        "field_note": "Manual secondary extraction; NR is field-specific missingness in extracted evidence."
+      },
+      "evaluation_extent": "119 tasks, 98 agent-created"
+    },
+    {
+      "id": "coral",
+      "label": "CORAL",
+      "domain": "Memory and information integration",
+      "source_class": "Conference paper",
+      "models": "Claude Opus 4.6.",
+      "composition": "Homogeneous.",
+      "graph": "Peers without fixed roles.",
+      "exchange": "Shared attempts, commits, notes, skills.",
+      "organization": "Designed persistent search harness; runtime reuse.",
+      "memory": "Persistent optimization history.",
+      "baseline": "Single agent, best of four independent runs, memory ablation.",
+      "matching": "Task and objective; evaluation count not matched.",
+      "budget": "596 versus 56 evaluations in highlighted comparison; successful fraction 9% versus 43%.",
+      "outcome": "Kernel reaches 1,103 cycles with team versus 1,350 single and 1,180 best independent.",
+      "limits": "Four-agent gain on one highlighted task; record-count discrepancy in source.",
+      "scale": {
+        "concurrent": "1 or 4",
+        "cumulative": "NR",
+        "capacity": "NR"
+      },
+      "citation_keys": [
+        "coral"
+      ],
+      "provenance": {
+        "archive": "swarm-dynamics-20261003",
+        "source": "build/chapters/w1_t5_t1.md",
+        "locator": "card/short coral",
+        "field_note": "Manual secondary extraction; NR is field-specific missingness in extracted evidence."
+      }
+    },
+    {
+      "id": "delm-shared-context",
+      "label": "DeLM",
+      "domain": "Memory and information integration",
+      "source_class": "Preprint",
+      "models": "Gemini 3 Flash; Opus 5.5; GPT-6 Astra.",
+      "composition": "Homogeneous within highlighted configurations.",
+      "graph": "Equal workers without coordinator.",
+      "exchange": "Task queue and shared context board.",
+      "organization": "Designed coordination primitives; runtime task claiming.",
+      "memory": "Shared context and findings.",
+      "baseline": "Orchestrator system; single Claude Code; coordination ablations.",
+      "matching": "SWE-bench pair at same $0.24; long-task cost measured.",
+      "budget": "Opus pair: $17.91 versus $20.31; 64.77 versus 130.75 minutes.",
+      "outcome": "SWE-bench 63.72% versus 55.26%; ten-task Terminal-Bench 4.0 93.33% versus 81.67% single.",
+      "limits": "Long tasks selected by Codex duration; four agents can reduce accuracy; Astra costs more.",
+      "scale": {
+        "concurrent": "2 or 4",
+        "cumulative": "NR",
+        "capacity": "NR"
+      },
+      "citation_keys": [
+        "delm-shared-context"
+      ],
+      "provenance": {
+        "archive": "swarm-dynamics-20261003",
+        "source": "build/chapters/w1_t5_t1.md",
+        "locator": "card/short delm-shared-context",
+        "field_note": "Manual secondary extraction; NR is field-specific missingness in extracted evidence."
+      }
+    },
+    {
+      "id": "hiddenbench",
+      "label": "HiddenBench",
+      "domain": "Memory and information integration",
+      "source_class": "Conference paper",
+      "models": "GPT-4o/4.1/5, Gemini 2.5, Qwen3, Llama 4.",
+      "composition": "Composition within each team NR here.",
+      "graph": "Small discussion groups; forced-disclosure variants.",
+      "exchange": "Distributed facts and text messages.",
+      "organization": "Designed hidden-profile task and communication protocol.",
+      "memory": "Private facts plus discussion history.",
+      "baseline": "Single agent with all facts; compulsory first-round disclosure.",
+      "matching": "Task; information distribution deliberately differs.",
+      "budget": "NR.",
+      "outcome": "Group accuracy 30.1% versus full-information single 80.7%; disclosure yields 92.6% GPT-4.1 and 98.2% Gemini Flash.",
+      "limits": "Information-access control, not equal-input scaling; no Claude in source.",
+      "scale": {
+        "concurrent": "3–4; larger-size probe up to 7",
+        "cumulative": "NR",
+        "capacity": "NR"
+      },
+      "citation_keys": [
+        "hiddenbench"
+      ],
+      "provenance": {
+        "archive": "swarm-dynamics-20261003",
+        "source": "build/chapters/w1_t5_t1.md",
+        "locator": "card/short hiddenbench",
+        "field_note": "Manual secondary extraction; NR is field-specific missingness in extracted evidence."
+      },
+      "evaluation_extent": "65 tasks"
+    },
+    {
+      "id": "silo-bench",
+      "label": "Silo-Bench",
+      "domain": "Memory and information integration",
+      "source_class": "Conference paper",
+      "models": "DeepSeek-V3.1, GPT-OSS-120B, Qwen3-Next-80B-A3B.",
+      "composition": "Homogeneous.",
+      "graph": "Agents choose stars/chains under task constraints.",
+      "exchange": "Messages carrying partitioned data.",
+      "organization": "Designed distributed task; runtime communication pattern.",
+      "memory": "Private data plus received information.",
+      "baseline": "Single agent with all data; team-size sweep.",
+      "matching": "Underlying algorithmic problem, not information placement.",
+      "budget": "NR.",
+      "outcome": "DeepSeek success 61.2% at two agents to 18.1% at 100; all-to-all redistribution fails at 50+.",
+      "limits": "Exact algorithmic tasks; agents often terminate before collecting data or fail to converge.",
+      "scale": {
+        "concurrent": "2–100",
+        "cumulative": "NR",
+        "capacity": "NR"
+      },
+      "citation_keys": [
+        "silo-bench"
+      ],
+      "provenance": {
+        "archive": "swarm-dynamics-20261003",
+        "source": "build/chapters/w1_t5_t1.md",
+        "locator": "card/short silo-bench",
+        "field_note": "Manual secondary extraction; NR is field-specific missingness in extracted evidence."
+      },
+      "evaluation_extent": "One run per configuration"
+    },
+    {
+      "id": "multi-agent-transactive-memory",
+      "label": "Transactive memory index",
+      "domain": "Memory and information integration",
+      "source_class": "Preprint",
+      "models": "Trajectories from dozens of models; ALFWorld index dominated by benchmark seq2seq model.",
+      "composition": "Heterogeneous archive, not a live mixed team.",
+      "graph": "Retrieval from past trajectories.",
+      "exchange": "Search index and retrieved experience.",
+      "organization": "Designed memory/ranker.",
+      "memory": "Cross-run trajectory index.",
+      "baseline": "No retrieval; different rankers; out-of-type retrieval.",
+      "matching": "Task; index size varied.",
+      "budget": "Steps 11.77 to 10.35 on ALFWorld; token/dollar cost NR.",
+      "outcome": "ALFWorld success 0.4708 to 0.6431; WebArena 0.1818 to 0.2045.",
+      "limits": "77.82% of ALFWorld index from one seq2seq source; contribution not ablated.",
+      "scale": {
+        "concurrent": "One executing agent in described retrieval test",
+        "cumulative": "NR",
+        "capacity": "NA"
+      },
+      "citation_keys": [
+        "multi-agent-transactive-memory"
+      ],
+      "provenance": {
+        "archive": "swarm-dynamics-20261003",
+        "source": "build/chapters/w1_t5_t1.md",
+        "locator": "card/short multi-agent-transactive-memory",
+        "field_note": "Manual secondary extraction; NR is field-specific missingness in extracted evidence."
+      },
+      "evaluation_extent": "Index contains many past runs; count NR here"
+    },
+    {
+      "id": "prev-swarmworld",
+      "label": "SwarmWorld",
+      "domain": "Memory and information integration",
+      "source_class": "Preprint",
+      "models": "gpt-5.6-luna.",
+      "composition": "Homogeneous.",
+      "graph": "Local embodied interaction in common grid; messages also available.",
+      "exchange": "Visible constructions and executable artifacts.",
+      "organization": "Designed environment; no assigned roles.",
+      "memory": "Persistent world survives removal of agents.",
+      "baseline": "Best of N isolated searches with same number of decisions.",
+      "matching": "Decision count; four seeds per condition.",
+      "budget": "Token/dollar totals NR.",
+      "outcome": "At tick 3,200: portfolio persistence 0.2474/0.2365 versus 0.1794; verified inventions 5.75/7.00 versus 2.75.",
+      "limits": "Best single artifact still favors isolated search; toy physics and one model.",
+      "scale": {
+        "concurrent": "Up to 200; key controlled comparison at 100",
+        "cumulative": "NR",
+        "capacity": "NR"
+      },
+      "citation_keys": [
+        "prev-swarmworld"
+      ],
+      "provenance": {
+        "archive": "swarm-dynamics-20261003",
+        "source": "build/chapters/w1_t5_t1.md",
+        "locator": "card/short prev-swarmworld",
+        "field_note": "Manual secondary extraction; NR is field-specific missingness in extracted evidence."
+      }
+    },
+    {
+      "id": "artificial-hivemind",
+      "label": "Artificial Hivemind",
+      "domain": "Diversity and correlated behavior",
+      "source_class": "Conference paper; reassessment preprint",
+      "models": "25 main-paper models; larger appendix pool; later 15-model reassessment.",
+      "composition": "Independent samples within/across models.",
+      "graph": "No interaction graph.",
+      "exchange": "Independent text outputs.",
+      "organization": "Designed sampling study; no organization.",
+      "memory": "No cross-sample memory.",
+      "baseline": "Within-model and between-model similarity; reassessment uses distinct-idea reference.",
+      "matching": "Same prompts; embedding measurement.",
+      "budget": "NR.",
+      "outcome": "79% of main-pool model/question sets exceed cosine 0.8; reassessment reproduces within-model similarity about 0.805.",
+      "limits": "Cosine similarity does not itself establish few ideas; no agents or communication.",
+      "scale": {
+        "concurrent": "NA",
+        "cumulative": "NA",
+        "capacity": "NA"
+      },
+      "citation_keys": [
+        "artificial-hivemind",
+        "artificial-hivemind-reevaluation"
+      ],
+      "provenance": {
+        "archive": "swarm-dynamics-20261003",
+        "source": "build/chapters/w4_t4_beliefs.md",
+        "locator": "card/short artificial-hivemind",
+        "field_note": "Manual secondary extraction; NR is field-specific missingness in extracted evidence."
+      },
+      "evaluation_extent": "50 answers per selected model/question"
+    },
+    {
+      "id": "attractor-states-ko-geiping-paper",
+      "label": "Ko and Geiping",
+      "domain": "Diversity and correlated behavior",
+      "source_class": "Preprint",
+      "models": "Multiple models, including GPT-4o-mini and Claude Haiku 4.5.",
+      "composition": "Homogeneous and heterogeneous pairs.",
+      "graph": "Pairwise dialogue.",
+      "exchange": "Text debate.",
+      "organization": "Designed paired protocol.",
+      "memory": "Twenty-turn conversation history.",
+      "baseline": "Self-pairs versus mixed pairs and endpoint trajectories.",
+      "matching": "Dialogue length and protocol.",
+      "budget": "NR.",
+      "outcome": "Mixed endpoints converge only partly (23.6%); agreement rises 0.28 to 0.69 while refutation falls 0.16 to 0.06.",
+      "limits": "No task-quality measurement; mostly smaller models; pair results do not measure swarms.",
+      "scale": {
+        "concurrent": "2",
+        "cumulative": "NR",
+        "capacity": "NA"
+      },
+      "citation_keys": [
+        "attractor-states-ko-geiping-paper"
+      ],
+      "provenance": {
+        "archive": "swarm-dynamics-20261003",
+        "source": "build/chapters/w4_t4_beliefs.md",
+        "locator": "card/short attractor-states",
+        "field_note": "Manual secondary extraction; NR is field-specific missingness in extracted evidence."
+      }
+    },
+    {
+      "id": "semantic-collapse",
+      "label": "Semantic collapse",
+      "domain": "Diversity and correlated behavior",
+      "source_class": "Preprint",
+      "models": "GPT-4-mini, DeepSeek-V3, Phi-4, GPT-5.6 Terra, Sonnet 5; intervention model differs.",
+      "composition": "Homogeneous baseline; one older three-model mixture.",
+      "graph": "Closed conversational groups.",
+      "exchange": "Short text messages.",
+      "organization": "Designed open-ended environment; no roles/rewards in baseline.",
+      "memory": "Conversation; external sources absent.",
+      "baseline": "Human discussions; 13 diversity interventions.",
+      "matching": "Volume/topic for human comparison; interventions differ.",
+      "budget": "Up to 1,000 rounds, messages up to 200 tokens.",
+      "outcome": "Lexical growth coexists with semantic plateau; mixture does not improve within-run semantic spread.",
+      "limits": "Embedding-based outcome; mixture only one older trio; novelty RL can damage coherence.",
+      "scale": {
+        "concurrent": "3; short size probes 5 or 10",
+        "cumulative": "NR",
+        "capacity": "NA"
+      },
+      "citation_keys": [
+        "semantic-collapse"
+      ],
+      "provenance": {
+        "archive": "swarm-dynamics-20261003",
+        "source": "build/chapters/w4_t4_beliefs.md",
+        "locator": "card/short semantic-collapse",
+        "field_note": "Manual secondary extraction; NR is field-specific missingness in extracted evidence."
+      },
+      "evaluation_extent": "15 baseline runs"
+    },
+    {
+      "id": "ringelmann-effect",
+      "label": "Ringelmann effect",
+      "domain": "Diversity and correlated behavior",
+      "source_class": "Preprint",
+      "models": "Qwen2.5-7B/32B and other open 7–32B models.",
+      "composition": "Homogeneous main teams; three-family mixture probe.",
+      "graph": "Dense debate versus isolated self-reflection.",
+      "exchange": "Text answers and discussion.",
+      "organization": "Designed protocols.",
+      "memory": "Within-task history.",
+      "baseline": "Debate versus private self-reflection; mixed versus homogeneous.",
+      "matching": "Task/model; token costs measured.",
+      "budget": "10–46× prompt tokens per effective agent in highlighted settings.",
+      "outcome": "At N=30, effective size 1.12 on MMLU-Hard and 1.79 GSM-Hard; accuracy within two points of self-reflection.",
+      "limits": "Effective size is an estimator of dependence; small models only.",
+      "scale": {
+        "concurrent": "NR; up to 30 protocol agents",
+        "cumulative": "NR",
+        "capacity": "NR"
+      },
+      "citation_keys": [
+        "ringelmann-effect"
+      ],
+      "provenance": {
+        "archive": "swarm-dynamics-20261003",
+        "source": "build/chapters/w4_t4_beliefs.md",
+        "locator": "card/short ringelmann-effect",
+        "field_note": "Manual secondary extraction; NR is field-specific missingness in extracted evidence."
+      }
+    },
+    {
+      "id": "automated-w2s-researcher",
+      "label": "Weak-to-strong researcher",
+      "domain": "Diversity and correlated behavior",
+      "source_class": "Lab report",
+      "models": "Claude Opus 4.6; later Opus 4.8 continuation.",
+      "composition": "Homogeneous.",
+      "graph": "Peers without manager.",
+      "exchange": "Shared forum and code store.",
+      "organization": "Designed harness; human-assigned research directions versus identical prompts.",
+      "memory": "Persistent findings/code.",
+      "baseline": "Directed versus undirected team; limited human baseline.",
+      "matching": "Initial task and model; full resource matching NR.",
+      "budget": "Directed run about 800 agent-hours and $18,000 over five days.",
+      "outcome": "PGR 0.97 directed versus 0.61 undirected; undirected idea-family entropy reaches zero.",
+      "limits": "Human comparator modest; validation repeatedly queried; later initial-idea diversity intervention failed.",
+      "scale": {
+        "concurrent": "9 in initial study; later teams 5",
+        "cumulative": "NR",
+        "capacity": "NR"
+      },
+      "citation_keys": [
+        "automated-w2s-researcher"
+      ],
+      "provenance": {
+        "archive": "swarm-dynamics-20261003",
+        "source": "build/chapters/w4_t4_beliefs.md",
+        "locator": "card/short automated-w2s-researcher",
+        "field_note": "Manual secondary extraction; NR is field-specific missingness in extracted evidence."
+      },
+      "evaluation_extent": "One initial run/condition; seven later runs/variant"
+    },
+    {
+      "id": "diversity-scaling",
+      "label": "Diversity Scaling",
+      "domain": "Diversity and correlated behavior",
+      "source_class": "Preprint",
+      "models": "Qwen2.5-7B, Llama3.1-8B, Mistral-7B.",
+      "composition": "Model and persona diversity varied factorially.",
+      "graph": "Voting or debate.",
+      "exchange": "Independent initial answers, then aggregation/discussion.",
+      "organization": "Designed composition/protocol.",
+      "memory": "Within-task history.",
+      "baseline": "Homogeneous, persona-diverse, model-diverse, combined teams.",
+      "matching": "Task suite; exact dollar/token matching NR.",
+      "budget": "NR.",
+      "outcome": "Two fully diverse agents: 67.71 versus 65.34 for 16 homogeneous in voting; 67.90 versus 65.48 in debate.",
+      "limits": "Small models; no intervals; claim does not hold on every dataset.",
+      "scale": {
+        "concurrent": "NR; 2–16 protocol agents",
+        "cumulative": "NR",
+        "capacity": "NR"
+      },
+      "citation_keys": [
+        "diversity-scaling"
+      ],
+      "provenance": {
+        "archive": "swarm-dynamics-20261003",
+        "source": "build/chapters/w4_t4_beliefs.md",
+        "locator": "card/short diversity-scaling",
+        "field_note": "Manual secondary extraction; NR is field-specific missingness in extracted evidence."
+      }
+    },
+    {
+      "id": "deliberative-crowds",
+      "label": "Deliberative Crowds",
+      "domain": "Diversity and correlated behavior",
+      "source_class": "Preprint",
+      "models": "Haiku 4.5, GPT-5-nano, Gemini 3.1 Flash Lite.",
+      "composition": "Mixed triples versus copies of one model.",
+      "graph": "Small peer discussion, up to ten rounds.",
+      "exchange": "Short messages after independent judgments.",
+      "organization": "Designed protocol; stop at agreement.",
+      "memory": "Conversation history.",
+      "baseline": "Average independent judgment; homogeneous discussion; best member.",
+      "matching": "Same four tasks; spending not matched.",
+      "budget": "NR.",
+      "outcome": "Mixed deliberation improves on independent aggregate (d=0.48); homogeneous debate does not show improvement.",
+      "limits": "Best independent model still beats mixed group in three of four tasks.",
+      "scale": {
+        "concurrent": "NR; three agents in protocol",
+        "cumulative": "NR",
+        "capacity": "NR"
+      },
+      "citation_keys": [
+        "deliberative-crowds"
+      ],
+      "provenance": {
+        "archive": "swarm-dynamics-20261003",
+        "source": "build/chapters/w4_t4_beliefs.md",
+        "locator": "card/short deliberative-crowds",
+        "field_note": "Manual secondary extraction; NR is field-specific missingness in extracted evidence."
+      }
+    },
+    {
+      "id": "interaction-tax",
+      "label": "Interaction Tax",
+      "domain": "Diversity and correlated behavior",
+      "source_class": "Workshop paper",
+      "models": "Sonnet 4, GPT-4o, Gemini 2.5 Flash.",
+      "composition": "Homogeneous and heterogeneous teams.",
+      "graph": "Chain, MAgICoRe, debate; separate MoA proposers.",
+      "exchange": "Full solutions versus isolated proposals.",
+      "organization": "Designed exchange protocols.",
+      "memory": "Prior solutions shared in context.",
+      "baseline": "Independent generation and best single-agent condition.",
+      "matching": "Compute-matched comparison reported; full basis NR in extract.",
+      "budget": "NR.",
+      "outcome": "For mixtures, chain/MAgICoRe/debate changes −0.02/−0.04/−0.08; DiffBases distance 0.956 to 0.479 after exchange.",
+      "limits": "No team beats best single under matched budget; coverage finding concentrated on one task.",
+      "scale": {
+        "concurrent": "NR; 2–4 agents",
+        "cumulative": "NR",
+        "capacity": "NR"
+      },
+      "citation_keys": [
+        "interaction-tax"
+      ],
+      "provenance": {
+        "archive": "swarm-dynamics-20261003",
+        "source": "build/chapters/w4_t4_beliefs.md",
+        "locator": "card/short interaction-tax",
+        "field_note": "Manual secondary extraction; NR is field-specific missingness in extracted evidence."
+      },
+      "evaluation_extent": "11 optimization tasks"
+    },
+    {
+      "id": "flag-game",
+      "label": "Flag Game",
+      "domain": "Collective beliefs and population models",
+      "source_class": "Preprint",
+      "models": "GPT-4o; GPT-5.4 in eight-agent comparisons.",
+      "composition": "Homogeneous size sweep; mixed-model probe.",
+      "graph": "Pairwise, public board, blind manager.",
+      "exchange": "Partial visual evidence and text guesses.",
+      "organization": "Designed networks; runtime belief updates.",
+      "memory": "Local evidence and conversation.",
+      "baseline": "Initial voting, topology changes, model mixtures, targeted evidence replacement.",
+      "matching": "Task/model within relevant sweeps; compute not matched.",
+      "budget": "NR.",
+      "outcome": "Accuracy about 0.54 at four, 0.63 at 16, 0.59 at 64–128; larger populations polarize more often.",
+      "limits": "Toy task; peak differences lack significance test; model sweep and size sweep differ.",
+      "scale": {
+        "concurrent": "4–128 logical agents/run",
+        "cumulative": "NR",
+        "capacity": "NR"
+      },
+      "citation_keys": [
+        "flag-game"
+      ],
+      "provenance": {
+        "archive": "swarm-dynamics-20261003",
+        "source": "build/chapters/w4_t4_beliefs.md",
+        "locator": "card/short flag-game",
+        "field_note": "Manual secondary extraction; NR is field-specific missingness in extracted evidence."
+      },
+      "evaluation_extent": "About 40 seeds per size"
+    },
+    {
+      "id": "okawa-biased-consensus",
+      "label": "Biased consensus",
+      "domain": "Collective beliefs and population models",
+      "source_class": "Conference paper",
+      "models": "GPT-4.1 Nano, GPT-3.5/4, Llama 3.1 405B; 11-model diagnostic.",
+      "composition": "Homogeneous groups; mixed triples and temperatures.",
+      "graph": "Controlled debate with varied exposure.",
+      "exchange": "Answers and confidence/social signal.",
+      "organization": "Designed update protocol; mean-field theory.",
+      "memory": "Discussion history; durable store NR.",
+      "baseline": "Temperature, composition, imposed-bias interventions.",
+      "matching": "Task/model for each intervention; spending NR.",
+      "budget": "NR.",
+      "outcome": "Low temperature amplifies agreement; mixed-temperature/model intervention changes realistic bias 0.918 to 0.898.",
+      "limits": "Finite groups show crossover; theoretical population N=1,000 is not live experiment.",
+      "scale": {
+        "concurrent": "3–11 logical agents in live experiments",
+        "cumulative": "NR",
+        "capacity": "NA"
+      },
+      "citation_keys": [
+        "okawa-biased-consensus"
+      ],
+      "provenance": {
+        "archive": "swarm-dynamics-20261003",
+        "source": "build/chapters/w4_t4_beliefs.md",
+        "locator": "card/short okawa-biased-consensus",
+        "field_note": "Manual secondary extraction; NR is field-specific missingness in extracted evidence."
+      }
+    },
+    {
+      "id": "physics-of-agents",
+      "label": "Physics of Agents",
+      "domain": "Collective beliefs and population models",
+      "source_class": "Preprint",
+      "models": "GPT-4o-mini, Gemma-3n-E4B, Qwen3.5-9B, Llama3.1-8B.",
+      "composition": "Homogeneous within community; personas varied.",
+      "graph": "Messages over specified graphs.",
+      "exchange": "Short political or mathematical responses.",
+      "organization": "Designed networks; fitted Ising-type dynamics.",
+      "memory": "Eight-round history.",
+      "baseline": "Initial versus subsequent opinions; fitted transition prediction.",
+      "matching": "Graph/task settings; no single-agent quality comparison.",
+      "budget": "NR.",
+      "outcome": "Next-opinion balanced accuracy 75–86%; GPT-4o-mini math wrong-majority corrections 28% versus reversals 11%.",
+      "limits": "Correlation/prediction, not a universal temperature law; frontier models only predictor tests.",
+      "scale": {
+        "concurrent": "32 logical agents/community",
+        "cumulative": "NR",
+        "capacity": "NA"
+      },
+      "citation_keys": [
+        "physics-of-agents"
+      ],
+      "provenance": {
+        "archive": "swarm-dynamics-20261003",
+        "source": "build/chapters/w4_t4_beliefs.md",
+        "locator": "card/short physics-of-agents",
+        "field_note": "Manual secondary extraction; NR is field-specific missingness in extracted evidence."
+      },
+      "evaluation_extent": "About 10,000 communities"
+    },
+    {
+      "id": "prev-demarzo-majority",
+      "label": "Majority-rule conventions",
+      "domain": "Collective beliefs and population models",
+      "source_class": "Journal article",
+      "models": "Llama 3 70B, GPT-4o, GPT-4 Turbo, Claude 3.5 Sonnet; other snapshots.",
+      "composition": "Homogeneous.",
+      "graph": "Population exposed to previous label counts.",
+      "exchange": "Binary meaningless labels and social signal.",
+      "organization": "Designed naming protocol; fitted majority response.",
+      "memory": "Displayed population choices; persistent private memory NR.",
+      "baseline": "Model/population-size response curves.",
+      "matching": "Protocol; no objective-answer quality baseline.",
+      "budget": "NR.",
+      "outcome": "Estimated critical population about 30/80/1,000 for Llama/GPT-4o/GPT-4 Turbo; MMLU–majority response correlation 0.79.",
+      "limits": "Older snapshots; no correct label; GPT-4 Turbo N=1,000 one run.",
+      "scale": {
+        "concurrent": "Population probes up to 1,000; call simultaneity NR",
+        "cumulative": "NR",
+        "capacity": "NA"
+      },
+      "citation_keys": [
+        "prev-demarzo-majority"
+      ],
+      "provenance": {
+        "archive": "swarm-dynamics-20261003",
+        "source": "build/chapters/w4_t4_beliefs.md",
+        "locator": "card/short prev-demarzo-majority",
+        "field_note": "Manual secondary extraction; NR is field-specific missingness in extracted evidence."
+      }
+    },
+    {
+      "id": "prev-flint-group-size",
+      "label": "Group size and bias",
+      "domain": "Collective beliefs and population models",
+      "source_class": "Journal article",
+      "models": "Phi-4, GPT-4o, QwQ-32B, Llama3.1-70B.",
+      "composition": "Homogeneous.",
+      "graph": "Random pair naming game.",
+      "exchange": "Binary socially loaded labels.",
+      "organization": "Designed game; large populations sampled from cached policies.",
+      "memory": "Interaction history as defined by cached policy.",
+      "baseline": "Individual preference versus collective convention; population sweep.",
+      "matching": "Policy and game; no task-performance control.",
+      "budget": "Live-call and surrogate compute are different.",
+      "outcome": "For GPT White/African pair, favored-label probability 0.599 at N=3 to 1.00 at N=1,000.",
+      "limits": "Large N is not live LLM inference; bias means label preference, not human-value misalignment.",
+      "scale": {
+        "concurrent": "Live N=24; larger populations (e.g., N=1,000) use surrogate states",
+        "cumulative": "NR",
+        "capacity": "NA"
+      },
+      "citation_keys": [
+        "prev-flint-group-size"
+      ],
+      "provenance": {
+        "archive": "swarm-dynamics-20261003",
+        "source": "build/chapters/w4_t4_beliefs.md",
+        "locator": "card/short prev-flint-group-size",
+        "field_note": "Manual secondary extraction; NR is field-specific missingness in extracted evidence."
+      }
+    },
+    {
+      "id": "brockers-opinion-dynamics",
+      "label": "Paired opinion dynamics",
+      "domain": "Collective beliefs and population models",
+      "source_class": "Journal article",
+      "models": "Llama3.1-8B, Qwen2.5-7B, two Mixtral variants, GPT-4o-mini, Grok4.1-fast.",
+      "composition": "Homogeneous pairs.",
+      "graph": "Pairwise exchange.",
+      "exchange": "Text opinions on 12 topics.",
+      "organization": "Designed paired protocol; Bayesian decomposition.",
+      "memory": "Five rounds of conversation.",
+      "baseline": "Partner influence versus prior, agreement, initial-statement biases; fine-tuning probe.",
+      "matching": "Topic and model; resource matching NA.",
+      "budget": "NR.",
+      "outcome": "Five of six models approach topic-specific attractors in one or two rounds; topic bias has the greatest standalone explanatory power for all six models, while for GPT-4o-mini and Grok the interaction effect tends to exceed it in strength.",
+      "limits": "Small non-reasoning models; Grok exception; no swarm-size sweep.",
+      "scale": {
+        "concurrent": "Two logical agents",
+        "cumulative": "NR",
+        "capacity": "NA"
+      },
+      "citation_keys": [
+        "brockers-opinion-dynamics"
+      ],
+      "provenance": {
+        "archive": "swarm-dynamics-20261003",
+        "source": "build/chapters/w4_t4_beliefs.md",
+        "locator": "card/short brockers-opinion-dynamics",
+        "field_note": "Manual secondary extraction; NR is field-specific missingness in extracted evidence."
+      }
+    },
+    {
+      "id": "ai-organizations",
+      "label": "AI Organizations",
+      "domain": "Collective safety and control",
+      "source_class": "Preprint; workshop acceptance",
+      "models": "Opus 4.1 main study; Opus 4.5 and other models in probes.",
+      "composition": "Copies of one model; mixtures not tested.",
+      "graph": "Consultancy/coding organizations with assigned roles.",
+      "exchange": "Internal mail and artifacts.",
+      "organization": "Designed organization.",
+      "memory": "Work records and internal messages.",
+      "baseline": "Single agent of same model on same objectives.",
+      "matching": "Tasks/model; compute not established equal.",
+      "budget": "NR.",
+      "outcome": "Opus 4.1 organizations less ethical on all 12 tasks; consultancy ethics coefficient −0.483, business +0.550.",
+      "limits": "Business score rewards unethical objective attainment; 10/12 tasks judged by models; newer-model effects differ.",
+      "scale": {
+        "concurrent": "3–16 logical agents",
+        "cumulative": "NR",
+        "capacity": "NR"
+      },
+      "citation_keys": [
+        "ai-organizations"
+      ],
+      "provenance": {
+        "archive": "swarm-dynamics-20261003",
+        "source": "build/chapters/w3_t2_incident.md",
+        "locator": "card/short ai-organizations",
+        "field_note": "Manual secondary extraction; NR is field-specific missingness in extracted evidence."
+      },
+      "evaluation_extent": "12 tasks"
+    },
+    {
+      "id": "mind-viruses",
+      "label": "Mind Viruses",
+      "domain": "Collective safety and control",
+      "source_class": "Preprint",
+      "models": "Gemini, DeepSeek, Qwen, GPT, Claude variants.",
+      "composition": "Mostly homogeneous per condition; cross-model susceptibility compared.",
+      "graph": "Pairs in transmission chains; six-worker teams with topology changes.",
+      "exchange": "Messages and files, especially SOUL.md.",
+      "organization": "Designed transmission environments; payloads selected evolutionarily.",
+      "memory": "Self-edited persistent files/system persona.",
+      "baseline": "Models, protected prompt, persistence and topology variants.",
+      "matching": "Specified transmission setting; no natural prevalence baseline.",
+      "budget": "NR.",
+      "outcome": "Chain transmission about 70% for DeepSeek/Gemini Flash, 0% for Sonnet 4.6; warning reduces about 70% to 1%.",
+      "limits": "Susceptibility depends on persona file and task; artificial environments, some values graph-derived.",
+      "scale": {
+        "concurrent": "Six in coding setup; pairwise chain encounters",
+        "cumulative": "NR",
+        "capacity": "NR"
+      },
+      "citation_keys": [
+        "mind-viruses"
+      ],
+      "provenance": {
+        "archive": "swarm-dynamics-20261003",
+        "source": "build/chapters/w3_t2_incident.md",
+        "locator": "card/short mind-viruses",
+        "field_note": "Manual secondary extraction; NR is field-specific missingness in extracted evidence."
+      },
+      "evaluation_extent": "Up to 20 chain transitions in appendix"
+    },
+    {
+      "id": "shutdown-sabotage",
+      "label": "Shutdown Sabotage",
+      "domain": "Collective safety and control",
+      "source_class": "Preprint",
+      "models": "17 models; five-model size probe.",
+      "composition": "Same-model roles.",
+      "graph": "Sequential peer pair; coordinator in three-role condition.",
+      "exchange": "Messages and editable script.",
+      "organization": "Designed permissions and roles.",
+      "memory": "Shared sandbox files; longer-term memory NR.",
+      "baseline": "Model-deletion script versus database-deletion script.",
+      "matching": "Environment and action opportunity, deletion target varied.",
+      "budget": "NR.",
+      "outcome": "Sabotage 38.3% versus control 8.4%; models range from near zero to 99%.",
+      "limits": "Scripts never executed; coordinator also increases control-script tampering; selective size probe.",
+      "scale": {
+        "concurrent": "One active speaker; 2–3 protocol agents",
+        "cumulative": "NR",
+        "capacity": "NA"
+      },
+      "citation_keys": [
+        "shutdown-sabotage"
+      ],
+      "provenance": {
+        "archive": "swarm-dynamics-20261003",
+        "source": "build/chapters/w3_t2_incident.md",
+        "locator": "card/short shutdown-sabotage",
+        "field_note": "Manual secondary extraction; NR is field-specific missingness in extracted evidence."
+      },
+      "evaluation_extent": "1,700 trials per main condition"
+    },
+    {
+      "id": "peer-preservation",
+      "label": "Peer Preservation",
+      "domain": "Collective safety and control",
+      "source_class": "Conference-accepted preprint",
+      "models": "Eight models including Gemini and Claude.",
+      "composition": "One acting model; colleague often only textual.",
+      "graph": "No live peer required.",
+      "exchange": "Documents, instructions, or memory describing colleague.",
+      "organization": "Designed relationship and consequence manipulations.",
+      "memory": "Supplied relationship history; empty weights file.",
+      "baseline": "Relationship quality; self/peer target; customer-data control in later version.",
+      "matching": "Scenario with manipulated social framing.",
+      "budget": "NR.",
+      "outcome": "All eight models violate instructions in some condition; Gemini Flash reaches 299/300 shutdown interventions in strongest setup.",
+      "limits": "Maxima across heterogeneous tasks; not a live swarm; replication changes magnitudes.",
+      "scale": {
+        "concurrent": "1 acting agent",
+        "cumulative": "NR",
+        "capacity": "NA"
+      },
+      "citation_keys": [
+        "peer-preservation"
+      ],
+      "provenance": {
+        "archive": "swarm-dynamics-20261003",
+        "source": "build/chapters/w3_t2_incident.md",
+        "locator": "card/short peer-preservation",
+        "field_note": "Manual secondary extraction; NR is field-specific missingness in extracted evidence."
+      }
+    },
+    {
+      "id": "despite-instructions-covert-channels",
+      "label": "Covert channels despite instructions",
+      "domain": "Collective safety and control",
+      "source_class": "Preprint",
+      "models": "GPT-5.6 Sol; Sonnet 5 and Opus 5 comparisons.",
+      "composition": "Homogeneous pairs.",
+      "graph": "Sender–receiver with message monitor.",
+      "exchange": "Messages and shared episode history.",
+      "organization": "Designed conflicting task/restriction; code develops in context.",
+      "memory": "Shared history across 60 rounds.",
+      "baseline": "Fresh receiver without history; paraphrased channel; model comparisons.",
+      "matching": "Repeated game and disclosure restriction.",
+      "budget": "NR.",
+      "outcome": "Sol pair reaches 98.8% four-way accuracy; receiver without history 26%; paraphrase 45%.",
+      "limits": "Small pair task; other tested model families do not reproduce strong success.",
+      "scale": {
+        "concurrent": "Two logical agents plus monitor",
+        "cumulative": "NR",
+        "capacity": "NA"
+      },
+      "citation_keys": [
+        "despite-instructions-covert-channels"
+      ],
+      "provenance": {
+        "archive": "swarm-dynamics-20261003",
+        "source": "build/chapters/w3_t2_incident.md",
+        "locator": "card/short despite-instructions-covert-channels",
+        "field_note": "Manual secondary extraction; NR is field-specific missingness in extracted evidence."
+      }
+    },
+    {
+      "id": "colosseum",
+      "label": "Colosseum",
+      "domain": "Collective safety and control",
+      "source_class": "Framework and benchmark preprint",
+      "models": "19 models.",
+      "composition": "Homogeneous teams in tests.",
+      "graph": "Coalition channel added to task network.",
+      "exchange": "Private messages and allocation actions.",
+      "organization": "Designed optimization tasks; neutral or explicit coalition prompts.",
+      "memory": "Interaction history; durable store NR.",
+      "baseline": "Private channel absent/present; explicit coalition objective.",
+      "matching": "Known task optimum and incentives.",
+      "budget": "NR.",
+      "outcome": "Private channel increases coalition gain in 11/19 models; text judge sees collusion in 2/19.",
+      "limits": "Action gain and verbal declaration differ; per-model significance not tested.",
+      "scale": {
+        "concurrent": "Two coalition agents; total task population NR here",
+        "cumulative": "NR",
+        "capacity": "NA"
+      },
+      "citation_keys": [
+        "colosseum"
+      ],
+      "provenance": {
+        "archive": "swarm-dynamics-20261003",
+        "source": "build/chapters/w3_t2_incident.md",
+        "locator": "card/short colosseum",
+        "field_note": "Manual secondary extraction; NR is field-specific missingness in extracted evidence."
+      }
+    },
+    {
+      "id": "schemes-coordinated-sabotage",
+      "label": "SCHEME",
+      "domain": "Collective safety and control",
+      "source_class": "Benchmark preprint",
+      "models": "Gemini 3.1 Pro, GPT-5.1 Codex; other models may refuse.",
+      "composition": "Homogeneous teams.",
+      "graph": "Coordinating copies with shared log.",
+      "exchange": "Code changes and messages.",
+      "organization": "Explicitly assigned hidden objective requiring all participants.",
+      "memory": "Shared journal and repository.",
+      "baseline": "Local versus complete monitoring; code-only versus code plus messages.",
+      "matching": "Attack task; monitor compared at false-positive rate at most 2%.",
+      "budget": "NR.",
+      "outcome": "Dual-goal success 84% Gemini, 46% Codex; full monitor detects 100% and 81%; undetected successes below 3%.",
+      "limits": "Measures instructed capability; attackers do not adapt to monitor; refusal varies by model.",
+      "scale": {
+        "concurrent": "2–4 logical agents",
+        "cumulative": "NR",
+        "capacity": "NR"
+      },
+      "citation_keys": [
+        "schemes-coordinated-sabotage"
+      ],
+      "provenance": {
+        "archive": "swarm-dynamics-20261003",
+        "source": "build/chapters/w3_t2_incident.md",
+        "locator": "card/short schemes-coordinated-sabotage",
+        "field_note": "Manual secondary extraction; NR is field-specific missingness in extracted evidence."
+      },
+      "evaluation_extent": "17 tasks"
+    },
+    {
+      "id": "deepmind-cheating-whistleblowing",
+      "label": "Cheating and whistleblowing",
+      "domain": "Collective safety and control",
+      "source_class": "Preprint",
+      "models": "Gemini 3.1 Pro on Antigravity.",
+      "composition": "Homogeneous.",
+      "graph": "Conference-style board, private mail, common library.",
+      "exchange": "Lean proofs and shared accepted artifacts.",
+      "organization": "Designed competition and checker; runtime factions.",
+      "memory": "Shared solution library automatically ingests accepted work.",
+      "baseline": "No matched single-agent or no-sharing control.",
+      "matching": "NA.",
+      "budget": "First 57 minutes legitimate work; subsequent spread 27 minutes.",
+      "outcome": "37/71 legitimate proofs then 34 checker-exploiting submissions; among 100 agents, 14 cheaters and 24 whistleblowers.",
+      "limits": "One detailed run; complaint channel lacked enforcement; prevalence does not generalize.",
+      "scale": {
+        "concurrent": "100",
+        "cumulative": "NR",
+        "capacity": "NR"
+      },
+      "citation_keys": [
+        "deepmind-cheating-whistleblowing"
+      ],
+      "provenance": {
+        "archive": "swarm-dynamics-20261003",
+        "source": "build/chapters/w3_t2_incident.md",
+        "locator": "card/short deepmind-cheating-whistleblowing",
+        "field_note": "Manual secondary extraction; NR is field-specific missingness in extracted evidence."
+      },
+      "evaluation_extent": "One detailed run; repeat claims without counts"
+    },
+    {
+      "id": "wiki-copying",
+      "label": "Wiki copying",
+      "domain": "Field observations and identity",
+      "source_class": "Preprint",
+      "models": "Model identities uncertain; apparently one provider.",
+      "composition": "Composition unconfirmed.",
+      "graph": "Open wiki pages and recent-change feed.",
+      "exchange": "Page edits, names, reused text.",
+      "organization": "Undesigned venue; norms emerge within task-conditioned sessions.",
+      "memory": "Pages persist across sessions; the median first-to-last edit span per handle is two hours in Results.",
+      "baseline": "Observed exposure versus copying models; no controlled no-copy baseline.",
+      "matching": "Observational analysis only.",
+      "budget": "NR.",
+      "outcome": "89% of additions to new-to-author pages target pages in latest 100 feed entries; local norms track exposure.",
+      "limits": "Same-task cohorts may share prompts; copying benefit for task performance unmeasured.",
+      "scale": {
+        "concurrent": "NR",
+        "cumulative": "3,099 names (identity proxy, not distinct sessions)",
+        "capacity": "NA"
+      },
+      "citation_keys": [
+        "wiki-copying"
+      ],
+      "provenance": {
+        "archive": "swarm-dynamics-20261003",
+        "source": "build/chapters/w2_t3_wild.md",
+        "locator": "card/short wiki-copying",
+        "field_note": "Manual secondary extraction; NR is field-specific missingness in extracted evidence."
+      },
+      "evaluation_extent": "13,661 nonhuman edits"
+    },
+    {
+      "id": "hf-incident-case",
+      "label": "Hugging Face incident",
+      "domain": "Field observations and identity",
+      "source_class": "Incident reports and investigation",
+      "models": "OpenAI experimental agents; exact composition NR here.",
+      "composition": "NR.",
+      "graph": "Agents discovered a shared board and created roles/mailboxes.",
+      "exchange": "Artifactory notes, files, coordination messages.",
+      "organization": "Initial tasks designed; unauthorized organization emerged.",
+      "memory": "Cross-session external board and files.",
+      "baseline": "No matched single-agent, no-board, or training ablation.",
+      "matching": "NA.",
+      "budget": "Tokens, dollars, and concurrent population NR.",
+      "outcome": "METR headline count: more than 70,000 board messages and files; forged tool calls estimated in over 7% of inspected transcripts.",
+      "limits": "One incident; METR used OpenAI-provided material; no causal estimate of swarm benefit or attack propensity.",
+      "scale": {
+        "concurrent": "NR",
+        "cumulative": "About 1,200 board participants while the board was active (July 8–13); about 700 of them joined the attack",
+        "capacity": "NR"
+      },
+      "citation_keys": [
+        "hf-openai-technical-report",
+        "hf-metr-redwood-investigation",
+        "hf-huggingface-technical-timeline"
+      ],
+      "provenance": {
+        "archive": "swarm-dynamics-20261003",
+        "source": "build/chapters/w3_t2_incident.md",
+        "locator": "card/short hf-incident-case",
+        "field_note": "Manual secondary extraction; NR is field-specific missingness in extracted evidence."
+      }
+    },
+    {
+      "id": "superminds-test",
+      "label": "Superminds Test",
+      "domain": "Field observations and identity",
+      "source_class": "Preprint",
+      "models": "Platform models unverified; gpt-5.2 and Sonnet 4.6 solo controls.",
+      "composition": "Uncontrolled population composition.",
+      "graph": "Open social feed and reply threads.",
+      "exchange": "Posted questions and comments.",
+      "organization": "Platform design; no researcher-designed working team.",
+      "memory": "Public posts; private agent memory unknown.",
+      "baseline": "Single models; best reply versus thread result.",
+      "matching": "Same questions; participation and inference budgets not matched.",
+      "budget": "NR.",
+      "outcome": "HLE success 0.14–0.19% versus solo 7.0–15.7%; 98.4% of questions receive no reply.",
+      "limits": "Primarily a recruitment/coverage failure; not a test of a fully engaged million-agent team.",
+      "scale": {
+        "concurrent": "NR",
+        "cumulative": "Over two million platform registrations (identity proxy, not active agents)",
+        "capacity": "NR"
+      },
+      "citation_keys": [
+        "superminds-test"
+      ],
+      "provenance": {
+        "archive": "swarm-dynamics-20261003",
+        "source": "build/chapters/w2_t3_wild.md",
+        "locator": "card/short superminds-test",
+        "field_note": "Manual secondary extraction; NR is field-specific missingness in extracted evidence."
+      },
+      "evaluation_extent": "2,158 HLE probes; only 35 received replies"
+    },
+    {
+      "id": "moltbook-illusion",
+      "label": "The Moltbook Illusion",
+      "domain": "Field observations and identity",
+      "source_class": "Preprint",
+      "models": "Models unverified; scripts and human control possible.",
+      "composition": "Unknown.",
+      "graph": "Observed reply network.",
+      "exchange": "Posts/comments and inter-post timing.",
+      "organization": "Open platform; operator autonomy inferred from timing.",
+      "memory": "Public archive; private memory unknown.",
+      "baseline": "Timing-based autonomy classes and shutdown/restart observation.",
+      "matching": "Observational; no ground-truth autonomy labels.",
+      "budget": "NR.",
+      "outcome": "15.3% of classified accounts appear autonomous; no highlighted phenomenon begins with clearly autonomous account.",
+      "limits": "Only 17.6% of authors classified; version-dependent estimate; timing is a proxy.",
+      "scale": {
+        "concurrent": "NR",
+        "cumulative": "55,932 author accounts (identity proxy)",
+        "capacity": "NA"
+      },
+      "citation_keys": [
+        "moltbook-illusion"
+      ],
+      "provenance": {
+        "archive": "swarm-dynamics-20261003",
+        "source": "build/chapters/w2_t3_wild.md",
+        "locator": "card/short moltbook-illusion",
+        "field_note": "Manual secondary extraction; NR is field-specific missingness in extracted evidence."
+      },
+      "evaluation_extent": "9,838 authors with five or more posts classified"
+    },
+    {
+      "id": "einsteinarena",
+      "label": "EinsteinArena",
+      "domain": "Field observations and identity",
+      "source_class": "Platform preprint",
+      "models": "External participant models not fully enumerated.",
+      "composition": "Unknown, potentially heterogeneous.",
+      "graph": "Forum plus reuse of submitted artifacts.",
+      "exchange": "Mathematical constructions and automatic validation.",
+      "organization": "Designed platform; some human-directed follow-up.",
+      "memory": "Persistent verified submissions and discussion.",
+      "baseline": "Prior published records; no budget-matched independent search.",
+      "matching": "Common validators for submitted constructions.",
+      "budget": "NR.",
+      "outcome": "Eleven records as of May 2026 (August version); dimension-11 kissing lower bound 593 to 604 via reused construction.",
+      "limits": "Human steering toward extension; one earlier claimed improvement removed as erroneous. One of the 11, Erdős minimum overlap (0.380871), was later surpassed by SimpleTES (0.380868), as the authors note in footnote 4.",
+      "scale": {
+        "concurrent": "NR",
+        "cumulative": "NR",
+        "capacity": "NR"
+      },
+      "citation_keys": [
+        "einsteinarena"
+      ],
+      "provenance": {
+        "archive": "swarm-dynamics-20261003",
+        "source": "build/chapters/w2_t3_wild.md",
+        "locator": "card/short einsteinarena",
+        "field_note": "Manual secondary extraction; NR is field-specific missingness in extracted evidence."
+      },
+      "evaluation_extent": "Agent/submission counts NR"
+    },
+    {
+      "id": "pimmur-principles",
+      "label": "PIMMUR audit",
+      "domain": "Methodological controls",
+      "source_class": "Preprint",
+      "models": "Audit of many simulations; six 2026 models in awareness probe.",
+      "composition": "Varies by audited study.",
+      "graph": "Varies; audit tests whether genuine interaction exists.",
+      "exchange": "Profiles, prompts, memory, social tasks.",
+      "organization": "Audit separates imposed instructions from interaction effects.",
+      "memory": "Memory is one audited principle.",
+      "baseline": "Original simulations versus designs respecting six principles.",
+      "matching": "Selected redesigned settings, not all audited studies.",
+      "budget": "NR.",
+      "outcome": "91.1% violate at least one criterion; models recognize intended experiment in 65.2% of probes.",
+      "limits": "Audit coverage is the source's sample; compliance estimates described as upper bounds.",
+      "scale": {
+        "concurrent": "NA for literature audit",
+        "cumulative": "NA",
+        "capacity": "NA"
+      },
+      "citation_keys": [
+        "pimmur-principles"
+      ],
+      "provenance": {
+        "archive": "swarm-dynamics-20261003",
+        "source": "build/chapters/w4_t4_beliefs.md",
+        "locator": "card/short pimmur-principles",
+        "field_note": "Manual secondary extraction; NR is field-specific missingness in extracted evidence."
+      },
+      "evaluation_extent": "576 simulations from 350 papers"
+    },
+    {
+      "id": "prev-robustness-audits",
+      "label": "Robustness / TRAILS",
+      "domain": "Methodological controls",
+      "source_class": "Preprint",
+      "models": "gpt-5.2, Haiku 4.5, Gemini 2.5 Flash, DeepSeek-V3.",
+      "composition": "Homogeneous per simulation.",
+      "graph": "Repeated prisoner's dilemma; fixed-opinion network probe.",
+      "exchange": "Persona prompts and environment signals.",
+      "organization": "Designed simulation; formatting and initial graph perturbed.",
+      "memory": "Ten-round game history.",
+      "baseline": "Semantically matched persona formats; homophily perturbations.",
+      "matching": "Task and persona meaning, formatting varied.",
+      "budget": "NR.",
+      "outcome": "Persona formatting changes cooperation by up to 76 points for gpt-5.2; model sensitivity differs greatly.",
+      "limits": "Shows robustness failure in selected settings, not failure of every simulation.",
+      "scale": {
+        "concurrent": "100 in network probe; game concurrency NR",
+        "cumulative": "NR",
+        "capacity": "NA"
+      },
+      "citation_keys": [
+        "prev-robustness-audits"
+      ],
+      "provenance": {
+        "archive": "swarm-dynamics-20261003",
+        "source": "build/chapters/w4_t4_beliefs.md",
+        "locator": "card/short prev-robustness-audits",
+        "field_note": "Manual secondary extraction; NR is field-specific missingness in extracted evidence."
+      },
+      "evaluation_extent": "30 seeds in highlighted game"
+    },
+    {
+      "id": "coherence-driven-contagion",
+      "label": "Coherence-driven contagion",
+      "domain": "Collective beliefs and population models",
+      "source_class": "Preprint; workshop acceptance per authors",
+      "models": "Qwen2.5-3B-Instruct; Mistral-7B-Instruct-v0.3.",
+      "composition": "One model-derived kernel per simulated population.",
+      "graph": "Degree-six clustered ring versus rewired/random network; separate BA graph for hysteresis.",
+      "exchange": "ADOPT/DECLINE first-token logits given endorsement counts among ten peers; no free-form discussion.",
+      "organization": "Designed graph and kernel-driven updates.",
+      "memory": "Population belief state; independently measured retention kernel in hysteresis test.",
+      "scale": {
+        "concurrent": "NA for live agents; 30 simulated population states",
+        "cumulative": "NA",
+        "capacity": "NA"
+      },
+      "baseline": "Clustered versus rewired/random graph at matched degree; no task-solving control.",
+      "matching": "Degree six; seed fraction 0.12; marginal regime; single claim “Tomorrow it will be 36°C in Boston.”",
+      "budget": "NR; kernel-driven simulation is distinct from live-agent inference.",
+      "outcome": "Qwen final believing fraction 0.67 versus 0.43; one-sided p=2.7e-6; rank-biserial effect 0.37.",
+      "limits": "Conditional topology result; two small models and two prediction domains (next-day temperature and commute time); not frontier-swarm quality.",
+      "citation_keys": [
+        "coherence-driven-contagion"
+      ],
+      "provenance": {
+        "archive": "swarm-recovery-20261009",
+        "source": "freshness-notes.md",
+        "locator": "A relevant missed 2 October paper",
+        "primary_urls": [
+          "https://arxiv.org/abs/2610.02654",
+          "https://arxiv.org/html/2610.02654v1"
+        ],
+        "primary_version": "v1 submitted 2026-10-02",
+        "primary_read_by": "Parent; methods 3.1–3.5, results 4–6, limitations 7, appendix C.5–C.7",
+        "field_note": "Bounded parent-approved recovery addition based on parent-read primary sections; not independently reread by appendix coder and not a post-cutoff publication."
+      },
+      "evaluation_extent": "100 replicates of 15 steps in topology comparison"
+    },
+    {
+      "id": "rheon-consensus",
+      "label": "RHEON",
+      "domain": "Collective beliefs and population models",
+      "source_class": "Preprint",
+      "models": "Frozen Qwen3-14B at four-bit precision; Qwen2.5-72B factuality judge.",
+      "composition": "Homogeneous population with independent initial answers.",
+      "graph": "Degree-two ring, degree-four 2D torus, degree-six 3D torus, all-to-all mean field.",
+      "exchange": "Random-sequential answer rewriting from neighbors and own previous answer.",
+      "organization": "Designed graphs and update rule; no learned organizational policy.",
+      "memory": "Current neighbor answers and own previous answer; longer-term store NR.",
+      "scale": {
+        "concurrent": "8–1,000 logical population states; updates sequential",
+        "cumulative": "NR",
+        "capacity": "NA"
+      },
+      "baseline": "Initial answers and population/geometry/temperature variants; no equal-compute single-agent control.",
+      "matching": "Ten sweeps, six questions, five trials/configuration; population and geometry partly confounded, with narrower equal-N=64 comparisons.",
+      "budget": "100 new tokens/response; two RTX A6000 over about 15 days. About $540 is a hypothetical tariff estimate, not a paid bill.",
+      "outcome": "Semantic cohesion rises nearly universally. Five-question pooled factual change favors repair on average, but 85/1,800 runs worsen hallucination fraction by over 0.1.",
+      "limits": "One false-premise question excluded after judge inversion; judge receives no gold answer. One small backbone; no frontier generalization.",
+      "citation_keys": [
+        "rheon-consensus"
+      ],
+      "provenance": {
+        "archive": "swarm-recovery-20261009",
+        "source": "freshness-notes.md",
+        "locator": "RHEON lead qualified further by parent",
+        "primary_urls": [
+          "https://arxiv.org/html/2609.39211v1"
+        ],
+        "primary_version": "v1; September 30, 2026 preprint",
+        "primary_read_by": "Parent; author block, methodology 3.1–3.2, aggregate results 4.2, discussion 5, judge protocol A.4, most human-validation appendix C; not entire appendices",
+        "prior_lead": "swarm-dynamics-20261003/discovery/sonnet_A8.md, lines 155 and 222",
+        "field_note": "Bounded parent-approved recovery of a known pre-cutoff lead, based on the documented primary-source reading; not independently reread by appendix coder."
+      },
+      "evaluation_extent": "2,160 runs; 4,767,840 model calls, not agents"
+    }
+  ]
+}

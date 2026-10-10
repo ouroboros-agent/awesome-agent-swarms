@@ -1,0 +1,60 @@
+\section{Scaling under explicit resource constraints}
+\label{sec:scaling}
+\subsection{Quality, latency, and cost are separate outcomes}
+The practical choice is a policy on a resource--quality frontier. For a configuration $x$, write its measured outcome as $Q_x(B,T)$, where $B$ is a specified budget and $T$ a deadline. A comparison at fixed $T$ asks what the system can deliver before a deadline, permitting different spending. A comparison at fixed $B$ asks how effectively it uses that resource. Time to reach a quality threshold asks a third question. These views should be reported together when possible; none can be substituted for another.
+
+Table~\ref{tab:scaling} preserves the principal contrasts. OpenAI's published GPT-5.6 Sol curves compare one, four, and, on two of three tasks, sixteen agents across effort levels. At matched total output tokens, the single-agent curve is higher \citep{openai-gpt56-ultra,ord-swarm-scaling}. This supports a token-efficiency claim for those tasks and orchestration settings. The latency and dollar axes in the developer release are simulated from operational data, rather than direct end-to-end timing of a randomized study. It does not establish that a larger team cannot reach a better outcome outside the tested range.
+
+The Opus 5.5 ProgramBench comparison instead makes the tradeoff visible at a fixed threshold: five peers reach 60\% of hidden tests 2.7 times faster than one agent while using about 1.9 times as many tokens. The developer reports the speed ratio; the token ratio is read from its plot. The trajectories eventually approach a similar final score \citep{opus55-card}. On the same developer's knowledge-building and Lean tasks, increasing the team from one to ten substantially improves the result within 24 hours; further increases produce smaller gains. Token costs for those larger groups are not disclosed. The deadline result remains useful even though it does not identify a compute-efficiency gain.
+
+\begin{table*}[t]
+\centering\small
+\begin{tabularx}{\textwidth}{@{}p{0.2\textwidth}p{0.24\textwidth}Y@{}}
+\toprule
+Evidence unit & Resource condition & Outcome and inference boundary\\
+\midrule
+GPT-5.6 Sol \citep{openai-gpt56-ultra} & Total output tokens; 1/4/16 agents, with 16 absent on one task & One agent is more token-efficient on the reported curves; simulated latency can favor parallel execution.\\\addlinespace[2pt]
+Opus 5.5, ProgramBench \citep{opus55-card} & Time and tokens to the same 60\% hidden-test score & Five peers versus one agent: $2.7\times$ faster at about $1.9\times$ tokens (token ratio read from plot); common eventual score.\\\addlinespace[2pt]
+Opus 5, BrowseComp \citep{opus5-card-multiagent} & Equal nominal 10M-token cap; actual spending differs & Ten agents: 93.6\% versus 90.5\%; roughly $2.5\times$ cost from the source plot. An improved observed outcome, not equal-cost superiority.\\\addlinespace[2pt]
+Kim et al. \citep{kim-scaling-agent-systems} & Shared token limit, matched tasks and tools & Mean relative gain 0.0\% across diverse settings; effects from $-70.0\%$ to $+80.8\%$. Heterogeneity dominates the average.\\\addlinespace[2pt]
+Park et al., ARC-AGI-3 \citep{test-time-communication} & Same number of agents; output-token curves also reported & Five communicating agents: 8.0\% solved versus 2.2\% for best@5; crossover depends on budget and task.\\\addlinespace[2pt]
+SAT \citep{sat-teams} & Approximately matched sequential role execution & 66.7\% versus 58.7\% averaged over math/physics; advantage shrinks or disappears on some individual sets.\\\addlinespace[2pt]
+DeLM \citep{delm-shared-context} & Measured price, SWE-bench Verified & Two peers: 63.72\% versus 55.26\% for the orchestration baseline at \$0.24 per task; distinct from its small long-task experiments.\\
+\bottomrule
+\end{tabularx}
+\caption{Selected scaling comparisons without a pooled effect size. Percentages, relative changes, token ratios, and time ratios retain their original units and controls. Figure-derived approximations are explicitly marked.}
+\label{tab:scaling}
+\end{table*}
+
+\subsection{Why an average gain can be near zero}
+The controlled study by \citet{kim-scaling-agent-systems} evaluates 260 configurations spanning six benchmarks and several predefined architectures. Its mean relative gain of 0.0\% accompanies large positive and negative task-specific effects. A coordinated financial-analysis configuration improves from 34.9\% to 63.1\%, while independent agents on sequential PlanCraft fall from 56.8\% to 17.0\%. The shared budget is a cap, not equal observed use. The reported broad interval and limited repetitions on some tasks prevent treating the mean as an equivalence result.
+
+The more informative common variable is dependency structure. Financial analysis may permit separately useful contributions; an incorrect early action in a sequential environment can invalidate later plans. In a controlled programming study with explicit dependency patterns, externally allocated work follows an Amdahl-like speedup pattern, but self-allocation performs worse and introduces more failures \citep{lm-teams-distributed-systems}. This is compatible with the large task interaction in Kim et al.; it is not evidence that every financial task parallelizes or every coding task fails.
+
+Other negative comparisons sharpen the controls. At moderate reasoning budgets, a single extended agent matches or exceeds the best of several small multi-agent schemes on multi-hop questions, with model-specific exceptions \citep{tran-kiela-equal-budget}. Automated architecture search often does not outperform voting over five independent reasoning chains, despite higher median cost \citep{illusion-multi-agent-advantage}. A debate ablation finds independent majority voting stronger than the tested discussion schemes on small-model benchmarks \citep{debate-or-vote}. Together, these studies make independent sampling and an extended single-agent policy necessary baselines. They do not establish that exchange is useless on tasks with reusable intermediate discoveries.
+
+\subsection{When interaction improves the search process}
+\citet{test-time-communication} explicitly contrast independent attempts with agents sharing progress through a common directory. On ARC-AGI-3, the five-agent team's 8.0\% success rate exceeds best@5 at 2.2\%; however, the absolute success remains low and the gains concentrate in four of 25 games. At small output-token budgets, independent attempts lead. After enough interaction, shared discoveries offset the initial overhead. Terminal-Bench does not show the same team advantage. This within-study variation supports a mechanism involving useful intermediate feedback, while leaving its generality open.
+
+CORAL supplies a related contrast in program optimization: four agents reach a 1,103-cycle kernel, compared with 1,350 cycles for one agent and 1,180 for the best of four independent runs. Many improvements build on another agent's commit, while the number of evaluations rises markedly \citep{coral}. DeLM's peer coordination also has positive cost comparisons, but its long-task results concern selected sets of ten tasks and vary by underlying model \citep{delm-shared-context}. These findings show that coordination can improve attainable quality in selected settings. The comparative question is when a partial result becomes reusable enough to compensate for communication, validation, and integration costs.
+
+A further distinction is whether a gain comes from \emph{generating} a better candidate or \emph{selecting} it. AggAgent runs agents independently and gives a later reader their trajectories. The reader recovers much of, but not always all of, the best-of-eight opportunity \citep{aggagent}. In SAT, a heterogeneous team can exceed the oracle choice among participants' initial answers on some reasoning tasks, yet its knowledge-task gains are small relative to sequential role execution \citep{sat-teams}. The former setting tests extraction from completed searches; the latter can test construction of a solution no member initially supplied. Calling both aggregation hides the scientific difference.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=.88\textwidth,height=.30\textheight,keepaspectratio]{figures/print/test-time-communication_fig3.png}
+\caption{The value of communication can change with the budget. In the reported ARC-AGI-3 experiments, independent attempts lead at small total output-token budgets, while communicating teams reach higher success later. This within-study comparison retains the original task and resource axis; it is not a pooled scaling curve. Source: \citet{test-time-communication}, arXiv:2609.21032, Figure 3, CC BY 4.0. Blank margins trimmed; image content unchanged.}
+\label{fig:atlas-communication}
+\end{figure*}
+
+\subsection{Learned coordination changes the comparison}
+Kimi K2.5 trains a controller through reinforcement learning while helpers remain fixed. Its reward design addresses both a controller that refuses to delegate and one that creates unproductive parallel activity \citep{kimi-agent-swarm}. This makes organization part of the trained policy, rather than only inference-time scaffolding. Yet the reported BrowseComp gain depends strongly on the single-agent baseline. Against a single agent with context cleaning, the swarm's advantage is 3.5 points (78.4\% versus 74.9\%). The larger gap, against 60.6\% without context management, partly reflects context handling rather than delegation.
+
+WideSeek-R1 and Orchestra-o1 also train components of an orchestrated workflow, while Conductor learns which model to use in a bounded sequence \citep{wideseek-r1,orchestra-o1,sakana-conductor}. A complete comparison needs to separate the base model, the learned controller, the available workers, and the training data. If the multi-agent system uses stronger helpers or additional trajectory supervision, replacing the graph alone does not identify the source of its gain. Training cost also lies outside most inference-budget comparisons.
+
+\subsection{Scaling laws and large demonstrations}
+Ord summarizes selected developer curves through an effective parallelization exponent, $N^{\lambda}$, with reported estimates $\lambda=0.48$--$0.68$ across three tasks \citep{ord-swarm-scaling}. The parameter is a compact description of those curves. It is not a measured constant for all swarms: the underlying data use one model family, one hierarchical design, few group sizes, and limited disclosure of task-level uncertainty. Extrapolating it to thousands of agents would require both the task dependency structure and coordination efficiency to remain stable over orders of magnitude.
+
+Economic analyses of parallel research make this assumption consequential: growth depends on how the technology for dividing and integrating work changes, not only on the number of researchers \citep{trammell-parallelizability}. Theoretical superlinear scenarios and forecasts remain hypotheses \citep{bradshaw-swarm-exponent}. They should be compared with measured frontiers rather than read as empirical extensions of a small-team fit.
+
+Large scientific campaigns establish feasibility under their reported conditions. OpenAI's Navier--Stokes campaign reports a successful group on the order of 10,000 concurrent agents, substantial messaging and token use, and a formalized mathematical result; the source does not include a matched single-agent or smaller-team run \citep{openai-navier-stokes}. Its mathematical claim and independent assessment status must also be separated from its orchestration claim. The zeta-function and cryptographic campaigns likewise combine strong models, human choices, long inference, and multiple workers \citep{riemann-zeta-swarm,crypto-weaknesses}. Their existence motivates controlled scaling studies; it does not supply the missing counterfactual.

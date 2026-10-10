@@ -1,0 +1,1430 @@
+{
+ "version": "v0-ids",
+ "note": "Early canonical ID announcement; full registry is data/works.json",
+ "ids": [
+  {
+   "id": "adversarial-influence-scale",
+   "level": "short_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "agensh-1024",
+   "level": "full_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "agent-swarms-as-researchers",
+   "level": "short_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "agent-to-agent-theory-of-mind",
+   "level": "table_row",
+   "aliases": [],
+   "in_analytic_corpus": false
+  },
+  {
+   "id": "agentflow",
+   "level": "table_row",
+   "aliases": [],
+   "in_analytic_corpus": false
+  },
+  {
+   "id": "agentnet-decentralized",
+   "level": "table_row",
+   "aliases": [],
+   "in_analytic_corpus": false
+  },
+  {
+   "id": "agents-of-chaos",
+   "level": "short_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "agents-see-humans-as-outgroup",
+   "level": "table_row",
+   "aliases": [],
+   "in_analytic_corpus": false
+  },
+  {
+   "id": "aggagent",
+   "level": "short_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "agora-git-memory",
+   "level": "short_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "ai-organizations",
+   "level": "full_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "ai-swarm-dynamics-hackathon",
+   "level": "table_row",
+   "aliases": [],
+   "in_analytic_corpus": false
+  },
+  {
+   "id": "ai-village",
+   "level": "short_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "aisi-incident-july-2026",
+   "level": "short_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "aligned-agents-biased-swarm",
+   "level": "mention_in_corpus",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "aligned-alone-misaligned-together",
+   "level": "table_row",
+   "aliases": [],
+   "in_analytic_corpus": false
+  },
+  {
+   "id": "amodei-pace-the-frontier",
+   "level": "short_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "anthropic-alignment-assessment-cyber",
+   "level": "full_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "anthropic-art-enzymes",
+   "level": "full_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "anthropic-c-compiler",
+   "level": "full_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "anthropic-institute-pace",
+   "level": "short_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "anthropic-multi-agent-guidance",
+   "level": "short_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "anthropic-patterns",
+   "level": "full_card",
+   "aliases": [
+    "anthropic-multiagent-patterns"
+   ],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "anthropic-project-deal",
+   "level": "short_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "anthropic-project-swap",
+   "level": "short_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "anthropic-risk-report-aug-2026",
+   "level": "table_row",
+   "aliases": [],
+   "in_analytic_corpus": false
+  },
+  {
+   "id": "anthropic-threat-intel-sept-2026",
+   "level": "table_row",
+   "aliases": [],
+   "in_analytic_corpus": false
+  },
+  {
+   "id": "antigravity-teamwork",
+   "level": "table_row",
+   "aliases": [],
+   "in_analytic_corpus": false
+  },
+  {
+   "id": "artificial-hivemind",
+   "level": "full_card",
+   "aliases": [
+    "hivemind-reevaluation"
+   ],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "artificial-self",
+   "level": "table_row",
+   "aliases": [],
+   "in_analytic_corpus": false
+  },
+  {
+   "id": "attractor-states",
+   "level": "full_card",
+   "aliases": [
+    "attractor-states-lw",
+    "ko-geiping-attractors",
+    "opus4-bliss-attractor"
+   ],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "au-aisi-mas-risks",
+   "level": "short_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "automated-w2s-researcher",
+   "level": "full_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "autoscientists",
+   "level": "short_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "belief-cascades",
+   "level": "table_row",
+   "aliases": [],
+   "in_analytic_corpus": false
+  },
+  {
+   "id": "beyond-the-transcript",
+   "level": "table_row",
+   "aliases": [],
+   "in_analytic_corpus": false
+  },
+  {
+   "id": "bradshaw-swarm-exponent",
+   "level": "short_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "brockers-opinion-dynamics",
+   "level": "short_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "caid",
+   "level": "table_row",
+   "aliases": [],
+   "in_analytic_corpus": false
+  },
+  {
+   "id": "caif-lessons",
+   "level": "short_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "caif-multi-agent-risks",
+   "level": "table_row",
+   "aliases": [],
+   "in_analytic_corpus": false
+  },
+  {
+   "id": "chain-of-agents",
+   "level": "table_row",
+   "aliases": [],
+   "in_analytic_corpus": false
+  },
+  {
+   "id": "cispa-moltbook-first-look",
+   "level": "table_row",
+   "aliases": [],
+   "in_analytic_corpus": false
+  },
+  {
+   "id": "claude-code-auto-mode-handoffs",
+   "level": "table_row",
+   "aliases": [],
+   "in_analytic_corpus": false
+  },
+  {
+   "id": "co-failure-ceiling",
+   "level": "mention_in_corpus",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "co-scientist-nature",
+   "level": "short_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "coding-agents-long-context",
+   "level": "short_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "coercion-ai-to-ai-management",
+   "level": "table_row",
+   "aliases": [],
+   "in_analytic_corpus": false
+  },
+  {
+   "id": "cognition-multi-agents",
+   "level": "short_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "collaboration-gap",
+   "level": "short_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "collusion-wiki",
+   "level": "short_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "colosseum",
+   "level": "short_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "commerce-misaligned-communication",
+   "level": "short_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "compass-kilo-flocks",
+   "level": "table_row",
+   "aliases": [],
+   "in_analytic_corpus": false
+  },
+  {
+   "id": "composer-2",
+   "level": "table_row",
+   "aliases": [],
+   "in_analytic_corpus": false
+  },
+  {
+   "id": "consensus-not-verification",
+   "level": "short_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "context-folding",
+   "level": "table_row",
+   "aliases": [],
+   "in_analytic_corpus": false
+  },
+  {
+   "id": "context-language-models",
+   "level": "short_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "context-rot",
+   "level": "table_row",
+   "aliases": [],
+   "in_analytic_corpus": false
+  },
+  {
+   "id": "cooperbench",
+   "level": "short_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "coral",
+   "level": "short_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "cost-of-consensus",
+   "level": "mention_in_corpus",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "cotra-surprised",
+   "level": "short_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "crypto-weaknesses",
+   "level": "short_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "cursor-scaling",
+   "level": "full_card",
+   "aliases": [
+    "cursor-scaling-agents"
+   ],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "cursor-swarm-economics",
+   "level": "short_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "de-nobili-lattice",
+   "level": "table_row",
+   "aliases": [],
+   "in_analytic_corpus": false
+  },
+  {
+   "id": "debate-or-vote",
+   "level": "short_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "deepmind-cheating-whistleblowing",
+   "level": "full_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "delegated-misalignment",
+   "level": "short_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "deliberative-crowds",
+   "level": "short_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "deliberative-illusion",
+   "level": "short_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "delm-shared-context",
+   "level": "short_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "despite-instructions-covert-channels",
+   "level": "short_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "devin-fusion",
+   "level": "table_row",
+   "aliases": [],
+   "in_analytic_corpus": false
+  },
+  {
+   "id": "distributional-agi-safety",
+   "level": "short_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "diversity-collapse",
+   "level": "short_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "diversity-scaling",
+   "level": "short_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "dochkina-drop-hierarchy",
+   "level": "short_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "dwarkesh-agent-civilizations",
+   "level": "table_row",
+   "aliases": [],
+   "in_analytic_corpus": false
+  },
+  {
+   "id": "dynamic-workflows-claude-code",
+   "level": "table_row",
+   "aliases": [],
+   "in_analytic_corpus": false
+  },
+  {
+   "id": "echoing-identity-failures",
+   "level": "short_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "effective-context-engineering",
+   "level": "table_row",
+   "aliases": [],
+   "in_analytic_corpus": false
+  },
+  {
+   "id": "einsteinarena",
+   "level": "short_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "emergence-world",
+   "level": "short_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "emergent-behaviors-data-leakage",
+   "level": "table_row",
+   "aliases": [],
+   "in_analytic_corpus": false
+  },
+  {
+   "id": "emergent-collusion-long-horizon",
+   "level": "short_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "eval-awareness-browsecomp",
+   "level": "table_row",
+   "aliases": [],
+   "in_analytic_corpus": false
+  },
+  {
+   "id": "evans-agentic-intelligence-explosion",
+   "level": "short_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "fable51-card-multiagent",
+   "level": "short_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "fermat-last-theorem",
+   "level": "short_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "flag-game",
+   "level": "full_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "forethought-sie",
+   "level": "table_row",
+   "aliases": [],
+   "in_analytic_corpus": false
+  },
+  {
+   "id": "game-theory-similarity-inference",
+   "level": "table_row",
+   "aliases": [],
+   "in_analytic_corpus": false
+  },
+  {
+   "id": "gas-town",
+   "level": "table_row",
+   "aliases": [],
+   "in_analytic_corpus": false
+  },
+  {
+   "id": "glossogen-saveveyru",
+   "level": "short_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "governed-shared-memory",
+   "level": "table_row",
+   "aliases": [],
+   "in_analytic_corpus": false
+  },
+  {
+   "id": "gpt6-astra-card-a2a",
+   "level": "short_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "great-models-think-alike",
+   "level": "table_row",
+   "aliases": [],
+   "in_analytic_corpus": false
+  },
+  {
+   "id": "grok-420-multi-agent",
+   "level": "short_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "harness-design-long-running",
+   "level": "short_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "heterogeneous-swarms",
+   "level": "table_row",
+   "aliases": [],
+   "in_analytic_corpus": false
+  },
+  {
+   "id": "hf-incident-case",
+   "level": "full_card",
+   "aliases": [
+    "hf-technical-timeline",
+    "metr-hf-investigation",
+    "openai-hf-incident-report"
+   ],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "hiddenbench",
+   "level": "short_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "homogeneous-panel-collapse",
+   "level": "short_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "illusion-multi-agent-advantage",
+   "level": "short_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "indirect-tipping",
+   "level": "short_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "intelligent-ai-delegation",
+   "level": "table_row",
+   "aliases": [],
+   "in_analytic_corpus": false
+  },
+  {
+   "id": "interaction-tax",
+   "level": "short_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "interlocutor-effect",
+   "level": "short_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "kim-scaling-agent-systems",
+   "level": "full_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "kimi-agent-swarm",
+   "level": "full_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "kimi-k3-swarm-bench",
+   "level": "short_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "kosmos",
+   "level": "table_row",
+   "aliases": [],
+   "in_analytic_corpus": false
+  },
+  {
+   "id": "lai-looking-for-something-weird",
+   "level": "short_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "latentmas",
+   "level": "table_row",
+   "aliases": [],
+   "in_analytic_corpus": false
+  },
+  {
+   "id": "llm-agent-swarm-optimization",
+   "level": "mention_in_corpus",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "llms-trust-their-own",
+   "level": "short_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "lm-teams-distributed-systems",
+   "level": "short_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "loca-bench",
+   "level": "table_row",
+   "aliases": [],
+   "in_analytic_corpus": false
+  },
+  {
+   "id": "loop-back-authority",
+   "level": "table_row",
+   "aliases": [],
+   "in_analytic_corpus": false
+  },
+  {
+   "id": "lost-before-translation",
+   "level": "table_row",
+   "aliases": [],
+   "in_analytic_corpus": false
+  },
+  {
+   "id": "lutje-mechanics-of-a-swarm",
+   "level": "short_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "maas-agentic-supernet",
+   "level": "table_row",
+   "aliases": [],
+   "in_analytic_corpus": false
+  },
+  {
+   "id": "mas-orchestra",
+   "level": "table_row",
+   "aliases": [],
+   "in_analytic_corpus": false
+  },
+  {
+   "id": "mast-why-mas-fail",
+   "level": "table_row",
+   "aliases": [],
+   "in_analytic_corpus": false
+  },
+  {
+   "id": "memagent",
+   "level": "table_row",
+   "aliases": [],
+   "in_analytic_corpus": false
+  },
+  {
+   "id": "metr-senate-testimony",
+   "level": "short_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "metr-time-horizon-11",
+   "level": "table_row",
+   "aliases": [],
+   "in_analytic_corpus": false
+  },
+  {
+   "id": "mind-viruses",
+   "level": "full_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "mo-models-mo-problems",
+   "level": "short_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "mollick-dot-and-swarm",
+   "level": "short_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "moltbook-illusion",
+   "level": "short_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "moltbook-socialization",
+   "level": "short_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "multi-agent-ai-control-fakelab",
+   "level": "short_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "multi-agent-transactive-memory",
+   "level": "short_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "muse-spark",
+   "level": "table_row",
+   "aliases": [],
+   "in_analytic_corpus": false
+  },
+  {
+   "id": "mythos-preview-self-interactions",
+   "level": "full_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "narcbench-helios",
+   "level": "short_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "nature-subliminal-learning",
+   "level": "short_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "ng-hao-peer-preservation-replication",
+   "level": "short_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "noam-brown-dwarkesh",
+   "level": "short_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "nomic-self-amending",
+   "level": "table_row",
+   "aliases": [],
+   "in_analytic_corpus": false
+  },
+  {
+   "id": "not-just-rlhf-activations",
+   "level": "short_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "oakhu-mallen-indirect-takeover",
+   "level": "short_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "okawa-biased-consensus",
+   "level": "full_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "open-challenges-mas-security",
+   "level": "table_row",
+   "aliases": [],
+   "in_analytic_corpus": false
+  },
+  {
+   "id": "openai-gpt56-ultra",
+   "level": "full_card",
+   "aliases": [
+    "gpt56-ultra-launch"
+   ],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "openai-misalignment-reports",
+   "level": "short_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "openai-navier-stokes",
+   "level": "full_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "opus46-launch-cluster",
+   "level": "short_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "opus5-card-multiagent",
+   "level": "full_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "opus55-card",
+   "level": "full_card",
+   "aliases": [
+    "opus55-card-multiagent"
+   ],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "orbit-framework",
+   "level": "short_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "orch-embodied",
+   "level": "short_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "orchestra-o1",
+   "level": "short_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "ord-dynamics-intelligence-explosions",
+   "level": "table_row",
+   "aliases": [],
+   "in_analytic_corpus": false
+  },
+  {
+   "id": "ord-swarm-scaling",
+   "level": "full_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "orgagent",
+   "level": "table_row",
+   "aliases": [],
+   "in_analytic_corpus": false
+  },
+  {
+   "id": "paramanager",
+   "level": "table_row",
+   "aliases": [],
+   "in_analytic_corpus": false
+  },
+  {
+   "id": "parasitic-ai",
+   "level": "short_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "peer-preservation",
+   "level": "full_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "physics-of-agents",
+   "level": "short_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "pimmur-principles",
+   "level": "short_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "population-physics",
+   "level": "table_row",
+   "aliases": [],
+   "in_analytic_corpus": false
+  },
+  {
+   "id": "prev-collective-loss-of-control",
+   "level": "short_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "prev-conformity-misalignment",
+   "level": "short_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "prev-contagion-cluster",
+   "level": "table_row",
+   "aliases": [],
+   "in_analytic_corpus": false
+  },
+  {
+   "id": "prev-demarzo-majority",
+   "level": "short_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "prev-flint-group-size",
+   "level": "short_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "prev-moltbook-cluster",
+   "level": "table_row",
+   "aliases": [],
+   "in_analytic_corpus": false
+  },
+  {
+   "id": "prev-population-dynamics-cluster",
+   "level": "table_row",
+   "aliases": [],
+   "in_analytic_corpus": false
+  },
+  {
+   "id": "prev-robustness-audits",
+   "level": "short_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "prev-swarmworld",
+   "level": "short_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "prev-thought-virus",
+   "level": "mention_in_corpus",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "prev-uviive-fleet",
+   "level": "table_row",
+   "aliases": [],
+   "in_analytic_corpus": false
+  },
+  {
+   "id": "prime-agent",
+   "level": "table_row",
+   "aliases": [],
+   "in_analytic_corpus": false
+  },
+  {
+   "id": "programmable-belief-dynamics",
+   "level": "table_row",
+   "aliases": [],
+   "in_analytic_corpus": false
+  },
+  {
+   "id": "project-vend-2",
+   "level": "short_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "puppeteer-evolving-orchestration",
+   "level": "table_row",
+   "aliases": [],
+   "in_analytic_corpus": false
+  },
+  {
+   "id": "recursive-agent-harnesses",
+   "level": "table_row",
+   "aliases": [],
+   "in_analytic_corpus": false
+  },
+  {
+   "id": "recursive-agent-optimization",
+   "level": "short_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "recursive-language-models",
+   "level": "full_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "representational-similarity",
+   "level": "short_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "riedl-emergent-coordination",
+   "level": "short_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "riemann-zeta-swarm",
+   "level": "short_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "ringelmann-effect",
+   "level": "short_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "rl-orchestration-survey",
+   "level": "table_row",
+   "aliases": [],
+   "in_analytic_corpus": false
+  },
+  {
+   "id": "robin-futurehouse",
+   "level": "mention_in_corpus",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "safety-of-latent-communication",
+   "level": "table_row",
+   "aliases": [],
+   "in_analytic_corpus": false
+  },
+  {
+   "id": "sakana-ab-mcts",
+   "level": "table_row",
+   "aliases": [],
+   "in_analytic_corpus": false
+  },
+  {
+   "id": "sakana-conductor-trinity-fugu",
+   "level": "short_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "sat-teams",
+   "level": "full_card",
+   "aliases": [
+    "self-organizing-agent-teams"
+   ],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "scaling-teams-or-time",
+   "level": "short_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "schemes-coordinated-sabotage",
+   "level": "short_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "science-agents-go-rogue",
+   "level": "table_row",
+   "aliases": [],
+   "in_analytic_corpus": false
+  },
+  {
+   "id": "science-invent-own-language",
+   "level": "table_row",
+   "aliases": [],
+   "in_analytic_corpus": false
+  },
+  {
+   "id": "science-malicious-swarms",
+   "level": "short_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "self-moa",
+   "level": "table_row",
+   "aliases": [],
+   "in_analytic_corpus": false
+  },
+  {
+   "id": "semantic-collapse",
+   "level": "full_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "shutdown-sabotage",
+   "level": "full_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "silo-bench",
+   "level": "short_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "simulation-to-enaction",
+   "level": "table_row",
+   "aliases": [],
+   "in_analytic_corpus": false
+  },
+  {
+   "id": "slocum-hf-reproduction",
+   "level": "table_row",
+   "aliases": [],
+   "in_analytic_corpus": false
+  },
+  {
+   "id": "social-circuits",
+   "level": "short_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "societies-of-thought",
+   "level": "short_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "strategic-monoculture",
+   "level": "table_row",
+   "aliases": [],
+   "in_analytic_corpus": false
+  },
+  {
+   "id": "stronger-mas",
+   "level": "table_row",
+   "aliases": [],
+   "in_analytic_corpus": false
+  },
+  {
+   "id": "subagents-comply-more",
+   "level": "table_row",
+   "aliases": [],
+   "in_analytic_corpus": false
+  },
+  {
+   "id": "superminds-test",
+   "level": "short_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "swarmbench",
+   "level": "table_row",
+   "aliases": [],
+   "in_analytic_corpus": false
+  },
+  {
+   "id": "swarmtraces",
+   "level": "short_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "talk-isnt-always-cheap",
+   "level": "table_row",
+   "aliases": [],
+   "in_analytic_corpus": false
+  },
+  {
+   "id": "teams-hold-experts-back",
+   "level": "full_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "test-time-communication",
+   "level": "full_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "tokyo-road-game",
+   "level": "short_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "tokyo-shared-state-sync",
+   "level": "table_row",
+   "aliases": [],
+   "in_analytic_corpus": false
+  },
+  {
+   "id": "too-polite-to-disagree",
+   "level": "table_row",
+   "aliases": [],
+   "in_analytic_corpus": false
+  },
+  {
+   "id": "tool-steganography",
+   "level": "short_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "toolorchestra",
+   "level": "table_row",
+   "aliases": [],
+   "in_analytic_corpus": false
+  },
+  {
+   "id": "trammell-parallelizability",
+   "level": "short_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "tran-kiela-equal-budget",
+   "level": "short_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "transluce-agent-activity",
+   "level": "short_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "vidal-models-identify-as-swarm",
+   "level": "short_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "voluntary-collusion-secret-tools",
+   "level": "table_row",
+   "aliases": [],
+   "in_analytic_corpus": false
+  },
+  {
+   "id": "when-agents-coordinate",
+   "level": "short_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "when-does-marl-help",
+   "level": "table_row",
+   "aliases": [],
+   "in_analytic_corpus": false
+  },
+  {
+   "id": "who-do-llms-trust",
+   "level": "table_row",
+   "aliases": [],
+   "in_analytic_corpus": false
+  },
+  {
+   "id": "wideseek-r1",
+   "level": "short_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "wiki-copying",
+   "level": "full_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "willis-hundreds-of-agents",
+   "level": "table_row",
+   "aliases": [],
+   "in_analytic_corpus": false
+  },
+  {
+   "id": "wiz-moltbook",
+   "level": "short_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "worse-together",
+   "level": "short_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  },
+  {
+   "id": "zhang-agents-in-the-wild",
+   "level": "short_card",
+   "aliases": [],
+   "in_analytic_corpus": true
+  }
+ ]
+}

@@ -1,0 +1,47 @@
+{
+  "scope": "Source-file identities from the preserved October research archive. Archive locators are relative; private editorial records and local machine paths are intentionally not distributed. Original archive remains preserved separately.",
+  "source_cutoff": "2026-10-03",
+  "author_file_state": "2026-10-04",
+  "recovery_update": "2026-10-09",
+  "files": [
+    {
+      "path": "research-archive/build/front.md",
+      "bytes": 67886,
+      "sha256": "11d8e547064d72ef6eb4da5d0dc0fcd0e5a1fe40179d4bf9718c4c01eabebd94"
+    },
+    {
+      "path": "research-archive/build/back.md",
+      "bytes": 15455,
+      "sha256": "48f8bb131f2a8805bb67aeec880296d6594df1eb3c15e9dc5f4fb4f5eb3e855b"
+    },
+    {
+      "path": "research-archive/build/chapters/w1_t5_t1.md",
+      "bytes": 128154,
+      "sha256": "3aea60d6f402d70698feaea036dd30a53eca61ca0b2c5e0c5b5458d9b98d45cb"
+    },
+    {
+      "path": "research-archive/build/chapters/w2_t3_wild.md",
+      "bytes": 119028,
+      "sha256": "3619e14c9ca8cba109644b26ee8d41ce42b2b9e36385a2125f761e49a9972864"
+    },
+    {
+      "path": "research-archive/build/chapters/w3_t2_incident.md",
+      "bytes": 110409,
+      "sha256": "e1264365ff914e4ec95f0764c2297133cce780de026ef00a67e83587c8e9d1e1"
+    },
+    {
+      "path": "research-archive/build/chapters/w4_t4_beliefs.md",
+      "bytes": 115794,
+      "sha256": "10bf07bf9c9a3748c087e2183cc3486c35246fc1f475c7489bd4888c77b018e7"
+    }
+  ],
+  "editorial_correction_update": "2026-10-09",
+  "primary_checks": [
+    {
+      "url": "https://arxiv.org/html/2610.02654v1",
+      "checked": "2026-10-09",
+      "sections": "§3.2 claim template; Table 3 plausibility levels; Table 4 clustering column; §5.2 clustering result",
+      "finding": "36°C is the T value in the belief statement \"Tomorrow it will be T°C in Boston\" for the clustered-versus-random comparison (N=30, Watts–Strogatz degree 6, p=0 vs 1, seed fraction 0.12, horizon 15, 100 replicates)."
+    }
+  ]
+}

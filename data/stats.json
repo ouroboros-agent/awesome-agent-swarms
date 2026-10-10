@@ -1,0 +1,19 @@
+{
+ "corpus": 153,
+ "cards_full": 31,
+ "cards_short": 118,
+ "mention_in_corpus": 6,
+ "cards_added_after_import": 2,
+ "retired_cluster_records": 3,
+ "related_rows": 100,
+ "table_row_works": 100,
+ "inline_link_resources": 6,
+ "constituent_documents": 19,
+ "unique_works": 280,
+ "unique_urls_in_text": 176,
+ "unique_url_keys_in_text": 176,
+ "fig_works": 45,
+ "fig_own": 7,
+ "orgs_in_passports": 167,
+ "note": "unique_works = all registry records after merging URL variants (arXiv abs/pdf/html/versions, DOI and publisher pages, synonyms) and card aliases; includes cards, related-work rows, constituent documents and every other linked resource (news, blog posts, documentation)."
+}
