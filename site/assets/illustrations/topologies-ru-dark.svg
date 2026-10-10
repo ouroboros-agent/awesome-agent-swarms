@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="t d">
+<title id="t">Один агент нашёл решение. Как о нём узнают остальные?</title>
+<desc id="d">Три схемы связи шести агентов. Независимо: находка агента 3 остаётся у него, агенты 1 и 5 доходят до неё сами, ответы сводит отбор. Через координатора: находка идёт к координатору, он пересылает её агентам 1 и 5. Через общую память: агент 3 записывает находку в журнал, агенты 1 и 5 находят её, когда спрашивают.</desc>
+<defs><marker id="pa" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1 1L9 5L1 9" fill="none" stroke="#5fe3b3" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker><radialGradient id="glow" cx="78%" cy="0%" r="75%"><stop offset="0" stop-color="#22a876" stop-opacity=".2"/><stop offset="1" stop-color="#22a876" stop-opacity="0"/></radialGradient></defs>
+<rect width="1600" height="900" rx="32" fill="#0a0c0d"/><rect width="1600" height="900" rx="32" fill="url(#glow)"/>
+<g transform="translate(64 62)"><circle cx="14" cy="14" r="10" fill="none" stroke="#22a876" stroke-width="3.5"/><circle cx="24" cy="14" r="3.6" fill="#5fe3b3"/></g>
+<text x="104" y="84" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="22" font-weight="600" fill="#b4bcb8">Awesome Agent Swarms <tspan fill="#7f8884" font-weight="400">· обзор 153 работ о роях LLM-агентов</tspan></text>
+<text x="64" y="170" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="60" font-weight="650" letter-spacing="-2" fill="#ffffff">Один агент нашёл решение.</text>
+<text x="64" y="240" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="60" font-weight="650" letter-spacing="-2" fill="#7f8884">Как о нём узнают остальные?</text>
+<g transform="translate(1188 150)"><circle cx="8" cy="0" r="7" fill="#5fe3b3"/><text x="26" y="0" dy=".35em" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="21" fill="#b4bcb8">знает о находке агента 3</text></g>
+<g transform="translate(1188 190)"><rect x="0" y="-9" width="17" height="18" rx="9" fill="none" stroke="#5fe3b3" stroke-dasharray="4 4" stroke-width="1.6"/><text x="26" y="0" dy=".35em" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="21" fill="#b4bcb8">дошёл до неё сам, заново</text></g>
+<rect x="64" y="280" width="472" height="556" rx="24" fill="#101416" stroke="#1f2629"/>
+<text x="92" y="330" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="17" fill="#7f8884">01</text><text x="128" y="331" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="29" font-weight="650" letter-spacing="-.6" fill="#eef2ef">Независимо</text><text x="128" y="360" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="19" fill="#7f8884">канала нет</text>
+<g transform="translate(76 380)">
+<path d="M132 50H198C268 50 288 148.5 348 148.5" fill="none" stroke="#5fe3b3" stroke-opacity="0.55" stroke-width="1.6"/>
+<path d="M132 100.4H198C268 100.4 288 159.5 348 159.5" fill="none" stroke="#262d30" stroke-opacity="1" stroke-width="1.2"/>
+<path d="M132 150.8H198C268 150.8 288 170.5 348 170.5" fill="none" stroke="#5fe3b3" stroke-opacity="0.55" stroke-width="1.6"/>
+<path d="M132 201.2H198C268 201.2 288 181.5 348 181.5" fill="none" stroke="#262d30" stroke-opacity="1" stroke-width="1.2"/>
+<path d="M132 251.6H198C268 251.6 288 192.5 348 192.5" fill="none" stroke="#5fe3b3" stroke-opacity="0.55" stroke-width="1.6"/>
+<path d="M132 302H198C268 302 288 203.5 348 203.5" fill="none" stroke="#262d30" stroke-opacity="1" stroke-width="1.2"/>
+<rect x="356" y="134" width="84" height="84" rx="20" fill="#161b1d" stroke="#7f8884" stroke-opacity=".6"/>
+<rect x="366" y="156" width="18" height="18" rx="5" fill="#22a876"/>
+<rect x="389" y="156" width="18" height="18" rx="5" fill="#3a4245"/>
+<rect x="412" y="156" width="18" height="18" rx="5" fill="#22a876"/>
+<rect x="366" y="179" width="18" height="18" rx="5" fill="#3a4245"/>
+<rect x="389" y="179" width="18" height="18" rx="5" fill="#22a876"/>
+<rect x="412" y="179" width="18" height="18" rx="5" fill="#3a4245"/>
+<text x="398" y="244" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="18" font-weight="600" fill="#eef2ef">отбор</text>
+<rect x="8" y="30" width="112" height="40" rx="20.0" fill="#123527" stroke="#5fe3b3" stroke-width="1.6" stroke-dasharray="4 4"/>
+<circle cx="28" cy="50" r="5" fill="#5fe3b3"/><text x="40" y="50" dy=".35em" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="18" font-weight="600" fill="#eef2ef">агент 1</text>
+<rect x="134" y="39" width="71" height="22" rx="11" fill="#101416" stroke="#5fe3b3" stroke-opacity=".5"/><text x="169.5" y="50" dy=".35em" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#5fe3b3">заново</text>
+<rect x="8" y="80.4" width="112" height="40" rx="20.0" fill="#161b1d" stroke="#3a4245" stroke-width="1.2"/>
+<circle cx="28" cy="100.4" r="5" fill="#7f8884"/><text x="40" y="100.4" dy=".35em" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="18" font-weight="600" fill="#eef2ef">агент 2</text>
+<rect x="8" y="130.8" width="112" height="40" rx="20.0" fill="#123527" stroke="#5fe3b3" stroke-width="1.6"/>
+<circle cx="28" cy="150.8" r="5" fill="#5fe3b3"/><text x="40" y="150.8" dy=".35em" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="18" font-weight="600" fill="#eef2ef">агент 3</text>
+<rect x="134" y="139.8" width="63" height="22" rx="11" fill="#101416" stroke="#5fe3b3" stroke-opacity=".5"/><text x="165.5" y="150.8" dy=".35em" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#5fe3b3">нашёл</text>
+<rect x="8" y="181.2" width="112" height="40" rx="20.0" fill="#161b1d" stroke="#3a4245" stroke-width="1.2"/>
+<circle cx="28" cy="201.2" r="5" fill="#7f8884"/><text x="40" y="201.2" dy=".35em" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="18" font-weight="600" fill="#eef2ef">агент 4</text>
+<rect x="8" y="231.6" width="112" height="40" rx="20.0" fill="#123527" stroke="#5fe3b3" stroke-width="1.6" stroke-dasharray="4 4"/>
+<circle cx="28" cy="251.6" r="5" fill="#5fe3b3"/><text x="40" y="251.6" dy=".35em" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="18" font-weight="600" fill="#eef2ef">агент 5</text>
+<rect x="134" y="240.6" width="71" height="22" rx="11" fill="#101416" stroke="#5fe3b3" stroke-opacity=".5"/><text x="169.5" y="251.6" dy=".35em" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#5fe3b3">заново</text>
+<rect x="8" y="282" width="112" height="40" rx="20.0" fill="#161b1d" stroke="#3a4245" stroke-width="1.2"/>
+<circle cx="28" cy="302" r="5" fill="#7f8884"/><text x="40" y="302" dy=".35em" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="18" font-weight="600" fill="#eef2ef">агент 6</text>
+</g>
+<text x="92" y="750" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="19" fill="#b4bcb8">Находка остаётся у автора. Остальные</text>
+<text x="92" y="777" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="19" fill="#b4bcb8">доходят до неё сами; ответы сводит отбор.</text>
+<rect x="564" y="280" width="472" height="556" rx="24" fill="#101416" stroke="#1f2629"/>
+<text x="592" y="330" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="17" fill="#7f8884">02</text><text x="628" y="331" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="29" font-weight="650" letter-spacing="-.6" fill="#eef2ef">Через координатора</text><text x="628" y="360" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="19" fill="#7f8884">всё через один узел</text>
+<g transform="translate(576 380)">
+<path d="M162.8 84.5L191.5 122.2" fill="none" stroke="#5fe3b3" stroke-opacity="0.9" stroke-width="2" marker-start="url(#pa)"/>
+<path d="M285.2 84.5L256.5 122.2" fill="none" stroke="#f1b65b" stroke-opacity="0.35" stroke-width="1.3"/>
+<path d="M322 165L305 165" fill="none" stroke="#5fe3b3" stroke-opacity="0.9" stroke-width="2" marker-end="url(#pa)"/>
+<path d="M285.2 245.5L256.5 207.8" fill="none" stroke="#f1b65b" stroke-opacity="0.35" stroke-width="1.3"/>
+<path d="M162.8 245.5L191.5 207.8" fill="none" stroke="#5fe3b3" stroke-opacity="0.9" stroke-width="2" marker-start="url(#pa)"/>
+<path d="M126 165L143 165" fill="none" stroke="#f1b65b" stroke-opacity="0.35" stroke-width="1.3"/>
+<rect x="149" y="127" width="150" height="76" rx="20" fill="#1d1810" stroke="#f1b65b" stroke-width="1.6"/>
+<text x="224" y="159" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="19" font-weight="600" fill="#eef2ef">координатор</text>
+<rect x="172" y="175" width="104" height="6" rx="3" fill="#c08426" fill-opacity=".25"/><rect x="172" y="175" width="90" height="6" rx="3" fill="#f1b65b"/>
+<rect x="88" y="39.7" width="112" height="40" rx="20.0" fill="#123527" stroke="#5fe3b3" stroke-width="1.6"/>
+<circle cx="108" cy="59.7" r="5" fill="#5fe3b3"/><text x="120" y="59.7" dy=".35em" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="18" font-weight="600" fill="#eef2ef">агент 1</text>
+<rect x="104.5" y="11.7" width="79" height="22" rx="11" fill="#101416" stroke="#5fe3b3" stroke-opacity=".5"/><text x="144" y="22.7" dy=".35em" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#5fe3b3">получил</text>
+<rect x="248" y="39.7" width="112" height="40" rx="20.0" fill="#161b1d" stroke="#3a4245" stroke-width="1.2"/>
+<circle cx="268" cy="59.7" r="5" fill="#7f8884"/><text x="280" y="59.7" dy=".35em" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="18" font-weight="600" fill="#eef2ef">агент 2</text>
+<rect x="328" y="145" width="112" height="40" rx="20.0" fill="#123527" stroke="#5fe3b3" stroke-width="1.6"/>
+<circle cx="348" cy="165" r="5" fill="#5fe3b3"/><text x="360" y="165" dy=".35em" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="18" font-weight="600" fill="#eef2ef">агент 3</text>
+<rect x="352.5" y="117" width="63" height="22" rx="11" fill="#101416" stroke="#5fe3b3" stroke-opacity=".5"/><text x="384" y="128" dy=".35em" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#5fe3b3">нашёл</text>
+<rect x="248" y="250.3" width="112" height="40" rx="20.0" fill="#161b1d" stroke="#3a4245" stroke-width="1.2"/>
+<circle cx="268" cy="270.3" r="5" fill="#7f8884"/><text x="280" y="270.3" dy=".35em" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="18" font-weight="600" fill="#eef2ef">агент 4</text>
+<rect x="88" y="250.3" width="112" height="40" rx="20.0" fill="#123527" stroke="#5fe3b3" stroke-width="1.6"/>
+<circle cx="108" cy="270.3" r="5" fill="#5fe3b3"/><text x="120" y="270.3" dy=".35em" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="18" font-weight="600" fill="#eef2ef">агент 5</text>
+<rect x="104.5" y="296.3" width="79" height="22" rx="11" fill="#101416" stroke="#5fe3b3" stroke-opacity=".5"/><text x="144" y="307.3" dy=".35em" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#5fe3b3">получил</text>
+<rect x="8" y="145" width="112" height="40" rx="20.0" fill="#161b1d" stroke="#3a4245" stroke-width="1.2"/>
+<circle cx="28" cy="165" r="5" fill="#7f8884"/><text x="40" y="165" dy=".35em" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="18" font-weight="600" fill="#eef2ef">агент 6</text>
+</g>
+<text x="592" y="750" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="19" fill="#b4bcb8">Координатор решает, кому переслать, и</text>
+<text x="592" y="777" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="19" fill="#b4bcb8">держит всю картину в своём контексте.</text>
+<rect x="1064" y="280" width="472" height="556" rx="24" fill="#101416" stroke="#1f2629"/>
+<text x="1092" y="330" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="17" fill="#7f8884">03</text><text x="1128" y="331" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="29" font-weight="650" letter-spacing="-.6" fill="#eef2ef">Через общую память</text><text x="1128" y="360" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="19" fill="#7f8884">журнал, который надо спросить</text>
+<g transform="translate(1076 380)">
+<path d="M100 76V91" fill="none" stroke="#5fe3b3" stroke-opacity="0.9" stroke-width="2" stroke-dasharray="5 5" marker-start="url(#pa)"/>
+<path d="M224 76V91" fill="none" stroke="#8ac6ff" stroke-opacity="0.35" stroke-width="1.3"/>
+<path d="M348 76V91" fill="none" stroke="#5fe3b3" stroke-opacity="0.9" stroke-width="2" marker-end="url(#pa)"/>
+<path d="M348 254V239" fill="none" stroke="#8ac6ff" stroke-opacity="0.35" stroke-width="1.3"/>
+<path d="M224 254V239" fill="none" stroke="#5fe3b3" stroke-opacity="0.9" stroke-width="2" stroke-dasharray="5 5" marker-start="url(#pa)"/>
+<path d="M100 254V239" fill="none" stroke="#8ac6ff" stroke-opacity="0.35" stroke-width="1.3"/>
+<rect x="68" y="97" width="312" height="136" rx="18" fill="#0f1620" stroke="#8ac6ff" stroke-opacity=".7" stroke-width="1.4"/>
+<text x="86" y="127" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="16" font-weight="600" fill="#8ac6ff">общий журнал</text>
+<circle cx="90" cy="159" r="4" fill="#7f8884"/><text x="102" y="159" dy=".35em" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="16" fill="#b4bcb8">агент 6 · беру таблицы</text>
+<circle cx="90" cy="185" r="4" fill="#7f8884"/><text x="102" y="185" dy=".35em" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="16" fill="#b4bcb8">агент 4 · тест сносок падает</text>
+<rect x="76" y="199" width="296" height="24" rx="8" fill="#22a876" fill-opacity=".16"/>
+<circle cx="90" cy="211" r="4" fill="#5fe3b3"/><text x="102" y="211" dy=".35em" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="16" fill="#eef2ef">агент 3 · находка</text>
+<rect x="44" y="30" width="112" height="40" rx="20.0" fill="#123527" stroke="#5fe3b3" stroke-width="1.6"/>
+<circle cx="64" cy="50" r="5" fill="#5fe3b3"/><text x="76" y="50" dy=".35em" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="18" font-weight="600" fill="#eef2ef">агент 1</text>
+<rect x="60.5" y="2" width="79" height="22" rx="11" fill="#101416" stroke="#5fe3b3" stroke-opacity=".5"/><text x="100" y="13" dy=".35em" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#5fe3b3">спросил</text>
+<rect x="168" y="30" width="112" height="40" rx="20.0" fill="#161b1d" stroke="#3a4245" stroke-width="1.2"/>
+<circle cx="188" cy="50" r="5" fill="#7f8884"/><text x="200" y="50" dy=".35em" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="18" font-weight="600" fill="#eef2ef">агент 2</text>
+<rect x="292" y="30" width="112" height="40" rx="20.0" fill="#123527" stroke="#5fe3b3" stroke-width="1.6"/>
+<circle cx="312" cy="50" r="5" fill="#5fe3b3"/><text x="324" y="50" dy=".35em" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="18" font-weight="600" fill="#eef2ef">агент 3</text>
+<rect x="316.5" y="2" width="63" height="22" rx="11" fill="#101416" stroke="#5fe3b3" stroke-opacity=".5"/><text x="348" y="13" dy=".35em" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#5fe3b3">нашёл</text>
+<rect x="292" y="260" width="112" height="40" rx="20.0" fill="#161b1d" stroke="#3a4245" stroke-width="1.2"/>
+<circle cx="312" cy="280" r="5" fill="#7f8884"/><text x="324" y="280" dy=".35em" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="18" font-weight="600" fill="#eef2ef">агент 4</text>
+<rect x="168" y="260" width="112" height="40" rx="20.0" fill="#123527" stroke="#5fe3b3" stroke-width="1.6"/>
+<circle cx="188" cy="280" r="5" fill="#5fe3b3"/><text x="200" y="280" dy=".35em" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="18" font-weight="600" fill="#eef2ef">агент 5</text>
+<rect x="184.5" y="306" width="79" height="22" rx="11" fill="#101416" stroke="#5fe3b3" stroke-opacity=".5"/><text x="224" y="317" dy=".35em" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#5fe3b3">спросил</text>
+<rect x="44" y="260" width="112" height="40" rx="20.0" fill="#161b1d" stroke="#3a4245" stroke-width="1.2"/>
+<circle cx="64" cy="280" r="5" fill="#7f8884"/><text x="76" y="280" dy=".35em" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="18" font-weight="600" fill="#eef2ef">агент 6</text>
+</g>
+<text x="1092" y="750" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="19" fill="#b4bcb8">Запись живёт в журнале и после автора.</text>
+<text x="1092" y="777" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="19" fill="#b4bcb8">Узнаёт её тот, кто спросил.</text>
+<text x="64" y="870" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="19" fill="#7f8884">Схема условная: шесть агентов, одна находка. Измерения — в обзоре: 11 глав, атлас работ, русская и английская версии.</text>
+</svg>

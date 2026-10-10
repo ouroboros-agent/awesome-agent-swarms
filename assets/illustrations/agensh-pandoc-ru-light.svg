@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 560" width="1200" height="560" role="img" aria-labelledby="t d">
+<title id="t">Agensh: 1 024 агента на pandoc</title>
+<desc id="d">Доля пройденных скрытых тестов pandoc за 6 часов: 33,89 % у одного агента, 41,75 у 8, 43,11 у 32, 50,94 у 128, 55,06 у 1 024. Ось числа агентов логарифмическая.</desc>
+<defs><linearGradient id="wash" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#13895f" stop-opacity=".22"/><stop offset="1" stop-color="#13895f" stop-opacity="0"/></linearGradient></defs>
+<rect width="1200" height="560" rx="28" fill="#f6f8f7"/>
+<text x="56" y="86" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="40" font-weight="650" letter-spacing="-1.2" fill="#070a09">Agensh: 1 024 агента на pandoc</text>
+<text x="56" y="128" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="21" fill="#68716d">Доля пройденных скрытых тестов за 6 часов, %. Уравнено время, не токены.</text>
+<line x1="120" x2="1100" y1="470" y2="470" stroke="#e4e9e6"/><text x="102" y="470" dy=".35em" text-anchor="end" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="18" fill="#68716d">30</text>
+<line x1="120" x2="1100" y1="376.7" y2="376.7" stroke="#e4e9e6"/><text x="102" y="376.7" dy=".35em" text-anchor="end" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="18" fill="#68716d">40</text>
+<line x1="120" x2="1100" y1="283.3" y2="283.3" stroke="#e4e9e6"/><text x="102" y="283.3" dy=".35em" text-anchor="end" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="18" fill="#68716d">50</text>
+<line x1="120" x2="1100" y1="190" y2="190" stroke="#e4e9e6"/><text x="102" y="190" dy=".35em" text-anchor="end" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="18" fill="#68716d">60</text>
+<text x="120" y="504" text-anchor="middle" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="18" fill="#68716d">1</text>
+<text x="414" y="504" text-anchor="middle" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="18" fill="#68716d">8</text>
+<text x="610" y="504" text-anchor="middle" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="18" fill="#68716d">32</text>
+<text x="806" y="504" text-anchor="middle" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="18" fill="#68716d">128</text>
+<text x="1100" y="504" text-anchor="middle" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="18" fill="#68716d">1 024</text>
+<text x="1100" y="536" text-anchor="end" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="18" fill="#68716d">агентов в команде, логарифмическая шкала · Zhan et al., Microsoft Research, arXiv:2609.26781 (2026), рис. 1</text>
+<path d="M120 470L120 433.7L414 360.3L610 347.6L806 274.6L1100 236.1L1100 470Z" fill="url(#wash)"/>
+<polyline points="120,433.7 414,360.3 610,347.6 806,274.6 1100,236.1" fill="none" stroke="#13895f" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="120" cy="433.7" r="8" fill="#13895f" stroke="#f6f8f7" stroke-width="3"/><text x="120" y="411.7" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="22" font-weight="650" fill="#070a09">33,89</text>
+<circle cx="414" cy="360.3" r="8" fill="#13895f" stroke="#f6f8f7" stroke-width="3"/><text x="414" y="338.3" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="22" font-weight="650" fill="#070a09">41,75</text>
+<circle cx="610" cy="347.6" r="8" fill="#13895f" stroke="#f6f8f7" stroke-width="3"/><text x="610" y="325.6" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="22" font-weight="650" fill="#070a09">43,11</text>
+<circle cx="806" cy="274.6" r="8" fill="#13895f" stroke="#f6f8f7" stroke-width="3"/><text x="806" y="252.6" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="22" font-weight="650" fill="#070a09">50,94</text>
+<circle cx="1100" cy="236.1" r="8" fill="#13895f" stroke="#f6f8f7" stroke-width="3"/><text x="1100" y="214.1" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="22" font-weight="650" fill="#070a09">55,06</text>
+</svg>

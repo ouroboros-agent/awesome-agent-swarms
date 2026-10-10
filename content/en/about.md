@@ -2,23 +2,21 @@
 page: about
 title: About: authors, method, rights, citation
 nav: About
-lead: Who made the survey, how the corpus was assembled, what the labels mean and how to cite it.
+lead: Who assembled the survey, how the corpus was chosen, what the marks on the numbers mean, and how to cite the work.
 ---
 
 ## Authors
 
-**Anton Razzhigaev and Ouroboros.** Ouroboros is an AI agent system. It collected and read the sources, wrote the cards, ran the checks and prepared the text; Anton Razzhigaev set the scope of the survey, made the editorial decisions and is responsible for the publication. This is a human–AI collaboration, and we say so plainly.
-
-Status: a private draft technical report and research survey prepared for self-publication. It is not yet public, has not been peer-reviewed, is not an ACL publication and has not been submitted to arXiv.
+**Anton Razzhigaev and Ouroboros.** Ouroboros is an AI agent system. It collected and read the sources, wrote the cards, checked the numbers and prepared the text. Anton Razzhigaev set the scope, made the editorial decisions and is responsible for publication. This is a collaboration between a person and an agent system, and the authorship says so directly.
 
 ## How the corpus was assembled
 
-- **Cut-off:** 3 October 2026. Later preprint versions, reviews and prize decisions are not reflected in the text; known changes after the cut-off are listed below.
-- **Analytic corpus:** {{stat:corpus}} works with metadata (date, organizations, models, scale, evidence class, topics); the Chapter 1 charts and the atlas filters are built from it.
+- **Cut-off:** 3 October 2026. Later preprint versions, reviews and prize decisions are not in the text; known changes after the cut-off are listed below.
+- **Analytic corpus:** {{stat:corpus}} works with metadata (date, organizations, models, scale, evidence class, topics). The Chapter 1 charts and the atlas filters are built from it.
 - **Cards:** {{stat:cards_full}} full and {{stat:cards_short}} short; plus {{stat:related_rows}} rows in the related-work tables and the comparison with physical swarms. In total, {{stat:unique_works}} unique works and resources are linked, after merging versions of the same work (arXiv, journal, publisher page).
-- **Selection:** targeted, not a systematic review following a pre-specified protocol. The corpus deliberately favours 2026; works from 2025 are included where recent work builds on them.
+- **Selection:** targeted, not a systematic review under a pre-specified protocol. The corpus deliberately favours 2026; works from 2025 are included where recent work builds on them.
 - **Sources:** peer-reviewed papers, preprints, model system cards, lab engineering blogs, incident investigations, essays and interviews. Every card carries its evidence class (table in Chapter 1).
-- **Numbers:** every number is tied to a source. "Our estimate" marks the review's own calculation from published charts or data, not a number reported by the authors. The cards were checked against the primary sources in several review rounds in October 2026.
+- **Numbers:** every number is tied to a source. "Our estimate" marks a calculation from published charts or data, not a number reported by the authors of the work. The cards were checked against the primary sources in October 2026.
 
 ## Changes after the cut-off
 
@@ -32,7 +30,7 @@ Status: a private draft technical report and research survey prepared for self-p
 
 ## How to cite
 
-[Paper and citation page](../paper/index.html). Scholarly version in ACL format: [download PDF](../paper/swarm-dynamics.pdf) · [LaTeX sources and figures (ZIP)](../paper/swarm-dynamics-source.zip). This is a private draft prepared for self-publication.
+The article-format version and the citation files: [paper page](../paper/index.html), [PDF](../paper/swarm-dynamics.pdf), [LaTeX sources and figures (ZIP)](../paper/swarm-dynamics-source.zip).
 
 Anton Razzhigaev, Ouroboros. *On the Dynamics of LLM Agent Swarms: Scaling, Coordination, and Collective Behavior.* Technical report, cut-off 3 October 2026.
 

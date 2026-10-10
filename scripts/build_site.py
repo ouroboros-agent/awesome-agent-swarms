@@ -4,9 +4,10 @@
   python scripts/build_site.py            # build site/
   python scripts/build_site.py --check    # build, then fail on broken internal links / missing images
 
-No JavaScript is needed to read or navigate: theme toggle, mobile table of contents, card disclosure,
-image zoom (:target) and atlas filters (:has) are HTML+CSS. assets/js/enhance.js only adds niceties
-(remembered theme, atlas text search and counts, scroll hints on overflowing tables).
+Reading and navigation need no JavaScript: the theme switch, the contents sheet, card disclosure, the figure
+lightbox (:target), the index scene's mode switch and the atlas filters (:has) are HTML and CSS.
+assets/js/site.js adds the figure viewer, the remembered theme, section highlighting, atlas search and
+expand-all; assets/js/story.js plays the index scene (scripts/site_story.py builds its markup).
 """
 import html, json, os, re, shutil, sys
 from collections import OrderedDict, defaultdict
@@ -14,33 +15,60 @@ from collections import OrderedDict, defaultdict
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(ROOT, "scripts"))
 import markdown  # pinned in requirements.txt
+import site_story
 
 CONTENT, DATA, ASSETS, OUT = (os.path.join(ROOT, d) for d in ("content", "data", "assets", "site"))
 LANGS = ("ru", "en")
-PAGE_ORDER = ["index"] + [f"ch{n:02d}" for n in range(1, 12)] + ["atlas", "glossary", "sources", "about"]
+CHAPTERS = [f"ch{n:02d}" for n in range(1, 12)]
+PAGE_ORDER = ["index"] + CHAPTERS + ["atlas", "glossary", "sources", "about"]
 SITE_TITLE = {"ru": "Динамика роёв LLM-агентов", "en": "On the Dynamics of LLM Agent Swarms"}
+SITE_SHORT = {"ru": "Динамика роёв", "en": "Swarm Dynamics"}
 SITE_SUB = {"ru": "Масштабирование, координация и коллективное поведение", "en": "Scaling, Coordination, and Collective Behavior"}
 AUTHORS = "Anton Razzhigaev, Ouroboros"
 UI = {
- "ru": dict(toc="Содержание", on_page="На странице", chapter="Глава", details_full="Подробнее: метод, результаты, оговорки",
+ "ru": dict(toc="Содержание", on_page="На странице", chapter="Глава", of="из", details_full="Подробнее о работе",
             details_short="Подробнее", authors="Авторы", orgs="Организации", published="Опубликовано", status="Статус", source="Источник",
-            prev="Назад", next="Далее", theme="Светлая тема", lang_other="English", lang_other_code="en", skip="К тексту",
-            zoom="Открыть крупно", close="Закрыть", original="оригинал", scroll="⟷ таблицу можно прокрутить", all="Все",
+            prev="Назад", next="Далее", theme="Светлая тема", lang_other="English", lang_short="EN", lang_other_code="en", skip="К тексту",
+            zoom="Открыть рисунок", close="Закрыть", original="оригинал", actual="Размер 100 % · прокрутка", scroll="⟷ таблицу можно прокрутить", all="Все",
             f_topic="Тема", f_evid="Класс доказательств", f_scale="Масштаб (одновременно)", f_type="Тип источника", f_level="Где в обзоре", f_chapter="Глава",
-            atlas_hint="Фильтры работают без JavaScript. Тема, класс доказательств и масштаб размечены для аналитического корпуса; у строк «Ещё по теме» тема — по главе, где они стоят; без класса и масштаба они видны при «Все».",
-            to_card="к карточке", to_row="в таблицу", in_ch="гл.", full="Весь текст на одной странице", license="Текст и таблицы — CC BY 4.0, код — MIT; рисунки из работ — права их владельцев (подпись под рисунком).",
-            cite="Как цитировать", cutoff="Срез: 3 октября 2026", search="Поиск по атласу", shown="Показано", updates="Обновление после среза",
-            related="Ещё по теме", resources="Разделы", chapters="Главы", menu="Меню"),
- "en": dict(toc="Contents", on_page="On this page", chapter="Chapter", details_full="Details: method, results, caveats",
-            details_short="Details", authors="Authors", orgs="Organizations", published="Published", status="Status", source="Source",
-            prev="Previous", next="Next", theme="Light theme", lang_other="Русский", lang_other_code="ru", skip="Skip to text",
-            zoom="Enlarge", close="Close", original="original", scroll="⟷ scroll the table sideways", all="All",
+            atlas_hint="Фильтры работают и без JavaScript. Тема, класс доказательств и масштаб размечены для аналитического корпуса; у строк «Ещё по теме» тема — по главе, где они стоят, а класс и масштаб не размечены: такие строки видны при «Все».",
+            in_ch="гл.", full="Весь текст на одной странице", license="Текст, таблицы и данные — CC BY 4.0, код сборки — MIT. Рисунки из работ остаются под правами их владельцев: условия — в подписи к каждому.",
+            cite="Как цитировать", cutoff="срез 3 октября 2026", search="Поиск по атласу", shown="Показано", updates="Обновление после среза",
+            menu="Содержание", fig="Рис.", expand="Развернуть все карточки", collapse="Свернуть карточки", home="Главное",
+            cards_full=("подробная карточка", "подробные карточки", "подробных карточек"), cards_short=("краткая", "краткие", "кратких"),
+            cards=("карточка", "карточки", "карточек"), figs=("рисунок", "рисунка", "рисунков"), minutes="≈{nb}{n}{nb}мин чтения",
+            findings_eb="Выводы", findings_h="Что показывают работы", findings_note="Каждый вывод сформулирован для корпуса на 3 октября 2026 и ведёт в главу с доказательствами и условиями сравнения.",
+            chapters_eb="Главы", chapters_h="Одиннадцать глав и атлас работ",
+            start="Начать с главы 1", atlas="Атлас работ", atlas_s="Атлас", report="Технический отчёт", pdf="PDF", zip="LaTeX и рисунки (ZIP)", bib="BibTeX всех работ", data="Реестр работ (JSON)",
+            materials="Материалы", survey="Обзор", rights="Права и цитирование", about_l="Об обзоре", glossary="Словарик", sources="Источники",
+            n_corpus="работ в аналитическом корпусе", n_unique="уникальных работ и ресурсов", n_cards="карточек: {f} подробных и {s} кратких", n_figs="рисунков: {w} из работ, {o} собственных",
+            filters="Фильтры", reset="Сбросить", empty="Под эти условия не подходит ни одна работа.", sources_ch="Источники главы", top="Наверх",
+            atlas_eb="Атлас · {n} работ и ресурсов", ref_eb="Справка",
+            idx=[("how", "Три схемы связи"), ("survey", "Об обзоре"), ("scale", "Масштаб"), ("findings", "Выводы"), ("agensh", "Разбор: Agensh"), ("chapters", "Главы")],
+            v_close="Закрыть", v_prev="Предыдущий рисунок", v_next="Следующий рисунок", v_zoom="Увеличить", v_fit="Вписать", v_orig="Оригинал",
+            v_title="Просмотр рисунков", v_hint="Двойной щелчок или касание — увеличить", v_count="{i} из {n}"),
+ "en": dict(toc="Contents", on_page="On this page", chapter="Chapter", of="of", details_full="More about this work",
+            details_short="More", authors="Authors", orgs="Organizations", published="Published", status="Status", source="Source",
+            prev="Previous", next="Next", theme="Light theme", lang_other="Русский", lang_short="RU", lang_other_code="ru", skip="Skip to text",
+            zoom="Open figure", close="Close", original="original", actual="Actual size · scroll to pan", scroll="⟷ scroll the table sideways", all="All",
             f_topic="Topic", f_evid="Evidence class", f_scale="Scale (simultaneous)", f_type="Source type", f_level="Where in the survey", f_chapter="Chapter",
-            atlas_hint="Filters work without JavaScript. Topic, evidence class and scale are labelled for the analytic corpus; related-work rows take the topic of the chapter they appear in and show under “All” for evidence class and scale.",
-            to_card="to card", to_row="to table", in_ch="Ch.", full="Whole text on one page", license="Text and tables: CC BY 4.0; code: MIT; figures from the works keep their owners’ rights (see each caption).",
-            cite="How to cite", cutoff="Cut-off: 3 October 2026", search="Search the atlas", shown="Shown", updates="Update after the cut-off",
-            related="Related work", resources="Sections", chapters="Chapters", menu="Menu"),
+            atlas_hint="The filters work without JavaScript too. Topic, evidence class and scale are labelled for the analytic corpus; related-work rows take the topic of the chapter they appear in and carry no class or scale, so they show under “All”.",
+            in_ch="Ch.", full="Whole text on one page", license="Text, tables and data: CC BY 4.0; build code: MIT. Figures from the works keep their owners’ rights; the terms are under each figure.",
+            cite="How to cite", cutoff="cut-off 3 October 2026", search="Search the atlas", shown="Shown", updates="Update after the cut-off",
+            menu="Contents", fig="Fig.", expand="Expand all cards", collapse="Collapse cards", home="Overview",
+            cards_full=("full card", "full cards"), cards_short=("short card", "short cards"), cards=("card", "cards"), figs=("figure", "figures"), minutes="≈{nb}{n}{nb}min read",
+            findings_eb="Findings", findings_h="What the studies show", findings_note="Each finding is stated for the corpus as of 3 October 2026 and leads to the chapter with its evidence and comparison conditions.",
+            chapters_eb="Chapters", chapters_h="Eleven chapters and an atlas of works",
+            start="Start with Chapter 1", atlas="Atlas of works", atlas_s="Atlas", report="Technical report", pdf="PDF", zip="LaTeX and figures (ZIP)", bib="BibTeX for all works", data="Registry of works (JSON)",
+            materials="Materials", survey="Survey", rights="Rights and citation", about_l="About the survey", glossary="Glossary", sources="Sources",
+            n_corpus="works in the analytic corpus", n_unique="unique works and resources", n_cards="cards: {f} full and {s} short", n_figs="figures: {w} from the works, {o} our own",
+            filters="Filters", reset="Reset", empty="No work matches these filters.", sources_ch="Sources for this chapter", top="Back to top",
+            atlas_eb="Atlas · {n} works and resources", ref_eb="Reference",
+            idx=[("how", "Three ways to connect"), ("survey", "About the survey"), ("scale", "Scale"), ("findings", "Findings"), ("agensh", "Case study: Agensh"), ("chapters", "Chapters")],
+            v_close="Close", v_prev="Previous figure", v_next="Next figure", v_zoom="Zoom in", v_fit="Fit", v_orig="Original",
+            v_title="Figure viewer", v_hint="Double-click or double-tap to zoom", v_count="{i} of {n}"),
 }
+NB = " "
 MONTHS = {"ru": ["января", "февраля", "марта", "апреля", "мая", "июня", "июля", "августа", "сентября", "октября", "ноября", "декабря"],
           "en": ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]}
 MONTHS_NOM = {"ru": ["январь", "февраль", "март", "апрель", "май", "июнь", "июль", "август", "сентябрь", "октябрь", "ноябрь", "декабрь"],
@@ -70,6 +98,16 @@ LEVEL = OrderedDict([("card", ("карточка", "card")), ("related", ("ст�
 CH_TOPICS = {"ch03": ["safety_alignment", "contagion_security"], "ch04": ["scaling_economics"], "ch05": ["self_organization"], "ch06": ["memory"],
              "ch07": ["safety_alignment"], "ch08": ["echo_diversity"], "ch09": ["social_dynamics"], "ch10": ["wild_field"]}
 
+# small inline icons (stroke = currentColor)
+RING = ('<svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="15" cy="16" r="9" fill="none" stroke="#22a876" stroke-width="3.4"/>'
+        '<circle cx="24" cy="16" r="3.4" fill="#5fe3b3"/></svg>')
+I_LIST = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h10"/></svg>'
+I_SUN = '<svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2.2M12 19.3v2.2M4.6 4.6l1.6 1.6M17.8 17.8l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.6 19.4l1.6-1.6M17.8 6.2l1.6-1.6"/></svg>'
+I_MOON = '<svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg>'
+I_EXPAND = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6M10 20H4v-6M20 4l-7 7M4 20l7-7"/></svg>'
+HEAD_JS = ("<script>(function(d){d.classList.add('js');try{if(localStorage.getItem('aas-theme')==='light')d.classList.add('light')}catch(e){}"
+           "try{if(matchMedia('(prefers-reduced-motion: reduce)').matches)d.classList.add('static')}catch(e){}})(document.documentElement)</script>")
+
 # ---------------------------------------------------------------- data
 def jload(p, default=None):
     p = os.path.join(ROOT, p)
@@ -82,7 +120,7 @@ STATS = jload("data/stats.json", {}) or REG.get("stats", {})
 PASS = jload("data/i18n/passports.json", {}) or {}
 PASS_RU = jload("data/i18n/passports_ru.json", {}) or {}
 FIGREG = {f["file"]: f for f in (jload("data/figures.json", {"figures": []})["figures"])}
-sys.path.insert(0, os.path.join(ROOT, "scripts"))
+LADDER = site_story.ladder(REG["works"])
 from build_registry import key as url_key  # same normalization as the registry
 URLKEY2ID = {}
 for w in REG["works"]:
@@ -98,14 +136,21 @@ def lang_safe(s, lang):
 
 def fmt_int(n, lang):
     s = f"{int(n):,}"
-    return s.replace(",", " ") if lang == "ru" else s
+    return s.replace(",", NB) if lang == "ru" else s
+
+def plural(n, forms, lang):
+    if lang == "en": return forms[0] if n == 1 else forms[1]
+    n10, n100 = n % 10, n % 100
+    if n10 == 1 and n100 != 11: return forms[0]
+    if 2 <= n10 <= 4 and not 12 <= n100 <= 14: return forms[1]
+    return forms[2]
 
 def fmt_date(s, lang, short=False):
     s = str(s or "")
     m = re.match(r"(\d{4})-(\d{2})(?:-(\d{2}))?", s)
     if not m: return esc(s)
     y, mo, d = m.group(1), int(m.group(2)), m.group(3)
-    if d: return f"{int(d)} {MONTHS[lang][mo-1]} {y}"
+    if d and not short: return f"{int(d)} {MONTHS[lang][mo-1]} {y}"
     return f"{MONTHS_NOM[lang][mo-1]} {y}"
 
 def read_page(lang, page):
@@ -159,6 +204,10 @@ def work_anchor(wid):
     if wid in ROW_PAGE: return ROW_PAGE[wid], "w-" + wid
     return None, None
 
+def card_href(wid):
+    pg, anc = work_anchor(wid)
+    return f"{pg}.html#{anc}" if pg else f"atlas.html#a-{esc(wid)}"
+
 # ---------------------------------------------------------------- markdown helpers
 MD = markdown.Markdown(extensions=["tables", "sane_lists", "attr_list"])
 NBSP_NUM = re.compile(r"(?<=\d) (?=\d{3}(?!\d))")
@@ -172,7 +221,7 @@ def stat_sub(text, lang):
 
 def md(text, lang):
     text = stat_sub(text or "", lang)
-    if lang == "ru": text = NBSP_NUM.sub(" ", text)
+    if lang == "ru": text = NBSP_NUM.sub(NB, text)
     text = SUP.sub(lambda m: f"<sup>{m.group(1) or m.group(2)}</sup>", text)
     MD.reset()
     return MD.convert(text)
@@ -182,12 +231,15 @@ def md_inline(text, lang):
     return re.sub(r"^<p>(.*)</p>$", r"\1", h, flags=re.S)
 
 def wrap_tables(h, lang):
-    return re.sub(r"<table>(.*?)</table>", lambda m: (
-        f'<div class="table-wrap" role="region" tabindex="0" aria-label="{esc(UI[lang]["scroll"])}"><table>{m.group(1)}</table></div>'
-        f'<p class="scroll-hint" aria-hidden="true">{UI[lang]["scroll"]}</p>'), h, flags=re.S)
+    def rep(m):
+        head = re.search(r"<tr>(.*?)</tr>", m.group(1), re.S)
+        cols = len(re.findall(r"<th[\s>]", head.group(1))) if head else 0
+        return (f'<div class="table-wrap" data-cols="{cols}" role="region" tabindex="0" aria-label="{esc(UI[lang]["scroll"])}"><table>{m.group(1)}</table></div>'
+                f'<p class="scroll-hint" aria-hidden="true">{UI[lang]["scroll"]}</p>')
+    return re.sub(r"<table>(.*?)</table>", rep, h, flags=re.S)
 
-CHREF_RU = re.compile(r"(?<![\w-])(гл\.|главы|главе|главу|глава|главах|главам)(\s|&nbsp;| )+(\d{1,2}(?:(?:\s*,\s*|\s+и\s+|\s*[–-]\s*)\d{1,2})*)")
-CHREF_EN = re.compile(r"(?<![\w-])(Ch\.|Chs\.|Chapter|Chapters|ch\.)(\s|&nbsp;| )+(\d{1,2}(?:(?:\s*,\s*|\s+and\s+|\s*[–-]\s*)\d{1,2})*)")
+CHREF_RU = re.compile(r"(?<![\w-])(гл\.|главы|главе|главу|глава|главах|главам)(\s|&nbsp;| | )+(\d{1,2}(?:(?:\s*,\s*|\s+и\s+|\s*[–-]\s*)\d{1,2})*)")
+CHREF_EN = re.compile(r"(?<![\w-])(Ch\.|Chs\.|Chapter|Chapters|ch\.)(\s|&nbsp;| | )+(\d{1,2}(?:(?:\s*,\s*|\s+and\s+|\s*[–-]\s*)\d{1,2})*)")
 def link_chapters(h, lang, page_prefix=""):
     rx = CHREF_RU if lang == "ru" else CHREF_EN
     parts = re.split(r"(<[^>]+>)", h); depth = 0; out = []
@@ -215,42 +267,59 @@ def rewrite_internal(h, lang, single=False):
     return h
 
 # ---------------------------------------------------------------- figures
-FIG_COUNTER = [0]
+FIG = {"n": 0, "k": 0, "ch": None}   # n: unique id on the page; k: number within the chapter; ch: chapter number for labels
 def chart_variants(f, lang):
     m = re.match(r"(dash_[a-z]+)_dark\.png$", f)
     if not m: return None
     base = m.group(1); out = {}
     for th in ("dark", "light"):
-        for cand in (f"{base}_{lang}_{th}.png",):
-            if os.path.exists(os.path.join(ASSETS, "charts", cand)): out[th] = "charts/" + cand
+        cand = f"{base}_{lang}_{th}.png"
+        if os.path.exists(os.path.join(ASSETS, "charts", cand)): out[th] = "charts/" + cand
     return out if len(out) == 2 else None
+
+def strip_tags(h): return re.sub(r"<[^>]+>", "", h)
+
+_DIMS = {}
+def dims(rel_path):
+    """width/height attributes for an image under site/assets, so lazy figures do not shift the text while they load."""
+    if rel_path not in _DIMS:
+        from PIL import Image
+        p = os.path.join(OUT, "assets", rel_path)
+        if not os.path.exists(p): p = os.path.join(ASSETS, rel_path.replace("/web/", "/"))
+        try:
+            with Image.open(p) as im: _DIMS[rel_path] = f' width="{im.width}" height="{im.height}"'
+        except OSError:
+            _DIMS[rel_path] = ""
+    return _DIMS[rel_path]
 
 def figure(spec, lang, rel):
     parts = [p.strip() for p in spec.split("|")]
     f = parts[0]; cap = parts[1] if len(parts) > 1 else ""; credit = parts[2] if len(parts) > 2 else ""
-    FIG_COUNTER[0] += 1; n = FIG_COUNTER[0]
+    FIG["n"] += 1; FIG["k"] += 1; n = FIG["n"]
+    lab = f'{UI[lang]["fig"]}{NB}{FIG["ch"]}.{FIG["k"]}' if FIG["ch"] else f'{UI[lang]["fig"]}{NB}{FIG["k"]}'
     sub = "charts" if f.startswith("dash_") else "figures"
     var = chart_variants(f, lang)
     def src(p): return f"{rel}assets/{p}"
+    capt = md_inline(cap, lang); cred = md_inline(credit, lang) if credit else ""
+    alt = esc(strip_tags(capt)[:180])
     if var:
-        imgs = (f'<img class="theme-dark-only" loading="lazy" decoding="async" src="{src(var["dark"])}" alt="{esc(strip_tags(md_inline(cap, lang))[:180])}">'
-                f'<img class="theme-light-only" loading="lazy" decoding="async" src="{src(var["light"])}" alt="{esc(strip_tags(md_inline(cap, lang))[:180])}">')
-        big = src(var["dark"]); frame = "frame chart"
+        imgs = (f'<img class="theme-dark-only" loading="lazy" decoding="async" src="{src(var["dark"])}"{dims(var["dark"])} alt="{alt}">'
+                f'<img class="theme-light-only" loading="lazy" decoding="async" src="{src(var["light"])}"{dims(var["light"])} alt="{alt}">')
+        big, big_light, frame, big_dims = src(var["dark"]), src(var["light"]), "frame chart", dims(var["dark"])
     else:
         web = f"{sub}/web/{f}" if os.path.exists(os.path.join(OUT, "assets", sub, "web", f)) else f"{sub}/{f}"
-        imgs = f'<img loading="lazy" decoding="async" src="{src(web)}" alt="{esc(strip_tags(md_inline(cap, lang))[:180])}">'
-        big = src(f"{sub}/{f}"); frame = "frame dark" if f.startswith("dash_") else "frame"
-    capt = md_inline(cap, lang); cred = md_inline(credit, lang) if credit else ""
-    return (f'<figure class="fig" id="fig-{n}"><a class="zoom" href="#zoom-{n}" aria-label="{UI[lang]["zoom"]}"><div class="{frame}">{imgs}</div></a>'
-            f'<figcaption>{capt}' + (f'<span class="credit">{cred}</span>' if cred else "") +
+        imgs = f'<img loading="lazy" decoding="async" src="{src(web)}"{dims(web)} alt="{alt}">'
+        big, big_light, frame, big_dims = src(f"{sub}/{f}"), "", ("frame dark" if f.startswith("dash_") else "frame"), dims(f"{sub}/{f}")
+    dl = f' data-full-light="{big_light}"' if big_light else ""
+    return (f'<figure class="fig" id="fig-{n}"><a class="zoom" href="#zoom-{n}" data-full="{big}"{dl} aria-label="{UI[lang]["zoom"]}: {esc(lab)}">'
+            f'<div class="{frame}">{imgs}</div><span class="zi" aria-hidden="true">{I_EXPAND}</span></a>'
+            f'<figcaption><span class="fnum">{lab}</span>{capt}' + (f'<span class="credit">{cred}</span>' if cred else "") +
             f' <a class="orig" href="{big}">{UI[lang]["original"]}</a></figcaption></figure>'
-            f'<div class="lightbox" id="zoom-{n}" role="dialog" aria-label="{UI[lang]["zoom"]}"><a class="lb-close" href="#fig-{n}" aria-label="{UI[lang]["close"]}">×</a>'
-            f'<div class="lb-tools"><input type="checkbox" id="actual-{n}" class="lb-actual">'
-            f'<label for="actual-{n}">{"Размер 100% · прокрутка" if lang == "ru" else "Actual size · scroll to pan"}</label>'
+            f'<div class="lightbox" id="zoom-{n}" role="dialog" aria-label="{esc(lab)}"><a class="lb-close" href="#fig-{n}" aria-label="{UI[lang]["close"]}">×</a>'
+            f'<div class="lb-tools"><span>{lab}</span><input type="checkbox" id="actual-{n}" class="lb-actual">'
+            f'<label for="actual-{n}">{UI[lang]["actual"]}</label>'
             f'<a href="{big}" target="_blank" rel="noopener">{UI[lang]["original"]} ↗</a></div>'
-            f'<div class="lb-img" tabindex="0" aria-label="{UI[lang]["zoom"]}"><img loading="lazy" src="{big}" alt="{esc(strip_tags(capt))}"></div></div>')
-
-def strip_tags(h): return re.sub(r"<[^>]+>", "", h)
+            f'<div class="lb-img" tabindex="0" aria-label="{UI[lang]["zoom"]}"><img loading="lazy" src="{big}"{big_dims} alt="{alt}"></div></div>')
 
 # ---------------------------------------------------------------- cards
 RUNIN = {"ru": r"Что сделали|Что получилось|Почему это важно|Оговорки|Что показали|Главное", "en": r"What they did|Results|Why it matters|Caveats|What it shows"}
@@ -273,6 +342,15 @@ def passport(w, lang):
         txt = up["what"] if lang == "en" else ru_update(w["id"], up)
         rows.append((UI[lang]["updates"], f'{fmt_date(up["date"], lang)}: {esc(txt)} <a class="ext url" href="{esc(up["url"])}" rel="noopener">{esc(up.get("doi") or up["url"])}</a>'))
     return '<dl class="passport">' + "".join(f"<dt>{k}</dt><dd>{v}</dd>" for k, v in rows if v) + "</dl>"
+
+def byline(w, lang):
+    """Organizations and month of the first public version, shown under the card title."""
+    P = PASS.get(w["id"], {}); R = PASS_RU.get(w["id"], {})
+    orgs = (R.get("institutions_short") or ", ".join(w.get("orgs") or [])) if lang == "ru" else (P.get("orgs_en") or lang_safe(", ".join(w.get("orgs") or []), lang))
+    d = R.get("date_first_public") or w.get("date_first_public")
+    bits = [esc(orgs)] if orgs else []
+    if d and re.match(r"\d{4}-\d{2}", str(d)): bits.append(fmt_date(d, lang, short=True))
+    return " · ".join(bits)
 
 RU_UPDATES = {"piao-polarization": "опубликована в Nature Communications (поступила 14 апреля 2025, принята 21 сентября 2026); та же работа, что arXiv:2501.05171; CC BY 4.0."}
 def ru_update(wid, up): return RU_UPDATES.get(wid, up["what"])
@@ -312,6 +390,7 @@ def render_card(kind, arg, body, lang, rel, single):
     for ln in lines:
         (figs if ln.strip().startswith("!fig ") else rest).append(ln)
     text = "\n".join(rest).strip()
+    # optional run-in labels («**Что сделали.**») start their own paragraph; flowing prose without labels renders as is
     text = re.sub(rf"(?<!\n\n)\s*(\*\*(?:{RUNIN[lang]})[^*]{{0,24}}\*\*)", lambda m: "\n\n" + m.group(1), text).strip()
     body_h = wrap_tables(md(text, lang), lang)
     body_h = re.sub(rf"<strong>((?:{RUNIN[lang]})[^<]{{0,24}})</strong>", r'<strong class="lab">\1</strong>', body_h)
@@ -319,7 +398,9 @@ def render_card(kind, arg, body, lang, rel, single):
     u = (w.get("urls") or {}).get("primary"); title = esc(card_title(w, lang))
     tl = f'<a class="ext" href="{esc(u)}" rel="noopener">{title}</a>' if u else title
     full = kind == "card"; opn = " open" if single else ""
+    by = byline(w, lang)
     head = (f'<header class="chead"><div class="tags">{tags(w, lang)}</div><h3 class="ctitle">{tl}</h3>'
+            + (f'<p class="cmeta">{by}</p>' if by else "")
             + (f'<p class="clead">{md_inline(lead, lang)}</p>' if lead else "") + "</header>")
     det = (f'<details class="more"{opn}><summary>{UI[lang]["details_full" if full else "details_short"]}</summary>'
            f'{passport(w, lang)}<div class="cbody">{body_h}</div></details>')
@@ -360,17 +441,42 @@ def render_related(body, lang):
         items.append(f'<li{aid}><div class="rtitle">{md_inline(first, lang)}</div>' + (f'<div class="rwho">{md_inline(mid, lang)}</div>' if mid else "") + extra + "</li>")
     return '<ul class="related">' + "".join(items) + "</ul>"
 
-def render_cover(body, lang):
+def cover_kv(body):
     kv = OrderedDict()
     for line in body.strip().split("\n"):
         k, _, v = line.partition(":"); kv[k.strip()] = v.strip()
-    ring = ('<svg class="ring" width="54" height="54" viewBox="0 0 54 54" aria-hidden="true"><circle cx="27" cy="27" r="21" fill="none" stroke="currentColor" stroke-width="3"/>'
-            '<circle cx="48" cy="27" r="4" fill="currentColor"/></svg>')
-    return (f'<section class="cover"><div class="bar"></div><p class="kicker">{esc(kv.get("kicker", ""))}</p>'
-            f'<h1>{kv.get("title", "")}</h1><p class="subtitle">{esc(kv.get("subtitle", ""))}</p>'
-            f'<p class="byline">{esc(AUTHORS)}</p>'
-            f'<div class="lede">{md(kv.get("lede", ""), lang)}</div><p class="meta">{md_inline(kv.get("meta", ""), lang)}</p>'
-            f'<div class="brand">{ring}<div><b>Ouroboros</b><span>{"обзор исследований" if lang == "ru" else "research survey"}</span></div></div></section>')
+    return kv
+
+def render_intro(kv, lang):
+    """The cover block of index.md, set as the section right under the scene: title, lede, counts, entry points."""
+    ui = UI[lang]; st = STATS
+    meta = [p.strip() for p in kv.get("meta", "").split(" · ") if p.strip() and "{{stat:" not in p]
+    nums = [(fmt_int(st.get("corpus", 0), lang), ui["n_corpus"]), (fmt_int(st.get("unique_works", 0), lang), ui["n_unique"]),
+            (fmt_int(st.get("cards_full", 0) + st.get("cards_short", 0), lang), ui["n_cards"].format(f=st.get("cards_full", 0), s=st.get("cards_short", 0))),
+            (fmt_int(st.get("fig_works", 0) + st.get("fig_own", 0), lang), ui["n_figs"].format(w=st.get("fig_works", 0), o=st.get("fig_own", 0)))]
+    return (f'<section class="intro" id="survey" aria-labelledby="h-survey"><div class="intro-in"><div>'
+            f'<p class="eyebrow">{esc(kv.get("kicker", ""))}</p><h2 id="h-survey">{md_inline(kv.get("title", ""), lang)}</h2>'
+            f'<p class="subtitle">{esc(kv.get("subtitle", ""))}</p><div class="lede">{md(kv.get("lede", ""), lang)}</div>'
+            f'<p class="cta"><a class="btn primary" href="ch01.html">{ui["start"]} →</a><a class="btn" href="atlas.html">{ui["atlas"]}</a>'
+            f'<a class="btn" href="../paper/index.html">{ui["report"]}</a></p></div>'
+            '<dl class="numbers">' + "".join(f"<div><dt>{esc(l)}</dt><dd>{v}</dd></div>" for v, l in nums) + "</dl>"
+            + ('<p class="meta">' + "".join(f"<span>{md_inline(p, lang)}</span>" for p in meta) + "</p>" if meta else "")
+            + "</div></section>")
+
+def findings_list(body, lang):
+    """Numbered findings; each item is wrapped so the first bold sentence (if any) can be set as its headline."""
+    return re.sub(r"<li>(.*?)</li>", lambda m: f'<li><div class="fb">{m.group(1)}</div></li>', md(body, lang), flags=re.S)
+
+def render_cover_simple(kv, lang):
+    return (f'<header class="chapter-head cover"><p class="eyebrow">{esc(kv.get("kicker", ""))}</p><h1>{md_inline(kv.get("title", ""), lang)}</h1>'
+            f'<div class="chlead"><p>{esc(kv.get("subtitle", ""))}</p></div><p class="byline">{AUTHORS}</p></header>'
+            f'<div class="lede">{md(kv.get("lede", ""), lang)}</div><p class="meta">{md_inline(kv.get("meta", ""), lang)}</p>')
+
+def render_findings(body, lang):
+    ui = UI[lang]
+    h = findings_list(body, lang)
+    return (f'<section class="sec findings" id="findings" aria-labelledby="h-findings"><header class="sec-head"><p class="eyebrow">{ui["findings_eb"]}</p>'
+            f'<h2 id="h-findings">{ui["findings_h"]}</h2><p class="lede">{ui["findings_note"]}</p></header>{h}</section>')
 
 # ---------------------------------------------------------------- atlas
 def scale_bucket(c):
@@ -402,7 +508,7 @@ def collect_row_text(lang):
 
 def render_atlas(lang, rel):
     i = 0 if lang == "ru" else 1; ui = UI[lang]
-    items, counts = [], defaultdict(lambda: defaultdict(int))
+    counts = defaultdict(lambda: defaultdict(int))
     def chapters_of(w):
         pg = [p for p in (w.get("source_pages") or []) if p.startswith("ch")]
         a = work_anchor(w["id"])[0]
@@ -410,7 +516,6 @@ def render_atlas(lang, rel):
         return sorted(set(pg))
     rows = []
     for w in WORKS.values():
-        if w["level"] == "inline_link" and w["kind"] in ("news", "web"): lvl = "other"
         c = w.get("corpus") or {}
         lvl = "card" if w["level"] in ("full_card", "short_card", "mention_in_corpus", "constituent") else ("related" if w["level"] == "table_row" else "other")
         topics = [t for t in (c.get("topics") or []) if t in TOPIC]
@@ -432,16 +537,17 @@ def render_atlas(lang, rel):
         date = (c.get("month") or w.get("date_first_public") or "")[:7]
         u = (w.get("urls") or {}).get("primary") or ""
         pg, anc = work_anchor(w["id"])
-        go = f'<a class="go" href="{pg}.html#{anc}">{ui["in_ch"]} {int(pg[2:]) if pg and pg.startswith("ch") else ""} →</a>' if pg else ""
+        go = f'<a class="go" href="{pg}.html#{anc}">{ui["in_ch"]}{NB}{int(pg[2:]) if pg and pg.startswith("ch") else ""} →</a>' if pg else ""
         tg = ""
         if ev: tg += f'<span class="tag ev">{EVID[ev][i]}</span>'
         for t in topics[:3]: tg += f'<span class="tag t">{TOPIC[t][i]}</span>'
         sc = c.get("scale_note_ru") if lang == "ru" else PASS.get(w["id"], {}).get("scale_en")
         if sc: tg += f'<span class="tag sc">{esc(sc)}</span>'
         mods = ", ".join((c.get("models") or [])[:4]) + (f" +{len(c['models'])-4}" if len(c.get("models") or []) > 4 else "")
+        ttl = esc(strip_tags(md_inline(title, lang)))
         rows.append((date or "0000", f'<li class="w" id="a-{esc(w["id"])}" data-t="{" ".join(filter_topics)}" data-e="{ev}" data-s="{sb}" data-k="{st}" data-l="{lvl}" data-c="{" ".join(chs)}">'
                     f'<div class="wd">{esc(date[5:7] + "." + date[:4] if len(date) >= 7 else date)}</div><div class="wm">'
-                    f'<div class="wt">' + (f'<a class="ext" href="{esc(u)}" rel="noopener">{md_inline(esc(title), lang) if False else esc(strip_tags(md_inline(title, lang)))}</a>' if u else esc(title)) + "</div>"
+                    f'<div class="wt">' + (f'<a class="ext" href="{esc(u)}" rel="noopener">{ttl}</a>' if u else esc(title)) + "</div>"
                     + (f'<div class="ww">{esc(strip_tags(md_inline(who, lang)))}</div>' if who else "")
                     + (f'<div class="ws">{md_inline(summary, lang)}</div>' if summary else "")
                     + (f'<div class="wg">{tg}</div>' if tg else "") + (f'<div class="wmod">{esc(mods)}</div>' if mods else "")
@@ -458,17 +564,24 @@ def render_atlas(lang, rel):
             sel = f'[data-{g}~="{v}"]' if g in ("t", "c") else f'[data-{g}="{v}"]'
             css.append(f'.atlas:has(#f{g}-{v}:checked) .w:not({sel}){{display:none}}')
         fs.append(f'<fieldset><legend>{label}</legend><div class="opts">{"".join(opts)}</div></fieldset>')
-    return (f'<style>{"".join(css)}</style><div class="atlas"><form class="filters" onsubmit="return false">{"".join(fs)}'
-            f'<div class="search js-only"><label>{ui["search"]} <input type="search" id="atlas-q" autocomplete="off"></label> <span id="atlas-count" aria-live="polite"></span></div>'
-            f'<p class="hint">{ui["atlas_hint"]}</p></form><ol class="worklist">{"".join(r for _, r in rows)}</ol></div>')
+    return (f'<!--atlas-start--><style>{"".join(css)}</style><div class="atlas">'
+            f'<div class="search js-only"><label><span class="sr">{ui["search"]}</span><input type="search" id="atlas-q" autocomplete="off" placeholder="{ui["search"]}"></label>'
+            f'<span id="atlas-count" aria-live="polite"></span><button class="reset" type="button" id="atlas-reset">{ui["reset"]}</button></div>'
+            f'<details class="fpanel" open><summary>{ui["filters"]}</summary><form class="filters" onsubmit="return false">{"".join(fs)}'
+            f'<p class="hint">{ui["atlas_hint"]}</p></form></details><ol class="worklist">{"".join(r for _, r in rows)}</ol>'
+            f'<p class="empty" id="atlas-empty">{ui["empty"]}</p></div><!--atlas-end-->')
 
-def render_sources(lang):
+def sources_by_page():
     by_page = OrderedDict()
     for w in WORKS.values():
         pg, _ = work_anchor(w["id"])
         if not pg and w["level"] == "inline_link": pg = (w.get("source_pages") or ["other"])[0]
         if not pg: continue
         by_page.setdefault(pg, []).append(w)
+    return by_page
+
+def render_sources(lang):
+    by_page = sources_by_page()
     out = []
     for page in PAGE_ORDER:
         ws = by_page.get(page)
@@ -507,9 +620,9 @@ def page_body(lang, page, rel="../", single=False):
         elif k == "callout": parts.append(f'<aside class="callout"><p class="ctl">{esc(b[1])}</p>{wrap_tables(md(b[2], lang), lang)}</aside>')
         elif k == "timeline": parts.append(render_timeline(b[2], lang))
         elif k == "takeaways": parts.append(f'<aside class="takeaways"><p class="ctl">{"Главное в главе" if lang == "ru" else "Takeaways"}</p>{md(b[2], lang)}</aside>')
-        elif k == "findings": parts.append(f'<section class="findings">{md(b[2], lang)}</section>')
+        elif k == "findings": parts.append(f'<section class="findings">{findings_list(b[2], lang)}</section>')
         elif k == "related": parts.append(render_related(b[2], lang))
-        elif k == "cover": parts.append(render_cover(b[2], lang))
+        elif k == "cover": parts.append(render_cover_simple(cover_kv(b[2]), lang) if single else render_intro(cover_kv(b[2]), lang))
         elif k == "corpus": parts.append("%%ATLAS%%")
         elif k == "sources": parts.append("%%SOURCES%%")
         else: parts.append(md(b[2], lang))
@@ -529,84 +642,197 @@ def page_body(lang, page, rel="../", single=False):
     if single: h = re.sub(r'href="#p-ch(\d\d)\.html"', r'href="#p-ch\1"', h)
     return fm, (h, h2s)
 
-def nav_list(lang, current):
+def nav_title(lang, p):
+    if p == "index": return UI[lang]["home"]
+    if p == "full": return UI[lang]["full"]
+    r = read_page(lang, p)
+    return (r[0].get("nav") or r[0].get("title") or p) if r else p
+
+def nav_list(lang, current, toc=None, href=None):
+    """All pages; the current page carries its own sections underneath. href(p) overrides page links (single page)."""
     items = []
-    for p in PAGE_ORDER:
-        r = read_page(lang, p)
+    for p in PAGE_ORDER + ["full"]:
+        r = read_page(lang, p) if p != "full" else ({}, "")
         if not r: continue
-        fm = r[0]; num = fm.get("num"); title = fm.get("nav") or fm.get("title") or p
-        if p == "index": title = "Главная" if lang == "ru" else "Overview"
+        num = r[0].get("num") if p != "full" else None
+        lab = f'<span class="nn">{num}</span>' if num and p.startswith("ch") else f'<span class="nn">{"≡" if p == "full" else "·"}</span>'
         cur = ' aria-current="page"' if p == current else ""
-        lab = f'<span class="nn">{num}</span>' if num and p.startswith("ch") else '<span class="nn">·</span>'
-        items.append(f'<li><a href="{p}.html"{cur}>{lab}{esc(title)}</a></li>')
-    items.append(f'<li><a href="full.html"{" aria-current=page" if current == "full" else ""}><span class="nn">≡</span>{UI[lang]["full"]}</a></li>')
+        sub = ""
+        if p == current and toc:
+            sub = '<ol class="onpage">' + "".join(f'<li><a href="#{a}">{esc(t)}</a></li>' for a, t in toc) + "</ol>"
+        link = href(p) if href else f"{p}.html"
+        items.append(f'<li><a href="{link}"{cur}>{lab}{esc(nav_title(lang, p))}</a>{sub}</li>')
     return '<ol class="navlist">' + "".join(items) + "</ol>"
 
-def shell(lang, page, title, content, h2s, desc=""):
-    ui = UI[lang]; other = ui["lang_other_code"]
-    onpage = ("".join(f'<li><a href="#{a}">{esc(t)}</a></li>' for a, t in h2s))
-    onpage_h = f'<div class="onpage"><p class="navh">{ui["on_page"]}</p><ol>{onpage}</ol></div>' if onpage else ""
-    nav = nav_list(lang, page)
-    idx = PAGE_ORDER.index(page) if page in PAGE_ORDER else -1
-    pn = ""
-    if idx >= 0:
-        prev = PAGE_ORDER[idx - 1] if idx > 0 else None; nxt = PAGE_ORDER[idx + 1] if idx + 1 < len(PAGE_ORDER) else None
-        def t(p):
-            r = read_page(lang, p); return (r[0].get("nav") or r[0].get("title")) if r else p
-        pn = ('<nav class="pager" aria-label="pager">' + (f'<a class="prev" href="{prev}.html">← {esc(t(prev))}</a>' if prev else "<span></span>")
-              + (f'<a class="next" href="{nxt}.html">{esc(t(nxt))} →</a>' if nxt else "") + "</nav>")
-    alt = f'<link rel="alternate" hreflang="{other}" href="../{other}/{page}.html"><link rel="alternate" hreflang="{lang}" href="{page}.html">'
+def materials_links(lang):
+    ui = UI[lang]
+    return [("../paper/index.html", ui["report"]), ("../paper/swarm-dynamics.pdf", ui["pdf"]), ("../paper/swarm-dynamics-source.zip", ui["zip"]),
+            ("../data/works.bib", ui["bib"]), ("../data/works.json", ui["data"])]
+
+CITE_ANCHOR = {}
+def footer(lang):
+    ui = UI[lang]
+    survey = [("index.html#findings", ui["findings_h"]), ("index.html#chapters", ui["chapters_eb"]), ("atlas.html", ui["atlas"]), ("glossary.html", ui["glossary"]),
+              ("sources.html", ui["sources"]), ("full.html", ui["full"])]
+    li = lambda xs: "".join(f'<li><a href="{h}">{esc(t)}</a></li>' for h, t in xs)
+    return (f'<footer class="foot"><div class="foot-in"><div><p class="fb-t">{RING}{SITE_TITLE[lang]}</p><p>{SITE_SUB[lang]}</p>'
+            f'<p>{AUTHORS} · {ui["cutoff"]}</p></div>'
+            f'<nav aria-label="{ui["survey"]}"><h2>{ui["survey"]}</h2><ul>{li(survey)}</ul></nav>'
+            f'<nav aria-label="{ui["materials"]}"><h2>{ui["materials"]}</h2><ul>{li(materials_links(lang))}</ul></nav>'
+            f'<div><h2>{ui["rights"]}</h2><p>{ui["license"]}</p><p><a href="about.html{CITE_ANCHOR.get(lang, "")}">{ui["cite"]}</a> · <a href="about.html">{ui["about_l"]}</a></p></div>'
+            f'</div></footer>')
+
+def viewer_i18n(lang):
+    ui = UI[lang]
+    return json.dumps({k: ui[k] for k in ("v_title", "v_close", "v_prev", "v_next", "v_zoom", "v_fit", "v_orig", "v_hint", "v_count", "expand", "collapse", "shown")}, ensure_ascii=False)
+
+def shell(lang, page, title, content, toc=None, desc="", layout="doc", head_extra="", scripts=("site",), nav_href=None, link_page=None):
+    """layout: 'doc' (sidebar + reading column), 'wide' (full-width container), 'index' (story sections)."""
+    ui = UI[lang]; other = ui["lang_other_code"]; link_page = link_page or page
+    nav = nav_list(lang, page, toc, nav_href)
+    extra = "".join(f'<a href="{h}">{esc(t)}</a>' for h, t in materials_links(lang)[:3])
+    mtoc = (f'<details class="mtoc"><summary title="{ui["toc"]}" aria-label="{ui["toc"]}">{I_LIST}<span class="lab">{ui["toc"]}</span></summary>'
+            f'<nav aria-label="{ui["toc"]}">{nav}<div class="extra">{extra}</div></nav></details>')
+    tnav = (f'<nav class="tnav" aria-label="{ui["survey"]}"><a href="index.html#findings">{ui["findings_eb"]}</a><a href="index.html#chapters">{ui["chapters_eb"]}</a>'
+            f'<a href="atlas.html"{" aria-current=page" if page == "atlas" else ""}>{ui["atlas_s"]}</a><a href="../paper/swarm-dynamics.pdf">{ui["pdf"]}</a></nav>')
+    top = (f'<header class="topbar"><div class="topbar-in"><a class="brand" href="index.html">{RING}<span class="bt">{SITE_TITLE[lang]}</span><span class="bt-s">{SITE_SHORT[lang]}</span></a>'
+           f'{tnav}<div class="tools">{mtoc}<a class="langbtn" href="../{other}/{link_page}.html" hreflang="{other}" lang="{other}"><span class="long">{ui["lang_other"]}</span><span class="short">{ui["lang_short"]}</span></a>'
+           f'<label class="themebtn" for="theme" title="{ui["theme"]}">{I_SUN}{I_MOON}<span class="sr">{ui["theme"]}</span></label></div>'
+           + '</div>' + ('<span class="progress" aria-hidden="true"></span>' if layout == "doc" else "") + '</header>')
+    if layout == "doc":
+        body = (f'<div class="layout"><nav class="sidenav" aria-label="{ui["toc"]}"><p class="navh">{ui["toc"]}</p>{nav}</nav>'
+                f'<main id="main" class="page p-{page}">{content}</main></div>')
+    elif layout == "wide":
+        body = f'<main id="main" class="wide-page p-{page}">{content}</main>'
+    else:
+        body = f'<main id="main" class="p-{page}">{content}</main>'
+    alt = f'<link rel="alternate" hreflang="{other}" href="../{other}/{link_page}.html"><link rel="alternate" hreflang="{lang}" href="{link_page}.html">'
+    js = "".join(f'<script src="../assets/js/{s}.js" defer></script>' for s in scripts)
     return f"""<!doctype html>
-<html lang="{lang}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<html lang="{lang}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>{esc(title)}</title><meta name="description" content="{esc(desc)}">
-<meta name="color-scheme" content="dark light"><meta name="author" content="{AUTHORS}">{alt}
-<link rel="stylesheet" href="../assets/css/site.css"><link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<meta name="color-scheme" content="dark light"><meta name="theme-color" content="#0a0c0d"><meta name="author" content="{AUTHORS}">{alt}
+{HEAD_JS}
+<link rel="stylesheet" href="../assets/css/site.css"><link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">{head_extra}
 </head><body>
 <input type="checkbox" id="theme" class="theme-toggle" aria-label="{ui['theme']}">
 <a class="skip" href="#main">{ui['skip']}</a>
-<header class="topbar"><a class="brand" href="index.html"><svg width="22" height="22" viewBox="0 0 54 54" aria-hidden="true"><circle cx="27" cy="27" r="21" fill="none" stroke="currentColor" stroke-width="5"/><circle cx="48" cy="27" r="5" fill="currentColor"/></svg><span>{SITE_TITLE[lang]}</span></a>
-<div class="tools"><label class="themebtn" for="theme" title="{ui['theme']}"><span class="i-sun" aria-hidden="true">☀</span><span class="i-moon" aria-hidden="true">☾</span><span class="sr">{ui['theme']}</span></label>
-<a class="langbtn" href="../{other}/{page}.html" hreflang="{other}" lang="{other}">{ui['lang_other']}</a></div></header>
-<details class="mtoc"><summary>{ui['menu']}</summary><nav aria-label="{ui['toc']}">{nav}{onpage_h}</nav></details>
-<div class="layout"><nav class="sidenav" aria-label="{ui['toc']}"><p class="navh">{ui['toc']}</p>{nav}{onpage_h}</nav>
-<main id="main" class="page">{content}{pn}</main></div>
-<footer class="foot"><p>{esc(AUTHORS)} · {SITE_TITLE[lang]} · {ui['cutoff']}</p><p>{ui['license']} <a href="about.html">{ui['cite']}</a></p></footer>
-<script src="../assets/js/enhance.js" defer></script>
+{top}
+{body}
+{footer(lang)}
+<script type="application/json" id="ui-i18n">{viewer_i18n(lang)}</script>
+{js}
 </body></html>"""
 
-def chapter_header(fm, lang):
-    num = fm.get("num"); title = fm.get("title", "")
-    if not num: return ""
-    lead = fm.get("lead", "")
-    lab = UI[lang]["chapter"] if str(num) != "12" else UI[lang]["chapter"]
-    return (f'<header class="chapter-head"><p class="num">{lab} {num}</p><h1>{esc(title)}</h1>'
-            + (f'<p class="chlead">{md_inline(lead, lang)}</p>' if lead else "") + '<div class="rule"></div></header>')
+def count_reading(h, lang):
+    words = len(re.findall(r"\w+", strip_tags(re.sub(r"<(script|style)[^>]*>.*?</\1>", " ", h, flags=re.S))))
+    return max(5, int(round(words / (170 if lang == "ru" else 210) / 5.0)) * 5)
 
-def chapter_map(lang):
-    cards = []
-    for p in PAGE_ORDER[1:]:
+def chapter_header(fm, lang, page, h=""):
+    ui = UI[lang]; num = fm.get("num"); title = fm.get("title", "")
+    lead = fm.get("lead", "")
+    if page.startswith("ch"):
+        eb = f'{ui["chapter"]} {num} <span class="of">{ui["of"]} 11</span>'
+    elif page == "atlas":
+        eb = ui["atlas_eb"].format(n=fmt_int(STATS.get("unique_works", 0), lang))
+    else:
+        eb = ui["ref_eb"]
+    meta = ""
+    if page.startswith("ch") and h:
+        nf, ns = h.count('<article class="card"'), h.count('<article class="card short"')
+        nfig = h.count('<figure class="fig"')
+        bits = []
+        if nf: bits.append(f'{nf} {plural(nf, ui["cards_full"], lang)}')
+        if ns: bits.append(f'{ns} {plural(ns, ui["cards_short"], lang)}')
+        if nfig: bits.append(f'{nfig} {plural(nfig, ui["figs"], lang)}')
+        bits.append(ui["minutes"].format(n=count_reading(h, lang), nb=NB))
+        xall = f'<li class="js-only xli"><button class="xall" type="button" aria-pressed="false">{ui["expand"]}</button></li>' if (nf + ns) else ""
+        meta = '<ul class="chmeta">' + "".join(f"<li>{b}</li>" for b in bits) + xall + "</ul>"
+    return (f'<header class="chapter-head"><p class="eyebrow">{eb}</p><h1>{esc(title)}</h1>'
+            + (f'<div class="chlead">{md_inline(lead, lang)}</div>' if lead else "") + meta + "</header>")
+
+def pager(lang, page):
+    ui = UI[lang]
+    if page not in PAGE_ORDER: return ""
+    idx = PAGE_ORDER.index(page)
+    prev = PAGE_ORDER[idx - 1] if idx > 0 else None; nxt = PAGE_ORDER[idx + 1] if idx + 1 < len(PAGE_ORDER) else None
+    def lab(p):
+        r = read_page(lang, p); num = r[0].get("num") if r else None
+        k = f'{ui["chapter"]} {num}' if num and p.startswith("ch") else (ui["home"] if p == "index" else "")
+        return k
+    out = '<nav class="pager" aria-label="pager">'
+    out += (f'<a class="prev" href="{prev}.html"><span class="k">← {lab(prev) or ui["prev"]}</span><b>{esc(nav_title(lang, prev))}</b></a>' if prev else "<span></span>")
+    if nxt: out += f'<a class="next" href="{nxt}.html"><span class="k">{lab(nxt) or ui["next"]} →</span><b>{esc(nav_title(lang, nxt))}</b></a>'
+    return out + "</nav>"
+
+def chapter_map(lang, counts):
+    ui = UI[lang]; cards = []
+    for p in CHAPTERS + ["atlas"]:
         r = read_page(lang, p)
-        if not r or not p.startswith("ch") and p != "atlas": continue
+        if not r: continue
         fm = r[0]
+        if p == "atlas":
+            cm = ui["atlas_eb"].split(" · ")[1].format(n=fmt_int(STATS.get("unique_works", 0), lang))
+            cards.append(f'<li class="atl"><a href="atlas.html"><span class="nn">{fm.get("num", "")}</span><b>{esc(fm.get("title", ""))}</b>'
+                         f'<span class="cl">{md_inline(fm.get("lead", ""), lang)}</span><span class="cm">{cm}</span></a></li>')
+            continue
+        nc, nfig = counts.get(p, (0, 0))
+        cm = " · ".join(x for x in (f'{nc} {plural(nc, ui["cards"], lang)}' if nc else "", f'{nfig} {plural(nfig, ui["figs"], lang)}' if nfig else "") if x)
         cards.append(f'<li><a href="{p}.html"><span class="nn">{fm.get("num", "")}</span><b>{esc(fm.get("title", ""))}</b>'
-                     + (f'<span class="cl">{md_inline(fm.get("lead", ""), lang)}</span>' if fm.get("lead") else "") + "</a></li>")
-    head = "Главы" if lang == "ru" else "Chapters"
-    return f'<section class="chmap"><h2 id="chapters">{head}</h2><ol>{"".join(cards)}</ol></section>'
+                     + (f'<span class="cl">{strip_tags(md_inline(fm.get("lead", ""), lang))}</span>' if fm.get("lead") else "")
+                     + (f'<span class="cm">{cm}</span>' if cm else "") + "</a></li>")
+    return (f'<section class="sec chmap" id="chapters" aria-labelledby="h-chapters"><header class="sec-head"><p class="eyebrow">{ui["chapters_eb"]}</p>'
+            f'<h2 id="h-chapters">{ui["chapters_h"]}</h2></header><ol>{"".join(cards)}</ol></section>')
+
+def index_content(lang, counts):
+    """index.md: cover -> intro, findings -> findings section, the rest -> «how to read»; the story sections come from site_story."""
+    fm, text = read_page(lang, "index")
+    intro, findings, rest = "", "", []
+    for b in blocks(text):
+        if b[0] == "cover": intro = render_intro(cover_kv(b[2]), lang)
+        elif b[0] == "findings": findings = render_findings(b[2], lang)
+        elif b[0] == "md": rest.append(wrap_tables(md(b[1], lang), lang))
+        elif b[0] == "fig": rest.append(figure(b[1], lang, "../"))
+        elif b[0] == "callout": rest.append(f'<aside class="callout"><p class="ctl">{esc(b[1])}</p>{md(b[2], lang)}</aside>')
+        else: rest.append(md(b[2], lang))
+    howto = "".join(rest).strip()
+    howto = f'<section class="sec howto" id="howto">{howto}</section>' if howto else ""
+    tail = intro + findings + howto
+    n = [0]
+    def hid(m):
+        lvl, attrs, inner = m.group(1), m.group(2) or "", m.group(3)
+        if "id=" in attrs: return m.group(0)
+        n[0] += 1; return f'<h{lvl} id="s-{n[0]}"{attrs}>{inner}</h{lvl}>'
+    def finish(h): return link_chapters(rewrite_internal(re.sub(r"<h([23])([^>]*)>(.*?)</h\1>", hid, h), lang), lang)
+    intro, findings, howto = finish(intro), finish(findings), finish(howto)
+    ch1 = read_page(lang, "ch01"); ch5 = read_page(lang, "ch05")
+    ch1_title = ch1[0].get("title", "") if ch1 else ""; ch5_title = ch5[0].get("title", "") if ch5 else ""
+    ch1_href = "ch01.html" + (f"#{H2_ANCHOR[lang]['ch01_scale']}" if H2_ANCHOR[lang].get("ch01_scale") else "")
+    parts = [site_story.hero_html(lang, LADDER, card_href), intro, site_story.scale_html(lang, LADDER, card_href, ch1_title, ch1_href),
+             findings, site_story.agensh_html(lang, card_href, ch5_title), chapter_map(lang, counts), howto]
+    return fm, "\n".join(p for p in parts if p)
+
+H2_ANCHOR = {"ru": {}, "en": {}}
 
 def build():
     if os.path.exists(OUT): shutil.rmtree(OUT)
     os.makedirs(OUT)
     # Downloadable scholarly candidate; paper/ is owned and built separately.
     # The parent replaces these copies with final paper bytes after integration.
-    for name in ("swarm-dynamics.pdf", "swarm-dynamics-source.zip", "index.html"):
+    for name in ("swarm-dynamics.pdf", "swarm-dynamics-source.zip", "index.html", "cite-this-report.bib"):
         source = os.path.join(ROOT, "paper", name)
         if os.path.isfile(source):
             os.makedirs(os.path.join(OUT, "paper"), exist_ok=True)
             shutil.copy2(source, os.path.join(OUT, "paper", name))
+    os.makedirs(os.path.join(OUT, "data"), exist_ok=True)
+    for src, name in (("data/works.json", "works.json"), ("data/bib/works.bib", "works.bib")):
+        if os.path.isfile(os.path.join(ROOT, src)): shutil.copy2(os.path.join(ROOT, src), os.path.join(OUT, "data", name))
     # assets
     for sub in ("css", "js"):
         shutil.copytree(os.path.join(ASSETS, sub), os.path.join(OUT, "assets", sub))
     shutil.copy(os.path.join(ASSETS, "favicon.svg"), os.path.join(OUT, "assets", "favicon.svg"))
+    site_story.write_illustrations()   # README posters and charts; the root page shows the poster too
+    shutil.copytree(os.path.join(ASSETS, "illustrations"), os.path.join(OUT, "assets", "illustrations"))
     from PIL import Image
     for sub in ("figures", "charts"):
         src = os.path.join(ASSETS, sub); dst = os.path.join(OUT, "assets", sub); os.makedirs(os.path.join(dst, "web"), exist_ok=True)
@@ -618,52 +844,100 @@ def build():
                 im2 = im.resize((1600, round(im.height * 1600 / im.width)), Image.LANCZOS)
                 im2.save(os.path.join(dst, "web", f), optimize=True)
     for lang in LANGS: collect_row_text(lang)
-    # pre-pass to collect card leads for the atlas
+    # pre-pass: card leads for the atlas, section anchors, per-chapter counts for the chapter map
+    counts = {l: {} for l in LANGS}
     for lang in LANGS:
         for p in PAGE_ORDER:
-            if p != "atlas": page_body(lang, p)
-    built = []
-    for lang in LANGS:
-        os.makedirs(os.path.join(OUT, lang), exist_ok=True)
-        full_parts = []
-        for p in PAGE_ORDER:
-            FIG_COUNTER[0] = 0
+            if p in ("atlas", "index"): continue
+            FIG.update(n=0, k=0, ch=None)
             fm, res = page_body(lang, p)
             if fm is None: continue
             h, h2s = res
-            head = chapter_header(fm, lang) if p not in ("index",) else ""
-            if p not in ("index",) and not fm.get("num"):
-                head = f'<header class="chapter-head"><h1>{esc(fm.get("title", p))}</h1><div class="rule"></div></header>'
-            extra = chapter_map(lang) if p == "index" else ""
+            counts[lang][p] = (h.count('<article class="card'), h.count('<figure class="fig"'))
+            if p == "ch01":
+                hit = next((a for a, t in h2s if re.search(r"агент|agent", t, re.I)), None)
+                if hit: H2_ANCHOR[lang]["ch01_scale"] = hit
+            if p == "about":
+                hit = next((a for a, t in h2s if re.search(r"цитир|cite", t, re.I)), None)
+                if hit: CITE_ANCHOR[lang] = "#" + hit
+    built = []
+    for lang in LANGS:
+        os.makedirs(os.path.join(OUT, lang), exist_ok=True)
+        for p in PAGE_ORDER:
+            FIG.update(n=0, k=0, ch=None)
             if p == "index":
-                h = h.replace('<section class="findings">', extra + '<section class="findings">', 1) if False else h + extra
-            title = (SITE_TITLE[lang] if p == "index" else f'{fm.get("title", p)} — {SITE_TITLE[lang]}')
-            doc = shell(lang, p, title, head + h, h2s, desc=re.sub(r"<[^>]+>", "", md_inline(fm.get("lead", "") or SITE_SUB[lang], lang)))
+                fm, h = index_content(lang, counts[lang])
+                title = f'{SITE_TITLE[lang]}: {SITE_SUB[lang]}'
+                doc = shell(lang, p, title, h, toc=UI[lang]["idx"], desc=strip_tags(md_inline(fm.get("lead", "") or SITE_SUB[lang], lang)),
+                            layout="index", head_extra=f"<style>{site_story.mode_css()}</style>", scripts=("site", "story"))
+                open(os.path.join(OUT, lang, "index.html"), "w", encoding="utf-8").write(doc); built.append(f"{lang}/index.html")
+                continue
+            r = read_page(lang, p)
+            if r is None: continue
+            num = r[0].get("num")
+            FIG["ch"] = num if p.startswith("ch") else None
+            fm, res = page_body(lang, p)
+            h, h2s = res
+            head = chapter_header(fm, lang, p, h)
+            data_ch = f' data-ch style="--chn:\'{num}\'"' if p.startswith("ch") and num else ""
+            if p == "atlas":
+                a0, a1 = h.find("<!--atlas-start-->"), h.find("<!--atlas-end-->")
+                intro_h, atlas_h, after_h = (h[:a0], h[a0:a1], h[a1 + 16:]) if a0 >= 0 and a1 > a0 else (h, "", "")
+                content = (head + f'<div class="prose atlas-intro">{intro_h}</div>' + atlas_h
+                           + (f'<div class="prose">{after_h}</div>' if after_h.strip() else "") + pager(lang, p))
+                layout = "wide"
+            else:
+                tail = ""
+                if p.startswith("ch"):
+                    src = f'<a href="sources.html#src-{p}">{UI[lang]["sources_ch"]} →</a>' if p in sources_by_page() else ""
+                    tail = f'<p class="chend">{src}<a href="#main">{UI[lang]["top"]} ↑</a></p>'
+                content = head + f'<div class="prose"{data_ch}>{h}</div>' + tail + pager(lang, p)
+                layout = "doc"
+            title = f'{fm.get("title", p)} — {SITE_TITLE[lang]}'
+            doc = shell(lang, p, title, content, toc=h2s, desc=strip_tags(md_inline(fm.get("lead", "") or SITE_SUB[lang], lang)), layout=layout)
             open(os.path.join(OUT, lang, p + ".html"), "w", encoding="utf-8").write(doc); built.append(f"{lang}/{p}.html")
         # single page with everything expanded
-        FIG_COUNTER[0] = 0; allh = []
+        FIG.update(n=0, k=0, ch=None); allh = []; toc = []
         for p in PAGE_ORDER:
             if p in ("atlas", "sources"): continue
+            r = read_page(lang, p)
+            if r is None: continue
+            num = r[0].get("num")
+            FIG.update(k=0, ch=num if p.startswith("ch") else None)
             fm, res = page_body(lang, p, single=True)
-            if fm is None: continue
             h, _ = res
-            head = chapter_header(fm, lang) if fm.get("num") else (f'<header class="chapter-head"><h1>{esc(fm.get("title", p))}</h1></header>' if p != "index" else "")
-            allh.append(f'<section class="fullsec" id="p-{p}">{head}{h}</section>')
-        doc = shell(lang, "full", f'{UI[lang]["full"]} — {SITE_TITLE[lang]}', "".join(allh), [], desc=SITE_SUB[lang])
+            if p == "index":
+                head = ""
+            else:
+                head = chapter_header(fm, lang, p)
+            data_ch = f' data-ch style="--chn:\'{num}\'"' if p.startswith("ch") and num else ""
+            allh.append(f'<section class="fullsec" id="p-{p}">{head}<div class="prose"{data_ch}>{h}</div></section>')
+            toc.append((f"p-{p}", (f"{num}. " if p.startswith("ch") else "") + nav_title(lang, p)))
+        doc = shell(lang, "full", f'{UI[lang]["full"]} — {SITE_TITLE[lang]}', "".join(allh), toc=toc, desc=SITE_SUB[lang])
         open(os.path.join(OUT, lang, "full.html"), "w", encoding="utf-8").write(doc); built.append(f"{lang}/full.html")
-    # root chooser
-    root = f"""<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{SITE_TITLE['en']} · {SITE_TITLE['ru']}</title><link rel="stylesheet" href="assets/css/site.css"><link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-<link rel="alternate" hreflang="en" href="en/index.html"><link rel="alternate" hreflang="ru" href="ru/index.html"></head>
-<body class="root"><input type="checkbox" id="theme" class="theme-toggle" aria-label="Light theme"><main class="rootmain">
-<svg width="54" height="54" viewBox="0 0 54 54" aria-hidden="true" class="ring"><circle cx="27" cy="27" r="21" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="48" cy="27" r="4" fill="currentColor"/></svg>
-<h1>{SITE_TITLE['en']}</h1><p class="subtitle">{SITE_SUB['en']}</p><p class="byline">{AUTHORS}</p>
-<p class="chooser"><a class="btn" href="en/index.html" hreflang="en">English</a> <a class="btn" href="ru/index.html" hreflang="ru" lang="ru">Русский</a></p>
-<p class="rootnote" lang="ru">{SITE_TITLE['ru']}: {SITE_SUB['ru'].lower()}</p></main></body></html>"""
+    root = root_page()
     open(os.path.join(OUT, "index.html"), "w", encoding="utf-8").write(root)
     open(os.path.join(OUT, ".nojekyll"), "w").write("")
-    open(os.path.join(OUT, "404.html"), "w", encoding="utf-8").write(root.replace("<h1>", "<p>404</p><h1>"))
+    open(os.path.join(OUT, "404.html"), "w", encoding="utf-8").write(root.replace('<main class="rootmain">', '<main class="rootmain"><p class="eyebrow">404</p>', 1))
     return built
+
+def root_page():
+    ui_en, ui_ru = UI["en"], UI["ru"]
+    poster = ('<figure class="rootposter" aria-hidden="true">'
+              '<img class="theme-dark-only" src="assets/illustrations/topologies-en-dark.svg" alt="" width="1600" height="900">'
+              '<img class="theme-light-only" src="assets/illustrations/topologies-en-light.svg" alt="" width="1600" height="900"></figure>') \
+        if os.path.isdir(os.path.join(ASSETS, "illustrations")) else ""
+    return f"""<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>{SITE_TITLE['en']} · {SITE_TITLE['ru']}</title><meta name="description" content="{esc(SITE_SUB['en'])}. {AUTHORS}.">
+<meta name="color-scheme" content="dark light"><meta name="theme-color" content="#0a0c0d">{HEAD_JS}
+<link rel="stylesheet" href="assets/css/site.css"><link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="alternate" hreflang="en" href="en/index.html"><link rel="alternate" hreflang="ru" href="ru/index.html"></head>
+<body class="root"><main class="rootmain">
+<header>{RING.replace('<svg ', '<svg class="ring" ', 1)}<h1>{SITE_TITLE['en']}</h1><p class="subtitle">{SITE_SUB['en']}</p><p class="byline">{AUTHORS} · {ui_en['cutoff']}</p></header>
+<nav class="choose" aria-label="Language"><a href="en/index.html" hreflang="en" data-lang="en"><b>English</b><span>Eleven chapters, an atlas of works, the whole text on one page.</span></a>
+<a href="ru/index.html" hreflang="ru" lang="ru" data-lang="ru"><b>Русский</b><span>{SITE_TITLE['ru']}: одиннадцать глав, атлас работ, весь текст на одной странице.</span></a></nav>
+{poster}
+</main><script>(function(){{try{{var l=(navigator.language||'').slice(0,2)==='ru'?'ru':'en';var a=document.querySelector('.choose a[data-lang="'+l+'"]');if(a)a.classList.add('pref');}}catch(e){{}}}})();</script></body></html>"""
 
 def check():
     errs = []
@@ -672,17 +946,19 @@ def check():
             if not f.endswith(".html"): continue
             p = os.path.join(dp, f); t = open(p, encoding="utf-8").read()
             ids = set(re.findall(r'\sid="([^"]+)"', t))
-            for href in re.findall(r'(?:href|src)="([^"]+)"', t):
+            for href in re.findall(r'(?:href|src|data-full|data-full-light)="([^"]+)"', t):
                 if href.startswith(("http://", "https://", "mailto:", "data:")): continue
                 target, _, frag = href.partition("#")
                 if target:
                     tp = os.path.normpath(os.path.join(dp, target))
+                    if not tp.startswith(OUT): errs.append(f"{os.path.relpath(p, OUT)}: points outside site/: {href}"); continue
                     if not os.path.exists(tp): errs.append(f"{os.path.relpath(p, OUT)}: missing {href}"); continue
                     if frag and tp.endswith(".html"):
                         tt = open(tp, encoding="utf-8").read()
                         if f'id="{frag}"' not in tt: errs.append(f"{os.path.relpath(p, OUT)}: missing anchor {href}")
                 elif frag and frag not in ids:
                     errs.append(f"{os.path.relpath(p, OUT)}: missing local anchor #{frag}")
+            if re.search(r"\{\{|%%ATLAS%%|%%SOURCES%%", t): errs.append(f"{os.path.relpath(p, OUT)}: unfilled template mark")
     return errs
 
 if __name__ == "__main__":

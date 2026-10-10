@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 520" width="1200" height="520" role="img" aria-labelledby="t d">
+<title id="t">How many agents real swarms have</title>
+<desc id="d">99 of 153 works state how many agents work at once; the median is 7. ≥10: 42; ≥100: 15; ≥1,000: 7; ≥10,000: 4.</desc>
+<rect width="1200" height="520" rx="28" fill="#f6f8f7"/>
+<text x="56" y="86" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="40" font-weight="650" letter-spacing="-1.2" fill="#070a09">How many agents real swarms have</text>
+<text x="56" y="128" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="21" fill="#68716d">99 of 153 works state how many agents work at once; the median is 7</text>
+<rect x="56" y="168" width="44" height="4" rx="2" fill="#0f8a5c"/>
+<text x="50" y="330" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="168" font-weight="650" letter-spacing="-8" fill="#070a09">7</text>
+<text x="56" y="384" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="22" fill="#3a433f">agents in the</text>
+<text x="56" y="414" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="22" fill="#3a433f">median swarm</text>
+<text x="330" y="174" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="18" fill="#68716d">works with a swarm of at least N agents</text>
+<line x1="330" x2="1144" y1="196" y2="196" stroke="#e4e9e6"/>
+<text x="330" y="231.0" dy=".35em" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="20" fill="#3a433f">≥ 10</text>
+<rect x="470" y="218.0" width="470" height="26" rx="5" fill="#e3ece7"/>
+<rect x="470" y="218.0" width="199.4" height="26" rx="5" fill="#13895f"/>
+<text x="968" y="231.0" dy=".35em" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="30" font-weight="650" fill="#070a09">42</text>
+<line x1="330" x2="1144" y1="266" y2="266" stroke="#e4e9e6"/>
+<text x="330" y="301.0" dy=".35em" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="20" fill="#3a433f">≥ 100</text>
+<rect x="470" y="288.0" width="470" height="26" rx="5" fill="#e3ece7"/>
+<rect x="470" y="288.0" width="71.2" height="26" rx="5" fill="#13895f"/>
+<text x="968" y="301.0" dy=".35em" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="30" font-weight="650" fill="#070a09">15</text>
+<line x1="330" x2="1144" y1="336" y2="336" stroke="#e4e9e6"/>
+<text x="330" y="371.0" dy=".35em" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="20" fill="#3a433f">≥ 1,000</text>
+<rect x="470" y="358.0" width="470" height="26" rx="5" fill="#e3ece7"/>
+<rect x="470" y="358.0" width="33.2" height="26" rx="5" fill="#13895f"/>
+<text x="968" y="371.0" dy=".35em" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="30" font-weight="650" fill="#070a09">7</text>
+<line x1="330" x2="1144" y1="406" y2="406" stroke="#e4e9e6"/>
+<text x="330" y="441.0" dy=".35em" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="20" fill="#3a433f">≥ 10,000</text>
+<rect x="470" y="428.0" width="470" height="26" rx="5" fill="#e3ece7"/>
+<rect x="470" y="428.0" width="19" height="26" rx="5" fill="#13895f"/>
+<text x="968" y="441.0" dy=".35em" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="30" font-weight="650" fill="#070a09">4</text>
+<line x1="330" x2="1144" y1="476" y2="476" stroke="#e4e9e6"/>
+</svg>

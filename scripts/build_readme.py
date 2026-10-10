@@ -1,68 +1,72 @@
 #!/usr/bin/env python3
-"""Generate README.md and README.ru.md from content/ (findings, chapter titles) and data/stats.json.
-  python scripts/build_readme.py"""
-import json, os, re
+"""Generate README.md and README.ru.md: an entry into the survey with embedded illustrations.
+
+  python scripts/build_readme.py
+
+Chapter titles and leads come from content/{en,ru}/chNN.md, counts from data/stats.json and data/works.json.
+The posters and charts are standalone SVG files in assets/illustrations/ (written by scripts/site_story.py:
+no script, web fonts or network), shown through <picture> so GitHub picks the dark or light variant.
+"""
+import json, os, re, sys
+
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-st = json.load(open(os.path.join(ROOT, "data/stats.json")))
-aud = os.path.join(ROOT, "data/provenance/identity_audit.json")
-cls = json.load(open(aud))["class_counts"] if os.path.exists(aud) else {}
-def findings(lang):
-    t = open(os.path.join(ROOT, f"content/{lang}/index.md")).read()
-    m = re.search(r":::findings\n(.*?)\n:::", t, re.S)
-    return [re.match(r"\s*\d+\.\s+\*\*(.+?)\*\*", l).group(1) for l in m.group(1).split("\n") if re.match(r"\s*\d+\.\s+\*\*(.+?)\*\*", l)]
+sys.path.insert(0, os.path.join(ROOT, "scripts"))
+import site_story
+
+ST = json.load(open(os.path.join(ROOT, "data/stats.json"), encoding="utf-8"))
+LD = site_story.ladder(site_story.load_works())
+NB = "\u00a0"
+
+
+def fnum(n, lang):
+    s = f"{int(n):,}"
+    return s.replace(",", " ") if lang == "ru" else s
+
+
+def front(lang, page):
+    text = open(os.path.join(ROOT, "content", lang, page + ".md"), encoding="utf-8").read()
+    m = re.match(r"---\n(.*?)\n---\n", text, re.S)
+    fm = {}
+    for line in (m.group(1).split("\n") if m else []):
+        k, _, v = line.partition(":")
+        if k.strip(): fm[k.strip()] = v.strip()
+    return fm
+
+
+def plain(s, lang):
+    """Markdown inline -> plain text for a one-line summary."""
+    s = re.sub(r"\{\{stat:(\w+)\}\}", lambda m: fnum(ST.get(m.group(1), 0), lang) if isinstance(ST.get(m.group(1)), int) else "", s or "")
+    s = re.sub(r"\[([^\]]+)\]\([^)]+\)", r"\1", s)
+    return re.sub(r"[*_`]", "", s).strip()
+
+
+def first_sentence(s):
+    parts = re.split(r"(?<=[.?!])\s+(?=[A-ZА-ЯЁ«“\"(])", s, maxsplit=1)
+    return parts[0]
+
+
 def chapters(lang):
-    return [(n, re.search(r"^title:\s*(.+)$", open(os.path.join(ROOT, f"content/{lang}/ch{n:02d}.md")).read(), re.M).group(1)) for n in range(1, 12)]
-scholarly = cls["paper"]
-other_records = st["unique_works"] - scholarly
-dossiers = cls["bundle"]
-EN = f"""# Awesome Agent Swarms
+    out = []
+    for n in range(1, 12):
+        fm = front(lang, f"ch{n:02d}")
+        lead = first_sentence(plain(fm.get("lead", ""), lang))
+        out.append(f"{n}. [{fm.get('title', '')}](content/{lang}/ch{n:02d}.md). {lead}".rstrip())
+    return "\n".join(out)
 
-**Research on the dynamics of LLM agent collectives** — a bilingual (English / Russian) research survey, atlas and resource catalogue.
 
-> **On the Dynamics of LLM Agent Swarms: Scaling, Coordination, and Collective Behavior**
-> Anton Razzhigaev, Ouroboros · self-published technical report · corpus cut-off 3 October 2026
+def picture(name, lang, alt):
+    base = "assets/illustrations"
+    return (f'<picture>\n  <source media="(prefers-color-scheme: dark)" srcset="{base}/{name}-{lang}-dark.svg">\n'
+            f'  <img src="{base}/{name}-{lang}-light.svg" alt="{alt}">\n</picture>')
 
-**Status:** private candidate. The repository and site are not public yet; nothing here has been deployed. The text has not been peer-reviewed. Ouroboros is an AI agent system: this is a human–AI collaboration (see *About* on the site).
 
-## What is here
+def chart(name, lang, alt):
+    base = "assets/charts"
+    return (f'<picture>\n  <source media="(prefers-color-scheme: dark)" srcset="{base}/{name}_{lang}_dark.png">\n'
+            f'  <img src="{base}/{name}_{lang}_light.png" alt="{alt}">\n</picture>')
 
-| | |
-|---|---|
-| **Site** (`site/`, open `site/index.html`) | Static RU+EN site: orientation and key findings, 11 thematic chapters with disclosure cards, a filterable atlas of all works, glossary, sources, single-page full text. Works without JavaScript; dark Ouroboros theme with a light toggle. |
-| **Scholarly version** (`paper/`) | Self-published technical report in ACL format, private draft: [PDF](paper/swarm-dynamics.pdf), [LaTeX](paper/main.tex), [source ZIP](paper/swarm-dynamics-source.zip), [build instructions](paper/BUILD.md). |
-| **[CATALOG.md](CATALOG.md)** / [CATALOG.ru.md](CATALOG.ru.md) | Every cited paper, preprint, system card, lab post, incident report, essay and dataset, grouped by theme, one line each. |
-| **Data** (`data/`) | `works.json`: canonical registry (IDs, aliases, identifiers, metadata); `figures.json`: figure provenance and rights; `bib/works.bib`: BibTeX export (key = work ID); `provenance/`: source manifest, change and preservation map, identity audit, QA. |
-| **Content** (`content/en`, `content/ru`) | The survey text in Markdown with a small block syntax (`content/FORMAT.md`). |
 
-**Counts** (measured by `scripts/build_registry.py` and `scripts/identity_audit.py`): {st['corpus']} works in the analytic corpus · {st['cards_full']} full and {st['cards_short']} short cards (including {st['cards_added_after_import']} short cards added after import, outside the analytic corpus) · {st['related_rows']} related-work rows · {st['fig_works']} figures from the works and {st['fig_own']} own charts.
-
-{st['unique_works']} unique records for works and resources after merging versions. Of these, {scholarly} are classified as scholarly works—journal articles, conference and workshop papers, and preprints. The other {other_records} include reports, system cards, other resources, and {dossiers} composite case dossiers. See the [identity audit](data/provenance/IDENTITY_AUDIT.md) for classification and counting rules.
-
-## Key findings
-
-Ten findings, stated for the corpus as of 3 October 2026; each is qualified and linked to its evidence on the site:
-
-""" + "\n".join(f"{i}. {f}" for i, f in enumerate(findings("en"), 1)) + """
-
-## Chapters
-
-""" + "\n".join(f"{n}. {t}" for n, t in chapters("en")) + """
-
-Plus: atlas of works (filters by topic, evidence class, scale, source type, chapter), glossary, sources, about.
-
-## Build
-
-```sh
-python3 -m venv .venv && .venv/bin/pip install -r requirements.txt
-make charts site catalog check     # charts → site/ → CATALOG*.md, RIGHTS.md → content checks
-make qa                            # real-browser checks (needs Google Chrome and Playwright WebKit)
-```
-
-`scripts/check_content.py` verifies RU/EN structural parity (same cards, figures, tables, links and numbers) and, with `--source`, that the edit preserved every card, figure, link and number of the October 2026 text. `scripts/qa_browser.py` loads every page in Chromium and WebKit at phone and desktop sizes, with and without JavaScript.
-
-## Cite
-
-```bibtex
+BIB = """```bibtex
 @techreport{razzhigaev2026dynamics,
   title       = {On the Dynamics of {LLM} Agent Swarms: Scaling, Coordination, and Collective Behavior},
   author      = {Razzhigaev, Anton and {Ouroboros}},
@@ -71,71 +75,150 @@ make qa                            # real-browser checks (needs Google Chrome an
   url         = {https://github.com/ouroboros-agent/awesome-agent-swarms},
   note        = {Research survey; corpus cut-off 3 October 2026}
 }
-```
+```"""
+
+K = dict(corpus=ST["corpus"], known=LD["known"], med=LD["median"], fig_works=ST["fig_works"])
+
+EN = f"""# Awesome Agent Swarms
+
+**On the Dynamics of LLM Agent Swarms: Scaling, Coordination, and Collective Behavior.** A survey of what happens when many LLM agents work on one task: how they divide the work, pass findings and errors to each other and reach agreement, and what more agents buy in time, quality and tokens. It draws on {K['corpus']} studies, system cards, engineering reports and incident investigations, mostly from 2025–2026, up to 3 October 2026. By Anton Razzhigaev and Ouroboros, in English and Russian.
+
+{picture("topologies", "en", "Six agents connected in three ways: independently, through a coordinator, through a shared log. Agent 3 finds the answer; agents 1 and 5 either reach it on their own, receive it from the coordinator, or find it by querying the log.")}
+
+Whether a swarm helps depends on what the comparison held fixed. In the Claude Opus 5.5 system card, a team of five reaches the same ProgramBench level 2.7 times faster than one agent and spends about 1.9 times the tokens (the survey's estimate from the card's chart). At equal total output tokens, OpenAI's published GPT-5.6 Sol curves put one agent ahead of a swarm of 4 on three benchmarks, and a swarm of 16 on the two where that team size was measured. The survey keeps such settings apart and gives every result with its scale, its comparison condition and its evidence class.
+
+## Where to read
+
+- **Website** in `site/`, English (`site/en/`) and Russian (`site/ru/`): key findings, eleven chapters, an atlas of all {fnum(ST['unique_works'], 'en')} works and resources with filters, a glossary, sources and the whole text on one page. The files are static: open `site/index.html` in a browser, or run `python3 -m http.server -d site` and go to `http://localhost:8000`.
+- **Technical report:** [PDF](paper/swarm-dynamics.pdf) in ACL format, with its [LaTeX source](paper/main.tex), a [source archive](paper/swarm-dynamics-source.zip) and [build notes](paper/BUILD.md).
+- **Catalogue:** [CATALOG.md](CATALOG.md) lists every cited work by theme, one line each ([in Russian](CATALOG.ru.md)).
+- **Data:** the [registry of works](data/works.json), [BibTeX](data/bib/works.bib) and [figure provenance](data/figures.json).
+
+The atlas lists {ST['unique_works']} works and resources; the survey’s charts use the {K['corpus']} works with detailed metadata.
+
+## How big real swarms are
+
+{picture("scale", "en", f"Of {K['known']} works that state how many agents run at once, the median swarm has {K['med']} agents; " + "; ".join(f"{v} have at least {fnum(t, 'en')}" for t, v in LD['rows']) + ".")}
+
+Of these {K['corpus']} works, {K['known']} state how many agents run at the same time, and the median is {K['med']}. Live LLM swarms of 10,000 agents and more are known only from lab reports without a control run, while controlled experiments are mostly small. The map below places each work by agent count and evidence class; [Chapter 1](content/en/ch01.md) separates three meanings of “swarm size”: agents working at once, participants over a whole period, and platform capacity.
+
+{chart("dash_scale", "en", "Every work in the corpus placed by number of agents (log scale) and evidence class, with simultaneous counts, cumulative counts and stated platform capacity marked differently.")}
+
+## One run in numbers: 1,024 agents on pandoc
+
+{picture("agensh-pandoc", "en", "Share of pandoc's hidden tests passed in 6 hours: 33.89% with one agent, 41.75% with 8, 43.11% with 32, 50.94% with 128, 55.06% with 1,024.")}
+
+In *Agensh: Scaling Organizational Intelligence to 1,024 Agents*, Microsoft Research gave up to 1,024 identical GPT-5.6-sol agents with no appointed leader six hours to rebuild pandoc, which they could study only by running it. The share of hidden tests passed rose from 33.89% for one agent to 55.06% for 1,024. Time was held equal, tokens were not, and the 1,024-agent team ran on pandoc only. [Chapter 5](content/en/ch05.md) covers the run and the roles that emerged in it.
+
+## Chapters
+
+The links open the Markdown text of each chapter, which GitHub renders; the website shows the same text with its figures, cards and filters.
+
+{chapters("en")}
+
+The [key findings](content/en/index.md) open the website. [About](content/en/about.md) describes how the corpus was assembled, and the [glossary](content/en/glossary.md) defines terms used in a narrow sense.
+
+## Rights
+
+Text, tables and data: CC BY 4.0 ([LICENSE-CONTENT.md](LICENSE-CONTENT.md)). Build code: MIT ([LICENSE](LICENSE)). The {K['fig_works']} figures reproduced from the surveyed works keep their owners' rights and are not covered by these licences; [RIGHTS.md](RIGHTS.md) gives the terms for each one.
+
+## Cite
+
+{BIB}
 
 See also [CITATION.cff](CITATION.cff).
 
-## Licence
+## Authors
 
-Text, tables and data: CC BY 4.0 ([LICENSE-CONTENT.md](LICENSE-CONTENT.md)). Code: MIT ([LICENSE](LICENSE)). Figures reproduced from the surveyed works keep their owners' rights and are not covered by these licences — see [RIGHTS.md](RIGHTS.md).
+Anton Razzhigaev set the scope of the survey, made the editorial decisions and is responsible for the publication. Ouroboros, an AI agent system, collected and read the sources, wrote the cards, ran the checks and prepared the text.
+
+## Build
+
+```sh
+python3 -m venv .venv && .venv/bin/pip install -r requirements.txt
+.venv/bin/python -m playwright install chromium webkit
+make charts site catalog check   # charts → site/ and illustrations → CATALOG, RIGHTS, README → content checks
+make qa qa-features              # pages, figures and interactions; desktop/phone, JavaScript/no-JavaScript
+```
+
+[content/FORMAT.md](content/FORMAT.md) describes the text format; `scripts/check_content.py` checks that the English and Russian texts match block for block.
 
 [Русская версия](README.ru.md)
 """
+
 RU = f"""# Awesome Agent Swarms
 
-**Исследования динамики коллективов LLM-агентов** — двуязычный (русский / английский) обзор исследований, атлас работ и каталог ресурсов.
+**Динамика роёв LLM-агентов: масштабирование, координация и коллективное поведение.** Обзор того, что происходит, когда над одной задачей работает много LLM-агентов: как они делят работу, передают друг другу находки и ошибки, приходят к согласию и что дают лишние агенты по времени, качеству и токенам. В основе — {K['corpus']} исследования, системные карты, инженерные отчёты и разборы инцидентов, в основном 2025–2026 годов, по 3 октября 2026 года. Авторы — Anton Razzhigaev и Ouroboros; текст на русском и английском.
 
-> **Динамика роёв LLM-агентов: масштабирование, координация и коллективное поведение**
-> (On the Dynamics of LLM Agent Swarms: Scaling, Coordination, and Collective Behavior)
-> Anton Razzhigaev, Ouroboros · самостоятельно опубликованный технический отчёт · срез корпуса 3 октября 2026
+{picture("topologies", "ru", "Шесть агентов, связанных тремя способами: независимо, через координатора и через общий журнал. Агент 3 нашёл решение; агенты 1 и 5 доходят до него сами, получают его от координатора или находят, спросив журнал.")}
 
-**Статус:** приватный кандидат. Репозиторий и сайт пока не публичны, ничего не развёрнуто. Текст не проходил рецензирование. Ouroboros — система ИИ-агентов; это совместная работа человека и ИИ (см. «Об обзоре» на сайте).
+Поможет ли рой, зависит от того, что уравняли при сравнении. В системной карте Claude Opus 5.5 команда из пяти агентов доходит до того же уровня ProgramBench в 2,7 раза быстрее одиночки и тратит примерно в 1,9 раза больше токенов (оценка обзора по графику из карты). При равной сумме выходных токенов опубликованные кривые OpenAI для GPT-5.6 Sol ставят одного агента впереди роя из 4 на трёх бенчмарках и роя из 16 на двух, где такую команду измеряли. Обзор держит такие условия раздельно и у каждого результата указывает масштаб, условие сравнения и класс доказательств.
 
-## Что здесь есть
+## Где читать
 
-| | |
-|---|---|
-| **Сайт** (`site/`, открыть `site/index.html`) | Статический сайт RU+EN: вводная страница и главные выводы, 11 тематических глав с раскрывающимися карточками, атлас всех работ с фильтрами, словарик, источники, весь текст на одной странице. Работает без JavaScript; тёмная тема Ouroboros и переключатель светлой. |
-| **Научная версия** (`paper/`) | Самостоятельный технический отчёт в формате ACL, приватный черновик: [PDF](paper/swarm-dynamics.pdf), [LaTeX](paper/main.tex), [ZIP исходников](paper/swarm-dynamics-source.zip), [сборка](paper/BUILD.md). |
-| **[CATALOG.ru.md](CATALOG.ru.md)** / [CATALOG.md](CATALOG.md) | Все цитируемые статьи, препринты, системные карты, посты лабораторий, отчёты об инцидентах, эссе и датасеты по темам, по строке на работу. |
-| **Данные** (`data/`) | `works.json` — реестр (ID, синонимы, идентификаторы, метаданные); `figures.json` — происхождение и права рисунков; `bib/works.bib` — BibTeX (ключ = ID работы); `provenance/` — манифест источников, карта изменений и сохранности, аудит идентичности, QA. |
-| **Текст** (`content/ru`, `content/en`) | Текст обзора в Markdown с небольшим синтаксисом блоков (`content/FORMAT.md`). |
+- **Сайт** в `site/`, русская (`site/ru/`) и английская (`site/en/`) версии: главные выводы, одиннадцать глав, атлас всех {fnum(ST['unique_works'], 'ru')} работ и ресурсов с фильтрами, словарик, источники и весь текст на одной странице. Это статические файлы: откройте `site/index.html` в браузере или запустите `python3 -m http.server -d site` и перейдите на `http://localhost:8000`.
+- **Технический отчёт:** [PDF](paper/swarm-dynamics.pdf) в формате ACL (на английском), [исходник LaTeX](paper/main.tex), [архив исходников](paper/swarm-dynamics-source.zip) и [инструкция по сборке](paper/BUILD.md).
+- **Каталог:** [CATALOG.ru.md](CATALOG.ru.md) — все цитируемые работы по темам, по строке на работу ([на английском](CATALOG.md)).
+- **Данные:** [реестр работ](data/works.json), [BibTeX](data/bib/works.bib) и [происхождение рисунков](data/figures.json).
 
-**Счёт** (`scripts/build_registry.py`, `scripts/identity_audit.py`): {st['corpus']} работ в аналитическом корпусе · {st['cards_full']} подробных и {st['cards_short']} кратких карточек (включая {st['cards_added_after_import']} краткие карточки, добавленные после импорта вне аналитического корпуса) · {st['related_rows']} строк «Ещё по теме» · {st['fig_works']} рисунков из работ и {st['fig_own']} собственных графиков.
+В атласе собраны {ST['unique_works']} работ и ресурсов; графики обзора построены по {K['corpus']} работам с подробными метаданными.
 
-{st['unique_works']} уникальных записей о работах и ресурсах после объединения версий. Из них {scholarly} классифицированы как научные работы — журнальные статьи, конференционные и воркшоп-публикации, препринты; остальные {other_records} включают отчёты, системные карты, другие ресурсы и {dossiers} составных досье. Классификация и правила подсчёта — в [аудите идентичности](data/provenance/IDENTITY_AUDIT.md).
+## Насколько велики настоящие рои
 
-## Главные выводы
+{picture("scale", "ru", f"Из {K['known']} работ, где названо число одновременно работающих агентов, медианный рой — {K['med']} агентов; " + "; ".join(f"не меньше {fnum(t, 'ru')} агентов — в {v}" for t, v in LD['rows']) + ".")}
 
-Десять выводов о корпусе на 3 октября 2026 года; на сайте у каждого — условия и ссылки на доказательства:
+Из этих {K['corpus']} работ {K['known']} называют число агентов, работающих одновременно; медиана — {K['med']}. Живые рои LLM из 10{' '}000 агентов и больше известны только по отчётам лабораторий без контрольного запуска, а контролируемые опыты в основном малы. Карта ниже показывает каждую работу по числу агентов и классу доказательств; в [главе 1](content/ru/ch01.md) разведены три смысла «размера роя»: агенты, работающие одновременно, участники за весь период и ёмкость платформы.
 
-""" + "\n".join(f"{i}. {f}" for i, f in enumerate(findings("ru"), 1)) + """
+{chart("dash_scale", "ru", "Каждая работа корпуса по числу агентов (логарифмическая шкала) и классу доказательств; одновременное число, накопленный итог и заявленная ёмкость платформы отмечены по-разному.")}
+
+## Один запуск в числах: 1 024 агента на pandoc
+
+{picture("agensh-pandoc", "ru", "Доля пройденных скрытых тестов pandoc за 6 часов: 33,89 % у одного агента, 41,75 % у 8, 43,11 % у 32, 50,94 % у 128, 55,06 % у 1 024.")}
+
+В работе *Agensh: Scaling Organizational Intelligence to 1,024 Agents* исследователи Microsoft Research дали до 1{' '}024 одинаковых агентов GPT-5.6-sol без назначенного руководителя шесть часов на то, чтобы воссоздать pandoc, изучая готовую программу только по её запускам. Доля пройденных скрытых тестов выросла с 33,89{' '}% у одного агента до 55,06{' '}% у 1{' '}024. Уравнено было время, а не токены; команду из 1{' '}024 агентов проверяли только на pandoc. Подробный разбор и роли, возникшие в прогоне, — в [главе 5](content/ru/ch05.md).
 
 ## Главы
 
-""" + "\n".join(f"{n}. {t}" for n, t in chapters("ru")) + """
+Ссылки ведут на Markdown-текст глав, который GitHub показывает как страницу; на сайте тот же текст идёт с рисунками, карточками и фильтрами.
 
-А также атлас работ (фильтры по теме, классу доказательств, масштабу, типу источника и главе), словарик, источники, «Об обзоре».
+{chapters("ru")}
+
+[Главные выводы](content/ru/index.md) открывают сайт. В разделе [«Об обзоре»](content/ru/about.md) описано, как собран корпус, а в [словарике](content/ru/glossary.md) — термины, которые обзор использует в узком смысле.
+
+## Права
+
+Текст, таблицы и данные — CC BY 4.0 ([LICENSE-CONTENT.md](LICENSE-CONTENT.md)), код сборки — MIT ([LICENSE](LICENSE)). Рисунки, воспроизведённые из работ (их {K['fig_works']}), остаются под правами владельцев и этими лицензиями не покрываются; условия по каждому — в [RIGHTS.md](RIGHTS.md).
+
+## Как цитировать
+
+{BIB}
+
+См. также [CITATION.cff](CITATION.cff).
+
+## Авторы
+
+Антон Разжигаев задал рамку обзора, принимал редакционные решения и отвечает за публикацию. Ouroboros — система ИИ-агентов — собрала и прочитала источники, написала карточки, провела проверки и подготовила текст.
 
 ## Сборка
 
 ```sh
 python3 -m venv .venv && .venv/bin/pip install -r requirements.txt
-make charts site catalog check     # графики → site/ → CATALOG*.md, RIGHTS.md → проверки текста
-make qa                            # проверка в настоящих браузерах (нужны Google Chrome и Playwright WebKit)
+.venv/bin/python -m playwright install chromium webkit
+make charts site catalog check   # графики → site/ и иллюстрации → CATALOG, RIGHTS, README → проверки текста
+make qa qa-features              # страницы, рисунки и интерактив; компьютер/телефон, JavaScript и без него
 ```
 
-`scripts/check_content.py` сверяет структуру RU и EN (те же карточки, рисунки, таблицы, ссылки и числа), а с `--source` — что правка сохранила все карточки, рисунки, ссылки и числа октябрьского текста 2026 года. `scripts/qa_browser.py` открывает каждую страницу в Chromium и WebKit на телефоне и десктопе, с JavaScript и без.
-
-## Как цитировать
-
-См. BibTeX в [README.md](README.md#cite) и [CITATION.cff](CITATION.cff).
-
-## Лицензия
-
-Текст, таблицы и данные — CC BY 4.0 ([LICENSE-CONTENT.md](LICENSE-CONTENT.md)). Код — MIT ([LICENSE](LICENSE)). Рисунки из работ остаются под правами владельцев и не покрываются этими лицензиями — см. [RIGHTS.md](RIGHTS.md).
+Формат текста описан в [content/FORMAT.md](content/FORMAT.md); `scripts/check_content.py` проверяет, что русский и английский тексты совпадают блок в блок.
 
 [English version](README.md)
 """
-open(os.path.join(ROOT, "README.md"), "w").write(EN); open(os.path.join(ROOT, "README.ru.md"), "w").write(RU)
-print("README.md", len(EN), "README.ru.md", len(RU))
+
+if __name__ == "__main__":
+    site_story.write_illustrations()
+    for name, text in (("README.md", EN), ("README.ru.md", RU)):
+        assert "{" not in re.sub(r"```bibtex.*?```", "", text, flags=re.S), f"unfilled placeholder in {name}"
+        for path in re.findall(r'(?:src|srcset)="([^"]+)"|\]\(((?!https?:)[^)#]+)', text):
+            p = path[0] or path[1]
+            assert os.path.exists(os.path.join(ROOT, p)), f"{name}: missing {p}"
+        open(os.path.join(ROOT, name), "w", encoding="utf-8").write(text)
+    print("README.md", len(EN), "README.ru.md", len(RU))

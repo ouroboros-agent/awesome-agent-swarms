@@ -1,7 +1,7 @@
 PY ?= .venv/bin/python
 S ?= research-archive
 
-.PHONY: all site check charts catalog registry preserve qa
+.PHONY: all site check charts catalog registry preserve qa qa-features
 all: charts site catalog check
 
 venv:
@@ -31,3 +31,6 @@ preserve:            ## RU preservation against the October source (needs S)
 
 qa:                  ## real-browser checks (Chromium via Chrome + WebKit), desktop and phone
 	$(PY) scripts/qa_browser.py
+
+qa-features:         ## scene movement, viewer, theme, language, parity, 52 figures, README render (Chromium + WebKit)
+	$(PY) scripts/qa_features.py

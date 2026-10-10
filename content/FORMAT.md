@@ -2,7 +2,7 @@
 
 Every page of the site is one Markdown file in `content/ru/` and the same file name in `content/en/`.
 The two languages are parallel: the same blocks, cards, figures, tables and links in the same order.
-`scripts/build_site.py` renders them; `scripts/check_content.py` checks syntax, RU/EN parity and preservation.
+`scripts/build_site.py` renders them; `scripts/check_content.py` checks syntax, RU/EN parity and preservation. The index page's topology scene, scale ladder and Agensh case are built by `scripts/site_story.py`, not from these files.
 
 ## Files
 
@@ -35,14 +35,14 @@ A block opens with `:::kind args` on its own line and closes with `:::` on its o
 
 | Block | Meaning |
 |---|---|
-| `:::card <work-id>` | Full card of a key work. Optional first line `lead: …` (one-sentence takeaway). Body uses run-in labels: RU **Что сделали.** **Что получилось.** **Почему это важно.** **Оговорки.**; EN **What they did.** **Results.** **Why it matters.** **Caveats.** Figures inside with `!fig`. |
+| `:::card <work-id>` | Full card of a key work. Optional first line `lead: …` (one-sentence takeaway). The body is ordinary Markdown: connected paragraphs, lists or a table, in whatever order the work needs; no fixed headings or labels are required. A paragraph may still open with a bold run-in label (`**Caveats.**`), which is set as a label. Figures inside with `!fig`. |
 | `:::short <work-id>` | Short card: optional `lead: …` line, then one paragraph (or a short list). |
 | `:::callout <Title>` | Boxed explanation (how to read numbers, definitions). |
 | `:::timeline` | One event per line: `DD.MM.YYYY | text`. The date field is kept byte-identical in RU and EN; the builder formats it per language. |
 | `:::takeaways` | Chapter summary (≤ 5 bullets). Replaces the old «Главное в главе» heading. |
-| `:::findings` | Key findings on the index page. |
-| `:::related` | Wraps one Markdown table «Ещё по теме» / "Related work" (columns: work, who/when, one line). Rendered as a list on phones. |
-| `:::cover` | Index page only: `kicker:`, `title:`, `subtitle:`, `lede:`, `meta:` lines. |
+| `:::findings` | Key findings on the index page: a numbered list. If an item opens with a bold sentence, the site sets it as the item's headline; items without one render as plain paragraphs. |
+| `:::related` | Wraps one Markdown table «Ещё по теме» / "Related work" (columns: work, who/when, one line). Rendered as a list on all viewports. |
+| `:::cover` | Index page only: `kicker:`, `title:`, `subtitle:`, `lede:`, `meta:` lines. On the site it becomes the section under the topology scene; large counts are read from `data/stats.json`; parts of `meta` separated by ` · ` that contain `{{stat:…}}` are omitted to avoid repeating those counts. |
 | `:::corpus`, `:::sources` | Placeholders filled by the builder. |
 
 `<work-id>` is the canonical ID from `data/works.json` (see `data/interface.md`). Never invent or rename IDs.
