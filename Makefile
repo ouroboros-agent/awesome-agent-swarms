@@ -1,7 +1,7 @@
 PY ?= .venv/bin/python
 S ?= research-archive
 
-.PHONY: all site check charts catalog registry preserve qa qa-features
+.PHONY: all site check charts catalog registry preserve qa qa-features qa-regress coverage
 all: charts site catalog check
 
 venv:
@@ -23,14 +23,21 @@ catalog:
 	$(PY) scripts/build_catalog.py
 	$(PY) scripts/build_readme.py
 
-check:               ## syntax + RU/EN parity
+check:               ## syntax + RU/EN parity; scene numbers against their cards and the consensus toy recomputed (needs the built site)
 	$(PY) scripts/check_content.py
+	$(PY) scripts/check_scenes.py
+
+coverage:            ## every card, figure, link, heading and block is on the single page (add OLD=<dir> to compare with a former build)
+	$(PY) scripts/check_coverage.py $(if $(OLD),--old $(OLD))
 
 preserve:            ## RU preservation against the October source (needs S)
 	$(PY) scripts/check_content.py --source $(S) --no-parity
 
-qa:                  ## real-browser checks (Chromium via Chrome + WebKit), desktop and phone
+qa:                  ## real-browser checks of the single page (Chrome + WebKit; phone, desktop, wide; no-JS; former pages forward)
 	$(PY) scripts/qa_browser.py
 
-qa-features:         ## scene movement, viewer, theme, language, parity, 52 figures, README render (Chromium + WebKit)
+qa-features:         ## scenes move/stop/pause, reduced motion, language keeps the place, Back, viewer, atlas, README render
 	$(PY) scripts/qa_features.py
+
+qa-regress:          ## the defects found in the final reviews stay fixed: atlas place after search/filter/reset, scenes settle in every layout, theme and skip focus keep the place, no-JS former-page entries, λ labels, phone legend
+	$(PY) scripts/qa_regress.py

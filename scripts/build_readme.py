@@ -89,7 +89,7 @@ Whether a swarm helps depends on what the comparison held fixed. In the Claude O
 
 ## Where to read
 
-- **Website** in `site/`, English (`site/en/`) and Russian (`site/ru/`): key findings, eleven chapters, an atlas of all {fnum(ST['unique_works'], 'en')} works and resources with filters, a glossary, sources and the whole text on one page. The files are static: open `site/index.html` in a browser, or run `python3 -m http.server -d site` and go to `http://localhost:8000`.
+- **Website** in `site/`: the whole survey as one continuous page in English (`site/en/index.html`) and Russian (`site/ru/index.html`). It runs from the topology scene through three parts and eleven chapters to the findings, the open questions and an atlas of all {fnum(ST['unique_works'], 'en')} works and resources with filters, then a glossary, sources and notes on method. Native scenes and charts explain the mechanisms and the corpus along the way. The files are static: open `site/index.html` in a browser, or run `python3 -m http.server -d site` and go to `http://localhost:8000`.
 - **Technical report:** [PDF](paper/swarm-dynamics.pdf) in ACL format, with its [LaTeX source](paper/main.tex), a [source archive](paper/swarm-dynamics-source.zip) and [build notes](paper/BUILD.md).
 - **Catalogue:** [CATALOG.md](CATALOG.md) lists every cited work by theme, one line each ([in Russian](CATALOG.ru.md)).
 - **Data:** the [registry of works](data/works.json), [BibTeX](data/bib/works.bib) and [figure provenance](data/figures.json).
@@ -138,10 +138,11 @@ Anton Razzhigaev set the scope of the survey, made the editorial decisions and i
 python3 -m venv .venv && .venv/bin/pip install -r requirements.txt
 .venv/bin/python -m playwright install chromium webkit
 make charts site catalog check   # charts → site/ and illustrations → CATALOG, RIGHTS, README → content checks
-make qa qa-features              # pages, figures and interactions; desktop/phone, JavaScript/no-JavaScript
+make coverage                    # every card, figure, link and heading is on the single page
+make qa qa-features              # the page, figures, scenes and interactions; desktop/phone, JavaScript/no-JavaScript
 ```
 
-[content/FORMAT.md](content/FORMAT.md) describes the text format; `scripts/check_content.py` checks that the English and Russian texts match block for block.
+[content/FORMAT.md](content/FORMAT.md) describes the text format, the order of the single page and how former page addresses map onto it; `scripts/check_content.py` checks that the English and Russian texts match block for block.
 
 [Русская версия](README.ru.md)
 """
@@ -156,7 +157,7 @@ RU = f"""# Awesome Agent Swarms
 
 ## Где читать
 
-- **Сайт** в `site/`, русская (`site/ru/`) и английская (`site/en/`) версии: главные выводы, одиннадцать глав, атлас всех {fnum(ST['unique_works'], 'ru')} работ и ресурсов с фильтрами, словарик, источники и весь текст на одной странице. Это статические файлы: откройте `site/index.html` в браузере или запустите `python3 -m http.server -d site` и перейдите на `http://localhost:8000`.
+- **Сайт** в `site/`: весь обзор одной непрерывной страницей, по-русски (`site/ru/index.html`) и по-английски (`site/en/index.html`). Он идёт от схемы связи агентов через три части и одиннадцать глав к выводам, открытым вопросам и атласу всех {fnum(ST['unique_works'], 'ru')} работ и ресурсов с фильтрами, а за ними — словарик, источники и заметки о методе. По ходу текста механизмы и корпус объясняют встроенные схемы и графики. Это статические файлы: откройте `site/index.html` в браузере или запустите `python3 -m http.server -d site` и перейдите на `http://localhost:8000`.
 - **Технический отчёт:** [PDF](paper/swarm-dynamics.pdf) в формате ACL (на английском), [исходник LaTeX](paper/main.tex), [архив исходников](paper/swarm-dynamics-source.zip) и [инструкция по сборке](paper/BUILD.md).
 - **Каталог:** [CATALOG.ru.md](CATALOG.ru.md) — все цитируемые работы по темам, по строке на работу ([на английском](CATALOG.md)).
 - **Данные:** [реестр работ](data/works.json), [BibTeX](data/bib/works.bib) и [происхождение рисунков](data/figures.json).
@@ -205,10 +206,11 @@ RU = f"""# Awesome Agent Swarms
 python3 -m venv .venv && .venv/bin/pip install -r requirements.txt
 .venv/bin/python -m playwright install chromium webkit
 make charts site catalog check   # графики → site/ и иллюстрации → CATALOG, RIGHTS, README → проверки текста
-make qa qa-features              # страницы, рисунки и интерактив; компьютер/телефон, JavaScript и без него
+make coverage                    # каждая карточка, рисунок, ссылка и заголовок есть на единой странице
+make qa qa-features              # страница, рисунки, схемы и интерактив; компьютер/телефон, JavaScript и без него
 ```
 
-Формат текста описан в [content/FORMAT.md](content/FORMAT.md); `scripts/check_content.py` проверяет, что русский и английский тексты совпадают блок в блок.
+Формат текста, порядок единой страницы и то, как прежние адреса страниц переходят на неё, описаны в [content/FORMAT.md](content/FORMAT.md); `scripts/check_content.py` проверяет, что русский и английский тексты совпадают блок в блок.
 
 [English version](README.md)
 """

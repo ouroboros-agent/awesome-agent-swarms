@@ -11,7 +11,7 @@ Whether a swarm helps depends on what the comparison held fixed. In the Claude O
 
 ## Where to read
 
-- **Website** in `site/`, English (`site/en/`) and Russian (`site/ru/`): key findings, eleven chapters, an atlas of all 280 works and resources with filters, a glossary, sources and the whole text on one page. The files are static: open `site/index.html` in a browser, or run `python3 -m http.server -d site` and go to `http://localhost:8000`.
+- **Website** in `site/`: the whole survey as one continuous page in English (`site/en/index.html`) and Russian (`site/ru/index.html`). It runs from the topology scene through three parts and eleven chapters to the findings, the open questions and an atlas of all 280 works and resources with filters, then a glossary, sources and notes on method. Native scenes and charts explain the mechanisms and the corpus along the way. The files are static: open `site/index.html` in a browser, or run `python3 -m http.server -d site` and go to `http://localhost:8000`.
 - **Technical report:** [PDF](paper/swarm-dynamics.pdf) in ACL format, with its [LaTeX source](paper/main.tex), a [source archive](paper/swarm-dynamics-source.zip) and [build notes](paper/BUILD.md).
 - **Catalogue:** [CATALOG.md](CATALOG.md) lists every cited work by theme, one line each ([in Russian](CATALOG.ru.md)).
 - **Data:** the [registry of works](data/works.json), [BibTeX](data/bib/works.bib) and [figure provenance](data/figures.json).
@@ -88,9 +88,10 @@ Anton Razzhigaev set the scope of the survey, made the editorial decisions and i
 python3 -m venv .venv && .venv/bin/pip install -r requirements.txt
 .venv/bin/python -m playwright install chromium webkit
 make charts site catalog check   # charts → site/ and illustrations → CATALOG, RIGHTS, README → content checks
-make qa qa-features              # pages, figures and interactions; desktop/phone, JavaScript/no-JavaScript
+make coverage                    # every card, figure, link and heading is on the single page
+make qa qa-features              # the page, figures, scenes and interactions; desktop/phone, JavaScript/no-JavaScript
 ```
 
-[content/FORMAT.md](content/FORMAT.md) describes the text format; `scripts/check_content.py` checks that the English and Russian texts match block for block.
+[content/FORMAT.md](content/FORMAT.md) describes the text format, the order of the single page and how former page addresses map onto it; `scripts/check_content.py` checks that the English and Russian texts match block for block.
 
 [Русская версия](README.ru.md)

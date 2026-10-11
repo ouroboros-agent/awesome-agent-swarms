@@ -2,12 +2,19 @@
 """Build the static bilingual site: content/{ru,en}/*.md + data/*.json + assets/ -> site/.
 
   python scripts/build_site.py            # build site/
-  python scripts/build_site.py --check    # build, then fail on broken internal links / missing images
+  python scripts/build_site.py --check    # build, then fail on broken links, missing images or duplicate ids
 
-Reading and navigation need no JavaScript: the theme switch, the contents sheet, card disclosure, the figure
-lightbox (:target), the index scene's mode switch and the atlas filters (:has) are HTML and CSS.
-assets/js/site.js adds the figure viewer, the remembered theme, section highlighting, atlas search and
-expand-all; assets/js/story.js plays the index scene (scripts/site_story.py builds its markup).
+Each language is one continuous page, site/{ru,en}/index.html: the topology prologue, the survey's intro,
+four parts with chapters 1–11, the findings, the atlas and the reference appendix (glossary, cards and
+labels, sources, about). scripts/longread.py holds the order of parts and their bridge copy; scripts/scenes.py
+and scripts/site_story.py build the native scenes. The former page addresses (ch01.html … full.html) stay as
+small pages that forward every old fragment to its place on the single page and, without JavaScript, list
+those places as links.
+
+Reading needs no JavaScript: the theme switch, the contents sheet, the figure lightbox (:target), the
+prologue's scheme switch and the atlas filters (:has) are HTML and CSS, and every scene has a complete static
+state. assets/js/site.js adds the remembered theme, progress and place-keeping, the figure viewer and atlas
+search; assets/js/story.js plays the prologue and the Agensh scene; assets/js/scenes.js plays the others.
 """
 import html, json, os, re, shutil, sys
 from collections import OrderedDict, defaultdict
@@ -16,6 +23,8 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(ROOT, "scripts"))
 import markdown  # pinned in requirements.txt
 import site_story
+import longread
+import scenes
 
 CONTENT, DATA, ASSETS, OUT = (os.path.join(ROOT, d) for d in ("content", "data", "assets", "site"))
 LANGS = ("ru", "en")
@@ -26,48 +35,40 @@ SITE_SHORT = {"ru": "Динамика роёв", "en": "Swarm Dynamics"}
 SITE_SUB = {"ru": "Масштабирование, координация и коллективное поведение", "en": "Scaling, Coordination, and Collective Behavior"}
 AUTHORS = "Anton Razzhigaev, Ouroboros"
 UI = {
- "ru": dict(toc="Содержание", on_page="На странице", chapter="Глава", of="из", details_full="Подробнее о работе",
-            details_short="Подробнее", authors="Авторы", orgs="Организации", published="Опубликовано", status="Статус", source="Источник",
-            prev="Назад", next="Далее", theme="Светлая тема", lang_other="English", lang_short="EN", lang_other_code="en", skip="К тексту",
+ "ru": dict(toc="Содержание", chapter="Глава", of="из", authors="Авторы", orgs="Организации", published="Опубликовано", status="Статус", source="Источник",
+            theme="Светлая тема", lang_other="English", lang_short="EN", lang_other_code="en", skip="К тексту",
             zoom="Открыть рисунок", close="Закрыть", original="оригинал", actual="Размер 100 % · прокрутка", scroll="⟷ таблицу можно прокрутить", all="Все",
             f_topic="Тема", f_evid="Класс доказательств", f_scale="Масштаб (одновременно)", f_type="Тип источника", f_level="Где в обзоре", f_chapter="Глава",
             atlas_hint="Фильтры работают и без JavaScript. Тема, класс доказательств и масштаб размечены для аналитического корпуса; у строк «Ещё по теме» тема — по главе, где они стоят, а класс и масштаб не размечены: такие строки видны при «Все».",
-            in_ch="гл.", full="Весь текст на одной странице", license="Текст, таблицы и данные — CC BY 4.0, код сборки — MIT. Рисунки из работ остаются под правами их владельцев: условия — в подписи к каждому.",
+            in_ch="гл.", license="Текст, таблицы и данные — CC BY 4.0, код сборки — MIT. Рисунки из работ остаются под правами их владельцев: условия — в подписи к каждому.",
             cite="Как цитировать", cutoff="срез 3 октября 2026", search="Поиск по атласу", shown="Показано", updates="Обновление после среза",
-            menu="Содержание", fig="Рис.", expand="Развернуть все карточки", collapse="Свернуть карточки", home="Главное",
-            cards_full=("подробная карточка", "подробные карточки", "подробных карточек"), cards_short=("краткая", "краткие", "кратких"),
-            cards=("карточка", "карточки", "карточек"), figs=("рисунок", "рисунка", "рисунков"), minutes="≈{nb}{n}{nb}мин чтения",
-            findings_eb="Выводы", findings_h="Что показывают работы", findings_note="Каждый вывод сформулирован для корпуса на 3 октября 2026 и ведёт в главу с доказательствами и условиями сравнения.",
-            chapters_eb="Главы", chapters_h="Одиннадцать глав и атлас работ",
-            start="Начать с главы 1", atlas="Атлас работ", atlas_s="Атлас", report="Технический отчёт", pdf="PDF", zip="LaTeX и рисунки (ZIP)", bib="BibTeX всех работ", data="Реестр работ (JSON)",
-            materials="Материалы", survey="Обзор", rights="Права и цитирование", about_l="Об обзоре", glossary="Словарик", sources="Источники",
+            fig="Рис.", pass_s="Авторы и источник", cards_full=("подробная карточка", "подробные карточки", "подробных карточек"), cards_short=("краткая", "краткие", "кратких"),
+            figs=("рисунок", "рисунка", "рисунков"), scenes_n=("схема", "схемы", "схем"), minutes="≈{nb}{n}{nb}мин чтения",
+            findings_h="Что показывают работы", findings_note="Каждый вывод сформулирован для корпуса на 3 октября 2026 и ведёт в главу с доказательствами и условиями сравнения.",
+            report="Технический отчёт", pdf="PDF", zip="LaTeX и рисунки (ZIP)", bib="BibTeX всех работ", data="Реестр работ (JSON)",
+            materials="Материалы", survey="Обзор", rights="Права и цитирование", about_l="Об обзоре", glossary="Словарик", sources="Источники", atlas="Атлас работ",
             n_corpus="работ в аналитическом корпусе", n_unique="уникальных работ и ресурсов", n_cards="карточек: {f} подробных и {s} кратких", n_figs="рисунков: {w} из работ, {o} собственных",
-            filters="Фильтры", reset="Сбросить", empty="Под эти условия не подходит ни одна работа.", sources_ch="Источники главы", top="Наверх",
-            atlas_eb="Атлас · {n} работ и ресурсов", ref_eb="Справка",
-            idx=[("how", "Три схемы связи"), ("survey", "Об обзоре"), ("scale", "Масштаб"), ("findings", "Выводы"), ("agensh", "Разбор: Agensh"), ("chapters", "Главы")],
+            filters="Фильтры", reset="Сбросить", empty="Под эти условия не подходит ни одна работа.", atlas_eb="Атлас · {n} работ и ресурсов",
             v_close="Закрыть", v_prev="Предыдущий рисунок", v_next="Следующий рисунок", v_zoom="Увеличить", v_fit="Вписать", v_orig="Оригинал",
-            v_title="Просмотр рисунков", v_hint="Двойной щелчок или касание — увеличить", v_count="{i} из {n}"),
- "en": dict(toc="Contents", on_page="On this page", chapter="Chapter", of="of", details_full="More about this work",
-            details_short="More", authors="Authors", orgs="Organizations", published="Published", status="Status", source="Source",
-            prev="Previous", next="Next", theme="Light theme", lang_other="Русский", lang_short="RU", lang_other_code="ru", skip="Skip to text",
+            v_title="Просмотр рисунков", v_hint="Двойной щелчок или касание — увеличить", v_count="{i} из {n}", prologue="Пролог"),
+ "en": dict(toc="Contents", chapter="Chapter", of="of", authors="Authors", orgs="Organizations", published="Published", status="Status", source="Source",
+            theme="Light theme", lang_other="Русский", lang_short="RU", lang_other_code="ru", skip="Skip to text",
             zoom="Open figure", close="Close", original="original", actual="Actual size · scroll to pan", scroll="⟷ scroll the table sideways", all="All",
             f_topic="Topic", f_evid="Evidence class", f_scale="Scale (simultaneous)", f_type="Source type", f_level="Where in the survey", f_chapter="Chapter",
             atlas_hint="The filters work without JavaScript too. Topic, evidence class and scale are labelled for the analytic corpus; related-work rows take the topic of the chapter they appear in and carry no class or scale, so they show under “All”.",
-            in_ch="Ch.", full="Whole text on one page", license="Text, tables and data: CC BY 4.0; build code: MIT. Figures from the works keep their owners’ rights; the terms are under each figure.",
+            in_ch="Ch.", license="Text, tables and data: CC BY 4.0; build code: MIT. Figures from the works keep their owners’ rights; the terms are under each figure.",
             cite="How to cite", cutoff="cut-off 3 October 2026", search="Search the atlas", shown="Shown", updates="Update after the cut-off",
-            menu="Contents", fig="Fig.", expand="Expand all cards", collapse="Collapse cards", home="Overview",
-            cards_full=("full card", "full cards"), cards_short=("short card", "short cards"), cards=("card", "cards"), figs=("figure", "figures"), minutes="≈{nb}{n}{nb}min read",
-            findings_eb="Findings", findings_h="What the studies show", findings_note="Each finding is stated for the corpus as of 3 October 2026 and leads to the chapter with its evidence and comparison conditions.",
-            chapters_eb="Chapters", chapters_h="Eleven chapters and an atlas of works",
-            start="Start with Chapter 1", atlas="Atlas of works", atlas_s="Atlas", report="Technical report", pdf="PDF", zip="LaTeX and figures (ZIP)", bib="BibTeX for all works", data="Registry of works (JSON)",
-            materials="Materials", survey="Survey", rights="Rights and citation", about_l="About the survey", glossary="Glossary", sources="Sources",
+            fig="Fig.", pass_s="Authors and source", cards_full=("full card", "full cards"), cards_short=("short card", "short cards"),
+            figs=("figure", "figures"), scenes_n=("scene", "scenes"), minutes="≈{nb}{n}{nb}min read",
+            findings_h="What the studies show", findings_note="Each finding is stated for the corpus as of 3 October 2026 and leads to the chapter with its evidence and comparison conditions.",
+            report="Technical report", pdf="PDF", zip="LaTeX and figures (ZIP)", bib="BibTeX for all works", data="Registry of works (JSON)",
+            materials="Materials", survey="Survey", rights="Rights and citation", about_l="About the survey", glossary="Glossary", sources="Sources", atlas="Atlas of works",
             n_corpus="works in the analytic corpus", n_unique="unique works and resources", n_cards="cards: {f} full and {s} short", n_figs="figures: {w} from the works, {o} our own",
-            filters="Filters", reset="Reset", empty="No work matches these filters.", sources_ch="Sources for this chapter", top="Back to top",
-            atlas_eb="Atlas · {n} works and resources", ref_eb="Reference",
-            idx=[("how", "Three ways to connect"), ("survey", "About the survey"), ("scale", "Scale"), ("findings", "Findings"), ("agensh", "Case study: Agensh"), ("chapters", "Chapters")],
+            filters="Filters", reset="Reset", empty="No work matches these filters.", atlas_eb="Atlas · {n} works and resources",
             v_close="Close", v_prev="Previous figure", v_next="Next figure", v_zoom="Zoom in", v_fit="Fit", v_orig="Original",
-            v_title="Figure viewer", v_hint="Double-click or double-tap to zoom", v_count="{i} of {n}"),
+            v_title="Figure viewer", v_hint="Double-click or double-tap to zoom", v_count="{i} of {n}", prologue="Prologue"),
 }
+for _l in LANGS: UI[_l].update(longread.UI[_l])
 NB = " "
 MONTHS = {"ru": ["января", "февраля", "марта", "апреля", "мая", "июня", "июля", "августа", "сентября", "октября", "ноября", "декабря"],
           "en": ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]}
@@ -205,8 +206,9 @@ def work_anchor(wid):
     return None, None
 
 def card_href(wid):
+    """In-page link to a work: its card or related-work row, else its atlas row."""
     pg, anc = work_anchor(wid)
-    return f"{pg}.html#{anc}" if pg else f"atlas.html#a-{esc(wid)}"
+    return f"#{anc}" if pg else f"#a-{esc(wid)}"
 
 # ---------------------------------------------------------------- markdown helpers
 MD = markdown.Markdown(extensions=["tables", "sane_lists", "attr_list"])
@@ -240,34 +242,40 @@ def wrap_tables(h, lang):
 
 CHREF_RU = re.compile(r"(?<![\w-])(гл\.|главы|главе|главу|глава|главах|главам)(\s|&nbsp;| | )+(\d{1,2}(?:(?:\s*,\s*|\s+и\s+|\s*[–-]\s*)\d{1,2})*)")
 CHREF_EN = re.compile(r"(?<![\w-])(Ch\.|Chs\.|Chapter|Chapters|ch\.)(\s|&nbsp;| | )+(\d{1,2}(?:(?:\s*,\s*|\s+and\s+|\s*[–-]\s*)\d{1,2})*)")
-def link_chapters(h, lang, page_prefix=""):
+def link_chapters(h, lang):
+    """Chapter references in running text («гл. 4», "Chapters 3–10") become links to the chapter on the page."""
     rx = CHREF_RU if lang == "ru" else CHREF_EN
-    parts = re.split(r"(<[^>]+>)", h); depth = 0; out = []
+    parts = re.split(r"(<[^>]+>)", h); depth = 0; skip = 0; out = []
     for p in parts:
         if p.startswith("<"):
             if re.match(r"<a[\s>]", p): depth += 1
             elif p.startswith("</a"): depth = max(0, depth - 1)
+            elif re.match(r"<(svg|script|style)[\s>]", p): skip += 1
+            elif re.match(r"</(svg|script|style)>", p): skip = max(0, skip - 1)
             out.append(p); continue
-        if depth or not p: out.append(p); continue
+        if depth or skip or not p: out.append(p); continue
         def rep(m):
-            nums = re.sub(r"\d{1,2}", lambda n: (f'<a class="chref" href="{page_prefix}ch{int(n.group(0)):02d}.html">{n.group(0)}</a>'
-                                                 if 1 <= int(n.group(0)) <= 11 else (f'<a class="chref" href="{page_prefix}atlas.html">12</a>' if n.group(0) == "12" else n.group(0))), m.group(3))
+            nums = re.sub(r"\d{1,2}", lambda n: (f'<a class="chref" href="#ch{int(n.group(0)):02d}">{n.group(0)}</a>'
+                                                 if 1 <= int(n.group(0)) <= 11 else (f'<a class="chref" href="#atlas">12</a>' if n.group(0) == "12" else n.group(0))), m.group(3))
             return m.group(1) + m.group(2) + nums
         out.append(rx.sub(rep, p))
     return "".join(out)
 
-def rewrite_internal(h, lang, single=False):
-    def card_link(m):
-        wid = m.group(1); pg, anc = work_anchor(wid)
-        if not pg: return f'href="atlas.html#a-{esc(wid)}"' if not single else f'href="#a-{esc(wid)}"'
-        return f'href="{"" if single else pg + ".html"}#{anc}"'
-    h = re.sub(r'href="#w-([\w-]+)"', card_link, h)
-    if single: h = re.sub(r'href="(ch\d\d|glossary|about|index)\.html(#[^"]*)?"', lambda m: f'href="{m.group(2) or "#p-" + m.group(1)}"', h)
+PAGE_ANCHOR = {"index": "top", "atlas": "atlas", "glossary": "glossary", "sources": "sources", "about": "about", "full": "top"}
+def rewrite_internal(h, lang):
+    """Links written for the former pages point to places on the single page."""
+    h = re.sub(r'href="#w-([\w-]+)"', lambda m: f'href="{card_href(m.group(1))}"', h)
+    def page_link(m):
+        page, frag = m.group(1), (m.group(2) or "")[1:]
+        if not frag: return f'href="#{PAGE_ANCHOR.get(page, page)}"'
+        if re.match(r"s-\d+$", frag) and page not in ("index",): return f'href="#{page}-{frag}"'
+        return f'href="#{frag}"'
+    h = re.sub(r'href="(ch\d\d|atlas|glossary|sources|about|index|full)\.html(#[^"]*)?"', page_link, h)
     h = re.sub(r'<a href="(https?://[^"]+)"', r'<a class="ext" href="\1" rel="noopener"', h)
     return h
 
 # ---------------------------------------------------------------- figures
-FIG = {"n": 0, "k": 0, "ch": None}   # n: unique id on the page; k: number within the chapter; ch: chapter number for labels
+FIG = {"k": 0, "ch": None, "page": None, "list": []}   # k: number within the chapter; ch: chapter number for labels
 def chart_variants(f, lang):
     m = re.match(r"(dash_[a-z]+)_dark\.png$", f)
     if not m: return None
@@ -292,11 +300,19 @@ def dims(rel_path):
             _DIMS[rel_path] = ""
     return _DIMS[rel_path]
 
-def figure(spec, lang, rel):
+def fig_label(lang):
+    return f'{UI[lang]["fig"]}{NB}{FIG["ch"]}.{FIG["k"]}' if FIG["ch"] else f'{UI[lang]["fig"]}{NB}{FIG["k"]}'
+
+def fig_ids():
+    p = FIG["page"] or "x"
+    return f"{p}-fig-{FIG['k']}", f"{p}-zoom-{FIG['k']}"
+
+def figure(spec, lang, rel="../"):
     parts = [p.strip() for p in spec.split("|")]
     f = parts[0]; cap = parts[1] if len(parts) > 1 else ""; credit = parts[2] if len(parts) > 2 else ""
-    FIG["n"] += 1; FIG["k"] += 1; n = FIG["n"]
-    lab = f'{UI[lang]["fig"]}{NB}{FIG["ch"]}.{FIG["k"]}' if FIG["ch"] else f'{UI[lang]["fig"]}{NB}{FIG["k"]}'
+    FIG["k"] += 1
+    lab = fig_label(lang); fid, zid = fig_ids()
+    FIG["list"].append((fid, lab, f))
     sub = "charts" if f.startswith("dash_") else "figures"
     var = chart_variants(f, lang)
     def src(p): return f"{rel}assets/{p}"
@@ -311,15 +327,27 @@ def figure(spec, lang, rel):
         imgs = f'<img loading="lazy" decoding="async" src="{src(web)}"{dims(web)} alt="{alt}">'
         big, big_light, frame, big_dims = src(f"{sub}/{f}"), "", ("frame dark" if f.startswith("dash_") else "frame"), dims(f"{sub}/{f}")
     dl = f' data-full-light="{big_light}"' if big_light else ""
-    return (f'<figure class="fig" id="fig-{n}"><a class="zoom" href="#zoom-{n}" data-full="{big}"{dl} aria-label="{UI[lang]["zoom"]}: {esc(lab)}">'
+    return (f'<figure class="fig" id="{fid}"><a class="zoom" href="#{zid}" data-full="{big}"{dl} aria-label="{UI[lang]["zoom"]}: {esc(lab)}">'
             f'<div class="{frame}">{imgs}</div><span class="zi" aria-hidden="true">{I_EXPAND}</span></a>'
             f'<figcaption><span class="fnum">{lab}</span>{capt}' + (f'<span class="credit">{cred}</span>' if cred else "") +
             f' <a class="orig" href="{big}">{UI[lang]["original"]}</a></figcaption></figure>'
-            f'<div class="lightbox" id="zoom-{n}" role="dialog" aria-label="{esc(lab)}"><a class="lb-close" href="#fig-{n}" aria-label="{UI[lang]["close"]}">×</a>'
-            f'<div class="lb-tools"><span>{lab}</span><input type="checkbox" id="actual-{n}" class="lb-actual">'
-            f'<label for="actual-{n}">{UI[lang]["actual"]}</label>'
+            f'<div class="lightbox" id="{zid}" role="dialog" aria-label="{esc(lab)}"><a class="lb-close" href="#{fid}" aria-label="{UI[lang]["close"]}">×</a>'
+            f'<div class="lb-tools"><span>{lab}</span><input type="checkbox" id="{zid}-actual" class="lb-actual">'
+            f'<label for="{zid}-actual">{UI[lang]["actual"]}</label>'
             f'<a href="{big}" target="_blank" rel="noopener">{UI[lang]["original"]} ↗</a></div>'
             f'<div class="lb-img" tabindex="0" aria-label="{UI[lang]["zoom"]}"><img loading="lazy" src="{big}"{big_dims} alt="{alt}"></div></div>')
+
+def scene_figure(spec, name, lang):
+    """A native scene that takes the place (number, caption, credit) of one of the survey's own charts."""
+    parts = [p.strip() for p in spec.split("|")]
+    f = parts[0]; cap = parts[1] if len(parts) > 1 else ""; credit = parts[2] if len(parts) > 2 else ""
+    FIG["k"] += 1
+    lab = fig_label(lang); fid, _ = fig_ids()
+    FIG["list"].append((fid, lab, f))
+    var = chart_variants(f, lang) or {}
+    pngs = [(f"../assets/{var[t]}", UI[lang]["png_" + t]) for t in ("dark", "light") if t in var]
+    ctx = dict(id=fid, label=lab, caption=md_inline(cap, lang), credit=md_inline(credit, lang) if credit else "", pngs=pngs, file=f)
+    return scenes.html(name, lang, ctx)
 
 # ---------------------------------------------------------------- cards
 RUNIN = {"ru": r"Что сделали|Что получилось|Почему это важно|Оговорки|Что показали|Главное", "en": r"What they did|Results|Why it matters|Caveats|What it shows"}
@@ -380,7 +408,9 @@ def card_title(w, lang):
     return PASS.get(w["id"], {}).get("title_en") or lang_safe(w.get("title"), lang) or w["id"]
 
 LEADS = {"ru": {}, "en": {}}
-def render_card(kind, arg, body, lang, rel, single):
+def render_card(kind, arg, body, lang):
+    """A full card is a case study with its figures; a short card is an attributed note in the running text.
+    Both keep the whole body visible; authors, status and the source link sit in a small disclosure."""
     cid = ALIAS.get(arg.split()[0], arg.split()[0]); w = WORKS.get(cid) or {"id": cid, "urls": {}}
     lines = body.split("\n"); lead = ""
     while lines and not lines[0].strip(): lines.pop(0)
@@ -394,18 +424,25 @@ def render_card(kind, arg, body, lang, rel, single):
     text = re.sub(rf"(?<!\n\n)\s*(\*\*(?:{RUNIN[lang]})[^*]{{0,24}}\*\*)", lambda m: "\n\n" + m.group(1), text).strip()
     body_h = wrap_tables(md(text, lang), lang)
     body_h = re.sub(rf"<strong>((?:{RUNIN[lang]})[^<]{{0,24}})</strong>", r'<strong class="lab">\1</strong>', body_h)
-    figs_h = "".join(figure(f.strip()[5:], lang, rel) for f in figs)
+    figs_h = "".join(figure(f.strip()[5:], lang) for f in figs)
     u = (w.get("urls") or {}).get("primary"); title = esc(card_title(w, lang))
     tl = f'<a class="ext" href="{esc(u)}" rel="noopener">{title}</a>' if u else title
-    full = kind == "card"; opn = " open" if single else ""
     by = byline(w, lang)
-    head = (f'<header class="chead"><div class="tags">{tags(w, lang)}</div><h3 class="ctitle">{tl}</h3>'
-            + (f'<p class="cmeta">{by}</p>' if by else "")
-            + (f'<p class="clead">{md_inline(lead, lang)}</p>' if lead else "") + "</header>")
-    det = (f'<details class="more"{opn}><summary>{UI[lang]["details_full" if full else "details_short"]}</summary>'
-           f'{passport(w, lang)}<div class="cbody">{body_h}</div></details>')
-    cls = "card" if full else "card short"
-    return f'<article class="{cls}" id="w-{esc(cid)}">{head}{figs_h if full else ""}{det}{"" if full else figs_h}</article>'
+    pas = f'<details class="pass"><summary>{UI[lang]["pass_s"]}</summary>{passport(w, lang)}</details>'
+    if kind == "card":
+        head = (f'<header class="chead"><div class="tags">{tags(w, lang)}</div><h3 class="ctitle">{tl}</h3>'
+                + (f'<p class="cmeta">{by}</p>' if by else "") + (f'<p class="clead">{md_inline(lead, lang)}</p>' if lead else "") + "</header>")
+        return f'<article class="case" id="w-{esc(cid)}">{head}<div class="cbody">{body_h}</div>{figs_h}{pas}</article>'
+    head = (f'<header class="nhead"><h3 class="ctitle">{tl}</h3>' + (f'<p class="cmeta">{by}</p>' if by else "")
+            + f'<div class="tags">{tags(w, lang)}</div></header>')
+    return (f'<section class="note" id="w-{esc(cid)}">{head}' + (f'<p class="nlead">{md_inline(lead, lang)}</p>' if lead else "")
+            + f'<div class="cbody">{body_h}</div>{figs_h}{pas}</section>')
+
+def _cap(s): return s[:1].upper() + s[1:] if s else s
+scenes.bind(card_href=card_href, card_title=lambda w, lang: strip_tags(md_inline(card_title(w, lang), lang)),
+            scale_note=lambda w, lang: ((w.get("corpus") or {}).get("scale_note_ru") if lang == "ru" else PASS.get(w["id"], {}).get("scale_en")) or "",
+            evid=lambda e, lang: _cap(EVID[e][0 if lang == "ru" else 1]) if e in EVID else e,
+            topic=lambda t, lang: _cap(TOPIC[t][0 if lang == "ru" else 1]) if t in TOPIC else t)
 
 # ---------------------------------------------------------------- other blocks
 def fmt_tl_date(d, lang):
@@ -423,7 +460,7 @@ def render_timeline(body, lang):
         items.append(f'<li>{t}<div class="te">{md_inline(e.strip(), lang)}</div></li>')
     return '<ol class="timeline">' + "".join(items) + "</ol>"
 
-def render_related(body, lang):
+def render_related(body, lang, page):
     rows = [r for r in body.strip().split("\n") if r.strip().startswith("|")]
     if len(rows) < 3: return wrap_tables(md(body, lang), lang)
     head = [c.strip() for c in rows[0].strip().strip("|").split("|")]
@@ -432,7 +469,8 @@ def render_related(body, lang):
         cells = [c.strip() for c in re.split(r"(?<!\\)\|", r.strip().strip("|"))]
         first = cells[0]; um = re.search(r"\((https?://[^)\s]+)\)", first)
         wid = URLKEY2ID.get(url_key(um.group(1))) if um else None
-        aid = f' id="w-{esc(wid)}"' if wid and ROW_PAGE.get(wid) and work_anchor(wid)[1] == "w-" + wid else ""
+        own = wid and ROW_PAGE.get(wid) == page and work_anchor(wid)[1] == "w-" + wid
+        aid = f' id="w-{esc(wid)}"' if own else ""
         mid = cells[1] if len(cells) > 2 else ""
         rest = cells[2:] if len(cells) > 2 else cells[1:]
         extra = "".join(f'<p class="rabout">{md_inline(c, lang)}</p>' for c in rest)
@@ -447,36 +485,9 @@ def cover_kv(body):
         k, _, v = line.partition(":"); kv[k.strip()] = v.strip()
     return kv
 
-def render_intro(kv, lang):
-    """The cover block of index.md, set as the section right under the scene: title, lede, counts, entry points."""
-    ui = UI[lang]; st = STATS
-    meta = [p.strip() for p in kv.get("meta", "").split(" · ") if p.strip() and "{{stat:" not in p]
-    nums = [(fmt_int(st.get("corpus", 0), lang), ui["n_corpus"]), (fmt_int(st.get("unique_works", 0), lang), ui["n_unique"]),
-            (fmt_int(st.get("cards_full", 0) + st.get("cards_short", 0), lang), ui["n_cards"].format(f=st.get("cards_full", 0), s=st.get("cards_short", 0))),
-            (fmt_int(st.get("fig_works", 0) + st.get("fig_own", 0), lang), ui["n_figs"].format(w=st.get("fig_works", 0), o=st.get("fig_own", 0)))]
-    return (f'<section class="intro" id="survey" aria-labelledby="h-survey"><div class="intro-in"><div>'
-            f'<p class="eyebrow">{esc(kv.get("kicker", ""))}</p><h2 id="h-survey">{md_inline(kv.get("title", ""), lang)}</h2>'
-            f'<p class="subtitle">{esc(kv.get("subtitle", ""))}</p><div class="lede">{md(kv.get("lede", ""), lang)}</div>'
-            f'<p class="cta"><a class="btn primary" href="ch01.html">{ui["start"]} →</a><a class="btn" href="atlas.html">{ui["atlas"]}</a>'
-            f'<a class="btn" href="../paper/index.html">{ui["report"]}</a></p></div>'
-            '<dl class="numbers">' + "".join(f"<div><dt>{esc(l)}</dt><dd>{v}</dd></div>" for v, l in nums) + "</dl>"
-            + ('<p class="meta">' + "".join(f"<span>{md_inline(p, lang)}</span>" for p in meta) + "</p>" if meta else "")
-            + "</div></section>")
-
 def findings_list(body, lang):
     """Numbered findings; each item is wrapped so the first bold sentence (if any) can be set as its headline."""
     return re.sub(r"<li>(.*?)</li>", lambda m: f'<li><div class="fb">{m.group(1)}</div></li>', md(body, lang), flags=re.S)
-
-def render_cover_simple(kv, lang):
-    return (f'<header class="chapter-head cover"><p class="eyebrow">{esc(kv.get("kicker", ""))}</p><h1>{md_inline(kv.get("title", ""), lang)}</h1>'
-            f'<div class="chlead"><p>{esc(kv.get("subtitle", ""))}</p></div><p class="byline">{AUTHORS}</p></header>'
-            f'<div class="lede">{md(kv.get("lede", ""), lang)}</div><p class="meta">{md_inline(kv.get("meta", ""), lang)}</p>')
-
-def render_findings(body, lang):
-    ui = UI[lang]
-    h = findings_list(body, lang)
-    return (f'<section class="sec findings" id="findings" aria-labelledby="h-findings"><header class="sec-head"><p class="eyebrow">{ui["findings_eb"]}</p>'
-            f'<h2 id="h-findings">{ui["findings_h"]}</h2><p class="lede">{ui["findings_note"]}</p></header>{h}</section>')
 
 # ---------------------------------------------------------------- atlas
 def scale_bucket(c):
@@ -506,7 +517,15 @@ def collect_row_text(lang):
                 wid = URLKEY2ID.get(url_key(um.group(2)))
                 if wid: ROW_TEXT[lang].setdefault(wid, (um.group(1), cells[1] if len(cells) > 2 else "", cells[-1]))
 
-def render_atlas(lang, rel):
+def atlas_title(w, lang):
+    c = w.get("corpus") or {}
+    lvl = "card" if w["level"] in ("full_card", "short_card", "mention_in_corpus", "constituent") else ("related" if w["level"] == "table_row" else "other")
+    rt = ROW_TEXT[lang].get(w["id"])
+    title = card_title(w, lang) if (w["id"] in CARD_PAGE or lvl == "card") else (rt[0] if rt else (lang_safe(w.get("title"), lang) or (w.get("urls") or {}).get("primary") or w["id"]))
+    title = lang_safe(title, lang) if not re.match(r"https?://", str(title)) else ""
+    return label_of(w["id"], lang) or title or LINK_TEXT[lang].get(w["id"]) or (w.get("urls") or {}).get("primary") or w["id"]
+
+def render_atlas(lang):
     i = 0 if lang == "ru" else 1; ui = UI[lang]
     counts = defaultdict(lambda: defaultdict(int))
     def chapters_of(w):
@@ -529,15 +548,13 @@ def render_atlas(lang, rel):
         counts["s"][sb] += 1; counts["k"][st] += 1; counts["l"][lvl] += 1
         for ch in chs: counts["c"][ch] += 1
         rt = ROW_TEXT[lang].get(w["id"])
-        title = card_title(w, lang) if (w["id"] in CARD_PAGE or lvl == "card") else (rt[0] if rt else (lang_safe(w.get("title"), lang) or (w.get("urls") or {}).get("primary") or w["id"]))
-        title = lang_safe(title, lang) if not re.match(r"https?://", str(title)) else ""
-        title = label_of(w["id"], lang) or title or LINK_TEXT[lang].get(w["id"]) or (w.get("urls") or {}).get("primary") or w["id"]
+        title = atlas_title(w, lang)
         summary = LEADS[lang].get(w["id"]) or (rt[2] if rt else "")
         who = (PASS.get(w["id"], {}).get("orgs_en") if lang == "en" else PASS_RU.get(w["id"], {}).get("institutions_short")) or (rt[1] if rt else lang_safe(", ".join(w.get("orgs") or []), lang))
         date = (c.get("month") or w.get("date_first_public") or "")[:7]
         u = (w.get("urls") or {}).get("primary") or ""
         pg, anc = work_anchor(w["id"])
-        go = f'<a class="go" href="{pg}.html#{anc}">{ui["in_ch"]}{NB}{int(pg[2:]) if pg and pg.startswith("ch") else ""} →</a>' if pg else ""
+        go = f'<a class="go" href="#{anc}">{ui["in_ch"]}{NB}{int(pg[2:]) if pg and pg.startswith("ch") else ""} →</a>' if pg else ""
         tg = ""
         if ev: tg += f'<span class="tag ev">{EVID[ev][i]}</span>'
         for t in topics[:3]: tg += f'<span class="tag t">{TOPIC[t][i]}</span>'
@@ -564,7 +581,7 @@ def render_atlas(lang, rel):
             sel = f'[data-{g}~="{v}"]' if g in ("t", "c") else f'[data-{g}="{v}"]'
             css.append(f'.atlas:has(#f{g}-{v}:checked) .w:not({sel}){{display:none}}')
         fs.append(f'<fieldset><legend>{label}</legend><div class="opts">{"".join(opts)}</div></fieldset>')
-    return (f'<!--atlas-start--><style>{"".join(css)}</style><div class="atlas">'
+    return (f'<!--atlas-start--><style>{"".join(css)}</style><div class="atlas">' + scenes.html("atlasmap", lang, {}) +
             f'<div class="search js-only"><label><span class="sr">{ui["search"]}</span><input type="search" id="atlas-q" autocomplete="off" placeholder="{ui["search"]}"></label>'
             f'<span id="atlas-count" aria-live="polite"></span><button class="reset" type="button" id="atlas-reset">{ui["reset"]}</button></div>'
             f'<details class="fpanel" open><summary>{ui["filters"]}</summary><form class="filters" onsubmit="return false">{"".join(fs)}'
@@ -579,15 +596,17 @@ def sources_by_page():
         if not pg: continue
         by_page.setdefault(pg, []).append(w)
     return by_page
+SOURCES_BY_PAGE = sources_by_page()
 
 def render_sources(lang):
-    by_page = sources_by_page()
     out = []
     for page in PAGE_ORDER:
-        ws = by_page.get(page)
+        ws = SOURCES_BY_PAGE.get(page)
         if not ws: continue
         fm, _ = read_page(lang, page) or ({}, "")
-        out.append(f'<h2 id="src-{page}">{esc(fm.get("title", page))}</h2><ol class="srclist">')
+        num = fm.get("num")
+        lab = (f'{UI[lang]["chapter"]} {num}. ' if page.startswith("ch") and num else "") + fm.get("title", page)
+        out.append(f'<h2 id="src-{page}">{esc(lab)}</h2><ol class="srclist">')
         for w in ws:
             rt = ROW_TEXT[lang].get(w["id"]); u = (w.get("urls") or {}).get("primary")
             au = lang_safe((authors_line(w, lang) if w.get("metadata_corrected") else None) or (PASS.get(w["id"], {}).get("authors_en") if lang == "en" else PASS_RU.get(w["id"], {}).get("authors")) or authors_line(w, lang), lang) \
@@ -606,64 +625,110 @@ def render_sources(lang):
         out.append("</ol>")
     return "".join(out)
 
-# ---------------------------------------------------------------- page assembly
-def page_body(lang, page, rel="../", single=False):
-    r = read_page(lang, page)
-    if not r: return None, None
-    fm, text = r
-    parts, h2s = [], []
-    for b in blocks(text):
-        k = b[0]
-        if k == "md": parts.append(wrap_tables(md(b[1], lang), lang))
-        elif k == "fig": parts.append(figure(b[1], lang, rel))
-        elif k in ("card", "short"): parts.append(render_card(k, b[1], b[2], lang, rel, single))
-        elif k == "callout": parts.append(f'<aside class="callout"><p class="ctl">{esc(b[1])}</p>{wrap_tables(md(b[2], lang), lang)}</aside>')
-        elif k == "timeline": parts.append(render_timeline(b[2], lang))
-        elif k == "takeaways": parts.append(f'<aside class="takeaways"><p class="ctl">{"Главное в главе" if lang == "ru" else "Takeaways"}</p>{md(b[2], lang)}</aside>')
-        elif k == "findings": parts.append(f'<section class="findings">{findings_list(b[2], lang)}</section>')
-        elif k == "related": parts.append(render_related(b[2], lang))
-        elif k == "cover": parts.append(render_cover_simple(cover_kv(b[2]), lang) if single else render_intro(cover_kv(b[2]), lang))
-        elif k == "corpus": parts.append("%%ATLAS%%")
-        elif k == "sources": parts.append("%%SOURCES%%")
-        else: parts.append(md(b[2], lang))
-    h = "\n".join(parts)
+# ---------------------------------------------------------------- one page: chapter bodies
+ANCHORS = {l: defaultdict(list) for l in LANGS}    # page -> [(old fragment, new fragment, label)] for the former pages
+HEADS = {l: defaultdict(list) for l in LANGS}      # page -> [(id, text)] of its section headings (h2 in the Markdown)
+MOVED = {l: {} for l in LANGS}                     # page -> html of sections moved to the reference appendix
+SCENE_N = {l: defaultdict(int) for l in LANGS}
+
+def number_heads(h, page, lang):
+    """Section ids keep the counter of the former page: every h2/h3 (card titles included) in document order."""
     n = [0]
     def hid(m):
         lvl, attrs, inner = m.group(1), m.group(2) or "", m.group(3)
         if "id=" in attrs: return m.group(0)
-        n[0] += 1; sid = f"s-{n[0]}" if not single else f"{page}-s-{n[0]}"
-        if lvl == "2": h2s.append((sid, strip_tags(inner)))
+        n[0] += 1; sid = f"{page}-s-{n[0]}"
+        text = strip_tags(inner).strip()
+        if lvl == "2": HEADS[lang][page].append((sid, text))
+        ANCHORS[lang][page].append((f"s-{n[0]}", sid, text))
         return f'<h{lvl} id="{sid}"{attrs}>{inner}</h{lvl}>'
-    h = re.sub(r"<h([23])([^>]*)>(.*?)</h\1>", hid, h)
-    if "%%ATLAS%%" in h: h = h.replace("%%ATLAS%%", render_atlas(lang, rel))
+    return re.sub(r"<h([23])([^>]*)>(.*?)</h\1>", hid, h)
+
+def shift_heads(h):
+    """On the single page a chapter title is h2, so the chapter's own headings move one level down."""
+    h = re.sub(r"<(/?)h4([\s>])", r"<\1h5\2", h)
+    h = re.sub(r"<(/?)h3([\s>])", r"<\1h4\2", h)
+    return re.sub(r"<(/?)h2([\s>])", r"<\1h3\2", h)
+
+def page_flow(lang, page):
+    """Render one content page for the single page: blocks in order, scenes at their hooks, ids from the former page."""
+    fm, text = read_page(lang, page)
+    num = fm.get("num")
+    FIG.update(k=0, ch=num if page.startswith("ch") else None, page=page)
+    place = longread.PLACE.get(page, {})
+    parts, scene_html = [], {}
+    ncall = ntab = 0
+    def put_scene(name):
+        key = f"%%SCENE{len(scene_html)}%%"
+        scene_html[key] = scenes.html(name, lang, {"page": page}); SCENE_N[lang][page] += 1
+        parts.append(key)
+    pin = None   # a pinned scene takes the text that follows it (up to the next section) as its companion column
+    for b in blocks(text):
+        k = b[0]
+        if k == "md":
+            h = wrap_tables(md(b[1], lang), lang)
+            if pin is not None:
+                cut = h.find("<h2")
+                lead, h = (h, "") if cut < 0 else (h[:cut], h[cut:])
+                n_li = [0]
+                def tag_li(m):
+                    n_li[0] += 1
+                    return f'<li data-fm-col="{n_li[0]}">'
+                lead = re.sub(r"<li>", tag_li, lead, count=4)
+                parts[pin] = f'<div class="pin-pair">{parts[pin]}<div class="pin-text">{lead}</div></div>'
+                pin = None
+            def tab(m):
+                nonlocal ntab
+                ntab += 1
+                name = place.get(f"table:{ntab}")
+                if not name: return m.group(0)
+                SCENE_N[lang][page] += 1
+                return scenes.table(name, lang, m.group(0))
+            parts.append(re.sub(r'<div class="table-wrap".*?</table></div>', tab, h, flags=re.S))
+        elif k == "fig":
+            f = b[1].split("|")[0].strip()
+            name = place.get(f"fig:{f}")
+            if name:
+                SCENE_N[lang][page] += 1; parts.append(scene_figure(b[1], name, lang))
+                if name in scenes.PINNED: pin = len(parts) - 1
+            else: parts.append(figure(b[1], lang))
+        elif k in ("card", "short"):
+            cid = b[1].split()[0]
+            if place.get(f"before:{cid}"): put_scene(place[f"before:{cid}"])
+            parts.append(render_card(k, b[1], b[2], lang))
+            ANCHORS[lang][page].append((f"w-{cid}", f"w-{cid}", strip_tags(card_title(WORKS.get(cid) or {"id": cid}, lang))))
+            if place.get(f"after:{cid}"): put_scene(place[f"after:{cid}"])
+        elif k == "callout":
+            ncall += 1
+            parts.append(f'<aside class="callout"><p class="ctl">{esc(b[1])}</p>{wrap_tables(md(b[2], lang), lang)}</aside>')
+            if place.get(f"callout:{ncall}"): put_scene(place[f"callout:{ncall}"])
+        elif k == "timeline": parts.append(render_timeline(b[2], lang))
+        elif k == "takeaways": parts.append(f'<aside class="takeaways"><p class="ctl">{"Главное в главе" if lang == "ru" else "Takeaways"}</p>{md(b[2], lang)}</aside>')
+        elif k == "related": parts.append(render_related(b[2], lang, page))
+        elif k == "corpus": parts.append("%%ATLAS%%")
+        elif k == "sources": parts.append("%%SOURCES%%")
+        elif k in ("cover", "findings"): continue
+        else: parts.append(md(b[2], lang))
+    h = number_heads("\n".join(parts), page, lang)
+    for key, v in scene_html.items(): h = h.replace(key, v)
+    if "%%ATLAS%%" in h: h = h.replace("%%ATLAS%%", render_atlas(lang))
     if "%%SOURCES%%" in h: h = h.replace("%%SOURCES%%", render_sources(lang))
-    h = rewrite_internal(h, lang, single)
-    h = link_chapters(h, lang, "" if not single else "#p-")
-    if single: h = re.sub(r'href="#p-ch(\d\d)\.html"', r'href="#p-ch\1"', h)
-    return fm, (h, h2s)
+    for fid, lab, f in FIG["list"]:
+        ANCHORS[lang][page].append((fid.split("-", 1)[1], fid, lab))
+        ANCHORS[lang][page].append(("zoom-" + fid.rsplit("-", 1)[1], fid, None))
+    FIG["list"] = []
+    # sections that leave the reading flow (kept whole, with their ids)
+    for title in longread.MOVE_TO_HOWTO.get(page, []):
+        m = re.search(rf'<h2 id="[^"]+">{re.escape(title)}</h2>', h)
+        if not m: continue
+        nxt = re.search(r"<h2 id=", h[m.end():])
+        end = m.end() + nxt.start() if nxt else len(h)
+        MOVED[lang][page] = h[m.start():end]; h = h[:m.start()] + h[end:]
+        HEADS[lang][page] = [x for x in HEADS[lang][page] if x[1] != title]
+    h = link_chapters(rewrite_internal(h, lang), lang)
+    return fm, shift_heads(h)
 
-def nav_title(lang, p):
-    if p == "index": return UI[lang]["home"]
-    if p == "full": return UI[lang]["full"]
-    r = read_page(lang, p)
-    return (r[0].get("nav") or r[0].get("title") or p) if r else p
-
-def nav_list(lang, current, toc=None, href=None):
-    """All pages; the current page carries its own sections underneath. href(p) overrides page links (single page)."""
-    items = []
-    for p in PAGE_ORDER + ["full"]:
-        r = read_page(lang, p) if p != "full" else ({}, "")
-        if not r: continue
-        num = r[0].get("num") if p != "full" else None
-        lab = f'<span class="nn">{num}</span>' if num and p.startswith("ch") else f'<span class="nn">{"≡" if p == "full" else "·"}</span>'
-        cur = ' aria-current="page"' if p == current else ""
-        sub = ""
-        if p == current and toc:
-            sub = '<ol class="onpage">' + "".join(f'<li><a href="#{a}">{esc(t)}</a></li>' for a, t in toc) + "</ol>"
-        link = href(p) if href else f"{p}.html"
-        items.append(f'<li><a href="{link}"{cur}>{lab}{esc(nav_title(lang, p))}</a>{sub}</li>')
-    return '<ol class="navlist">' + "".join(items) + "</ol>"
-
+# ---------------------------------------------------------------- one page: frame
 def materials_links(lang):
     ui = UI[lang]
     return [("../paper/index.html", ui["report"]), ("../paper/swarm-dynamics.pdf", ui["pdf"]), ("../paper/swarm-dynamics-source.zip", ui["zip"]),
@@ -672,153 +737,317 @@ def materials_links(lang):
 CITE_ANCHOR = {}
 def footer(lang):
     ui = UI[lang]
-    survey = [("index.html#findings", ui["findings_h"]), ("index.html#chapters", ui["chapters_eb"]), ("atlas.html", ui["atlas"]), ("glossary.html", ui["glossary"]),
-              ("sources.html", ui["sources"]), ("full.html", ui["full"])]
+    survey = [("#findings", ui["findings_h"]), ("#chapters", ui["contents"]), ("#atlas", ui["atlas"]), ("#glossary", ui["glossary"]),
+              ("#sources", ui["sources"]), ("#about", ui["about_l"])]
     li = lambda xs: "".join(f'<li><a href="{h}">{esc(t)}</a></li>' for h, t in xs)
     return (f'<footer class="foot"><div class="foot-in"><div><p class="fb-t">{RING}{SITE_TITLE[lang]}</p><p>{SITE_SUB[lang]}</p>'
             f'<p>{AUTHORS} · {ui["cutoff"]}</p></div>'
             f'<nav aria-label="{ui["survey"]}"><h2>{ui["survey"]}</h2><ul>{li(survey)}</ul></nav>'
             f'<nav aria-label="{ui["materials"]}"><h2>{ui["materials"]}</h2><ul>{li(materials_links(lang))}</ul></nav>'
-            f'<div><h2>{ui["rights"]}</h2><p>{ui["license"]}</p><p><a href="about.html{CITE_ANCHOR.get(lang, "")}">{ui["cite"]}</a> · <a href="about.html">{ui["about_l"]}</a></p></div>'
+            f'<div><h2>{ui["rights"]}</h2><p>{ui["license"]}</p><p><a href="{CITE_ANCHOR.get(lang, "#about")}">{ui["cite"]}</a> · <a href="#about">{ui["about_l"]}</a></p></div>'
             f'</div></footer>')
 
 def viewer_i18n(lang):
     ui = UI[lang]
-    return json.dumps({k: ui[k] for k in ("v_title", "v_close", "v_prev", "v_next", "v_zoom", "v_fit", "v_orig", "v_hint", "v_count", "expand", "collapse", "shown")}, ensure_ascii=False)
+    keys = ("v_title", "v_close", "v_prev", "v_next", "v_zoom", "v_fit", "v_orig", "v_hint", "v_count", "shown", "here_top", "pause", "play", "replay")
+    return json.dumps({k: ui[k] for k in keys}, ensure_ascii=False)
 
-def shell(lang, page, title, content, toc=None, desc="", layout="doc", head_extra="", scripts=("site",), nav_href=None, link_page=None):
-    """layout: 'doc' (sidebar + reading column), 'wide' (full-width container), 'index' (story sections)."""
-    ui = UI[lang]; other = ui["lang_other_code"]; link_page = link_page or page
-    nav = nav_list(lang, page, toc, nav_href)
+def nav_title(lang, p):
+    if p == "findings": return UI[lang]["findings_h"]
+    if p == "howto": return UI[lang]["howto_t"]
+    r = read_page(lang, p)
+    return (r[0].get("nav") or r[0].get("title") or p) if r else p
+
+def num_of(lang, p):
+    r = read_page(lang, p)
+    return (r[0].get("num") if r else None) or ""
+
+def part_label(lang, part):
+    return f'{UI[lang]["part"]} {part["key"]}' if part["key"] else UI[lang]["epilogue"]
+
+def outline(lang):
+    """The contents sheet: prologue, the four parts with their chapters and sections, the reference appendix."""
+    ui = UI[lang]
+    def sec_list(p):
+        hs = HEADS[lang].get(p) or []
+        return ('<ol class="secs">' + "".join(f'<li><a href="#{a}">{esc(t)}</a></li>' for a, t in hs) + "</ol>") if hs else ""
+    def item(p):
+        n = num_of(lang, p) if p.startswith("ch") or p == "atlas" else ""
+        lab = f'<span class="nn">{n or "·"}</span>'
+        anchor = "findings" if p == "findings" else p
+        return f'<li data-k="{anchor}"><a href="#{anchor}">{lab}{esc(nav_title(lang, p))}</a>{sec_list(p)}</li>'
+    out = [f'<ol class="outline"><li class="og"><p class="ogt">{ui["prologue"]}</p><ol>'
+           f'<li data-k="how"><a href="#how"><span class="nn">·</span>{esc(site_story.T[lang]["stage_t"])}</a></li>'
+           f'<li data-k="survey"><a href="#survey"><span class="nn">·</span>{esc(SITE_TITLE[lang])}</a></li></ol></li>']
+    for part in longread.PARTS:
+        out.append(f'<li class="og"><p class="ogt">{esc(part_label(lang, part))} · {esc(part["title"][lang])}</p><ol>' + "".join(item(p) for p in part["pages"]) + "</ol></li>")
+    out.append(f'<li class="og"><p class="ogt">{ui["appendix"]}</p><ol>' + "".join(item(p) for p in longread.REFERENCE) + "</ol></li></ol>")
+    return "".join(out)
+
+def rail(lang):
+    items = []
+    for p in CHAPTERS + ["atlas"]:
+        n = num_of(lang, p)
+        items.append(f'<li><a href="#{p}" data-k="{p}"><i aria-hidden="true"></i><span class="rt"><b>{n}</b> {esc(nav_title(lang, p))}</span></a></li>')
+    return f'<nav class="rail" aria-label="{UI[lang]["toc"]}"><ol>{"".join(items)}</ol></nav>'
+
+def shell(lang, title, content, desc=""):
+    ui = UI[lang]; other = ui["lang_other_code"]
     extra = "".join(f'<a href="{h}">{esc(t)}</a>' for h, t in materials_links(lang)[:3])
     mtoc = (f'<details class="mtoc"><summary title="{ui["toc"]}" aria-label="{ui["toc"]}">{I_LIST}<span class="lab">{ui["toc"]}</span></summary>'
-            f'<nav aria-label="{ui["toc"]}">{nav}<div class="extra">{extra}</div></nav></details>')
-    tnav = (f'<nav class="tnav" aria-label="{ui["survey"]}"><a href="index.html#findings">{ui["findings_eb"]}</a><a href="index.html#chapters">{ui["chapters_eb"]}</a>'
-            f'<a href="atlas.html"{" aria-current=page" if page == "atlas" else ""}>{ui["atlas_s"]}</a><a href="../paper/swarm-dynamics.pdf">{ui["pdf"]}</a></nav>')
-    top = (f'<header class="topbar"><div class="topbar-in"><a class="brand" href="index.html">{RING}<span class="bt">{SITE_TITLE[lang]}</span><span class="bt-s">{SITE_SHORT[lang]}</span></a>'
-           f'{tnav}<div class="tools">{mtoc}<a class="langbtn" href="../{other}/{link_page}.html" hreflang="{other}" lang="{other}"><span class="long">{ui["lang_other"]}</span><span class="short">{ui["lang_short"]}</span></a>'
-           f'<label class="themebtn" for="theme" title="{ui["theme"]}">{I_SUN}{I_MOON}<span class="sr">{ui["theme"]}</span></label></div>'
-           + '</div>' + ('<span class="progress" aria-hidden="true"></span>' if layout == "doc" else "") + '</header>')
-    if layout == "doc":
-        body = (f'<div class="layout"><nav class="sidenav" aria-label="{ui["toc"]}"><p class="navh">{ui["toc"]}</p>{nav}</nav>'
-                f'<main id="main" class="page p-{page}">{content}</main></div>')
-    elif layout == "wide":
-        body = f'<main id="main" class="wide-page p-{page}">{content}</main>'
-    else:
-        body = f'<main id="main" class="p-{page}">{content}</main>'
-    alt = f'<link rel="alternate" hreflang="{other}" href="../{other}/{link_page}.html"><link rel="alternate" hreflang="{lang}" href="{link_page}.html">'
-    js = "".join(f'<script src="../assets/js/{s}.js" defer></script>' for s in scripts)
+            f'<nav aria-label="{ui["toc"]}">{outline(lang)}<div class="extra">{extra}</div></nav></details>')
+    top = (f'<header class="topbar"><div class="topbar-in"><a class="brand" href="#top">{RING}<span class="bt">{SITE_TITLE[lang]}</span><span class="bt-s">{SITE_SHORT[lang]}</span></a>'
+           f'<a class="here" href="#chapters" tabindex="-1" aria-hidden="true"><span class="here-n"></span><span class="here-t"></span></a>'
+           f'<div class="tools">{mtoc}<a class="langbtn" href="../{other}/index.html" hreflang="{other}" lang="{other}"><span class="long">{ui["lang_other"]}</span><span class="short">{ui["lang_short"]}</span></a>'
+           f'<span class="themesw"><input type="checkbox" id="theme" class="theme-toggle" aria-label="{ui["theme"]}">'
+           f'<label class="themebtn" for="theme" title="{ui["theme"]}">{I_SUN}{I_MOON}<span class="sr">{ui["theme"]}</span></label></span></div>'
+           '</div><span class="progress" aria-hidden="true"></span></header>')
+    alt = f'<link rel="alternate" hreflang="{other}" href="../{other}/index.html"><link rel="alternate" hreflang="{lang}" href="index.html">'
+    js = "".join(f'<script src="../assets/js/{s}.js" defer></script>' for s in ("site", "story", "scenes"))
     return f"""<!doctype html>
 <html lang="{lang}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>{esc(title)}</title><meta name="description" content="{esc(desc)}">
 <meta name="color-scheme" content="dark light"><meta name="theme-color" content="#0a0c0d"><meta name="author" content="{AUTHORS}">{alt}
 {HEAD_JS}
-<link rel="stylesheet" href="../assets/css/site.css"><link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">{head_extra}
-</head><body>
-<input type="checkbox" id="theme" class="theme-toggle" aria-label="{ui['theme']}">
+<link rel="stylesheet" href="../assets/css/site.css"><link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<style>{site_story.mode_css()}</style>
+</head><body id="top">
 <a class="skip" href="#main">{ui['skip']}</a>
 {top}
-{body}
+{rail(lang)}
+<main id="main" class="lr">{content}</main>
 {footer(lang)}
 <script type="application/json" id="ui-i18n">{viewer_i18n(lang)}</script>
 {js}
 </body></html>"""
 
 def count_reading(h, lang):
-    words = len(re.findall(r"\w+", strip_tags(re.sub(r"<(script|style)[^>]*>.*?</\1>", " ", h, flags=re.S))))
+    words = len(re.findall(r"\w+", strip_tags(re.sub(r"<(script|style|svg)[^>]*>.*?</\1>", " ", h, flags=re.S))))
     return max(5, int(round(words / (170 if lang == "ru" else 210) / 5.0)) * 5)
 
-def chapter_header(fm, lang, page, h=""):
-    ui = UI[lang]; num = fm.get("num"); title = fm.get("title", "")
-    lead = fm.get("lead", "")
-    if page.startswith("ch"):
-        eb = f'{ui["chapter"]} {num} <span class="of">{ui["of"]} 11</span>'
-    elif page == "atlas":
-        eb = ui["atlas_eb"].format(n=fmt_int(STATS.get("unique_works", 0), lang))
-    else:
-        eb = ui["ref_eb"]
-    meta = ""
-    if page.startswith("ch") and h:
-        nf, ns = h.count('<article class="card"'), h.count('<article class="card short"')
-        nfig = h.count('<figure class="fig"')
-        bits = []
-        if nf: bits.append(f'{nf} {plural(nf, ui["cards_full"], lang)}')
-        if ns: bits.append(f'{ns} {plural(ns, ui["cards_short"], lang)}')
-        if nfig: bits.append(f'{nfig} {plural(nfig, ui["figs"], lang)}')
-        bits.append(ui["minutes"].format(n=count_reading(h, lang), nb=NB))
-        xall = f'<li class="js-only xli"><button class="xall" type="button" aria-pressed="false">{ui["expand"]}</button></li>' if (nf + ns) else ""
-        meta = '<ul class="chmeta">' + "".join(f"<li>{b}</li>" for b in bits) + xall + "</ul>"
-    return (f'<header class="chapter-head"><p class="eyebrow">{eb}</p><h1>{esc(title)}</h1>'
-            + (f'<div class="chlead">{md_inline(lead, lang)}</div>' if lead else "") + meta + "</header>")
+def split_lead(lead):
+    """«Question? Answer.» -> (question, answer); a lead without a leading question stays whole."""
+    m = re.match(r"^([^.!?]{8,220}\?)\s+(.*)$", lead.strip(), re.S)
+    return (m.group(1), m.group(2)) if m else ("", lead)
 
-def pager(lang, page):
+def chapter_meta(lang, h, page):
     ui = UI[lang]
-    if page not in PAGE_ORDER: return ""
-    idx = PAGE_ORDER.index(page)
-    prev = PAGE_ORDER[idx - 1] if idx > 0 else None; nxt = PAGE_ORDER[idx + 1] if idx + 1 < len(PAGE_ORDER) else None
-    def lab(p):
-        r = read_page(lang, p); num = r[0].get("num") if r else None
-        k = f'{ui["chapter"]} {num}' if num and p.startswith("ch") else (ui["home"] if p == "index" else "")
-        return k
-    out = '<nav class="pager" aria-label="pager">'
-    out += (f'<a class="prev" href="{prev}.html"><span class="k">← {lab(prev) or ui["prev"]}</span><b>{esc(nav_title(lang, prev))}</b></a>' if prev else "<span></span>")
-    if nxt: out += f'<a class="next" href="{nxt}.html"><span class="k">{lab(nxt) or ui["next"]} →</span><b>{esc(nav_title(lang, nxt))}</b></a>'
-    return out + "</nav>"
+    nf, ns = h.count('<article class="case"'), h.count('<section class="note"')
+    nchart = len(re.findall(r'class="scene sc-\w+ sc-fig"', h))          # the survey's own charts, now native, keep their figure numbers
+    nfig = h.count('<figure class="fig"') + nchart
+    nsc = SCENE_N[lang].get(page, 0) - nchart
+    bits = []
+    if nf: bits.append(f'{nf} {plural(nf, ui["cards_full"], lang)}')
+    if ns: bits.append(f'{ns} {plural(ns, ui["cards_short"], lang)}')
+    if nfig: bits.append(f'{nfig} {plural(nfig, ui["figs"], lang)}')
+    if nsc: bits.append(f'{nsc} {plural(nsc, ui["scenes_n"], lang)}')
+    if page != "atlas":     # the atlas is a table to search, not a text to read through
+        bits.append(ui["minutes"].format(n=count_reading(h, lang), nb=NB))
+    return ('<ul class="plate-meta">' + "".join(f"<li>{b}</li>" for b in bits) + "</ul>") if bits else ""
 
-def chapter_map(lang, counts):
-    ui = UI[lang]; cards = []
-    for p in CHAPTERS + ["atlas"]:
-        r = read_page(lang, p)
-        if not r: continue
-        fm = r[0]
-        if p == "atlas":
-            cm = ui["atlas_eb"].split(" · ")[1].format(n=fmt_int(STATS.get("unique_works", 0), lang))
-            cards.append(f'<li class="atl"><a href="atlas.html"><span class="nn">{fm.get("num", "")}</span><b>{esc(fm.get("title", ""))}</b>'
-                         f'<span class="cl">{md_inline(fm.get("lead", ""), lang)}</span><span class="cm">{cm}</span></a></li>')
-            continue
-        nc, nfig = counts.get(p, (0, 0))
-        cm = " · ".join(x for x in (f'{nc} {plural(nc, ui["cards"], lang)}' if nc else "", f'{nfig} {plural(nfig, ui["figs"], lang)}' if nfig else "") if x)
-        cards.append(f'<li><a href="{p}.html"><span class="nn">{fm.get("num", "")}</span><b>{esc(fm.get("title", ""))}</b>'
-                     + (f'<span class="cl">{strip_tags(md_inline(fm.get("lead", ""), lang))}</span>' if fm.get("lead") else "")
-                     + (f'<span class="cm">{cm}</span>' if cm else "") + "</a></li>")
-    return (f'<section class="sec chmap" id="chapters" aria-labelledby="h-chapters"><header class="sec-head"><p class="eyebrow">{ui["chapters_eb"]}</p>'
-            f'<h2 id="h-chapters">{ui["chapters_h"]}</h2></header><ol>{"".join(cards)}</ol></section>')
+def plate(lang, page, fm, h, part, kicker=None, numeral=None):
+    ui = UI[lang]; num = fm.get("num")
+    q, a = split_lead(fm.get("lead", ""))
+    if kicker is None:
+        kicker = f'{ui["chapter"]} {num} <span class="of">{ui["of"]} 11</span>' if page.startswith("ch") else ui["atlas_eb"].format(n=fmt_int(STATS.get("unique_works", 0), lang))
+    numeral = numeral if numeral is not None else (f"{int(num):02d}" if num else "")
+    pk = f'<span class="pk-part">{esc(part_label(lang, part))} · {esc(part["title"][lang])}</span>' if part else ""
+    return (f'<header class="plate" data-sl><div class="plate-bg" aria-hidden="true"></div><div class="plate-in" data-sl>'
+            + (f'<span class="plate-num" aria-hidden="true">{numeral}</span>' if numeral else "")
+            + f'<p class="plate-k"><span class="pk-ch">{kicker}</span>{pk}</p>'
+            + f'<h2 class="plate-t" id="{page}-t">{esc(fm.get("title", ""))}</h2>'
+            + (f'<p class="plate-q">{md_inline(q, lang)}</p>' if q else "")
+            + (f'<p class="plate-a">{link_chapters(md_inline(a, lang), lang)}</p>' if a else "")
+            + chapter_meta(lang, h, page) + "</div></header>")
 
-def index_content(lang, counts):
-    """index.md: cover -> intro, findings -> findings section, the rest -> «how to read»; the story sections come from site_story."""
+def words(text):
+    """Bridge statements are set word by word so the reading highlight can follow the scroll."""
+    ws = text.split()
+    return f'<p class="part-say" style="--n:{len(ws)}">' + " ".join(f'<span class="sw" style="--i:{i}">{esc(w)}</span>' for i, w in enumerate(ws)) + "</p>"
+
+def part_opener(lang, part):
+    ui = UI[lang]
+    lis = []
+    for p in part["pages"]:
+        n = num_of(lang, p) if (p.startswith("ch") or p == "atlas") else ""
+        anchor = "findings" if p == "findings" else p
+        lis.append(f'<li><a href="#{anchor}"><b>{n or "·"}</b>{esc(nav_title(lang, p))}</a></li>')
+    return (f'<section class="part tone-{part["tone"]}" id="{part["id"]}" aria-labelledby="{part["id"]}-t" data-sl>'
+            f'<div class="part-bg" aria-hidden="true"></div><div class="part-in"><p class="part-k">{esc(part_label(lang, part))}</p>'
+            f'<h2 class="part-t" id="{part["id"]}-t">{esc(part["title"][lang])}</h2>{words(part["say"][lang])}'
+            f'<ol class="part-ch">{"".join(lis)}</ol></div></section>')
+
+def chapter_section(lang, page, part):
+    fm, h = page_flow(lang, page)
+    num = fm.get("num")
+    tail = ""
+    if page.startswith("ch"):
+        src = f'<a href="#src-{page}">{UI[lang]["src_ch"]} →</a>' if page in SOURCES_BY_PAGE else ""
+        tail = f'<p class="chend">{src}<a href="#top">{UI[lang]["top"]} ↑</a></p>'
+    data_ch = f' data-ch style="--chn:\'{num}\'"' if page.startswith("ch") and num else ""
+    if page == "atlas":
+        a0, a1 = h.find("<!--atlas-start-->"), h.find("<!--atlas-end-->")
+        intro_h, atlas_h, after_h = (h[:a0], h[a0:a1], h[a1 + 16:]) if a0 >= 0 and a1 > a0 else (h, "", "")
+        body = f'<div class="flow prose atlas-intro">{intro_h}</div><div class="flow wide">{atlas_h}</div>' + (f'<div class="flow prose">{after_h}</div>' if after_h.strip() else "")
+    else:
+        body = f'<div class="flow prose"{data_ch}>{h}</div>{tail}'
+    return (f'<section class="chapter tone-{part["tone"]}" id="{page}" data-k="{page}" aria-labelledby="{page}-t">'
+            f'{plate(lang, page, fm, h, part)}<div class="sheet">{body}</div></section>')
+
+def intro_section(lang):
+    """The cover block of index.md, set right under the prologue: title, lede, counts, and the route through the parts."""
+    ui = UI[lang]; st = STATS
     fm, text = read_page(lang, "index")
-    intro, findings, rest = "", "", []
-    for b in blocks(text):
-        if b[0] == "cover": intro = render_intro(cover_kv(b[2]), lang)
-        elif b[0] == "findings": findings = render_findings(b[2], lang)
-        elif b[0] == "md": rest.append(wrap_tables(md(b[1], lang), lang))
-        elif b[0] == "fig": rest.append(figure(b[1], lang, "../"))
-        elif b[0] == "callout": rest.append(f'<aside class="callout"><p class="ctl">{esc(b[1])}</p>{md(b[2], lang)}</aside>')
-        else: rest.append(md(b[2], lang))
-    howto = "".join(rest).strip()
-    howto = f'<section class="sec howto" id="howto">{howto}</section>' if howto else ""
-    tail = intro + findings + howto
-    n = [0]
-    def hid(m):
-        lvl, attrs, inner = m.group(1), m.group(2) or "", m.group(3)
-        if "id=" in attrs: return m.group(0)
-        n[0] += 1; return f'<h{lvl} id="s-{n[0]}"{attrs}>{inner}</h{lvl}>'
-    def finish(h): return link_chapters(rewrite_internal(re.sub(r"<h([23])([^>]*)>(.*?)</h\1>", hid, h), lang), lang)
-    intro, findings, howto = finish(intro), finish(findings), finish(howto)
-    ch1 = read_page(lang, "ch01"); ch5 = read_page(lang, "ch05")
-    ch1_title = ch1[0].get("title", "") if ch1 else ""; ch5_title = ch5[0].get("title", "") if ch5 else ""
-    ch1_href = "ch01.html" + (f"#{H2_ANCHOR[lang]['ch01_scale']}" if H2_ANCHOR[lang].get("ch01_scale") else "")
-    parts = [site_story.hero_html(lang, LADDER, card_href), intro, site_story.scale_html(lang, LADDER, card_href, ch1_title, ch1_href),
-             findings, site_story.agensh_html(lang, card_href, ch5_title), chapter_map(lang, counts), howto]
-    return fm, "\n".join(p for p in parts if p)
+    kv = next((cover_kv(b[2]) for b in blocks(text) if b[0] == "cover"), {})
+    meta = [p.strip() for p in kv.get("meta", "").split(" · ") if p.strip() and "{{stat:" not in p]
+    nums = [(fmt_int(st.get("corpus", 0), lang), ui["n_corpus"]), (fmt_int(st.get("unique_works", 0), lang), ui["n_unique"]),
+            (fmt_int(st.get("cards_full", 0) + st.get("cards_short", 0), lang), ui["n_cards"].format(f=st.get("cards_full", 0), s=st.get("cards_short", 0))),
+            (fmt_int(st.get("fig_works", 0) + st.get("fig_own", 0), lang), ui["n_figs"].format(w=st.get("fig_works", 0), o=st.get("fig_own", 0)))]
+    parts = []
+    for part in longread.PARTS:
+        lis = []
+        for p in part["pages"]:
+            n = num_of(lang, p) if (p.startswith("ch") or p == "atlas") else ""
+            anchor = "findings" if p == "findings" else p
+            lis.append(f'<li><a href="#{anchor}"><span class="nn">{n or "·"}</span>{esc(nav_title(lang, p))}</a></li>')
+        parts.append(f'<li class="rp tone-{part["tone"]}"><a class="rp-h" href="#{part["id"]}"><span class="rp-k">{esc(part_label(lang, part))}</span>'
+                     f'<span class="rp-t">{esc(part["title"][lang])}</span></a><ol>{"".join(lis)}</ol></li>')
+    ref = " · ".join(f'<a href="#{p}">{esc(nav_title(lang, p))}</a>' for p in longread.REFERENCE)
+    return (f'<section class="intro" id="survey" aria-labelledby="h-survey"><div class="intro-in"><div class="intro-copy">'
+            f'<p class="eyebrow">{esc(kv.get("kicker", ""))}</p><h2 id="h-survey">{md_inline(kv.get("title", ""), lang)}</h2>'
+            f'<p class="subtitle">{esc(kv.get("subtitle", ""))}</p><div class="lede">{md(kv.get("lede", ""), lang)}</div>'
+            f'<p class="cta"><a class="btn primary" href="#ch01">{ui["cont"]} ↓</a><a class="btn" href="#atlas">{ui["atlas_go"]}</a>'
+            f'<a class="btn" href="../paper/index.html">{ui["report"]}</a></p></div>'
+            '<dl class="numbers">' + "".join(f"<div><dt>{esc(l)}</dt><dd>{v}</dd></div>" for v, l in nums) + "</dl>"
+            + ('<p class="meta">' + "".join(f"<span>{md_inline(p, lang)}</span>" for p in meta) + "</p>" if meta else "") + "</div>"
+            f'<nav class="route" id="chapters" aria-labelledby="route-t"><h2 class="route-t" id="route-t">{ui["route"]}</h2>'
+            f'<ol class="route-parts">{"".join(parts)}</ol><p class="route-ref"><span>{ui["route_ref"]}:</span> {ref}</p></nav></section>')
 
-H2_ANCHOR = {"ru": {}, "en": {}}
+def findings_section(lang, part):
+    ui = UI[lang]
+    fm, text = read_page(lang, "index")
+    body = next((b[2] for b in blocks(text) if b[0] == "findings"), "")
+    h = link_chapters(rewrite_internal(findings_list(body, lang), lang), lang)
+    head = (f'<header class="plate syn-plate" data-sl><div class="plate-bg" aria-hidden="true"></div><div class="plate-in" data-sl>'
+            f'<p class="plate-k"><span class="pk-ch">{ui["findings_eb"]}</span><span class="pk-part">{esc(part_label(lang, part))} · {esc(part["title"][lang])}</span></p>'
+            f'<h2 class="plate-t" id="findings-t">{ui["findings_h"]}</h2><p class="plate-a">{ui["findings_note"]}</p></div></header>')
+    return (f'<section class="chapter syn tone-{part["tone"]}" id="findings" data-k="findings" aria-labelledby="findings-t">{head}'
+            f'<div class="sheet"><div class="flow findings">{h}</div></div></section>')
 
+INTRO_S1 = {}   # lang -> title of the former index heading #s-1 (full.html called it #index-s-1)
+
+def reference_section(lang):
+    ui = UI[lang]; out = []
+    for p in longread.REFERENCE:
+        if p == "howto":
+            fm, text = read_page(lang, "index")
+            hb = "".join(wrap_tables(md(b[1], lang), lang) for b in blocks(text) if b[0] == "md")
+            hb = re.sub(r"<h2>(.*?)</h2>", r'<h2 id="s-1">\1</h2>', hb, count=1)   # the former index anchor #s-1
+            s1 = re.search(r'<h2 id="s-1">(.*?)</h2>', hb)
+            INTRO_S1[lang] = strip_tags(s1.group(1)).strip() if s1 else ""
+            moved = "".join(MOVED[lang].values())
+            h = shift_heads(link_chapters(rewrite_internal(hb + moved, lang), lang))
+            out.append(f'<section class="refsec" id="howto" data-k="howto" aria-labelledby="howto-t"><header class="refhead"><h2 id="howto-t">{ui["howto_t"]}</h2></header>'
+                       f'<div class="flow prose">{h}</div></section>')
+            continue
+        fm, h = page_flow(lang, p)
+        lead = fm.get("lead", "")
+        out.append(f'<section class="refsec" id="{p}" data-k="{p}" aria-labelledby="{p}-t"><header class="refhead"><h2 id="{p}-t">{esc(fm.get("title", p))}</h2>'
+                   + (f'<p class="reflead">{md_inline(lead, lang)}</p>' if lead else "") + f'</header><div class="flow prose">{h}</div></section>')
+    return (f'<div class="reference" aria-label="{ui["appendix"]}"><p class="ref-k">{ui["appendix"]}</p>' + "".join(out) + "</div>")
+
+def longread_page(lang):
+    FIG.update(k=0, ch=None, page=None, list=[])
+    sections = [site_story.hero_html(lang, LADDER, card_href), intro_section(lang)]
+    body = []
+    for part in longread.PARTS:
+        body.append(part_opener(lang, part))
+        for p in part["pages"]:
+            body.append(findings_section(lang, part) if p == "findings" else chapter_section(lang, p, part))
+    ref = reference_section(lang)
+    content = "\n".join(sections + body + [ref])
+    fm, _ = read_page(lang, "index")
+    title = f'{SITE_TITLE[lang]}: {SITE_SUB[lang]}'
+    return shell(lang, title, content, desc=strip_tags(md_inline(fm.get("lead", "") or SITE_SUB[lang], lang)))
+
+# ---------------------------------------------------------------- former page addresses
+def full_fig_map(lang):
+    """full.html numbered figures across the whole text (index, chapters, glossary, about) without resetting."""
+    m, n = {}, 0
+    for p in ["index"] + CHAPTERS + ["glossary", "about"]:
+        figs = [(o, new) for o, new, lab in ANCHORS[lang].get(p, []) if o.startswith("fig-")]
+        for o, new in figs:
+            n += 1; m[f"fig-{n}"] = new; m[f"zoom-{n}"] = new
+    return m
+
+def stub(lang, page):
+    """A former page: forwards its fragment to the single page; without JavaScript it lists the places as links."""
+    ui = UI[lang]; other = ui["lang_other_code"]
+    if page == "full":
+        default, title, lab = "top", ui["prologue"], SITE_TITLE[lang]
+        amap = {f"p-{p}": PAGE_ANCHOR.get(p, p) for p in PAGE_ORDER}
+        amap.update(full_fig_map(lang)); amap["p-index"] = "top"; amap["index-s-1"] = "s-1"
+        items = [(f"p-{p}", PAGE_ANCHOR.get(p, p), (f"{num_of(lang, p)}. " if p.startswith("ch") else "") + nav_title(lang, p) if p != "index" else SITE_TITLE[lang]) for p in PAGE_ORDER]
+        # the full page's own deep links: sections and cards kept their ids; figures were numbered through the text
+        items.append(("index-s-1", "s-1", INTRO_S1.get(lang) or "§ 1"))   # its one introduction heading
+        nfig = 0
+        for p in ["index"] + CHAPTERS + ["glossary", "about"]:
+            for o, n_, t in ANCHORS[lang].get(p, []):
+                if o.startswith("fig-"):
+                    nfig += 1; f_ = t or f'{ui["fig"]} {nfig}'
+                    items += [(f"fig-{nfig}", n_, f_), (f"zoom-{nfig}", n_, ui["stub_zoom"].format(f=f_))]
+                elif t and p != "index" and not o.startswith("zoom-"):
+                    items.append((n_, n_, t))
+        items = list({o: (o, n_, t) for o, n_, t in reversed(items)}.values())[::-1]   # one entry per old id, first wins
+    else:
+        fm, _ = read_page(lang, page)
+        default = PAGE_ANCHOR.get(page, page)
+        title = fm.get("title", page)
+        lab = f'{ui["chapter"]} {fm.get("num")}' if page.startswith("ch") else (ui["atlas"] if page == "atlas" else ui["appendix"])
+        amap = {o: n for o, n, _ in ANCHORS[lang].get(page, []) if o != n}
+        items = [(o, n, t) for o, n, t in ANCHORS[lang].get(page, []) if t]
+        if page == "atlas":
+            items = [(f"a-{w['id']}", f"a-{w['id']}", strip_tags(md_inline(atlas_title(w, lang), lang))) for w in WORKS.values()]
+        if page == "sources":
+            items = [(f"src-{p}", f"src-{p}", nav_title(lang, p)) for p in SOURCES_BY_PAGE] + [(f"s-{w['id']}", f"s-{w['id']}", strip_tags(card_title(w, lang))) for ws in SOURCES_BY_PAGE.values() for w in ws]
+        figt = {n_: t for o, n_, t in ANCHORS[lang].get(page, []) if o.startswith("fig-")}   # a zoom address lands on its figure
+        items += [(o, n_, ui["stub_zoom"].format(f=figt.get(n_) or o) if o.startswith("zoom-") else figt.get(n_) or o)
+                  for o, n_, t in ANCHORS[lang].get(page, []) if not t]
+    js = ("<script>(function(){var m=" + json.dumps(amap, ensure_ascii=False) + ",d=" + json.dumps(default) +
+          ";var h=location.hash.slice(1);try{h=decodeURIComponent(h)}catch(e){}location.replace('index.html#'+encodeURIComponent(h?(m[h]||h):d).replace(/%2F/g,'/'))})()</script>")
+    lis = "".join(f'<li id="{esc(o)}"><a href="index.html#{esc(n)}">{esc(t)}</a></li>' for o, n, t in items)
+    extra = ""
+    return f"""<!doctype html><html lang="{lang}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{esc(title)} — {SITE_TITLE[lang]}</title><meta name="robots" content="noindex"><link rel="canonical" href="index.html#{esc(default)}">
+{js}
+<script>(function(d){{d.classList.add('js');try{{if(localStorage.getItem('aas-theme')==='light')d.classList.add('light')}}catch(e){{}}}})(document.documentElement)</script>
+<link rel="stylesheet" href="../assets/css/site.css"><link rel="icon" href="../assets/favicon.svg" type="image/svg+xml"></head>
+<body class="stub"><main class="stub-in"><p class="eyebrow">{esc(lab)}</p><h1>{esc(title)}</h1><p>{ui["stub_now"]}</p>
+<p class="cta"><a class="btn primary" href="index.html#{esc(default)}">{ui["stub_go"]} →</a><a class="btn" href="../{other}/{page}.html" hreflang="{other}">{ui["stub_lang"]}</a></p>
+<details class="stub-list" open><summary>{ui["stub_more"]}</summary><ol>{lis}</ol></details>{extra}</main></body></html>"""
+
+def root_page():
+    poster = ('<figure class="rootposter" aria-hidden="true">'
+              '<img class="theme-dark-only" src="assets/illustrations/topologies-en-dark.svg" alt="" width="1600" height="900">'
+              '<img class="theme-light-only" src="assets/illustrations/topologies-en-light.svg" alt="" width="1600" height="900"></figure>') \
+        if os.path.isdir(os.path.join(ASSETS, "illustrations")) else ""
+    return f"""<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>{SITE_TITLE['en']} · {SITE_TITLE['ru']}</title><meta name="description" content="{esc(SITE_SUB['en'])}. {AUTHORS}.">
+<meta name="color-scheme" content="dark light"><meta name="theme-color" content="#0a0c0d">{HEAD_JS}
+<link rel="stylesheet" href="assets/css/site.css"><link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="alternate" hreflang="en" href="en/index.html"><link rel="alternate" hreflang="ru" href="ru/index.html"></head>
+<body class="root"><main class="rootmain">
+<header>{RING.replace('<svg ', '<svg class="ring" ', 1)}<h1>{SITE_TITLE['en']}</h1><p class="subtitle">{SITE_SUB['en']}</p><p class="byline">{AUTHORS} · {UI['en']['cutoff']}</p></header>
+<nav class="choose" aria-label="Language"><a href="en/index.html" hreflang="en" data-lang="en"><b>English</b><span>The whole survey on one page: eleven chapters, the findings and an atlas of works.</span></a>
+<a href="ru/index.html" hreflang="ru" lang="ru" data-lang="ru"><b>Русский</b><span>{SITE_TITLE['ru']}: весь обзор на одной странице — одиннадцать глав, выводы и атлас работ.</span></a></nav>
+{poster}
+</main><script>(function(){{try{{var l=(navigator.language||'').slice(0,2)==='ru'?'ru':'en';var a=document.querySelector('.choose a[data-lang="'+l+'"]');if(a)a.classList.add('pref');}}catch(e){{}}}})();</script></body></html>"""
+
+# ---------------------------------------------------------------- build
 def build():
     if os.path.exists(OUT): shutil.rmtree(OUT)
     os.makedirs(OUT)
     # Downloadable scholarly candidate; paper/ is owned and built separately.
-    # The parent replaces these copies with final paper bytes after integration.
     for name in ("swarm-dynamics.pdf", "swarm-dynamics-source.zip", "index.html", "cite-this-report.bib"):
         source = os.path.join(ROOT, "paper", name)
         if os.path.isfile(source):
@@ -827,7 +1056,6 @@ def build():
     os.makedirs(os.path.join(OUT, "data"), exist_ok=True)
     for src, name in (("data/works.json", "works.json"), ("data/bib/works.bib", "works.bib")):
         if os.path.isfile(os.path.join(ROOT, src)): shutil.copy2(os.path.join(ROOT, src), os.path.join(OUT, "data", name))
-    # assets
     for sub in ("css", "js"):
         shutil.copytree(os.path.join(ASSETS, sub), os.path.join(OUT, "assets", sub))
     shutil.copy(os.path.join(ASSETS, "favicon.svg"), os.path.join(OUT, "assets", "favicon.svg"))
@@ -844,121 +1072,71 @@ def build():
                 im2 = im.resize((1600, round(im.height * 1600 / im.width)), Image.LANCZOS)
                 im2.save(os.path.join(dst, "web", f), optimize=True)
     for lang in LANGS: collect_row_text(lang)
-    # pre-pass: card leads for the atlas, section anchors, per-chapter counts for the chapter map
-    counts = {l: {} for l in LANGS}
-    for lang in LANGS:
-        for p in PAGE_ORDER:
-            if p in ("atlas", "index"): continue
-            FIG.update(n=0, k=0, ch=None)
-            fm, res = page_body(lang, p)
-            if fm is None: continue
-            h, h2s = res
-            counts[lang][p] = (h.count('<article class="card'), h.count('<figure class="fig"'))
-            if p == "ch01":
-                hit = next((a for a, t in h2s if re.search(r"агент|agent", t, re.I)), None)
-                if hit: H2_ANCHOR[lang]["ch01_scale"] = hit
-            if p == "about":
-                hit = next((a for a, t in h2s if re.search(r"цитир|cite", t, re.I)), None)
-                if hit: CITE_ANCHOR[lang] = "#" + hit
     built = []
     for lang in LANGS:
         os.makedirs(os.path.join(OUT, lang), exist_ok=True)
-        for p in PAGE_ORDER:
-            FIG.update(n=0, k=0, ch=None)
-            if p == "index":
-                fm, h = index_content(lang, counts[lang])
-                title = f'{SITE_TITLE[lang]}: {SITE_SUB[lang]}'
-                doc = shell(lang, p, title, h, toc=UI[lang]["idx"], desc=strip_tags(md_inline(fm.get("lead", "") or SITE_SUB[lang], lang)),
-                            layout="index", head_extra=f"<style>{site_story.mode_css()}</style>", scripts=("site", "story"))
-                open(os.path.join(OUT, lang, "index.html"), "w", encoding="utf-8").write(doc); built.append(f"{lang}/index.html")
-                continue
-            r = read_page(lang, p)
-            if r is None: continue
-            num = r[0].get("num")
-            FIG["ch"] = num if p.startswith("ch") else None
-            fm, res = page_body(lang, p)
-            h, h2s = res
-            head = chapter_header(fm, lang, p, h)
-            data_ch = f' data-ch style="--chn:\'{num}\'"' if p.startswith("ch") and num else ""
-            if p == "atlas":
-                a0, a1 = h.find("<!--atlas-start-->"), h.find("<!--atlas-end-->")
-                intro_h, atlas_h, after_h = (h[:a0], h[a0:a1], h[a1 + 16:]) if a0 >= 0 and a1 > a0 else (h, "", "")
-                content = (head + f'<div class="prose atlas-intro">{intro_h}</div>' + atlas_h
-                           + (f'<div class="prose">{after_h}</div>' if after_h.strip() else "") + pager(lang, p))
-                layout = "wide"
-            else:
-                tail = ""
-                if p.startswith("ch"):
-                    src = f'<a href="sources.html#src-{p}">{UI[lang]["sources_ch"]} →</a>' if p in sources_by_page() else ""
-                    tail = f'<p class="chend">{src}<a href="#main">{UI[lang]["top"]} ↑</a></p>'
-                content = head + f'<div class="prose"{data_ch}>{h}</div>' + tail + pager(lang, p)
-                layout = "doc"
-            title = f'{fm.get("title", p)} — {SITE_TITLE[lang]}'
-            doc = shell(lang, p, title, content, toc=h2s, desc=strip_tags(md_inline(fm.get("lead", "") or SITE_SUB[lang], lang)), layout=layout)
-            open(os.path.join(OUT, lang, p + ".html"), "w", encoding="utf-8").write(doc); built.append(f"{lang}/{p}.html")
-        # single page with everything expanded
-        FIG.update(n=0, k=0, ch=None); allh = []; toc = []
-        for p in PAGE_ORDER:
-            if p in ("atlas", "sources"): continue
-            r = read_page(lang, p)
-            if r is None: continue
-            num = r[0].get("num")
-            FIG.update(k=0, ch=num if p.startswith("ch") else None)
-            fm, res = page_body(lang, p, single=True)
-            h, _ = res
-            if p == "index":
-                head = ""
-            else:
-                head = chapter_header(fm, lang, p)
-            data_ch = f' data-ch style="--chn:\'{num}\'"' if p.startswith("ch") and num else ""
-            allh.append(f'<section class="fullsec" id="p-{p}">{head}<div class="prose"{data_ch}>{h}</div></section>')
-            toc.append((f"p-{p}", (f"{num}. " if p.startswith("ch") else "") + nav_title(lang, p)))
-        doc = shell(lang, "full", f'{UI[lang]["full"]} — {SITE_TITLE[lang]}', "".join(allh), toc=toc, desc=SITE_SUB[lang])
-        open(os.path.join(OUT, lang, "full.html"), "w", encoding="utf-8").write(doc); built.append(f"{lang}/full.html")
+        # a first pass fills card leads (atlas summaries), section lists and the about page's citation anchor
+        for p in CHAPTERS + ["glossary", "sources", "about", "atlas"]:
+            page_flow(lang, p)
+        hit = next((a for a, t in HEADS[lang].get("about", []) if re.search(r"цитир|cite", t, re.I)), None)
+        if hit: CITE_ANCHOR[lang] = "#" + hit
+        for d in (ANCHORS, HEADS, MOVED, SCENE_N): d[lang].clear()
+        open(os.path.join(OUT, lang, "index.html"), "w", encoding="utf-8").write(longread_page(lang)); built.append(f"{lang}/index.html")
+        for p in longread.STUB_PAGES:
+            open(os.path.join(OUT, lang, p + ".html"), "w", encoding="utf-8").write(stub(lang, p)); built.append(f"{lang}/{p}.html")
     root = root_page()
     open(os.path.join(OUT, "index.html"), "w", encoding="utf-8").write(root)
     open(os.path.join(OUT, ".nojekyll"), "w").write("")
     open(os.path.join(OUT, "404.html"), "w", encoding="utf-8").write(root.replace('<main class="rootmain">', '<main class="rootmain"><p class="eyebrow">404</p>', 1))
     return built
 
-def root_page():
-    ui_en, ui_ru = UI["en"], UI["ru"]
-    poster = ('<figure class="rootposter" aria-hidden="true">'
-              '<img class="theme-dark-only" src="assets/illustrations/topologies-en-dark.svg" alt="" width="1600" height="900">'
-              '<img class="theme-light-only" src="assets/illustrations/topologies-en-light.svg" alt="" width="1600" height="900"></figure>') \
-        if os.path.isdir(os.path.join(ASSETS, "illustrations")) else ""
-    return f"""<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>{SITE_TITLE['en']} · {SITE_TITLE['ru']}</title><meta name="description" content="{esc(SITE_SUB['en'])}. {AUTHORS}.">
-<meta name="color-scheme" content="dark light"><meta name="theme-color" content="#0a0c0d">{HEAD_JS}
-<link rel="stylesheet" href="assets/css/site.css"><link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-<link rel="alternate" hreflang="en" href="en/index.html"><link rel="alternate" hreflang="ru" href="ru/index.html"></head>
-<body class="root"><main class="rootmain">
-<header>{RING.replace('<svg ', '<svg class="ring" ', 1)}<h1>{SITE_TITLE['en']}</h1><p class="subtitle">{SITE_SUB['en']}</p><p class="byline">{AUTHORS} · {ui_en['cutoff']}</p></header>
-<nav class="choose" aria-label="Language"><a href="en/index.html" hreflang="en" data-lang="en"><b>English</b><span>Eleven chapters, an atlas of works, the whole text on one page.</span></a>
-<a href="ru/index.html" hreflang="ru" lang="ru" data-lang="ru"><b>Русский</b><span>{SITE_TITLE['ru']}: одиннадцать глав, атлас работ, весь текст на одной странице.</span></a></nav>
-{poster}
-</main><script>(function(){{try{{var l=(navigator.language||'').slice(0,2)==='ru'?'ru':'en';var a=document.querySelector('.choose a[data-lang="'+l+'"]');if(a)a.classList.add('pref');}}catch(e){{}}}})();</script></body></html>"""
-
 def check():
     errs = []
+    cache = {}
+    def ids_of(path):
+        if path not in cache:
+            t = open(path, encoding="utf-8").read()
+            cache[path] = set(re.findall(r'\sid="([^"]+)"', t))
+        return cache[path]
     for dp, _, fs in os.walk(OUT):
         for f in fs:
             if not f.endswith(".html"): continue
             p = os.path.join(dp, f); t = open(p, encoding="utf-8").read()
-            ids = set(re.findall(r'\sid="([^"]+)"', t))
+            rel = os.path.relpath(p, OUT)
+            ids_list = re.findall(r'\sid="([^"]+)"', t)
+            seen, dup = set(), set()
+            for i in ids_list:
+                (dup if i in seen else seen).add(i)
+            dup = sorted(dup)
+            if dup: errs.append(f"{rel}: duplicate ids {dup[:12]}")
+            ids = set(ids_list)
             for href in re.findall(r'(?:href|src|data-full|data-full-light)="([^"]+)"', t):
                 if href.startswith(("http://", "https://", "mailto:", "data:")): continue
                 target, _, frag = href.partition("#")
                 if target:
                     tp = os.path.normpath(os.path.join(dp, target))
-                    if not tp.startswith(OUT): errs.append(f"{os.path.relpath(p, OUT)}: points outside site/: {href}"); continue
-                    if not os.path.exists(tp): errs.append(f"{os.path.relpath(p, OUT)}: missing {href}"); continue
-                    if frag and tp.endswith(".html"):
-                        tt = open(tp, encoding="utf-8").read()
-                        if f'id="{frag}"' not in tt: errs.append(f"{os.path.relpath(p, OUT)}: missing anchor {href}")
+                    if not tp.startswith(OUT): errs.append(f"{rel}: points outside site/: {href}"); continue
+                    if not os.path.exists(tp): errs.append(f"{rel}: missing {href}"); continue
+                    if frag and tp.endswith(".html") and frag not in ids_of(tp): errs.append(f"{rel}: missing anchor {href}")
                 elif frag and frag not in ids:
-                    errs.append(f"{os.path.relpath(p, OUT)}: missing local anchor #{frag}")
-            if re.search(r"\{\{|%%ATLAS%%|%%SOURCES%%", t): errs.append(f"{os.path.relpath(p, OUT)}: unfilled template mark")
+                    errs.append(f"{rel}: missing local anchor #{frag}")
+            if re.search(r"\{\{|%%ATLAS%%|%%SOURCES%%|%%SCENE", t): errs.append(f"{rel}: unfilled template mark")
+    # every forwarding target of the former pages exists on the single page
+    for lang in LANGS:
+        page_ids = ids_of(os.path.join(OUT, lang, "index.html"))
+        for p in longread.STUB_PAGES:
+            t = open(os.path.join(OUT, lang, p + ".html"), encoding="utf-8").read()
+            m = re.search(r"var m=(\{.*?\}),d=(\"[^\"]*\")", t)
+            if not m: errs.append(f"{lang}/{p}.html: no forwarding map"); continue
+            amap = json.loads(m.group(1)); d = json.loads(m.group(2))
+            for o, n in list(amap.items()) + [("", d)]:
+                if n not in page_ids: errs.append(f"{lang}/{p}.html: #{o} -> #{n} missing on the single page")
+            # without JavaScript the same addresses work as a list: every forwarded one has its labelled entry, same target
+            nojs = {html.unescape(i): (html.unescape(h), strip_tags(lab).strip())
+                    for i, h, lab in re.findall(r'<li id="([^"]+)"><a href="index\.html#([^"]*)">(.*?)</a></li>', t)}
+            for o, n in amap.items():
+                if o not in nojs or nojs[o][0] != n or not nojs[o][1]:
+                    errs.append(f"{lang}/{p}.html: #{o} -> #{n} has no labelled no-JS entry ({nojs.get(o)})")
     return errs
 
 if __name__ == "__main__":

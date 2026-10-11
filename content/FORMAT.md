@@ -1,14 +1,18 @@
 # Content format
 
-Every page of the site is one Markdown file in `content/ru/` and the same file name in `content/en/`.
-The two languages are parallel: the same blocks, cards, figures, tables and links in the same order.
-`scripts/build_site.py` renders them; `scripts/check_content.py` checks syntax, RU/EN parity and preservation. The index page's topology scene, scale ladder and Agensh case are built by `scripts/site_story.py`, not from these files.
+The site is one continuous page per language, `site/ru/index.html` and `site/en/index.html`. Its text comes from one
+Markdown file per former page in `content/ru/` and the same file name in `content/en/`. The two languages are parallel:
+the same blocks, cards, figures, tables and links in the same order. `scripts/build_site.py` renders them in the order set by
+`scripts/longread.py`; `scripts/check_content.py` checks syntax, RU/EN parity and preservation; `scripts/check_coverage.py`
+checks that every card, figure, link, heading and block of the sources (and of a former multipage build, with `--old`) is on the
+single page. The prologue's topology scene and the Agensh scene come from `scripts/site_story.py`; the other native scenes from
+`scripts/scenes.py` and `scripts/scenes_mech.py`, not from these files.
 
 ## Files
 
 | File | Page |
 |---|---|
-| `index.md` | Orientation: cover, key findings, how to read |
+| `index.md` | Cover (the intro under the prologue), the ten findings (set in the epilogue), the note on cards and labels (reference appendix) |
 | `ch01.md` … `ch11.md` | Chapters 1–11 (1 field overview, 2 chronicle, 3–10 themes, 11 open questions) |
 | `atlas.md` | Chapter 12: atlas of all works (table is generated) |
 | `glossary.md` | Glossary |
@@ -40,9 +44,9 @@ A block opens with `:::kind args` on its own line and closes with `:::` on its o
 | `:::callout <Title>` | Boxed explanation (how to read numbers, definitions). |
 | `:::timeline` | One event per line: `DD.MM.YYYY | text`. The date field is kept byte-identical in RU and EN; the builder formats it per language. |
 | `:::takeaways` | Chapter summary (≤ 5 bullets). Replaces the old «Главное в главе» heading. |
-| `:::findings` | Key findings on the index page: a numbered list. If an item opens with a bold sentence, the site sets it as the item's headline; items without one render as plain paragraphs. |
+| `:::findings` | The ten findings, set in the epilogue before Chapter 11: a numbered list. If an item opens with a bold sentence, the site sets it as the item's headline; items without one render as plain paragraphs. |
 | `:::related` | Wraps one Markdown table «Ещё по теме» / "Related work" (columns: work, who/when, one line). Rendered as a list on all viewports. |
-| `:::cover` | Index page only: `kicker:`, `title:`, `subtitle:`, `lede:`, `meta:` lines. On the site it becomes the section under the topology scene; large counts are read from `data/stats.json`; parts of `meta` separated by ` · ` that contain `{{stat:…}}` are omitted to avoid repeating those counts. |
+| `:::cover` | `index.md` only: `kicker:`, `title:`, `subtitle:`, `lede:`, `meta:` lines. On the site it becomes the intro under the topology scene, followed by the route through the parts; large counts are read from `data/stats.json`; parts of `meta` separated by ` · ` that contain `{{stat:…}}` are omitted to avoid repeating those counts. |
 | `:::corpus`, `:::sources` | Placeholders filled by the builder. |
 
 `<work-id>` is the canonical ID from `data/works.json` (see `data/interface.md`). Never invent or rename IDs.
@@ -60,3 +64,37 @@ A block opens with `:::kind args` on its own line and closes with `:::` on its o
 ## Tables
 
 Ordinary Markdown pipe tables. The builder wraps every table in a horizontally scrollable box with a scroll hint; keep the first column short.
+
+## The single page
+
+Order (scripts/longread.py): prologue (topology scene) → intro and route → Part I (chapters 1–3) → Part II (4–6) →
+Part III (7–10) → epilogue (the ten findings, chapter 11, the atlas as chapter 12) → reference appendix (glossary, cards
+and labels, sources, about). Each part opens with a short statement; each chapter opens with a plate (number, title, the
+lead's question and answer, counts) that pins while the chapter's sheet slides over it. Chapter Markdown headings become
+`h3`/`h4` under the chapter's `h2`. The section "How to read the cards" of `ch01.md` and the index's note on labels move to
+the appendix ("Cards and labels") with their ids, so the reading flow carries no reading instructions.
+
+Native scenes sit at hooks in `PLACE` (scripts/longread.py): `fig:<file>` replaces one of the survey's own charts and keeps its
+number and caption (the static PNG stays linked under it); `after:<card>`, `before:<card>`, `callout:<k>`, `table:<k>` place a
+scene by a card, a callout or a table. Every scene's markup is its end state, so the page reads the same without JavaScript or with
+reduced motion. A scene marked *Survey data* computes its numbers from `data/works.json`; *Card data* and *Schematic* scenes
+quote only numbers from the card next to them, and the motion between them is illustrative. Where a schematic computes numbers of
+its own (the λ rule, the consensus toy model), the scene says it is a calculation or a toy, not a measurement.
+`scripts/check_scenes.py` (part of `make check`) checks every quoted number against its card and recomputes the toy model.
+
+## Addresses
+
+Ids on the single page are unique and stable:
+
+| Former address | On the single page |
+|---|---|
+| `chNN.html`, `glossary.html`, `about.html` | `index.html#chNN`, `#glossary`, `#about` |
+| `atlas.html`, `sources.html` | `#atlas`, `#sources` |
+| `chNN.html#s-K` (section headings, card titles) | `#chNN-s-K` (the same counter) |
+| `chNN.html#fig-K`, `#zoom-K` | `#chNN-fig-K` |
+| `#w-<work>`, `#a-<work>`, `#src-<page>`, `#s-<work>` | unchanged |
+| `full.html#p-chNN`, `#chNN-s-K`, `#fig-N` | `#chNN`, unchanged, the figure's new id |
+| `index.html#how`, `#survey`, `#scale`, `#findings`, `#agensh`, `#chapters`, `#howto`, `#s-1` | kept on the single page |
+
+The former pages remain as small files: with JavaScript they forward the fragment to its new place at once; without it
+they list their sections, cards and figures as links, and the addressed one is highlighted (`:target`).
