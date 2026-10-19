@@ -1,6 +1,7 @@
 /* Swarm Dynamics: page behaviour. The page reads and navigates without this file; it adds the remembered theme,
-   reading progress, the chapter in the top bar, a language switch that keeps the place, scroll-linked depth for
-   chapter plates and part statements, atlas search and the figure viewer. Nothing here intercepts scrolling. */
+   the motion switch, reading progress, the chapter in the top bar, a language switch that keeps the place,
+   scroll-linked depth for chapter plates and part statements, atlas search and the figure viewer. Nothing here
+   intercepts scrolling. */
 (function () {
   'use strict';
   var d = document, root = d.documentElement, w = window;
@@ -17,7 +18,7 @@
   function paint() {
     var light = !!(box && box.checked);
     root.classList.toggle('light', light);
-    if (meta) meta.setAttribute('content', light ? '#f6f8f7' : '#0a0c0d');
+    if (meta) meta.setAttribute('content', light ? '#f4f4ef' : '#050507');
     d.dispatchEvent(new CustomEvent('aas:theme'));
   }
   if (box) {
@@ -27,8 +28,22 @@
     w.addEventListener('pageshow', function () { box.checked = store('aas-theme') === 'light'; paint(); });
   }
   var mq = w.matchMedia ? w.matchMedia('(prefers-reduced-motion: reduce)') : null;
+  /* ---------- the motion switch: html.paused stops every scene and animation; reduced motion disables the switch */
+  var mtg = $('.mtg');
+  function syncMotion() {
+    if (!mtg) return;
+    var sys = isStatic(), p = root.classList.contains('paused');
+    mtg.disabled = sys;
+    mtg.setAttribute('aria-pressed', String(p && !sys));
+    var lab = sys ? mtg.getAttribute('data-sys') : (p ? mtg.getAttribute('data-on') : mtg.getAttribute('data-off'));
+    $('.lab', mtg).textContent = lab; mtg.setAttribute('title', lab); mtg.setAttribute('aria-label', lab);
+  }
+  if (mtg) {
+    mtg.addEventListener('click', function () { root.classList.toggle('paused'); syncMotion(); d.dispatchEvent(new CustomEvent('aas:motion')); });
+    syncMotion();
+  }
   if (mq) {
-    var onMq = function (e) { root.classList.toggle('static', e.matches); dirty = true; pinPlates(); tick(); };
+    var onMq = function (e) { root.classList.toggle('static', e.matches); syncMotion(); dirty = true; pinPlates(); tick(); };
     if (mq.addEventListener) mq.addEventListener('change', onMq); else if (mq.addListener) mq.addListener(onMq);
   }
 
@@ -54,7 +69,7 @@
   var main = d.getElementById('main');
   var here = $('.here'), hereN = $('.here-n'), hereT = $('.here-t'), bar = $('.progress'), rail = $('.rail'), lang = $('a.langbtn');
   var chapters = $$('main section.chapter[data-k], main section.refsec[data-k], main section.part[id]');   // a part opener is a place too
-  var anchorSel = 'main :is(section.chapter, section.refsec, section.part, section.intro, section.hero, .flow > h3, .flow > h4, .pin-text, article.case, section.note, figure.fig, .scene, li.w)[id]';
+  var anchorSel = 'main :is(section.chapter, section.refsec, section.part, section.intro, section.scrolly, .scrolly .step, .flow > h3, .flow > h4, .pin-text, article.case, section.note, figure.fig, .scene, li.w, .srclist li, .related li)[id]';
   var anchors = [], tops = [], chTops = [], dirty = true, curCh = null, curA = null;
   function docTop(el) { return el.getBoundingClientRect().top + w.pageYOffset; }
   function measure() {   // only rendered anchors, in the order of their tops (rows hidden by an atlas filter have no place)
@@ -125,9 +140,14 @@
   }
   function syncLang() {
     if (!lang) return;
-    var base = lang.getAttribute('href').split('#')[0], h = location.hash.slice(1), id = '';
-    if (curA && curA.id) id = curA.id;
-    else if (h && !/^zoom/.test(h)) id = h;
+    var base = lang.getAttribute('href').split('#')[0], h = location.hash.slice(1), id = '', t = null;
+    try { t = h && !/^zoom|-zoom-/.test(h) ? d.getElementById(decodeURIComponent(h)) : null; } catch (e) {}
+    if (t && t.matches && t.matches(anchorSel) && t.getClientRects().length) {   // the addressed place while it is still at the top of the window, even when
+      var tt = t.getBoundingClientRect().top;                                     // the next one starts above the reading line (a short source or related-work row)
+      if (tt >= -2 && tt <= Math.min(160, w.innerHeight * 0.25)) id = t.id;
+    }
+    if (!id && curA && curA.id) id = curA.id;
+    else if (!id && h && !/^zoom/.test(h)) id = h;
     lang.setAttribute('href', base + (id && w.pageYOffset > 40 ? '#' + id : ''));
   }
   if (lang) {
@@ -148,6 +168,10 @@
       pl.classList.toggle('pin', need <= vh * 0.98);
     });
   }
+  function still() { return isStatic() || root.classList.contains('paused'); }
+  function rest() {   // the motion switch: drop the scroll-linked values, so plates, statements and scenes stand complete
+    sl.forEach(function (el) { ['--p', '--e', '--c'].forEach(function (k) { el.style.removeProperty(k); }); });
+  }
   function depth() {
     var vh = w.innerHeight;
     live.forEach(function (el) {
@@ -164,6 +188,12 @@
       }
     });
   }
+  /* a part opener's chapter windows fill with their blocks when it comes into view */
+  var parts = $$('section.part');
+  if ('IntersectionObserver' in w && parts.length) {
+    var pio = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('seen'); pio.unobserve(e.target); } }); }, { threshold: 0.25 });
+    parts.forEach(function (p) { pio.observe(p); });
+  } else parts.forEach(function (p) { p.classList.add('seen'); });
   if ('IntersectionObserver' in w) {   // also under reduced motion: the preference can change while the page is open
     var io = new IntersectionObserver(function (es) {
       es.forEach(function (e) { if (e.isIntersecting) live.add(e.target); else { live.delete(e.target); } });
@@ -174,9 +204,10 @@
   var ticking = 0;
   function tick() {
     if (ticking) return;
-    ticking = raf(function () { ticking = 0; place(); if (!isStatic()) depth(); });
+    ticking = raf(function () { ticking = 0; place(); if (!still()) depth(); });
   }
   w.addEventListener('scroll', tick, { passive: true });
+  d.addEventListener('aas:motion', function () { if (still()) rest(); else tick(); });
   w.addEventListener('resize', function () { dirty = true; pinPlates(); markTables(); tick(); });
   if ('ResizeObserver' in w && main) {
     var rt = 0;
@@ -345,6 +376,7 @@
     bPrev.setAttribute('aria-label', T.v_prev || 'Previous');
     bNext.setAttribute('aria-label', T.v_next || 'Next');
     $('.lab', bOrig).textContent = T.v_orig || 'Original';
+    bOrig.setAttribute('aria-label', T.v_orig || 'Original');   // the label is hidden on phones, the icon is aria-hidden
     hint.textContent = T.v_hint || '';
     bPrev.hidden = bNext.hidden = figs.length < 2;
     dlg.addEventListener('close', function () {

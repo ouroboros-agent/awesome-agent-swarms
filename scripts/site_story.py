@@ -1,11 +1,13 @@
 #!/usr/bin/env python3
-"""Topology story for the index page and the README: six agents, three ways to connect them.
+"""The prologue of the single page and the README illustrations, in the B «Контекст» design.
 
-Ported from the approved exemplar prototype-v2/src/build.py (those files stay unchanged) and made bilingual.
-scripts/build_site.py takes the hero, the scale ladder and the Agensh case for both index pages;
+Every agent is a context window drawn as a tower of blocks. scripts/build_site.py takes the title screen (hero_html), the
+prologue (stage_html: six agents and three ways to connect them, then the scale of real swarms), the state rules for the
+stage (state_css) and the Agensh figures (board_svg, bars_svg, proto_svg, used by scripts/scenes_mech.py);
 scripts/build_readme.py takes the standalone SVG posters and charts (no script, fonts or network).
-Standard library only. Every number here is either computed from data/works.json or quoted from a card
-whose anchor is linked next to it.
+Standard library only. Every number here is either computed from data/works.json (the analytic corpus as of the
+3 October 2026 cut-off) or quoted from a card whose anchor is linked next to it. The approved exemplars this grew out of,
+prototype-v2/ and design-20261019/ (direction B), stay unchanged.
 """
 import html
 import json
@@ -15,11 +17,7 @@ import re
 import statistics
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-AG = [1, 2, 3, 4, 5, 6]
-# Clockwise from the upper left, so the agents walk the ring and the rows of the log in the same order.
-ANG = {1: 240, 2: 300, 3: 0, 4: 60, 5: 120, 6: 180}
-ANG_N = {1: 210, 2: 270, 3: 330, 4: 30, 5: 90, 6: 150}
-NB = " "
+NB = "\u00a0"
 
 
 def n(v):
@@ -282,340 +280,500 @@ def sub_nb(s):
     return s.replace("{nb}", NB)
 
 
-# ---------------------------------------------------------------- geometry
-def edge(c, hw, hh, toward, m=0.0):
-    """Exit point of the ray from the rectangle centre towards `toward`, plus a margin m."""
-    dx, dy = toward[0] - c[0], toward[1] - c[1]
-    L = math.hypot(dx, dy) or 1
-    tx_ = hw / abs(dx) if dx else 1e9
-    ty_ = hh / abs(dy) if dy else 1e9
-    t = min(tx_, ty_)
-    return (c[0] + dx * t + dx / L * m, c[1] + dy * t + dy / L * m)
+# ---------------------------------------------------------------- the B «Контекст» edition: texts of the hero and the stage
+# The stage tells the prologue as context windows: every agent is a tower of blocks (its context), a finding is a lime
+# block, work done again is coral, a copy that arrived is an outlined lime block. Texts of the three schemes are the ones
+# above (modes, beats); the scale steps quote Chapter 1 and count data/works.json.
+T["ru"].update(
+    hero_lines=["Динамика", "роёв", "LLM-агентов"],
+    hero_hook="Знание агента живёт в его контексте. Как находка одного попадает в контекст другого — и чем за это платят?",
+    hero_cue="Листайте", hero_skip="К обзору",
+    st_label="Канал между агентами",
+    st_note="Схема механизма, не измерение: шесть агентов, одна находка; моменты и длительности условны.",
+    st_titles={"ind": "01 · НЕЗАВИСИМО", "coord": "02 · ЧЕРЕЗ КООРДИНАТОРА", "mem": "03 · ЧЕРЕЗ ОБЩУЮ ПАМЯТЬ", "sky": "МАСШТАБ"},
+    st_agent="агент{nb}{k}", st_agent_n="{k}", st_coord="коорд.",
+    st_found="нашёл", st_again="заново", st_copy="копия", st_got="получил", st_asked="спросил", st_entry="запись", st_done="закончил",
+    st_entry_of="находка агента{nb}3",
+    st_select="отбор: голосование или лучший из N",
+    st_fill="контекст координатора заполняется", st_fill_n="контекст заполняется",
+    st_shelf="общий журнал · записи только добавляются",
+    st_sky_cap="{n} работ по возрастанию числа одновременно работающих агентов", st_sky_cap_n="{n} работ · лог. шкала",
+    st_sky_cap2="высота столбца — логарифмическая шкала · срез 3 октября 2026",
+    st_median="медиана{nb}{v}", st_thr="≥{t} агентов — {c}", st_thr_n="≥{t}: {c}",
+    st_marks={"anthropic-c-compiler": "компилятор C · 16", "opus55-card": "Opus 5.5 · 100", "agensh-1024": "Agensh · 1{nb}020",
+              "openai-navier-stokes": "OpenAI · ≈10{nb}000", "anthropic-institute-pace": "Anthropic · ≈30{nb}000"},
+    st_grid="1{nb}024 окна одной модели · 6 часов · pandoc", st_grid_n="1{nb}024 окна · 6 часов · pandoc",
+    st_scale_label="Масштаб", st_scale_h="Шесть агентов на схеме. Сколько их в настоящих роях?",
+    st_scale_p1="В {corpus} работах обзора (срез 3 октября 2026) роем называют всё — от пары агентов до десятков тысяч. {known} из них называют число агентов, которые работают одновременно в одном прогоне или системе. Медиана — {med}.",
+    st_scale_thr="Пороги среди этих {known} работ: {thr}.",
+    st_scale_p2=("Живых систем с 10{nb}000 и больше одновременных агентов две: рой OpenAI на задаче Навье–Стокса (порядка 10{nb}000) и внутренняя платформа Anthropic (около 30{nb}000, но на разных задачах). "
+                 "Ещё две работы на этом пороге — популяции, где политики заранее сняты с модели."),
+    st_scale_p3=("Самые большие числа отвечают на другой вопрос, чем «сколько агентов работало вместе в один момент»: 1,5 млн регистраций Moltbook — ёмкость платформы, "
+                 "около 1{nb}200 участников доски в инциденте с Hugging Face — накопленный итог за всё окно наблюдения."),
+    st_scale_gap="Контролируемые опыты в основном малы, а живые рои от 10{nb}000 агентов известны только по отчётам лабораторий без контрольного запуска.",
+    st_scale_more="Три величины «размера роя» и каждая работа на одной карте — глава 1",
+    st_grid_beat=("1{nb}024 одинаковых агента, шесть часов, ни одного назначенного руководителя. С открытыми данными таких запусков равных агентов в 2026 году два: "
+                  "этот и шестнадцать копий Claude на компиляторе C."),
+    st_grid_more="Разбор — в главе 5",
+    ag_room_lead=("Рой до 1{nb}024 одинаковых агентов без распорядителя держится вместе и сам выдвигает роли. Как устроен канал между ними, "
+                  "что измерили и что при этом не уравняли."),
+    ag_bars_t="Доля пройденных скрытых тестов pandoc за 6 часов",
+    ag_bars_axis="% скрытых тестов pandoc · у всех 6 часов", ag_bars_axis_n="% тестов pandoc · 6 часов",
+    ag_bars_mean="среднее по 5 задачам", ag_bars_hours="агенто-часы относительно одного агента · лог. шкала · верхние оценки", ag_bars_hours_n="агенто-часы, ×",
+    ag_bars_none="нет оценки",
+    ag_bars_desc=("Доля пройденных скрытых тестов pandoc за 6 часов: 33,89% у 1 агента, 41,75% у 8, 43,11% у 32, 50,94% у 128, 55,06% у 1 024; черта — среднее по пяти задачам "
+                  "(19,31, 20,68, 26,52 и 28,78% для 1, 8, 32 и 128 агентов). Ниже — агенто-часы относительно одного агента: около 117 у 128 агентов и около 800 у 1 024, "
+                  "логарифмическая шкала, верхние оценки обзора."),
+    ag_hours_note="Агенто-часы относительно одного агента — верхние оценки, расчёт обзора. Это не токены: расход токенов в работе не опубликован.",
+    ag_board_t="Окно агента 17: что в него приходит",
+    ag_board_desc=("Схема: окно агента 17 заполняется его собственными шагами; на каждой границе обращения к git, тестам или чату в него пачкой приходят новые записи доски — "
+                   "CLAIM, FAIL, PATCH_SUMMARY; старую запись агент получает поиском."),
+    ag_board_win="окно агента{nb}17", ag_board_board="доска", ag_board_batch="{b}: новые записи пачкой", ag_board_b=["git", "тесты", "чат"],
+    ag_board_search="поиск: старая запись",
+    ag_kinds=[("CLAIM", "k-claim", "за какую часть берусь"), ("FAIL", "k-fail", "попытка не удалась"), ("PATCH_SUMMARY", "k-patch", "изменение проверено и влито")],
+    ag_board_note="Схема по описанию работы: как запись с доски доходит до агента. Число записей в пачке условно.",
+    ag_proto_t="Протокол, о котором договорились двое из 128",
+    ag_proto_desc=("Сначала автор обновляет и тестирует ветку и передаёт хеш коммита коллеге, тот проверяет и сливает. После неудач автор передаёт коллеге весь цикл: "
+                   "коллега обновляет, проверяет и сливает."),
+    ag_proto_rows=[("СНАЧАЛА", [("автор", "обновляет и тестирует ветку"), ("→", "хеш коммита"), ("коллега", "проверяет и сливает")]),
+                   ("ПОСЛЕ НЕУДАЧ", [("автор", "передаёт весь цикл"), ("→", ""), ("коллега", "обновляет, проверяет и сливает")])],
+    ag_proto_note="Порядок по описанию работы; другие агенты стали пользоваться тем же порядком.",
+    ag_replay=[("11{nb}111", "pull-request'ов в прогоне на 1{nb}024 агента"), ("2{nb}800", "из них влито — 25%"), ("148{nb}079", "записей на доске"), ("56{nb}472", "из них — FAIL")],
+    ag_replay_note="Реплей прогона на 1{nb}024 агента, расчёт обзора (из карточки выше).",
+    sky_title_of="{t} — {v}",
+    mem_t="Общая или личная память: те же четыре агента", mem_s="ScaleMAS (FAIR/Meta, Гарвард, 12 октября 2026): успешные ответы на BrowseComp-Plus, табл. 2",
+    mem_labels=["общее хранилище", "личное у каждого", "без хранилища"],
+    mem_note=("Равное число агентов (четыре Qwen3.5-9B), а не равные вычисления. Прежняя абляция (Scaling Teams or Time) дала обратное: "
+              "личная память чуть лучше, 49,43 против 48,62. Дополнение 19 октября 2026."),
+)
+T["en"].update(
+    hero_lines=["On the dynamics", "of LLM agent", "swarms"],
+    hero_hook="An agent knows what is in its context. How does one agent's finding reach another agent's context, and what does that cost?",
+    hero_cue="Scroll", hero_skip="To the survey",
+    st_label="The channel between agents",
+    st_note="A schematic of the mechanism, not a measurement: six agents, one finding; timings are illustrative.",
+    st_titles={"ind": "01 · INDEPENDENT", "coord": "02 · THROUGH A COORDINATOR", "mem": "03 · THROUGH SHARED MEMORY", "sky": "SCALE"},
+    st_agent="agent{nb}{k}", st_agent_n="{k}", st_coord="coord.",
+    st_found="found", st_again="again", st_copy="copy", st_got="got it", st_asked="asked", st_entry="entry", st_done="done",
+    st_entry_of="agent{nb}3's finding",
+    st_select="selection: vote or best of N",
+    st_fill="the coordinator's context fills up", st_fill_n="context fills up",
+    st_shelf="shared log · append-only",
+    st_sky_cap="{n} works, by the number of agents working at the same time", st_sky_cap_n="{n} works · log scale",
+    st_sky_cap2="bar height on a log scale · cut-off 3 October 2026",
+    st_median="median{nb}{v}", st_thr="≥{t} agents: {c}", st_thr_n="≥{t}: {c}",
+    st_marks={"anthropic-c-compiler": "C compiler · 16", "opus55-card": "Opus 5.5 · 100", "agensh-1024": "Agensh · 1,020",
+              "openai-navier-stokes": "OpenAI · ≈10,000", "anthropic-institute-pace": "Anthropic · ≈30,000"},
+    st_grid="1,024 windows of one model · 6 hours · pandoc", st_grid_n="1,024 windows · 6 hours · pandoc",
+    st_scale_label="Scale", st_scale_h="Six agents in the schematic. How many are there in real swarms?",
+    st_scale_p1="Across the survey's {corpus} works (cut-off 3 October 2026), “swarm” means anything from a pair of agents to tens of thousands. {known} of them state how many agents work at the same time in one run or system. The median is {med}.",
+    st_scale_thr="Thresholds among these {known} works: {thr}.",
+    st_scale_p2=("There are two live systems with 10,000 or more agents at once: OpenAI's swarm on the Navier–Stokes problem (on the order of 10,000) and Anthropic's internal platform (about 30,000, but on different tasks). "
+                 "The other two works at this threshold are populations whose policies were extracted from the model in advance."),
+    st_scale_p3=("The biggest numbers answer a different question from “how many agents worked together at one moment”: Moltbook's 1.5 million registrations are a platform's capacity, "
+                 "and the roughly 1,200 board participants in the Hugging Face incident are a total accumulated over the whole observation window."),
+    st_scale_gap="Controlled experiments are mostly small, while live swarms of 10,000 agents or more are known only from lab reports without a control run.",
+    st_scale_more="Three meanings of “swarm size”, and every work on one map: Chapter 1",
+    st_grid_beat=("1,024 identical agents, six hours, no appointed leader. Among runs of equal agents with open data, 2026 has two: "
+                  "this one and sixteen copies of Claude on a C compiler."),
+    st_grid_more="The case study is in Chapter 5",
+    ag_room_lead=("A swarm of up to 1,024 identical agents with no dispatcher holds together and puts forward roles on its own. How the channel between them works, "
+                  "what was measured, and what was not held equal."),
+    ag_bars_t="Share of pandoc's hidden tests passed in 6 hours",
+    ag_bars_axis="% of pandoc's hidden tests · 6 hours for every team", ag_bars_axis_n="% of pandoc tests · 6 hours",
+    ag_bars_mean="mean over 5 tasks", ag_bars_hours="agent-hours relative to one agent · log scale · upper estimates", ag_bars_hours_n="agent-hours, ×",
+    ag_bars_none="no estimate",
+    ag_bars_desc=("Share of pandoc's hidden tests passed in 6 hours: 33.89% with 1 agent, 41.75% with 8, 43.11% with 32, 50.94% with 128, 55.06% with 1,024; the tick is the mean over five tasks "
+                  "(19.31, 20.68, 26.52 and 28.78% for 1, 8, 32 and 128 agents). Below, agent-hours relative to one agent: about 117 for 128 agents and about 800 for 1,024, "
+                  "on a log scale, the survey's upper estimates."),
+    ag_hours_note="Agent-hours relative to one agent are upper estimates, the survey's calculation. They are not tokens: the paper does not publish token use.",
+    ag_board_t="Agent 17's window: what reaches it",
+    ag_board_desc=("Schematic: agent 17's window fills with its own steps; at each boundary of a call to git, tests or chat, a batch of new board entries arrives in it — "
+                   "CLAIM, FAIL, PATCH_SUMMARY; an old entry reaches the agent by search."),
+    ag_board_win="agent{nb}17's window", ag_board_board="board", ag_board_batch="{b}: new entries in a batch", ag_board_b=["git", "tests", "chat"],
+    ag_board_search="search: an old entry",
+    ag_kinds=[("CLAIM", "k-claim", "the part I am taking"), ("FAIL", "k-fail", "an attempt that failed"), ("PATCH_SUMMARY", "k-patch", "a change checked and merged")],
+    ag_board_note="A schematic after the paper's description of how a board entry reaches an agent. The number of entries per batch is illustrative.",
+    ag_proto_t="The protocol two of the 128 agents agreed on",
+    ag_proto_desc=("At first the author updates and tests the branch and hands the commit hash to a colleague, who reviews and merges it. After failures the author hands the colleague "
+                   "the whole cycle: the colleague updates, checks and merges."),
+    ag_proto_rows=[("AT FIRST", [("author", "updates and tests the branch"), ("→", "commit hash"), ("colleague", "reviews and merges")]),
+                   ("AFTER FAILURES", [("author", "hands over the whole cycle"), ("→", ""), ("colleague", "updates, checks and merges")])],
+    ag_proto_note="The order as the paper describes it; other agents then adopted the same procedure.",
+    ag_replay=[("11,111", "pull requests in the 1,024-agent run"), ("2,800", "of them merged: 25%"), ("148,079", "entries on the board"), ("56,472", "of them FAIL")],
+    ag_replay_note="Replay of the 1,024-agent run, the survey's count (from the card above).",
+    sky_title_of="{t}: {v}",
+    mem_t="Shared or private memory: the same four agents", mem_s="ScaleMAS (FAIR/Meta, Harvard, 12 October 2026): successful answers on BrowseComp-Plus, Table 2",
+    mem_labels=["a shared store", "a private store each", "no store"],
+    mem_note=("Equal team size (four Qwen3.5-9B agents), not equal compute. The earlier ablation (Scaling Teams or Time) found the opposite: "
+              "private memory slightly better, 49.43 versus 48.62. Supplement of 19 October 2026."),
+)
 
 
-class Geo:
-    def __init__(self, W, H, cw, chh, pad, tag_room=26, coll=92, hub=(168, 88), card=(352, 168), gap=16, ang=None):
-        ang = ang or ANG
-        self.W, self.H, self.cw, self.chh = W, H, cw, chh
-        self.coll_size, self.hub_size, self.card_size = coll, hub, card
-        top = pad + chh / 2 + tag_room
-        bot = H - pad - chh / 2
-        step = (bot - top) / 5
-        self.ind = {k: (pad + cw / 2, top + (k - 1) * step) for k in AG}
-        self.coll = (W - pad - coll / 2, (top + bot) / 2)
-        cx, cy = W / 2, H / 2
-        rx = W / 2 - pad - cw / 2
-        ry = H / 2 - pad - chh / 2 - tag_room * 0.7
-        self.coord = {k: (cx + rx * math.cos(math.radians(ang[k])), cy + ry * math.sin(math.radians(ang[k]))) for k in AG}
-        self.hub = (cx, cy)
-        xs = [cx - (cw + gap), cx, cx + (cw + gap)]
-        yt = pad + chh / 2 + tag_room
-        yb = H - pad - chh / 2 - tag_room
-        self.mem = {1: (xs[0], yt), 2: (xs[1], yt), 3: (xs[2], yt), 4: (xs[2], yb), 5: (xs[1], yb), 6: (xs[0], yb)}
-        self.card = (cx, cy)
-
-    def pos(self, mode):
-        return {"ind": self.ind, "coord": self.coord, "mem": self.mem}[mode]
-
-    def lane(self, k):
-        x, y = self.ind[k]
-        cxl = self.coll[0] - self.coll_size / 2 - 8
-        ey = self.coll[1] + (k - 3.5) * 11
-        sx = x + self.cw / 2 + 12
-        bend = cxl - 150
-        return f"M{n(sx)} {n(y)}H{n(bend)}C{n(bend + 70)} {n(y)} {n(cxl - 60)} {n(ey)} {n(cxl)} {n(ey)}"
-
-    def spoke(self, k):
-        a = self.coord[k]
-        s = edge(a, self.cw / 2, self.chh / 2, self.hub, 6)
-        e = edge(self.hub, self.hub_size[0] / 2, self.hub_size[1] / 2, a, 6)
-        return f"M{n(s[0])} {n(s[1])}L{n(e[0])} {n(e[1])}"
-
-    def conn(self, k):
-        x, y = self.mem[k]
-        ch = self.card_size[1] / 2
-        if y < self.card[1]:
-            return f"M{n(x)} {n(y + self.chh / 2 + 6)}V{n(self.card[1] - ch - 6)}"
-        return f"M{n(x)} {n(y - self.chh / 2 - 6)}V{n(self.card[1] + ch + 6)}"
+def nb(s):
+    return s.replace("{nb}", NB)
 
 
-def tag_w(text, fs=14):
-    return round(len(text) * fs * 0.58 + 22)
+# ---------------------------------------------------------------- the stage: one brick model for every state
+# Every block of every tower lists the states in which it is visible and how it is painted there. The sticky stage
+# switches data-s as the reader scrolls (assets/js/story.js); the same markup filtered to one state is the static figure
+# for readers without JavaScript or with reduced motion.
+STATES = ["ind-0", "ind-2", "ind-3", "coord-0", "coord-2", "coord-3", "mem-0", "mem-2", "mem-3", "sky-1", "sky-2", "sky-3"]
+TOWER_STATES = [s for s in STATES if not s.startswith("sky")]
+PAINT = ["lime", "copy", "redo", "over", "dim"]
+COLS = [1, 2, 3, "C", 4, 5, 6]      # agents 1..3, the coordinator's slot, agents 4..6
+NS = 16                             # block slots per window
 
 
-# ---------------------------------------------------------------- stage (hero)
-# Two geometries of one scene: wide (desktop, tablet) and portrait (phone). CSS shows one and story.js animates
-# the visible one. Agents, channels and states are the same; only coordinates and type size change.
-VARIANTS = {
-    "w": dict(W=640, H=520, pad=16, coll=92, hub=(168, 88), card=(352, 168), gap=16, ang=ANG, tag_fs=14, tag_h=22,
-              lane="lane_w", lane_anchor="middle", below_c=(4, 5), cs_dy=(26, 46, 63),
-              row=dict(y0=-12, h=26, x0=-166, w=332, dot=-150, tx=-138, head=-50, rule=-36, clip=(-34, 114))),
-    "n": dict(W=486, H=500, pad=14, coll=84, hub=(176, 84), card=(408, 196), gap=12, ang=ANG_N, tag_fs=16, tag_h=24,
-              lane="lane_n", lane_anchor="end", below_c=(4, 5, 6), cs_dy=(30, 50, 68),
-              row=dict(y0=-20, h=30, x0=-194, w=388, dot=-176, tx=-162, head=-62, rule=-46, clip=(-42, 136))),
+def _plan():
+    P = {}
+
+    def base(n):
+        return {t: {s: "own" for s in range(n[t - 1])} for t in range(1, 7)}
+    P["ind-0"] = base([3, 4, 3, 3, 4, 3])
+    st = base([5, 8, 6, 8, 5, 8]); st[3][5] = "lime"
+    for t, top in ((1, 10), (5, 11)):
+        for s in range(5, top):
+            st[t][s] = "redo"
+        st[t][top] = "copy"
+    P["ind-2"] = st
+    P["ind-3"] = {t: dict(v) for t, v in st.items()}
+    st = base([3, 3, 3, 3, 3, 3]); st["C"] = {s: "own" for s in range(3)}; P["coord-0"] = st
+    st = base([5, 6, 6, 6, 5, 6]); st[3][5] = "lime"; st[1][5] = "copy"; st[5][5] = "copy"
+    st["C"] = {s: "own" for s in range(10)}; st["C"][6] = "lime"; P["coord-2"] = st
+    st = base([8, 8, 8, 8, 8, 8]); st[3][5] = "lime"; st[1][5] = "copy"; st[5][5] = "copy"
+    st["C"] = {s: ("over" if s >= 13 else "own") for s in range(NS)}; st["C"][6] = "lime"; P["coord-3"] = st
+    P["mem-0"] = base([3, 3, 3, 3, 3, 3])
+    st = base([6, 7, 7, 7, 6, 7]); st[3][5] = "lime"; st[1][6] = "copy"; st[5][6] = "copy"; P["mem-2"] = st
+    st = base([8, 8, 7, 8, 8, 8]); st[3] = {s: "dim" for s in range(7)}; st[3][5] = "lime"; st[1][6] = "copy"; st[5][6] = "copy"; P["mem-3"] = st
+    return P
+
+
+PLAN = _plan()
+GEOM = {
+    "wide": dict(W=1000, H=880, X0=150, CW=90, GAP=26, BASE=716, SH=34, BH=27, LBL=26, TOPLBL=92),
+    "narrow": dict(W=1000, H=1180, X0=44, CW=112, GAP=24, BASE=930, SH=46, BH=38, LBL=40, TOPLBL=118),
 }
+SKY_MARKS = ["anthropic-c-compiler", "opus55-card", "agensh-1024", "openai-navier-stokes", "anthropic-institute-pace"]
 
 
-def stage_svg(v, lang):
-    P = VARIANTS[v]
-    L = T[lang]
-    W, H, cw, chh = P["W"], P["H"], 128, 44
-    g = Geo(W, H, cw, chh, P["pad"], coll=P["coll"], hub=P["hub"], card=P["card"], gap=P["gap"], ang=P["ang"])
-    R = P["row"]
-    o = [f'<svg class="tp tp-{v}" viewBox="0 0 {W} {H}" role="img" aria-labelledby="tp-t-{v} tp-d-{v}">',
-         f'<title id="tp-t-{v}">{esc(L["stage_t"])}</title>',
-         f'<desc id="tp-d-{v}">{esc(L["stage_d"])}</desc>',
-         '<defs>'
-         f'<marker id="ah-em-{v}" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ah" d="M1 1L9 5L1 9"/></marker>'
-         f'<clipPath id="rows-clip-{v}"><rect x="-{g.card_size[0] / 2}" y="{R["clip"][0]}" width="{g.card_size[0]}" height="{R["clip"][1]}"/></clipPath>'
-         '</defs>']
-    # independent
-    o.append('<g class="layer layer-ind">')
-    lx = (g.ind[1][0] + cw / 2 + 12 + g.coll[0] - g.coll_size / 2) / 2
-    if P["lane_anchor"] == "end":  # on the narrow stage the label hugs the right edge so it clears agent 1's tag
-        lx = W - P["pad"]
-    o.append(f'<text class="lc" x="{n(lx)}" y="26" text-anchor="{P["lane_anchor"]}">{esc(L[P["lane"]])}</text>')
-    for k in AG:
-        o.append(f'<path class="ch lane" data-ch="ind-{k}" d="{g.lane(k)}"/>')
-    cx, cy = g.coll
-    s = g.coll_size
-    d1, d2, d3 = P["cs_dy"]
-    o.append(f'<g class="coll" transform="translate({n(cx)} {n(cy)})"><rect class="cb" x="{-s / 2}" y="{-s / 2}" width="{s}" height="{s}" rx="22"/>')
-    for k in AG:
-        col, row = (k - 1) % 3, (k - 1) // 3
-        o.append(f'<rect class="slot" data-n="{k}" x="{-35 + col * 26}" y="{-22 + row * 26}" width="18" height="18" rx="5"/>')
-    o.append(f'<text class="ct" y="{s / 2 + d1}" text-anchor="middle">{esc(L["sel"])}</text>'
-             f'<text class="cs" y="{s / 2 + d2}" text-anchor="middle">{esc(L["sel1"])}</text>'
-             f'<text class="cs" y="{s / 2 + d3}" text-anchor="middle">{esc(L["sel2"])}</text></g>')
-    o.append('</g>')
-    # coordinator
-    o.append('<g class="layer layer-coord">')
-    for k in AG:
-        o.append(f'<path class="ch spoke" data-ch="co-{k}" d="{g.spoke(k)}"/>')
-    hx, hy = g.hub
-    hw, hh = g.hub_size
-    mw = hw - 52
-    o.append(f'<g class="hub" transform="translate({n(hx)} {n(hy)})"><rect class="hb" x="{-hw / 2}" y="{-hh / 2}" width="{hw}" height="{hh}" rx="22"/>'
-             f'<text class="ht" y="-11" text-anchor="middle">{esc(L["hub"])}</text>'
-             f'<rect class="mt" x="{-mw / 2}" y="5" width="{mw}" height="6" rx="3"/><rect class="mf" x="{-mw / 2}" y="5" width="{mw}" height="6" rx="3"/>'
-             f'<text class="ml" y="30" text-anchor="middle">{esc(L["hub_m"])}</text></g>')
-    o.append('</g>')
-    # shared memory
-    o.append('<g class="layer layer-mem">')
-    for k in AG:
-        o.append(f'<path class="ch conn" data-ch="me-{k}" d="{g.conn(k)}"/>')
-    mx, my = g.card
-    cw2, chh2 = g.card_size
-    o.append(f'<g class="log" transform="translate({n(mx)} {n(my)})"><rect class="lb" x="{-cw2 / 2}" y="{-chh2 / 2}" width="{cw2}" height="{chh2}" rx="20"/>'
-             f'<text class="lh" x="{-cw2 / 2 + 20}" y="{R["head"]}">{esc(L["log"])}</text>'
-             f'<text class="ls" x="{cw2 / 2 - 20}" y="{R["head"]}" text-anchor="end">{esc(L["log_s"])}</text>'
-             f'<line class="ld" x1="{-cw2 / 2 + 20}" x2="{cw2 / 2 - 20}" y1="{R["rule"]}" y2="{R["rule"]}"/>'
-             f'<g class="rows" clip-path="url(#rows-clip-{v})" data-y0="{R["y0"]}" data-h="{R["h"]}" data-x0="{R["x0"]}" data-w="{R["w"]}" data-dot="{R["dot"]}" data-tx="{R["tx"]}">')
-    rh = R["h"] - 2
-    for j, (k, t, hot) in enumerate(L["rows"]):
-        o.append(f'<g class="row{" k" if hot else ""}" transform="translate(0 {R["y0"] + j * R["h"]})">'
-                 f'<rect class="rh" x="{R["x0"]}" y="{-rh / 2}" width="{R["w"]}" height="{rh}" rx="8"/>'
-                 f'<circle class="rd" cx="{R["dot"]}" r="4"/><text class="rt" x="{R["tx"]}" dy=".35em">{esc(L["agent"].format(k=k))} · {esc(t)}</text></g>')
-    o.append('</g></g>')
-    o.append('</g>')
-    # agents
-    o.append('<g class="ags">')
-    th = P["tag_h"]
-    for k in AG:
-        ix, iy = g.ind[k]
-        px, py = g.coord[k]
-        qx, qy = g.mem[k]
-        up, dn = -(chh / 2 + 19), chh / 2 + 19
-        tyc = dn if k in P["below_c"] else up
-        tym = dn if k in (4, 5, 6) else up
-        style = (f"--ix:{n(ix)}px;--iy:{n(iy)}px;--cx:{n(px)}px;--cy:{n(py)}px;--mx:{n(qx)}px;--my:{n(qy)}px;"
-                 f"--tyi:{n(up)}px;--tyc:{n(tyc)}px;--tym:{n(tym)}px;--d:{(k - 1) * 0.37:.2f}s")
-        data = f'data-ind="{n(ix)},{n(iy)}" data-coord="{n(px)},{n(py)}" data-mem="{n(qx)},{n(qy)}"'
-        o.append(f'<g class="ag" data-n="{k}" {data} style="{style}">')
-        chip = f'x="{-cw / 2}" y="{-chh / 2}" width="{cw}" height="{chh}" rx="{chh / 2}"'
-        o.append(f'<g class="body"><rect class="chip" {chip}/><rect class="chip-k" {chip}/>'
-                 f'<circle class="st" cx="-41" r="5"/><circle class="st-k" cx="-41" r="5"/><text class="al" x="-28" dy=".35em">{esc(L["agent"].format(k=k))}</text></g>')
-        o.append('<g class="tgs">')
-        for key, text in L["tags"]:
-            w = tag_w(text, P["tag_fs"])
-            o.append(f'<g class="tg tg-{key}"><rect x="{-w / 2}" y="{-th / 2}" width="{w}" height="{th}" rx="{th / 2}"/><text dy=".35em" text-anchor="middle">{esc(text)}</text></g>')
-        o.append('</g></g>')
-    o.append('</g>')
-    o.append('<g class="fx"></g>')
-    o.append('</svg>')
-    return "\n".join(o)
-
-
-# Without scripts the scene shows the end state of the chosen mode; these rules repeat the classes story.js sets.
-FINAL = {
-    "ind": {1: ["k", "redo"], 3: ["k", "src"], 5: ["k", "redo"]},
-    "coord": {1: ["k", "got"], 3: ["k", "src"], 5: ["k", "got"]},
-    "mem": {1: ["k", "ask"], 3: ["k", "src"], 5: ["k", "ask"]},
-}
-
-
-def mode_css():
+def sky_works(works=None):
+    """The works of the analytic corpus that state how many agents work at the same time (cut-off 3 October 2026)."""
     out = []
-    for m, key in (("ind", "i"), ("coord", "c"), ("mem", "m")):
-        decl = f"transform:translate(var(--{key}x),var(--{key}y));--ty:var(--ty{key})"
-        vis = "opacity:1;visibility:visible;transition:opacity .6s .45s,visibility 0s"
-        for sel in (f'html.js .hero[data-mode="{m}"]', f'html:not(.js) .hero:has(#m-{m}:checked)'):
-            out.append(f'{sel} .ag{{{decl}}}')
-            out.append(f'{sel} .layer-{m}{{{vis}}}')
-            out.append(f'{sel} .nm-{m}{{display:block}}')
-            out.append(f'{sel} .beats-{m}{{visibility:visible}}')
-    for m, agents in FINAL.items():
-        sel = f"html:not(.js) .hero:has(#m-{m}:checked)"
-        for k, classes in agents.items():
-            for c in classes:
-                out.append(f'{sel} .ag[data-n="{k}"]{{--s-{c}:1}}')
-    return "\n".join(out)
+    for w in (works or load_works()):
+        c = w.get("corpus") or {}
+        if w.get("in_analytic_corpus") and c.get("scale_kind") == "simultaneous" and isinstance(c.get("agents_max_simultaneous"), (int, float)):
+            out.append(dict(w=w, id=w["id"], n=c["agents_max_simultaneous"]))
+    out.sort(key=lambda x: (x["n"], x["id"]))
+    return out
 
 
-# ---------------------------------------------------------------- Agensh: how entries reach an agent
-# One chronology, two layouts: time runs right (wide screen) or down (phone). data-t is the position on the
-# time axis from 0 to 1; story.js plays it once when the figure scrolls into view.
-CH_T0, CH_T1 = 262, 728
-CH_B = [292, 490, 614, 708]
-CH_E = [("CLAIM", 314), ("FAIL", 374), ("CLAIM", 426), ("PATCH_SUMMARY", 502), ("FAIL", 628)]
-CH_G = [(0, 3, 490), (3, 4, 614), (4, 5, 708)]
-
-
-def ct(x):
-    return f"{(x - CH_T0) / (CH_T1 - CH_T0):.3f}"
-
-
-def pill_w(text):
-    return round(len(text) * 6.7 + 14)
-
-
-def channels_wide(lang):
+def stage_svg(var, lang, only=None, title_of=None, cls="st-svg"):
+    """The whole stage in one geometry (wide or narrow); `only` filters it to one state (a static figure)."""
     L = T[lang]
+    g = GEOM[var]
+    W, H, X0, CW, GAP, BASE, SH, BH, LBL = g["W"], g["H"], g["X0"], g["CW"], g["GAP"], g["BASE"], g["SH"], g["BH"], g["LBL"]
+    colx = {c: X0 + i * (CW + GAP) for i, c in enumerate(COLS)}
+    sy = lambda s: BASE - (s + 1) * SH + (SH - BH)
+    states = [only] if only else STATES
+    sid = f"{var}-{only or 'dyn'}"
     o = []
-    W, H = 740, 262
-    o.append(f'<svg class="chn chn-w" viewBox="0 0 {W} {H}" role="img" aria-labelledby="chn-t-w chn-d">')
-    o.append(f'<title id="chn-t-w">{esc(L["ch_t"])}</title>')
-    o.append('<defs><marker id="ah-bl-w" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ah-bl" d="M1 1L9 5L1 9"/></marker>'
-             '<marker id="ah-tx-w" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path class="ah-tx" d="M1 1L9 5L1 9"/></marker></defs>')
-    o.append(f'<text class="rl" x="0" y="56">{esc(L["ch_board"])}</text><text class="rs" x="0" y="75">{esc(L["ch_board_s"])}</text>')
-    o.append(f'<text class="rl" x="0" y="174">{esc(L["ch_agent"])}</text><text class="rs" x="0" y="193">{esc(sub_nb(L["ch_agent_s"]))}</text>')
-    o.append(f'<text class="rs" x="0" y="216">{esc(L["ch_calls"])}</text>')
-    o.append('<rect class="trk" x="152" y="40" width="576" height="38" rx="12"/>')
-    for x in (164, 194, 224):
-        o.append(f'<rect class="old" x="{x}" y="54" width="22" height="10" rx="3"/>')
-    o.append(f'<text class="an" x="204" y="30" text-anchor="middle">{esc(L["ch_old"])}</text>')
-    o.append(f'<text class="an" x="490" y="30" text-anchor="middle">{esc(L["ch_new"])}</text>')
-    for text, x in CH_E:
-        w = pill_w(text)
-        o.append(f'<g class="en" data-t="{ct(x)}"><rect x="{x}" y="48" width="{w}" height="22" rx="6"/><text x="{x + w / 2}" y="59" dy=".35em" text-anchor="middle">{text}</text></g>')
-    xs = [CH_T0] + CH_B + [CH_T1]
-    o.append('<g class="work">')
-    for a, b in zip(xs[:-1], xs[1:]):
-        a2 = a + (8 if a != CH_T0 else 0)
-        o.append(f'<rect x="{a2}" y="170" width="{max(4, b - 8 - a2)}" height="12" rx="6"/>')
-    o.append('</g>')
-    o.append(f'<rect class="ph" data-axis="x" data-a="{CH_T0}" data-b="{CH_T1}" x="{CH_T0}" y="160" width="2" height="32" rx="1"/>')
-    o.append(f'<g class="pull" data-t="{ct(292)}"><path d="M292 164C292 124 236 110 214 84" marker-end="url(#ah-bl-w)" marker-start="url(#ah-bl-w)"/>'
-             f'<text x="248" y="146" text-anchor="end">{esc(L["ch_pull"])}</text></g>')
-    for i, (a, b, bx) in enumerate(CH_G):
-        ax = CH_E[a][1]
-        sub = f'<text class="sub" x="{bx - 8}" y="144" text-anchor="end">{esc(L["ch_push_s"])}</text>' if i == 0 else ""
-        o.append(f'<g class="push" data-t="{ct(bx)}"><path d="M{ax} 84H{bx}V162" marker-end="url(#ah-bl-w)"/><text x="{bx - 8}" y="126" text-anchor="end">{esc(L["ch_push"][i])}</text>{sub}</g>')
-    for b, lab in zip(CH_B, L["ch_b"]):
-        o.append(f'<g class="bd" data-t="{ct(b)}"><circle cx="{b}" cy="176" r="6"/><text x="{b}" y="216" text-anchor="middle">{esc(lab)}</text></g>')
-    o.append(f'<g class="tax"><path d="M{CH_T0} 242H{CH_T1}" marker-end="url(#ah-tx-w)"/><text x="{CH_T1}" y="258" text-anchor="end">{esc(L["ch_time"])}</text></g>')
-    o.append('</svg>')
-    return "\n".join(o)
+
+    def k(cls_, on, inner, gid=None):   # gid: an id on the moving stage, where story.js times the group to a flight
+        on_ = [s for s in on if s in states]
+        if on_:
+            ident = f' id="{sid}-{gid}"' if gid and not only else ""
+            o.append(f'<g class="k {cls_}"{ident} data-on="{" ".join(on_)}">{inner}</g>')
+
+    o.append(f'<svg class="{cls} v-{var}" viewBox="0 0 {W} {H}" data-s="{only or "ind-0"}" aria-hidden="true" focusable="false">')
+    o.append(f'<defs><pattern id="g32-{sid}" width="16" height="16" patternUnits="userSpaceOnUse"><rect x="1.5" y="1.5" width="13" height="13" rx="2" class="gp"/></pattern></defs>')
+    for c in COLS:
+        x = colx[c]
+        on = [s for s in TOWER_STATES if (c != "C" or s.startswith("coord"))]
+        fh = NS * SH + 10
+        lab = L["st_coord"] if c == "C" else nb((L["st_agent_n"] if var == "narrow" else L["st_agent"]).format(k=c, nb="{nb}"))
+        k("frame" + (" fc" if c == "C" else ""), on,
+          f'<rect class="fr" x="{x - 5}" y="{BASE - fh + 4}" width="{CW + 10}" height="{fh}" rx="6"/>'
+          f'<text class="tl" x="{x + CW / 2}" y="{BASE - fh - 14}" text-anchor="middle">{esc(lab)}</text>')
+    for c in COLS:
+        x = colx[c]
+        for s in range(NS):
+            on, paint = [], {p: [] for p in PAINT}
+            for st in TOWER_STATES:
+                cell = PLAN[st].get(c, {}).get(s)
+                if cell:
+                    on.append(st)
+                    if cell != "own":
+                        paint[cell].append(st)
+            on = [z for z in on if z in states]
+            if not on:
+                continue
+            attrs = "".join(f' data-{p}="{" ".join(z for z in v if z in states)}"' for p, v in paint.items() if any(z in states for z in v))
+            bid = f' id="{sid}-b{c}-{s}"' if not only else ""      # the moving stage names its blocks for the flights; static figures need no ids
+            o.append(f'<rect class="k bk"{bid} style="--lv:{s}" x="{x}" y="{sy(s)}" width="{CW}" height="{BH}" rx="3" data-on="{" ".join(on)}"{attrs}/>')
+    ybar = 100 if var == "wide" else 132
+    k("sel", ["ind-3"], f'<rect class="selbar" x="{X0}" y="{ybar}" width="{colx[6] + CW - X0}" height="10" rx="5"/>'
+      + "".join(f'<line class="sell" x1="{colx[t] + CW / 2}" y1="{ybar + 10}" x2="{colx[t] + CW / 2}" y2="{BASE - NS * SH - 12 - LBL - 10}"/>' for t in range(1, 7))
+      + f'<text class="cap" x="{X0}" y="{ybar - 14}">{esc(L["st_select"])}</text>')
+
+    def inlab(c, s_, text, on, dark):   # a label on block s_ of tower c; on the moving stage it waits for the block's flight
+        k("bl", on, f'<text class="bin{" dk" if dark else ""}" x="{colx[c] + CW / 2}" y="{sy(s_) + BH * .5}" dy=".35em" text-anchor="middle">{esc(text)}</text>', f"l{c}-{s_}")
+    found = [z for z in TOWER_STATES if z not in ("ind-0", "coord-0", "mem-0")]
+    inlab(3, 5, L["st_found"], found, True)
+    inlab(1, 10, L["st_again"], ["ind-2", "ind-3"], False)
+    inlab(5, 11, L["st_again"], ["ind-2", "ind-3"], False)
+    inlab("C", 6, L["st_copy"], ["coord-2", "coord-3"], True)
+    inlab(1, 5, L["st_got"], ["coord-2", "coord-3"], False)
+    inlab(5, 5, L["st_got"], ["coord-2", "coord-3"], False)
+    inlab(1, 6, L["st_asked"], ["mem-2", "mem-3"], False)
+    inlab(5, 6, L["st_asked"], ["mem-2", "mem-3"], False)
+    if var == "wide":
+        for t, top in ((1, 10), (5, 11)):
+            x = colx[t] + CW + 8
+            k("brace", ["ind-2", "ind-3"], f'<path class="brc" d="M{x},{sy(top - 1) + BH} h6 V{sy(5)} h-6"/>')
+    cx = colx["C"] + CW / 2
+    k("wires", ["coord-0", "coord-2", "coord-3"], "".join(f'<path class="wire" d="M{colx[t] + CW / 2},{BASE + 12} V{BASE + 34} H{cx} V{BASE + 12}"/>' for t in range(1, 7)))
+    k("ovl", ["coord-3"], f'<text class="cap coral" x="{cx}" y="{BASE + (76 if var == "wide" else 92)}" text-anchor="middle">{esc(L["st_fill"] if var == "wide" else L["st_fill_n"])}</text>')
+    sy0 = BASE + 40
+    k("shelf-g", ["mem-0", "mem-2", "mem-3"], f'<rect class="shelf" x="{X0}" y="{sy0}" width="{colx[6] + CW - X0}" height="{BH + 16}" rx="6"/>'
+      f'<text class="cap" x="{X0}" y="{sy0 + BH + 52}">{esc(L["st_shelf"])}</text>')
+    rid = "" if only else f' id="{sid}-rec"'
+    k("rec", ["mem-2", "mem-3"], f'<rect class="recb"{rid} x="{colx[3]}" y="{sy0 + 8}" width="{CW}" height="{BH}" rx="3"/>'
+      f'<text class="bin dk" x="{colx[3] + CW / 2}" y="{sy0 + 8 + BH * .5}" dy=".35em" text-anchor="middle">{esc(L["st_entry"])}</text>'
+      + (f'<text class="bt lime" x="{colx[3] + CW + 14}" y="{sy0 + 8 + BH * .72}">{esc(nb(L["st_entry_of"]))}</text>' if var == "wide" else ""))
+    for t in (1, 5):   # agents 1 and 5 query the journal once the entry is in it
+        k("beam", ["mem-2", "mem-3"], f'<line class="beamq" x1="{colx[t] + CW / 2}" y1="{BASE + 6}" x2="{colx[t] + CW / 2}" y2="{sy0 - 2}"/>', f"q{t}")
+    k("done3", ["mem-3"], f'<text class="cap" x="{colx[3] + CW / 2}" y="{BASE - (8 * SH) - 22}" text-anchor="middle">{esc(L["st_done"])}</text>')
+    # the skyline: the works of the analytic corpus that state a simultaneous count, sorted, on a log scale
+    sky = ["sky-1", "sky-2"]
+    SW = sky_works()
+    nw = len(SW)
+    sx0, sx1 = X0, colx[6] + CW
+    bw = (sx1 - sx0) / nw
+    top = 150 if var == "wide" else 190
+    hmax = BASE - top
+    HV = lambda v: (math.log10(v) + .35) / (math.log10(30000) + .35) * hmax
+    med_i = (nw - 1) // 2
+    for i, x_ in enumerate(SW):
+        if not any(s in states for s in sky):
+            break
+        x = sx0 + i * bw
+        h = HV(x_["n"])
+        c_ = "sb" + (" med" if i == med_i else "") + (" mk" if x_["id"] in SKY_MARKS else "") + (" ag" if x_["id"] == "agensh-1024" else "")
+        tt = f'<title>{esc(L["sky_title_of"].format(t=title_of(x_["w"], lang) if title_of else x_["id"], v=fnum(x_["n"], lang)))}</title>'
+        o.append(f'<rect class="k {c_}" style="--i:{i}" data-on="{" ".join(s for s in sky if s in states)}" x="{x + bw * .12:.1f}" y="{BASE - h:.1f}" width="{bw * .76:.1f}" height="{h:.1f}">{tt}</rect>')
+    med = statistics.median(x_["n"] for x_ in SW)
+    xm = sx0 + med_i * bw + bw / 2
+    k("skl", sky, f'<text class="cap lime" x="{xm}" y="{BASE - HV(med) - 40}" text-anchor="middle">{esc(nb(L["st_median"]).format(v=fnum(med, lang)))}</text>'
+      f'<line class="tick lime" x1="{xm}" y1="{BASE - HV(med) - 30}" x2="{xm}" y2="{BASE - HV(med) - 6}"/>')
+    if var == "wide":
+        k("skl", sky, f'<text class="cap" x="{sx0}" y="{BASE + 40}">{esc(L["st_sky_cap"].format(n=nw))}</text><text class="cap dim" x="{sx0}" y="{BASE + 68}">{esc(L["st_sky_cap2"])}</text>')
+    else:
+        k("skl", sky, f'<text class="cap" x="{sx0}" y="{BASE + 56}">{esc(L["st_sky_cap_n"].format(n=nw))}</text>')
+    for t in THRESHOLDS:
+        cnt = sum(1 for x_ in SW if x_["n"] >= t)
+        y = BASE - HV(t)
+        first = next(i for i, x_ in enumerate(SW) if x_["n"] >= t)
+        xx = sx0 + first * bw
+        lbl = (L["st_thr"] if var == "wide" else L["st_thr_n"]).format(t=fnum(t, lang), c=cnt)
+        k("thr", ["sky-1", "sky-2"], f'<line class="thl" x1="{sx0}" y1="{y}" x2="{sx1}" y2="{y}"/><line class="thk" x1="{xx}" y1="{y - 8}" x2="{xx}" y2="{y + 8}"/><text class="thn" x="{sx0}" y="{y - 10}">{esc(lbl)}</text>')
+    for mid in SKY_MARKS:
+        i = next(i for i, x_ in enumerate(SW) if x_["id"] == mid)
+        x = sx0 + i * bw + bw / 2
+        y = BASE - HV(SW[i]["n"])
+        short = nb(L["st_marks"][mid]) if var == "wide" else fnum(SW[i]["n"], lang).replace(" ", NB)
+        if var != "wide" and mid in ("openai-navier-stokes", "anthropic-institute-pace"):
+            short = "≈" + short
+        k("mkl" + (" agl" if mid == "agensh-1024" else ""), ["sky-2"], f'<line class="mkline" x1="{x}" y1="{y - 6}" x2="{x}" y2="{y - 40}"/><text class="mkt" x="{x - 6}" y="{y - 48}" text-anchor="end">{esc(short)}</text>')
+    gs = 480 if var == "wide" else 640
+    gx, gy = (X0, 150) if var == "wide" else ((W - gs) / 2, 200)
+    k("grid", ["sky-3"], f'<g transform="translate({gx},{gy}) scale({gs / 512})"><rect class="g32" x="0" y="0" width="512" height="512" fill="url(#g32-{sid})"/></g>'
+      f'<text class="cap" x="{gx}" y="{gy + gs + (46 if var == "wide" else 58)}">{esc(nb(L["st_grid"] if var == "wide" else L["st_grid_n"]))}</text>')
+    for key, t in L["st_titles"].items():
+        k("stt", [s for s in STATES if s.startswith(key)], f'<text class="stt" x="{X0}" y="{52 if var == "wide" else 66}">{esc(t)}</text>')
+    o.append("</svg>")
+    return "".join(o)
 
 
-def channels_tall(lang):
-    """Phone: time runs down, the board on the left, the agent on the right; arrows are horizontal."""
+def state_css():
+    """Which blocks a state shows and how it paints them; the same rules serve the sticky stage and the static figures."""
+    r = []
+    for st in STATES:
+        r.append(f'.st-svg[data-s="{st}"] .k[data-on~="{st}"]{{opacity:1;visibility:visible}}')
+        r.append(f'.st-svg[data-s="{st}"] .bk[data-lime~="{st}"]{{fill:var(--lime);stroke:var(--lime)}}')
+        r.append(f'.st-svg[data-s="{st}"] .bk[data-copy~="{st}"]{{fill:var(--lime-bg);stroke:var(--lime);stroke-width:3}}')
+        r.append(f'.st-svg[data-s="{st}"] .bk[data-redo~="{st}"]{{fill:var(--coral-bg);stroke:var(--coral)}}')
+        r.append(f'.st-svg[data-s="{st}"] .bk[data-over~="{st}"]{{fill:var(--coral);stroke:var(--coral)}}')
+        r.append(f'.st-svg[data-s="{st}"] .bk[data-dim~="{st}"]{{fill:transparent;stroke:var(--line-3)}}')
+    return "\n".join(r)
+
+
+def towers_svg(cls="hero-tw"):
+    """The title screen: six context windows filling with blocks; one block, agent 3's finding, is lime."""
+    W, H, X0, CW, GAP, BASE, SH, BH = 900, 980, 40, 112, 26, 940, 52, 44
+    o = [f'<svg class="{cls}" viewBox="0 0 {W} {H}" aria-hidden="true" focusable="false" preserveAspectRatio="xMaxYMax meet">']
+    for t in range(6):
+        x = X0 + t * (CW + GAP)
+        o.append(f'<rect class="fr" x="{x - 6}" y="{BASE - 17 * SH}" width="{CW + 12}" height="{17 * SH + 8}" rx="8"/>')
+        for s in range([9, 12, 10, 13, 11, 8][t]):
+            o.append(f'<rect class="hb{" lime" if (t == 2 and s == 9) else ""}" style="--d:{round(.25 + s * .11 + t * .07, 2)}s" x="{x}" y="{BASE - (s + 1) * SH + (SH - BH)}" width="{CW}" height="{BH}" rx="4"/>')
+    o.append("</svg>")
+    return "".join(o)
+
+
+def hero_html(lang, cover, survey_href="#survey"):
+    """The title screen of the single page. `cover` is the :::cover block of index.md (kicker, subtitle, meta)."""
     L = T[lang]
-    o = []
-    W, H = 340, 560
-    Y0, Y1 = 132, 512
-
-    def Y(x):
-        return Y0 + (x - CH_T0) / (CH_T1 - CH_T0) * (Y1 - Y0)
-
-    BAR, TRK_R, BR = 250, 136, 148
-    o.append(f'<svg class="chn chn-t" viewBox="0 0 {W} {H}" role="img" aria-labelledby="chn-t-t chn-d">')
-    o.append(f'<title id="chn-t-t">{esc(L["ch_t"])}</title>')
-    o.append('<defs><marker id="ah-bl-t" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ah-bl" d="M1 1L9 5L1 9"/></marker>'
-             '<marker id="ah-tx-t" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path class="ah-tx" d="M1 1L9 5L1 9"/></marker></defs>')
-    o.append(f'<text class="rl" x="8" y="20">{esc(L["ch_board"])}</text><text class="rs" x="8" y="40">{esc(L["ch_board_s"])}</text>')
-    o.append(f'<text class="rl" x="{BAR - 12}" y="20">{esc(L["ch_agent"])}</text><text class="rs" x="{BAR - 12}" y="40">{esc(sub_nb(L["ch_agent_s"]))}</text>')
-    o.append(f'<rect class="trk" x="4" y="58" width="{TRK_R - 4}" height="{Y1 - 58 + 10}" rx="14"/>')
-    for i in range(3):
-        o.append(f'<rect class="old" x="16" y="{72 + i * 14}" width="40" height="9" rx="3"/>')
-    o.append(f'<text class="an" x="16" y="128">{esc(L["ch_old"])}</text>')
-    for text, x in CH_E:
-        w = pill_w(text)
-        y = Y(x)
-        o.append(f'<g class="en" data-t="{ct(x)}"><rect x="14" y="{n(y - 11)}" width="{w}" height="22" rx="6"/><text x="{n(14 + w / 2)}" y="{n(y)}" dy=".35em" text-anchor="middle">{text}</text></g>')
-    ys = [Y0] + [Y(b) for b in CH_B] + [Y1]
-    o.append('<g class="work">')
-    for a, b in zip(ys[:-1], ys[1:]):
-        a2 = a + (8 if a != Y0 else 0)
-        o.append(f'<rect x="{BAR - 6}" y="{n(a2)}" width="12" height="{n(max(4, b - 8 - a2))}" rx="6"/>')
-    o.append('</g>')
-    o.append(f'<rect class="ph" data-axis="y" data-a="{Y0}" data-b="{Y1}" x="{BAR - 16}" y="{Y0}" width="32" height="2" rx="1"/>')
-    yb0 = Y(CH_B[0])
-    p1, p2 = L["ch_pull2"]
-    o.append(f'<g class="pull" data-t="{ct(CH_B[0])}"><path d="M{BAR - 8} {n(yb0 - 4)}C{BAR - 60} {n(yb0 - 40)} 128 90 66 87" marker-end="url(#ah-bl-t)" marker-start="url(#ah-bl-t)"/>'
-             f'<text x="{BAR + 16}" y="{n(yb0 + 22)}">{esc(p1)}</text><text x="{BAR + 16}" y="{n(yb0 + 38)}">{esc(p2)}</text></g>')
-    for i, (a, b, bx) in enumerate(CH_G):
-        ya, yb = Y(CH_E[a][1]), Y(bx)
-        o.append(f'<g class="push" data-t="{ct(bx)}"><path d="M{TRK_R + 2} {n(ya)}H{BR}V{n(yb)}H{BAR - 12}" marker-end="url(#ah-bl-t)"/>'
-                 f'<text x="{(BR + BAR) / 2 - 2}" y="{n(yb - 9)}" text-anchor="middle">{esc(L["ch_push"][i])}</text></g>')
-    for b, lab in zip(CH_B, L["ch_b"]):
-        y = Y(b)
-        o.append(f'<g class="bd" data-t="{ct(b)}"><circle cx="{BAR}" cy="{n(y)}" r="6"/><text x="{BAR + 16}" y="{n(y)}" dy=".35em">{esc(lab)}</text></g>')
-    o.append(f'<g class="tax"><path d="M{BAR} {Y1 + 10}V{Y1 + 30}" marker-end="url(#ah-tx-t)"/><text x="{BAR + 14}" y="{Y1 + 26}">{esc(L["ch_time"])}</text></g>')
-    o.append('</svg>')
-    return "\n".join(o)
+    lines = "".join(f"<span>{esc(x)}</span>" for x in L["hero_lines"])
+    meta = esc(cover.get("meta_line", ""))
+    return (f'<header class="hero" aria-labelledby="h1"><div class="hero-in">'
+            f'<p class="kicker">{esc(cover.get("kicker", ""))}</p><h1 id="h1">{lines}</h1>'
+            f'<p class="sub">{esc(cover.get("subtitle", ""))}</p><p class="hook">{esc(L["hero_hook"])}</p>'
+            f'<p class="meta">{meta}</p></div>'
+            f'<div class="hero-art">{towers_svg()}</div>'
+            f'<p class="cue"><a href="#how">{esc(L["hero_cue"])}</a><a class="cue-skip" href="{survey_href}">{esc(L["hero_skip"])} ↓</a></p></header>')
 
 
-def channels_svg(lang):
-    return f'<p class="sr" id="chn-d">{esc(T[lang]["ch_d"])}</p>\n' + channels_wide(lang) + "\n" + channels_tall(lang)
+def stage_html(lang, href, ch1_href="#ch01", agensh_href="#agensh", title_of=None):
+    """#how: the prologue as a sticky stage beside its text. Each step names the state it shows; without JavaScript, or
+    with reduced motion, the stage is hidden and every scheme carries a static figure of its end state."""
+    L = T[lang]
+    ld = ladder(load_works())
+    modes = {m[0]: m for m in L["modes"]}
+    def stat(state):
+        return (f'<figure class="static" aria-hidden="true"><div class="vw">{stage_svg("wide", lang, state, title_of)}</div>'
+                f'<div class="vn">{stage_svg("narrow", lang, state, title_of)}</div></figure>')
+    steps = [f'<div class="step intro" data-s="ind-0" id="how-1"><p class="label">{esc(L["st_label"])}</p>'
+             f'<h2 id="how-h">{L["h1"]}</h2><p class="deck">{esc(nb(L["deck"]))}</p><p class="note">{esc(L["st_note"])}</p></div>']
+    n = 1
+    for m in ("ind", "coord", "mem"):
+        _, num, name, short, desc, ev, wid, more = modes[m]
+        b = L["beats"][m]
+        link = (f' <a href="{href(wid)}">{esc(nb(more))}{NB}→</a>' if wid else f' <a href="{agensh_href}">{esc(nb(more))}{NB}↓</a>')
+        n += 1
+        steps.append(f'<div class="grp" data-g="{m}" id="m-{m}"><div class="step" data-s="{m}-0" id="how-{n}"><h3><span class="num">{num}</span>{esc(name)} <span class="short">— {esc(short)}</span></h3>'
+                     f'{stat(m + "-3")}<p class="mtext">{esc(desc)}</p><p class="beat">{esc(b[0])}</p></div>')
+        n += 1
+        steps.append(f'<div class="step" data-s="{m}-2" id="how-{n}"><p class="beat">{esc(b[1])}</p><p class="beat">{esc(b[2])}</p></div>')
+        n += 1
+        steps.append(f'<div class="step" data-s="{m}-3" id="how-{n}"><p class="beat">{esc(b[3])}</p><p class="ev">{esc(nb(ev))}{link}</p></div></div>')
+    thr = " · ".join((L["st_thr"].format(t=fnum(t, lang), c=c)) for t, c in ld["rows"])
+    kw = dict(corpus=ld["corpus"], known=ld["known"], med=fnum(ld["median"], lang))
+    n += 1
+    steps.append(f'<div class="grp" data-g="sky"><div class="step" data-s="sky-1" id="how-{n}"><p class="label">{esc(L["st_scale_label"])}</p><h2>{esc(L["st_scale_h"])}</h2>'
+                 f'{stat("sky-2")}<p class="deck">{esc(L["st_scale_p1"].format(**kw))}</p><p class="beat sm">{esc(L["st_scale_thr"].format(known=ld["known"], thr=thr))}</p></div>')
+    n += 1
+    steps.append(f'<div class="step" data-s="sky-2" id="how-{n}"><p class="beat sm">{esc(nb(L["st_scale_p2"]))}</p><p class="mtext">{esc(nb(L["st_scale_p3"]))}</p>'
+                 f'<p class="beat sm lime">{esc(nb(L["st_scale_gap"]))}</p><p class="ev"><a href="{ch1_href}">{esc(L["st_scale_more"])}{NB}→</a></p></div>')
+    n += 1
+    steps.append(f'<div class="step" data-s="sky-3" id="how-{n}"><p class="beat big">{esc(nb(L["st_grid_beat"]))}</p><p class="ev"><a href="{agensh_href}">{esc(L["st_grid_more"])}{NB}↓</a></p></div></div>')
+    stage = f'<div class="vw">{stage_svg("wide", lang, None, title_of)}</div><div class="vn">{stage_svg("narrow", lang, None, title_of)}</div>'
+    return (f'<section class="scrolly" id="how" aria-labelledby="how-h"><div class="stage" aria-hidden="true">{stage}</div>'
+            f'<div class="steps">{"".join(steps)}</div></section>')
 
 
-# ---------------------------------------------------------------- Agensh: result by team size
+# ---------------------------------------------------------------- Agensh: agent 17's window, the result, the protocol
 PANDOC = [(1, 33.89), (8, 41.75), (32, 43.11), (128, 50.94), (1024, 55.06)]
+MEAN5 = [(1, 19.31), (8, 20.68), (32, 26.52), (128, 28.78)]
+AGENT_HOURS = [(1, 1), (128, 117), (1024, 800)]
 
 
-def line_svg(lang):
+def board_svg(lang):
+    """Agent 17's window: its own blocks, and board entries arriving in batches at tool-call boundaries; an old entry by search."""
+    import random
     L = T[lang]
-    W, H = 480, 290
-    x0, x1, y0, y1 = 44, 452, 236, 26
+    W, H = 760, 640
+    TX, CW, BASE, SH, BH, NSL = 330, 150, 600, 30, 24, 18
+    rnd = random.Random(11)
+    seq = []
+    for b in range(3):
+        seq += [("own", None), ("own", None), ("bnd", L["ag_board_b"][b])]
+        seq += [("rec", rnd.choice(["claim", "fail", "patch"])) for _ in range(rnd.choice([2, 3]))]
+    seq += [("own", None), ("q", None), ("old", "patch")]
+    o = [f'<svg class="b17" viewBox="0 0 {W} {H}" role="img" aria-labelledby="b17-t"><title id="b17-t">{esc(L["ag_board_desc"])}</title>',
+         f'<rect class="fr" x="{TX - 8}" y="{BASE - NSL * SH - 2}" width="{CW + 16}" height="{NSL * SH + 10}" rx="8"/>'
+         f'<text class="tl" x="{TX + CW / 2}" y="{BASE - NSL * SH - 18}" text-anchor="middle">{esc(nb(L["ag_board_win"]))}</text>',
+         f'<rect class="fr board" x="20" y="{BASE - NSL * SH - 2}" width="200" height="{NSL * SH + 10}" rx="8"/>'
+         f'<text class="tl" x="120" y="{BASE - NSL * SH - 18}" text-anchor="middle">{esc(L["ag_board_board"])}</text>']
+    for i in range(22):
+        o.append(f'<rect class="brd k-{rnd.choice(["claim", "fail", "patch"])}" x="{36 + (i % 4) * 44}" y="{BASE - 14 - (i // 4) * 30 - 26}" width="36" height="20" rx="3"/>')
+    lvl = 0
+    for kk, (kind, v) in enumerate(seq):
+        y = BASE - (lvl + 1) * SH + (SH - BH)
+        if kind == "own":
+            o.append(f'<rect class="ob" style="--k:{kk}" x="{TX}" y="{y}" width="{CW}" height="{BH}" rx="3"/>'); lvl += 1
+        elif kind in ("rec", "old"):
+            o.append(f'<rect class="rb k-{v}{" old" if kind == "old" else ""}" style="--k:{kk}" x="{TX + 10}" y="{y}" width="{CW - 20}" height="{BH}" rx="3"/>'); lvl += 1
+        elif kind == "bnd":
+            o.append(f'<g class="bd" style="--k:{kk}"><line x1="{TX - 26}" y1="{y + BH + 2}" x2="{TX + CW + 26}" y2="{y + BH + 2}"/>'
+                     f'<text x="{TX + CW + 34}" y="{y + BH + 7}">{esc(L["ag_board_batch"].format(b=v))}</text></g>')
+        else:
+            tx_, ty_ = 36 + 44 + 36, BASE - 14 - 30 - 16
+            o.append(f'<g class="bd q" style="--k:{kk}"><path d="M{TX - 10},{y + 12} C{TX - 70},{y + 12} {tx_ + 60},{ty_} {tx_ + 4},{ty_}"/>'
+                     f'<circle cx="{tx_ - 18}" cy="{ty_}" r="15" class="qr"/><text x="{TX + CW + 34}" y="{y + 18}">{esc(L["ag_board_search"])}</text></g>')
+    o.append("</svg>")
+    return "".join(o)
 
-    def X(v):
-        return x0 + math.log2(v) / 10 * (x1 - x0)
 
-    def Y(p):
-        return y0 - (p - 30) / 30 * (y0 - y1)
+def bars_svg(lang, var):
+    """Pandoc pass rate by team size (bars), the mean over five tasks (ticks), and agent-hours relative to one agent below."""
+    L = T[lang]
+    if var == "wide":
+        W, H, X0, X1, Y0, YT = 1000, 640, 80, 960, 380, 70
+    else:
+        W, H, X0, X1, Y0, YT = 360, 520, 24, 350, 300, 56
+    sizes = [v for v, _ in PANDOC]
+    step = (X1 - X0) / len(sizes)
+    bw = step * .56
+    Y = lambda v: Y0 - v / 60 * (Y0 - YT)
+    o = [f'<svg class="bars v-{var}" viewBox="0 0 {W} {H}" role="img" aria-labelledby="bars-{var}-t"><title id="bars-{var}-t">{esc(L["ag_bars_desc"])}</title>']
+    for v in (0, 20, 40, 60):
+        o.append(f'<line class="gl" x1="{X0}" y1="{Y(v)}" x2="{X1}" y2="{Y(v)}"/><text class="gt" x="{X0 - 8}" y="{Y(v) + 5}" text-anchor="end">{v}</text>')
+    pan, mean, hrs = dict(PANDOC), dict(MEAN5), dict(AGENT_HOURS)
+    for i, n_ in enumerate(sizes):
+        cx = X0 + step * i + step / 2
+        v = pan[n_]
+        o.append(f'<g class="bar" style="--i:{i}"><rect class="bv{" ag" if n_ == 1024 else ""}" x="{cx - bw / 2}" y="{Y(v)}" width="{bw}" height="{Y0 - Y(v)}" rx="4"/>'
+                 f'<text class="bvv" x="{cx}" y="{Y(v) - 16}" text-anchor="middle">{fnum(v, lang, 2)}</text></g>')
+        if n_ in mean:
+            o.append(f'<line class="mn" x1="{cx - bw / 2 - 6}" y1="{Y(mean[n_])}" x2="{cx + bw / 2 + 6}" y2="{Y(mean[n_])}"/>')
+        o.append(f'<text class="bx" x="{cx}" y="{Y0 + 34}" text-anchor="middle">{fnum(n_, lang)}</text>')
+    o.append(f'<text class="cap" x="{X0}" y="{YT - (30 if var == "wide" else 26)}">{esc(L["ag_bars_axis"] if var == "wide" else L["ag_bars_axis_n"])}</text>')
+    if var == "wide":
+        o.append(f'<line class="mn" x1="{X1 - 190}" y1="{YT - 44}" x2="{X1 - 164}" y2="{YT - 44}"/><text class="cap" x="{X1 - 156}" y="{YT - 38}">{esc(L["ag_bars_mean"])}</text>')
+    HY0 = Y0 + 70
+    HH = (H - HY0 - 40)
+    HL = lambda v: math.log10(v) / math.log10(1000) * HH
+    o.append(f'<text class="cap coral" x="{X0}" y="{HY0 - (12 if var == "wide" else 10)}">{esc(L["ag_bars_hours"] if var == "wide" else L["ag_bars_hours_n"])}</text>')
+    for i, n_ in enumerate(sizes):
+        cx = X0 + step * i + step / 2
+        if n_ in hrs:
+            h = max(4, HL(hrs[n_]))
+            o.append(f'<rect class="hv" x="{cx - bw / 2}" y="{HY0}" width="{bw}" height="{h}" rx="3"/><text class="hvv" x="{cx}" y="{HY0 + h + 26}" text-anchor="middle">×{fnum(hrs[n_], lang)}</text>')
+        else:
+            o.append(f'<text class="hvn" x="{cx}" y="{HY0 + (22 if var == "wide" else 18)}" text-anchor="middle">{esc(L["ag_bars_none"]) if var == "wide" else "—"}</text>')
+    o.append("</svg>")
+    return "".join(o)
 
-    o = [f'<svg class="ln-svg" viewBox="0 0 {W} {H}" role="img" aria-labelledby="li-t li-d">',
-         f'<desc id="li-d">{esc(L["li_d"])}</desc>',
-         '<defs><linearGradient id="wash" x1="0" x2="0" y1="0" y2="1"><stop class="w0" offset="0"/><stop class="w1" offset="1"/></linearGradient></defs>']
-    for p in (30, 40, 50, 60):
-        o.append(f'<line class="grid" x1="{x0}" x2="{x1}" y1="{n(Y(p))}" y2="{n(Y(p))}"/><text class="tky" x="{x0 - 10}" y="{n(Y(p))}" dy=".35em">{p}</text>')
-    for v, _ in PANDOC:
-        o.append(f'<text class="tk" x="{n(X(v))}" y="{y0 + 24}">{fnum(v, lang)}</text>')
-    o.append(f'<text class="axl" x="{x1}" y="{y0 + 48}" text-anchor="end">{esc(L["li_axis"])}</text>')
-    pts = " ".join(f"{n(X(v))},{n(Y(p))}" for v, p in PANDOC)
-    area = f"M{n(X(1))} {y0}L" + "L".join(f"{n(X(v))} {n(Y(p))}" for v, p in PANDOC) + f"L{n(X(1024))} {y0}Z"
-    o.append(f'<path class="area" d="{area}"/>')
-    o.append(f'<polyline class="ln" points="{pts}" pathLength="1"/>')
-    for (v, p), lab in zip(PANDOC, L["li_pts"]):
-        val = fnum(p, lang, 2)
-        lab = sub_nb(lab)
-        o.append(f'<g class="pt" tabindex="0" role="img" aria-label="{esc(lab)}: {val}{esc(sub_nb(L["pct"]))}" data-v="{val}{esc(sub_nb(L["pct"]))}" data-label="{esc(lab)}">'
-                 f'<circle class="hit" cx="{n(X(v))}" cy="{n(Y(p))}" r="16"/><circle class="mk" cx="{n(X(v))}" cy="{n(Y(p))}" r="5"/></g>')
-    o.append(f'<text class="val" x="{n(X(1) + 2)}" y="{n(Y(33.89) + 26)}">{fnum(33.89, lang, 2)}</text>')
-    o.append(f'<text class="val" x="{n(X(1024))}" y="{n(Y(55.06) - 16)}" text-anchor="end">{fnum(55.06, lang, 2)}</text>')
-    o.append('</svg>')
-    return "\n".join(o)
+
+def proto_svg(lang):
+    L = T[lang]
+    W, H = 780, 300
+    o = [f'<svg class="proto" viewBox="0 0 {W} {H}" role="img" aria-labelledby="pr-t"><title id="pr-t">{esc(L["ag_proto_desc"])}</title>']
+    for r, ((name, cells), y) in enumerate(zip(L["ag_proto_rows"], (30, 170))):
+        o.append(f'<text class="stt sm" x="0" y="{y + 16}">{esc(name)}</text>')
+        x = 0
+        for j, ((who, what), w) in enumerate(zip(cells, (300, 120, 340))):
+            if who == "→":
+                o.append(f'<line class="arr" x1="{x + 10}" y1="{y + 70}" x2="{x + w - 16}" y2="{y + 70}"/><path class="arrh" d="M{x + w - 18},{y + 62} l12,8 l-12,8z"/>'
+                         f'<text class="pl lime" x="{x + w / 2}" y="{y + 56}" text-anchor="middle">{esc(what)}</text>')
+            else:
+                on = "" if (r == 1 and j == 0) else " on"     # after the failures the author no longer runs the cycle
+                o.append(f'<rect class="pbox{on}" x="{x}" y="{y + 36}" width="{w - 20}" height="68" rx="6"/><text class="pw" x="{x + 16}" y="{y + 62}">{esc(who)}</text>'
+                         f'<text class="pl" x="{x + 16}" y="{y + 88}">{esc(what)}</text>')
+            x += w
+    o.append("</svg>")
+    return "".join(o)
 
 
 # ---------------------------------------------------------------- scale ladder (computed)
@@ -632,104 +790,25 @@ def ladder(works):
                 rows=[(t, sum(1 for x in known if x >= t)) for t in THRESHOLDS])
 
 
-# ---------------------------------------------------------------- HTML sections for the index page
-def hero_html(lang, ld, href):
-    """href(work_id) -> link to the card on the site."""
-    L = T[lang]
-    nb = NB
-    o = [f'<section class="hero auto" id="how" data-mode="ind" aria-labelledby="h1">',
-         '<div class="copy">',
-         f'<p class="eyebrow">{esc(L["eyebrow"].format(corpus=ld["corpus"], nb=nb))}</p>',
-         f'<h1 id="h1">{L["h1"]}</h1>',
-         f'<p class="deck">{esc(sub_nb(L["deck"]))}</p>',
-         '</div>',
-         '<figure class="stage" aria-labelledby="stage-cap"><div class="stage-art">',
-         stage_svg("w", lang), stage_svg("n", lang),
-         '</div><figcaption class="narr" id="stage-cap" data-beat="0"><div class="narr-head">']
-    for m, num, name, *_ in L["modes"]:
-        o.append(f'<span class="nm nm-{m}">{num} · {esc(name)}</span>')
-    o.append('<span class="dots" aria-hidden="true"><i></i><i></i><i></i><i></i></span>'
-             f'<button class="pp" type="button" aria-label="{esc(L["pause"])}" data-pause="{esc(L["pause"])}" data-play="{esc(L["play"])}">'
-             '<svg class="i-pause" viewBox="0 0 12 12" aria-hidden="true"><rect x="2.5" y="2" width="2.4" height="8" rx="1"/><rect x="7.1" y="2" width="2.4" height="8" rx="1"/></svg>'
-             '<svg class="i-play" viewBox="0 0 12 12" aria-hidden="true"><path d="M3.5 2.2v7.6a.6.6 0 0 0 .9.5l6-3.8a.6.6 0 0 0 0-1l-6-3.8a.6.6 0 0 0-.9.5z"/></svg>'
-             '</button></div><div class="beats-wrap">')
-    for m in ("ind", "coord", "mem"):
-        o.append(f'<ol class="beats beats-{m}">' + "".join(f"<li>{esc(b)}</li>" for b in L["beats"][m]) + "</ol>")
-    o.append('</div></figcaption></figure>')
-    icons = {
-        "ind": '<path d="M4 6h11M4 12h11M4 18h11"/><rect x="17" y="9" width="5" height="6" rx="1.5"/>',
-        "coord": '<circle cx="12" cy="12" r="3.2"/><path d="M12 8.8V3M12 15.2V21M8.9 10.4 4 7.5M15.1 13.6 20 16.5M8.9 13.6 4 16.5M15.1 10.4 20 7.5"/>',
-        "mem": '<rect x="5" y="8.5" width="14" height="7" rx="2"/><path d="M7 3v5.5M12 3v5.5M17 3v5.5M7 15.5V21M12 15.5V21M17 15.5V21"/>',
-    }
-    o.append(f'<fieldset class="modes"><legend class="sr">{esc(L["modes_legend"])}</legend>')
-    for m, num, name, tag, desc, ev, wid, more in L["modes"]:
-        chk = " checked" if m == "ind" else ""
-        link = f' <a class="evl" href="{href(wid)}">{esc(sub_nb(more))} →</a>' if wid else f' <a class="evl" href="#agensh">{esc(sub_nb(more))} ↓</a>'
-        o.append(f'<div class="mode"><input type="radio" name="mode" id="m-{m}" value="{m}"{chk}>'
-                 f'<label for="m-{m}"><svg class="mi" viewBox="0 0 24 24" aria-hidden="true">{icons[m]}</svg>'
-                 f'<span class="mt">{esc(name)}</span><span class="mg">{esc(tag)}</span><span class="prog" aria-hidden="true"><i></i></span></label>'
-                 f'<div class="md"><p>{esc(desc)}</p><p class="ev">{esc(sub_nb(ev))}{link}</p></div></div>')
-    o.append('</fieldset></section>')
-    data = {"agent": L["agent"], "live": L["live"], "rows": [[k, t] for k, t, _ in L["rows"][:2]]}
-    o.append(f'<script type="application/json" id="story-i18n">{json.dumps(data, ensure_ascii=False)}</script>')
-    return "\n".join(o)
+def load_works():
+    return json.load(open(os.path.join(ROOT, "data", "works.json"), encoding="utf-8"))["works"]
 
 
-def scale_html(lang, ld, href, ch1_title, ch1_href="ch01.html"):
-    L = T[lang]
-    kw = dict(corpus=ld["corpus"], known=ld["known"], nb=NB)
-    o = ['<section class="sec" id="scale" aria-labelledby="h-scale"><header class="sec-head">',
-         f'<p class="eyebrow">{esc(L["sc_eyebrow"])}</p><h2 id="h-scale">{esc(L["sc_h"])}</h2>',
-         f'<p class="lede">{esc(L["sc_lede"].format(**kw))}</p></header>',
-         '<div class="scale"><div class="hero-num">',
-         f'<b>{fnum(ld["median"], lang)}</b><p>{esc(L["sc_unit"].format(**kw))}</p></div>',
-         f'<figure class="ladder"><figcaption class="fig-t">{esc(L["sc_fig"].format(**kw))}</figcaption><ol>']
-    for t, v in ld["rows"]:
-        text, wid = L["sc_rows"][t]
-        tip = L["sc_tip"].format(v=v, known=ld["known"])
-        o.append(f'<li style="--v:{v};--of:{ld["known"]}"><span class="th">≥{NB}{fnum(t, lang)}</span>'
-                 f'<span class="bar" data-tip="{esc(tip)}"><i></i></span><b class="v">{v}</b>'
-                 f'<span class="ex">{sub_nb(text)} <a class="exl" href="{href(wid)}" aria-label="{esc(L["sc_card"])}">→</a></span></li>')
-    o.append(f'</ol><p class="src">{sub_nb(L["sc_src"]).format(known=ld["known"], corpus=ld["corpus"], ch1=esc(ch1_title), ch1_href=ch1_href)}</p></figure></div></section>')
-    return "\n".join(o)
+_SKY = sky_works()
+assert len(_SKY) == 99 and statistics.median(x["n"] for x in _SKY) == 7, (len(_SKY),)
+assert [(t, sum(1 for x in _SKY if x["n"] >= t)) for t in THRESHOLDS] == [(10, 42), (100, 15), (1000, 7), (10000, 4)]
 
 
-def agensh_html(lang, href, ch5_title):
-    L = T[lang]
-    o = ['<section class="sec" id="agensh" aria-labelledby="h-agensh"><header class="sec-head">',
-         f'<p class="eyebrow">{esc(L["ag_eyebrow"])}</p><h2 id="h-agensh">{esc(L["ag_h"])}</h2></header>',
-         '<div class="read">' + "".join(f"<p>{sub_nb(p)}</p>" for p in L["ag_p1"]) + '</div>',
-         f'<figure class="wide chn-fig"><figcaption class="fig-t">{esc(L["ag_fig"])}</figcaption><div class="chn-art">',
-         channels_svg(lang), '</div><ul class="fig-key">',
-         f'<li><span class="k k-push"></span>{esc(L["ag_key"][0])}</li><li><span class="k k-pull"></span>{esc(L["ag_key"][1])}</li></ul>',
-         f'<p class="fig-note">{sub_nb(L["ag_note"])}</p></figure>',
-         f'<div class="read"><h3>{esc(L["ag_h3"])}</h3>' + "".join(f"<p>{sub_nb(p)}</p>" for p in L["ag_p2"]) + '</div>',
-         '<div class="result"><figure class="lchart" id="line-chart">',
-         f'<figcaption class="fig-t" id="li-t">{esc(sub_nb(L["ag_chart"]))}</figcaption>', line_svg(lang),
-         '<div class="tip" id="tip" aria-hidden="true"></div>',
-         f'<ul class="rowvals" aria-label="{esc(L["ag_vals"])}">']
-    for lab, (v, p) in zip(L["li_rows"], PANDOC):
-        o.append(f'<li><span>{sub_nb(lab)}</span> <b>{fnum(p, lang, 2)}</b></li>')
-    o.append(f'</ul><p class="src">{L["ag_src"]}</p></figure>')
-    o.append(f'<aside class="cond" aria-labelledby="h-cond"><h3 id="h-cond">{esc(L["ag_cond"])}</h3><dl>'
-             + "".join(f"<dt>{esc(a)}</dt><dd>{sub_nb(b)}</dd>" for a, b in L["ag_dl"]) + '</dl></aside></div>')
-    more = sub_nb(L["ag_more"]).format(agensh=href("agensh-1024"), cc=href("anthropic-c-compiler"), opus=href("opus55-card"), ch5=esc(ch5_title))
-    o.append(f'<p class="ag-more">{more}</p></section>')
-    return "\n".join(o)
-
-
-# ---------------------------------------------------------------- standalone SVG for the README
+# ---------------------------------------------------------------- standalone SVG for the README (no script, fonts or network)
 FONT = "-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif"
+COND = "'SF Pro Display Condensed', 'Arial Narrow', 'Roboto Condensed', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
 MONO = "ui-monospace, 'SF Mono', Menlo, Consolas, monospace"
 PAL = {
-    "dark": dict(bg="#0a0c0d", panel="#101416", panel_line="#1f2629", chip="#161b1d", line="#262d30", ink="#eef2ef", ink2="#b4bcb8", ink3="#7f8884",
-                 head="#ffffff", em="#22a876", eml="#5fe3b3", am="#c08426", aml="#f1b65b", bl="#4b93e6", bll="#8ac6ff",
-                 hot="#123527", slot="#3a4245", chip_line="#3a4245", hub="#1d1810", log="#0f1620", glow=".2", track="#18201d", grid="#1c2224"),
-    "light": dict(bg="#f6f8f7", panel="#ffffff", panel_line="#dfe5e2", chip="#ffffff", line="#d5dcd8", ink="#0d1311", ink2="#3a433f", ink3="#68716d",
-                  head="#070a09", em="#13895f", eml="#0f8a5c", am="#b06d0b", aml="#c47b12", bl="#2b6fd0", bll="#2b6fd0",
-                  hot="#e1f4ea", slot="#d3dad6", chip_line="#c9d1cd", hub="#fff4e2", log="#eef5ff", glow=".1", track="#e3ece7", grid="#e4e9e6"),
+    "dark": dict(bg="#050507", panel="#0B0C10", line="#2A2D35", frame="#3A3E47", ink="#F4F5F7", ink2="#CDD1D8", ink3="#9298A3", head="#FFFFFF",
+                 lime="#C8F542", lime_ink="#C8F542", lime_bg="#2A3311", coral="#FF5B3A", coral_bg="#3A1A13", block="#14151A", block_line="#5C626C", on_lime="#0A0B0E", mean="#4A4F58"),
+    "light": dict(bg="#F4F4EF", panel="#FFFFFF", line="#D9D9D2", frame="#B9BAB3", ink="#0A0B0E", ink2="#33363D", ink3="#5E636C", head="#050507",
+                  lime="#B5E22E", lime_ink="#4A6800", lime_bg="#EAF5C8", coral="#D63C1E", coral_bg="#FBE2DC", block="#FFFFFF", block_line="#8A8E96", on_lime="#0A0B0E", mean="#D0D1CA"),
 }
-
 _W = {"narrow": set("iljtfrI.,:;'|!()[] "), "wide": set("mwMWЖШЩЮМДФЫ@%")}
 
 
@@ -755,173 +834,180 @@ def wrap(s, max_px, fs):
     return lines
 
 
-def poster_panel(mode, ox, oy, lang, C):
+def _towers(C, ox, oy, state, lang, coord=False, shelf=False, scale=1.0):
+    """One panel of the poster: the end state of one scheme, drawn as context windows."""
     L = T[lang]
-    W, H, cw, chh = 448, 330, 112, 40
-    g = Geo(W, H, cw, chh, 8, tag_room=22, coll=84, hub=(150, 76), card=(312, 136), gap=12)
-    know = L["po_know"][mode]
-    o = [f'<g transform="translate({ox} {oy})">']
-    if mode == "ind":
-        for k in AG:
-            hot = k in know
-            o.append(f'<path d="{g.lane(k)}" fill="none" stroke="{C["eml"] if hot else C["line"]}" stroke-opacity="{.55 if hot else 1}" stroke-width="{1.6 if hot else 1.2}"/>')
-        cx, cy = g.coll
-        s = g.coll_size
-        o.append(f'<rect x="{n(cx - s / 2)}" y="{n(cy - s / 2)}" width="{s}" height="{s}" rx="20" fill="{C["chip"]}" stroke="{C["ink3"]}" stroke-opacity=".6"/>')
-        for k in AG:
-            col, row = (k - 1) % 3, (k - 1) // 3
-            o.append(f'<rect x="{n(cx - 32 + col * 23)}" y="{n(cy - 20 + row * 23)}" width="18" height="18" rx="5" fill="{C["em"] if k in know else C["slot"]}"/>')
-        o.append(f'<text x="{n(cx)}" y="{n(cy + s / 2 + 26)}" text-anchor="middle" font-family="{FONT}" font-size="18" font-weight="600" fill="{C["ink"]}">{esc(L["sel"])}</text>')
-    elif mode == "coord":
-        for k in AG:
-            hot = k in know
-            mk = ' marker-end="url(#pa)"' if k == 3 else (' marker-start="url(#pa)"' if hot else "")
-            o.append(f'<path d="{g.spoke(k)}" fill="none" stroke="{C["eml"] if hot else C["aml"]}" stroke-opacity="{.9 if hot else .35}" stroke-width="{2 if hot else 1.3}"{mk}/>')
-        hx, hy = g.hub
-        hw, hh = g.hub_size
-        o.append(f'<rect x="{n(hx - hw / 2)}" y="{n(hy - hh / 2)}" width="{hw}" height="{hh}" rx="20" fill="{C["hub"]}" stroke="{C["aml"]}" stroke-width="1.6"/>')
-        o.append(f'<text x="{n(hx)}" y="{n(hy - 6)}" text-anchor="middle" font-family="{FONT}" font-size="19" font-weight="600" fill="{C["ink"]}">{esc(L["hub"])}</text>')
-        o.append(f'<rect x="{n(hx - 52)}" y="{n(hy + 10)}" width="104" height="6" rx="3" fill="{C["am"]}" fill-opacity=".25"/><rect x="{n(hx - 52)}" y="{n(hy + 10)}" width="90" height="6" rx="3" fill="{C["aml"]}"/>')
-    else:
-        for k in AG:
-            hot = k in know
-            mk = ' marker-end="url(#pa)"' if k == 3 else (' marker-start="url(#pa)"' if hot else "")
-            dash = ' stroke-dasharray="5 5"' if hot and k != 3 else ""
-            o.append(f'<path d="{g.conn(k)}" fill="none" stroke="{C["eml"] if hot else C["bll"]}" stroke-opacity="{.9 if hot else .35}" stroke-width="{2 if hot else 1.3}"{dash}{mk}/>')
-        mx, my = g.card
-        cw2, chh2 = g.card_size
-        o.append(f'<rect x="{n(mx - cw2 / 2)}" y="{n(my - chh2 / 2)}" width="{cw2}" height="{chh2}" rx="18" fill="{C["log"]}" stroke="{C["bll"]}" stroke-opacity=".7" stroke-width="1.4"/>')
-        o.append(f'<text x="{n(mx - cw2 / 2 + 18)}" y="{n(my - chh2 / 2 + 30)}" font-family="{FONT}" font-size="16" font-weight="600" fill="{C["bll"]}">{esc(L["log"])}</text>')
-        for j, (k, t, hot) in enumerate(L["po_rows"]):
-            yy = my - chh2 / 2 + 62 + j * 26
-            if hot:
-                o.append(f'<rect x="{n(mx - cw2 / 2 + 8)}" y="{n(yy - 12)}" width="{cw2 - 16}" height="24" rx="8" fill="{C["em"]}" fill-opacity=".16"/>')
-            o.append(f'<circle cx="{n(mx - cw2 / 2 + 22)}" cy="{n(yy)}" r="4" fill="{C["eml"] if hot else C["ink3"]}"/>'
-                     f'<text x="{n(mx - cw2 / 2 + 34)}" y="{n(yy)}" dy=".35em" font-family="{FONT}" font-size="16" fill="{C["ink"] if hot else C["ink2"]}">{esc(L["agent"].format(k=k))} · {esc(t)}</text>')
-    pos = g.pos(mode)
-    for k in AG:
-        x, y = pos[k]
-        hot = k in know
-        dash = ' stroke-dasharray="4 4"' if (mode == "ind" and k in (1, 5)) else ""
-        o.append(f'<rect x="{n(x - cw / 2)}" y="{n(y - chh / 2)}" width="{cw}" height="{chh}" rx="{chh / 2}" fill="{C["hot"] if hot else C["chip"]}" stroke="{C["eml"] if hot else C["chip_line"]}" stroke-width="{1.6 if hot else 1.2}"{dash}/>')
-        o.append(f'<circle cx="{n(x - 36)}" cy="{n(y)}" r="5" fill="{C["eml"] if hot else C["ink3"]}"/>'
-                 f'<text x="{n(x - 24)}" y="{n(y)}" dy=".35em" font-family="{FONT}" font-size="18" font-weight="600" fill="{C["ink"]}">{esc(L["agent"].format(k=k))}</text>')
-        if hot:
-            label = know[k]
-            w = tag_w(label, 14)
-            below = (mode == "coord" and k in (4, 5)) or (mode == "mem" and k in (4, 5, 6))
-            tx_, ty_ = x, y + (chh / 2 + 17) * (1 if below else -1)
-            if mode == "ind":  # the column between agents is tight, so the tag sits on the lane to the right
-                tx_, ty_ = x + cw / 2 + 14 + w / 2, y
-            o.append(f'<rect x="{n(tx_ - w / 2)}" y="{n(ty_ - 11)}" width="{w}" height="22" rx="11" fill="{C["panel"]}" stroke="{C["eml"]}" stroke-opacity=".5"/>'
-                     f'<text x="{n(tx_)}" y="{n(ty_)}" dy=".35em" text-anchor="middle" font-family="{FONT}" font-size="14" fill="{C["eml"]}">{esc(label)}</text>')
-    o.append("</g>")
-    return "\n".join(o)
+    NSL = 16 if coord else 12                     # the coordinator's window holds 16 blocks; the top three overflow
+    CW, GAP, SH, BH = 44 * scale, 10 * scale, (12 if coord else 16) * scale, (10 if coord else 13) * scale
+    cols = [1, 2, 3, "C", 4, 5, 6] if coord else [1, 2, 3, 4, 5, 6]
+    plan = PLAN[state]
+    o = []
+    base = oy + NSL * SH
+    for i, c in enumerate(cols):
+        x = ox + i * (CW + GAP)
+        o.append(f'<rect x="{n(x - 3)}" y="{n(oy - 4)}" width="{n(CW + 6)}" height="{n(NSL * SH + 8)}" rx="4" fill="none" stroke="{C["frame"]}"' + (' stroke-dasharray="4 4"' if c == "C" else "") + '/>')
+        lab = L["st_coord"] if c == "C" else str(c)
+        o.append(f'<text x="{n(x + CW / 2)}" y="{n(oy - 12)}" text-anchor="middle" font-family="{MONO}" font-size="{n(13 * scale)}" fill="{C["ink3"]}">{esc(lab)}</text>')
+        for s in range(NSL):
+            cell = plan.get(c, {}).get(s)
+            if not cell:
+                continue
+            y = base - (s + 1) * SH + (SH - BH)
+            fill, stroke, sw = C["block"], C["block_line"], 1
+            if cell == "lime":
+                fill, stroke = C["lime"], C["lime"]
+            elif cell == "copy":
+                fill, stroke, sw = C["lime_bg"], C["lime"], 2.4
+            elif cell == "redo":
+                fill, stroke = C["coral_bg"], C["coral"]
+            elif cell == "over":
+                fill, stroke = C["coral"], C["coral"]
+            elif cell == "dim":
+                fill = "none"
+            o.append(f'<rect x="{n(x)}" y="{n(y)}" width="{n(CW)}" height="{n(BH)}" rx="2" fill="{fill}" stroke="{stroke}" stroke-width="{sw}"/>')
+    if coord:
+        cx = ox + 3 * (CW + GAP) + CW / 2
+        o.append(f'<path d="' + "".join(f"M{n(ox + i * (CW + GAP) + CW / 2)} {n(base + 8)}V{n(base + 22)}H{n(cx)}V{n(base + 8)}" for i in range(7) if i != 3) + f'" fill="none" stroke="{C["frame"]}"/>')
+    if shelf:
+        w_ = 6 * (CW + GAP) - GAP
+        o.append(f'<rect x="{n(ox)}" y="{n(base + 12)}" width="{n(w_)}" height="{n(BH + 10)}" rx="4" fill="none" stroke="{C["ink3"]}" stroke-dasharray="4 5"/>')
+        o.append(f'<rect x="{n(ox + 2 * (CW + GAP))}" y="{n(base + 17)}" width="{n(CW)}" height="{n(BH)}" rx="2" fill="{C["lime"]}"/>')
+    return "".join(o)
 
 
 def poster_svg(lang, theme, corpus):
+    """README poster: the question, and the end state of the three schemes as context windows."""
     L = T[lang]
     C = PAL[theme]
     W, H = 1600, 900
     o = [f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" width="{W}" height="{H}" role="img" aria-labelledby="t d">',
-         f'<title id="t">{esc(L["po_t1"])} {esc(L["po_t2"])}</title>',
-         f'<desc id="d">{esc(L["po_desc"])}</desc>',
-         f'<defs><marker id="pa" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1 1L9 5L1 9" fill="none" stroke="{C["eml"]}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker>'
-         f'<radialGradient id="glow" cx="78%" cy="0%" r="75%"><stop offset="0" stop-color="{C["em"]}" stop-opacity="{C["glow"]}"/><stop offset="1" stop-color="{C["em"]}" stop-opacity="0"/></radialGradient></defs>',
-         f'<rect width="{W}" height="{H}" rx="32" fill="{C["bg"]}"/><rect width="{W}" height="{H}" rx="32" fill="url(#glow)"/>',
-         f'<g transform="translate(64 62)"><circle cx="14" cy="14" r="10" fill="none" stroke="{C["em"]}" stroke-width="3.5"/><circle cx="24" cy="14" r="3.6" fill="{C["eml"]}"/></g>',
-         f'<text x="104" y="84" font-family="{FONT}" font-size="22" font-weight="600" fill="{C["ink2"]}">{esc(L["po_brand"])} <tspan fill="{C["ink3"]}" font-weight="400">{esc(L["po_brand2"].format(corpus=corpus))}</tspan></text>',
-         f'<text x="64" y="170" font-family="{FONT}" font-size="60" font-weight="650" letter-spacing="-2" fill="{C["head"]}">{esc(L["po_t1"])}</text>',
-         f'<text x="64" y="240" font-family="{FONT}" font-size="60" font-weight="650" letter-spacing="-2" fill="{C["ink3"]}">{esc(L["po_t2"])}</text>',
-         f'<g transform="translate(1188 150)"><circle cx="8" cy="0" r="7" fill="{C["eml"]}"/><text x="26" y="0" dy=".35em" font-family="{FONT}" font-size="21" fill="{C["ink2"]}">{esc(L["po_leg"][0])}</text></g>',
-         f'<g transform="translate(1188 190)"><rect x="0" y="-9" width="17" height="18" rx="9" fill="none" stroke="{C["eml"]}" stroke-dasharray="4 4" stroke-width="1.6"/><text x="26" y="0" dy=".35em" font-family="{FONT}" font-size="21" fill="{C["ink2"]}">{esc(L["po_leg"][1])}</text></g>']
-    pw, ph, gap, x0, y0 = 472, 556, 28, 64, 280
+         f'<title id="t">{esc(L["po_t1"])} {esc(L["po_t2"])}</title><desc id="d">{esc(L["po_desc"])}</desc>',
+         f'<rect width="{W}" height="{H}" rx="28" fill="{C["bg"]}"/>',
+         f'<text x="64" y="96" font-family="{MONO}" font-size="20" letter-spacing="3" fill="{C["ink3"]}">{esc(L["po_brand"].upper())} {esc(L["po_brand2"].format(corpus=corpus).upper())}</text>',
+         f'<text x="64" y="186" font-family="{COND}" font-stretch="condensed" font-size="72" font-weight="900" fill="{C["head"]}">{esc(L["po_t1"].upper())}</text>',
+         f'<text x="64" y="262" font-family="{COND}" font-stretch="condensed" font-size="72" font-weight="900" fill="{C["lime_ink"]}">{esc(L["po_t2"].upper())}</text>']
+    pw, gap, x0, y0 = 472, 28, 64, 318
     for i, (mode, num, title, tag, cap) in enumerate(L["po_panels"]):
         x = x0 + i * (pw + gap)
-        o.append(f'<rect x="{x}" y="{y0}" width="{pw}" height="{ph}" rx="24" fill="{C["panel"]}" stroke="{C["panel_line"]}"/>')
-        o.append(f'<text x="{x + 28}" y="{y0 + 50}" font-family="{MONO}" font-size="17" fill="{C["ink3"]}">{num}</text>'
-                 f'<text x="{x + 64}" y="{y0 + 51}" font-family="{FONT}" font-size="29" font-weight="650" letter-spacing="-.6" fill="{C["ink"]}">{esc(title)}</text>'
-                 f'<text x="{x + 64}" y="{y0 + 80}" font-family="{FONT}" font-size="19" fill="{C["ink3"]}">{esc(tag)}</text>')
-        o.append(poster_panel(mode, x + 12, y0 + 100, lang, C))
-        lines = wrap(cap, pw - 56, 19)
-        assert len(lines) <= 3, ("poster caption too long", cap)
-        for j, line in enumerate(lines):
-            o.append(f'<text x="{x + 28}" y="{y0 + 470 + j * 27}" font-family="{FONT}" font-size="19" fill="{C["ink2"]}">{esc(line)}</text>')
-    o.append(f'<text x="64" y="870" font-family="{FONT}" font-size="19" fill="{C["ink3"]}">{esc(L["po_foot"])}</text>')
+        o.append(f'<rect x="{x}" y="{y0}" width="{pw}" height="512" rx="16" fill="{C["panel"]}" stroke="{C["line"]}"/>')
+        o.append(f'<text x="{x + 26}" y="{y0 + 44}" font-family="{MONO}" font-size="16" letter-spacing="2" fill="{C["lime_ink"]}">{num}</text>'
+                 f'<text x="{x + 64}" y="{y0 + 46}" font-family="{COND}" font-stretch="condensed" font-size="30" font-weight="850" fill="{C["head"]}">{esc(title.upper())}</text>'
+                 f'<text x="{x + 64}" y="{y0 + 74}" font-family="{FONT}" font-size="18" fill="{C["ink3"]}">{esc(tag)}</text>')
+        coord, shelf = mode == "coord", mode == "mem"
+        sc = .95 if coord else 1.1
+        cols = 7 if coord else 6
+        span = cols * 54 * sc - 10 * sc
+        o.append(_towers(C, x + (pw - span) / 2, y0 + 120, mode + "-3", lang, coord=coord, shelf=shelf, scale=sc))
+        for j, line in enumerate(wrap(cap, pw - 52, 19)[:3]):
+            o.append(f'<text x="{x + 26}" y="{y0 + 432 + j * 27}" font-family="{FONT}" font-size="19" fill="{C["ink2"]}">{esc(line)}</text>')
+    o.append(f'<g transform="translate(64 856)"><rect x="0" y="-13" width="26" height="14" rx="2" fill="{C["lime"]}"/>'
+             f'<text x="36" y="0" font-family="{FONT}" font-size="18" fill="{C["ink2"]}">{esc(L["po_leg"][0])}</text>'
+             f'<rect x="360" y="-13" width="26" height="14" rx="2" fill="{C["coral_bg"]}" stroke="{C["coral"]}"/>'
+             f'<text x="396" y="0" font-family="{FONT}" font-size="18" fill="{C["ink2"]}">{esc(L["po_leg"][1])}</text>'
+             f'<text x="0" y="30" font-family="{FONT}" font-size="16" fill="{C["ink3"]}">{esc(L["po_foot"])}</text></g>')
     o.append("</svg>")
     return "\n".join(o) + "\n"
 
 
 def scale_chart_svg(lang, theme, ld):
-    """README: the scale ladder as a standalone horizontal bar chart."""
+    """README: the skyline of the works that state a simultaneous count, with the median and the thresholds."""
     L = T[lang]
     C = PAL[theme]
-    W, H = 1200, 520
+    W, H = 1200, 560
+    SW = sky_works()
     kw = dict(known=ld["known"], corpus=ld["corpus"], med=fnum(ld["median"], lang))
     o = [f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" width="{W}" height="{H}" role="img" aria-labelledby="t d">',
          f'<title id="t">{esc(L["rs_t"])}</title>',
          f'<desc id="d">{esc(L["rs_s"].format(**kw))}. ' + "; ".join(f"≥{fnum(t, lang)}: {v}" for t, v in ld["rows"]) + '.</desc>',
-         f'<rect width="{W}" height="{H}" rx="28" fill="{C["bg"]}"/>',
-         f'<text x="56" y="86" font-family="{FONT}" font-size="40" font-weight="650" letter-spacing="-1.2" fill="{C["head"]}">{esc(L["rs_t"])}</text>',
-         f'<text x="56" y="128" font-family="{FONT}" font-size="21" fill="{C["ink3"]}">{esc(L["rs_s"].format(**kw))}</text>']
-    # median block
-    o.append(f'<rect x="56" y="168" width="44" height="4" rx="2" fill="{C["eml"]}"/>')
-    o.append(f'<text x="50" y="330" font-family="{FONT}" font-size="168" font-weight="650" letter-spacing="-8" fill="{C["head"]}">{fnum(ld["median"], lang)}</text>')
-    med_lab = {"ru": ["агентов —", "медианный рой"], "en": ["agents in the", "median swarm"]}[lang]
-    for j, s in enumerate(med_lab):
-        o.append(f'<text x="56" y="{384 + j * 30}" font-family="{FONT}" font-size="22" fill="{C["ink2"]}">{esc(s)}</text>')
-    bx, bw, top, rh = 470, 470, 196, 70
-    o.append(f'<text x="330" y="{top - 22}" font-family="{FONT}" font-size="18" fill="{C["ink3"]}">{esc(L["rs_axis"])}</text>')
-    for i, (t, v) in enumerate(ld["rows"]):
-        y = top + i * rh
-        o.append(f'<line x1="330" x2="{W - 56}" y1="{y}" y2="{y}" stroke="{C["grid"]}"/>')
-        o.append(f'<text x="330" y="{y + rh / 2}" dy=".35em" font-family="{MONO}" font-size="20" fill="{C["ink2"]}">≥{NB}{fnum(t, lang)}</text>')
-        o.append(f'<rect x="{bx}" y="{y + rh / 2 - 13}" width="{bw}" height="26" rx="5" fill="{C["track"]}"/>')
-        o.append(f'<rect x="{bx}" y="{y + rh / 2 - 13}" width="{n(max(6, bw * v / ld["known"]))}" height="26" rx="5" fill="{C["em"]}"/>')
-        o.append(f'<text x="{bx + bw + 28}" y="{y + rh / 2}" dy=".35em" font-family="{FONT}" font-size="30" font-weight="650" fill="{C["head"]}">{v}</text>')
-    y = top + len(ld["rows"]) * rh
-    o.append(f'<line x1="330" x2="{W - 56}" y1="{y}" y2="{y}" stroke="{C["grid"]}"/>')
+         f'<rect width="{W}" height="{H}" rx="24" fill="{C["bg"]}"/>',
+         f'<text x="56" y="80" font-family="{COND}" font-stretch="condensed" font-size="46" font-weight="900" fill="{C["head"]}">{esc(L["rs_t"].upper())}</text>',
+         f'<text x="56" y="118" font-family="{FONT}" font-size="20" fill="{C["ink3"]}">{esc(L["rs_s"].format(**kw))}</text>']
+    x0, x1, base, top = 56, W - 56, H - 70, 170
+    bw = (x1 - x0) / len(SW)
+    HV = lambda v: (math.log10(v) + .35) / (math.log10(30000) + .35) * (base - top)
+    for t, c in ld["rows"]:
+        y = base - HV(t)
+        o.append(f'<line x1="{x0}" x2="{x1}" y1="{n(y)}" y2="{n(y)}" stroke="{C["frame"]}" stroke-dasharray="3 6"/>'
+                 f'<text x="{x0}" y="{n(y - 8)}" font-family="{MONO}" font-size="16" fill="{C["ink2"]}">{esc(L["st_thr"].format(t=fnum(t, lang), c=c))}</text>')
+    med_i = (len(SW) - 1) // 2
+    for i, x_ in enumerate(SW):
+        h = HV(x_["n"])
+        fill = C["lime"] if (i == med_i or x_["id"] == "agensh-1024") else (C["head"] if x_["id"] in SKY_MARKS else C["ink3"])
+        o.append(f'<rect x="{n(x0 + i * bw + bw * .12)}" y="{n(base - h)}" width="{n(bw * .76)}" height="{n(h)}" fill="{fill}"/>')
+    xm = x0 + med_i * bw + bw / 2
+    o.append(f'<text x="{n(xm)}" y="{n(base - HV(7) - 36)}" text-anchor="middle" font-family="{FONT}" font-size="18" font-weight="600" fill="{C["lime_ink"]}">{esc(nb(L["st_median"]).format(v=kw["med"]))}</text>')
+    o.append(f'<text x="{x0}" y="{base + 36}" font-family="{FONT}" font-size="17" fill="{C["ink3"]}">{esc(L["st_sky_cap"].format(n=len(SW)))} · {esc(L["st_sky_cap2"])}</text>')
     o.append("</svg>")
     return "\n".join(o) + "\n"
 
 
 def pandoc_chart_svg(lang, theme):
-    """README: the Agensh pandoc curve as a standalone line chart."""
+    """README: the Agensh result as towers, with the mean over five tasks."""
     L = T[lang]
     C = PAL[theme]
     W, H = 1200, 560
-    x0, x1, y0, y1 = 120, 1100, 470, 190
-
-    def X(v):
-        return x0 + math.log2(v) / 10 * (x1 - x0)
-
-    def Y(p):
-        return y0 - (p - 30) / 30 * (y0 - y1)
-
     o = [f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" width="{W}" height="{H}" role="img" aria-labelledby="t d">',
          f'<title id="t">{esc(L["rp_t"])}</title>', f'<desc id="d">{esc(L["li_d"])}</desc>',
-         f'<defs><linearGradient id="wash" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="{C["em"]}" stop-opacity=".22"/><stop offset="1" stop-color="{C["em"]}" stop-opacity="0"/></linearGradient></defs>',
-         f'<rect width="{W}" height="{H}" rx="28" fill="{C["bg"]}"/>',
-         f'<text x="56" y="86" font-family="{FONT}" font-size="40" font-weight="650" letter-spacing="-1.2" fill="{C["head"]}">{esc(L["rp_t"])}</text>',
-         f'<text x="56" y="128" font-family="{FONT}" font-size="21" fill="{C["ink3"]}">{esc(L["rp_s"])}</text>']
-    for p in (30, 40, 50, 60):
-        o.append(f'<line x1="{x0}" x2="{x1}" y1="{n(Y(p))}" y2="{n(Y(p))}" stroke="{C["grid"]}"/>'
-                 f'<text x="{x0 - 18}" y="{n(Y(p))}" dy=".35em" text-anchor="end" font-family="{MONO}" font-size="18" fill="{C["ink3"]}">{p}</text>')
-    for v, _ in PANDOC:
-        o.append(f'<text x="{n(X(v))}" y="{y0 + 34}" text-anchor="middle" font-family="{MONO}" font-size="18" fill="{C["ink3"]}">{fnum(v, lang)}</text>')
-    o.append(f'<text x="{x1}" y="{y0 + 66}" text-anchor="end" font-family="{FONT}" font-size="18" fill="{C["ink3"]}">{esc(L["li_axis"])} · {esc(L["rp_src"])}</text>')
-    area = f"M{n(X(1))} {y0}L" + "L".join(f"{n(X(v))} {n(Y(p))}" for v, p in PANDOC) + f"L{n(X(1024))} {y0}Z"
-    o.append(f'<path d="{area}" fill="url(#wash)"/>')
-    o.append(f'<polyline points="{" ".join(f"{n(X(v))},{n(Y(p))}" for v, p in PANDOC)}" fill="none" stroke="{C["em"]}" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>')
-    for v, p in PANDOC:
-        o.append(f'<circle cx="{n(X(v))}" cy="{n(Y(p))}" r="8" fill="{C["em"]}" stroke="{C["bg"]}" stroke-width="3"/>'
-                 f'<text x="{n(X(v))}" y="{n(Y(p) - 22)}" text-anchor="middle" font-family="{FONT}" font-size="22" font-weight="650" fill="{C["head"]}">{fnum(p, lang, 2)}</text>')
+         f'<rect width="{W}" height="{H}" rx="24" fill="{C["bg"]}"/>',
+         f'<text x="56" y="80" font-family="{COND}" font-stretch="condensed" font-size="46" font-weight="900" fill="{C["head"]}">{esc(L["rp_t"].upper())}</text>',
+         f'<text x="56" y="118" font-family="{FONT}" font-size="20" fill="{C["ink3"]}">{esc(L["rp_s"])}</text>']
+    X0, X1, Y0, YT = 120, 1140, 470, 170
+    step = (X1 - X0) / len(PANDOC)
+    bw = step * .52
+    Y = lambda v: Y0 - v / 60 * (Y0 - YT)
+    for v in (0, 20, 40, 60):
+        o.append(f'<line x1="{X0}" x2="{X1}" y1="{n(Y(v))}" y2="{n(Y(v))}" stroke="{C["line"]}"/><text x="{X0 - 14}" y="{n(Y(v) + 6)}" text-anchor="end" font-family="{MONO}" font-size="16" fill="{C["ink3"]}">{v}</text>')
+    mean = dict(MEAN5)
+    for i, (k_, v) in enumerate(PANDOC):
+        cx = X0 + step * i + step / 2
+        o.append(f'<rect x="{n(cx - bw / 2)}" y="{n(Y(v))}" width="{n(bw)}" height="{n(Y0 - Y(v))}" rx="4" fill="{C["lime"] if k_ == 1024 else C["ink2"]}"/>'
+                 f'<text x="{n(cx)}" y="{n(Y(v) - 14)}" text-anchor="middle" font-family="{COND}" font-stretch="condensed" font-size="32" font-weight="850" fill="{C["head"]}">{fnum(v, lang, 2)}</text>'
+                 f'<text x="{n(cx)}" y="{Y0 + 32}" text-anchor="middle" font-family="{MONO}" font-size="17" fill="{C["ink3"]}">{fnum(k_, lang)}</text>')
+        if k_ in mean:
+            o.append(f'<line x1="{n(cx - bw / 2 - 6)}" x2="{n(cx + bw / 2 + 6)}" y1="{n(Y(mean[k_]))}" y2="{n(Y(mean[k_]))}" stroke="{C["mean"]}" stroke-width="4"/>')
+    o.append(f'<text x="{X1}" y="{Y0 + 66}" text-anchor="end" font-family="{FONT}" font-size="17" fill="{C["ink3"]}">{esc(L["ag_bars_mean"])} — {esc(L["rp_src"])}</text>')
     o.append("</svg>")
     return "\n".join(o) + "\n"
 
 
-def load_works():
-    return json.load(open(os.path.join(ROOT, "data", "works.json"), encoding="utf-8"))["works"]
+MEMORY = [("shared", 55.1), ("private", 46.8), ("none", 38.0)]     # ScaleMAS, Table 2 (card in Chapter 6)
+
+
+def memory_chart_svg(lang, theme):
+    """README: the 19 October correction on shared memory, as three panels of four context windows."""
+    L = T[lang]
+    C = PAL[theme]
+    W, H = 1200, 560
+    o = [f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" width="{W}" height="{H}" role="img" aria-labelledby="t d">',
+         f'<title id="t">{esc(L["mem_t"])}</title>',
+         f'<desc id="d">{esc(L["mem_s"])}: ' + "; ".join(f"{lab} {fnum(v, lang, 1)}%" for lab, (_, v) in zip(L["mem_labels"], MEMORY)) + f'. {esc(L["mem_note"])}</desc>',
+         f'<rect width="{W}" height="{H}" rx="24" fill="{C["bg"]}"/>',
+         f'<text x="56" y="80" font-family="{COND}" font-stretch="condensed" font-size="44" font-weight="900" fill="{C["head"]}">{esc(L["mem_t"].upper())}</text>',
+         f'<text x="56" y="118" font-family="{FONT}" font-size="19" fill="{C["ink3"]}">{esc(L["mem_s"])}</text>']
+    pw, x0, y0 = 352, 56, 150
+    for i, ((mode, v), lab) in enumerate(zip(MEMORY, L["mem_labels"])):
+        x = x0 + i * (pw + 20)
+        hot = mode == "shared"
+        o.append(f'<rect x="{x}" y="{y0}" width="{pw}" height="300" rx="12" fill="{C["panel"]}" stroke="{C["line"]}"/>')
+        o.append(f'<text x="{x + 24}" y="{y0 + 76}" font-family="{COND}" font-stretch="condensed" font-size="64" font-weight="900" fill="{C["lime_ink"] if hot else C["head"]}">{fnum(v, lang, 1)}%</text>')
+        o.append(f'<rect x="{x + 24}" y="{y0 + 94}" width="{pw - 48}" height="6" rx="2" fill="{C["line"]}"/><rect x="{x + 24}" y="{y0 + 94}" width="{n((pw - 48) * v / 60)}" height="6" rx="2" fill="{C["lime"] if hot else C["ink2"]}"/>')
+        o.append(f'<text x="{x + 24}" y="{y0 + 128}" font-family="{MONO}" font-size="15" letter-spacing="1.5" fill="{C["ink2"]}">{esc(lab.upper())}</text>')
+        bx, base = x + 44, y0 + 260
+        for t in range(4):
+            tx_ = bx + t * 70
+            o.append(f'<rect x="{tx_ - 3}" y="{base - 102}" width="56" height="106" rx="4" fill="none" stroke="{C["frame"]}"/>')
+            fill_ = [6, 7, 6, 7][t] if mode == "shared" else ([6, 5, 6, 5][t] if mode == "private" else [5, 6, 5, 6][t])
+            for b in range(fill_):
+                lime = (mode != "none" and b == fill_ - 1 and (t != 1 or mode == "shared"))
+                o.append(f'<rect x="{tx_}" y="{base - (b + 1) * 14 + 3}" width="50" height="11" rx="2" fill="{C["lime"] if lime else C["block"]}" stroke="{C["lime"] if lime else C["block_line"]}"/>')
+            if mode == "private":
+                o.append(f'<rect x="{tx_ - 3}" y="{base + 14}" width="56" height="18" rx="4" fill="none" stroke="{C["ink3"]}" stroke-dasharray="4 4"/>')
+        if mode == "shared":
+            o.append(f'<rect x="{bx - 3}" y="{base + 14}" width="{3 * 70 + 56}" height="18" rx="4" fill="none" stroke="{C["ink3"]}" stroke-dasharray="4 4"/>')
+    for j, line in enumerate(wrap(L["mem_note"], W - 112, 18)[:2]):
+        o.append(f'<text x="56" y="{y0 + 350 + j * 26}" font-family="{FONT}" font-size="18" fill="{C["ink3"]}">{esc(line)}</text>')
+    o.append("</svg>")
+    return "\n".join(o) + "\n"
 
 
 def write_illustrations(out_dir=None):
@@ -934,7 +1020,8 @@ def write_illustrations(out_dir=None):
         for theme in ("dark", "light"):
             for name, svg in ((f"topologies-{lang}-{theme}.svg", poster_svg(lang, theme, ld["corpus"])),
                               (f"scale-{lang}-{theme}.svg", scale_chart_svg(lang, theme, ld)),
-                              (f"agensh-pandoc-{lang}-{theme}.svg", pandoc_chart_svg(lang, theme))):
+                              (f"agensh-pandoc-{lang}-{theme}.svg", pandoc_chart_svg(lang, theme)),
+                              (f"memory-{lang}-{theme}.svg", memory_chart_svg(lang, theme))):
                 p = os.path.join(out_dir, name)
                 with open(p, "w", encoding="utf-8") as f:
                     f.write(svg)

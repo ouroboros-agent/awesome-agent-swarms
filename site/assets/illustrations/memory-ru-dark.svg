@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 560" width="1200" height="560" role="img" aria-labelledby="t d">
+<title id="t">Общая или личная память: те же четыре агента</title>
+<desc id="d">ScaleMAS (FAIR/Meta, Гарвард, 12 октября 2026): успешные ответы на BrowseComp-Plus, табл. 2: общее хранилище 55,1%; личное у каждого 46,8%; без хранилища 38,0%. Равное число агентов (четыре Qwen3.5-9B), а не равные вычисления. Прежняя абляция (Scaling Teams or Time) дала обратное: личная память чуть лучше, 49,43 против 48,62. Дополнение 19 октября 2026.</desc>
+<rect width="1200" height="560" rx="24" fill="#050507"/>
+<text x="56" y="80" font-family="'SF Pro Display Condensed', 'Arial Narrow', 'Roboto Condensed', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-stretch="condensed" font-size="44" font-weight="900" fill="#FFFFFF">ОБЩАЯ ИЛИ ЛИЧНАЯ ПАМЯТЬ: ТЕ ЖЕ ЧЕТЫРЕ АГЕНТА</text>
+<text x="56" y="118" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="19" fill="#9298A3">ScaleMAS (FAIR/Meta, Гарвард, 12 октября 2026): успешные ответы на BrowseComp-Plus, табл. 2</text>
+<rect x="56" y="150" width="352" height="300" rx="12" fill="#0B0C10" stroke="#2A2D35"/>
+<text x="80" y="226" font-family="'SF Pro Display Condensed', 'Arial Narrow', 'Roboto Condensed', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-stretch="condensed" font-size="64" font-weight="900" fill="#C8F542">55,1%</text>
+<rect x="80" y="244" width="304" height="6" rx="2" fill="#2A2D35"/><rect x="80" y="244" width="279.2" height="6" rx="2" fill="#C8F542"/>
+<text x="80" y="278" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="15" letter-spacing="1.5" fill="#CDD1D8">ОБЩЕЕ ХРАНИЛИЩЕ</text>
+<rect x="97" y="308" width="56" height="106" rx="4" fill="none" stroke="#3A3E47"/>
+<rect x="100" y="399" width="50" height="11" rx="2" fill="#14151A" stroke="#5C626C"/>
+<rect x="100" y="385" width="50" height="11" rx="2" fill="#14151A" stroke="#5C626C"/>
+<rect x="100" y="371" width="50" height="11" rx="2" fill="#14151A" stroke="#5C626C"/>
+<rect x="100" y="357" width="50" height="11" rx="2" fill="#14151A" stroke="#5C626C"/>
+<rect x="100" y="343" width="50" height="11" rx="2" fill="#14151A" stroke="#5C626C"/>
+<rect x="100" y="329" width="50" height="11" rx="2" fill="#C8F542" stroke="#C8F542"/>
+<rect x="167" y="308" width="56" height="106" rx="4" fill="none" stroke="#3A3E47"/>
+<rect x="170" y="399" width="50" height="11" rx="2" fill="#14151A" stroke="#5C626C"/>
+<rect x="170" y="385" width="50" height="11" rx="2" fill="#14151A" stroke="#5C626C"/>
+<rect x="170" y="371" width="50" height="11" rx="2" fill="#14151A" stroke="#5C626C"/>
+<rect x="170" y="357" width="50" height="11" rx="2" fill="#14151A" stroke="#5C626C"/>
+<rect x="170" y="343" width="50" height="11" rx="2" fill="#14151A" stroke="#5C626C"/>
+<rect x="170" y="329" width="50" height="11" rx="2" fill="#14151A" stroke="#5C626C"/>
+<rect x="170" y="315" width="50" height="11" rx="2" fill="#C8F542" stroke="#C8F542"/>
+<rect x="237" y="308" width="56" height="106" rx="4" fill="none" stroke="#3A3E47"/>
+<rect x="240" y="399" width="50" height="11" rx="2" fill="#14151A" stroke="#5C626C"/>
+<rect x="240" y="385" width="50" height="11" rx="2" fill="#14151A" stroke="#5C626C"/>
+<rect x="240" y="371" width="50" height="11" rx="2" fill="#14151A" stroke="#5C626C"/>
+<rect x="240" y="357" width="50" height="11" rx="2" fill="#14151A" stroke="#5C626C"/>
+<rect x="240" y="343" width="50" height="11" rx="2" fill="#14151A" stroke="#5C626C"/>
+<rect x="240" y="329" width="50" height="11" rx="2" fill="#C8F542" stroke="#C8F542"/>
+<rect x="307" y="308" width="56" height="106" rx="4" fill="none" stroke="#3A3E47"/>
+<rect x="310" y="399" width="50" height="11" rx="2" fill="#14151A" stroke="#5C626C"/>
+<rect x="310" y="385" width="50" height="11" rx="2" fill="#14151A" stroke="#5C626C"/>
+<rect x="310" y="371" width="50" height="11" rx="2" fill="#14151A" stroke="#5C626C"/>
+<rect x="310" y="357" width="50" height="11" rx="2" fill="#14151A" stroke="#5C626C"/>
+<rect x="310" y="343" width="50" height="11" rx="2" fill="#14151A" stroke="#5C626C"/>
+<rect x="310" y="329" width="50" height="11" rx="2" fill="#14151A" stroke="#5C626C"/>
+<rect x="310" y="315" width="50" height="11" rx="2" fill="#C8F542" stroke="#C8F542"/>
+<rect x="97" y="424" width="266" height="18" rx="4" fill="none" stroke="#9298A3" stroke-dasharray="4 4"/>
+<rect x="428" y="150" width="352" height="300" rx="12" fill="#0B0C10" stroke="#2A2D35"/>
+<text x="452" y="226" font-family="'SF Pro Display Condensed', 'Arial Narrow', 'Roboto Condensed', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-stretch="condensed" font-size="64" font-weight="900" fill="#FFFFFF">46,8%</text>
+<rect x="452" y="244" width="304" height="6" rx="2" fill="#2A2D35"/><rect x="452" y="244" width="237.1" height="6" rx="2" fill="#CDD1D8"/>
+<text x="452" y="278" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="15" letter-spacing="1.5" fill="#CDD1D8">ЛИЧНОЕ У КАЖДОГО</text>
+<rect x="469" y="308" width="56" height="106" rx="4" fill="none" stroke="#3A3E47"/>
+<rect x="472" y="399" width="50" height="11" rx="2" fill="#14151A" stroke="#5C626C"/>
+<rect x="472" y="385" width="50" height="11" rx="2" fill="#14151A" stroke="#5C626C"/>
+<rect x="472" y="371" width="50" height="11" rx="2" fill="#14151A" stroke="#5C626C"/>
+<rect x="472" y="357" width="50" height="11" rx="2" fill="#14151A" stroke="#5C626C"/>
+<rect x="472" y="343" width="50" height="11" rx="2" fill="#14151A" stroke="#5C626C"/>
+<rect x="472" y="329" width="50" height="11" rx="2" fill="#C8F542" stroke="#C8F542"/>
+<rect x="469" y="424" width="56" height="18" rx="4" fill="none" stroke="#9298A3" stroke-dasharray="4 4"/>
+<rect x="539" y="308" width="56" height="106" rx="4" fill="none" stroke="#3A3E47"/>
+<rect x="542" y="399" width="50" height="11" rx="2" fill="#14151A" stroke="#5C626C"/>
+<rect x="542" y="385" width="50" height="11" rx="2" fill="#14151A" stroke="#5C626C"/>
+<rect x="542" y="371" width="50" height="11" rx="2" fill="#14151A" stroke="#5C626C"/>
+<rect x="542" y="357" width="50" height="11" rx="2" fill="#14151A" stroke="#5C626C"/>
+<rect x="542" y="343" width="50" height="11" rx="2" fill="#14151A" stroke="#5C626C"/>
+<rect x="539" y="424" width="56" height="18" rx="4" fill="none" stroke="#9298A3" stroke-dasharray="4 4"/>
+<rect x="609" y="308" width="56" height="106" rx="4" fill="none" stroke="#3A3E47"/>
+<rect x="612" y="399" width="50" height="11" rx="2" fill="#14151A" stroke="#5C626C"/>
+<rect x="612" y="385" width="50" height="11" rx="2" fill="#14151A" stroke="#5C626C"/>
+<rect x="612" y="371" width="50" height="11" rx="2" fill="#14151A" stroke="#5C626C"/>
+<rect x="612" y="357" width="50" height="11" rx="2" fill="#14151A" stroke="#5C626C"/>
+<rect x="612" y="343" width="50" height="11" rx="2" fill="#14151A" stroke="#5C626C"/>
+<rect x="612" y="329" width="50" height="11" rx="2" fill="#C8F542" stroke="#C8F542"/>
+<rect x="609" y="424" width="56" height="18" rx="4" fill="none" stroke="#9298A3" stroke-dasharray="4 4"/>
+<rect x="679" y="308" width="56" height="106" rx="4" fill="none" stroke="#3A3E47"/>
+<rect x="682" y="399" width="50" height="11" rx="2" fill="#14151A" stroke="#5C626C"/>
+<rect x="682" y="385" width="50" height="11" rx="2" fill="#14151A" stroke="#5C626C"/>
+<rect x="682" y="371" width="50" height="11" rx="2" fill="#14151A" stroke="#5C626C"/>
+<rect x="682" y="357" width="50" height="11" rx="2" fill="#14151A" stroke="#5C626C"/>
+<rect x="682" y="343" width="50" height="11" rx="2" fill="#C8F542" stroke="#C8F542"/>
+<rect x="679" y="424" width="56" height="18" rx="4" fill="none" stroke="#9298A3" stroke-dasharray="4 4"/>
+<rect x="800" y="150" width="352" height="300" rx="12" fill="#0B0C10" stroke="#2A2D35"/>
+<text x="824" y="226" font-family="'SF Pro Display Condensed', 'Arial Narrow', 'Roboto Condensed', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-stretch="condensed" font-size="64" font-weight="900" fill="#FFFFFF">38,0%</text>
+<rect x="824" y="244" width="304" height="6" rx="2" fill="#2A2D35"/><rect x="824" y="244" width="192.5" height="6" rx="2" fill="#CDD1D8"/>
+<text x="824" y="278" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="15" letter-spacing="1.5" fill="#CDD1D8">БЕЗ ХРАНИЛИЩА</text>
+<rect x="841" y="308" width="56" height="106" rx="4" fill="none" stroke="#3A3E47"/>
+<rect x="844" y="399" width="50" height="11" rx="2" fill="#14151A" stroke="#5C626C"/>
+<rect x="844" y="385" width="50" height="11" rx="2" fill="#14151A" stroke="#5C626C"/>
+<rect x="844" y="371" width="50" height="11" rx="2" fill="#14151A" stroke="#5C626C"/>
+<rect x="844" y="357" width="50" height="11" rx="2" fill="#14151A" stroke="#5C626C"/>
+<rect x="844" y="343" width="50" height="11" rx="2" fill="#14151A" stroke="#5C626C"/>
+<rect x="911" y="308" width="56" height="106" rx="4" fill="none" stroke="#3A3E47"/>
+<rect x="914" y="399" width="50" height="11" rx="2" fill="#14151A" stroke="#5C626C"/>
+<rect x="914" y="385" width="50" height="11" rx="2" fill="#14151A" stroke="#5C626C"/>
+<rect x="914" y="371" width="50" height="11" rx="2" fill="#14151A" stroke="#5C626C"/>
+<rect x="914" y="357" width="50" height="11" rx="2" fill="#14151A" stroke="#5C626C"/>
+<rect x="914" y="343" width="50" height="11" rx="2" fill="#14151A" stroke="#5C626C"/>
+<rect x="914" y="329" width="50" height="11" rx="2" fill="#14151A" stroke="#5C626C"/>
+<rect x="981" y="308" width="56" height="106" rx="4" fill="none" stroke="#3A3E47"/>
+<rect x="984" y="399" width="50" height="11" rx="2" fill="#14151A" stroke="#5C626C"/>
+<rect x="984" y="385" width="50" height="11" rx="2" fill="#14151A" stroke="#5C626C"/>
+<rect x="984" y="371" width="50" height="11" rx="2" fill="#14151A" stroke="#5C626C"/>
+<rect x="984" y="357" width="50" height="11" rx="2" fill="#14151A" stroke="#5C626C"/>
+<rect x="984" y="343" width="50" height="11" rx="2" fill="#14151A" stroke="#5C626C"/>
+<rect x="1051" y="308" width="56" height="106" rx="4" fill="none" stroke="#3A3E47"/>
+<rect x="1054" y="399" width="50" height="11" rx="2" fill="#14151A" stroke="#5C626C"/>
+<rect x="1054" y="385" width="50" height="11" rx="2" fill="#14151A" stroke="#5C626C"/>
+<rect x="1054" y="371" width="50" height="11" rx="2" fill="#14151A" stroke="#5C626C"/>
+<rect x="1054" y="357" width="50" height="11" rx="2" fill="#14151A" stroke="#5C626C"/>
+<rect x="1054" y="343" width="50" height="11" rx="2" fill="#14151A" stroke="#5C626C"/>
+<rect x="1054" y="329" width="50" height="11" rx="2" fill="#14151A" stroke="#5C626C"/>
+<text x="56" y="500" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="18" fill="#9298A3">Равное число агентов (четыре Qwen3.5-9B), а не равные вычисления. Прежняя абляция (Scaling Teams or Time) дала</text>
+<text x="56" y="526" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="18" fill="#9298A3">обратное: личная память чуть лучше, 49,43 против 48,62. Дополнение 19 октября 2026.</text>
+</svg>

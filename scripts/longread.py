@@ -52,7 +52,8 @@ UI = {
             sources_note="Each list follows the order of the chapter.",
             stub_now="This page is now part of the single page of the survey.", stub_go="Open it in place",
             stub_more="Sections, cards and figures of the former page", stub_lang="Русская версия",
-            stub_zoom="{f} (enlarged view)"),
+            stub_zoom="{f} (enlarged view)", motion_off="Stop the motion", motion_on="Resume the motion", motion_sys="Motion is off in your system settings",
+            towers_k="Cards in each chapter", towers_full="full", towers_short="short", towers_note="{f} full and {s} short cards", towers_none="no cards"),
  "ru": dict(part="Часть", epilogue="Эпилог", chapter="Глава", of="из", appendix="Справка",
             here_top="Обзор", contents="Содержание", route="Содержание", route_ref="Справка",
             findings_eb="Десять выводов", howto_t="Карточки и ярлыки", src_ch="Источники главы",
@@ -62,7 +63,8 @@ UI = {
             sources_note="Списки идут в порядке глав.",
             stub_now="Эта страница теперь входит в единую страницу обзора.", stub_go="Открыть на месте",
             stub_more="Разделы, карточки и рисунки прежней страницы", stub_lang="English version",
-            stub_zoom="{f} (увеличенный вид)"),
+            stub_zoom="{f} (увеличенный вид)", motion_off="Остановить анимацию", motion_on="Включить анимацию", motion_sys="Анимация выключена в настройках системы",
+            towers_k="Карточки в каждой главе", towers_full="подробные", towers_short="краткие", towers_note="подробных карточек — {f}, кратких — {s}", towers_none="карточек нет"),
 }
 
 # ---------------------------------------------------------------- scenes in the flow
@@ -75,7 +77,7 @@ PLACE = {
              "fig:dash_orgs_dark.png": "orgs", "fig:dash_models_dark.png": "models", "fig:dash_topics_dark.png": "topics"},
     "ch04": {"table:1": "ledger", "callout:1": "lambda"},
     "ch05": {"after:agensh-1024": "agensh"},
-    "ch06": {"before:hiddenbench": "hidden"},
+    "ch06": {"before:hiddenbench": "hidden", "after:scalemas-substrate": "substrate", "after:multi-agent-transactive-memory": "matm"},
     "ch07": {"after:mind-viruses": "virus", "after:deepmind-cheating-whistleblowing": "loophole"},
     "ch08": {"after:ringelmann-effect": "echo"},
     "ch09": {"after:okawa-biased-consensus": "consensus"},

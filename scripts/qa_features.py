@@ -4,7 +4,10 @@
   python scripts/qa_features.py [OUTDIR]      # default qa/features/; needs Playwright with Chromium and WebKit
 
 Browser (Chromium = Playwright build, WebKit; desktop 1240×722, phone 390×844):
-  prologue moves by itself and advances schemes; pause holds it; it stops off screen
+  prologue (B «Контекст»): the sticky stage follows the step being read, from the independent scheme through the
+    coordinator and shared memory to the scale; a finding travels between windows without a Start button; the wheel
+    scrolls the page natively and nothing snaps; the motion switch in the top bar holds the flights and the scenes
+  part openers fill their chapter windows when seen; the 19 October scenes (ScaleMAS, MATM) fill in when seen
   every scene: idle before it is seen, moves when on screen (an intermediate state is captured), stops off screen,
     its pause holds it; reduced motion shows the end state and never moves
   part statements light up with the scroll (--p rises); chapter plates pin and get covered (--c rises)
@@ -48,6 +51,17 @@ STATE = """(sel) => { const e = document.querySelector(sel); if (!e) return null
   return {beat: e.getAttribute('data-beat'), shown: e.classList.contains('shown'), ended: e.classList.contains('ended'), paused: e.classList.contains('paused'),
           phase: e.getAttribute('data-phase'), sig: h(parts.join('|'))}; }"""
 
+def to_step(pg, n, view):
+    """Bring a prologue step onto the reading line (mid-screen on desktop, under the stage band on a phone)."""
+    pg.evaluate("""([n, f]) => { const r = document.documentElement; r.style.scrollBehavior = 'auto';
+      const e = document.getElementById('how-' + n), b = e.getBoundingClientRect();
+      scrollTo(0, b.top + scrollY + Math.min(b.height / 2, innerHeight * 0.2) - innerHeight * f); }""", [n, 0.485 if view == "desktop" else 0.665])
+
+
+def stage_state(pg):
+    return pg.evaluate("(() => { const s = [...document.querySelectorAll('#how .stage svg')].find(x => x.getClientRects().length); return s ? s.getAttribute('data-s') : null; })()")
+
+
 def scene_checks(pg, engine, view, lang):
     for sel in SCENES:
         name = sel.strip("#")
@@ -81,23 +95,42 @@ def run_engine(p, engine):
         ctx = b.new_context(**vopt); pg = ctx.new_page(); errs = []
         pg.on("pageerror", lambda e: errs.append(str(e)))
         pg.on("console", lambda m: errs.append(m.text) if m.type == "error" else None)
-        # --- prologue
-        pg.goto(url("ru")); pg.wait_for_timeout(300)
-        s0 = pg.evaluate("({mode: document.getElementById('how').dataset.mode, beat: document.querySelector('.narr').dataset.beat})")
-        pg.wait_for_timeout(2900)
-        s1 = pg.evaluate("""() => ({mode: document.getElementById('how').dataset.mode, beat: document.querySelector('.narr').dataset.beat,
-                 fx: [...document.querySelectorAll('svg.tp')].find(s => s.getClientRects().length).querySelectorAll('.fx .pk').length})""")
-        rec(engine, view, "ru: prologue moves by itself (beat 0→≥1, packets)", s0["beat"] == "0" and s1["beat"] != "0" and s1["fx"] > 0, {"t0": s0, "t3s": s1})
-        if view == "desktop":
-            t0 = time.time(); mode = "ind"
-            while time.time() - t0 < 14 and mode == "ind":
-                pg.wait_for_timeout(500); mode = pg.evaluate("document.getElementById('how').dataset.mode")
-            rec(engine, view, "ru: prologue advances to the next scheme without a Start button", mode == "coord", {"after_s": round(time.time() - t0, 1)})
-        pg.locator("#how .pp").click(); b0 = pg.evaluate("document.querySelector('.narr').dataset.beat"); pg.wait_for_timeout(2000)
-        b1 = pg.evaluate("document.querySelector('.narr').dataset.beat"); pg.locator("#how .pp").click()
-        rec(engine, view, "ru: prologue pause holds", b0 == b1, [b0, b1])
-        jump(pg, "#ch03", "start"); pg.wait_for_timeout(600)
-        rec(engine, view, "ru: prologue stops off screen", pg.evaluate("document.getElementById('how').classList.contains('offscreen')"))
+        # --- prologue: the stage follows the text
+        pg.goto(url("ru")); pg.wait_for_timeout(400)
+        seen = []
+        for n_, want in ((3, "ind-2"), (5, "coord-0"), (6, "coord-2"), (9, "mem-2"), (12, "sky-2"), (13, "sky-3"), (2, "ind-0")):
+            to_step(pg, n_, view); pg.wait_for_timeout(700)
+            st = stage_state(pg); seen.append((n_, want, st))
+        rec(engine, view, "ru: the stage follows the step being read (schemes → scale and back)", all(w == s_ for _, w, s_ in seen), seen)
+        to_step(pg, 5, view); pg.wait_for_timeout(900)
+        to_step(pg, 6, view); pg.wait_for_timeout(450)
+        fl = pg.evaluate("document.querySelectorAll('#how .stage svg .flight').length")
+        if view == "desktop": shot(pg, f"{engine}-{view}-ru-stage-coord-flight")
+        rec(engine, view, "ru: entering a scheme sends the finding between windows, no Start button", fl > 0, {"flights": fl})
+        to_step(pg, 4, view); pg.wait_for_timeout(500)
+        y0 = pg.evaluate("Math.round(scrollY)"); pg.mouse.move(300, 400); pg.mouse.wheel(0, 300); pg.wait_for_timeout(500)
+        y1 = pg.evaluate("Math.round(scrollY)"); pg.wait_for_timeout(900); y2 = pg.evaluate("Math.round(scrollY)")
+        rec(engine, view, "ru: the wheel scrolls the page natively, nothing snaps", 200 <= y1 - y0 <= 400 and y2 == y1, [y0, y1, y2])
+        # the motion switch holds the flights and the scenes
+        pg.locator("button.mtg").click(); pg.wait_for_timeout(200)
+        paused = pg.evaluate("document.documentElement.classList.contains('paused') && document.querySelector('button.mtg').getAttribute('aria-pressed') === 'true'")
+        to_step(pg, 8, view); pg.wait_for_timeout(700); to_step(pg, 9, view); pg.wait_for_timeout(450)
+        fl2 = pg.evaluate("document.querySelectorAll('#how .stage svg .flight').length"); st9 = stage_state(pg)
+        jump(pg, "#sc-lambda"); pg.wait_for_timeout(900)
+        a_ = pg.evaluate(STATE, "#sc-lambda"); pg.wait_for_timeout(1000); b_ = pg.evaluate(STATE, "#sc-lambda")
+        pg.locator("button.mtg").click(); pg.wait_for_timeout(200)
+        resumed = pg.evaluate("!document.documentElement.classList.contains('paused')")
+        pg.wait_for_timeout(1500); c_ = pg.evaluate(STATE, "#sc-lambda")
+        rec(engine, view, "ru: the motion switch holds flights and scenes; the stage still changes state; switching back resumes",
+            paused and fl2 == 0 and st9 == "mem-2" and a_["sig"] == b_["sig"] and resumed and c_["sig"] != b_["sig"], {"paused": paused, "flights": fl2, "state": st9, "scene": [a_, b_, c_]})
+        # part openers and the 19 October scenes fill in when seen
+        jump(pg, "#part-2", "start"); pg.wait_for_timeout(700)
+        tw = pg.evaluate("document.getElementById('part-2').classList.contains('seen') && document.querySelectorAll('#part-2 .tw b').length")
+        rec(engine, view, "ru: a part opener fills its chapter windows when seen (one block per card)", bool(tw) and tw > 50, tw)
+        for sel in ("#sc-substrate", "#sc-matm"):
+            jump(pg, sel); pg.wait_for_timeout(1200)
+            sh = pg.evaluate("(s) => { const e = document.querySelector(s); const i = e.querySelector('.sbb i, .mt-bar i'); return {shown: e.classList.contains('shown'), w: Math.round(i.getBoundingClientRect().width)}; }", sel)
+            rec(engine, view, f"ru: {sel[1:]} fills in when seen", sh["shown"] and sh["w"] > 10, sh)
         # --- scenes
         for lang in (("en", "ru") if view == "desktop" else ("en",)):
             pg.goto(url(lang)); pg.wait_for_timeout(400)
@@ -129,7 +162,7 @@ def run_engine(p, engine):
             shot(pg, f"{engine}-{view}-en-contents-ch07"); pg.keyboard.press("Escape"); pg.wait_for_timeout(200)
             rec(engine, view, "contents sheet opens on the current chapter with its sections", cur == "ch07" and vis, cur)
         # --- language switch keeps the place, deep in a chapter and on a card
-        for target in ("#ch07-s-4", "#w-agensh-1024", "#ch01-fig-2"):
+        for target in ("#how-6", "#ch07-s-4", "#w-agensh-1024", "#ch01-fig-2", "#w-scalemas-substrate"):
             pg.goto(url("en")); pg.wait_for_timeout(300)
             jump(pg, target, "start"); pg.wait_for_timeout(500)
             bb = pg.locator("a.langbtn").bounding_box()          # a real click: no automatic scrolling to the sticky button first
@@ -214,8 +247,14 @@ def run_engine(p, engine):
         ctx = b.new_context(reduced_motion="reduce", **vopt); pg = ctx.new_page()
         pg.goto(url("en")); pg.wait_for_timeout(600)
         st = pg.evaluate("document.documentElement.classList.contains('static')")
+        stage = pg.evaluate("""() => ({stage: getComputedStyle(document.querySelector('#how .stage')).display,
+            statics: [...document.querySelectorAll('#how .static')].filter(f => f.getClientRects().length && [...f.querySelectorAll('svg')].some(s => s.getClientRects().length)).length,
+            dim: [...document.querySelectorAll('#how .step')].filter(x => getComputedStyle(x).opacity !== '1').length,
+            mtg: document.querySelector('button.mtg').disabled})""")
+        rec(engine, view, "reduced motion: the stage gives way to a static figure for each scheme and the scale; the motion switch is disabled",
+            st and stage["stage"] == "none" and stage["statics"] == 4 and stage["dim"] == 0 and stage["mtg"], stage)
         moved = []
-        for sel in SCENES + ["#how"]:
+        for sel in SCENES:
             jump(pg, sel); pg.wait_for_timeout(500); a = pg.evaluate(STATE, sel); pg.wait_for_timeout(800); b2 = pg.evaluate(STATE, sel)
             if a and b2 and a["sig"] != b2["sig"]: moved.append(sel)
         lit = pg.evaluate("[...document.querySelectorAll('.sc-fieldmap .fm-node')].every(n => getComputedStyle(n).opacity === '1')")

@@ -1,22 +1,36 @@
 # Awesome Agent Swarms
 
-**On the Dynamics of LLM Agent Swarms: Scaling, Coordination, and Collective Behavior.** A survey of what happens when many LLM agents work on one task: how they divide the work, pass findings and errors to each other and reach agreement, and what more agents buy in time, quality and tokens. It draws on 153 studies, system cards, engineering reports and incident investigations, mostly from 2025–2026, up to 3 October 2026. By Anton Razzhigaev and Ouroboros, in English and Russian.
+**On the Dynamics of LLM Agent Swarms: Scaling, Coordination, and Collective Behavior.** A survey of what happens when many LLM agents work on one task: how they divide the work, pass findings and errors to each other and reach agreement, and what more agents buy in time, quality and tokens. The analysis rests on 153 studies, system cards, engineering reports and incident investigations, mostly from 2025–2026, up to the 3 October 2026 cut-off; a dated supplement of 19 October 2026 adds 8 more works and corrects two conclusions. By Anton Razzhigaev and Ouroboros, in English and Russian.
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/illustrations/topologies-en-dark.svg">
-  <img src="assets/illustrations/topologies-en-light.svg" alt="Six agents connected in three ways: independently, through a coordinator, through a shared log. Agent 3 finds the answer; agents 1 and 5 either reach it on their own, receive it from the coordinator, or find it by querying the log.">
+  <img src="assets/illustrations/topologies-en-light.svg" alt="Six agents drawn as context windows, connected in three ways: independently, through a coordinator, through a shared log. Agent 3's finding is a lime block; agents 1 and 5 redo the work in coral, receive a copy from the coordinator, or find the entry in the log.">
 </picture>
 
 Whether a swarm helps depends on what the comparison held fixed. In the Claude Opus 5.5 system card, a team of five reaches the same ProgramBench level 2.7 times faster than one agent and spends about 1.9 times the tokens (the survey's estimate from the card's chart). At equal total output tokens, OpenAI's published GPT-5.6 Sol curves put one agent ahead of a swarm of 4 on three benchmarks, and a swarm of 16 on the two where that team size was measured. The survey keeps such settings apart and gives every result with its scale, its comparison condition and its evidence class.
 
+## What changed on 19 October 2026
+
+A targeted search after the cut-off added five new preprints, two engineering reports (Google Research's Deep Review and the UK AI Security Institute's Transect) and a February paper on Moltbook, read in its October revision; two records were updated and one identifier corrected. The new works are discussed in Chapters 4–6, 9 and 10 and carry the label "added 19 October 2026". Two conclusions change:
+
+- **Shared memory.** The survey had one direct comparison of shared and private memory within a team, in which private memory was slightly better (49.43 vs 48.62). ScaleMAS, from FAIR (Meta) and Harvard, adds a second: four identical Qwen3.5-9B agents answer 55.1% of BrowseComp-Plus questions with a shared store, 46.8% with private stores and 38.0% independently, at equal team size rather than equal compute. Whether shared memory helps depends on the task, the retrieval mechanism and what the agents actually retrieve.
+- **A skewed index is not skewed reading.** In Multi-Agent Transactive Memory, 77.82% of the ALFWorld index comes from one trained model; in version 2, that source supplies 25.6% of SVMRank retrievals, while 31 minority sources occupy 1.4% of the index but supply 40.7% of SVMRank retrievals.
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/illustrations/memory-en-dark.svg">
+  <img src="assets/illustrations/memory-en-light.svg" alt="ScaleMAS, BrowseComp-Plus: four identical agents answer 55.1% correctly with a shared store, 46.8% with private stores and 38.0% without a store; equal team size, not equal compute. The earlier ablation found private memory slightly better, 49.43 vs 48.62.">
+</picture>
+
+This was a targeted update, not a systematic review or a replication of experiments; [About](content/en/about.md) gives its scope, and [`updates/2026-10-19/`](updates/2026-10-19/en.md) holds the dated supplement with its registry delta, catalogue and BibTeX. The charts of the 153-work analytic corpus and the PDF remain the 3 October edition.
+
 ## Where to read
 
-- **Website** in `site/`: the whole survey as one continuous page in English (`site/en/index.html`) and Russian (`site/ru/index.html`). It runs from the topology scene through three parts and eleven chapters to the findings, the open questions and an atlas of all 280 works and resources with filters, then a glossary, sources and notes on method. Native scenes and charts explain the mechanisms and the corpus along the way. The files are static: open `site/index.html` in a browser, or run `python3 -m http.server -d site` and go to `http://localhost:8000`.
-- **Technical report:** [PDF](paper/swarm-dynamics.pdf) in ACL format, with its [LaTeX source](paper/main.tex), a [source archive](paper/swarm-dynamics-source.zip) and [build notes](paper/BUILD.md).
-- **Catalogue:** [CATALOG.md](CATALOG.md) lists every cited work by theme, one line each ([in Russian](CATALOG.ru.md)).
-- **Data:** the [registry of works](data/works.json), [BibTeX](data/bib/works.bib) and [figure provenance](data/figures.json).
+- **Website** in `site/`: the whole survey as one continuous page in English (`site/en/index.html`) and Russian (`site/ru/index.html`), in a dark design where every agent is a context window drawn as a tower of blocks (a light theme is one switch away). It runs from the prologue, six agents and three ways to connect them, through three parts and eleven chapters to the findings, the open questions and an atlas of all 288 works and resources with filters, then a glossary, sources and notes on method. Native scenes and charts explain the mechanisms and the corpus along the way. The files are static: open `site/index.html` in a browser, or run `python3 -m http.server -d site` and go to `http://localhost:8000`.
+- **Technical report:** [PDF](paper/swarm-dynamics.pdf) in ACL format, with its [LaTeX source](paper/main.tex), a [source archive](paper/swarm-dynamics-source.zip) and [build notes](paper/BUILD.md). It is the edition of 3 October 2026 and does not include the supplement.
+- **Catalogue:** [CATALOG.md](CATALOG.md) lists every cited work by theme, one line each, with the 19 October additions marked ([in Russian](CATALOG.ru.md)).
+- **Data:** the [registry of works](data/works.json) as of 3 October, its [BibTeX](data/bib/works.bib) and [figure provenance](data/figures.json); the supplement's [registry delta](updates/2026-10-19/registry-delta.json) and [catalogue of 288 records](updates/2026-10-19/catalogue.json); the catalogue's current [BibTeX](site/data/references-2026-10-19.bib), with the corrected identifier.
 
-The atlas lists 280 works and resources; the survey’s charts use the 153 works with detailed metadata.
+The atlas lists 288 works and resources (catalogue as of 19 October); the survey’s charts use the 153 works of the analytic corpus, with detailed metadata, as of 3 October.
 
 ## How big real swarms are
 
@@ -36,7 +50,7 @@ Of these 153 works, 99 state how many agents run at the same time, and the media
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/illustrations/agensh-pandoc-en-dark.svg">
-  <img src="assets/illustrations/agensh-pandoc-en-light.svg" alt="Share of pandoc's hidden tests passed in 6 hours: 33.89% with one agent, 41.75% with 8, 43.11% with 32, 50.94% with 128, 55.06% with 1,024.">
+  <img src="assets/illustrations/agensh-pandoc-en-light.svg" alt="Share of pandoc's hidden tests passed in 6 hours: 33.89% with one agent, 41.75% with 8, 43.11% with 32, 50.94% with 128, 55.06% with 1,024; ticks mark the mean over five tasks for 1–128 agents (19.31, 20.68, 26.52 and 28.78%).">
 </picture>
 
 In *Agensh: Scaling Organizational Intelligence to 1,024 Agents*, Microsoft Research gave up to 1,024 identical GPT-5.6-sol agents with no appointed leader six hours to rebuild pandoc, which they could study only by running it. The share of hidden tests passed rose from 33.89% for one agent to 55.06% for 1,024. Time was held equal, tokens were not, and the 1,024-agent team ran on pandoc only. [Chapter 5](content/en/ch05.md) covers the run and the roles that emerged in it.
@@ -57,7 +71,7 @@ The links open the Markdown text of each chapter, which GitHub renders; the webs
 10. [Swarms in the wild](content/en/ch10.md). What emerges among agents when nobody assigns roles or a protocol?
 11. [Open questions](content/en/ch11.md). Eight questions this survey leaves open, each with the experiment that would settle it.
 
-The [key findings](content/en/index.md) open the website. [About](content/en/about.md) describes how the corpus was assembled, and the [glossary](content/en/glossary.md) defines terms used in a narrow sense.
+The [ten findings](content/en/index.md) close the main text, before the open questions. [About](content/en/about.md) describes how the corpus was assembled, and the [glossary](content/en/glossary.md) defines terms used in a narrow sense.
 
 ## Rights
 
@@ -87,8 +101,9 @@ Anton Razzhigaev set the scope of the survey, made the editorial decisions and i
 ```sh
 python3 -m venv .venv && .venv/bin/pip install -r requirements.txt
 .venv/bin/python -m playwright install chromium webkit
-make charts site catalog check   # charts → site/ and illustrations → CATALOG, RIGHTS, README → content checks
-make coverage                    # every card, figure, link and heading is on the single page
+make site catalog check          # site/ and illustrations → CATALOG, RIGHTS, README → content checks
+make coverage                    # every card, figure, link and heading is on the single page (PREV=<previous site/> compares editions)
+make charts                      # optional: redraws the survey's own Chapter 1 charts from data; the committed PNGs are the published ones
 make qa qa-features              # the page, figures, scenes and interactions; desktop/phone, JavaScript/no-JavaScript
 ```
 

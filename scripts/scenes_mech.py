@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
-"""Mechanism scenes of the longread, drawn with the prologue's grammar: agents as chips or dots, an emerald mark
-for a finding or correct knowledge, coral for an error, a fake or an infection, blue for a shared store.
+"""Mechanism scenes of the longread, drawn with the prologue's grammar: agents as chips, dots or context windows, a lime
+mark for a finding or correct knowledge, coral for an error, a fake or an infection, a dashed outline for a shared store.
 
 Every number printed in a scene is quoted from the card the scene follows (named in the caption) and keeps that
 card's comparison condition. The motion between those numbers is schematic. Each scene's static markup is its
@@ -116,7 +116,7 @@ def lam(lang, ctx):
 
 
 # ---------------------------------------------------------------- the equalization ledger (ch. 4, first table)
-LEDGER_G = ["tok", "lvl", "tok", "tok", "time", "ag", "price", "none", "ag", "tok"]
+LEDGER_G = ["tok", "lvl", "tok", "tok", "time", "ag", "price", "none", "ag", "tok", "none"]   # the last row (Cohere) came with the 19 October supplement
 LG = {"en": dict(order="Order of the text", group="By what was held equal", tok="Matched token budgets or compute", lvl="The same result level; time and tokens compared",
                  time="Time held equal", ag="Number of agents (and actions) held equal", price="Price held equal", none="Nothing held equal"),
       "ru": dict(order="Порядок текста", group="По тому, что уравнено", tok="Сопоставлены бюджеты токенов или вычисления", lvl="Одинаковый уровень результата; сравнивают время и токены",
@@ -141,27 +141,118 @@ def ledger(lang, table_html):
     return f'<div class="ledger" data-scene="ledger" data-sl>{tools}{tbl}</div>'
 
 
-# ---------------------------------------------------------------- Agensh: the board and the result (ch. 5, after the card)
+# ---------------------------------------------------------------- Agensh: the room after the card (ch. 5)
+# A case study set as its own room: agent 17's window (how board entries reach an agent), the protocol two agents
+# agreed on, the replay counts, the result by team size with agent-hours under it, and what was held equal. Every number
+# is the card's (content/*/ch05.md, agensh-1024); scripts/check_scenes.py checks them against it.
 def agensh(lang, ctx):
     L = site_story.T[lang]
     sub = lambda s: s.replace("{nb}", NB)
-    o = ['<section class="scene sc-agensh" id="agensh" data-scene="agensh" aria-labelledby="agensh-t">',
-         f'<div class="sc-cap"><p class="sc-kick">{esc(L["ag_eyebrow"])}</p><p class="sc-big" id="agensh-t">{esc(L["ag_h"])}</p></div>',
+    kinds = "".join(f'<li><code class="{c}">{k}</code> {esc(d)}</li>' for k, c, d in L["ag_kinds"])
+    rep = L["ag_replay"]
+    ratio = {1: 2800 / 11111, 3: 56472 / 148079}
+    reps = "".join(f'<div class="rp"><p class="rv{(" lime" if i == 1 else (" coral" if i == 3 else ""))}">{sub(v)}</p><p class="rl">{esc(sub(t))}</p>'
+                   + (f'<div class="ratio{" c" if i == 3 else ""}" style="--r:{ratio[i]:.3f}" aria-hidden="true"><i></i></div>' if i in ratio else "") + "</div>"
+                   for i, (v, t) in enumerate(rep))
+    o = ['<section class="scene sc-agensh room" id="agensh" data-scene="agensh" aria-labelledby="agensh-t">',
+         f'<div class="ag-head"><p class="giant" aria-hidden="true">1{NB}024</p><div><p class="sc-kick">{esc(L["ag_eyebrow"])}</p>'
+         f'<p class="sc-big" id="agensh-t">{esc(L["ag_h"])}</p><p class="ag-lead">{esc(sub(L["ag_room_lead"]))}</p></div></div>',
          '<div class="read">' + "".join(f"<p>{sub(p)}</p>" for p in L["ag_p1"][1:]) + '</div>',
-         f'<figure class="chn-fig"><figcaption class="sc-head"><span class="sc-badge b-sch">{UI[lang]["sch"]}</span><span class="sc-title">{esc(L["ag_fig"])}</span></figcaption>'
-         f'<div class="chn-art">{site_story.channels_svg(lang)}</div><ul class="fig-key">',
-         f'<li><span class="k k-push"></span>{esc(L["ag_key"][0])}</li><li><span class="k k-pull"></span>{esc(L["ag_key"][1])}</li></ul>',
-         f'<p class="fig-note">{sub(L["ag_note"])}</p></figure>',
+         f'<figure class="b17f"><figcaption class="sc-head"><span class="sc-badge b-sch">{UI[lang]["sch"]}</span><span class="sc-title">{esc(L["ag_fig"])}</span></figcaption>'
+         f'<div class="b17-art">{site_story.board_svg(lang)}</div><ul class="kinds-key">{kinds}</ul><ul class="fig-key">'
+         f'<li><span class="k k-push"></span>{esc(L["ag_key"][0])}</li><li><span class="k k-pull"></span>{esc(L["ag_key"][1])}</li></ul>'
+         f'<p class="fig-note">{esc(L["ag_board_note"])}</p></figure>',
          f'<div class="read"><p class="read-h">{esc(L["ag_h3"])}</p><p>{sub(L["ag_p2"][0])}</p></div>',
-         '<div class="result"><figure class="lchart" id="line-chart">',
-         f'<figcaption class="fig-t" id="li-t"><span class="sc-badge b-card">{UI[lang]["card"]}</span> {esc(sub(L["ag_chart"]))}</figcaption>', site_story.line_svg(lang),
-         '<div class="tip" id="tip" aria-hidden="true"></div>', f'<ul class="rowvals" aria-label="{esc(L["ag_vals"])}">']
+         f'<figure class="protof"><figcaption class="sc-head"><span class="sc-badge b-sch">{UI[lang]["sch"]}</span><span class="sc-title">{esc(L["ag_proto_t"])}</span></figcaption>'
+         f'{site_story.proto_svg(lang)}<p class="fig-note">{esc(L["ag_proto_note"])}</p></figure>',
+         f'<div class="replay">{reps}</div><p class="src replay-src">{esc(sub(L["ag_replay_note"]))}</p>',
+         '<div class="result"><figure class="barsf" id="line-chart">',
+         f'<figcaption class="fig-t" id="li-t"><span class="sc-badge b-card">{UI[lang]["card"]}</span> {esc(sub(L["ag_chart"]))}</figcaption>',
+         f'<div class="vw">{site_story.bars_svg(lang, "wide")}</div><div class="vn">{site_story.bars_svg(lang, "narrow")}</div>',
+         f'<ul class="rowvals" aria-label="{esc(L["ag_vals"])}">']
     for lab, (v, p) in zip(L["li_rows"], site_story.PANDOC):
         o.append(f'<li><span>{sub(lab)}</span> <b>{site_story.fnum(p, lang, 2)}</b></li>')
-    o.append(f'</ul><p class="src">{L["ag_src"]}</p></figure>')
+    o.append(f'</ul><p class="src">{L["ag_src"]} {esc(L["ag_hours_note"])}</p></figure>')
     o.append(f'<aside class="cond" aria-labelledby="h-cond"><h3 id="h-cond">{esc(L["ag_cond"])}</h3><dl>'
              + "".join(f"<dt>{esc(a)}</dt><dd>{sub(b)}</dd>" for a, b in L["ag_dl"]) + '</dl></aside></div></section>')
     return "".join(o)
+
+
+# ---------------------------------------------------------------- ScaleMAS: one quartet, three kinds of access (ch. 6, after the card)
+SB = {
+ "en": dict(title="The same four agents, three kinds of access to the records",
+            modes=[("shared", "a shared store", 55.1), ("private", "a private store each", 46.8), ("none", "independent, no store", 38.0)],
+            unit="successful answers on BrowseComp-Plus (Table 2)", d=["+8.3 pp over private stores", "+17.1 pp over independent agents"],
+            note="The drawing of access is schematic; the numbers are the ScaleMAS card's. Four identical Qwen3.5-9B agents in each condition: equal team size, not equal compute."),
+ "ru": dict(title="Те же четыре агента, три вида доступа к записям",
+            modes=[("shared", "общее хранилище", 55.1), ("private", "личное хранилище у каждого", 46.8), ("none", "независимо, без хранилища", 38.0)],
+            unit="успешных ответов на BrowseComp-Plus (табл. 2)", d=["+8,3 п.п. к личным хранилищам", "+17,1 п.п. к независимым агентам"],
+            note="Доступ нарисован схематично; числа — из карточки ScaleMAS. В каждом условии четыре одинаковых агента Qwen3.5-9B: равное число агентов, а не равные вычисления."),
+}
+
+
+def substrate_svg(mode):
+    """Four context windows; under them one shared shelf, four private shelves, or none."""
+    W, H, X0, CW, GAP, BASE, SH, BH = 300, 230, 22, 52, 14, 150, 13, 10
+    fill = {"shared": [6, 7, 6, 7], "private": [6, 5, 6, 5], "none": [5, 6, 5, 6]}[mode]
+    o = [f'<svg class="sbs sbs-{mode}" viewBox="0 0 {W} {H}" aria-hidden="true" focusable="false">']
+    for t in range(4):
+        x = X0 + t * (CW + GAP)
+        o.append(f'<rect class="fr" x="{x - 3}" y="{BASE - 9 * SH - 2}" width="{CW + 6}" height="{9 * SH + 6}" rx="4"/>')
+        for s in range(fill[t]):
+            cls = "bk lime" if (mode != "none" and s == fill[t] - 1 and t != 1) or (t == 1 and s == fill[t] - 1 and mode == "shared") else "bk"
+            o.append(f'<rect class="{cls}" style="--lv:{s}" x="{x}" y="{BASE - (s + 1) * SH + (SH - BH)}" width="{CW}" height="{BH}" rx="2"/>')
+        if mode == "private":
+            o.append(f'<rect class="shelf" x="{x - 3}" y="{BASE + 18}" width="{CW + 6}" height="22" rx="4"/><line class="wire" x1="{x + CW / 2}" y1="{BASE + 6}" x2="{x + CW / 2}" y2="{BASE + 18}"/>')
+    if mode == "shared":
+        w = 4 * CW + 3 * GAP
+        o.append(f'<rect class="shelf" x="{X0 - 3}" y="{BASE + 18}" width="{w + 6}" height="22" rx="4"/>')
+        for t in range(4):
+            x = X0 + t * (CW + GAP) + CW / 2
+            o.append(f'<line class="wire" x1="{x}" y1="{BASE + 6}" x2="{x}" y2="{BASE + 18}"/>')
+        for j in range(5):
+            o.append(f'<rect class="rec" x="{X0 + 6 + j * 26}" y="{BASE + 24}" width="20" height="10" rx="2"/>')
+    o.append("</svg>")
+    return "".join(o)
+
+
+def substrate(lang, ctx):
+    T = SB[lang]
+    cells = []
+    for mode, lab, v in T["modes"]:
+        cells.append(f'<div class="sbc sbc-{mode}"><p class="sbv"><b>{fnum(v, lang, 1)}</b>{NB}%</p><div class="sbb" style="--v:{v / 60:.4f}" aria-hidden="true"><i></i></div>'
+                     f'<p class="sbl">{esc(lab)}</p>{substrate_svg(mode)}</div>')
+    art = (f'<div class="sb-wrap"><p class="sc-sub">{esc(T["unit"])}</p><div class="sb-grid">{"".join(cells)}</div>'
+           f'<ul class="sb-d">{"".join(f"<li>{esc(x)}</li>" for x in T["d"])}</ul></div>')
+    return frame("substrate", lang, "sc-substrate", art, title=esc(T["title"]), badge="card", note=esc(T["note"]))
+
+
+# ---------------------------------------------------------------- MATM v2: the index is skewed, the reading less so (ch. 6, after the card)
+MT = {
+ "en": dict(title="What fills the index, and what the agents read",
+            rows=[("ALFWorld index", 77.82, 1.4), ("SVMRank retrievals", 25.6, 40.7)],
+            big="one trained seq2seq model", small="31 minority sources", rest="other sources",
+            pooled="Pooled across retrieval methods, the minority sources supply 31.8% of retrievals.",
+            note="Numbers from the Multi-Agent Transactive Memory card (version 2 of 15 October 2026, Appendix H, Table 5). A removal ablation of the dominant source has still not been run."),
+ "ru": dict(title="Из чего состоит индекс и что из него читают",
+            rows=[("Индекс ALFWorld", 77.82, 1.4), ("Извлечения SVMRank", 25.6, 40.7)],
+            big="одна обученная seq2seq-модель", small="31 малый источник", rest="остальные источники",
+            pooled="По всем способам поиска вместе малые источники дают 31,8% извлечений.",
+            note="Числа — из карточки Multi-Agent Transactive Memory (версия 2 от 15 октября 2026, приложение H, табл. 5). Абляции с удалением доминирующего источника по-прежнему нет."),
+}
+
+
+def matm(lang, ctx):
+    T = MT[lang]
+    rows = []
+    for lab, big, small in T["rows"]:
+        rows.append(f'<li><p class="mt-l">{esc(lab)}</p><div class="mt-bar" style="--a:{big / 100:.4f};--b:{small / 100:.4f}">'
+                    f'<i class="mt-a"></i><i class="mt-r"></i><i class="mt-b"></i></div>'
+                    f'<p class="mt-v"><span class="mt-va">{pct(big, lang, 2 if big != round(big, 1) else 1)}</span><span class="mt-vb">{pct(small, lang, 1)}</span></p></li>')
+    key = (f'<ul class="sc-legend mt-key"><li><i class="mt-a"></i>{esc(T["big"])}</li><li><i class="mt-b"></i>{esc(T["small"])}</li>'
+           f'<li><i class="mt-r"></i>{esc(T["rest"])}</li></ul>')
+    art = f'<div class="mt-wrap">{key}<ol class="mt-rows">{"".join(rows)}</ol><p class="sc-sub2">{esc(T["pooled"])}</p></div>'
+    return frame("matm", lang, "sc-matm", art, title=esc(T["title"]), badge="card", note=esc(T["note"]))
 
 
 # ---------------------------------------------------------------- HiddenBench: facts that do not add up (ch. 6)
@@ -632,5 +723,6 @@ def moltbook(lang, ctx):
     return frame("moltbook", lang, "sc-moltbook", art, title=esc(T["title"]), beats=[esc(b) for b in T["beats"]], badge="card")
 
 
-MECH = {"lambda": lam, "agensh": agensh, "hidden": hidden, "virus": virus, "loophole": loophole, "echo": echo, "consensus": consensus, "moltbook": moltbook}
+MECH = {"lambda": lam, "agensh": agensh, "hidden": hidden, "virus": virus, "loophole": loophole, "echo": echo, "consensus": consensus, "moltbook": moltbook,
+        "substrate": substrate, "matm": matm}
 TABLES = {"ledger": ledger}

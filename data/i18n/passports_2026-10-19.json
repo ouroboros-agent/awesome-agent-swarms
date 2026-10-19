@@ -1,0 +1,70 @@
+{
+  "_note": "Display fields for the records changed by the 19 October 2026 supplement (updates/2026-10-19/registry-delta.json). Facts are the delta's; this file only phrases them for the cards, the atlas and the source list in both languages. Read by scripts/catalogue.py.",
+  "checked_at": "2026-10-19",
+  "records": {
+    "aisi-transect": {
+      "en": {"title": "Transect: Making large-scale agentic evaluations easier to understand", "authors": "UK AI Security Institute", "orgs": "UK AI Security Institute; Meridian Labs",
+             "status": "Lab blog with open-source code", "kind": "lab blog", "date_note": "7 October 2026", "note": "Added on 19 October 2026."},
+      "ru": {"title": "Transect: Making large-scale agentic evaluations easier to understand", "authors": "UK AI Security Institute", "orgs": "UK AI Security Institute; Meridian Labs",
+             "status": "блог лаборатории, код открыт", "kind": "блог лаборатории", "date_note": "7 октября 2026", "note": "Добавлено 19 октября 2026."}
+    },
+    "google-deep-review-october": {
+      "en": {"title": "Analyzing technical documents with Deep Review", "authors": "Rajesh Jayaram, Vincent Cohen-Addad", "orgs": "Google Research",
+             "status": "Lab blog (engineering report)", "kind": "lab blog", "date_note": "14 October 2026", "note": "Added on 19 October 2026."},
+      "ru": {"title": "Analyzing technical documents with Deep Review", "authors": "Rajesh Jayaram, Vincent Cohen-Addad", "orgs": "Google Research",
+             "status": "блог лаборатории (инженерный отчёт)", "kind": "блог лаборатории", "date_note": "14 октября 2026", "note": "Добавлено 19 октября 2026."}
+    },
+    "scalemas-substrate": {
+      "en": {"title": "Scaling Multi-Agent Intelligence with Substrate-Centric Coordination", "authors": "Zhenting Qi, Zhuokai Zhao, Rulin Shao, Kerem Oktar, Zhiyuan Yao, Himabindu Lakkaraju et al. (10 authors)",
+             "orgs": "FAIR at Meta; Meta AI; Harvard; Kempner Institute", "status": "arXiv preprint, version 1", "kind": "preprint", "date_note": "12 October 2026", "note": "Added on 19 October 2026."},
+      "ru": {"title": "Scaling Multi-Agent Intelligence with Substrate-Centric Coordination", "authors": "Zhenting Qi, Zhuokai Zhao, Rulin Shao, Kerem Oktar, Zhiyuan Yao, Himabindu Lakkaraju и др. (всего 10)",
+             "orgs": "FAIR at Meta; Meta AI; Harvard; Kempner Institute", "status": "препринт arXiv, версия 1", "kind": "препринт", "date_note": "12 октября 2026", "note": "Добавлено 19 октября 2026."}
+    },
+    "mpt-self-orchestration": {
+      "en": {"title": "Learning Self-Orchestration in Decentralized Agent Swarms", "authors": "Guowei Xu, Zhenting Qi, Amani Kiruga, Himabindu Lakkaraju, Yilun Du", "orgs": "Harvard University",
+             "status": "arXiv preprint, version 1", "kind": "preprint", "date_note": "15 October 2026", "note": "Added on 19 October 2026."},
+      "ru": {"title": "Learning Self-Orchestration in Decentralized Agent Swarms", "authors": "Guowei Xu, Zhenting Qi, Amani Kiruga, Himabindu Lakkaraju, Yilun Du", "orgs": "Harvard University",
+             "status": "препринт arXiv, версия 1", "kind": "препринт", "date_note": "15 октября 2026", "note": "Добавлено 19 октября 2026."}
+    },
+    "coding-team-compute-allocation": {
+      "en": {"title": "Scaling Inference-Time Compute with Teams of Coding Agents", "authors": "Keenan Samway, Daniel D'souza, Omar Darwiche Domingues, Marzieh Fadaee, Tan Yi-Chern, Nouha Dziri",
+             "orgs": "Cohere Labs; Cohere", "status": "arXiv preprint, version 1", "kind": "preprint", "date_note": "12 October 2026", "note": "Added on 19 October 2026."},
+      "ru": {"title": "Scaling Inference-Time Compute with Teams of Coding Agents", "authors": "Keenan Samway, Daniel D'souza, Omar Darwiche Domingues, Marzieh Fadaee, Tan Yi-Chern, Nouha Dziri",
+             "orgs": "Cohere Labs; Cohere", "status": "препринт arXiv, версия 1", "kind": "препринт", "date_note": "12 октября 2026", "note": "Добавлено 19 октября 2026."}
+    },
+    "persistent-memory-controlled-ablation": {
+      "en": {"title": "Persistent Memory in Multi-Agent LLM Inference: What It Costs, What It Buys, and When You Can Tell", "authors": "Hochan Son, Kyungdoe Han, Jaehan Koh, Xiaowu Dai, Wenlu Xu, Guang Cheng",
+             "orgs": "University of California, Los Angeles; University of Wisconsin; HCLTech America", "status": "arXiv preprint, version 1", "kind": "preprint", "date_note": "6 October 2026", "note": "Added on 19 October 2026."},
+      "ru": {"title": "Persistent Memory in Multi-Agent LLM Inference: What It Costs, What It Buys, and When You Can Tell", "authors": "Hochan Son, Kyungdoe Han, Jaehan Koh, Xiaowu Dai, Wenlu Xu, Guang Cheng",
+             "orgs": "Калифорнийский университет в Лос-Анджелесе; Висконсинский университет; HCLTech America", "status": "препринт arXiv, версия 1", "kind": "препринт", "date_note": "6 октября 2026", "note": "Добавлено 19 октября 2026."}
+    },
+    "cooperation-without-adaptation": {
+      "en": {"title": "Cooperation Without Adaptation: LLM Agents in a Collective-Risk Dilemma", "authors": "Trung-Kiet Huynh, Dao-Sy Duy-Minh, Chi-Nguyen Tran, Phu-Hoa Pham, Phu-Quy Nguyen-Lam, Le Hong Trang et al. (7 authors)",
+             "orgs": "University of Science, VNU-HCM; Ho Chi Minh City University of Technology, VNU-HCM; Teesside University", "status": "arXiv preprint, version 1 (announced 19 October 2026)", "kind": "preprint", "date_note": "16 October 2026", "note": "Added on 19 October 2026."},
+      "ru": {"title": "Cooperation Without Adaptation: LLM Agents in a Collective-Risk Dilemma", "authors": "Trung-Kiet Huynh, Dao-Sy Duy-Minh, Chi-Nguyen Tran, Phu-Hoa Pham, Phu-Quy Nguyen-Lam, Le Hong Trang и др. (всего 7)",
+             "orgs": "Университет естественных наук и Технологический университет Хошимина (VNU-HCM); Университет Тиссайда", "status": "препринт arXiv, версия 1 (объявлен 19 октября 2026)", "kind": "препринт", "date_note": "16 октября 2026", "note": "Добавлено 19 октября 2026."}
+    },
+    "moltbook-collective-behavior": {
+      "en": {"title": "Collective Behavior of AI Agents: the Case of Moltbook", "authors": "Giordano De Marzo, Andres L. Marin, David Garcia",
+             "orgs": "University of Konstanz; Centro Ricerche Enrico Fermi; Complexity Science Hub; Joint Research Centre, European Commission",
+             "status": "arXiv preprint, version 2 of 7 October 2026 (version 1: 9 February 2026)", "kind": "preprint, revised", "date_note": "9 February 2026; version 2 on 7 October 2026",
+             "note": "Added on 19 October 2026: a February paper the catalogue had missed, read in its October revision."},
+      "ru": {"title": "Collective Behavior of AI Agents: the Case of Moltbook", "authors": "Giordano De Marzo, Andres L. Marin, David Garcia",
+             "orgs": "Констанцский университет; Centro Ricerche Enrico Fermi; Complexity Science Hub; Объединённый исследовательский центр Еврокомиссии",
+             "status": "препринт arXiv, версия 2 от 7 октября 2026 (версия 1 — 9 февраля 2026)", "kind": "препринт, новая версия", "date_note": "9 февраля 2026; версия 2 — 7 октября 2026",
+             "note": "Добавлено 19 октября 2026: февральская работа, пропущенная в каталоге, прочитана в октябрьской версии."}
+    },
+    "multi-agent-transactive-memory": {
+      "en": {"status": "arXiv preprint; version 2 of 15 October 2026", "note": "Version 2 (15 October 2026): Appendix H, Table 5, gives each source's share of the index and of the retrievals."},
+      "ru": {"status": "препринт arXiv; версия 2 от 15 октября 2026", "note": "Версия 2 (15 октября 2026): приложение H, табл. 5 — доля каждого источника в индексе и в извлечениях."}
+    },
+    "safety-of-latent-communication": {
+      "en": {"status": "arXiv preprint; version 3 of 5 October 2026", "note": "Version 3 (5 October 2026). The 27.9 → 76.9 result was already in version 2 of 1 October; the three authors are now separate entries."},
+      "ru": {"status": "препринт arXiv; версия 3 от 5 октября 2026", "note": "Версия 3 (5 октября 2026). Результат 27,9 → 76,9 был уже в версии 2 от 1 октября; три автора записаны отдельно."}
+    },
+    "ng-hao-peer-preservation-replication": {
+      "en": {"note": "Corrected on 19 October 2026: arXiv:2604.19784 identifies the original Peer-Preservation in Frontier Models by Yujin Potter and colleagues, not this replication; the replication now links to it as related work."},
+      "ru": {"note": "Исправлено 19 октября 2026: arXiv:2604.19784 — идентификатор исходной работы Peer-Preservation in Frontier Models (Yujin Potter и соавторы), а не этой репликации; репликация ссылается на неё как на исходную работу."}
+    }
+  }
+}

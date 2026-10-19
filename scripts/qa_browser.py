@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Real-browser QA of the built site (site/): Chromium (installed Google Chrome if present, else Playwright's) and WebKit.
 
-  python scripts/qa_browser.py [--shots]
+  python scripts/qa_browser.py [OUTDIR] [--shots]      # default qa/
 
 For each engine × viewport (phone 390×844, desktop 1240×722, wide 1600×900) and language:
   * the single page loads over file:// with no console or page errors
@@ -12,7 +12,8 @@ For each engine × viewport (phone 390×844, desktop 1240×722, wide 1600×900) 
 With JavaScript DISABLED (phone, both engines):
   * the theme checkbox switches the background; a figure opens in the :target lightbox
   * an atlas filter hides non-matching rows; the scale dashboard tabs switch layers
-  * the contents sheet opens and its link moves within the page; the prologue's scheme switch works
+  * the contents sheet opens and its link moves within the page; the prologue shows a static figure for each scheme
+    and the scale beside its whole text (the sticky stage needs JavaScript)
   * a former page lists its places and highlights the addressed one
 Writes qa/report.json and qa/REPORT.md; screenshots in qa/screens/ with --shots.
 """
@@ -21,7 +22,7 @@ from playwright.sync_api import sync_playwright
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SITE = os.path.join(ROOT, "site")
-OUT = os.path.join(ROOT, "qa")
+OUT = os.path.abspath(next((a for a in sys.argv[1:] if not a.startswith("--")), os.path.join(ROOT, "qa")))   # optional OUTDIR
 for _c in (os.path.expanduser("~/Library/Caches/ms-playwright"), os.path.join(pwd.getpwuid(os.getuid()).pw_dir, "Library/Caches/ms-playwright")):
     if os.path.isdir(_c) and "PLAYWRIGHT_BROWSERS_PATH" not in os.environ: os.environ["PLAYWRIGHT_BROWSERS_PATH"] = _c
 STUBS = [f"ch{n:02d}" for n in range(1, 12)] + ["atlas", "glossary", "sources", "about", "full"]
@@ -84,9 +85,11 @@ def nojs_checks(b, lang):
     pg.wait_for_timeout(150)
     pg.locator("details.mtoc nav a[href='#ch05']").first.click(); pg.wait_for_timeout(250)
     res["menu_moves_in_page"] = pg.url.endswith("#ch05") and pg.evaluate("Math.abs(document.getElementById('ch05').getBoundingClientRect().top) < 140")
-    pg.goto(url(f"{lang}/index.html")); pg.wait_for_timeout(100)
-    pg.locator("label[for='m-coord']").click(); pg.wait_for_timeout(1200)
-    res["prologue_switch"] = pg.evaluate("getComputedStyle(document.querySelector('svg.tp' + (innerWidth < 600 ? '.tp-n' : '.tp-w') + ' .layer-coord')).visibility") == "visible"
+    pg.goto(url(f"{lang}/index.html") + "#m-coord"); pg.wait_for_timeout(200)
+    res["prologue_static"] = pg.evaluate("""() => getComputedStyle(document.querySelector('#how .stage')).display === 'none'
+      && [...document.querySelectorAll('#how .static')].filter(f => [...f.querySelectorAll('svg')].some(s => s.getClientRects().length)).length === 4
+      && document.querySelectorAll('#how .step').length === 13
+      && Math.abs(document.getElementById('m-coord').getBoundingClientRect().top) < 120""")
     pg.goto(url(f"{lang}/ch05.html") + "#w-agensh-1024"); pg.wait_for_timeout(200)
     res["stub_lists_and_targets"] = pg.evaluate("(() => { const t = document.querySelector('li:target'); return !!t && t.querySelector('a').getAttribute('href') === 'index.html#w-agensh-1024'; })()")
     ctx.close()
@@ -138,7 +141,7 @@ def main():
     fails = [r for r in runs if r["bad_imgs"] or r["h_overflow_px"] > 1 or r["overflowing_elems"] or r["console_errors"] or (r["cyr_in_en"] or 0) > 0
              or not (r["has_theme"] and r["has_lang"] and r["has_menu"])]
     stub_fail = [s for s in report["stubs"] if not s["ok"]]
-    keys = ("theme_toggle", "lightbox_opens", "atlas_filter_works", "scale_tabs", "menu_opens", "menu_moves_in_page", "prologue_switch", "stub_lists_and_targets")
+    keys = ("theme_toggle", "lightbox_opens", "atlas_filter_works", "scale_tabs", "menu_opens", "menu_moves_in_page", "prologue_static", "stub_lists_and_targets")
     nojs_fail = [r for r in report["nojs"] if not all(r.get(k) for k in keys)]
     report["summary"] = dict(page_loads=len(runs), engines=sorted({r["engine"] + " " + r["version"] for r in runs}), images_checked=sum(r["imgs"] for r in runs),
                              failing_loads=len(fails), stub_checks=len(report["stubs"]), stub_failing=len(stub_fail), nojs_runs=len(report["nojs"]), nojs_failing=len(nojs_fail))

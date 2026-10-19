@@ -7,7 +7,7 @@
   python scripts/check_content.py --json out.json    # machine-readable report
 
 Exit code 1 if any ERROR. Checks:
-  syntax       front matter, balanced blocks, known block kinds, card IDs known to data/works.json (if present)
+  syntax       front matter, balanced blocks, known block kinds, card IDs known to the current catalogue (data/works.json and its dated supplements)
   preservation (RU vs October import) cards, figures, URLs, table rows and numbers; a number missing from
                its page but present elsewhere on the RU site is reported as moved (info), missing everywhere = ERROR
   parity       (EN vs RU) same block sequence and card IDs, same figures in the same order, same URLs,
@@ -179,12 +179,13 @@ def import_source(S):
     return out
 
 def known_ids():
+    """Ids of the current catalogue: the registry (data/works.json) with its dated supplements (scripts/catalogue.py)."""
     p = os.path.join(ROOT, "data", "works.json")
     if os.path.exists(p):
-        d = json.load(open(p, encoding="utf-8"))
-        ws = d["works"] if isinstance(d, dict) else d
+        sys.path.insert(0, os.path.join(ROOT, "scripts"))
+        import catalogue
         ids = set()
-        for w in ws: ids.add(w["id"]); ids.update(w.get("aliases") or [])
+        for w in catalogue.works(): ids.add(w["id"]); ids.update(w.get("aliases") or [])
         return ids
     p = os.path.join(ROOT, "data", "canonical_ids.v0.json")
     if os.path.exists(p):

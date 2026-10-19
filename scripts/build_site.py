@@ -22,6 +22,7 @@ from collections import OrderedDict, defaultdict
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(ROOT, "scripts"))
 import markdown  # pinned in requirements.txt
+import catalogue
 import site_story
 import longread
 import scenes
@@ -41,13 +42,16 @@ UI = {
             f_topic="Тема", f_evid="Класс доказательств", f_scale="Масштаб (одновременно)", f_type="Тип источника", f_level="Где в обзоре", f_chapter="Глава",
             atlas_hint="Фильтры работают и без JavaScript. Тема, класс доказательств и масштаб размечены для аналитического корпуса; у строк «Ещё по теме» тема — по главе, где они стоят, а класс и масштаб не размечены: такие строки видны при «Все».",
             in_ch="гл.", license="Текст, таблицы и данные — CC BY 4.0, код сборки — MIT. Рисунки из работ остаются под правами их владельцев: условия — в подписи к каждому.",
-            cite="Как цитировать", cutoff="срез 3 октября 2026", search="Поиск по атласу", shown="Показано", updates="Обновление после среза",
+            cite="Как цитировать", cutoff="срез 3 октября 2026", edition="срез 3 октября 2026 · дополнение 19 октября 2026", search="Поиск по атласу", shown="Показано", updates="Обновление после среза",
+            code="Код", in_survey="В обзоре", added_tag="добавлено 19 октября 2026", intro_h="О чём обзор",
+            sup_note="Дополнение 19 октября 2026 года: {n} работ в главах 4–6, 9 и 10 и поправки к выводам о памяти роя (глава 6 и вопрос 4 главы 11).",
             fig="Рис.", pass_s="Авторы и источник", cards_full=("подробная карточка", "подробные карточки", "подробных карточек"), cards_short=("краткая", "краткие", "кратких"),
             figs=("рисунок", "рисунка", "рисунков"), scenes_n=("схема", "схемы", "схем"), minutes="≈{nb}{n}{nb}мин чтения",
-            findings_h="Что показывают работы", findings_note="Каждый вывод сформулирован для корпуса на 3 октября 2026 и ведёт в главу с доказательствами и условиями сравнения.",
-            report="Технический отчёт", pdf="PDF", zip="LaTeX и рисунки (ZIP)", bib="BibTeX всех работ", data="Реестр работ (JSON)",
+            findings_h="Что показывают работы", findings_note="Каждый вывод сформулирован для корпуса на 3 октября 2026 и ведёт в главу с доказательствами и условиями сравнения; где работы дополнения 19 октября уточняют вывод, это сказано в нём отдельно.",
+            report_d="Технический отчёт · 3 октября", pdf="PDF · 3 октября", zip="LaTeX и рисунки (ZIP) · 3 октября", bib="BibTeX реестра · 3 октября", data="Реестр работ (JSON) · 3 октября",
+            cat="Каталог с дополнением (JSON) · 19 октября", sup_bib="BibTeX каталога · 19 октября",
             materials="Материалы", survey="Обзор", rights="Права и цитирование", about_l="Об обзоре", glossary="Словарик", sources="Источники", atlas="Атлас работ",
-            n_corpus="работ в аналитическом корпусе", n_unique="уникальных работ и ресурсов", n_cards="карточек: {f} подробных и {s} кратких", n_figs="рисунков: {w} из работ, {o} собственных",
+            n_corpus="работ, по которым посчитаны графики обзора (на 3 октября)", n_unique="работ и ресурсов в каталоге (на 19 октября)", n_cards="карточек: {f} подробных и {s} кратких", n_figs="рисунков: {w} из работ, {o} собственных",
             filters="Фильтры", reset="Сбросить", empty="Под эти условия не подходит ни одна работа.", atlas_eb="Атлас · {n} работ и ресурсов",
             v_close="Закрыть", v_prev="Предыдущий рисунок", v_next="Следующий рисунок", v_zoom="Увеличить", v_fit="Вписать", v_orig="Оригинал",
             v_title="Просмотр рисунков", v_hint="Двойной щелчок или касание — увеличить", v_count="{i} из {n}", prologue="Пролог"),
@@ -57,13 +61,16 @@ UI = {
             f_topic="Topic", f_evid="Evidence class", f_scale="Scale (simultaneous)", f_type="Source type", f_level="Where in the survey", f_chapter="Chapter",
             atlas_hint="The filters work without JavaScript too. Topic, evidence class and scale are labelled for the analytic corpus; related-work rows take the topic of the chapter they appear in and carry no class or scale, so they show under “All”.",
             in_ch="Ch.", license="Text, tables and data: CC BY 4.0; build code: MIT. Figures from the works keep their owners’ rights; the terms are under each figure.",
-            cite="How to cite", cutoff="cut-off 3 October 2026", search="Search the atlas", shown="Shown", updates="Update after the cut-off",
+            cite="How to cite", cutoff="cut-off 3 October 2026", edition="cut-off 3 October 2026 · supplement of 19 October 2026", search="Search the atlas", shown="Shown", updates="Update after the cut-off",
+            code="Code", in_survey="In the survey", added_tag="added 19 October 2026", intro_h="What the survey covers",
+            sup_note="Supplement of 19 October 2026: {n} works in Chapters 4–6, 9 and 10, and corrections to the conclusions on swarm memory (Chapter 6 and question 4 of Chapter 11).",
             fig="Fig.", pass_s="Authors and source", cards_full=("full card", "full cards"), cards_short=("short card", "short cards"),
             figs=("figure", "figures"), scenes_n=("scene", "scenes"), minutes="≈{nb}{n}{nb}min read",
-            findings_h="What the studies show", findings_note="Each finding is stated for the corpus as of 3 October 2026 and leads to the chapter with its evidence and comparison conditions.",
-            report="Technical report", pdf="PDF", zip="LaTeX and figures (ZIP)", bib="BibTeX for all works", data="Registry of works (JSON)",
+            findings_h="What the studies show", findings_note="Each finding is stated for the corpus as of 3 October 2026 and leads to the chapter with its evidence and comparison conditions; where works of the 19 October supplement refine a finding, it says so separately.",
+            report_d="Technical report · 3 October", pdf="PDF · 3 October", zip="LaTeX and figures (ZIP) · 3 October", bib="Registry BibTeX · 3 October", data="Registry of works (JSON) · 3 October",
+            cat="Catalogue with the supplement (JSON) · 19 October", sup_bib="Catalogue BibTeX · 19 October",
             materials="Materials", survey="Survey", rights="Rights and citation", about_l="About the survey", glossary="Glossary", sources="Sources", atlas="Atlas of works",
-            n_corpus="works in the analytic corpus", n_unique="unique works and resources", n_cards="cards: {f} full and {s} short", n_figs="figures: {w} from the works, {o} our own",
+            n_corpus="works behind the survey's charts (as of 3 October)", n_unique="works and resources in the catalogue (as of 19 October)", n_cards="cards: {f} full and {s} short", n_figs="figures: {w} from the works, {o} our own",
             filters="Filters", reset="Reset", empty="No work matches these filters.", atlas_eb="Atlas · {n} works and resources",
             v_close="Close", v_prev="Previous figure", v_next="Next figure", v_zoom="Zoom in", v_fit="Fit", v_orig="Original",
             v_title="Figure viewer", v_hint="Double-click or double-tap to zoom", v_count="{i} of {n}", prologue="Prologue"),
@@ -74,6 +81,13 @@ MONTHS = {"ru": ["января", "февраля", "марта", "апреля",
           "en": ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]}
 MONTHS_NOM = {"ru": ["январь", "февраль", "март", "апрель", "май", "июнь", "июль", "август", "сентябрь", "октябрь", "ноябрь", "декабрь"],
               "en": ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]}
+DATED = re.compile(r"\b\d{1,2} (?:%s)" % "|".join(MONTHS["ru"] + MONTHS["en"]))
+def keep_dates(s):
+    """A label line of segments joined by « · » (the title screen's kicker and byline, the intro, the footer) breaks only
+    between segments: inside a dated one («срез 3 октября 2026», "cut-off 3 October 2026") every space is non-breaking,
+    so is the hyphen (U+2011), and the « ·» stays at the end of the line with the segment before it. The line still wraps."""
+    return f"{NB}· ".join(x.replace(" ", NB).replace("-", "‑") if DATED.search(x) else x for x in s.split(" · "))
+
 TOPIC = OrderedDict([
  ("scaling_economics", ("экономика и масштаб", "economics & scale")), ("self_organization", ("самоорганизация", "self-organization")),
  ("memory", ("память", "memory")), ("safety_alignment", ("безопасность", "safety")), ("contagion_security", ("заражение и атаки", "contagion & attacks")),
@@ -100,9 +114,12 @@ CH_TOPICS = {"ch03": ["safety_alignment", "contagion_security"], "ch04": ["scali
              "ch07": ["safety_alignment"], "ch08": ["echo_diversity"], "ch09": ["social_dynamics"], "ch10": ["wild_field"]}
 
 # small inline icons (stroke = currentColor)
-RING = ('<svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="15" cy="16" r="9" fill="none" stroke="#22a876" stroke-width="3.4"/>'
-        '<circle cx="24" cy="16" r="3.4" fill="#5fe3b3"/></svg>')
+RING = ('<svg viewBox="0 0 32 32" aria-hidden="true"><rect x="3" y="2.5" width="10" height="27" rx="2" fill="none" stroke="currentColor" stroke-opacity=".45"/>'
+        '<rect x="5.5" y="21" width="5" height="5" rx="1" fill="currentColor" fill-opacity=".55"/><rect x="5.5" y="14.5" width="5" height="5" rx="1" fill="#C8F542"/>'
+        '<rect x="19" y="2.5" width="10" height="27" rx="2" fill="none" stroke="currentColor" stroke-opacity=".45"/>'
+        '<rect x="21.5" y="21" width="5" height="5" rx="1" fill="currentColor" fill-opacity=".55"/><rect x="21.5" y="14.5" width="5" height="5" rx="1" fill="none" stroke="#C8F542" stroke-width="1.4"/></svg>')   # two context windows; a finding and its copy
 I_LIST = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h10"/></svg>'
+I_MOTION = '<span class="mtg-i" aria-hidden="true"></span>'
 I_SUN = '<svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2.2M12 19.3v2.2M4.6 4.6l1.6 1.6M17.8 17.8l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.6 19.4l1.6-1.6M17.8 6.2l1.6-1.6"/></svg>'
 I_MOON = '<svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg>'
 I_EXPAND = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6M10 20H4v-6M20 4l-7 7M4 20l7-7"/></svg>'
@@ -114,17 +131,22 @@ def jload(p, default=None):
     p = os.path.join(ROOT, p)
     return json.load(open(p, encoding="utf-8")) if os.path.exists(p) else default
 
-REG = jload("data/works.json", {"works": [], "stats": {}, "text_url_map": {}})
-WORKS = OrderedDict((w["id"], w) for w in REG["works"])
-ALIAS = {a: w["id"] for w in REG["works"] for a in (w.get("aliases") or [])}
-STATS = jload("data/stats.json", {}) or REG.get("stats", {})
+REG = jload("data/works.json", {"works": [], "stats": {}, "text_url_map": {}})   # the registry as of 3 October 2026
+# The atlas, cards and sources show the current catalogue (the registry plus the 19 October supplement, see
+# scripts/catalogue.py); the analytic corpus behind the charts stays the registry's 153 works.
+WORKS = OrderedDict((w["id"], w) for w in catalogue.works())
+ALIAS = {a: w["id"] for w in WORKS.values() for a in (w.get("aliases") or [])}
+STATS = dict(jload("data/stats.json", {}) or REG.get("stats", {}))
+STATS.update(catalogue=len(WORKS), supplement_added=len(catalogue.SUP["added"]), supplement_updated=len(catalogue.SUP["updated"]),
+             supplement_corrected=len(catalogue.SUP["corrected"]), supplement_new=catalogue.SUP.get("new_publications", 0))
+SUP_DATE = catalogue.SUP["checked_at"]           # "2026-10-19"
 PASS = jload("data/i18n/passports.json", {}) or {}
 PASS_RU = jload("data/i18n/passports_ru.json", {}) or {}
 FIGREG = {f["file"]: f for f in (jload("data/figures.json", {"figures": []})["figures"])}
 LADDER = site_story.ladder(REG["works"])
 from build_registry import key as url_key  # same normalization as the registry
 URLKEY2ID = {}
-for w in REG["works"]:
+for w in WORKS.values():
     for k in w.get("identity_keys") or []: URLKEY2ID.setdefault(k, w["id"])
 for u, wid in (REG.get("text_url_map") or {}).items(): URLKEY2ID.setdefault(url_key(u), wid)
 
@@ -197,6 +219,13 @@ for page in PAGE_ORDER:
             for u in re.findall(r"^\|\s*\[[^\]]*\]\((https?://[^)\s]+)\)", b[2], re.M):
                 wid = URLKEY2ID.get(url_key(u))
                 if wid: ROW_PAGE.setdefault(wid, page)
+CARD_COUNT = {"card": 0, "short": 0}
+for page in PAGE_ORDER:
+    r = read_page("ru", page)
+    if r:
+        for b in blocks(r[1]):
+            if b[0] in CARD_COUNT: CARD_COUNT[b[0]] += 1
+
 def work_anchor(wid):
     wid = ALIAS.get(wid, wid)
     w = WORKS.get(wid) or {}
@@ -351,30 +380,53 @@ def scene_figure(spec, name, lang):
 
 # ---------------------------------------------------------------- cards
 RUNIN = {"ru": r"Что сделали|Что получилось|Почему это важно|Оговорки|Что показали|Главное", "en": r"What they did|Results|Why it matters|Caveats|What it shows"}
+def sup_pass(w, lang):
+    """Display fields of a record changed by the 19 October supplement (empty for the others)."""
+    return catalogue.passport(w["id"], lang)
+
+def update_line(w, lang):
+    """The last dated change of a record, in the page's language: the supplement's own phrasing for the records it
+    changed, the registry's (with its Russian version) for the earlier one."""
+    sp = sup_pass(w, lang)
+    if sp.get("note") and catalogue.changed(w["id"]) in ("updated", "corrected"):
+        up = w["updates"][-1]
+        return fmt_date(up["date"] if catalogue.changed(w["id"]) == "updated" else SUP_DATE, lang), sp["note"], up["url"]
+    if w.get("updates") and not catalogue.changed(w["id"]):
+        up = w["updates"][-1]
+        return fmt_date(up["date"], lang), (up["what"] if lang == "en" else ru_update(w["id"], up)), up.get("doi") and up["url"] or up["url"]
+    return None
+
 def passport(w, lang):
-    P = PASS.get(w["id"], {}); R = PASS_RU.get(w["id"], {})
+    P = PASS.get(w["id"], {}); R = PASS_RU.get(w["id"], {}); sp = sup_pass(w, lang)
     if lang == "ru":
-        au = (authors_line(w, lang) if w.get("metadata_corrected") else None) or R.get("authors") or authors_line(w, lang); orgs = R.get("institutions_short") or ", ".join(w.get("orgs") or [])
-        st = P.get("status_ru") or R.get("venue_status") or ""
+        au = (authors_line(w, lang) if w.get("metadata_corrected") else None) or sp.get("authors") or R.get("authors") or authors_line(w, lang)
+        orgs = sp.get("orgs") or R.get("institutions_short") or ", ".join(w.get("orgs") or [])
+        st = sp.get("status") or P.get("status_ru") or R.get("venue_status") or ""
     else:
-        au = (authors_line(w, lang) if w.get("metadata_corrected") else None) or P.get("authors_en") or lang_safe(authors_line(w, lang), lang); orgs = P.get("orgs_en") or lang_safe(", ".join(w.get("orgs") or []), lang)
-        st = P.get("status_en") or ""
-    date = fmt_date(R.get("date_first_public") or w.get("date_first_public"), lang)
-    rows = [(UI[lang]["authors"], esc(au)), (UI[lang]["orgs"], esc(orgs)), (UI[lang]["published"], date), (UI[lang]["status"], esc(st))]
+        au = (authors_line(w, lang) if w.get("metadata_corrected") else None) or sp.get("authors") or P.get("authors_en") or lang_safe(authors_line(w, lang), lang)
+        orgs = sp.get("orgs") or P.get("orgs_en") or lang_safe(", ".join(w.get("orgs") or []), lang)
+        st = sp.get("status") or P.get("status_en") or ""
+    date = sp.get("date_note") or fmt_date(R.get("date_first_public") or w.get("date_first_public"), lang)
+    rows = [(UI[lang]["authors"], esc(au)), (UI[lang]["orgs"], esc(orgs)), (UI[lang]["published"], esc(date)), (UI[lang]["status"], esc(st))]
     u = (w.get("urls") or {}).get("primary")
     if u:
         su = re.sub(r"^https?://(www\.)?", "", u); su = su if len(su) < 80 else su[:78] + "…"
         rows.append((UI[lang]["source"], f'<a class="ext url" href="{esc(u)}" rel="noopener">{esc(su)}</a>'))
-    if w.get("updates"):
-        up = w["updates"][-1]
-        txt = up["what"] if lang == "en" else ru_update(w["id"], up)
-        rows.append((UI[lang]["updates"], f'{fmt_date(up["date"], lang)}: {esc(txt)} <a class="ext url" href="{esc(up["url"])}" rel="noopener">{esc(up.get("doi") or up["url"])}</a>'))
+    code = (w.get("urls") or {}).get("code")
+    if code and catalogue.changed(w["id"]) == "added":
+        rows.append((UI[lang]["code"], f'<a class="ext url" href="{esc(code)}" rel="noopener">{esc(re.sub(r"^https?://(www[.])?", "", code))}</a>'))
+    if catalogue.changed(w["id"]) == "added":
+        rows.append((UI[lang]["in_survey"], esc(sp.get("note") or "")))
+    ul = update_line(w, lang)
+    if ul:
+        d, txt, url = ul
+        rows.append((UI[lang]["updates"], f'{d}: {esc(txt)} <a class="ext url" href="{esc(url)}" rel="noopener">{esc(url)}</a>'))
     return '<dl class="passport">' + "".join(f"<dt>{k}</dt><dd>{v}</dd>" for k, v in rows if v) + "</dl>"
 
 def byline(w, lang):
     """Organizations and month of the first public version, shown under the card title."""
-    P = PASS.get(w["id"], {}); R = PASS_RU.get(w["id"], {})
-    orgs = (R.get("institutions_short") or ", ".join(w.get("orgs") or [])) if lang == "ru" else (P.get("orgs_en") or lang_safe(", ".join(w.get("orgs") or []), lang))
+    P = PASS.get(w["id"], {}); R = PASS_RU.get(w["id"], {}); sp = sup_pass(w, lang)
+    orgs = sp.get("orgs") or ((R.get("institutions_short") or ", ".join(w.get("orgs") or [])) if lang == "ru" else (P.get("orgs_en") or lang_safe(", ".join(w.get("orgs") or []), lang)))
     d = R.get("date_first_public") or w.get("date_first_public")
     bits = [esc(orgs)] if orgs else []
     if d and re.match(r"\d{4}-\d{2}", str(d)): bits.append(fmt_date(d, lang, short=True))
@@ -395,6 +447,11 @@ def authors_line(w, lang):
 
 def tags(w, lang):
     c = w.get("corpus") or {}; i = 0 if lang == "ru" else 1; out = []
+    if catalogue.changed(w["id"]) == "added":   # outside the analytic corpus: no evidence class or topics, only what it is and when it came in
+        sp = sup_pass(w, lang)
+        out.append(f'<span class="tag new">{UI[lang]["added_tag"]}</span>')
+        if sp.get("kind"): out.append(f'<span class="tag t">{esc(sp["kind"])}</span>')
+        return "".join(out)
     if c.get("evidence") in EVID: out.append(f'<span class="tag ev">{EVID[c["evidence"]][i]}</span>')
     for t in (c.get("topics") or [])[:3]:
         if t in TOPIC: out.append(f'<span class="tag t">{TOPIC[t][i]}</span>')
@@ -403,6 +460,8 @@ def tags(w, lang):
     return "".join(out)
 
 def card_title(w, lang):
+    sp = sup_pass(w, lang)
+    if sp.get("title"): return sp["title"]
     if lang == "ru": return PASS_RU.get(w["id"], {}).get("display_title") or PASS.get(w["id"], {}).get("title_en") or w.get("title") or w["id"]
     if w.get("metadata_corrected") and w.get("title"): return w["title"]
     return PASS.get(w["id"], {}).get("title_en") or lang_safe(w.get("title"), lang) or w["id"]
@@ -428,12 +487,13 @@ def render_card(kind, arg, body, lang):
     u = (w.get("urls") or {}).get("primary"); title = esc(card_title(w, lang))
     tl = f'<a class="ext" href="{esc(u)}" rel="noopener">{title}</a>' if u else title
     by = byline(w, lang)
+    new_attr = " data-new" if catalogue.changed(cid) == "added" else ""   # a card the 19 October supplement added: no former address
     pas = f'<details class="pass"><summary>{UI[lang]["pass_s"]}</summary>{passport(w, lang)}</details>'
     if kind == "card":
-        head = (f'<header class="chead"><div class="tags">{tags(w, lang)}</div><h3 class="ctitle">{tl}</h3>'
+        head = (f'<header class="chead"><div class="tags">{tags(w, lang)}</div><h3 class="ctitle"{new_attr}>{tl}</h3>'
                 + (f'<p class="cmeta">{by}</p>' if by else "") + (f'<p class="clead">{md_inline(lead, lang)}</p>' if lead else "") + "</header>")
         return f'<article class="case" id="w-{esc(cid)}">{head}<div class="cbody">{body_h}</div>{figs_h}{pas}</article>'
-    head = (f'<header class="nhead"><h3 class="ctitle">{tl}</h3>' + (f'<p class="cmeta">{by}</p>' if by else "")
+    head = (f'<header class="nhead"><h3 class="ctitle"{new_attr}>{tl}</h3>' + (f'<p class="cmeta">{by}</p>' if by else "")
             + f'<div class="tags">{tags(w, lang)}</div></header>')
     return (f'<section class="note" id="w-{esc(cid)}">{head}' + (f'<p class="nlead">{md_inline(lead, lang)}</p>' if lead else "")
             + f'<div class="cbody">{body_h}</div>{figs_h}{pas}</section>')
@@ -491,8 +551,10 @@ def findings_list(body, lang):
 
 # ---------------------------------------------------------------- atlas
 def scale_bucket(c):
+    """The atlas facet "Scale (simultaneous)": only a stated simultaneous count has a bucket; a capacity or limit
+    (Grok 4.20, Kimi, Orbit, Agent Swarms as Researchers) or a cumulative count is not one, as in the charts of Ch. 1."""
     n = c.get("agents_max_simultaneous")
-    if not isinstance(n, (int, float)): return "sna"
+    if c.get("scale_kind") != "simultaneous" or not isinstance(n, (int, float)): return "sna"
     return "s1" if n <= 1 else "s2" if n < 10 else "s10" if n < 100 else "s100" if n < 1000 else "s1000"
 
 ROW_TEXT = {"ru": {}, "en": {}}
@@ -517,9 +579,13 @@ def collect_row_text(lang):
                 wid = URLKEY2ID.get(url_key(um.group(2)))
                 if wid: ROW_TEXT[lang].setdefault(wid, (um.group(1), cells[1] if len(cells) > 2 else "", cells[-1]))
 
+def atlas_level(w):
+    if w["level"] in ("full_card", "short_card", "mention_in_corpus", "constituent") or w["id"] in CARD_PAGE: return "card"
+    return "related" if w["level"] == "table_row" else "other"
+
 def atlas_title(w, lang):
     c = w.get("corpus") or {}
-    lvl = "card" if w["level"] in ("full_card", "short_card", "mention_in_corpus", "constituent") else ("related" if w["level"] == "table_row" else "other")
+    lvl = atlas_level(w)
     rt = ROW_TEXT[lang].get(w["id"])
     title = card_title(w, lang) if (w["id"] in CARD_PAGE or lvl == "card") else (rt[0] if rt else (lang_safe(w.get("title"), lang) or (w.get("urls") or {}).get("primary") or w["id"]))
     title = lang_safe(title, lang) if not re.match(r"https?://", str(title)) else ""
@@ -536,7 +602,7 @@ def render_atlas(lang):
     rows = []
     for w in WORKS.values():
         c = w.get("corpus") or {}
-        lvl = "card" if w["level"] in ("full_card", "short_card", "mention_in_corpus", "constituent") else ("related" if w["level"] == "table_row" else "other")
+        lvl = atlas_level(w)
         topics = [t for t in (c.get("topics") or []) if t in TOPIC]
         ev = c.get("evidence") if c.get("evidence") in EVID else ""
         filter_topics = topics or sorted({t for ch in chapters_of(w) for t in CH_TOPICS.get(ch, [])})   # non-corpus rows: topic of their chapter
@@ -550,12 +616,12 @@ def render_atlas(lang):
         rt = ROW_TEXT[lang].get(w["id"])
         title = atlas_title(w, lang)
         summary = LEADS[lang].get(w["id"]) or (rt[2] if rt else "")
-        who = (PASS.get(w["id"], {}).get("orgs_en") if lang == "en" else PASS_RU.get(w["id"], {}).get("institutions_short")) or (rt[1] if rt else lang_safe(", ".join(w.get("orgs") or []), lang))
+        who = sup_pass(w, lang).get("orgs") or (PASS.get(w["id"], {}).get("orgs_en") if lang == "en" else PASS_RU.get(w["id"], {}).get("institutions_short")) or (rt[1] if rt else lang_safe(", ".join(w.get("orgs") or []), lang))
         date = (c.get("month") or w.get("date_first_public") or "")[:7]
         u = (w.get("urls") or {}).get("primary") or ""
         pg, anc = work_anchor(w["id"])
         go = f'<a class="go" href="#{anc}">{ui["in_ch"]}{NB}{int(pg[2:]) if pg and pg.startswith("ch") else ""} →</a>' if pg else ""
-        tg = ""
+        tg = f'<span class="tag new">{ui["added_tag"]}</span>' if catalogue.changed(w["id"]) == "added" else ""
         if ev: tg += f'<span class="tag ev">{EVID[ev][i]}</span>'
         for t in topics[:3]: tg += f'<span class="tag t">{TOPIC[t][i]}</span>'
         sc = c.get("scale_note_ru") if lang == "ru" else PASS.get(w["id"], {}).get("scale_en")
@@ -609,18 +675,19 @@ def render_sources(lang):
         out.append(f'<h2 id="src-{page}">{esc(lab)}</h2><ol class="srclist">')
         for w in ws:
             rt = ROW_TEXT[lang].get(w["id"]); u = (w.get("urls") or {}).get("primary")
-            au = lang_safe((authors_line(w, lang) if w.get("metadata_corrected") else None) or (PASS.get(w["id"], {}).get("authors_en") if lang == "en" else PASS_RU.get(w["id"], {}).get("authors")) or authors_line(w, lang), lang) \
+            au = lang_safe((authors_line(w, lang) if w.get("metadata_corrected") else None) or sup_pass(w, lang).get("authors") or (PASS.get(w["id"], {}).get("authors_en") if lang == "en" else PASS_RU.get(w["id"], {}).get("authors")) or authors_line(w, lang), lang) \
                  or (strip_tags(md_inline(rt[1], lang)) if rt else "")
             title = card_title(w, lang) if w["id"] in CARD_PAGE or w["level"] in ("constituent", "mention_in_corpus") else (strip_tags(md_inline(rt[0], lang)) if rt else lang_safe(w.get("title"), lang))
             title = label_of(w["id"], lang) or lang_safe(title, lang) or LINK_TEXT[lang].get(w["id"], "")
-            st = lang_safe((PASS.get(w["id"], {}).get("status_en") if lang == "en" else (PASS.get(w["id"], {}).get("status_ru") or PASS_RU.get(w["id"], {}).get("venue_status"))) or "", lang)
+            st = sup_pass(w, lang).get("status") or lang_safe((PASS.get(w["id"], {}).get("status_en") if lang == "en" else (PASS.get(w["id"], {}).get("status_ru") or PASS_RU.get(w["id"], {}).get("venue_status"))) or "", lang)
             date = fmt_date(w.get("date_first_public"), lang) if w.get("date_first_public") else ""
             bits = [esc(au) if au else "", f"<em>{esc(title)}</em>" if title else "", esc(st), date]
             line = ". ".join(b for b in bits if b)
             if u:
                 su = re.sub(r"^https?://(www[.])?", "", u)
                 line += f'. <a class="ext url" href="{esc(u)}" rel="noopener">{esc(su)}</a>'
-            if w.get("updates"): line += f' <span class="upd">{UI[lang]["updates"]}: {esc(w["updates"][-1]["what"] if lang == "en" else ru_update(w["id"], w["updates"][-1]))}</span>'
+            if catalogue.changed(w["id"]): line += f' <span class="upd">{esc(sup_pass(w, lang).get("note") or "")}</span>'   # the 19 October changes, dated in their own words
+            elif w.get("updates"): line += f' <span class="upd">{UI[lang]["updates"]}: {esc(w["updates"][-1]["what"] if lang == "en" else ru_update(w["id"], w["updates"][-1]))}</span>'
             out.append(f'<li id="s-{esc(w["id"])}">{line}</li>')
         out.append("</ol>")
     return "".join(out)
@@ -632,11 +699,17 @@ MOVED = {l: {} for l in LANGS}                     # page -> html of sections mo
 SCENE_N = {l: defaultdict(int) for l in LANGS}
 
 def number_heads(h, page, lang):
-    """Section ids keep the counter of the former page: every h2/h3 (card titles included) in document order."""
-    n = [0]
+    """Section ids keep the counter of the former page: every h2/h3 (card titles included) in document order.
+    Headings the 19 October supplement added (a section heading marked {: .upd } in the Markdown, the title of an
+    added card) had no former address: they take ids of their own (#chNN-u-K) and leave the old counter untouched."""
+    n = [0]; u = [0]
     def hid(m):
         lvl, attrs, inner = m.group(1), m.group(2) or "", m.group(3)
         if "id=" in attrs: return m.group(0)
+        if "data-new" in attrs or re.search(r'class="[^"]*\bupd\b', attrs):
+            u[0] += 1; sid = f"{page}-u-{u[0]}"
+            if lvl == "2": HEADS[lang][page].append((sid, strip_tags(inner).strip()))
+            return f'<h{lvl} id="{sid}"{attrs}>{inner}</h{lvl}>'
         n[0] += 1; sid = f"{page}-s-{n[0]}"
         text = strip_tags(inner).strip()
         if lvl == "2": HEADS[lang][page].append((sid, text))
@@ -731,7 +804,8 @@ def page_flow(lang, page):
 # ---------------------------------------------------------------- one page: frame
 def materials_links(lang):
     ui = UI[lang]
-    return [("../paper/index.html", ui["report"]), ("../paper/swarm-dynamics.pdf", ui["pdf"]), ("../paper/swarm-dynamics-source.zip", ui["zip"]),
+    return [("../paper/index.html", ui["report_d"]), ("../paper/swarm-dynamics.pdf", ui["pdf"]), ("../paper/swarm-dynamics-source.zip", ui["zip"]),
+            ("../data/catalogue-2026-10-19.json", ui["cat"]), ("../data/references-2026-10-19.bib", ui["sup_bib"]),
             ("../data/works.bib", ui["bib"]), ("../data/works.json", ui["data"])]
 
 CITE_ANCHOR = {}
@@ -740,8 +814,9 @@ def footer(lang):
     survey = [("#findings", ui["findings_h"]), ("#chapters", ui["contents"]), ("#atlas", ui["atlas"]), ("#glossary", ui["glossary"]),
               ("#sources", ui["sources"]), ("#about", ui["about_l"])]
     li = lambda xs: "".join(f'<li><a href="{h}">{esc(t)}</a></li>' for h, t in xs)
-    return (f'<footer class="foot"><div class="foot-in"><div><p class="fb-t">{RING}{SITE_TITLE[lang]}</p><p>{SITE_SUB[lang]}</p>'
-            f'<p>{AUTHORS} · {ui["cutoff"]}</p></div>'
+    byline = keep_dates(f'{AUTHORS} · {ui["edition"]}')
+    return (f'<footer class="foot"><div class="foot-in"><div><p class="fb-t">{RING}<span>{SITE_SHORT[lang]}</span></p><p class="fb-s">{SITE_TITLE[lang]}. {SITE_SUB[lang]}</p>'
+            f'<p>{byline}</p></div>'
             f'<nav aria-label="{ui["survey"]}"><h2>{ui["survey"]}</h2><ul>{li(survey)}</ul></nav>'
             f'<nav aria-label="{ui["materials"]}"><h2>{ui["materials"]}</h2><ul>{li(materials_links(lang))}</ul></nav>'
             f'<div><h2>{ui["rights"]}</h2><p>{ui["license"]}</p><p><a href="{CITE_ANCHOR.get(lang, "#about")}">{ui["cite"]}</a> · <a href="#about">{ui["about_l"]}</a></p></div>'
@@ -785,10 +860,11 @@ def outline(lang):
     return "".join(out)
 
 def rail(lang):
+    """Wide screens: a column of small context windows at the left edge, one per chapter; read chapters fill with blocks."""
     items = []
     for p in CHAPTERS + ["atlas"]:
         n = num_of(lang, p)
-        items.append(f'<li><a href="#{p}" data-k="{p}"><i aria-hidden="true"></i><span class="rt"><b>{n}</b> {esc(nav_title(lang, p))}</span></a></li>')
+        items.append(f'<li><a href="#{p}" data-k="{p}"><i aria-hidden="true"><b></b><b></b><b></b></i><span class="rt"><b>{n}</b> {esc(nav_title(lang, p))}</span></a></li>')
     return f'<nav class="rail" aria-label="{UI[lang]["toc"]}"><ol>{"".join(items)}</ol></nav>'
 
 def shell(lang, title, content, desc=""):
@@ -796,9 +872,11 @@ def shell(lang, title, content, desc=""):
     extra = "".join(f'<a href="{h}">{esc(t)}</a>' for h, t in materials_links(lang)[:3])
     mtoc = (f'<details class="mtoc"><summary title="{ui["toc"]}" aria-label="{ui["toc"]}">{I_LIST}<span class="lab">{ui["toc"]}</span></summary>'
             f'<nav aria-label="{ui["toc"]}">{outline(lang)}<div class="extra">{extra}</div></nav></details>')
-    top = (f'<header class="topbar"><div class="topbar-in"><a class="brand" href="#top">{RING}<span class="bt">{SITE_TITLE[lang]}</span><span class="bt-s">{SITE_SHORT[lang]}</span></a>'
+    motion = (f'<button class="mtg js-only" type="button" aria-pressed="false" data-off="{esc(ui["motion_off"])}" data-on="{esc(ui["motion_on"])}" data-sys="{esc(ui["motion_sys"])}">'
+              f'{I_MOTION}<span class="lab">{esc(ui["motion_off"])}</span></button>')
+    top = (f'<header class="topbar"><div class="topbar-in"><a class="brand" href="#top">{RING}<span class="bt">{SITE_SHORT[lang]}</span><span class="bt-s">{SITE_SHORT[lang]}</span></a>'
            f'<a class="here" href="#chapters" tabindex="-1" aria-hidden="true"><span class="here-n"></span><span class="here-t"></span></a>'
-           f'<div class="tools">{mtoc}<a class="langbtn" href="../{other}/index.html" hreflang="{other}" lang="{other}"><span class="long">{ui["lang_other"]}</span><span class="short">{ui["lang_short"]}</span></a>'
+           f'<div class="tools">{motion}{mtoc}<a class="langbtn" href="../{other}/index.html" hreflang="{other}" lang="{other}"><span class="long">{ui["lang_other"]}</span><span class="short">{ui["lang_short"]}</span></a>'
            f'<span class="themesw"><input type="checkbox" id="theme" class="theme-toggle" aria-label="{ui["theme"]}">'
            f'<label class="themebtn" for="theme" title="{ui["theme"]}">{I_SUN}{I_MOON}<span class="sr">{ui["theme"]}</span></label></span></div>'
            '</div><span class="progress" aria-hidden="true"></span></header>')
@@ -807,10 +885,10 @@ def shell(lang, title, content, desc=""):
     return f"""<!doctype html>
 <html lang="{lang}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>{esc(title)}</title><meta name="description" content="{esc(desc)}">
-<meta name="color-scheme" content="dark light"><meta name="theme-color" content="#0a0c0d"><meta name="author" content="{AUTHORS}">{alt}
+<meta name="color-scheme" content="dark light"><meta name="theme-color" content="#050507"><meta name="author" content="{AUTHORS}">{alt}
 {HEAD_JS}
 <link rel="stylesheet" href="../assets/css/site.css"><link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
-<style>{site_story.mode_css()}</style>
+<style>{site_story.state_css()}</style>
 </head><body id="top">
 <a class="skip" href="#main">{ui['skip']}</a>
 {top}
@@ -849,7 +927,7 @@ def plate(lang, page, fm, h, part, kicker=None, numeral=None):
     ui = UI[lang]; num = fm.get("num")
     q, a = split_lead(fm.get("lead", ""))
     if kicker is None:
-        kicker = f'{ui["chapter"]} {num} <span class="of">{ui["of"]} 11</span>' if page.startswith("ch") else ui["atlas_eb"].format(n=fmt_int(STATS.get("unique_works", 0), lang))
+        kicker = f'{ui["chapter"]} {num} <span class="of">{ui["of"]} 11</span>' if page.startswith("ch") else ui["atlas_eb"].format(n=fmt_int(STATS.get("catalogue", 0), lang))
     numeral = numeral if numeral is not None else (f"{int(num):02d}" if num else "")
     pk = f'<span class="pk-part">{esc(part_label(lang, part))} · {esc(part["title"][lang])}</span>' if part else ""
     return (f'<header class="plate" data-sl><div class="plate-bg" aria-hidden="true"></div><div class="plate-in" data-sl>'
@@ -865,6 +943,29 @@ def words(text):
     ws = text.split()
     return f'<p class="part-say" style="--n:{len(ws)}">' + " ".join(f'<span class="sw" style="--i:{i}">{esc(w)}</span>' for i, w in enumerate(ws)) + "</p>"
 
+CH_CARDS = {}
+for _p in CHAPTERS:
+    _r = read_page("ru", _p)
+    _bl = [x for x in blocks(_r[1]) if x[0] in ("card", "short")] if _r else []
+    CH_CARDS[_p] = dict(full=sum(1 for x in _bl if x[0] == "card" and catalogue.changed(x[1].split()[0]) != "added"),
+                        short=sum(1 for x in _bl if x[0] == "short" and catalogue.changed(x[1].split()[0]) != "added"),
+                        added=sum(1 for x in _bl if catalogue.changed(x[1].split()[0]) == "added"))
+
+def part_towers(lang, part):
+    """Each chapter of the part as a context window; one block per card: full, short, and those the 19 October supplement added."""
+    chs = [p for p in part["pages"] if p.startswith("ch")]
+    if sum(1 for p in chs if sum(CH_CARDS[p].values())) < 2: return ""
+    ui = UI[lang]; cols = []
+    for p in chs:
+        c = CH_CARDS[p]
+        bl = ['<b class="f"></b>'] * c["full"] + ['<b class="s"></b>'] * c["short"] + ['<b class="a"></b>'] * c["added"]
+        lab = ui["towers_note"].format(f=c["full"], s=c["short"] + c["added"]) if bl else ui["towers_none"]
+        cols.append(f'<li><a href="#{p}" aria-label="{esc(ui["chapter"])} {int(p[2:])}: {esc(lab)}"><span class="tw" style="--n:{len(bl)}">{"".join(bl)}</span>'
+                    f'<span class="tw-n">{int(p[2:])}</span><span class="tw-c">{len(bl)}</span></a></li>')
+    key = (f'<p class="tw-key"><span>{esc(ui["towers_k"])}</span><i class="f"></i>{esc(ui["towers_full"])}<i class="s"></i>{esc(ui["towers_short"])}'
+           f'<i class="a"></i>{esc(ui["added_tag"])}</p>')
+    return f'<div class="part-tw"><ol class="tws">{"".join(cols)}</ol>{key}</div>'
+
 def part_opener(lang, part):
     ui = UI[lang]
     lis = []
@@ -872,10 +973,11 @@ def part_opener(lang, part):
         n = num_of(lang, p) if (p.startswith("ch") or p == "atlas") else ""
         anchor = "findings" if p == "findings" else p
         lis.append(f'<li><a href="#{anchor}"><b>{n or "·"}</b>{esc(nav_title(lang, p))}</a></li>')
+    num = f'<span class="part-num" aria-hidden="true">{part["key"] or "∴"}</span>'
     return (f'<section class="part tone-{part["tone"]}" id="{part["id"]}" aria-labelledby="{part["id"]}-t" data-sl>'
-            f'<div class="part-bg" aria-hidden="true"></div><div class="part-in"><p class="part-k">{esc(part_label(lang, part))}</p>'
+            f'<div class="part-bg" aria-hidden="true"></div><div class="part-in">{num}<p class="part-k">{esc(part_label(lang, part))}</p>'
             f'<h2 class="part-t" id="{part["id"]}-t">{esc(part["title"][lang])}</h2>{words(part["say"][lang])}'
-            f'<ol class="part-ch">{"".join(lis)}</ol></div></section>')
+            f'{part_towers(lang, part)}<ol class="part-ch">{"".join(lis)}</ol></div></section>')
 
 def chapter_section(lang, page, part):
     fm, h = page_flow(lang, page)
@@ -894,14 +996,19 @@ def chapter_section(lang, page, part):
     return (f'<section class="chapter tone-{part["tone"]}" id="{page}" data-k="{page}" aria-labelledby="{page}-t">'
             f'{plate(lang, page, fm, h, part)}<div class="sheet">{body}</div></section>')
 
-def intro_section(lang):
-    """The cover block of index.md, set right under the prologue: title, lede, counts, and the route through the parts."""
-    ui = UI[lang]; st = STATS
+def cover(lang):
     fm, text = read_page(lang, "index")
-    kv = next((cover_kv(b[2]) for b in blocks(text) if b[0] == "cover"), {})
+    return next((cover_kv(b[2]) for b in blocks(text) if b[0] == "cover"), {})
+
+def intro_section(lang):
+    """The cover block of index.md, set right after the prologue: what the survey covers, its counts (each with its
+    date), the 19 October supplement, and the route through the parts."""
+    ui = UI[lang]; st = STATS
+    kv = cover(lang)
     meta = [p.strip() for p in kv.get("meta", "").split(" · ") if p.strip() and "{{stat:" not in p]
-    nums = [(fmt_int(st.get("corpus", 0), lang), ui["n_corpus"]), (fmt_int(st.get("unique_works", 0), lang), ui["n_unique"]),
-            (fmt_int(st.get("cards_full", 0) + st.get("cards_short", 0), lang), ui["n_cards"].format(f=st.get("cards_full", 0), s=st.get("cards_short", 0))),
+    cf, cs = CARD_COUNT["card"], CARD_COUNT["short"]      # the cards on the page now (the registry's 3 October counts are on the About page)
+    nums = [(fmt_int(st.get("corpus", 0), lang), ui["n_corpus"]), (fmt_int(st.get("catalogue", 0), lang), ui["n_unique"]),
+            (fmt_int(cf + cs, lang), ui["n_cards"].format(f=cf, s=cs)),
             (fmt_int(st.get("fig_works", 0) + st.get("fig_own", 0), lang), ui["n_figs"].format(w=st.get("fig_works", 0), o=st.get("fig_own", 0)))]
     parts = []
     for part in longread.PARTS:
@@ -913,9 +1020,11 @@ def intro_section(lang):
         parts.append(f'<li class="rp tone-{part["tone"]}"><a class="rp-h" href="#{part["id"]}"><span class="rp-k">{esc(part_label(lang, part))}</span>'
                      f'<span class="rp-t">{esc(part["title"][lang])}</span></a><ol>{"".join(lis)}</ol></li>')
     ref = " · ".join(f'<a href="#{p}">{esc(nav_title(lang, p))}</a>' for p in longread.REFERENCE)
+    sup = ui["sup_note"].format(n=st.get("supplement_added", 0))
     return (f'<section class="intro" id="survey" aria-labelledby="h-survey"><div class="intro-in"><div class="intro-copy">'
-            f'<p class="eyebrow">{esc(kv.get("kicker", ""))}</p><h2 id="h-survey">{md_inline(kv.get("title", ""), lang)}</h2>'
-            f'<p class="subtitle">{esc(kv.get("subtitle", ""))}</p><div class="lede">{md(kv.get("lede", ""), lang)}</div>'
+            f'<p class="label">{esc(keep_dates(kv.get("kicker", "")))}</p><h2 id="h-survey" class="intro-t">{esc(ui["intro_h"])}</h2>'
+            f'<div class="lede">{md(kv.get("lede", ""), lang)}</div>'
+            f'<p class="sup"><span class="tag new">{esc(ui["added_tag"])}</span> {esc(sup)} <a href="#about">{esc(ui["about_l"])} →</a></p>'
             f'<p class="cta"><a class="btn primary" href="#ch01">{ui["cont"]} ↓</a><a class="btn" href="#atlas">{ui["atlas_go"]}</a>'
             f'<a class="btn" href="../paper/index.html">{ui["report"]}</a></p></div>'
             '<dl class="numbers">' + "".join(f"<div><dt>{esc(l)}</dt><dd>{v}</dd></div>" for v, l in nums) + "</dl>"
@@ -956,16 +1065,34 @@ def reference_section(lang):
                    + (f'<p class="reflead">{md_inline(lead, lang)}</p>' if lead else "") + f'</header><div class="flow prose">{h}</div></section>')
     return (f'<div class="reference" aria-label="{ui["appendix"]}"><p class="ref-k">{ui["appendix"]}</p>' + "".join(out) + "</div>")
 
+GREEK = re.compile(r"[\u03b1-\u03c9\u03d1\u03d5\u03f0\u03f1\u03f5]+")
+CAPS_EL = [re.compile(r'(<th\b[^>]*>)(.*?)(</th>)', re.S), re.compile(r'(<p class="ctl">)(.*?)(</p>)', re.S),
+           re.compile(r'(<span class="ctl-l">)(.*?)(</span>)', re.S)]
+
+def keep_greek(html):
+    """The design sets table heads, callout titles and scene control labels in capitals, which would turn λ into Λ and
+    ρ into Ρ, different symbols: the Greek letters in those elements keep their case (.gk)."""
+    def inner(m):
+        parts = re.split(r"(<[^>]+>)", m.group(2))
+        return m.group(1) + "".join(x if x.startswith("<") else GREEK.sub(lambda g: f'<span class="gk">{g.group(0)}</span>', x) for x in parts) + m.group(3)
+    for pat in CAPS_EL:
+        html = pat.sub(inner, html)
+    return html
+
 def longread_page(lang):
     FIG.update(k=0, ch=None, page=None, list=[])
-    sections = [site_story.hero_html(lang, LADDER, card_href), intro_section(lang)]
+    kv = cover(lang)
+    hero = site_story.hero_html(lang, dict(kicker=keep_dates(kv.get("kicker", "")), subtitle=kv.get("subtitle", ""), meta_line=keep_dates(f'{AUTHORS} · {UI[lang]["edition"]}')))
+    stage = site_story.stage_html(lang, card_href, ch1_href="#ch01-fig-2", agensh_href="#agensh",
+                                  title_of=lambda w, l: strip_tags(md_inline(card_title(WORKS.get(w["id"], w), l), l)))
+    sections = [hero, stage, intro_section(lang)]
     body = []
     for part in longread.PARTS:
         body.append(part_opener(lang, part))
         for p in part["pages"]:
             body.append(findings_section(lang, part) if p == "findings" else chapter_section(lang, p, part))
     ref = reference_section(lang)
-    content = "\n".join(sections + body + [ref])
+    content = keep_greek("\n".join(sections + body + [ref]))
     fm, _ = read_page(lang, "index")
     title = f'{SITE_TITLE[lang]}: {SITE_SUB[lang]}'
     return shell(lang, title, content, desc=strip_tags(md_inline(fm.get("lead", "") or SITE_SUB[lang], lang)))
@@ -1033,15 +1160,45 @@ def root_page():
         if os.path.isdir(os.path.join(ASSETS, "illustrations")) else ""
     return f"""<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>{SITE_TITLE['en']} · {SITE_TITLE['ru']}</title><meta name="description" content="{esc(SITE_SUB['en'])}. {AUTHORS}.">
-<meta name="color-scheme" content="dark light"><meta name="theme-color" content="#0a0c0d">{HEAD_JS}
+<meta name="color-scheme" content="dark light"><meta name="theme-color" content="#050507">{HEAD_JS}
 <link rel="stylesheet" href="assets/css/site.css"><link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="alternate" hreflang="en" href="en/index.html"><link rel="alternate" hreflang="ru" href="ru/index.html"></head>
 <body class="root"><main class="rootmain">
-<header>{RING.replace('<svg ', '<svg class="ring" ', 1)}<h1>{SITE_TITLE['en']}</h1><p class="subtitle">{SITE_SUB['en']}</p><p class="byline">{AUTHORS} · {UI['en']['cutoff']}</p></header>
+<header>{RING.replace('<svg ', '<svg class="ring" ', 1)}<h1>{SITE_TITLE['en']}</h1><p class="subtitle">{SITE_SUB['en']}</p><p class="byline">{AUTHORS} · {UI['en']['edition']}</p></header>
 <nav class="choose" aria-label="Language"><a href="en/index.html" hreflang="en" data-lang="en"><b>English</b><span>The whole survey on one page: eleven chapters, the findings and an atlas of works.</span></a>
 <a href="ru/index.html" hreflang="ru" lang="ru" data-lang="ru"><b>Русский</b><span>{SITE_TITLE['ru']}: весь обзор на одной странице — одиннадцать глав, выводы и атлас работ.</span></a></nav>
 {poster}
 </main><script>(function(){{try{{var l=(navigator.language||'').slice(0,2)==='ru'?'ru':'en';var a=document.querySelector('.choose a[data-lang="'+l+'"]');if(a)a.classList.add('pref');}}catch(e){{}}}})();</script></body></html>"""
+
+def current_bib():
+    """BibTeX of the current catalogue (19 October 2026), one entry per record. data/bib/works.bib stays the registry of
+    3 October and is not rewritten (the supplement keeps it on purpose); here its entries take the supplement the way
+    updates/2026-10-19/catalogue.json applies it: added and updated records take the supplement's entries
+    (updates/2026-10-19/references.bib), a corrected record loses an identifier the catalogue no longer gives it, and
+    the header says which and whose it is. Key = canonical work id, as in the registry."""
+    def entries(path):
+        t = open(os.path.join(ROOT, path), encoding="utf-8").read()
+        return {m.group(1): m.group(0) for m in re.finditer(r"^@\w+\{([^,\n]+),\n.*?^\}\n", t, re.M | re.S)}
+    reg, sup = entries("data/bib/works.bib"), entries("updates/2026-10-19/references.bib")
+    works = catalogue.works()
+    owner = {(w.get("identifiers") or {}).get("arxiv"): w for w in works if (w.get("identifiers") or {}).get("arxiv")}
+    out, notes = [], []
+    for w in works:
+        k, kind = w["id"], catalogue.changed(w["id"])
+        e = sup[k] if kind in ("added", "updated") else reg[k]
+        ax = (w.get("identifiers") or {}).get("arxiv")
+        old = re.search(r"^  eprint = \{([^}]*)\},?\n", e, re.M)
+        if kind == "corrected" and old and old.group(1) != ax:
+            e = re.sub(r"^  (?:eprint|archivePrefix) = \{[^}]*\},?\n", "", e, flags=re.M)
+            o = owner.get(old.group(1))
+            whose = f'; it identifies {o["title"]} ({o["authors"][0].split()[-1]} et al., key {o["id"]})' if o else ""
+            notes.append(f"%   {k}: arXiv:{old.group(1)} removed{whose}, not this work.")
+        out.append(e)
+    S = catalogue.SUP
+    head = [f"% Swarm Dynamics: BibTeX of the catalogue as of {S['checked_at']} ({len(out)} records). Generated by scripts/build_site.py from",
+            "% data/bib/works.bib (the registry of 3 October 2026, kept unchanged) and the dated supplement in updates/2026-10-19/:",
+            f"% {len(S['added'])} records added and {len(S['updated'])} updated from its references.bib; {len(S['corrected'])} identifier corrected as in its catalogue.json:"]
+    return "\n".join(head + notes + ["% Key = canonical work id.", "", ""]) + "\n".join(out)
 
 # ---------------------------------------------------------------- build
 def build():
@@ -1054,8 +1211,10 @@ def build():
             os.makedirs(os.path.join(OUT, "paper"), exist_ok=True)
             shutil.copy2(source, os.path.join(OUT, "paper", name))
     os.makedirs(os.path.join(OUT, "data"), exist_ok=True)
-    for src, name in (("data/works.json", "works.json"), ("data/bib/works.bib", "works.bib")):
+    for src, name in (("data/works.json", "works.json"), ("data/bib/works.bib", "works.bib"),            # the registry as of 3 October
+                      ("updates/2026-10-19/catalogue.json", "catalogue-2026-10-19.json")):                  # with the 19 October supplement
         if os.path.isfile(os.path.join(ROOT, src)): shutil.copy2(os.path.join(ROOT, src), os.path.join(OUT, "data", name))
+    open(os.path.join(OUT, "data", "references-2026-10-19.bib"), "w", encoding="utf-8").write(current_bib())
     for sub in ("css", "js"):
         shutil.copytree(os.path.join(ASSETS, sub), os.path.join(OUT, "assets", sub))
     shutil.copy(os.path.join(ASSETS, "favicon.svg"), os.path.join(OUT, "assets", "favicon.svg"))

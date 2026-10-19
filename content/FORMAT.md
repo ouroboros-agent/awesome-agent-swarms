@@ -49,7 +49,12 @@ A block opens with `:::kind args` on its own line and closes with `:::` on its o
 | `:::cover` | `index.md` only: `kicker:`, `title:`, `subtitle:`, `lede:`, `meta:` lines. On the site it becomes the intro under the topology scene, followed by the route through the parts; large counts are read from `data/stats.json`; parts of `meta` separated by ` · ` that contain `{{stat:…}}` are omitted to avoid repeating those counts. |
 | `:::corpus`, `:::sources` | Placeholders filled by the builder. |
 
-`<work-id>` is the canonical ID from `data/works.json` (see `data/interface.md`). Never invent or rename IDs.
+`<work-id>` is the canonical ID from the current catalogue: `data/works.json` (the registry as of 3 October 2026, see
+`data/interface.md`) with the dated supplements applied by `scripts/catalogue.py` (`updates/2026-10-19/catalogue.json`,
+checked against the registry's bytes). Never invent or rename IDs. Cards of works a supplement added are tagged with its
+date instead of an evidence class and topics: those works are outside the analytic corpus, so they carry no class, topic
+or scale. Their display fields (titles, authors, organizations, status, the dated note) are in
+`data/i18n/passports_2026-10-19.json`.
 
 ## Figures
 
@@ -67,12 +72,21 @@ Ordinary Markdown pipe tables. The builder wraps every table in a horizontally s
 
 ## The single page
 
-Order (scripts/longread.py): prologue (topology scene) → intro and route → Part I (chapters 1–3) → Part II (4–6) →
+Order (scripts/longread.py): title screen and prologue (the stage, #how) → intro and route → Part I (chapters 1–3) → Part II (4–6) →
 Part III (7–10) → epilogue (the ten findings, chapter 11, the atlas as chapter 12) → reference appendix (glossary, cards
 and labels, sources, about). Each part opens with a short statement; each chapter opens with a plate (number, title, the
 lead's question and answer, counts) that pins while the chapter's sheet slides over it. Chapter Markdown headings become
 `h3`/`h4` under the chapter's `h2`. The section "How to read the cards" of `ch01.md` and the index's note on labels move to
 the appendix ("Cards and labels") with their ids, so the reading flow carries no reading instructions.
+
+The design is B «Контекст» (chosen on 19 October 2026 from design-20261019/, which stays as it was): near-black with lime and
+coral, every agent a context window drawn as a tower of blocks. The prologue is a sticky stage beside thirteen text steps
+(`#how-1` … `#how-13`; the three schemes also keep `#m-ind`, `#m-coord`, `#m-mem`): the step being read sets the stage's state,
+scrolling stays native, and without JavaScript or with reduced motion every scheme shows a static figure of its end state.
+Part openers draw each chapter as a window with one block per card (lime: added on 19 October). The motion switch in the
+top bar (`html.paused`) holds every scene and animation. Table heads, callout titles and scene control labels are set in
+capitals; Greek letters in them keep their case (the build wraps them in `span.gk`, so λ never becomes Λ). Styles for the
+prologue's static figures name `figure.static`: a bare `.static` would also match `html.static`, the reduced-motion root.
 
 Native scenes sit at hooks in `PLACE` (scripts/longread.py): `fig:<file>` replaces one of the survey's own charts and keeps its
 number and caption (the static PNG stays linked under it); `after:<card>`, `before:<card>`, `callout:<k>`, `table:<k>` place a
@@ -81,6 +95,13 @@ reduced motion. A scene marked *Survey data* computes its numbers from `data/wor
 quote only numbers from the card next to them, and the motion between them is illustrative. Where a schematic computes numbers of
 its own (the λ rule, the consensus toy model), the scene says it is a calculation or a toy, not a measurement.
 `scripts/check_scenes.py` (part of `make check`) checks every quoted number against its card and recomputes the toy model.
+
+## Supplements
+
+A dated supplement changes the text in place, in both languages and in the same block order. A section heading it adds is
+marked in the Markdown, `## Heading {: .upd }`; such headings, and the titles of cards it adds, take ids of their own
+(`#chNN-u-K`) and leave the counter of the former section ids (`#chNN-s-K`) untouched. `scripts/check_coverage.py --prev
+<a copy of the previous site/>` lists every sentence of the previous edition that changed, each with its reason.
 
 ## Addresses
 

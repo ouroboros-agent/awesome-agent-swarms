@@ -104,6 +104,41 @@ for lang in ("en", "ru"):
     ok(all(re.search(p, sh) for p in (r'class="kg-a"', r'class="kg-b"')) and "agents" not in M.MB[lang]["title"] and "агент" not in M.MB[lang]["title"],
        f"Moltbook {lang}: one key per glyph; the title counts registrations, not agents")
 
+# ---------------------------------------------------------------- Agensh room: every number is the card's
+import site_story as S
+ag = {l: card(l, "ch05", "agensh-1024") for l in ("en", "ru")}
+ok(all(x in ag["en"] for x in ("33.89 → 41.75 → 43.11 → 50.94 → 55.06%", "19.31% with one agent, 20.68% with 8, 26.52% with 32 and 28.78% with 128", "117 and 800 times",
+                               "11,111 pull requests", "2,800 merged (25%)", "148,079 board entries", "56,472 of them FAIL")),
+   "Agensh room: pandoc by team size, the five-task mean, agent-hours ×117/×800 and the replay counts are in the card")
+ok(S.PANDOC == [(1, 33.89), (8, 41.75), (32, 43.11), (128, 50.94), (1024, 55.06)] and S.MEAN5 == [(1, 19.31), (8, 20.68), (32, 26.52), (128, 28.78)]
+   and S.AGENT_HOURS == [(1, 1), (128, 117), (1024, 800)], "Agensh room: the bars use exactly the card's values")
+for lang in ("en", "ru"):
+    h = html(lang); i = h.index('id="agensh"'); j = h.index("</section>", i); room = h[i:j]
+    bars = re.findall(r'<text class="bvv"[^>]*>([\d.,]+)</text>', room)
+    want = [S.fnum(v, lang, 2) for _, v in S.PANDOC] * 2
+    ok(bars == want, f"Agensh room {lang}: the bars print {bars[:5]} in each layout")
+    rv = [re.sub(r"\D", "", x) for x in re.findall(r'<p class="rv[^"]*">([^<]+)</p>', room)]
+    ok(rv == ["11111", "2800", "148079", "56472"], f"Agensh room {lang}: replay figures {rv}")
+    ok(abs(2800 / 11111 - 0.252) < 0.001 and abs(56472 / 148079 - 0.381) < 0.001 and 'style="--r:0.252"' in room and 'style="--r:0.381"' in room,
+       f"Agensh room {lang}: the two ratio bars are 2,800/11,111 and 56,472/148,079")
+
+# ---------------------------------------------------------------- ScaleMAS and MATM v2 (the 19 October scenes of ch. 6)
+sm = card("en", "ch06", "scalemas-substrate")
+ok(all(x in sm for x in ("55.1%", "46.8%", "38.0%", "8.3 percentage points", "17.1 points", "four identical agents")) and "Qwen3.5-9B" in card("en", "ch06", "scalemas-substrate"),
+   "ScaleMAS: 55.1 / 46.8 / 38.0, +8.3 and +17.1 are in the card")
+ok(round(55.1 - 46.8, 1) == 8.3 and round(55.1 - 38.0, 1) == 17.1, "ScaleMAS: 55.1 − 46.8 = 8.3 and 55.1 − 38.0 = 17.1")
+mt = card("en", "ch06", "multi-agent-transactive-memory")
+ok(all(x in mt for x in ("77.82%", "25.6% of SVMRank retrievals", "1.4% of the index", "supply 40.7%", "31.8%")), "MATM v2: 77.82, 25.6, 1.4, 40.7 and 31.8 are in the card")
+for lang in ("en", "ru"):
+    t = M.SB[lang]
+    ok([v for _, _, v in t["modes"]] == [55.1, 46.8, 38.0], f"ScaleMAS {lang}: the scene's three values")
+    sh = scene_html(lang, "sc-substrate")
+    ok(len(re.findall(r'class="sbs sbs-', sh)) == 3 and sh.count('class="fr"') == 12, f"ScaleMAS {lang}: three panels of four context windows")
+    rows = M.MT[lang]["rows"]
+    ok([(a, b) for _, a, b in rows] == [(77.82, 1.4), (25.6, 40.7)] and ("31.8" if lang == "en" else "31,8") in M.MT[lang]["pooled"], f"MATM {lang}: index and retrieval shares, pooled 31.8")
+    sh = scene_html(lang, "sc-matm")
+    ok('style="--a:0.7782;--b:0.0140"' in sh and 'style="--a:0.2560;--b:0.4070"' in sh, f"MATM {lang}: the bars are drawn at the card's shares")
+
 # ---------------------------------------------------------------- Consensus: the toy, recomputed independently
 h, N = M.CS_H, M.CS_N
 

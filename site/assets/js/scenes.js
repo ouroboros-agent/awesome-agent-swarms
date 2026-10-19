@@ -1,7 +1,7 @@
 /* Swarm Dynamics: the native scenes. Every scene's markup already shows its end state; this file plays the way
    there when the scene is on screen. One scheduler: a scene runs while at least a quarter of it is visible, at
    most two run at once, all stop on a hidden tab, and under reduced motion nothing moves. The prologue and the
-   Agensh scene are played by story.js. */
+   Agensh room are played by story.js. The motion switch in the top bar (html.paused) holds every scene. */
 (function () {
   'use strict';
   var d = document, root = d.documentElement, w = window, NS = 'http://www.w3.org/2000/svg';
@@ -67,8 +67,8 @@
     if (this.onTick) this.onTick(this.t, dt);
     if (this.dur && this.t >= this.dur && !this.ended) this.finish();
   };
-  Scene.prototype.active = function () {
-    return this.visible && !this.paused && (!this.ended || this.idle) && !d.hidden && !isStatic();
+  Scene.prototype.active = function () {   // html.paused: the motion switch in the top bar holds every scene
+    return this.visible && !this.paused && (!this.ended || this.idle) && !d.hidden && !isStatic() && !root.classList.contains('paused');
   };
   var rafId = 0, last = 0, MAX = 2;
   function loop(now) {
@@ -87,6 +87,7 @@
     if (s.onStart) s.onStart();
   }
   d.addEventListener('visibilitychange', kick);
+  d.addEventListener('aas:motion', kick);
   var io = 'IntersectionObserver' in w ? new IntersectionObserver(function (es) {
     es.forEach(function (e) {
       var s = e.target.__scene; if (!s) return;
@@ -100,6 +101,7 @@
   var booted = [];
   function register(s) {   // the moving page: the scheduler, the observer and the pause button, once per scene
     if (s.reg) return;
+    if (!s.dur && !s.idle && !s.onTick && !s.ev.length) { s.el.classList.add('shown'); return; }   // interaction only (the atlas map): nothing to play, so no frame loop
     s.reg = true; scenes.push(s);
     if (s.btn) s.btn.addEventListener('click', function () {
       if (s.ended && !s.idle) { s.paused = false; s.reset(); }
@@ -302,6 +304,8 @@
 
   /* ---------------------------------------------------------------- Fig. 1.3–1.6: plain data charts */
   ['rhythm', 'orgs', 'models'].forEach(function (n) { def(n, function (s, el) { tips(el); s.dur = 1.2; }); });
+  /* the 19 October scenes of Chapter 6: card numbers that fill in once (ScaleMAS access, MATM index and retrievals) */
+  ['substrate', 'matm'].forEach(function (n) { def(n, function (s) { s.dur = 1.2; }); });
   function setAtlas(t, e) {
     var ids = ['ft-' + t, 'fe-' + e];
     $$('.filters input[type=radio]').forEach(function (r) { if (/-all$/.test(r.id) && !/^f[te]-/.test(r.id)) r.checked = true; });

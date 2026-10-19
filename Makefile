@@ -27,8 +27,8 @@ check:               ## syntax + RU/EN parity; scene numbers against their cards
 	$(PY) scripts/check_content.py
 	$(PY) scripts/check_scenes.py
 
-coverage:            ## every card, figure, link, heading and block is on the single page (add OLD=<dir> to compare with a former build)
-	$(PY) scripts/check_coverage.py $(if $(OLD),--old $(OLD))
+coverage:            ## every card, figure, link, heading and block is on the single page (OLD=<dir>: a former multipage build; PREV=<dir>: the previous single-page edition)
+	$(PY) scripts/check_coverage.py $(if $(OLD),--old $(OLD)) $(if $(PREV),--prev $(PREV))
 
 preserve:            ## RU preservation against the October source (needs S)
 	$(PY) scripts/check_content.py --source $(S) --no-parity

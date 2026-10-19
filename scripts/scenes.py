@@ -292,29 +292,53 @@ def scale_svg(lang, v, layer):
             aria = f'{title}: {fnum(val, lang)}, {qty}; {H["evid"](e, lang)}' + (f'. {note}' if note else "")
             o.append(f'<a class="dot{" hl" if lab else ""}" href="{esc(href)}" aria-label="{esc(aria)}" data-w="{esc(w["id"])}" data-t="{esc(title)}" data-v="{esc(fnum(val, lang))}" '
                      f'data-e="{esc(H["evid"](e, lang))}" data-note="{esc(note)}"><circle class="hit" cx="{n(x)}" cy="{n(yy)}" r="{G["r"] + 5}"/><circle class="mk" cx="{n(x)}" cy="{n(yy)}" r="{G["r"]}"/></a>')
-    # direct labels for a few works; candidate spots around the dot, the first that clears the dots, the row names
-    # (13 px, bold) and earlier labels
+    # direct labels for a few works. Each hangs on a short vertical leader from its own dot, so a label that has to pass
+    # over a neighbouring dot still points at the right one; where no leader fits, the label sits on the dot's own line
+    # right beside it. Candidate spots above and below the dot, on either side of the leader, then beside it; the first
+    # wins that clears the dots, the row names (13 px, bold) and earlier labels with both text and leader, and that does
+    # not pass over another labelled dot; only if no spot does is passing over one allowed.
     placed = [(G["x0"], y0 + 12 - 13, G["x0"] + len(f'{H["evid"](e, lang)} · {len(items)}') * 13 * 0.6, y0 + 15) for e, items, y0, band in rows]
     dots_xy = [(x, yy) for _, items, _, _ in rows for _, _, x, yy in items]
-    fs = G["lab_fs"]
+    fs, r = G["lab_fs"], G["r"]
+    marked = [(x, yy) for _, items, _, _ in rows for w, _, x, yy in items if w["id"] in labset and T["labels"].get(w["id"])]
     def free(bx0, by0, bx1, by1):
         if bx0 < 2 or bx1 > G["W"] - 2: return False
         if any(not (bx1 < a0 or bx0 > a1 or by1 < b0 or by0 > b1) for a0, b0, a1, b1 in placed): return False
-        return not any(bx0 - G["r"] < dx < bx1 + G["r"] and by0 - G["r"] < dy < by1 + G["r"] for dx, dy in dots_xy)
+        return not any(bx0 - r < dx < bx1 + r and by0 - r < dy < by1 + r for dx, dy in dots_xy)
+    def leader_free(x, ya, yb):   # the vertical segment x, ya..yb (ya < yb) misses other dots and every placed box
+        if any(abs(dx - x) < r + 1.5 and ya - r < dy < yb + r for dx, dy in dots_xy if (dx, dy) != (x, yy)): return False
+        return not any(a0 - 1 <= x <= a1 + 1 and not (yb < b0 or ya > b1) for a0, b0, a1, b1 in placed)
+    def over_marked(x, bx0, by0, bx1, by1):
+        return any((mx, my) != (x, yy) and bx0 - r <= mx <= bx1 + r and by0 - 2 * fs <= my <= by1 + 2 * fs for mx, my in marked)
     for e, items, y0, band in rows:
         for w, val, x, yy in sorted(items, key=lambda it: -it[2]):
             lab = T["labels"].get(w["id"]) if w["id"] in labset else None
             if not lab: continue
-            tw = len(lab) * fs * 0.56; r = G["r"]
+            tw = len(lab) * fs * 0.56
             cands = []
-            for dy in (-(r + 7), r + 7 + fs, -(r + 7 + fs + 4), r + 11 + 2 * fs, -(r + 11 + 2 * fs + 4), r + 15 + 3 * fs):
-                cands += [(x + 6, yy + dy, "start"), (x - 6, yy + dy, "end")]
-            for lx, ly, anc in cands:
-                bx0 = lx if anc == "start" else lx - tw
-                if free(bx0, ly - fs, bx0 + tw, ly + 3):
-                    placed.append((bx0, ly - fs, bx0 + tw, ly + 3))
-                    o.append(f'<text class="dl" x="{n(lx)}" y="{n(ly)}" text-anchor="{anc}">{esc(lab)}</text>')
-                    break
+            for k in range(3):   # tiers above and below: the leader ends level with the middle of the text
+                up = r + 9 + k * (fs + 4)
+                for side in (-1, 1):
+                    end = yy + side * (up + .35 * fs)
+                    lead = (min(yy + side * (r + 1.5), end), max(yy + side * (r + 1.5), end))
+                    cands += [(x + 5, end + .35 * fs, "start", lead), (x - 5, end + .35 * fs, "end", lead)]
+            cands += [(x + r + 4, yy + .35 * fs, "start", None), (x - r - 4, yy + .35 * fs, "end", None)]   # beside the dot
+            spot = None
+            for strict in (True, False):
+                for lx, ly, anc, lead in cands:
+                    bx0 = lx if anc == "start" else lx - tw
+                    box = (bx0, ly - fs, bx0 + tw, ly + 3)
+                    if free(*box) and (not lead or leader_free(x, *lead)) and not (strict and over_marked(x, *box)):
+                        spot = (lx, ly, anc, lead, box); break
+                if spot: break
+            if not spot: continue
+            lx, ly, anc, lead, box = spot
+            placed.append(box)
+            if lead:
+                ya, yb = lead
+                placed.append((x - 1, ya, x + 1, yb))
+                o.append(f'<line class="dll" data-w="{esc(w["id"])}" x1="{n(x)}" x2="{n(x)}" y1="{n(ya if ly < yy else yb)}" y2="{n(yb if ly < yy else ya)}"/>')
+            o.append(f'<text class="dl" data-w="{esc(w["id"])}" x="{n(lx)}" y="{n(ly)}" text-anchor="{anc}">{esc(lab)}</text>')
     o.append("</svg>")
     return "".join(o)
 
