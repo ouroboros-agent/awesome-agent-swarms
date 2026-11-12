@@ -4,11 +4,13 @@
   python scripts/build_site.py            # build site/
   python scripts/build_site.py --check    # build, then fail on broken links, missing images or duplicate ids
 
-Each language is one continuous page, site/{ru,en}/index.html: the topology prologue, the survey's intro,
+Since the Field edition of 12 November 2026, site/{ru,en}/index.html is the Field page (scripts/build_field.py, called at
+the end of the build). This detailed survey stays whole at its dated address, site/{ru,en}/survey-2026-10-19.html
+(longread.PAGE). Each language is one continuous page: the topology prologue, the survey's intro,
 four parts with chapters 1–11, the findings, the atlas and the reference appendix (glossary, cards and
 labels, sources, about). scripts/longread.py holds the order of parts and their bridge copy; scripts/scenes.py
 and scripts/site_story.py build the native scenes. The former page addresses (ch01.html … full.html) stay as
-small pages that forward every old fragment to its place on the single page and, without JavaScript, list
+small pages that forward every old fragment to its place on the survey page and, without JavaScript, list
 those places as links.
 
 Reading needs no JavaScript: the theme switch, the contents sheet, the figure lightbox (:target), the
@@ -26,6 +28,8 @@ import catalogue
 import site_story
 import longread
 import scenes
+import build_field
+PAGE = longread.PAGE   # the detailed survey's page in site/<lang>/
 
 CONTENT, DATA, ASSETS, OUT = (os.path.join(ROOT, d) for d in ("content", "data", "assets", "site"))
 LANGS = ("ru", "en")
@@ -876,11 +880,11 @@ def shell(lang, title, content, desc=""):
               f'{I_MOTION}<span class="lab">{esc(ui["motion_off"])}</span></button>')
     top = (f'<header class="topbar"><div class="topbar-in"><a class="brand" href="#top">{RING}<span class="bt">{SITE_SHORT[lang]}</span><span class="bt-s">{SITE_SHORT[lang]}</span></a>'
            f'<a class="here" href="#chapters" tabindex="-1" aria-hidden="true"><span class="here-n"></span><span class="here-t"></span></a>'
-           f'<div class="tools">{motion}{mtoc}<a class="langbtn" href="../{other}/index.html" hreflang="{other}" lang="{other}"><span class="long">{ui["lang_other"]}</span><span class="short">{ui["lang_short"]}</span></a>'
+           f'<div class="tools">{motion}{mtoc}<a class="langbtn" href="../{other}/{PAGE}" hreflang="{other}" lang="{other}"><span class="long">{ui["lang_other"]}</span><span class="short">{ui["lang_short"]}</span></a>'
            f'<span class="themesw"><input type="checkbox" id="theme" class="theme-toggle" aria-label="{ui["theme"]}">'
            f'<label class="themebtn" for="theme" title="{ui["theme"]}">{I_SUN}{I_MOON}<span class="sr">{ui["theme"]}</span></label></span></div>'
            '</div><span class="progress" aria-hidden="true"></span></header>')
-    alt = f'<link rel="alternate" hreflang="{other}" href="../{other}/index.html"><link rel="alternate" hreflang="{lang}" href="index.html">'
+    alt = f'<link rel="alternate" hreflang="{other}" href="../{other}/{PAGE}"><link rel="alternate" hreflang="{lang}" href="{PAGE}">'
     js = "".join(f'<script src="../assets/js/{s}.js" defer></script>' for s in ("site", "story", "scenes"))
     return f"""<!doctype html>
 <html lang="{lang}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -1141,19 +1145,20 @@ def stub(lang, page):
         items += [(o, n_, ui["stub_zoom"].format(f=figt.get(n_) or o) if o.startswith("zoom-") else figt.get(n_) or o)
                   for o, n_, t in ANCHORS[lang].get(page, []) if not t]
     js = ("<script>(function(){var m=" + json.dumps(amap, ensure_ascii=False) + ",d=" + json.dumps(default) +
-          ";var h=location.hash.slice(1);try{h=decodeURIComponent(h)}catch(e){}location.replace('index.html#'+encodeURIComponent(h?(m[h]||h):d).replace(/%2F/g,'/'))})()</script>")
-    lis = "".join(f'<li id="{esc(o)}"><a href="index.html#{esc(n)}">{esc(t)}</a></li>' for o, n, t in items)
+          ";var h=location.hash.slice(1);try{h=decodeURIComponent(h)}catch(e){}location.replace(" + json.dumps(PAGE + "#") + "+encodeURIComponent(h?(m[h]||h):d).replace(/%2F/g,'/'))})()</script>")
+    lis = "".join(f'<li id="{esc(o)}"><a href="{PAGE}#{esc(n)}">{esc(t)}</a></li>' for o, n, t in items)
     extra = ""
     return f"""<!doctype html><html lang="{lang}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{esc(title)} — {SITE_TITLE[lang]}</title><meta name="robots" content="noindex"><link rel="canonical" href="index.html#{esc(default)}">
+<title>{esc(title)} — {SITE_TITLE[lang]}</title><meta name="robots" content="noindex"><link rel="canonical" href="{PAGE}#{esc(default)}">
 {js}
 <script>(function(d){{d.classList.add('js');try{{if(localStorage.getItem('aas-theme')==='light')d.classList.add('light')}}catch(e){{}}}})(document.documentElement)</script>
 <link rel="stylesheet" href="../assets/css/site.css"><link rel="icon" href="../assets/favicon.svg" type="image/svg+xml"></head>
 <body class="stub"><main class="stub-in"><p class="eyebrow">{esc(lab)}</p><h1>{esc(title)}</h1><p>{ui["stub_now"]}</p>
-<p class="cta"><a class="btn primary" href="index.html#{esc(default)}">{ui["stub_go"]} →</a><a class="btn" href="../{other}/{page}.html" hreflang="{other}">{ui["stub_lang"]}</a></p>
+<p class="cta"><a class="btn primary" href="{PAGE}#{esc(default)}">{ui["stub_go"]} →</a><a class="btn" href="../{other}/{page}.html" hreflang="{other}">{ui["stub_lang"]}</a></p>
 <details class="stub-list" open><summary>{ui["stub_more"]}</summary><ol>{lis}</ol></details>{extra}</main></body></html>"""
 
 def root_page():
+    """site/index.html: the Field edition in English and Russian, then the dated detailed survey and the report."""
     poster = ('<figure class="rootposter" aria-hidden="true">'
               '<img class="theme-dark-only" src="assets/illustrations/topologies-en-dark.svg" alt="" width="1600" height="900">'
               '<img class="theme-light-only" src="assets/illustrations/topologies-en-light.svg" alt="" width="1600" height="900"></figure>') \
@@ -1164,9 +1169,10 @@ def root_page():
 <link rel="stylesheet" href="assets/css/site.css"><link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="alternate" hreflang="en" href="en/index.html"><link rel="alternate" hreflang="ru" href="ru/index.html"></head>
 <body class="root"><main class="rootmain">
-<header>{RING.replace('<svg ', '<svg class="ring" ', 1)}<h1>{SITE_TITLE['en']}</h1><p class="subtitle">{SITE_SUB['en']}</p><p class="byline">{AUTHORS} · {UI['en']['edition']}</p></header>
-<nav class="choose" aria-label="Language"><a href="en/index.html" hreflang="en" data-lang="en"><b>English</b><span>The whole survey on one page: eleven chapters, the findings and an atlas of works.</span></a>
-<a href="ru/index.html" hreflang="ru" lang="ru" data-lang="ru"><b>Русский</b><span>{SITE_TITLE['ru']}: весь обзор на одной странице — одиннадцать глав, выводы и атлас работ.</span></a></nav>
+<header>{RING.replace('<svg ', '<svg class="ring" ', 1)}<h1>{SITE_TITLE['en']}</h1><p class="subtitle">{SITE_SUB['en']}</p><p class="byline">{AUTHORS} · November 2026</p></header>
+<nav class="choose" aria-label="Language"><a href="en/index.html" hreflang="en" data-lang="en"><b>English</b><span>How communication, scale, memory and collective errors change LLM swarms: eight scenes on one page and a map of about 300 sources, November 2026.</span></a>
+<a href="ru/index.html" hreflang="ru" lang="ru" data-lang="ru"><b>Русский</b><span>Как связь, масштаб, память и коллективные ошибки меняют рои LLM-агентов: восемь сцен на одной странице и карта около 300 источников, ноябрь 2026.</span></a></nav>
+<p class="rootmore">The detailed survey, {UI['en']['edition']}: <a href="en/{PAGE}" hreflang="en">English</a> · <a href="ru/{PAGE}" hreflang="ru" lang="ru">Русский</a> · <a href="paper/index.html">technical report (PDF, 3 October 2026)</a></p>
 {poster}
 </main><script>(function(){{try{{var l=(navigator.language||'').slice(0,2)==='ru'?'ru':'en';var a=document.querySelector('.choose a[data-lang="'+l+'"]');if(a)a.classList.add('pref');}}catch(e){{}}}})();</script></body></html>"""
 
@@ -1240,9 +1246,10 @@ def build():
         hit = next((a for a, t in HEADS[lang].get("about", []) if re.search(r"цитир|cite", t, re.I)), None)
         if hit: CITE_ANCHOR[lang] = "#" + hit
         for d in (ANCHORS, HEADS, MOVED, SCENE_N): d[lang].clear()
-        open(os.path.join(OUT, lang, "index.html"), "w", encoding="utf-8").write(longread_page(lang)); built.append(f"{lang}/index.html")
+        open(os.path.join(OUT, lang, PAGE), "w", encoding="utf-8").write(longread_page(lang)); built.append(f"{lang}/{PAGE}")
         for p in longread.STUB_PAGES:
             open(os.path.join(OUT, lang, p + ".html"), "w", encoding="utf-8").write(stub(lang, p)); built.append(f"{lang}/{p}.html")
+    built += build_field.build(site_dir=OUT)   # site/<lang>/index.html: the Field edition
     root = root_page()
     open(os.path.join(OUT, "index.html"), "w", encoding="utf-8").write(root)
     open(os.path.join(OUT, ".nojekyll"), "w").write("")
@@ -1282,7 +1289,7 @@ def check():
             if re.search(r"\{\{|%%ATLAS%%|%%SOURCES%%|%%SCENE", t): errs.append(f"{rel}: unfilled template mark")
     # every forwarding target of the former pages exists on the single page
     for lang in LANGS:
-        page_ids = ids_of(os.path.join(OUT, lang, "index.html"))
+        page_ids = ids_of(os.path.join(OUT, lang, PAGE))
         for p in longread.STUB_PAGES:
             t = open(os.path.join(OUT, lang, p + ".html"), encoding="utf-8").read()
             m = re.search(r"var m=(\{.*?\}),d=(\"[^\"]*\")", t)
@@ -1292,7 +1299,7 @@ def check():
                 if n not in page_ids: errs.append(f"{lang}/{p}.html: #{o} -> #{n} missing on the single page")
             # without JavaScript the same addresses work as a list: every forwarded one has its labelled entry, same target
             nojs = {html.unescape(i): (html.unescape(h), strip_tags(lab).strip())
-                    for i, h, lab in re.findall(r'<li id="([^"]+)"><a href="index\.html#([^"]*)">(.*?)</a></li>', t)}
+                    for i, h, lab in re.findall(r'<li id="([^"]+)"><a href="' + re.escape(PAGE) + r'#([^"]*)">(.*?)</a></li>', t)}
             for o, n in amap.items():
                 if o not in nojs or nojs[o][0] != n or not nojs[o][1]:
                     errs.append(f"{lang}/{p}.html: #{o} -> #{n} has no labelled no-JS entry ({nojs.get(o)})")

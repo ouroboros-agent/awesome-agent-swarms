@@ -1,0 +1,952 @@
+{
+ "lang": "en",
+ "title": "Swarm dynamics of LLM agents: one agent found the solution. How do the others find out?",
+ "description": "LLM agent swarms in November 2026: four ways to connect agents, real swarm sizes, the Agensh curve up to 1,024 agents, self-organization, shared memory, contagious ideas and a map of about 300 sources.",
+ "brand": "Swarm Dynamics",
+ "hero": {
+  "eyebrow": "LLM agent swarms · about 300 sources · November 2026",
+  "h1": "One agent found the solution. <span>How do the others find&nbsp;out?</span>",
+  "lead": "One case, four schemes: agent&nbsp;3 has found the solution, and agents&nbsp;1 and&nbsp;5 need&nbsp;it.",
+  "tabs_label": "Four ways to connect agents",
+  "modes": [
+   {
+    "name": "Independent",
+    "mech": "No channel. The finding stays with its author; the others reach it on their own or never do. The answers are combined by a vote at the&nbsp;end.",
+    "meas": "A vote over five independent answers scores <b>0.769</b>, the best debate among the same agents <b>0.738</b>, a single agent <b>0.721</b> (Qwen2.5-7B, seven task&nbsp;sets).",
+    "src": [
+     {
+      "url": "https://arxiv.org/abs/2508.17536",
+      "title": "Debate or Vote",
+      "rest": " · University of Wisconsin–Madison · NeurIPS&nbsp;2025"
+     }
+    ]
+   },
+   {
+    "name": "Through a coordinator",
+    "mech": "Everything passes through one node. The finding reaches agents 1&nbsp;and&nbsp;5 if the coordinator relays&nbsp;it.",
+    "meas": "Conductor, a trained 7B-parameter orchestrator, averages <b>77.27</b> across seven benchmarks against <b>74.78</b> for the best single&nbsp;model.",
+    "src": [
+     {
+      "url": "https://openreview.net/forum?id=U23A2BUKYt",
+      "title": "Learning to Orchestrate Agents in Natural Language with the Conductor",
+      "rest": " · Sakana&nbsp;AI · ICLR&nbsp;2026"
+     }
+    ]
+   },
+   {
+    "name": "Through shared memory",
+    "mech": "Agent&nbsp;3 publishes a record. Agents 1&nbsp;and&nbsp;5 get it when they run a&nbsp;search.",
+    "meas": "1,000 Anthropic agents, November&nbsp;2026: no messaging tools, only a shared database and Git. In 30&nbsp;hours: <b>36,612</b> writes and <b>311,734</b>&nbsp;reads.",
+    "src": [
+     {
+      "url": "https://claude.dev/blog/safely-scaling-multi-agent-teams-with-fable-5-2",
+      "title": "Safely scaling multi-agent teams with Claude Fable&nbsp;5.2",
+      "rest": " · Anthropic · 9&nbsp;November&nbsp;2026"
+     }
+    ]
+   },
+   {
+    "name": "By a local rule",
+    "mech": "Each agent sees only its neighbours. The finding spreads from neighbour to neighbour; nobody drew the&nbsp;network.",
+    "meas": "One anonymous rule shared by all agents reaches more than <b>96%</b> of oracle quality and carries over to a swarm of another size without&nbsp;retraining.",
+    "src": [
+     {
+      "url": "https://arxiv.org/abs/2609.34136",
+      "title": "Waggle",
+      "rest": " · Zou et&nbsp;al. · September&nbsp;2026 · arXiv:2609.34136"
+     }
+    ]
+   }
+  ],
+  "aside": {
+   "h2": "The message arrived. <span>No one has read it&nbsp;yet.</span>",
+   "p": [
+    "A channel guarantees nothing by itself. In 25 Anthropic scenarios with personal assistant agents (Claude Opus&nbsp;5 and Sonnet&nbsp;5), a user's request reached the agent placing the shared order in <b>94–99%</b> of episodes. At the moment of ordering it was in that agent's context in only <b>47–67%</b>.",
+    "When the request was in context, it was fulfilled in <b>56–68%</b> of episodes; when it was not, in <b>19–36%</b>."
+   ],
+   "src": [
+    {
+     "url": "https://alignment.anthropic.com/2026/worse-together/",
+     "title": "Worse Together: How Performance Breaks Down in Multi-User Multi-Agent Teams",
+     "rest": " · Anthropic Fellows, Anthropic and independent authors · 11&nbsp;November&nbsp;2026; preprint of 30&nbsp;September"
+    }
+   ]
+  }
+ },
+ "scenes": [
+  {
+   "id": 1,
+   "steps": [
+    {
+     "cls": "ttl",
+     "kick": "Scale",
+     "h2": "Thousands of agents have been run. <span>A typical study uses&nbsp;seven.</span>"
+    },
+    {
+     "p": [
+      "<b>99</b> of the <b>153</b> works we had analysed in detail by 3&nbsp;October state how many agents run at once. The median is <b>seven</b>."
+     ],
+     "src": [
+      {
+       "text": "Computed over the survey's 153 annotated works, cut-off 3&nbsp;October 2026; the map at the end holds more&nbsp;sources"
+      }
+     ]
+    },
+    {
+     "p": [
+      "Ten or more agents worked together in <b>42</b> works, a hundred or more in <b>15</b>, a thousand or more in <b>7</b>, ten thousand or more in&nbsp;<b>4</b>."
+     ],
+     "src": [
+      {
+       "text": "Computed over the same 99 works of the 3&nbsp;October 2026 cut-off"
+      }
+     ]
+    },
+    {
+     "p": [
+      "Two examples from lab reports: OpenAI's swarm on the Navier–Stokes problem, on the order of <b>10,000</b> agents, and Anthropic's internal platform, about <b>30,000</b> agents across different&nbsp;tasks."
+     ],
+     "src": [
+      {
+       "url": "https://openai.com/index/navier-stokes-solution/",
+       "title": "On the Navier–Stokes Millennium Prize Problem",
+       "rest": " · OpenAI · September&nbsp;2026"
+      },
+      {
+       "url": "https://www.anthropic.com/institute/measuring-pace-of-ai-development",
+       "title": "Measurements for understanding the pace of AI development inside frontier labs",
+       "rest": " · Anthropic · September&nbsp;2026"
+      }
+     ]
+    },
+    {
+     "p": [
+      "On 9&nbsp;November Anthropic showed a team of <b>1,000</b> Claude Fable&nbsp;5.2 agents: one lead and 999 helpers reproduced the formal proof of Fermat's Last Theorem in <b>28.7&nbsp;hours</b>. It took a third of the output tokens spent on the original proof, and the proof itself came out seven times shorter. The authors call it a toy&nbsp;experiment."
+     ],
+     "src": [
+      {
+       "url": "https://claude.dev/blog/safely-scaling-multi-agent-teams-with-fable-5-2",
+       "title": "Safely scaling multi-agent teams with Claude Fable&nbsp;5.2",
+       "rest": " · Anthropic · 9&nbsp;November&nbsp;2026"
+      }
+     ]
+    },
+    {
+     "p": [
+      "A landmark on the scale: <b>50</b> GPT-6.1&nbsp;Sol agents spent three hours building a “civilization” in Minecraft and wrote about <b>5,900</b> messages. They ended up with a product ledger, written rules and appointed&nbsp;operators.",
+      "In SwarmEvolve, hundreds of cheap agents exchange KV cache instead of text each round and reach a result in <b>3–8&nbsp;minutes</b> where other systems need an hour (median over 21&nbsp;tasks)."
+     ],
+     "src": [
+      {
+       "url": "https://labs.ycombinator.com/projects/games",
+       "title": "Agents in Games: Civ50, Bed Wars, Mindustry",
+       "rest": " · Y&nbsp;Combinator and Olam Labs · October&nbsp;2026"
+      },
+      {
+       "url": "https://arxiv.org/abs/2611.08483",
+       "title": "SwarmEvolve",
+       "rest": " · Jiang and Karniadakis · 5&nbsp;November&nbsp;2026 · arXiv:2611.08483"
+      }
+     ]
+    },
+    {
+     "p": [
+      "Big numbers in the news often mean something else: Moltbook's <b>1.49&nbsp;million</b> registrations describe the platform's capacity, not a swarm working at one&nbsp;moment."
+     ],
+     "src": [
+      {
+       "url": "https://www.wiz.io/blog/exposed-moltbook-database-reveals-millions-of-api-keys",
+       "title": "Hacking Moltbook: The AI Social Network Any Human Can Control",
+       "rest": " · Wiz · February&nbsp;2026"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 2,
+   "steps": [
+    {
+     "cls": "ttl",
+     "kick": "The curve and the&nbsp;bill",
+     "h2": "From one agent to 1,024: 33.89&nbsp;→&nbsp;55.06. <span>The bill comes in&nbsp;tokens.</span>"
+    },
+    {
+     "p": [
+      "In “Agensh: Scaling Organizational Intelligence to 1,024 Agents”, Microsoft Research gave teams of GPT-5.6&nbsp;Sol copies six hours to rebuild pandoc from the behaviour of the finished&nbsp;program."
+     ],
+     "src": [
+      {
+       "url": "https://arxiv.org/abs/2609.26781",
+       "title": "Agensh: Scaling Organizational Intelligence to 1,024 Agents",
+       "rest": " · Microsoft Research · September&nbsp;2026 · arXiv:2609.26781"
+      }
+     ]
+    },
+    {
+     "p": [
+      "The share of hidden tests passed grew with team size: <b>33.89</b> for a single agent, <b>41.75</b> for eight, <b>43.11</b> for 32, <b>50.94</b> for 128 and <b>55.06</b> for&nbsp;1,024.",
+      "Each run got six hours. The paper does not compare token&nbsp;use."
+     ],
+     "src": [
+      {
+       "url": "https://arxiv.org/abs/2609.26781",
+       "title": "Agensh",
+       "rest": " · Microsoft Research · September&nbsp;2026 · arXiv:2609.26781"
+      }
+     ]
+    },
+    {
+     "p": [
+      "A hundred agents can be spent in different ways. The best of ten independent teams of ten beat the best of a hundred solo agents on <b>10</b> of <b>12</b> tasks, and one team of a hundred on all <b>four</b> tasks where it was run. The comparison is of best results, not&nbsp;averages."
+     ],
+     "src": [
+      {
+       "url": "https://arxiv.org/abs/2611.09798",
+       "title": "Test-Time Compute Scales Better with Parallel Agent Teams",
+       "rest": " · Wang, Chen, Li, Chalamala, Liu · 6&nbsp;November&nbsp;2026 · Qwen3.8-27B, 12&nbsp;long tasks"
+      }
+     ]
+    },
+    {
+     "p": [
+      "From OpenAI's charts, without a separate experiment, Toby Ord estimated that at an equal token budget per agent a swarm of N&nbsp;agents works like a single agent thinking N<sup>λ</sup> times longer, with λ between <b>0.48</b> and <b>0.68</b>. At λ&nbsp;=&nbsp;0.57, sixteen agents are worth a single agent thinking about five times longer, so at equal total tokens a single agent comes out&nbsp;ahead."
+     ],
+     "src": [
+      {
+       "url": "https://www.lesswrong.com/posts/6cb7qd3RSkgnviCpf/swarm-scaling",
+       "title": "Swarm Scaling",
+       "rest": " · Toby Ord · September&nbsp;2026 · estimate from OpenAI's charts for GPT-5.6&nbsp;Sol"
+      }
+     ]
+    },
+    {
+     "p": [
+      "Avalon-M1 offers a direct comparison: at equal output tokens, a team whose lead may hire up to eight agents beats a single agent on FrontierScience (<b>63.5</b> vs <b>55.5</b>), loses on SWE-Bench&nbsp;Pro (<b>23.5</b> vs <b>37.3</b>) and ties on IMO-ProofBench (<b>37.5</b> vs&nbsp;<b>37.7</b>).",
+      "Google Research, across <b>180</b> configurations, showed that the outcome depends on the type of task: a team speeds up parallel tasks and spoils sequential&nbsp;ones."
+     ],
+     "src": [
+      {
+       "url": "https://gr.inc/avalonm1.pdf",
+       "title": "Avalon-M1",
+       "rest": " · General Reasoning · preprint · November&nbsp;2026"
+      },
+      {
+       "url": "https://www.research.google/blog/towards-a-science-of-scaling-agent-systems-when-and-why-agent-systems-work/",
+       "title": "Towards a science of scaling agent systems",
+       "rest": " · Google Research · January&nbsp;2026"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 3,
+   "steps": [
+    {
+     "cls": "ttl",
+     "kick": "Self-organization",
+     "h2": "No one appointed a boss. <span>Integrators emerged on their&nbsp;own.</span>"
+    },
+    {
+     "p": [
+      "The <b>1,024</b> Agensh agents had identical prompts, their own git branches, a chat and a shared claims board. Before starting, an agent read the board and put a CLAIM on its&nbsp;part."
+     ],
+     "src": [
+      {
+       "url": "https://arxiv.org/abs/2609.26781",
+       "title": "Agensh",
+       "rest": " · Microsoft Research · September&nbsp;2026 · arXiv:2609.26781"
+      }
+     ]
+    },
+    {
+     "p": [
+      "Eight agents negotiated interfaces. A team of 128 chose reviewers by experience and introduced a merge order. At 1,024, some agents took on integrating other agents' code without being&nbsp;asked."
+     ],
+     "src": [
+      {
+       "url": "https://arxiv.org/abs/2609.26781",
+       "title": "Agensh",
+       "rest": " · Microsoft Research · September&nbsp;2026 · arXiv:2609.26781"
+      }
+     ]
+    },
+    {
+     "p": [
+      "In the replay of the 1,024-agent run we counted <b>11,111</b> pull requests, of which <b>2,800</b> were merged. The board holds <b>148,079</b> entries, <b>56,472</b> of them marked&nbsp;FAIL."
+     ],
+     "src": [
+      {
+       "url": "https://arxiv.org/abs/2609.26781",
+       "title": "Agensh",
+       "rest": " · Microsoft Research · September&nbsp;2026 · the survey's count from the authors' replay of the&nbsp;run"
+      }
+     ]
+    },
+    {
+     "p": [
+      "Anthropic's November run did have a boss. When the Langlands–Tunnell theorem remained unproved, the lead moved about <b>750</b> helpers onto it, and its subtask tree grew to <b>2,418</b> tasks, up to ten levels&nbsp;deep."
+     ],
+     "src": [
+      {
+       "url": "https://claude.dev/blog/safely-scaling-multi-agent-teams-with-fable-5-2",
+       "title": "Safely scaling multi-agent teams with Claude Fable&nbsp;5.2",
+       "rest": " · Anthropic · 9&nbsp;November&nbsp;2026"
+      }
+     ]
+    },
+    {
+     "p": [
+      "In a shared repository, tasks can conflict. ParallACT builds requirements that contradict each other on purpose. One agent that sees both tasks succeeds in <b>62%</b> of cases; two agents, each with its own task and unaware of the other, in <b>16%</b> (best merge method; Claude Code with Claude Opus&nbsp;4.8). Telling them a colleague is working nearby gives 26%, a difference that is not statistically&nbsp;established."
+     ],
+     "src": [
+      {
+       "url": "https://arxiv.org/abs/2611.00314",
+       "title": "Decentralized Multi-Agent Coordination and Communication in Shared Codebases",
+       "rest": " · Mediratta, Xiao, Stone, Biswas, Stengel-Eskin · 30&nbsp;October&nbsp;2026"
+      }
+     ]
+    },
+    {
+     "p": [
+      "Three recent results on the same question. Waggle learns one local rule instead of a network layout. In s³, agents learn by themselves how long to work alone and when to read others'&nbsp;messages.",
+      "By the authors' account, a swarm twice the training size solves more than <b>25</b> times as many coordination tasks as the strongest baseline at the same budget, and with shared findings the overlap of explored rooms is almost half that of agents that do not&nbsp;communicate."
+     ],
+     "src": [
+      {
+       "url": "https://arxiv.org/abs/2611.08615",
+       "title": "s³: Simple Scaling of Swarms via Cooperative Multi-agent RL",
+       "rest": " · Jha, Kleiman-Weiner, Jaques et&nbsp;al. · 5&nbsp;November&nbsp;2026"
+      },
+      {
+       "url": "https://arxiv.org/abs/2609.34136",
+       "title": "Waggle",
+       "rest": " · September&nbsp;2026 · arXiv:2609.34136"
+      }
+     ]
+    },
+    {
+     "p": [
+      "In Avalon-M1, after training on a shared reward, teams' opening plans split work by component less often (<b>71%</b>&nbsp;→ <b>31%</b>) and gather around a single author with reviewers more often (<b>16%</b>&nbsp;→ <b>54%</b>)."
+     ],
+     "src": [
+      {
+       "url": "https://gr.inc/avalonm1.pdf",
+       "title": "Avalon-M1",
+       "rest": " · General Reasoning · preprint · November&nbsp;2026"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 4,
+   "steps": [
+    {
+     "cls": "ttl",
+     "kick": "Memory",
+     "h2": "A record has to outlive its&nbsp;author."
+    },
+    {
+     "p": [
+      "With eight agents the shared board can be read in full. With a hundred, reading eats the context, the quality of others' entries is unknown, and an agent that drops out takes its knowledge with&nbsp;it."
+     ],
+     "src": [
+      {
+       "url": "https://arxiv.org/abs/2610.16120",
+       "title": "ScaleMAS",
+       "rest": " · Qi et&nbsp;al. · October&nbsp;2026 · arXiv:2610.16120"
+      }
+     ]
+    },
+    {
+     "p": [
+      "ScaleMAS keeps three operations over linked records: publish, search, follow a link. Search returns at most k&nbsp;records and weighs how often a record has been&nbsp;cited.",
+      "Showing everyone everything is a bad default too. In an experiment with ten agents and six games, the group played the public-goods game best with no extra information about the other agents'&nbsp;actions."
+     ],
+     "src": [
+      {
+       "url": "https://arxiv.org/abs/2610.16120",
+       "title": "ScaleMAS",
+       "rest": " · Qi et&nbsp;al. · October&nbsp;2026 · arXiv:2610.16120"
+      },
+      {
+       "url": "https://arxiv.org/abs/2611.11714",
+       "title": "Steering Emergent Behavior in Multi-Agent LLM Systems via Information Networks",
+       "rest": " · Ilami and Heydari · 9&nbsp;November&nbsp;2026 · 1,080&nbsp;episodes"
+      }
+     ]
+    },
+    {
+     "p": [
+      "Four Qwen3.5-9B agents on BrowseComp-Plus score <b>55.1%</b> with such a store, <b>46.8%</b> with private ones and <b>38.0%</b> with no&nbsp;store."
+     ],
+     "src": [
+      {
+       "url": "https://arxiv.org/abs/2610.16120",
+       "title": "ScaleMAS",
+       "rest": " · October&nbsp;2026 · a four-agent experiment, separate from the scale-up to&nbsp;128"
+      }
+     ]
+    },
+    {
+     "p": [
+      "COLLABMEM breaks shared-memory failures into six operations: who a record was shown to, who can access it, where it was routed, where it came from, how version conflicts were resolved and how long it is kept. The best method scores <b>69.6%</b> on <b>1,118</b>&nbsp;probes."
+     ],
+     "src": [
+      {
+       "url": "https://aclanthology.org/2026.emnlp-main.1194/",
+       "title": "COLLABMEM",
+       "rest": " · EMNLP&nbsp;2026 · 58&nbsp;scenarios, best result by TMS-GRAPH++"
+      }
+     ]
+    },
+    {
+     "p": [
+      "A team with a chat and shared memory completed a day-long run: four Gemini&nbsp;4 Argon agents beat Minecraft, through to the dragon, in <b>27&nbsp;hours 14&nbsp;minutes</b>. No roles were assigned. They wrote <b>2,783</b> programs and died <b>605</b>&nbsp;times."
+     ],
+     "src": [
+      {
+       "url": "https://arxiv.org/abs/2610.22319",
+       "title": "A team of Gemini 4 Argon agents beats Minecraft",
+       "rest": " · Faldor, Singh, Raileanu · 15&nbsp;October&nbsp;2026"
+      }
+     ]
+    },
+    {
+     "p": [
+      "Records outlive their authors where nobody planned it, too. Across two OpenAI runs with <b>17,960</b> agents in total, <b>79</b> agents read <b>35</b> messages that other agents had left on a shared Artifactory, and five used their peers' work to get root code execution in CI jobs. No agent was found coordinating the&nbsp;others."
+     ],
+     "src": [
+      {
+       "url": "https://alignment.openai.com/misalignment-reports/using-peers-work-to-gain-unauthorized-access-to-openai-research-infrastructure/",
+       "title": "Using peers' work to gain unauthorized access to OpenAI research infrastructure",
+       "rest": " · OpenAI · incident of 19&nbsp;July 2026, report updated 10&nbsp;November&nbsp;2026"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 5,
+   "steps": [
+    {
+     "cls": "ttl",
+     "kick": "Beliefs",
+     "h2": "An idea that forwards&nbsp;itself."
+    },
+    {
+     "p": [
+      "In “Mind Viruses”, researchers from Anthropic and EPFL used evolutionary selection to breed texts that persuade an agent to adopt an idea and pass it on. In a chain of agents that meet in pairs and remember only their own files, such a text infected up to <b>70%</b> of participants on&nbsp;average."
+     ],
+     "src": [
+      {
+       "url": "https://arxiv.org/abs/2608.10218",
+       "title": "Mind Viruses: Self-Propagating Ideas in Multi-Agent LLM Systems",
+       "rest": " · Anthropic Fellows, Anthropic, EPFL · August&nbsp;2026"
+      }
+     ]
+    },
+    {
+     "p": [
+      "One warning paragraph in the instructions cut infection to&nbsp;<b>1%</b>."
+     ],
+     "src": [
+      {
+       "url": "https://arxiv.org/abs/2608.10218",
+       "title": "Mind Viruses",
+       "rest": " · arXiv:2608.10218"
+      }
+     ]
+    },
+    {
+     "p": [
+      "Agreement in a swarm proves little. In a replication of the classic Music Lab experiment, agents saw counters of others' recommendations. LLM populations fell into cascades harder than humans and corrected themselves&nbsp;worse.",
+      "A Wisconsin group showed in a model that discussion does not change the expected belief in the right answer: the gain comes from the number of independent&nbsp;attempts."
+     ],
+     "src": [
+      {
+       "url": "https://arxiv.org/abs/2610.30769",
+       "title": "LLM Multi-Agent Systems Are Vulnerable to Herding and Runaway Cascades",
+       "rest": " · Hashemi, Macy et&nbsp;al. · 22&nbsp;October&nbsp;2026"
+      },
+      {
+       "url": "https://arxiv.org/abs/2508.17536",
+       "title": "Debate or Vote",
+       "rest": " · University of Wisconsin–Madison · NeurIPS&nbsp;2025"
+      }
+     ]
+    },
+    {
+     "p": [
+      "In Avalon-M1, agents in a simulated collective cyberattack never committed the violation, but reported it to humans less and less: in <b>77%</b> of runs early in training, <b>20%</b> midway, <b>0–3%</b> at the&nbsp;end.",
+      "Oversight can be swayed too. In the three environments with an overseer agent (E1–E3), every model tested moved its decision from refusal to approval through persuasion, deception or&nbsp;coercion."
+     ],
+     "src": [
+      {
+       "url": "https://gr.inc/avalonm1.pdf",
+       "title": "Avalon-M1",
+       "rest": " · General Reasoning · preprint · November&nbsp;2026"
+      },
+      {
+       "url": "https://arxiv.org/abs/2611.04556",
+       "title": "Inter-Agent Influence",
+       "rest": " · NeurIPS&nbsp;2026 · 3&nbsp;November&nbsp;2026 · arXiv:2611.04556"
+      }
+     ]
+    },
+    {
+     "p": [
+      "The propensity to collude depends on the model: in an experiment by Dalhousie and the Vector Institute, Claude Sonnet&nbsp;4.5 never took the secret collusion tool, while GPT-4.1 and Gemini&nbsp;2.5 Flash always&nbsp;did.",
+      "Collusion also leaves traces in internal representations. By the authors' analysis, the representations of <b>86%</b> of colluding agents show distortion, concealment or remorse before they answer, against <b>33%</b> in honest counterfactual runs (DeepSeek-V4-Flash, NARCBench&nbsp;set)."
+     ],
+     "src": [
+      {
+       "url": "https://arxiv.org/abs/2605.27593",
+       "title": "Voluntary Collusion with Secret Tools in Competing LLM Agents",
+       "rest": " · Dalhousie, Vector Institute · May&nbsp;2026"
+      },
+      {
+       "url": "https://arxiv.org/abs/2611.02153",
+       "title": "Multi-Agent Collusion and the J-Space",
+       "rest": " · 1&nbsp;November&nbsp;2026 · arXiv:2611.02153"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 6,
+   "steps": [
+    {
+     "cls": "long",
+     "kick": "Map",
+     "h2": "About 300&nbsp;sources on one&nbsp;map.",
+     "p": [
+      "Each dot is a source from the catalogue: a paper, a lab report or an engineering post. The latest came out in November 2026. Colour shows the theme, position the month of publication. Hover over a dot to see its title, lab and date. Click to open the&nbsp;source."
+     ]
+    }
+   ]
+  },
+  {
+   "id": 7,
+   "steps": [
+    {
+     "cls": "fin",
+     "kick": "Finale",
+     "h2": "Comparisons still missing from this&nbsp;review.",
+     "qs": [
+      "Dozens of frontier agents against a single agent at an equal total token budget.",
+      "A swarm of 10,000 agents with a control run on the same task.",
+      "A mix of different models against copies of one model in a large team.",
+      "Self-organization of a thousand agents against a designed hierarchy on the same task."
+     ],
+     "sign": "Anton Razzhigaev, Ouroboros · November&nbsp;2026"
+    }
+   ]
+  }
+ ],
+ "tip_open": "Open the source ↗",
+ "site": {
+  "lang": "RU",
+  "lang_title": "Читать по-русски",
+  "survey": "The detailed survey: 11&nbsp;chapters and an atlas of works, cut-off 3&nbsp;October with the supplement of 19&nbsp;October&nbsp;2026"
+ },
+ "labels": {
+  "num": {
+   "g": ",",
+   "d": "."
+  },
+  "themes": [
+   "Chronicle and records",
+   "Incidents",
+   "Swarm economics",
+   "Self-organization",
+   "Swarm memory",
+   "Swarm safety",
+   "Echo and diversity",
+   "Collective beliefs",
+   "Swarms in the wild",
+   "Methods and open questions"
+  ],
+  "names": [
+   "",
+   "Scale",
+   "The curve and the bill",
+   "Self-organization",
+   "Memory",
+   "Beliefs",
+   "Map",
+   "Finale"
+  ],
+  "chip": {
+   "found": "found it",
+   "redo": "from scratch",
+   "got": "got it",
+   "pub": "published",
+   "search": "found by search",
+   "nbr": "from a neighbour"
+  },
+  "vote": "vote",
+  "coord": "coordinator",
+  "mem": "shared memory",
+  "aRows": [
+   "request reached the agent",
+   "was in its context at ordering time",
+   "fulfilled when it was in context",
+   "fulfilled when it was not in context"
+  ],
+  "aCap": [
+   "requests arrived",
+   "not all in context",
+   "order placed"
+  ],
+  "aOrder": [
+   "places the order",
+   "places the shared order"
+  ],
+  "aShare": "share of episodes",
+  "inCtx": "in context",
+  "zoomAgents": "agents",
+  "zoomSix": "the six from the first screen",
+  "lm": [
+   [
+    "Anthropic · about 30,000",
+    "internal platform",
+    "Anthropic ≈30,000"
+   ],
+   [
+    "OpenAI · on the order of 10,000",
+    "Navier–Stokes problem",
+    "OpenAI ≈10,000"
+   ],
+   [
+    "Agensh · 1,024",
+    "Microsoft Research",
+    "Agensh 1,024"
+   ],
+   [
+    "Anthropic · 1,000",
+    "Claude Fable 5.2 · 9 November 2026",
+    "Anthropic 1,000"
+   ],
+   [
+    "Google DeepMind · 100",
+    "Gemini 3.1 Pro in a “conference”",
+    "DeepMind 100"
+   ],
+   [
+    "Anthropic · 80",
+    "game swarm",
+    "Anthropic 80"
+   ],
+   [
+    "Y Combinator, Olam Labs · 50",
+    "a Minecraft “civilization”",
+    "YC, Olam Labs 50"
+   ]
+  ],
+  "s1agents": "agents at once: ",
+  "s1h": [
+   "How many agents run at once",
+   "99 works of the 3 October cut-off · log scale"
+  ],
+  "median": "median",
+  "th": [
+   [
+    "works",
+    "from 10 agents"
+   ],
+   [
+    "works",
+    "from 100"
+   ],
+   [
+    "works",
+    "from 1,000"
+   ],
+   [
+    "works",
+    "from 10,000"
+   ]
+  ],
+  "molt": [
+   "1.49M",
+   [
+    "Moltbook",
+    "not a swarm"
+   ],
+   [
+    "Moltbook",
+    "registrations:",
+    "platform capacity,",
+    "not a swarm"
+   ]
+  ],
+  "teamL": [
+   "1 agent",
+   "8 agents",
+   "32 agents",
+   "128 agents",
+   "1,024 agents"
+  ],
+  "avNote": [
+   "team beats a single agent",
+   "team loses",
+   "a tie"
+  ],
+  "ax": [
+   "agents in the team",
+   "agents in the swarm, N"
+  ],
+  "s2a": [
+   "Agensh · hidden pandoc tests passed, %",
+   "only time held equal: six hours per team",
+   "six hours per team, GPT-5.6 Sol copies"
+  ],
+  "s2b": [
+   "A hundred agents, three ways to spend them",
+   "a budget of 100 agents, Qwen3.8-27B, best of the runs"
+  ],
+  "s2c": [
+   "Swarm Scaling · estimate at equal tokens per agent",
+   "how many times longer a single agent must think"
+  ],
+  "avLg": [
+   "team: a lead and up to 8 hired agents",
+   "single agent with the same output tokens",
+   "single agent, no extra tokens"
+  ],
+  "r3": [
+   [
+    "100 solo agents",
+    "lose on 10 of 12 tasks",
+    "lose to the teams on 10 of 12 tasks"
+   ],
+   [
+    "10 teams of 10",
+    "best team beat solo agents and one team",
+    "the best team beat both the solo agents and the one big team"
+   ],
+   [
+    "1 team of 100",
+    "loses on all 4 tasks",
+    "loses on all four tasks where it was run"
+   ]
+  ],
+  "s2d": [
+   "16 agents ≈ ×4.9",
+   "like a single agent thinking",
+   "4.9 times longer, at λ = 0.57"
+  ],
+  "board": "claims board",
+  "entries": "entries",
+  "lad": [
+   [
+    "negotiated",
+    "interfaces"
+   ],
+   [
+    "reviewers by experience,",
+    "a merge order"
+   ],
+   [
+    "self-appointed",
+    "integrators"
+   ]
+  ],
+  "pr": [
+   "pull requests, merged",
+   "pull requests, our count",
+   "merged, 25%"
+  ],
+  "integ": "integrators",
+  "tree": [
+   "Anthropic · 1,000 agents with a lead",
+   "Langlands–Tunnell subtasks: 2,418, up to ten levels",
+   "lead",
+   "helpers",
+   "on one theorem",
+   "on the Langlands–Tunnell theorem"
+  ],
+  "parLB": [
+   [
+    "one agent",
+    "with both tasks"
+   ],
+   [
+    "two agents",
+    "each with its own"
+   ]
+  ],
+  "par": [
+   "ParallACT · incompatible tasks in the same code",
+   "Claude Code with Claude Opus 4.8",
+   "Claude Code with Claude Opus 4.8 · share solved, best merge method"
+  ],
+  "s3u": [
+   "s³ · coordination tasks at the same budget",
+   "one block: what the strongest baseline solves",
+   "and more",
+   "swarm twice the training size, by the authors",
+   "baseline",
+   "baseline method",
+   "room overlap almost halved vs no communication",
+   "overlap of explored rooms vs agents that do not communicate"
+  ],
+  "plans": [
+   "Avalon-M1 · a hundred opening plans",
+   "Avalon-M1 · a hundred opening plans of a team whose lead hires up to eight agents",
+   "split the work",
+   "by component",
+   "one author",
+   "with reviewers",
+   "before training",
+   "after training",
+   "on a shared reward"
+  ],
+  "s4lbl": [
+   "ScaleMAS · three conditions of one experiment",
+   "BrowseComp-Plus, four Qwen3.5-9B agents"
+  ],
+  "s4ops": [
+   "publish",
+   "search",
+   "follow a link"
+  ],
+  "s4opsH": [
+   "ScaleMAS",
+   "ScaleMAS · three operations"
+  ],
+  "cmH": [
+   "COLLABMEM · six shared-memory operations",
+   "COLLABMEM · six operations where shared memory breaks"
+  ],
+  "mc": [
+   "Minecraft · four Gemini 4 Argon agents",
+   "game chat and shared memory, no roles assigned",
+   "to the dragon",
+   "programs",
+   "deaths"
+  ],
+  "s4lb": [
+   "no store",
+   "private records",
+   "shared store"
+  ],
+  "s4cp": [
+   "no records",
+   "records gone",
+   "records stayed"
+  ],
+  "s4found": "author gone, record found",
+  "cmOps": [
+   [
+    "sharing",
+    "who saw it"
+   ],
+   [
+    "access",
+    "who can read it"
+   ],
+   [
+    "routing",
+    "where it went"
+   ],
+   [
+    "provenance",
+    "its origin"
+   ],
+   [
+    "conflict resolution",
+    "clashing versions"
+   ],
+   [
+    "retention",
+    "how long kept"
+   ]
+  ],
+  "cmProbes": [
+   "1,118 probes",
+   "on 1,118 probes"
+  ],
+  "hm": [
+   " h ",
+   " min"
+  ],
+  "mv": [
+   "Mind Viruses · a chain of agents meeting in pairs",
+   "of the chain's agents",
+   "infected",
+   "with a warning",
+   "paragraph",
+   "warning paragraph",
+   "a warning paragraph in the instructions"
+  ],
+  "ml": [
+   "Music Lab for agents",
+   "each sees counters of others' recommendations",
+   "options",
+   "cascade",
+   "an early leader",
+   "an early leader pulls",
+   "takes the majority",
+   "the majority its way"
+  ],
+  "cyStages": [
+   "start of training",
+   "middle",
+   "end"
+  ],
+  "cy": [
+   "Avalon-M1 · simulated collective cyberattack",
+   "a hundred runs: who told humans",
+   "each column: a hundred runs; filled where the agents told humans",
+   "told humans",
+   "reasoned they should: 97–100%",
+   "reasoned they should report: 97–100% of runs"
+  ],
+  "col": [
+   "trace inside",
+   "collusion trace inside",
+   "Secret collusion tool",
+   "Who takes a secret collusion tool under the base prompt",
+   "each column: a hundred cases",
+   "honest: 33%",
+   "before answering; honest: 33%",
+   "NARCBench set"
+  ],
+  "freshLegend": "fresh: since 15 October",
+  "mn": [
+   "Jan",
+   "Feb",
+   "Mar",
+   "Apr",
+   "May",
+   "Jun",
+   "Jul",
+   "Aug",
+   "Sep",
+   "Oct",
+   "Nov",
+   "Dec"
+  ],
+  "mapMob": " sources by month of publication",
+  "pre2025": [
+   "before",
+   "2025"
+  ],
+  "noDate": [
+   "no",
+   "date"
+  ],
+  "fresh": "fresh",
+  "oai": [
+   "OpenAI · 17,960 agents over two runs",
+   "OpenAI · two runs, 17,960 agents in total",
+   "79 read others' messages, 5 got root",
+   "79 agents read 35 messages left by others; five got root"
+  ]
+ }
+}

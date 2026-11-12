@@ -1,8 +1,8 @@
 # Каталог: исследования динамики роёв LLM-агентов
 
-Все работы, на которые ссылается обзор «Динамика роёв LLM-агентов», по темам. Срез корпуса: 3 октября 2026 года; работы датированного дополнения от 19 октября 2026 года помечены «добавлено 19 октября 2026». У каждой записи: ссылка, организации, дата первой публичной версии, тип и одна строка о результате. Полные карточки с методом, результатами и оговорками — на сайте (`site/ru/`, глава в скобках). Статусы — на дату среза; известные изменения после него помечены «обновление».
+Все работы, на которые ссылается обзор «Динамика роёв LLM-агентов», по темам. Срез корпуса: 3 октября 2026 года; работы датированного дополнения от 19 октября 2026 года помечены «добавлено 19 октября 2026». У каждой записи: ссылка, организации, дата первой публичной версии, тип и одна строка о результате. Полные карточки с методом, результатами и оговорками — на сайте (`site/ru/survey-2026-10-19.html`, глава в скобках). Статусы — на дату среза; известные изменения после него помечены «обновление». Записи, добавленные 12 ноября 2026 года для карты редакции «Поле», собраны в отдельном разделе после глав.
 
-**Счёт:** 153 работ в аналитическом корпусе (3 октября) · 31 подробных и 118 кратких карточек (3 октября) · 100 строк «Ещё по теме» · 280 уникальных работ и ресурсов после объединения версий (3 октября) · 288 записей с дополнением 19 октября, которое добавило 8 кратких карточек
+**Счёт:** 153 работ в аналитическом корпусе (3 октября) · 31 подробных и 118 кратких карточек (3 октября) · 100 строк «Ещё по теме» · 280 уникальных работ и ресурсов после объединения версий (3 октября) · 288 записей с дополнением 19 октября, которое добавило 8 кратких карточек · 314 записей с добавлениями 12 ноября 2026 · 306 источников на карте редакции «Поле»
 
 ## С чего начать
 
@@ -333,6 +333,37 @@
 - [AgentSociety: A Parallelized Framework for Simulating Large-Scale LLM Agents with Realistic Environments and Interactions](https://aclanthology.org/2025.acl-industry.94/) (гл. 10) — Чжан, Янь, Янь, Чжэн, Пяо, Цзинь, Ли (группа Юн Ли, Tsinghua); ACL 2025 (Industry Track) · рецензированная статья. Заявлено 30 000 агентов на 24 GPU A800 с реалистичной средой; платформа для симуляций, не наблюдение за живой сетью
 - [GASim: A Graph-Accelerated Hybrid Framework for Social Simulation](https://doi.org/10.18653/v1/2026.acl-long.569) (гл. 10) — Чжоу, Сунь, Яо и др.; ACL 2026 (Long Papers) · рецензированная статья. Фреймворк симуляции социальных сетей с заявленным ускорением 9,94×; не исследование Moltbook, а инструмент для таких исследований
 
+## Добавлено 12 ноября 2026: карта «Поля»
+
+26 записей, добавленных для редакции «Поле» (12 ноября 2026) и нанесённых на её карту; в главах обзора и в аналитическом корпусе из 153 работ их нет. На карте 306 источников: эти 26 и 288 записей выше, из которых 8 повторяют ссылку своей сводной карточки и нарисованы одной точкой. BibTeX: `updates/2026-11-12/references.bib`.
+
+- [Using peers' work to gain unauthorized access to OpenAI research infrastructure](https://alignment.openai.com/misalignment-reports/using-peers-work-to-gain-unauthorized-access-to-openai-research-infrastructure/) — OpenAI · 2026-11-10 · расследование инцидента · тема: Инциденты.
+- [Gemini 4 Carbon and /swarm in Google Antigravity](https://antigravity.google/blog/gemini-4-carbon-in-google-antigravity) — Google · 2026-11-10 · блог / отчёт лаборатории · тема: Хроника и рекорды.
+- [Steering Emergent Behavior in Multi-Agent LLM Systems via Information Networks](https://arxiv.org/abs/2611.11714) — Ilami, Heydari · 2026-11-09 · препринт · тема: Рои в дикой природе.
+- [Safely scaling multi-agent teams with Claude Fable 5.2](https://claude.dev/blog/safely-scaling-multi-agent-teams-with-fable-5-2) — Anthropic · 2026-11-09 · блог / отчёт лаборатории · тема: Хроника и рекорды.
+- [Test-Time Compute Scales Better with Parallel Agent Teams](https://arxiv.org/abs/2611.09798) — Wang, Chen, Li, Chalamala, Liu · 2026-11-06 · препринт · тема: Экономика роя.
+- [s³: Simple Scaling of Swarms via Cooperative Multi-agent RL](https://arxiv.org/abs/2611.08615) — Jha, Kleiman-Weiner, Jaques и др. · 2026-11-05 · препринт · тема: Самоорганизация.
+- [SwarmEvolve: Latent Agent Swarms for Evolutionary Discovery and Optimization](https://arxiv.org/abs/2611.08483) — Jiang, Karniadakis · 2026-11-05 · препринт · тема: Методы и открытые вопросы.
+- [Zero-Shot Coordination among LLM Agents](https://arxiv.org/abs/2611.06409) — Hayler и др. · 2026-11-04 · препринт · тема: Самоорганизация.
+- [Inter-Agent Influence: Evaluating Persuasion, Deception, and Coercion in Multi-Agent Systems](https://arxiv.org/abs/2611.04556) — Smith, Hammond и др.; NeurIPS 2026 · 2026-11-03 · препринт · тема: Безопасность роя.
+- [Multi-Agent Collusion and the J-Space](https://arxiv.org/abs/2611.02153) — Molinari, Bettineschi · 2026-11-01 · препринт · тема: Безопасность роя.
+- [Avalon-M1](https://gr.inc/avalonm1.pdf) — General Reasoning · 2026-11 · препринт · тема: Экономика роя.
+- [Decentralized Multi-Agent Coordination and Communication in Shared Codebases](https://arxiv.org/abs/2611.00314) — Mediratta, Xiao, Stone, Biswas, Stengel-Eskin · 2026-10-30 · препринт · тема: Самоорганизация.
+- [The Inbox as a Coordination Primitive for LLM Agent Societies](https://arxiv.org/abs/2610.36264) — Sreedhar, Yuan, Chari, Raskar · 2026-10-26 · препринт · тема: Память роя.
+- [LLM Multi-Agent Systems Are Vulnerable to Herding and Runaway Cascades](https://arxiv.org/abs/2610.30769) — Hashemi, Ji, Chen, Macy · 2026-10-22 · препринт · тема: Коллективные убеждения.
+- [Network topology shapes consensus and vulnerability in LLM populations](https://arxiv.org/abs/2610.31165) — Passaro, Flint, Pastor-Satorras, Baronchelli, Aiello · 2026-10-22 · препринт · тема: Коллективные убеждения.
+- [Does Multi-Agent Collaboration Pay When Agents Serve Users?](https://arxiv.org/abs/2610.27655) — Yang, Shi · 2026-10-20 · препринт · тема: Экономика роя.
+- [Behavioral Probes for Information Flow in LLM Swarms](https://arxiv.org/abs/2610.25966) — Chen, Zhang, Li, Wang; NeurIPS 2026 · 2026-10-19 · препринт · тема: Методы и открытые вопросы.
+- [World of SWECraft: Agent Collaboration at Scale via Simulated Software Worlds](https://arxiv.org/abs/2610.24061) — Shen, Chang и др. · 2026-10-16 · препринт · тема: Самоорганизация.
+- [Red-Teaming Multi-Agent Attacks for Loss-of-Control Risks](https://arxiv.org/abs/2610.24052) — Kitaoka, Pham, Giudice, Merizian · 2026-10-16 · препринт · тема: Безопасность роя.
+- [A team of Gemini 4 Argon agents beats Minecraft](https://arxiv.org/abs/2610.22319) — Faldor, Singh, Raileanu · 2026-10-15 · препринт · тема: Память роя.
+- [Believed but Not Said: Measuring Hidden Belief Collapse in Multi-Agent LLM Discussions](https://arxiv.org/abs/2610.22138) — Huang, Zou и др. · 2026-10-15 · препринт · тема: Коллективные убеждения.
+- [MASBench: Benchmarking LLM-based Multi-Agent Collaboration under Partial Observability](https://arxiv.org/abs/2610.04672) — Chu и др. · 2026-10 · препринт · тема: Методы и открытые вопросы.
+- [COLLABMEM: A Diagnostic Benchmark for Collaborative Memory Operations in Multi-Agent LLM Systems](https://aclanthology.org/2026.emnlp-main.1194/) — Wu, Wu, Zhang, Liu; EMNLP 2026 · 2026-10 · рецензированная статья · тема: Память роя.
+- [Agents in Games: Civ50, Bed Wars, Mindustry](https://labs.ycombinator.com/projects/games) — Y Combinator, Olam Labs · 2026-10 · другое (новости, документация) · тема: Инциденты.
+- [Waggle: Learning One Anonymous Local Law for Self-Organizing LLM Swarms](https://arxiv.org/abs/2609.34136) — Zou и др. · 2026-09-28 · препринт · тема: Самоорганизация.
+- [Towards a science of scaling agent systems: When and why agent systems work](https://www.research.google/blog/towards-a-science-of-scaling-agent-systems-when-and-why-agent-systems-work/) — Google Research · 2026-01-28 · блог / отчёт лаборатории · тема: Экономика роя.
+
 ## Код, данные и платформы
 
 - [https://github.com/openai/NavierStokesAndEuler](https://github.com/openai/NavierStokesAndEuler) — On the Navier–Stokes Millennium Prize Problem
@@ -360,4 +391,4 @@
 
 ---
 
-*Файл создан `scripts/build_catalog.py` из `data/works.json`, дополнения в `updates/2026-10-19/` и `content/ru/`. Не редактировать вручную.*
+*Файл создан `scripts/build_catalog.py` из `data/works.json`, дополнений в `updates/2026-10-19/` и `updates/2026-11-12/` и `content/ru/`. Не редактировать вручную.*

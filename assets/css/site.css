@@ -1405,3 +1405,5 @@ html.static .plate-in, html.static .plate-in > *, html.static .plate-num, html.s
   details.pass { display: none; }
   .scene { box-shadow: none; break-inside: avoid; }
 }
+.rootmore { margin: 0; font-size: 15px; line-height: 1.6; color: var(--ink-3); }
+.rootmore a { color: var(--ink-2); text-decoration: underline; text-underline-offset: 3px; }

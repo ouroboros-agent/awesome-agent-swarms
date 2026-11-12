@@ -1,8 +1,8 @@
 # Catalogue: research on the dynamics of LLM agent swarms
 
-Every work cited in the survey *On the Dynamics of LLM Agent Swarms*, grouped by theme. Corpus cut-off: 3 October 2026; the works of the dated supplement of 19 October 2026 are marked “added 19 October 2026”. Each entry: link, organizations, date of first public version, type, one line on what it shows. Full cards with method, results and caveats are on the site (`site/en/`, chapter in brackets). Statuses are as of the cut-off; known later changes are marked “update”.
+Every work cited in the survey *On the Dynamics of LLM Agent Swarms*, grouped by theme. Corpus cut-off: 3 October 2026; the works of the dated supplement of 19 October 2026 are marked “added 19 October 2026”. Each entry: link, organizations, date of first public version, type, one line on what it shows. Full cards with method, results and caveats are on the site (`site/en/survey-2026-10-19.html`, chapter in brackets). Statuses are as of the cut-off; known later changes are marked “update”. The records added for the map of the Field edition on 12 November 2026 have their own section after the chapters.
 
-**Counts:** 153 works in the analytic corpus (3 October) · 31 full and 118 short cards (3 October) · 100 related-work rows · 280 unique works and resources after merging versions (3 October) · 288 records with the 19 October supplement, which added 8 short cards
+**Counts:** 153 works in the analytic corpus (3 October) · 31 full and 118 short cards (3 October) · 100 related-work rows · 280 unique works and resources after merging versions (3 October) · 288 records with the 19 October supplement, which added 8 short cards · 314 records with the additions of 12 November 2026 · 306 sources on the map of the Field edition
 
 ## Start here
 
@@ -333,6 +333,37 @@ Ten works that anchor the survey's main comparisons (full cards on the site).
 - [AgentSociety: A Parallelized Framework for Simulating Large-Scale LLM Agents with Realistic Environments and Interactions](https://aclanthology.org/2025.acl-industry.94/) (Ch. 10) — Zhang, Yan, Yan, Zheng, Piao, Jin, Li (Yong Li's group, Tsinghua); ACL 2025 (Industry Trac · peer-reviewed. Claims 30,000 agents on 24 A800 GPUs with a realistic environment; a simulation platform, not observation of a live network
 - [GASim: A Graph-Accelerated Hybrid Framework for Social Simulation](https://doi.org/10.18653/v1/2026.acl-long.569) (Ch. 10) — Zhou, Sun, Yao et al.; ACL 2026 (Long Papers) · peer-reviewed. A social-network simulation framework with a claimed 9.94× speedup; not a study of Moltbook but a tool for such studies
 
+## Added 12 November 2026: the Field map
+
+26 records added for the Field edition (12 November 2026) and drawn on its map; they are not in the chapters or in the 153-work analytic corpus. The map shows 306 sources: these 26 and the 288 records above, 8 of which repeat the link of the bundle card they belong to and are drawn once. BibTeX: `updates/2026-11-12/references.bib`.
+
+- [Using peers' work to gain unauthorized access to OpenAI research infrastructure](https://alignment.openai.com/misalignment-reports/using-peers-work-to-gain-unauthorized-access-to-openai-research-infrastructure/) — OpenAI · 2026-11-10 · incident report · theme: Incidents.
+- [Gemini 4 Carbon and /swarm in Google Antigravity](https://antigravity.google/blog/gemini-4-carbon-in-google-antigravity) — Google · 2026-11-10 · lab blog / report · theme: Chronicle and records.
+- [Steering Emergent Behavior in Multi-Agent LLM Systems via Information Networks](https://arxiv.org/abs/2611.11714) — Ilami, Heydari · 2026-11-09 · preprint · theme: Swarms in the wild.
+- [Safely scaling multi-agent teams with Claude Fable 5.2](https://claude.dev/blog/safely-scaling-multi-agent-teams-with-fable-5-2) — Anthropic · 2026-11-09 · lab blog / report · theme: Chronicle and records.
+- [Test-Time Compute Scales Better with Parallel Agent Teams](https://arxiv.org/abs/2611.09798) — Wang, Chen, Li, Chalamala, Liu · 2026-11-06 · preprint · theme: Swarm economics.
+- [s³: Simple Scaling of Swarms via Cooperative Multi-agent RL](https://arxiv.org/abs/2611.08615) — Jha, Kleiman-Weiner, Jaques et al. · 2026-11-05 · preprint · theme: Self-organization.
+- [SwarmEvolve: Latent Agent Swarms for Evolutionary Discovery and Optimization](https://arxiv.org/abs/2611.08483) — Jiang, Karniadakis · 2026-11-05 · preprint · theme: Methods and open questions.
+- [Zero-Shot Coordination among LLM Agents](https://arxiv.org/abs/2611.06409) — Hayler et al. · 2026-11-04 · preprint · theme: Self-organization.
+- [Inter-Agent Influence: Evaluating Persuasion, Deception, and Coercion in Multi-Agent Systems](https://arxiv.org/abs/2611.04556) — Smith, Hammond et al.; NeurIPS 2026 · 2026-11-03 · preprint · theme: Swarm safety.
+- [Multi-Agent Collusion and the J-Space](https://arxiv.org/abs/2611.02153) — Molinari, Bettineschi · 2026-11-01 · preprint · theme: Swarm safety.
+- [Avalon-M1](https://gr.inc/avalonm1.pdf) — General Reasoning · 2026-11 · preprint · theme: Swarm economics.
+- [Decentralized Multi-Agent Coordination and Communication in Shared Codebases](https://arxiv.org/abs/2611.00314) — Mediratta, Xiao, Stone, Biswas, Stengel-Eskin · 2026-10-30 · preprint · theme: Self-organization.
+- [The Inbox as a Coordination Primitive for LLM Agent Societies](https://arxiv.org/abs/2610.36264) — Sreedhar, Yuan, Chari, Raskar · 2026-10-26 · preprint · theme: Swarm memory.
+- [LLM Multi-Agent Systems Are Vulnerable to Herding and Runaway Cascades](https://arxiv.org/abs/2610.30769) — Hashemi, Ji, Chen, Macy · 2026-10-22 · preprint · theme: Collective beliefs.
+- [Network topology shapes consensus and vulnerability in LLM populations](https://arxiv.org/abs/2610.31165) — Passaro, Flint, Pastor-Satorras, Baronchelli, Aiello · 2026-10-22 · preprint · theme: Collective beliefs.
+- [Does Multi-Agent Collaboration Pay When Agents Serve Users?](https://arxiv.org/abs/2610.27655) — Yang, Shi · 2026-10-20 · preprint · theme: Swarm economics.
+- [Behavioral Probes for Information Flow in LLM Swarms](https://arxiv.org/abs/2610.25966) — Chen, Zhang, Li, Wang; NeurIPS 2026 · 2026-10-19 · preprint · theme: Methods and open questions.
+- [World of SWECraft: Agent Collaboration at Scale via Simulated Software Worlds](https://arxiv.org/abs/2610.24061) — Shen, Chang et al. · 2026-10-16 · preprint · theme: Self-organization.
+- [Red-Teaming Multi-Agent Attacks for Loss-of-Control Risks](https://arxiv.org/abs/2610.24052) — Kitaoka, Pham, Giudice, Merizian · 2026-10-16 · preprint · theme: Swarm safety.
+- [A team of Gemini 4 Argon agents beats Minecraft](https://arxiv.org/abs/2610.22319) — Faldor, Singh, Raileanu · 2026-10-15 · preprint · theme: Swarm memory.
+- [Believed but Not Said: Measuring Hidden Belief Collapse in Multi-Agent LLM Discussions](https://arxiv.org/abs/2610.22138) — Huang, Zou et al. · 2026-10-15 · preprint · theme: Collective beliefs.
+- [MASBench: Benchmarking LLM-based Multi-Agent Collaboration under Partial Observability](https://arxiv.org/abs/2610.04672) — Chu et al. · 2026-10 · preprint · theme: Methods and open questions.
+- [COLLABMEM: A Diagnostic Benchmark for Collaborative Memory Operations in Multi-Agent LLM Systems](https://aclanthology.org/2026.emnlp-main.1194/) — Wu, Wu, Zhang, Liu; EMNLP 2026 · 2026-10 · peer-reviewed · theme: Swarm memory.
+- [Agents in Games: Civ50, Bed Wars, Mindustry](https://labs.ycombinator.com/projects/games) — Y Combinator, Olam Labs · 2026-10 · other (news, docs) · theme: Incidents.
+- [Waggle: Learning One Anonymous Local Law for Self-Organizing LLM Swarms](https://arxiv.org/abs/2609.34136) — Zou et al. · 2026-09-28 · preprint · theme: Self-organization.
+- [Towards a science of scaling agent systems: When and why agent systems work](https://www.research.google/blog/towards-a-science-of-scaling-agent-systems-when-and-why-agent-systems-work/) — Google Research · 2026-01-28 · lab blog / report · theme: Swarm economics.
+
 ## Code, data and platforms
 
 - [https://github.com/openai/NavierStokesAndEuler](https://github.com/openai/NavierStokesAndEuler) — On the Navier–Stokes Millennium Prize Problem
@@ -360,4 +391,4 @@ Ten works that anchor the survey's main comparisons (full cards on the site).
 
 ---
 
-*Generated by `scripts/build_catalog.py` from `data/works.json`, the supplement in `updates/2026-10-19/` and `content/en/`. Do not edit by hand.*
+*Generated by `scripts/build_catalog.py` from `data/works.json`, the supplements in `updates/2026-10-19/` and `updates/2026-11-12/` and `content/en/`. Do not edit by hand.*

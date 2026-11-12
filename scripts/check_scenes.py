@@ -15,6 +15,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(ROOT, "scripts"))
 import build_site   # noqa: F401  (binds the helpers the scenes need)
 import scenes, scenes_mech as M
+import longread
 
 FAIL = []
 
@@ -31,7 +32,7 @@ def card(lang, ch, cid):
 
 
 def html(lang):
-    return open(os.path.join(ROOT, "site", lang, "index.html"), encoding="utf-8").read()
+    return open(os.path.join(ROOT, "site", lang, longread.PAGE), encoding="utf-8").read()
 
 
 def scene_html(lang, sid):
@@ -207,7 +208,7 @@ if "--browser" in sys.argv:
     from playwright.sync_api import sync_playwright
     with sync_playwright() as p:
         b = p.chromium.launch(); pg = b.new_page(viewport={"width": 1240, "height": 800}, reduced_motion="reduce")
-        pg.goto("file://" + os.path.join(ROOT, "site", "en", "index.html")); pg.wait_for_timeout(500)
+        pg.goto("file://" + os.path.join(ROOT, "site", "en", longread.PAGE)); pg.wait_for_timeout(500)
         for K in (0.2, 0.6, 1.0, 1.2, 1.25, 1.6, 2.0):
             pg.evaluate("k => { const r = document.querySelector('#sc-consensus .cs-k'); r.value = k; r.dispatchEvent(new Event('input')); }", K); pg.wait_for_timeout(250)
             js = [int(x.rstrip('%').strip()) for x in pg.evaluate("[...document.querySelectorAll('#sc-consensus .cs-out-l b')].map(b => b.textContent)")]

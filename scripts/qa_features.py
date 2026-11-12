@@ -23,6 +23,8 @@ Writes OUTDIR/FEATURES.md and OUTDIR/features.json; screenshots in OUTDIR/shots/
 import json, os, pwd, re, sys, time
 os.environ.setdefault("PLAYWRIGHT_BROWSERS_PATH", os.path.join(pwd.getpwuid(os.getuid()).pw_dir, "Library/Caches/ms-playwright"))
 from playwright.sync_api import sync_playwright
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from longread import PAGE   # the detailed survey's page; site/<lang>/index.html is the Field edition (scripts/qa_field.py)
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SITE = os.path.join(ROOT, "site")
@@ -33,7 +35,7 @@ VIEWS = {"desktop": dict(viewport={"width": 1240, "height": 722}, device_scale_f
 SCENES = ["#ch01-fig-1", "#sc-lambda", "#sc-hidden", "#sc-virus", "#sc-loophole", "#sc-echo", "#sc-consensus", "#sc-moltbook"]
 R = {"static": {}, "browser": [], "shots": []}
 
-def url(lang, frag=""): return "file://" + os.path.join(SITE, lang, "index.html") + frag
+def url(lang, frag=""): return "file://" + os.path.join(SITE, lang, PAGE) + frag
 
 def rec(engine, view, name, ok, detail=None):
     R["browser"].append({"engine": engine, "view": view, "check": name, "ok": bool(ok), "detail": detail})
@@ -169,7 +171,7 @@ def run_engine(p, engine):
             pg.mouse.click(bb["x"] + bb["width"] / 2, bb["y"] + bb["height"] / 2); pg.wait_for_load_state("load"); pg.wait_for_timeout(900)
             landed = pg.url.split("/site/")[-1]
             ok_top = pg.evaluate("(id) => { const e = document.getElementById(id); if (!e) return null; const r = e.getBoundingClientRect(); return Math.round(r.top); }", target[1:])
-            rec(engine, view, f"language switch keeps the place: {target}", landed == "ru/index.html" + target and ok_top is not None and -10 < ok_top < 260, {"landed": landed, "target_top": ok_top})
+            rec(engine, view, f"language switch keeps the place: {target}", landed == "ru/" + PAGE + target and ok_top is not None and -10 < ok_top < 260, {"landed": landed, "target_top": ok_top})
         # --- in-page link and Back
         pg.goto(url("en")); pg.wait_for_timeout(300)
         jump(pg, "#w-ord-swarm-scaling", "start"); pg.wait_for_timeout(500)
@@ -269,7 +271,7 @@ def static():
     s = {}
     figs = json.load(open(os.path.join(ROOT, "data", "figures.json"), encoding="utf-8"))["figures"]
     for lang in ("ru", "en"):
-        h = open(os.path.join(SITE, lang, "index.html"), encoding="utf-8").read()
+        h = open(os.path.join(SITE, lang, PAGE), encoding="utf-8").read()
         miss = [f["file"] for f in figs if (f["file"].replace("_dark.png", f"_{lang}_dark.png") if f["file"].startswith("dash_") else f["file"]) not in h]
         s[f"figures_on_page_{lang}"] = {"expected": len(figs), "missing": miss}
     rd = {}

@@ -19,6 +19,8 @@ Writes qa/report.json and qa/REPORT.md; screenshots in qa/screens/ with --shots.
 """
 import json, os, pwd, sys, time
 from playwright.sync_api import sync_playwright
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from longread import PAGE   # the detailed survey's page; site/<lang>/index.html is the Field edition (scripts/qa_field.py)
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SITE = os.path.join(ROOT, "site")
@@ -61,7 +63,7 @@ PROBE = """async () => {
 def nojs_checks(b, lang):
     res = {}
     ctx = b.new_context(java_script_enabled=False, **VIEWS["phone"]); pg = ctx.new_page()
-    pg.goto(url(f"{lang}/index.html")); pg.wait_for_timeout(200)
+    pg.goto(url(f"{lang}/{PAGE}")); pg.wait_for_timeout(200)
     bg0 = pg.evaluate("getComputedStyle(document.body).backgroundColor")
     pg.locator("label.themebtn").click(); pg.wait_for_timeout(100)
     bg1 = pg.evaluate("getComputedStyle(document.body).backgroundColor")
@@ -69,7 +71,7 @@ def nojs_checks(b, lang):
     pg.locator("label.themebtn").click()
     z = pg.locator("figure.fig a.zoom").first; z.scroll_into_view_if_needed(); z.click(); pg.wait_for_timeout(150)
     res["lightbox_opens"] = pg.evaluate("(() => { const l = document.querySelector('.lightbox:target'); return !!l && getComputedStyle(l).display === 'flex'; })()")
-    pg.goto(url(f"{lang}/index.html") + "#atlas"); pg.wait_for_timeout(150)
+    pg.goto(url(f"{lang}/{PAGE}") + "#atlas"); pg.wait_for_timeout(150)
     n0 = pg.evaluate("[...document.querySelectorAll('.worklist .w')].filter(e => e.offsetParent !== null).length")
     pg.locator("label[for='ft-memory']").click(); pg.wait_for_timeout(100)
     n1 = pg.evaluate("[...document.querySelectorAll('.worklist .w')].filter(e => e.offsetParent !== null).length")
@@ -85,13 +87,13 @@ def nojs_checks(b, lang):
     pg.wait_for_timeout(150)
     pg.locator("details.mtoc nav a[href='#ch05']").first.click(); pg.wait_for_timeout(250)
     res["menu_moves_in_page"] = pg.url.endswith("#ch05") and pg.evaluate("Math.abs(document.getElementById('ch05').getBoundingClientRect().top) < 140")
-    pg.goto(url(f"{lang}/index.html") + "#m-coord"); pg.wait_for_timeout(200)
+    pg.goto(url(f"{lang}/{PAGE}") + "#m-coord"); pg.wait_for_timeout(200)
     res["prologue_static"] = pg.evaluate("""() => getComputedStyle(document.querySelector('#how .stage')).display === 'none'
       && [...document.querySelectorAll('#how .static')].filter(f => [...f.querySelectorAll('svg')].some(s => s.getClientRects().length)).length === 4
       && document.querySelectorAll('#how .step').length === 13
       && Math.abs(document.getElementById('m-coord').getBoundingClientRect().top) < 120""")
     pg.goto(url(f"{lang}/ch05.html") + "#w-agensh-1024"); pg.wait_for_timeout(200)
-    res["stub_lists_and_targets"] = pg.evaluate("(() => { const t = document.querySelector('li:target'); return !!t && t.querySelector('a').getAttribute('href') === 'index.html#w-agensh-1024'; })()")
+    res["stub_lists_and_targets"] = pg.evaluate("(() => { const t = document.querySelector('li:target'); return !!t && t.querySelector('a').getAttribute('href') === '" + PAGE + "#w-agensh-1024'; })()")
     ctx.close()
     return res
 
@@ -111,7 +113,7 @@ def main():
                 pg.on("pageerror", lambda e: errors.append(str(e)))
                 for lang in ("ru", "en"):
                     errors.clear(); t0 = time.time()
-                    pg.goto(url(f"{lang}/index.html"), wait_until="load")
+                    pg.goto(url(f"{lang}/{PAGE}"), wait_until="load")
                     r = pg.evaluate(PROBE)
                     r.update(engine=name, version=ver, view=vname, lang=lang, page="index", console_errors=list(errors), secs=round(time.time() - t0, 2))
                     report["runs"].append(r)
@@ -124,7 +126,7 @@ def main():
             for lang in ("ru", "en"):
                 for s in STUBS:
                     pg.goto(url(f"{lang}/{s}.html")); pg.wait_for_timeout(250)
-                    report["stubs"].append({"engine": name, "lang": lang, "page": s, "landed": pg.url.split("/site/")[-1], "ok": pg.url.split("/site/")[-1].startswith(f"{lang}/index.html#")})
+                    report["stubs"].append({"engine": name, "lang": lang, "page": s, "landed": pg.url.split("/site/")[-1], "ok": pg.url.split("/site/")[-1].startswith(f"{lang}/{PAGE}#")})
             for root_page in ("index.html", "404.html"):
                 errs = []
                 pg.on("pageerror", lambda e: errs.append(str(e)))

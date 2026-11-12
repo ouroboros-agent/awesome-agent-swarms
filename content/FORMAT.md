@@ -1,6 +1,8 @@
 # Content format
 
-The site is one continuous page per language, `site/ru/index.html` and `site/en/index.html`. Its text comes from one
+The detailed survey is one continuous page per language, `site/ru/survey-2026-10-19.html` and `site/en/survey-2026-10-19.html`
+(until 19 October 2026 it was `index.html`; since 12 November 2026 `index.html` is the Field edition, built from `field/` by
+`scripts/build_field.py`, see the README). Its text comes from one
 Markdown file per former page in `content/ru/` and the same file name in `content/en/`. The two languages are parallel:
 the same blocks, cards, figures, tables and links in the same order. `scripts/build_site.py` renders them in the order set by
 `scripts/longread.py`; `scripts/check_content.py` checks syntax, RU/EN parity and preservation; `scripts/check_coverage.py`
@@ -109,13 +111,13 @@ Ids on the single page are unique and stable:
 
 | Former address | On the single page |
 |---|---|
-| `chNN.html`, `glossary.html`, `about.html` | `index.html#chNN`, `#glossary`, `#about` |
+| `chNN.html`, `glossary.html`, `about.html` | `survey-2026-10-19.html#chNN`, `#glossary`, `#about` |
 | `atlas.html`, `sources.html` | `#atlas`, `#sources` |
 | `chNN.html#s-K` (section headings, card titles) | `#chNN-s-K` (the same counter) |
 | `chNN.html#fig-K`, `#zoom-K` | `#chNN-fig-K` |
 | `#w-<work>`, `#a-<work>`, `#src-<page>`, `#s-<work>` | unchanged |
 | `full.html#p-chNN`, `#chNN-s-K`, `#fig-N` | `#chNN`, unchanged, the figure's new id |
-| `index.html#how`, `#survey`, `#scale`, `#findings`, `#agensh`, `#chapters`, `#howto`, `#s-1` | kept on the single page |
+| `index.html#how`, `#survey`, `#scale`, `#findings`, `#agensh`, `#chapters`, `#howto`, `#s-1` | kept on the single page; the Field page sends any such fragment on to `survey-2026-10-19.html` |
 
 The former pages remain as small files: with JavaScript they forward the fragment to its new place at once; without it
 they list their sections, cards and figures as links, and the addressed one is highlighted (`:target`).

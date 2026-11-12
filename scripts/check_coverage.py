@@ -6,7 +6,7 @@
   python scripts/check_coverage.py --prev <dir>         # also against the previous single-page edition (a copy of its site/)
   python scripts/check_coverage.py --json out.json
 
-Checks per language on site/<lang>/index.html:
+Checks per language on site/<lang>/survey-2026-10-19.html (longread.PAGE; index.html is the Field edition since 12 November 2026):
   cards       every :::card / :::short id from content/<lang>/*.md is on the page exactly once (id="w-<id>")
   figures     every file in data/figures.json is on the page (image, or the static PNG behind a native chart)
   links       every external URL written in content/<lang>/*.md is a link on the page
@@ -19,7 +19,7 @@ With --old, against the former multipage build (index, ch01–ch11, atlas, gloss
   hrefs       every external link of the former pages is on the single page
   text        every paragraph, list item, table cell and caption of the former pages' main content is on the page
               (whitespace-normalised); the few intentional removals are listed with their reason
-With --prev, against the previous edition of the single page (<dir>/<lang>/index.html):
+With --prev, against the previous edition of the single page (<dir>/<lang>/survey-2026-10-19.html, or index.html in editions up to 19 October 2026):
   ids, hrefs  every id and every external link of that page exists on the new one
   text        every paragraph, list item, table cell, caption and heading is still on the page, unless it is one of the
               corrections listed in PREV_CHANGED with its reason (a claim the 19 October supplement superseded, a sentence
@@ -32,6 +32,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SITE = os.path.join(ROOT, "site")
 sys.path.insert(0, os.path.join(ROOT, "scripts"))
 import catalogue
+import longread
 CATALOGUE = catalogue.works()        # 288 records: the registry of 3 October with the 19 October supplement
 PAGES = [f"ch{n:02d}" for n in range(1, 12)] + ["index", "atlas", "glossary", "sources", "about"]
 
@@ -154,7 +155,7 @@ def heading_text(m):
 
 def check_lang(lang, old, prev=None):
     R = {"lang": lang, "missing": {}, "counts": {}}
-    h = read(os.path.join(SITE, lang, "index.html"))
+    h = read(os.path.join(SITE, lang, longread.PAGE))
     text = page_text(h)
     ids = re.findall(r'\sid="([^"]+)"', h)
     idset = set(ids)
@@ -232,7 +233,7 @@ def check_lang(lang, old, prev=None):
         R["missing"]["old_text"] = lost
         R["intentional"] = {"reason": REASON, "items": intentional}
     if prev:
-        p = read(os.path.join(prev, lang, "index.html"))
+        p = read(os.path.join(prev, lang, longread.PAGE if os.path.exists(os.path.join(prev, lang, longread.PAGE)) else "index.html"))
         m = re.search(r'<main id="main"[^>]*>(.*?)</main>', p, re.S)
         body = m.group(1) if m else p
         pids = set(re.findall(r'\sid="([^"]+)"', re.sub(r"<(svg|script)[^>]*>.*?</\1>", " ", body, flags=re.S))) - set(PREV_INTERNAL_IDS)   # SVG and script internals are not addresses

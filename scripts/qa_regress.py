@@ -31,6 +31,8 @@ Writes OUTDIR/REGRESS.md, OUTDIR/regress.json and screenshots in OUTDIR/shots/; 
 import html as H, json, os, re, sys, time
 # Playwright uses its platform default, or the caller's explicit PLAYWRIGHT_BROWSERS_PATH.
 from playwright.sync_api import sync_playwright
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import longread
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SITE = os.path.abspath(next((a.split("=", 1)[1] for a in sys.argv[1:] if a.startswith("--site=")), os.path.join(ROOT, "site")))   # e.g. a copy of an earlier edition
@@ -42,7 +44,9 @@ ENGINES, LANGS = ("chromium", "webkit"), ("en", "ru")
 DESK, PHONE = {"width": 1240, "height": 844}, {"width": 390, "height": 844}
 R = []
 
-def url(lang, page="index", frag=""): return "file://" + os.path.join(SITE, lang, page + ".html") + frag
+# the detailed survey: survey-2026-10-19.html since the Field edition took index.html (12 November 2026); index.html in earlier editions
+PAGE = longread.PAGE if os.path.exists(os.path.join(SITE, "en", longread.PAGE)) else "index.html"
+def url(lang, page=PAGE[:-5], frag=""): return "file://" + os.path.join(SITE, lang, page + ".html") + frag
 
 def rec(group, engine, name, ok, detail=None):
     R.append(dict(group=group, engine=engine, check=name, ok=bool(ok), detail=detail))
@@ -323,11 +327,11 @@ def r3(p):
 def stub_lists(lang):
     out = {}
     for f in sorted(os.listdir(os.path.join(SITE, lang))):
-        if not f.endswith(".html") or f == "index.html": continue
+        if not f.endswith(".html") or f in ("index.html", PAGE): continue
         t = open(os.path.join(SITE, lang, f), encoding="utf-8").read()
         m = re.search(r"var m=(\{.*?\}),d=(\"[^\"]*\")", t)
         if not m: continue
-        lis = re.findall(r'<li id="([^"]+)"><a href="index\.html#([^"]*)">(.*?)</a></li>', t)
+        lis = re.findall(r'<li id="([^"]+)"><a href="' + re.escape(PAGE) + r'#([^"]*)">(.*?)</a></li>', t)
         out[f] = (json.loads(m.group(1)), [(H.unescape(i), H.unescape(h), H.unescape(re.sub(r"<[^>]+>", "", lab)).strip()) for i, h, lab in lis])
     return out
 
@@ -360,12 +364,12 @@ def r4_browser(p):
                 with pg.expect_navigation(): pg.locator(":target a").click()
                 pg.wait_for_timeout(400)
                 landed = pg.evaluate("() => { const t = document.querySelector(':target'); return {url: location.href.split('/').slice(-2).join('/'), target: t && t.id, text: t && t.textContent.trim().slice(0, 60)}; }")
-            ok = bool(t and t["id"] == "index-s-1" and t["href"] == "index.html#s-1" and t["text"] and landed and landed["target"] == "s-1")
+            ok = bool(t and t["id"] == "index-s-1" and t["href"] == PAGE + "#s-1" and t["text"] and landed and landed["target"] == "s-1")
             rec("R4", engine, f"{lang} no-JS full.html#index-s-1 lists its place and the link lands on #s-1", ok, dict(target=t, landed=landed))
             ctx.close()
             ctx, pg = page(b, DESK)
             pg.goto(url(lang, "full", "#index-s-1")); pg.wait_for_timeout(900)
-            rec("R4", engine, f"{lang} with JS full.html#index-s-1 forwards to index.html#s-1", pg.url.endswith(f"/{lang}/index.html#s-1"), pg.url.split("/")[-1])
+            rec("R4", engine, f"{lang} with JS full.html#index-s-1 forwards to {PAGE}#s-1", pg.url.endswith(f"/{lang}/{PAGE}#s-1"), pg.url.split("/")[-1])
             ctx.close()
         b.close()
 

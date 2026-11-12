@@ -15,6 +15,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(ROOT, "scripts"))
 import site_story
 import catalogue
+import build_field
 
 ST = json.load(open(os.path.join(ROOT, "data/stats.json"), encoding="utf-8"))
 CAT = len(catalogue.works())
@@ -86,7 +87,10 @@ BIB = """```bibtex
 }
 ```"""
 
-K = dict(corpus=ST["corpus"], known=LD["known"], med=LD["median"], fig_works=ST["fig_works"], cat=CAT, sup=SUP_N)
+FIELD_MAP = build_field.read_json("updates", "2026-11-12", "map-catalogue.json")
+K = dict(corpus=ST["corpus"], known=LD["known"], med=LD["median"], fig_works=ST["fig_works"], cat=CAT, sup=SUP_N,
+         pts=len(build_field.map_rows("en")), nadd=len(FIELD_MAP["added"]), merged=len(FIELD_MAP["map"]["merged"]))
+K["all"] = K["cat"] + K["nadd"]
 MEM = dict(site_story.MEMORY)
 
 EN = f"""# Awesome Agent Swarms
@@ -96,6 +100,14 @@ EN = f"""# Awesome Agent Swarms
 {picture("topologies", "en", "Six agents drawn as context windows, connected in three ways: independently, through a coordinator, through a shared log. Agent 3's finding is a lime block; agents 1 and 5 redo the work in coral, receive a copy from the coordinator, or find the entry in the log.")}
 
 Whether a swarm helps depends on what the comparison held fixed. In the Claude Opus 5.5 system card, a team of five reaches the same ProgramBench level 2.7 times faster than one agent and spends about 1.9 times the tokens (the survey's estimate from the card's chart). At equal total output tokens, OpenAI's published GPT-5.6 Sol curves put one agent ahead of a swarm of 4 on three benchmarks, and a swarm of 16 on the two where that team size was measured. The survey keeps such settings apart and gives every result with its scale, its comparison condition and its evidence class.
+
+## The Field edition, 12 November 2026
+
+The website now opens with *Field*: one scrolling page per language on how communication, scale, memory and collective errors change the behaviour of LLM swarms. It starts with one case in four schemes (agent 3 has found a solution that agents 1 and 5 need: independently, through a coordinator, through shared memory, by a local rule) and continues through scale, the Agensh curve and its token bill, self-organization, memory, contagious beliefs and a map of {K['pts']} sources, ending with the comparisons this review still misses. One field of 1,024 drawn agents carries every scene; the drawings explain mechanisms and are not simulation results. Every result on the page names its source, with a link.
+
+- **Read:** `site/en/index.html` and `site/ru/index.html` in the repository layout (a language link keeps your place), or the self-contained files [`delivery/Swarm-Field-EN.html`](delivery/Swarm-Field-EN.html) and [`delivery/Swarm-Field-RU.html`](delivery/Swarm-Field-RU.html), each of which opens on its own from any folder, without a server or network.
+- **What the map counts:** {K['pts']} sources, one point per primary link. They are the {K['cat']} catalogue records of 19 October, {K['merged']} of which repeat the link of the bundle card they belong to and are drawn once, and {K['nadd']} records added on 12 November ([list in the catalogue](CATALOG.md), [data](updates/2026-11-12/map-catalogue.json), [BibTeX](updates/2026-11-12/references.bib)). They are not {K['all']} distinct research papers: the catalogue also holds lab posts, incident reports, news and datasets.
+- **What it does not change:** the scale figures on the page ({K['known']} of {K['corpus']} works state how many agents run at once, median {K['med']}) come from the analytic corpus of 3 October 2026, as do the survey's charts; the PDF is the 3 October edition. The detailed survey of 19 October is kept, unchanged, at `site/en/survey-2026-10-19.html` and `site/ru/survey-2026-10-19.html`, and its former page addresses forward there.
 
 ## What changed on 19 October 2026
 
@@ -110,12 +122,13 @@ This was a targeted update, not a systematic review or a replication of experime
 
 ## Where to read
 
-- **Website** in `site/`: the whole survey as one continuous page in English (`site/en/index.html`) and Russian (`site/ru/index.html`), in a dark design where every agent is a context window drawn as a tower of blocks (a light theme is one switch away). It runs from the prologue, six agents and three ways to connect them, through three parts and eleven chapters to the findings, the open questions and an atlas of all {fnum(K['cat'], 'en')} works and resources with filters, then a glossary, sources and notes on method. Native scenes and charts explain the mechanisms and the corpus along the way. The files are static: open `site/index.html` in a browser, or run `python3 -m http.server -d site` and go to `http://localhost:8000`.
+- **Website** in `site/`: the Field edition of 12 November 2026 (`site/en/index.html`, `site/ru/index.html`), described above; standalone copies in `delivery/`.
+- **Detailed survey** of 19 October 2026 in `site/`: the whole survey as one continuous page in English (`site/en/survey-2026-10-19.html`) and Russian (`site/ru/survey-2026-10-19.html`), in a dark design where every agent is a context window drawn as a tower of blocks (a light theme is one switch away). It runs from the prologue, six agents and three ways to connect them, through three parts and eleven chapters to the findings, the open questions and an atlas of all {fnum(K['cat'], 'en')} works and resources with filters, then a glossary, sources and notes on method. Native scenes and charts explain the mechanisms and the corpus along the way. The files are static: open `site/index.html` in a browser, or run `python3 -m http.server -d site` and go to `http://localhost:8000`.
 - **Technical report:** [PDF](paper/swarm-dynamics.pdf) in ACL format, with its [LaTeX source](paper/main.tex), a [source archive](paper/swarm-dynamics-source.zip) and [build notes](paper/BUILD.md). It is the edition of 3 October 2026 and does not include the supplement.
-- **Catalogue:** [CATALOG.md](CATALOG.md) lists every cited work by theme, one line each, with the 19 October additions marked ([in Russian](CATALOG.ru.md)).
-- **Data:** the [registry of works](data/works.json) as of 3 October, its [BibTeX](data/bib/works.bib) and [figure provenance](data/figures.json); the supplement's [registry delta](updates/2026-10-19/registry-delta.json) and [catalogue of {K['cat']} records](updates/2026-10-19/catalogue.json); the catalogue's current [BibTeX](site/data/references-2026-10-19.bib), with the corrected identifier.
+- **Catalogue:** [CATALOG.md](CATALOG.md) lists every cited work by theme, one line each, with the 19 October additions marked and the {K['nadd']} records added for the Field map in their own section ([in Russian](CATALOG.ru.md)).
+- **Data:** the [registry of works](data/works.json) as of 3 October, its [BibTeX](data/bib/works.bib) and [figure provenance](data/figures.json); the supplement's [registry delta](updates/2026-10-19/registry-delta.json) and [catalogue of {K['cat']} records](updates/2026-10-19/catalogue.json); the catalogue's [BibTeX](site/data/references-2026-10-19.bib) of 19 October, with the corrected identifier; the Field map's [additions](updates/2026-11-12/map-catalogue.json) with their [BibTeX](updates/2026-11-12/references.bib).
 
-The atlas lists {K['cat']} works and resources (catalogue as of 19 October); the survey’s charts use the {K['corpus']} works of the analytic corpus, with detailed metadata, as of 3 October.
+The survey's atlas lists {K['cat']} works and resources (catalogue as of 19 October) and the Field map {K['pts']} sources (12 November); the survey’s charts use the {K['corpus']} works of the analytic corpus, with detailed metadata, as of 3 October.
 
 ## How big real swarms are
 
@@ -158,13 +171,15 @@ Anton Razzhigaev set the scope of the survey, made the editorial decisions and i
 ```sh
 python3 -m venv .venv && .venv/bin/pip install -r requirements.txt
 .venv/bin/python -m playwright install chromium webkit
-make site catalog check          # site/ and illustrations → CATALOG, RIGHTS, README → content checks
+make site catalog check          # site/: Field pages, the dated survey, former addresses → CATALOG, RIGHTS, README → content and Field checks
+make field                       # delivery/Swarm-Field-EN.html and -RU.html: the self-contained Field files (byte-identical on every rebuild)
+make qa-field                    # Field from file:// in Chromium and WebKit: desktop and phone, no JavaScript, reduced motion, map, keyboard, language link
 make coverage                    # every card, figure, link and heading is on the single page (PREV=<previous site/> compares editions)
 make charts                      # optional: redraws the survey's own Chapter 1 charts from data; the committed PNGs are the published ones
 make qa qa-features              # the page, figures, scenes and interactions; desktop/phone, JavaScript/no-JavaScript
 ```
 
-[content/FORMAT.md](content/FORMAT.md) describes the text format, the order of the single page and how former page addresses map onto it; `scripts/check_content.py` checks that the English and Russian texts match block for block.
+The Field edition is built from one shared page style and renderer (`field/field.css`, `field/field.js`) and one text file per language (`field/en.json`, `field/ru.json`) by `scripts/build_field.py`; `scripts/check_field.py` compares the two languages' text, sources and numbers and checks the map against the catalogue. [content/FORMAT.md](content/FORMAT.md) describes the survey's text format, the order of its single page and how former page addresses map onto it; `scripts/check_content.py` checks that the English and Russian texts match block for block.
 
 [Русская версия](README.ru.md)
 """
@@ -176,6 +191,14 @@ RU = f"""# Awesome Agent Swarms
 {picture("topologies", "ru", "Шесть агентов как окна контекста, связанные тремя способами: независимо, через координатора и через общий журнал. Находка агента 3 — салатовый блок; агенты 1 и 5 делают ту же работу заново (коралловые блоки), получают копию от координатора или находят запись в журнале.")}
 
 Поможет ли рой, зависит от того, что уравняли при сравнении. В системной карте Claude Opus 5.5 команда из пяти агентов доходит до того же уровня ProgramBench в 2,7 раза быстрее одиночки и тратит примерно в 1,9 раза больше токенов (оценка обзора по графику из карты). При равной сумме выходных токенов опубликованные кривые OpenAI для GPT-5.6 Sol ставят одного агента впереди роя из 4 на трёх бенчмарках и роя из 16 на двух, где такую команду измеряли. Обзор держит такие условия раздельно и у каждого результата указывает масштаб, условие сравнения и класс доказательств.
+
+## Редакция «Поле», 12 ноября 2026 года
+
+Сайт теперь открывается «Полем»: одна прокручиваемая страница на каждом языке о том, как связь, масштаб, память и коллективные ошибки меняют поведение роёв LLM-агентов. Она начинается с одного случая в четырёх схемах (агент 3 нашёл решение, оно нужно агентам 1 и 5: независимо, через координатора, через общую память, по локальному правилу) и идёт через масштаб, кривую Agensh и её счёт в токенах, самоорганизацию, память, заразные убеждения и карту из {K['pts']} источников к сравнениям, которых в обзоре пока не хватает. Все сцены держит одно поле из 1 024 нарисованных агентов; рисунки объясняют механизмы и не являются результатами симуляции. У каждого результата на странице указан источник со ссылкой.
+
+- **Где читать:** `site/ru/index.html` и `site/en/index.html` в раскладке репозитория (ссылка на другой язык сохраняет место чтения) или самостоятельные файлы [`delivery/Swarm-Field-RU.html`](delivery/Swarm-Field-RU.html) и [`delivery/Swarm-Field-EN.html`](delivery/Swarm-Field-EN.html): каждый открывается сам по себе из любой папки, без сервера и сети.
+- **Что считает карта:** {fnum(K['pts'], 'ru')} источников, по точке на первичную ссылку. Это {K['cat']} записей каталога на 19 октября, из которых {K['merged']} повторяют ссылку своей сводной карточки и нарисованы один раз, и {K['nadd']} записей, добавленных 12 ноября ([список в каталоге](CATALOG.ru.md), [данные](updates/2026-11-12/map-catalogue.json), [BibTeX](updates/2026-11-12/references.bib)). Это не {K['all']} разных научных статей: в каталоге есть и посты лабораторий, разборы инцидентов, новости, датасеты.
+- **Что не меняется:** числа масштаба на странице ({K['known']} из {K['corpus']} работ называют одновременное число агентов, медиана {K['med']}) взяты из аналитического корпуса на 3 октября 2026 года, как и графики обзора; PDF — редакция 3 октября. Подробный обзор от 19 октября сохранён без изменений по адресам `site/ru/survey-2026-10-19.html` и `site/en/survey-2026-10-19.html`, прежние адреса его страниц ведут туда.
 
 ## Что изменилось 19 октября 2026 года
 
@@ -190,12 +213,13 @@ RU = f"""# Awesome Agent Swarms
 
 ## Где читать
 
-- **Сайт** в `site/`: весь обзор одной непрерывной страницей, по-русски (`site/ru/index.html`) и по-английски (`site/en/index.html`), в тёмном оформлении, где каждый агент — окно контекста, нарисованное башней блоков (светлая тема включается одним переключателем). Он идёт от пролога — шесть агентов и три способа их связать — через три части и одиннадцать глав к выводам, открытым вопросам и атласу всех {fnum(K['cat'], 'ru')} работ и ресурсов с фильтрами, а за ними — словарик, источники и заметки о методе. По ходу текста механизмы и корпус объясняют встроенные схемы и графики. Это статические файлы: откройте `site/index.html` в браузере или запустите `python3 -m http.server -d site` и перейдите на `http://localhost:8000`.
+- **Сайт** в `site/`: редакция «Поле» от 12 ноября 2026 года (`site/ru/index.html`, `site/en/index.html`), описанная выше; самостоятельные копии в `delivery/`.
+- **Подробный обзор** от 19 октября 2026 года в `site/`: весь обзор одной непрерывной страницей, по-русски (`site/ru/survey-2026-10-19.html`) и по-английски (`site/en/survey-2026-10-19.html`), в тёмном оформлении, где каждый агент — окно контекста, нарисованное башней блоков (светлая тема включается одним переключателем). Он идёт от пролога — шесть агентов и три способа их связать — через три части и одиннадцать глав к выводам, открытым вопросам и атласу всех {fnum(K['cat'], 'ru')} работ и ресурсов с фильтрами, а за ними — словарик, источники и заметки о методе. По ходу текста механизмы и корпус объясняют встроенные схемы и графики. Это статические файлы: откройте `site/index.html` в браузере или запустите `python3 -m http.server -d site` и перейдите на `http://localhost:8000`.
 - **Технический отчёт:** [PDF](paper/swarm-dynamics.pdf) в формате ACL (на английском), [исходник LaTeX](paper/main.tex), [архив исходников](paper/swarm-dynamics-source.zip) и [инструкция по сборке](paper/BUILD.md). Это редакция 3 октября 2026 года, дополнение в неё не входит.
-- **Каталог:** [CATALOG.ru.md](CATALOG.ru.md) — все цитируемые работы по темам, по строке на работу, добавленные 19 октября помечены ([на английском](CATALOG.md)).
-- **Данные:** [реестр работ](data/works.json) на 3 октября, его [BibTeX](data/bib/works.bib) и [происхождение рисунков](data/figures.json); в дополнении — [реестр изменений](updates/2026-10-19/registry-delta.json) и [каталог из {K['cat']} записей](updates/2026-10-19/catalogue.json); актуальный [BibTeX](site/data/references-2026-10-19.bib) каталога, с исправленным идентификатором.
+- **Каталог:** [CATALOG.ru.md](CATALOG.ru.md) — все цитируемые работы по темам, по строке на работу; добавленные 19 октября помечены, {K['nadd']} записей карты «Поля» собраны в отдельном разделе ([на английском](CATALOG.md)).
+- **Данные:** [реестр работ](data/works.json) на 3 октября, его [BibTeX](data/bib/works.bib) и [происхождение рисунков](data/figures.json); в дополнении — [реестр изменений](updates/2026-10-19/registry-delta.json) и [каталог из {K['cat']} записей](updates/2026-10-19/catalogue.json); [BibTeX](site/data/references-2026-10-19.bib) каталога на 19 октября, с исправленным идентификатором; [добавления карты «Поля»](updates/2026-11-12/map-catalogue.json) и их [BibTeX](updates/2026-11-12/references.bib).
 
-В атласе {K['cat']} работ и ресурсов (каталог на 19 октября); графики обзора построены по {K['corpus']} работам аналитического корпуса с подробными метаданными (на 3 октября).
+В атласе обзора {K['cat']} работ и ресурсов (каталог на 19 октября), на карте «Поля» {fnum(K['pts'], 'ru')} источников (12 ноября); графики обзора построены по {K['corpus']} работам аналитического корпуса с подробными метаданными (на 3 октября).
 
 ## Насколько велики настоящие рои
 
@@ -238,13 +262,15 @@ RU = f"""# Awesome Agent Swarms
 ```sh
 python3 -m venv .venv && .venv/bin/pip install -r requirements.txt
 .venv/bin/python -m playwright install chromium webkit
-make site catalog check          # site/ и иллюстрации → CATALOG, RIGHTS, README → проверки текста
+make site catalog check          # site/: страницы «Поля», датированный обзор, прежние адреса → CATALOG, RIGHTS, README → проверки текста и «Поля»
+make field                       # delivery/Swarm-Field-RU.html и -EN.html: самостоятельные файлы «Поля» (при пересборке байт в байт те же)
+make qa-field                    # «Поле» из file:// в Chromium и WebKit: компьютер и телефон, без JavaScript, без анимации, карта, клавиатура, ссылка языка
 make coverage                    # каждая карточка, рисунок, ссылка и заголовок есть на единой странице (PREV=<прежний site/> сравнивает редакции)
 make charts                      # по желанию: перерисовывает собственные графики главы 1 по данным; в репозитории лежат опубликованные PNG
 make qa qa-features              # страница, рисунки, схемы и интерактив; компьютер/телефон, JavaScript и без него
 ```
 
-Формат текста, порядок единой страницы и то, как прежние адреса страниц переходят на неё, описаны в [content/FORMAT.md](content/FORMAT.md); `scripts/check_content.py` проверяет, что русский и английский тексты совпадают блок в блок.
+Редакцию «Поле» собирает `scripts/build_field.py` из одного общего оформления и рисовальщика (`field/field.css`, `field/field.js`) и одного текстового файла на язык (`field/ru.json`, `field/en.json`); `scripts/check_field.py` сравнивает текст, источники и числа двух языков и сверяет карту с каталогом. Формат текста обзора, порядок его единой страницы и то, как прежние адреса страниц переходят на неё, описаны в [content/FORMAT.md](content/FORMAT.md); `scripts/check_content.py` проверяет, что русский и английский тексты совпадают блок в блок.
 
 [English version](README.md)
 """

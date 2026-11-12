@@ -88,12 +88,17 @@ PLACE = {
 # with the id they had on their chapter page, so old links still land on them.
 MOVE_TO_HOWTO = {"ch01": ["How to read the cards", "Как читать карточки"]}
 
+# ---------------------------------------------------------------- where the page lives
+# Until 19 October 2026 the single page was site/<lang>/index.html. Since the Field edition of 12 November 2026,
+# index.html is the Field page (scripts/build_field.py) and this detailed survey is kept whole at a dated address.
+PAGE = "survey-2026-10-19.html"
+
 # ---------------------------------------------------------------- old addresses
-# index.html kept its own anchors (#how, #survey, #scale, #findings, #agensh, #chapters, #howto, #s-1).
-# A former page P maps to the single page like this (P = ch01…ch11, glossary, about):
-#   P.html            -> index.html#P            (#atlas, #glossary, #sources, #about for the reference pages)
-#   P.html#s-N        -> index.html#P-s-N        (section headings keep their counter)
-#   P.html#fig-N      -> index.html#P-fig-N      (and #zoom-N)
+# The survey page kept the former index's own anchors (#how, #survey, #scale, #findings, #agensh, #chapters, #howto, #s-1).
+# A former page P maps to the survey page like this (P = ch01…ch11, glossary, about):
+#   P.html            -> PAGE#P            (#atlas, #glossary, #sources, #about for the reference pages)
+#   P.html#s-N        -> PAGE#P-s-N        (section headings keep their counter)
+#   P.html#fig-N      -> PAGE#P-fig-N      (and #zoom-N)
 #   P.html#w-<id>, atlas.html#a-<id>, sources.html#src-<page> / #s-<id>  -> the same fragment
 #   full.html#p-P -> #P;  full.html#P-s-N -> same;  full.html#fig-N -> the figure's new id (table in the stub)
 STUB_PAGES = [f"ch{n:02d}" for n in range(1, 12)] + ["atlas", "glossary", "sources", "about", "full"]

@@ -1,0 +1,697 @@
+{
+ "version": "field-map-2026-11-12",
+ "base_catalogue": "updates/2026-10-19/catalogue.json",
+ "checked_at": "2026-11-12",
+ "coverage": "Records drawn on the Field map that are not in the 19 October catalogue: five from the targeted refresh of 7 November 2026 (updates/2026-11-07 in the working archive, not in this repository) and twenty-one checked against their primary pages and arXiv abstracts on 11-12 November 2026. Targeted additions, not a systematic re-screening; none of them enters the 153-work analytic corpus of 3 October 2026.",
+ "added": [
+  {
+   "id": "waggle-2026",
+   "kind": "preprint",
+   "title": "Waggle: Learning One Anonymous Local Law for Self-Organizing LLM Swarms",
+   "authors": [
+    "Zou"
+   ],
+   "et_al": true,
+   "orgs": [],
+   "date_first_public": "2026-09-28",
+   "identifiers": {
+    "arxiv": "2609.34136",
+    "doi": null
+   },
+   "urls": {
+    "primary": "https://arxiv.org/abs/2609.34136"
+   },
+   "theme": "ch05",
+   "added": "2026-11-07"
+  },
+  {
+   "id": "masbench-2026",
+   "kind": "preprint",
+   "title": "MASBench: Benchmarking LLM-based Multi-Agent Collaboration under Partial Observability",
+   "authors": [
+    "Chu"
+   ],
+   "et_al": true,
+   "orgs": [],
+   "date_first_public": "2026-10",
+   "identifiers": {
+    "arxiv": "2610.04672",
+    "doi": null
+   },
+   "urls": {
+    "primary": "https://arxiv.org/abs/2610.04672"
+   },
+   "theme": "ch11",
+   "added": "2026-11-07",
+   "date_note": "First submitted in October 2026 (arXiv:2610.04672); the refresh of 7 November 2026 checked its revision v2 of 4 November 2026, which the November draft of the map showed as the date."
+  },
+  {
+   "id": "zero-shot-coordination-2026",
+   "kind": "preprint",
+   "title": "Zero-Shot Coordination among LLM Agents",
+   "authors": [
+    "Hayler"
+   ],
+   "et_al": true,
+   "orgs": [],
+   "date_first_public": "2026-11-04",
+   "identifiers": {
+    "arxiv": "2611.06409",
+    "doi": null
+   },
+   "urls": {
+    "primary": "https://arxiv.org/abs/2611.06409"
+   },
+   "theme": "ch05",
+   "added": "2026-11-07"
+  },
+  {
+   "id": "collabmem-2026",
+   "kind": "journal_or_conference",
+   "title": "COLLABMEM: A Diagnostic Benchmark for Collaborative Memory Operations in Multi-Agent LLM Systems",
+   "authors": [
+    "Wu",
+    "Wu",
+    "Zhang",
+    "Liu"
+   ],
+   "et_al": false,
+   "orgs": [],
+   "date_first_public": "2026-10",
+   "identifiers": {
+    "arxiv": null,
+    "doi": "10.18653/2026.emnlp-main.1194"
+   },
+   "urls": {
+    "primary": "https://aclanthology.org/2026.emnlp-main.1194/"
+   },
+   "theme": "ch06",
+   "added": "2026-11-07",
+   "venue_note": "EMNLP 2026"
+  },
+  {
+   "id": "google-science-of-scaling-agents",
+   "kind": "lab_blog",
+   "title": "Towards a science of scaling agent systems: When and why agent systems work",
+   "authors": [
+    "Yubin Kim",
+    "Xin Liu"
+   ],
+   "et_al": false,
+   "orgs": [
+    "Google Research"
+   ],
+   "date_first_public": "2026-01-28",
+   "identifiers": {
+    "arxiv": null,
+    "doi": null
+   },
+   "urls": {
+    "primary": "https://www.research.google/blog/towards-a-science-of-scaling-agent-systems-when-and-why-agent-systems-work/"
+   },
+   "theme": "ch04",
+   "added": "2026-11-07"
+  },
+  {
+   "id": "avalon-m1",
+   "kind": "preprint",
+   "title": "Avalon-M1",
+   "authors": [],
+   "et_al": false,
+   "orgs": [
+    "General Reasoning"
+   ],
+   "date_first_public": "2026-11",
+   "identifiers": {
+    "arxiv": null,
+    "doi": null
+   },
+   "urls": {
+    "primary": "https://gr.inc/avalonm1.pdf"
+   },
+   "theme": "ch04",
+   "added": "2026-11-12",
+   "org_note": "General Reasoning Inc.; Avalon-M1-Mini (120B) as lead may hire up to eight agents (FACT-CORRECTIONS 12 November 2026, item 4)."
+  },
+  {
+   "id": "s3-swarm-scaling",
+   "kind": "preprint",
+   "title": "s³: Simple Scaling of Swarms via Cooperative Multi-agent RL",
+   "authors": [
+    "Jha",
+    "Kleiman-Weiner",
+    "Jaques"
+   ],
+   "et_al": true,
+   "orgs": [],
+   "date_first_public": "2026-11-05",
+   "identifiers": {
+    "arxiv": "2611.08615",
+    "doi": null
+   },
+   "urls": {
+    "primary": "https://arxiv.org/abs/2611.08615"
+   },
+   "theme": "ch05",
+   "added": "2026-11-12"
+  },
+  {
+   "id": "swarmevolve",
+   "kind": "preprint",
+   "title": "SwarmEvolve: Latent Agent Swarms for Evolutionary Discovery and Optimization",
+   "authors": [
+    "Jiang",
+    "Karniadakis"
+   ],
+   "et_al": false,
+   "orgs": [],
+   "date_first_public": "2026-11-05",
+   "identifiers": {
+    "arxiv": "2611.08483",
+    "doi": null
+   },
+   "urls": {
+    "primary": "https://arxiv.org/abs/2611.08483"
+   },
+   "theme": "ch11",
+   "added": "2026-11-12"
+  },
+  {
+   "id": "herding-runaway-cascades",
+   "kind": "preprint",
+   "title": "LLM Multi-Agent Systems Are Vulnerable to Herding and Runaway Cascades",
+   "authors": [
+    "Hashemi",
+    "Ji",
+    "Chen",
+    "Macy"
+   ],
+   "et_al": false,
+   "orgs": [],
+   "date_first_public": "2026-10-22",
+   "identifiers": {
+    "arxiv": "2610.30769",
+    "doi": null
+   },
+   "urls": {
+    "primary": "https://arxiv.org/abs/2610.30769"
+   },
+   "theme": "ch09",
+   "added": "2026-11-12"
+  },
+  {
+   "id": "inter-agent-influence",
+   "kind": "preprint",
+   "title": "Inter-Agent Influence: Evaluating Persuasion, Deception, and Coercion in Multi-Agent Systems",
+   "authors": [
+    "Smith",
+    "Hammond"
+   ],
+   "et_al": true,
+   "orgs": [],
+   "date_first_public": "2026-11-03",
+   "identifiers": {
+    "arxiv": "2611.04556",
+    "doi": null
+   },
+   "urls": {
+    "primary": "https://arxiv.org/abs/2611.04556"
+   },
+   "theme": "ch07",
+   "added": "2026-11-12",
+   "venue_note": "NeurIPS 2026"
+  },
+  {
+   "id": "gemini4-argon-minecraft",
+   "kind": "preprint",
+   "title": "A team of Gemini 4 Argon agents beats Minecraft",
+   "authors": [
+    "Faldor",
+    "Singh",
+    "Raileanu"
+   ],
+   "et_al": false,
+   "orgs": [],
+   "date_first_public": "2026-10-15",
+   "identifiers": {
+    "arxiv": "2610.22319",
+    "doi": null
+   },
+   "urls": {
+    "primary": "https://arxiv.org/abs/2610.22319"
+   },
+   "theme": "ch06",
+   "added": "2026-11-12"
+  },
+  {
+   "id": "steering-information-networks",
+   "kind": "preprint",
+   "title": "Steering Emergent Behavior in Multi-Agent LLM Systems via Information Networks",
+   "authors": [
+    "Ilami",
+    "Heydari"
+   ],
+   "et_al": false,
+   "orgs": [],
+   "date_first_public": "2026-11-09",
+   "identifiers": {
+    "arxiv": "2611.11714",
+    "doi": null
+   },
+   "urls": {
+    "primary": "https://arxiv.org/abs/2611.11714"
+   },
+   "theme": "ch10",
+   "added": "2026-11-12"
+  },
+  {
+   "id": "collusion-j-space",
+   "kind": "preprint",
+   "title": "Multi-Agent Collusion and the J-Space",
+   "authors": [
+    "Molinari",
+    "Bettineschi"
+   ],
+   "et_al": false,
+   "orgs": [],
+   "date_first_public": "2026-11-01",
+   "identifiers": {
+    "arxiv": "2611.02153",
+    "doi": null
+   },
+   "urls": {
+    "primary": "https://arxiv.org/abs/2611.02153"
+   },
+   "theme": "ch07",
+   "added": "2026-11-12"
+  },
+  {
+   "id": "behavioral-probes-information-flow",
+   "kind": "preprint",
+   "title": "Behavioral Probes for Information Flow in LLM Swarms",
+   "authors": [
+    "Chen",
+    "Zhang",
+    "Li",
+    "Wang"
+   ],
+   "et_al": false,
+   "orgs": [],
+   "date_first_public": "2026-10-19",
+   "identifiers": {
+    "arxiv": "2610.25966",
+    "doi": null
+   },
+   "urls": {
+    "primary": "https://arxiv.org/abs/2610.25966"
+   },
+   "theme": "ch11",
+   "added": "2026-11-12",
+   "venue_note": "NeurIPS 2026"
+  },
+  {
+   "id": "yc-agents-in-games",
+   "kind": "web",
+   "title": "Agents in Games: Civ50, Bed Wars, Mindustry",
+   "authors": [],
+   "et_al": false,
+   "orgs": [
+    "Y Combinator",
+    "Olam Labs"
+   ],
+   "date_first_public": "2026-10",
+   "identifiers": {
+    "arxiv": null,
+    "doi": null
+   },
+   "urls": {
+    "primary": "https://labs.ycombinator.com/projects/games"
+   },
+   "theme": "ch03",
+   "added": "2026-11-12",
+   "date_note": "The page gives October 2026 without a day."
+  },
+  {
+   "id": "anthropic-fable-team-scaling",
+   "kind": "lab_blog",
+   "title": "Safely scaling multi-agent teams with Claude Fable 5.2",
+   "authors": [],
+   "et_al": false,
+   "orgs": [
+    "Anthropic"
+   ],
+   "date_first_public": "2026-11-09",
+   "identifiers": {
+    "arxiv": null,
+    "doi": null
+   },
+   "urls": {
+    "primary": "https://claude.dev/blog/safely-scaling-multi-agent-teams-with-fable-5-2"
+   },
+   "theme": "ch02",
+   "added": "2026-11-12"
+  },
+  {
+   "id": "openai-peers-unauthorized-access",
+   "kind": "incident_report",
+   "title": "Using peers' work to gain unauthorized access to OpenAI research infrastructure",
+   "authors": [],
+   "et_al": false,
+   "orgs": [
+    "OpenAI"
+   ],
+   "date_first_public": "2026-11-10",
+   "identifiers": {
+    "arxiv": null,
+    "doi": null
+   },
+   "urls": {
+    "primary": "https://alignment.openai.com/misalignment-reports/using-peers-work-to-gain-unauthorized-access-to-openai-research-infrastructure/"
+   },
+   "theme": "ch03",
+   "added": "2026-11-12",
+   "date_note": "Report updated 10 November 2026; the incident is dated 19 July 2026.",
+   "incident_date": "2026-07-19"
+  },
+  {
+   "id": "google-antigravity-swarm",
+   "kind": "lab_blog",
+   "title": "Gemini 4 Carbon and /swarm in Google Antigravity",
+   "authors": [],
+   "et_al": false,
+   "orgs": [
+    "Google"
+   ],
+   "date_first_public": "2026-11-10",
+   "identifiers": {
+    "arxiv": null,
+    "doi": null
+   },
+   "urls": {
+    "primary": "https://antigravity.google/blog/gemini-4-carbon-in-google-antigravity"
+   },
+   "theme": "ch02",
+   "added": "2026-11-12"
+  },
+  {
+   "id": "parallel-agent-teams",
+   "kind": "preprint",
+   "title": "Test-Time Compute Scales Better with Parallel Agent Teams",
+   "authors": [
+    "Wang",
+    "Chen",
+    "Li",
+    "Chalamala",
+    "Liu"
+   ],
+   "et_al": false,
+   "orgs": [],
+   "date_first_public": "2026-11-06",
+   "identifiers": {
+    "arxiv": "2611.09798",
+    "doi": null
+   },
+   "urls": {
+    "primary": "https://arxiv.org/abs/2611.09798"
+   },
+   "theme": "ch04",
+   "added": "2026-11-12"
+  },
+  {
+   "id": "world-of-swecraft",
+   "kind": "preprint",
+   "title": "World of SWECraft: Agent Collaboration at Scale via Simulated Software Worlds",
+   "authors": [
+    "Shen",
+    "Chang"
+   ],
+   "et_al": true,
+   "orgs": [],
+   "date_first_public": "2026-10-16",
+   "identifiers": {
+    "arxiv": "2610.24061",
+    "doi": null
+   },
+   "urls": {
+    "primary": "https://arxiv.org/abs/2610.24061"
+   },
+   "theme": "ch05",
+   "added": "2026-11-12"
+  },
+  {
+   "id": "parallact-shared-codebases",
+   "kind": "preprint",
+   "title": "Decentralized Multi-Agent Coordination and Communication in Shared Codebases",
+   "authors": [
+    "Mediratta",
+    "Xiao",
+    "Stone",
+    "Biswas",
+    "Stengel-Eskin"
+   ],
+   "et_al": false,
+   "orgs": [],
+   "date_first_public": "2026-10-30",
+   "identifiers": {
+    "arxiv": "2611.00314",
+    "doi": null
+   },
+   "urls": {
+    "primary": "https://arxiv.org/abs/2611.00314"
+   },
+   "theme": "ch05",
+   "added": "2026-11-12"
+  },
+  {
+   "id": "inbox-coordination-primitive",
+   "kind": "preprint",
+   "title": "The Inbox as a Coordination Primitive for LLM Agent Societies",
+   "authors": [
+    "Sreedhar",
+    "Yuan",
+    "Chari",
+    "Raskar"
+   ],
+   "et_al": false,
+   "orgs": [],
+   "date_first_public": "2026-10-26",
+   "identifiers": {
+    "arxiv": "2610.36264",
+    "doi": null
+   },
+   "urls": {
+    "primary": "https://arxiv.org/abs/2610.36264"
+   },
+   "theme": "ch06",
+   "added": "2026-11-12"
+  },
+  {
+   "id": "network-topology-consensus",
+   "kind": "preprint",
+   "title": "Network topology shapes consensus and vulnerability in LLM populations",
+   "authors": [
+    "Passaro",
+    "Flint",
+    "Pastor-Satorras",
+    "Baronchelli",
+    "Aiello"
+   ],
+   "et_al": false,
+   "orgs": [],
+   "date_first_public": "2026-10-22",
+   "identifiers": {
+    "arxiv": "2610.31165",
+    "doi": null
+   },
+   "urls": {
+    "primary": "https://arxiv.org/abs/2610.31165"
+   },
+   "theme": "ch09",
+   "added": "2026-11-12"
+  },
+  {
+   "id": "believed-but-not-said",
+   "kind": "preprint",
+   "title": "Believed but Not Said: Measuring Hidden Belief Collapse in Multi-Agent LLM Discussions",
+   "authors": [
+    "Huang",
+    "Zou"
+   ],
+   "et_al": true,
+   "orgs": [],
+   "date_first_public": "2026-10-15",
+   "identifiers": {
+    "arxiv": "2610.22138",
+    "doi": null
+   },
+   "urls": {
+    "primary": "https://arxiv.org/abs/2610.22138"
+   },
+   "theme": "ch09",
+   "added": "2026-11-12"
+  },
+  {
+   "id": "collaboration-serving-users",
+   "kind": "preprint",
+   "title": "Does Multi-Agent Collaboration Pay When Agents Serve Users?",
+   "authors": [
+    "Yang",
+    "Shi"
+   ],
+   "et_al": false,
+   "orgs": [],
+   "date_first_public": "2026-10-20",
+   "identifiers": {
+    "arxiv": "2610.27655",
+    "doi": null
+   },
+   "urls": {
+    "primary": "https://arxiv.org/abs/2610.27655"
+   },
+   "theme": "ch04",
+   "added": "2026-11-12"
+  },
+  {
+   "id": "multi-agent-loss-of-control",
+   "kind": "preprint",
+   "title": "Red-Teaming Multi-Agent Attacks for Loss-of-Control Risks",
+   "authors": [
+    "Kitaoka",
+    "Pham",
+    "Giudice",
+    "Merizian"
+   ],
+   "et_al": false,
+   "orgs": [],
+   "date_first_public": "2026-10-16",
+   "identifiers": {
+    "arxiv": "2610.24052",
+    "doi": null
+   },
+   "urls": {
+    "primary": "https://arxiv.org/abs/2610.24052"
+   },
+   "theme": "ch07",
+   "added": "2026-11-12"
+  }
+ ],
+ "map": {
+  "point": "One point per primary source: a catalogue record whose primary URL equals the primary URL of the bundle card it belongs to is drawn once, as that bundle card, which carries the date.",
+  "merged": [
+   {
+    "record": "ai-village-how-it-works",
+    "into": "ai-village",
+    "url": "https://theaidigest.org/village/blog/how-the-ai-village-works"
+   },
+   {
+    "record": "anthropic-multi-agent-research-system",
+    "into": "anthropic-multi-agent-guidance",
+    "url": "https://www.anthropic.com/engineering/multi-agent-research-system"
+   },
+   {
+    "record": "cognition-dont-build-multi-agents",
+    "into": "cognition-multi-agents",
+    "url": "https://cognition.com/blog/dont-build-multi-agents"
+   },
+   {
+    "record": "cursor-scaling-long-running",
+    "into": "cursor-scaling",
+    "url": "https://cursor.com/blog/scaling-agents"
+   },
+   {
+    "record": "opus46-launch-post",
+    "into": "opus46-launch-cluster",
+    "url": "https://www.anthropic.com/news/claude-opus-4-6"
+   },
+   {
+    "record": "sakana-fugu-report",
+    "into": "sakana-conductor-trinity-fugu",
+    "url": "https://arxiv.org/abs/2606.21228"
+   },
+   {
+    "record": "attractor-states-jakkli-post",
+    "into": "attractor-states",
+    "url": "https://www.lesswrong.com/posts/mgjtEHeLgkhZZ3cEx/models-have-some-pretty-funny-attractor-states"
+   },
+   {
+    "record": "hf-openai-technical-report",
+    "into": "hf-incident-case",
+    "url": "https://openai.com/index/hugging-face-incident-and-the-road-ahead/"
+   }
+  ],
+  "theme_overrides": {
+   "aisi-transect": "ch06",
+   "google-deep-review-october": "ch04",
+   "scalemas-substrate": "ch06",
+   "mpt-self-orchestration": "ch04",
+   "coding-team-compute-allocation": "ch04",
+   "persistent-memory-controlled-ablation": "ch06",
+   "cooperation-without-adaptation": "ch08",
+   "moltbook-collective-behavior": "ch10"
+  },
+  "fresh_rule": "Fresh means first public on or after 15 October 2026: a dated record on or after 2026-10-15, or a record dated only to a month from November 2026 on. A record dated only to October 2026 is not marked.",
+  "display_en": {
+   "note": "English display of catalogue fields that the 19 October catalogue holds in Russian; the catalogue itself is unchanged.",
+   "orgs": {
+    "caif-multi-agent-risks": [
+     "Cooperative AI Foundation (lead author); a large author team from many universities and labs, including Google DeepMind"
+    ],
+    "de-nobili-lattice": [
+     "Critiqality, Milan, Italy"
+    ],
+    "loop-back-authority": [
+     "Leiden University (LIACS), Netherlands"
+    ],
+    "prev-uviive-fleet": [
+     "UViiVE Inc; LEAH Labs; VelociTx (St. Paul, MN, USA)"
+    ],
+    "science-agents-go-rogue": [
+     "Science (AAAS), news article"
+    ],
+    "science-invent-own-language": [
+     "Science (AAAS), news article; no affiliation in the metadata"
+    ],
+    "strategic-monoculture": [
+     "Pennsylvania State University (economics and computer science)"
+    ]
+   },
+   "titles": {
+    "science-agents-go-rogue": "AI 'agents' go rogue in realistic simulations (Science news; metadata title: “AI algorithms can become 'agents of chaos'”)"
+   }
+  },
+  "merged_reason": "Each of these constituent records repeats the primary URL of the bundle card it is part of; the bundle card is the dated record on the map, the constituent stays in the catalogue.",
+  "theme_rule": "A record's map theme is the first chapter in its source_pages (a constituent without pages takes its bundle's); the eight records of the 19 October supplement list several chapters, so their theme is set here.",
+  "display": {
+   "note": "Display corrections of catalogue fields for the map, both languages (source audit of 12 November 2026); the 19 October catalogue itself is unchanged.",
+   "worse-together": {
+    "why": "The article names Anthropic Fellows, Anthropic and independent authors; the catalogue's Stanford affiliation is not supported by it. The blog post of 11 November 2026 and the preprint of 30 September 2026 are the same work.",
+    "ru": {
+     "who": "Anthropic Fellows, Anthropic, независимые авторы",
+     "date": "30 сентября 2026; пост 11 ноября"
+    },
+    "en": {
+     "who": "Anthropic Fellows, Anthropic, independent authors",
+     "date": "30 September 2026; blog post 11 November"
+    }
+   },
+   "scalemas-substrate": {
+    "why": "The FAIR (Meta) and Harvard affiliations are not validated against the primary page; authors are shown instead.",
+    "ru": {
+     "who": "Qi, Zhao, Shao и др."
+    },
+    "en": {
+     "who": "Qi, Zhao, Shao et al."
+    }
+   },
+   "openai-peers-unauthorized-access": {
+    "why": "The map places the report by its update; the incident date is shown with it.",
+    "ru": {
+     "date": "отчёт 10 ноября 2026, инцидент 19 июля"
+    },
+    "en": {
+     "date": "report 10 November 2026, incident 19 July"
+    }
+   }
+  }
+ }
+}

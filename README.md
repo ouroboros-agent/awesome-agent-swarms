@@ -9,6 +9,14 @@
 
 Whether a swarm helps depends on what the comparison held fixed. In the Claude Opus 5.5 system card, a team of five reaches the same ProgramBench level 2.7 times faster than one agent and spends about 1.9 times the tokens (the survey's estimate from the card's chart). At equal total output tokens, OpenAI's published GPT-5.6 Sol curves put one agent ahead of a swarm of 4 on three benchmarks, and a swarm of 16 on the two where that team size was measured. The survey keeps such settings apart and gives every result with its scale, its comparison condition and its evidence class.
 
+## The Field edition, 12 November 2026
+
+The website now opens with *Field*: one scrolling page per language on how communication, scale, memory and collective errors change the behaviour of LLM swarms. It starts with one case in four schemes (agent 3 has found a solution that agents 1 and 5 need: independently, through a coordinator, through shared memory, by a local rule) and continues through scale, the Agensh curve and its token bill, self-organization, memory, contagious beliefs and a map of 306 sources, ending with the comparisons this review still misses. One field of 1,024 drawn agents carries every scene; the drawings explain mechanisms and are not simulation results. Every result on the page names its source, with a link.
+
+- **Read:** `site/en/index.html` and `site/ru/index.html` in the repository layout (a language link keeps your place), or the self-contained files [`delivery/Swarm-Field-EN.html`](delivery/Swarm-Field-EN.html) and [`delivery/Swarm-Field-RU.html`](delivery/Swarm-Field-RU.html), each of which opens on its own from any folder, without a server or network.
+- **What the map counts:** 306 sources, one point per primary link. They are the 288 catalogue records of 19 October, 8 of which repeat the link of the bundle card they belong to and are drawn once, and 26 records added on 12 November ([list in the catalogue](CATALOG.md), [data](updates/2026-11-12/map-catalogue.json), [BibTeX](updates/2026-11-12/references.bib)). They are not 314 distinct research papers: the catalogue also holds lab posts, incident reports, news and datasets.
+- **What it does not change:** the scale figures on the page (99 of 153 works state how many agents run at once, median 7) come from the analytic corpus of 3 October 2026, as do the survey's charts; the PDF is the 3 October edition. The detailed survey of 19 October is kept, unchanged, at `site/en/survey-2026-10-19.html` and `site/ru/survey-2026-10-19.html`, and its former page addresses forward there.
+
 ## What changed on 19 October 2026
 
 A targeted search after the cut-off added five new preprints, two engineering reports (Google Research's Deep Review and the UK AI Security Institute's Transect) and a February paper on Moltbook, read in its October revision; two records were updated and one identifier corrected. The new works are discussed in Chapters 4–6, 9 and 10 and carry the label "added 19 October 2026". Two conclusions change:
@@ -25,12 +33,13 @@ This was a targeted update, not a systematic review or a replication of experime
 
 ## Where to read
 
-- **Website** in `site/`: the whole survey as one continuous page in English (`site/en/index.html`) and Russian (`site/ru/index.html`), in a dark design where every agent is a context window drawn as a tower of blocks (a light theme is one switch away). It runs from the prologue, six agents and three ways to connect them, through three parts and eleven chapters to the findings, the open questions and an atlas of all 288 works and resources with filters, then a glossary, sources and notes on method. Native scenes and charts explain the mechanisms and the corpus along the way. The files are static: open `site/index.html` in a browser, or run `python3 -m http.server -d site` and go to `http://localhost:8000`.
+- **Website** in `site/`: the Field edition of 12 November 2026 (`site/en/index.html`, `site/ru/index.html`), described above; standalone copies in `delivery/`.
+- **Detailed survey** of 19 October 2026 in `site/`: the whole survey as one continuous page in English (`site/en/survey-2026-10-19.html`) and Russian (`site/ru/survey-2026-10-19.html`), in a dark design where every agent is a context window drawn as a tower of blocks (a light theme is one switch away). It runs from the prologue, six agents and three ways to connect them, through three parts and eleven chapters to the findings, the open questions and an atlas of all 288 works and resources with filters, then a glossary, sources and notes on method. Native scenes and charts explain the mechanisms and the corpus along the way. The files are static: open `site/index.html` in a browser, or run `python3 -m http.server -d site` and go to `http://localhost:8000`.
 - **Technical report:** [PDF](paper/swarm-dynamics.pdf) in ACL format, with its [LaTeX source](paper/main.tex), a [source archive](paper/swarm-dynamics-source.zip) and [build notes](paper/BUILD.md). It is the edition of 3 October 2026 and does not include the supplement.
-- **Catalogue:** [CATALOG.md](CATALOG.md) lists every cited work by theme, one line each, with the 19 October additions marked ([in Russian](CATALOG.ru.md)).
-- **Data:** the [registry of works](data/works.json) as of 3 October, its [BibTeX](data/bib/works.bib) and [figure provenance](data/figures.json); the supplement's [registry delta](updates/2026-10-19/registry-delta.json) and [catalogue of 288 records](updates/2026-10-19/catalogue.json); the catalogue's current [BibTeX](site/data/references-2026-10-19.bib), with the corrected identifier.
+- **Catalogue:** [CATALOG.md](CATALOG.md) lists every cited work by theme, one line each, with the 19 October additions marked and the 26 records added for the Field map in their own section ([in Russian](CATALOG.ru.md)).
+- **Data:** the [registry of works](data/works.json) as of 3 October, its [BibTeX](data/bib/works.bib) and [figure provenance](data/figures.json); the supplement's [registry delta](updates/2026-10-19/registry-delta.json) and [catalogue of 288 records](updates/2026-10-19/catalogue.json); the catalogue's [BibTeX](site/data/references-2026-10-19.bib) of 19 October, with the corrected identifier; the Field map's [additions](updates/2026-11-12/map-catalogue.json) with their [BibTeX](updates/2026-11-12/references.bib).
 
-The atlas lists 288 works and resources (catalogue as of 19 October); the survey’s charts use the 153 works of the analytic corpus, with detailed metadata, as of 3 October.
+The survey's atlas lists 288 works and resources (catalogue as of 19 October) and the Field map 306 sources (12 November); the survey’s charts use the 153 works of the analytic corpus, with detailed metadata, as of 3 October.
 
 ## How big real swarms are
 
@@ -101,12 +110,14 @@ Anton Razzhigaev set the scope of the survey, made the editorial decisions and i
 ```sh
 python3 -m venv .venv && .venv/bin/pip install -r requirements.txt
 .venv/bin/python -m playwright install chromium webkit
-make site catalog check          # site/ and illustrations → CATALOG, RIGHTS, README → content checks
+make site catalog check          # site/: Field pages, the dated survey, former addresses → CATALOG, RIGHTS, README → content and Field checks
+make field                       # delivery/Swarm-Field-EN.html and -RU.html: the self-contained Field files (byte-identical on every rebuild)
+make qa-field                    # Field from file:// in Chromium and WebKit: desktop and phone, no JavaScript, reduced motion, map, keyboard, language link
 make coverage                    # every card, figure, link and heading is on the single page (PREV=<previous site/> compares editions)
 make charts                      # optional: redraws the survey's own Chapter 1 charts from data; the committed PNGs are the published ones
 make qa qa-features              # the page, figures, scenes and interactions; desktop/phone, JavaScript/no-JavaScript
 ```
 
-[content/FORMAT.md](content/FORMAT.md) describes the text format, the order of the single page and how former page addresses map onto it; `scripts/check_content.py` checks that the English and Russian texts match block for block.
+The Field edition is built from one shared page style and renderer (`field/field.css`, `field/field.js`) and one text file per language (`field/en.json`, `field/ru.json`) by `scripts/build_field.py`; `scripts/check_field.py` compares the two languages' text, sources and numbers and checks the map against the catalogue. [content/FORMAT.md](content/FORMAT.md) describes the survey's text format, the order of its single page and how former page addresses map onto it; `scripts/check_content.py` checks that the English and Russian texts match block for block.
 
 [Русская версия](README.ru.md)
