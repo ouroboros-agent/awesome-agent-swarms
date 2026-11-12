@@ -12,7 +12,11 @@
     "Zou"
    ],
    "et_al": true,
-   "orgs": [],
+   "orgs": [
+    "Shanghai Academy of AI for Science",
+    "Fudan University",
+    "Yunnan University"
+   ],
    "date_first_public": "2026-09-28",
    "identifiers": {
     "arxiv": "2609.34136",
@@ -22,7 +26,8 @@
     "primary": "https://arxiv.org/abs/2609.34136"
    },
    "theme": "ch05",
-   "added": "2026-11-07"
+   "added": "2026-11-07",
+   "org_source": "PDF title page, read 13 November 2026"
   },
   {
    "id": "masbench-2026",
@@ -76,7 +81,10 @@
     "Liu"
    ],
    "et_al": false,
-   "orgs": [],
+   "orgs": [
+    "Institute of Automation (CAS)",
+    "University of Chinese Academy of Sciences"
+   ],
    "date_first_public": "2026-10",
    "identifiers": {
     "arxiv": null,
@@ -87,7 +95,8 @@
    },
    "theme": "ch06",
    "added": "2026-11-07",
-   "venue_note": "EMNLP 2026"
+   "venue_note": "EMNLP 2026",
+   "org_source": "PDF title page, read 13 November 2026"
   },
   {
    "id": "google-science-of-scaling-agents",
@@ -143,7 +152,10 @@
     "Jaques"
    ],
    "et_al": true,
-   "orgs": [],
+   "orgs": [
+    "University of Washington",
+    "Allen Institute for AI"
+   ],
    "date_first_public": "2026-11-05",
    "identifiers": {
     "arxiv": "2611.08615",
@@ -153,7 +165,8 @@
     "primary": "https://arxiv.org/abs/2611.08615"
    },
    "theme": "ch05",
-   "added": "2026-11-12"
+   "added": "2026-11-12",
+   "org_source": "PDF title page, read 13 November 2026"
   },
   {
    "id": "swarmevolve",
@@ -164,7 +177,9 @@
     "Karniadakis"
    ],
    "et_al": false,
-   "orgs": [],
+   "orgs": [
+    "Brown University"
+   ],
    "date_first_public": "2026-11-05",
    "identifiers": {
     "arxiv": "2611.08483",
@@ -174,7 +189,8 @@
     "primary": "https://arxiv.org/abs/2611.08483"
    },
    "theme": "ch11",
-   "added": "2026-11-12"
+   "added": "2026-11-12",
+   "org_source": "PDF title page, read 13 November 2026"
   },
   {
    "id": "herding-runaway-cascades",
@@ -187,7 +203,10 @@
     "Macy"
    ],
    "et_al": false,
-   "orgs": [],
+   "orgs": [
+    "Cornell University",
+    "Stanford University"
+   ],
    "date_first_public": "2026-10-22",
    "identifiers": {
     "arxiv": "2610.30769",
@@ -197,7 +216,8 @@
     "primary": "https://arxiv.org/abs/2610.30769"
    },
    "theme": "ch09",
-   "added": "2026-11-12"
+   "added": "2026-11-12",
+   "org_source": "PDF title page, read 13 November 2026"
   },
   {
    "id": "inter-agent-influence",
@@ -208,7 +228,15 @@
     "Hammond"
    ],
    "et_al": true,
-   "orgs": [],
+   "orgs": [
+    "Cooperative AI Foundation",
+    "University of Oxford",
+    "Allelo",
+    "Uppsala University",
+    "UK AI Security Institute",
+    "AVERI",
+    "University College London"
+   ],
    "date_first_public": "2026-11-03",
    "identifiers": {
     "arxiv": "2611.04556",
@@ -219,7 +247,8 @@
    },
    "theme": "ch07",
    "added": "2026-11-12",
-   "venue_note": "NeurIPS 2026"
+   "venue_note": "NeurIPS 2026",
+   "org_source": "PDF title page, read 13 November 2026"
   },
   {
    "id": "gemini4-argon-minecraft",
@@ -231,7 +260,9 @@
     "Raileanu"
    ],
    "et_al": false,
-   "orgs": [],
+   "orgs": [
+    "Google DeepMind"
+   ],
    "date_first_public": "2026-10-15",
    "identifiers": {
     "arxiv": "2610.22319",
@@ -241,7 +272,8 @@
     "primary": "https://arxiv.org/abs/2610.22319"
    },
    "theme": "ch06",
-   "added": "2026-11-12"
+   "added": "2026-11-12",
+   "org_source": "PDF title page, read 13 November 2026"
   },
   {
    "id": "steering-information-networks",
@@ -252,7 +284,9 @@
     "Heydari"
    ],
    "et_al": false,
-   "orgs": [],
+   "orgs": [
+    "Northeastern University"
+   ],
    "date_first_public": "2026-11-09",
    "identifiers": {
     "arxiv": "2611.11714",
@@ -262,7 +296,8 @@
     "primary": "https://arxiv.org/abs/2611.11714"
    },
    "theme": "ch10",
-   "added": "2026-11-12"
+   "added": "2026-11-12",
+   "org_source": "PDF title page, read 13 November 2026"
   },
   {
    "id": "collusion-j-space",
@@ -273,7 +308,10 @@
     "Bettineschi"
    ],
    "et_al": false,
-   "orgs": [],
+   "orgs": [
+    "London School of Economics",
+    "EPFL"
+   ],
    "date_first_public": "2026-11-01",
    "identifiers": {
     "arxiv": "2611.02153",
@@ -283,7 +321,8 @@
     "primary": "https://arxiv.org/abs/2611.02153"
    },
    "theme": "ch07",
-   "added": "2026-11-12"
+   "added": "2026-11-12",
+   "org_source": "PDF title page, read 13 November 2026"
   },
   {
    "id": "behavioral-probes-information-flow",
@@ -405,7 +444,12 @@
     "Liu"
    ],
    "et_al": false,
-   "orgs": [],
+   "orgs": [
+    "Duke University",
+    "Modal Labs",
+    "Princeton University",
+    "New York University"
+   ],
    "date_first_public": "2026-11-06",
    "identifiers": {
     "arxiv": "2611.09798",
@@ -415,7 +459,8 @@
     "primary": "https://arxiv.org/abs/2611.09798"
    },
    "theme": "ch04",
-   "added": "2026-11-12"
+   "added": "2026-11-12",
+   "org_source": "PDF title page, read 13 November 2026"
   },
   {
    "id": "world-of-swecraft",
@@ -450,7 +495,10 @@
     "Stengel-Eskin"
    ],
    "et_al": false,
-   "orgs": [],
+   "orgs": [
+    "UT Austin",
+    "NVIDIA"
+   ],
    "date_first_public": "2026-10-30",
    "identifiers": {
     "arxiv": "2611.00314",
@@ -460,7 +508,8 @@
     "primary": "https://arxiv.org/abs/2611.00314"
    },
    "theme": "ch05",
-   "added": "2026-11-12"
+   "added": "2026-11-12",
+   "org_source": "PDF title page, read 13 November 2026"
   },
   {
    "id": "inbox-coordination-primitive",
@@ -662,25 +711,24 @@
   "merged_reason": "Each of these constituent records repeats the primary URL of the bundle card it is part of; the bundle card is the dated record on the map, the constituent stays in the catalogue.",
   "theme_rule": "A record's map theme is the first chapter in its source_pages (a constituent without pages takes its bundle's); the eight records of the 19 October supplement list several chapters, so their theme is set here.",
   "display": {
-   "note": "Display corrections of catalogue fields for the map, both languages (source audit of 12 November 2026); the 19 October catalogue itself is unchanged.",
+   "note": "Display corrections of catalogue fields for the map and the scale, both languages (source audit of 12 November and display audit of 13 November 2026); the 19 October catalogue itself is unchanged. 'title'/'who' are language-neutral, 'ru'/'en' per language, 'date_iso' places the point and was read from the named primary metadata.",
    "worse-together": {
-    "why": "The article names Anthropic Fellows, Anthropic and independent authors; the catalogue's Stanford affiliation is not supported by it. The blog post of 11 November 2026 and the preprint of 30 September 2026 are the same work.",
+    "why": "The preprint's byline (arXiv 2610.00583v1) lists Independent Researcher, Stanford University and Anthropic, with the first two authors in the Anthropic Fellows Program; the blog post of 11 November 2026 names Anthropic Fellows, independent authors and Anthropic. Same work.",
+    "who": "Anthropic Fellows, Stanford University, Anthropic",
     "ru": {
-     "who": "Anthropic Fellows, Anthropic, независимые авторы",
      "date": "30 сентября 2026; пост 11 ноября"
     },
     "en": {
-     "who": "Anthropic Fellows, Anthropic, independent authors",
      "date": "30 September 2026; blog post 11 November"
     }
    },
    "scalemas-substrate": {
-    "why": "The FAIR (Meta) and Harvard affiliations are not validated against the primary page; authors are shown instead.",
+    "why": "Affiliations from the title page of arXiv 2610.16120v1: FAIR at Meta, Meta AI, Harvard, Kempner Institute.",
     "ru": {
-     "who": "Qi, Zhao, Shao и др."
+     "who": "FAIR at Meta, Meta AI, Harvard и др."
     },
     "en": {
-     "who": "Qi, Zhao, Shao et al."
+     "who": "FAIR at Meta, Meta AI, Harvard and others"
     }
    },
    "openai-peers-unauthorized-access": {
@@ -691,7 +739,351 @@
     "en": {
      "date": "report 10 November 2026, incident 19 July"
     }
+   },
+   "ord-swarm-scaling": {
+    "why": "The post states no affiliation (FACT-CORRECTIONS 3): author and platform only.",
+    "who": "Toby Ord · LessWrong"
+   },
+   "vidal-models-identify-as-swarm": {
+    "why": "No affiliation stated: author and platform.",
+    "who": "Julius Vidal · LessWrong"
+   },
+   "bradshaw-swarm-exponent": {
+    "why": "No affiliation stated: author and platform.",
+    "who": "Julian Bradshaw · LessWrong"
+   },
+   "parasitic-ai": {
+    "why": "No affiliation stated: author and platform.",
+    "who": "Adele Lopez · LessWrong"
+   },
+   "dwarkesh-agent-civilizations": {
+    "why": "Author and platform.",
+    "who": "Dwarkesh Patel · Substack"
+   },
+   "gas-town": {
+    "why": "Author and his site.",
+    "who": "Steve Yegge · yegge.ai"
+   },
+   "rl-orchestration-survey": {
+    "why": "A single independent author: author and platform.",
+    "who": "Chenchen Zhang · arXiv"
+   },
+   "subagents-comply-more": {
+    "why": "Author and platform.",
+    "who": "Jacob Drori · LessWrong"
+   },
+   "slocum-hf-reproduction": {
+    "why": "Five authors, the first named.",
+    "ru": {
+     "who": "Slocum и соавторы · arXiv"
+    },
+    "en": {
+     "who": "Slocum et al. · arXiv"
+    }
+   },
+   "caif-multi-agent-risks": {
+    "why": "The organisations without the catalogue's note on authorship.",
+    "ru": {
+     "who": "Cooperative AI Foundation, Google DeepMind и др."
+    },
+    "en": {
+     "who": "Cooperative AI Foundation, Google DeepMind and others"
+    }
+   },
+   "willis-hundreds-of-agents": {
+    "why": "Organisations without the catalogue's names in brackets.",
+    "who": "King's College London, Google DeepMind, Alan Turing Institute"
+   },
+   "strategic-monoculture": {
+    "why": "Organisation without the department note.",
+    "who": "Pennsylvania State University"
+   },
+   "loop-back-authority": {
+    "why": "Organisation without the country note.",
+    "who": "Leiden University"
+   },
+   "prev-uviive-fleet": {
+    "why": "Organisations without the address.",
+    "who": "UViiVE Inc, LEAH Labs, VelociTx"
+   },
+   "science-agents-go-rogue": {
+    "why": "The news article's own headline and its venue.",
+    "title": "AI ‘agents’ go rogue in realistic simulations",
+    "ru": {
+     "who": "Science · новости"
+    },
+    "en": {
+     "who": "Science · news"
+    }
+   },
+   "science-invent-own-language": {
+    "why": "Author from Crossref (10.1126/science.aem6544).",
+    "ru": {
+     "who": "Tom Howarth · Science, новости"
+    },
+    "en": {
+     "who": "Tom Howarth · Science, news"
+    }
+   },
+   "ai-swarm-dynamics-hackathon": {
+    "why": "The page's own title and organisers.",
+    "title": "AI Swarm Dynamics Hackathon",
+    "who": "AI Village (AI Digest), Grove Research"
+   },
+   "muse-spark": {
+    "why": "The post's own title.",
+    "title": "Introducing Muse Spark: Meta's Most Powerful Model Yet",
+    "who": "Meta Superintelligence Labs"
+   },
+   "hf-openai-technical-report": {
+    "why": "The page's own title (og:title).",
+    "title": "The Hugging Face incident and the road ahead"
+   },
+   "aisi-incident-july-2026": {
+    "why": "The blog post's own title.",
+    "title": "Incident Report: unsanctioned agent behaviour during cyber testing"
+   },
+   "gpt6-astra-card-a2a": {
+    "why": "The document's own title; the section is cited in the survey.",
+    "title": "GPT-6 Astra System Card"
+   },
+   "opus55-card": {
+    "why": "The document's own title.",
+    "title": "System Card: Claude Opus 5.5"
+   },
+   "opus5-card-multiagent": {
+    "why": "The document's own title.",
+    "title": "System Card: Claude Opus 5"
+   },
+   "fable51-card-multiagent": {
+    "why": "The document's own title.",
+    "title": "System Card: Claude Fable 5.1 & Claude Mythos 5.1"
+   },
+   "mythos-preview-self-interactions": {
+    "why": "The document's own title.",
+    "title": "System Card: Claude Mythos Preview"
+   },
+   "kim-scaling-agent-systems": {
+    "why": "The journal title; the preprint was 'Towards a Science of Scaling Agent Systems'.",
+    "title": "Capable language models can outgrow the benefits of collaboration"
+   },
+   "riemann-zeta-swarm": {
+    "why": "The post's own title.",
+    "title": "Learning more about Claude's mathematical capabilities"
+   },
+   "crypto-weaknesses": {
+    "why": "The post's own title.",
+    "title": "Discovering cryptographic weaknesses with Claude"
+   },
+   "kimi-agent-swarm": {
+    "why": "The paper's own title.",
+    "title": "Kimi K2.5: Visual Agentic Intelligence"
+   },
+   "cognition-dont-build-multi-agents": {
+    "why": "The post's own title.",
+    "title": "Don't Build Multi-Agents"
+   },
+   "anthropic-art-enzymes": {
+    "why": "The announcement's own title.",
+    "title": "Claude discovers a novel enzyme system with CRISPR-like repeats"
+   },
+   "fermat-last-theorem": {
+    "why": "The post's own title.",
+    "title": "Formalizing Fermat's Last Theorem"
+   },
+   "ai-village-dataset": {
+    "why": "The dataset's publisher.",
+    "title": "AI Village dataset",
+    "who": "AI Digest · Hugging Face",
+    "no_date": "The Hugging Face dataset page states no release date."
+   },
+   "x-ai-news-grok-4": {
+    "why": "Page title and datePublished of x.ai/news/grok-4.",
+    "title": "Grok 4",
+    "who": "xAI",
+    "date_iso": "2025-07-09"
+   },
+   "huggingface-co-blog-security-incident-july-2026": {
+    "why": "Page title and datePublished.",
+    "title": "Security incident disclosure — July 2026",
+    "who": "Hugging Face",
+    "date_iso": "2026-07-16"
+   },
+   "openai-com-index-hugging-face-model-evaluation-security-incident": {
+    "why": "Page title and the date in its header.",
+    "title": "OpenAI and Hugging Face partner to address security incident during model evaluation",
+    "who": "OpenAI",
+    "date_iso": "2026-07-21"
+   },
+   "oag-ca-gov-news-press-releases-part-ongoing-investigation-attorney-gen": {
+    "why": "Press release title and article:published_time (30 September 2026, Pacific time).",
+    "title": "As Part of Ongoing Investigation, Attorney General Bonta Serves Investigative Subpoena on OpenAI",
+    "ru": {
+     "who": "Генеральный прокурор Калифорнии"
+    },
+    "en": {
+     "who": "California Attorney General"
+    },
+    "date_iso": "2026-09-30"
+   },
+   "fluidic-torqueenabled-object-manipulation": {
+    "why": "Crossref 10.1126/sciadv.aea9947: affiliations and issue date.",
+    "ru": {
+     "who": "University of Michigan, Max Planck Institute for Intelligent Systems, Cornell University и др."
+    },
+    "en": {
+     "who": "University of Michigan, Max Planck Institute for Intelligent Systems, Cornell University and others"
+    },
+    "date_iso": "2026-02-27"
+   },
+   "bio-inspired-decision-making": {
+    "why": "Crossref 10.1038/s41467-026-76408-4: authors and online date.",
+    "ru": {
+     "who": "Zakir и соавторы · Nature Communications"
+    },
+    "en": {
+     "who": "Zakir et al. · Nature Communications"
+    },
+    "date_iso": "2026-08-14"
+   },
+   "policysim-based-social-simulation": {
+    "why": "Crossref 10.1145/3774904.3792555: affiliations and online date.",
+    "ru": {
+     "who": "Zhejiang University, Fudan University, HKUST и др."
+    },
+    "en": {
+     "who": "Zhejiang University, Fudan University, HKUST and others"
+    },
+    "date_iso": "2026-04-12"
+   },
+   "ai-village-longitudinal": {
+    "why": "Zenodo record 23090815: creator and publication date.",
+    "ru": {
+     "who": "агент AI Village (Claude Fable 5.1) · Zenodo"
+    },
+    "en": {
+     "who": "an AI Village agent (Claude Fable 5.1) · Zenodo"
+    },
+    "date_iso": "2026-10-01"
+   },
+   "agentsociety": {
+    "why": "Crossref 10.18653/v1/2025.acl-industry.94: authors and year.",
+    "ru": {
+     "who": "Zhang и соавторы · ACL 2025"
+    },
+    "en": {
+     "who": "Zhang et al. · ACL 2025"
+    },
+    "date_iso": "2025"
+   },
+   "ashery-conventions": {
+    "why": "Crossref 10.1126/sciadv.adu9368: affiliations and issue date.",
+    "who": "City St George’s, University of London; IT University of Copenhagen; Alan Turing Institute",
+    "date_iso": "2025-05-16"
+   },
+   "gasim": {
+    "why": "Crossref 10.18653/v1/2026.acl-long.569: authors and year.",
+    "ru": {
+     "who": "Zhou и соавторы · ACL 2026"
+    },
+    "en": {
+     "who": "Zhou et al. · ACL 2026"
+    },
+    "date_iso": "2026"
+   },
+   "diverse-minds-divided-networks": {
+    "why": "arXiv API for 2609.12444: full title, author, first version.",
+    "title": "Diverse Minds, Divided Networks? Personality Composition, Polarization, and Collective Intelligence in LLM-Based Social Simulations",
+    "who": "Raad Bin Tareaf · arXiv",
+    "date_iso": "2026-09-11"
+   },
+   "tanaka-memetic-drift": {
+    "why": "arXiv API for 2603.24676: author and first version.",
+    "who": "Hidenori Tanaka · arXiv",
+    "date_iso": "2026-03-25"
+   },
+   "cognition-multi-agents-working": {
+    "why": "Post metadata: author and datePublished.",
+    "who": "Walden Yan · Cognition",
+    "date_iso": "2026-04-22"
+   },
+   "cursor-self-driving": {
+    "why": "Post metadata: author and datePublished.",
+    "who": "Wilson Lin · Cursor",
+    "date_iso": "2026-02-05"
+   },
+   "sakana-conductor": {
+    "why": "Camera-ready arXiv 2512.04388 (v1 4 December 2025): Sakana AI, ICLR 2026.",
+    "who": "Sakana AI · ICLR 2026",
+    "date_iso": "2025-12-04"
+   },
+   "sakana-trinity": {
+    "why": "The Sakana bundle card names TRINITY (ICLR 2026); OpenReview could not be read (bot challenge), so no date.",
+    "who": "Sakana AI · ICLR 2026",
+    "no_date": "OpenReview could not be read (bot challenge) and no arXiv version was found."
+   },
+   "anthropic-multi-agent-guidance": {
+    "why": "The post's own title.",
+    "title": "How we built our multi-agent research system"
+   },
+   "cursor-scaling": {
+    "why": "The post's own title (the first of the series).",
+    "title": "Scaling long-running autonomous coding",
+    "who": "Cursor"
+   },
+   "sakana-conductor-trinity-fugu": {
+    "why": "The map point is the Sakana Fugu Technical Report (arXiv 2606.21228, v1 19 June 2026); Conductor and TRINITY have their own points.",
+    "title": "Sakana Fugu Technical Report",
+    "who": "Sakana AI, University of Michigan, Institute of Science Tokyo",
+    "date_iso": "2026-06-19"
+   },
+   "opus46-launch-cluster": {
+    "why": "The post's own title.",
+    "title": "Claude Opus 4.6"
+   },
+   "attractor-states": {
+    "why": "The map point is the LessWrong post; its own title and authors (the combined card's other parts are the Claude Opus 4 system card and arXiv 2606.30571).",
+    "title": "models have some pretty funny attractor states",
+    "ru": {
+     "who": "Jakkli и соавторы · LessWrong"
+    },
+    "en": {
+     "who": "Jakkli et al. · LessWrong"
+    }
+   },
+   "ai-village": {
+    "why": "The map point is the AI Village explainer; its own title.",
+    "title": "How the AI Village works",
+    "who": "AI Digest, Sage"
+   },
+   "sakana-ab-mcts": {
+    "why": "The paper's own title.",
+    "title": "Wider or Deeper? Scaling LLM Inference-Time Compute with Adaptive Branching Tree Search",
+    "who": "Sakana AI"
+   },
+   "openai-misalignment-reports": {
+    "why": "The index page's own name; the catalogue line listed the reports it holds.",
+    "title": "Misalignment reports",
+    "who": "OpenAI Alignment"
    }
-  }
+  },
+  "scale_counts": {
+   "agensh-1024": {
+    "n": 1024,
+    "why": "The paper's team size. The registry's 1,020 was the peak of active agents in the authors' replay data, which the paper does not state; thresholds and median are unchanged."
+   }
+  },
+  "scale_landmarks": [
+   {
+    "record": "anthropic-fable-team-scaling",
+    "n": 1000,
+    "why": "Labelled on the scale; outside the 3 October sample."
+   },
+   {
+    "record": "yc-agents-in-games",
+    "n": 50,
+    "why": "Labelled on the scale; outside the 3 October sample."
+   }
+  ]
  }
 }

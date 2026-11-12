@@ -100,7 +100,7 @@ def check_languages():
     ok(not bad, f"ru/en: the same numbers in all {len(pairs)} steps, source lines and canvas label groups", bad[:6])
     cyr = [(p, s[:80]) for p, s in walk(EN) if CYR.search(s) and p != ".site.lang_title"]
     ok(not cyr, "en content: no Cyrillic except the Russian name of the link to the Russian page", cyr[:8])
-    lat = [p for p, s in walk(RU["labels"]) if not CYR.search(s) and re.search(r"[a-z]{3}", s) and not re.search(r"(ScaleMAS|COLLABMEM|Moltbook|Agensh|Anthropic|OpenAI|Avalon|ParallACT|Mind Viruses|Music Lab|Minecraft|Swarm Scaling|Claude|GPT|Gemini|NARCBench|pull request|sharing|access|routing|provenance|conflict|retention|Sonnet|DeepMind|Y Combinator|YC|Microsoft|s³)", s)]
+    lat = [p for p, s in walk(RU["labels"]) if not CYR.search(s) and re.search(r"[a-z]{3}", s) and not re.search(r"(ScaleMAS|COLLABMEM|Moltbook|Agensh|Anthropic|OpenAI|Avalon|ParallACT|Mind Viruses|Music Lab|Minecraft|Swarm Scaling|Claude|GPT|Gemini|NARCBench|pull request|sharing|access|routing|provenance|conflict|retention|Sonnet|DeepMind|Y Combinator|YC|Microsoft|s³|Debate or Vote|Navier|J-Space|online SFT|Wiz|Wisconsin)", s)]
     ok(not lat, "ru labels: no untranslated English interface words", lat[:8])
     st1 = RU["scenes"][0]["steps"][1]["p"][0], EN["scenes"][0]["steps"][1]["p"][0]
     ok("3&nbsp;октября" in st1[0] and "3&nbsp;October" in st1[1] and "99" in st1[0] and "153" in st1[0],
@@ -136,13 +136,54 @@ def check_map():
     cyr = [(r[0][:50], r[1][:50], r[2]) for r in en if CYR.search(" ".join(map(str, r[:3])))]
     ok(not cyr, "map (en): titles, organisations and dates without Cyrillic", cyr[:6])
     fr = sum(r[6] for r in ru)
-    ok(all((r[6] == 1) == F.is_fresh(next(x for x in recs if x["urls"]["primary"] == r[5]).get("date_first_public")) for r in ru),
-       f"map: {fr} fresh points, each first public on or after 15 October 2026 by its catalogue date")
+    ok(all((r[6] == 1) == F.is_fresh(F.effective_date(next(x for x in recs if x["urls"]["primary"] == r[5]), rules)) for r in ru),
+       f"map: {fr} fresh points, each first public on or after 15 October 2026 by its catalogue date (or its checked display date)")
     sc = F.scale_rows("ru")
     ok(len(sc) == 99, "scale: 99 works of the 3 October analytic corpus with a simultaneous agent count (median 7; 42/15/7/4 asserted in the builder)")
     bib = open(os.path.join(ROOT, "updates", "2026-11-12", "references.bib"), encoding="utf-8").read()
     keys = re.findall(r"^@misc\{([^,]+),", bib, re.M)
     ok(bib == F.bib_additions() and keys == [r["id"] for r in add], f"bibtex: updates/2026-11-12/references.bib has the {len(keys)} additions, as the builder writes them")
+
+
+# Notes of the cataloguing work that must never reach a reader (map and scale tooltips), and a bare address as a title.
+SERVICE = re.compile(r"[Nn]ot stated|[Nn]one stated|no affiliation|metadata|метадан|combined card|HTML title|multi-agent sections|LessWrong user|"
+                     r"§|новостная статья|news article|not an institutional|\(blog\)|preprint title|also on |\(\d+ (?:автор|author)|организация\)|"
+                     r"ведущий автор|lead author|\(Leibo\)|personal site|Independent author")
+BARE = re.compile(r"^(?:https?://)?[a-z0-9-]+(?:\.[a-z0-9-]+)+/\S*$")
+
+
+def check_display():
+    """What a reader sees on hovering a dot (map, scale, labelled scale points): a title, a byline and (map) a date,
+    with no cataloguing notes; FACT-CORRECTIONS.md held in the data and in the text."""
+    recs, rules = F.catalogue_records()
+    by_url = {r["urls"]["primary"]: r for r in recs if r["id"] not in {m["record"] for m in rules["merged"]}}
+    for lang in F.LANGS:
+        rows, sc, lm = F.map_rows(lang), F.scale_rows(lang), F.scale_landmarks(lang)
+        items = [("map", r[0], r[1]) for r in rows] + [("scale", r[1], r[2]) for r in sc + lm]
+        bad = [(k, t[:60], w[:60]) for k, t, w in items if not t.strip() or not w.strip() or SERVICE.search(t) or SERVICE.search(w) or BARE.match(t)]
+        ok(not bad, f"{lang} tooltips: {len(items)} titles and bylines, none empty, a bare address or a cataloguing note", bad[:8])
+        nod = [r[0][:60] for r in rows if r[2] == F.NO_DATE[lang] and not (rules["display"].get(by_url[r[5]]["id"]) or {}).get("no_date")]
+        ok(not nod, f"{lang} map: 'no date' only where the source gives none ({sum(r[2] == F.NO_DATE[lang] for r in rows)} points, each with its reason)", nod[:6])
+    # FACT-CORRECTIONS.md, as data
+    RU, EN = F.read_json("field", "ru.json"), F.read_json("field", "en.json")
+    fc = []
+    for lang, C in (("ru", RU), ("en", EN)):
+        rows, sc = F.map_rows(lang), F.scale_rows(lang)
+        ordw = [r[1] for r in rows if "6cb7qd3RSkgnviCpf" in r[5]] + [plain(x.get("rest", "")) for _, x in sources(C) if "6cb7qd3RSkgnviCpf" in x.get("url", "")]
+        fc.append((f"{lang} 3: Swarm Scaling without the uncertain Oxford attribution", ordw and not any("Oxford" in w or "Оксфорд" in w for w in ordw)))
+        wt = [r[1] for r in rows if r[5].endswith("2610.00583")] + [r[2] for r in sc if r[4] == "worse-together"]
+        fc.append((f"{lang} 9: Worse Together credited to the Anthropic Fellows, not the catalogue's bare 'Stanford University, Anthropic'", wt and all("Anthropic Fellows" in w for w in wt)))
+        ag = [r for r in sc if r[4] == "agensh-1024"]
+        fc.append((f"{lang} 1: Agensh on the scale at 1,024 agents, as in its label and text", ag and ag[0][0] == 1024))
+        s2 = " ".join(plain(t) for st in C["scenes"][1]["steps"] for t in texts_of_step(st)).replace("\xa0", " ")
+        fc.append((f"{lang} 1: scene 2 says Agensh did not measure token use", ("не считали" in s2 or "не сравнивали" in s2) if lang == "ru" else "not measured" in s2 or "does not compare" in s2))
+        s5 = C["scenes"][4]["steps"]
+        jt = " ".join(plain(t) for st in s5 for t in texts_of_step(st) if "J-Space" in t or "NARCBench" in t)
+        fc.append((f"{lang} 8: J-Space reported as 86% against 33% of honest counterfactuals", "86" in jt and "33" in jt))
+        inf = " ".join(plain(t) for st in s5 for t in st.get("p", []) if "надзир" in t or "oversee" in t)
+        fc.append((f"{lang} 7: three oversight environments", ("трёх" in inf) if lang == "ru" else "three" in inf))
+    bad = [n for n, c in fc if not c]
+    ok(not bad, f"FACT-CORRECTIONS.md held in data and text ({len(fc)} assertions)", bad)
 
 
 LOADERS = re.compile(r"""<link\b[^>]*\brel=["']?stylesheet|<script\b[^>]*\bsrc=|<img\b|<iframe\b|<video\b|<audio\b|<source\b|@import|\bfetch\s*\(|XMLHttpRequest|\bimport\s*\(|WebSocket|sendBeacon|EventSource""", re.I)
@@ -174,6 +215,7 @@ def check_outputs():
 if __name__ == "__main__":
     check_languages()
     check_map()
+    check_display()
     check_outputs()
     fails = [r for r in RESULTS if not r["ok"]]
     print(f"\n{len(RESULTS) - len(fails)} passed, {len(fails)} failed")

@@ -52,9 +52,18 @@ MONTHS = {
 }
 NO_DATE = {"ru": "дата не указана", "en": "date not given"}
 ORGS_MORE = {"ru": " и др.", "en": " and others"}
-AUTHORS_MORE = {"ru": " и др.", "en": " et al."}
-KIND_ALONE = {"ru": {"preprint": "препринт"}, "en": {"preprint": "preprint"}}
+AUTHORS_MORE = {"ru": " и соавторы", "en": " et al."}
+AUTHORS_AND = {"ru": " и ", "en": " and "}
 FRESH_FROM = "2026-10-15"
+# Where a source was published, read from its address: shown with the authors when a record names no organisation.
+PLATFORMS = ((r"lesswrong\.com", "LessWrong"), (r"alignmentforum\.org", "AI Alignment Forum"), (r"substack\.com", "Substack"),
+             (r"arxiv\.org", "arXiv"), (r"openreview\.net", "OpenReview"), (r"aclanthology\.org|doi\.org/10\.18653/", "ACL Anthology"),
+             (r"doi\.org/10\.1126/sciadv", "Science Advances"), (r"doi\.org/10\.1126/science|science\.org/", "Science"),
+             (r"doi\.org/10\.1038/s41467", "Nature Communications"), (r"doi\.org/10\.1038/s42256", "Nature Machine Intelligence"),
+             (r"doi\.org/10\.1073/pnas", "PNAS"), (r"doi\.org/10\.1145/", "ACM"), (r"zenodo\.org|doi\.org/10\.5281/", "Zenodo"),
+             (r"huggingface\.co", "Hugging Face"))
+PARTICLES = {"de", "De", "van", "Van", "von", "Von", "da", "Da", "di", "Di", "del", "Del", "der", "Der", "le", "Le", "la", "La"}
+ARXIV_ID = re.compile(r"^(\d{2})(\d{2})\.\d{4,5}$")
 
 
 def read_json(*parts):
@@ -91,32 +100,75 @@ def is_fresh(s):
     return int(len(s) == 7 and s >= "2026-11")
 
 
+def effective_date(rec, rules):
+    """The date a map point is placed and labelled by: a checked date from the display rules, else the catalogue date,
+    else (or when the catalogue knows only the year) the month of first submission that an arXiv identifier encodes."""
+    fix = (rules.get("display") or {}).get(rec["id"], {})
+    if fix.get("date_iso"):
+        return fix["date_iso"]
+    d = rec.get("date_first_public")
+    if d and len(d) >= 7:
+        return d
+    m = ARXIV_ID.match((rec.get("identifiers") or {}).get("arxiv") or "")
+    if m and (not d or d == "20" + m.group(1)):
+        return f"20{m.group(1)}-{m.group(2)}"
+    return d
+
+
 def flat_orgs(orgs):
     return [x.strip() for e in (orgs or []) for x in e.split(";") if x.strip()]
 
 
+def platform(url):
+    return next((name for pat, name in PLATFORMS if re.search(pat, url or "")), "")
+
+
+def surname(name):
+    t = name.split()
+    return " ".join(t[-2:]) if len(t) >= 3 and t[-2] in PARTICLES else (t[-1] if t else "")
+
+
+def authors_text(rec, lang):
+    """Authors as a short byline: one or two surnames, or the first surname and "et al."."""
+    a = [x.strip() for x in (rec.get("authors") or []) if x and x.strip()]
+    if not a:
+        return ""
+    more = bool(rec.get("et_al")) or (rec.get("n_authors") or 0) > len(a) or len(a) > 2
+    s = [surname(x) for x in a]
+    if more:
+        return s[0] + AUTHORS_MORE[lang]
+    return AUTHORS_AND[lang].join(s)
+
+
 def who_text(rec, lang, display_en):
-    """Organisations (first three), else authors; the map tooltip's second line."""
+    """The tooltip's second line: organisations (first three), else authors with the platform, else the platform."""
     orgs = rec.get("orgs") or []
     if lang == "en" and rec["id"] in display_en.get("orgs", {}):
         orgs = display_en["orgs"][rec["id"]]
     o = flat_orgs(orgs)
+    venue = rec.get("venue_note") if rec.get("added_record") else ""
     if o:
         s = ", ".join(o[:3]) + (ORGS_MORE[lang] if len(o) > 3 else "")
-    elif rec.get("authors") is not None and rec.get("added_record"):
-        a = rec["authors"]
-        s = ", ".join(a) + (AUTHORS_MORE[lang] if rec.get("et_al") else "") if a else KIND_ALONE[lang].get(rec["kind"], "")
     else:
-        s = ""
-    if rec.get("added_record") and rec.get("venue_note"):
-        s += "; " + rec["venue_note"]
-    return s
+        s = " · ".join(x for x in (authors_text(rec, lang), "" if venue else platform(rec["urls"]["primary"])) if x)
+    return " · ".join(x for x in (s, venue) if x)
 
 
 def title_text(rec, lang, display_en):
     if lang == "en" and rec["id"] in display_en.get("titles", {}):
         return display_en["titles"][rec["id"]]
     return rec.get("title") or re.sub(r"^https?://", "", rec["urls"]["primary"]).rstrip("/")
+
+
+def display(rec, lang, rules):
+    """(title, who, date text, date) of one record as the reader sees it: the display rules of map-catalogue.json
+    (language-neutral "title"/"who", per-language "ru"/"en", a checked "date_iso") over the catalogue fields."""
+    ov = (rules.get("display") or {}).get(rec["id"], {})
+    fix = {k: ov[k] for k in ("title", "who") if k in ov}
+    fix.update(ov.get(lang, {}))
+    d = effective_date(rec, rules)
+    return (fix.get("title") or title_text(rec, lang, rules["display_en"]), fix.get("who") or who_text(rec, lang, rules["display_en"]),
+            fix.get("date") or date_text(d, lang), d)
 
 
 def catalogue_records():
@@ -147,29 +199,47 @@ def map_rows(lang):
         else:
             pages = r.get("source_pages") or (by[r["part_of"]].get("source_pages") if r.get("part_of") else None) or []
             ch = pages[0]
-        d = r.get("date_first_public")
-        fix = (rules.get("display") or {}).get(r["id"], {}).get(lang, {})     # corrections of displayed fields, both languages
-        rows.append([fix.get("title") or title_text(r, lang, rules["display_en"]), fix.get("who") or who_text(r, lang, rules["display_en"]),
-                     fix.get("date") or date_text(d, lang), month_index(d), int(ch[2:]) - 2, r["urls"]["primary"], is_fresh(d)])
+        title, who, when, d = display(r, lang, rules)
+        rows.append([title, who, when, month_index(d), int(ch[2:]) - 2, r["urls"]["primary"], is_fresh(d)])
     urls = [x[5] for x in rows]
     assert len(urls) == len(set(urls)), "two map points share a primary URL"
     return rows
 
 
 def scale_rows(lang):
-    """The 99 works of the analytic corpus (3 October 2026) that state how many agents run at once."""
+    """The 99 works of the analytic corpus (3 October 2026) that state how many agents run at once, shown with the same
+    titles and bylines as their map points (the catalogue record with the same primary URL)."""
     works = read_json("data", "works.json")["works"]
-    rules = read_json("updates", "2026-11-12", "map-catalogue.json")["map"]
+    recs, rules = catalogue_records()
+    merged = {m["record"] for m in rules["merged"]}
+    by_url = {}
+    for r in recs:
+        if r["id"] not in merged:
+            by_url.setdefault(r["urls"]["primary"], r)
+    counts = rules.get("scale_counts") or {}
     out = []
     for w in works:
         c = w.get("corpus") or {}
         n = c.get("agents_max_simultaneous")
         if c.get("scale_kind") == "simultaneous" and isinstance(n, (int, float)):
-            out.append([int(n), title_text(w, lang, rules["display_en"]), who_text(w, lang, rules["display_en"]), w["urls"]["primary"], w["id"]])
+            rec = by_url.get(w["urls"]["primary"], w)
+            title, who, _, _ = display(rec, lang, rules)
+            out.append([int(counts.get(w["id"], {}).get("n", n)), title, who, w["urls"]["primary"], w["id"]])
     out.sort(key=lambda x: (x[0], x[1]))
     known = [x[0] for x in out]
     assert len(known) == 99 and statistics.median(known) == 7, (len(known), statistics.median(known))
     assert [sum(1 for x in known if x >= t) for t in (10, 100, 1000, 10000)] == [42, 15, 7, 4]
+    return out
+
+
+def scale_landmarks(lang):
+    """Labelled points of the scale scene that are not in the 3 October sample: [agents, title, who, url, id]."""
+    recs, rules = catalogue_records()
+    by = {r["id"]: r for r in recs}
+    out = []
+    for m in rules.get("scale_landmarks") or []:
+        title, who, _, _ = display(by[m["record"]], lang, rules)
+        out.append([m["n"], title, who, by[m["record"]]["urls"]["primary"], m["record"]])
     return out
 
 
@@ -306,7 +376,7 @@ def page(lang, site=False):
         if sc == 7:
             lines.append('  <div class="end"></div>')
         lines.append("</section>")
-    data = {"L": C["labels"], "works": rows, "scale": scale_rows(lang)}
+    data = {"L": C["labels"], "works": rows, "scale": scale_rows(lang), "scaleLm": scale_landmarks(lang)}
     blob = json.dumps(data, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
     lines += ["</main>", "",
               f'<div class="tip" id="tip" role="status"><div class="t"></div><div class="m"></div><div class="th"><i></i><span></span></div><a target="_blank" rel="noopener">{C["tip_open"]}</a></div>',

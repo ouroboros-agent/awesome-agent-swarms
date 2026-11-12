@@ -271,6 +271,7 @@ function setMode(m) {
   hero.m = m; hero.mt = RM ? 6.4 : 0;
   tabEls.forEach((e, i) => { e.classList.toggle('on', i === m); e.setAttribute('aria-selected', i === m ? 'true' : 'false'); if (i !== m) e.querySelector('.pb').style.transform = 'scaleX(0)'; });
   modeEls.forEach((e, i) => e.classList.toggle('on', i === m));
+  if (mob) { const bar = tabEls[m].parentNode, br = bar.getBoundingClientRect(), r = tabEls[m].getBoundingClientRect(), d = r.left < br.left + 16 ? r.left - br.left - 16 : r.right > br.right - 16 ? r.right - br.right + 16 : 0; if (d) bar.scrollBy({ left: d, behavior: RM ? 'auto' : 'smooth' }); }
 }
 tabEls.forEach((e, i) => e.addEventListener('click', () => { setMode(i); kick(); }));
 $('hCap').querySelector('.tabs').addEventListener('keydown', e => { const d = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0; if (!d) return; e.preventDefault(); const m = (hero.m + d + 4) % 4; setMode(m); tabEls[m].focus(); kick(); });
@@ -510,7 +511,7 @@ SCALE.forEach((r, j) => { s1.id[r[4]] = j; });
 (function () { const sub = PERM.slice(0, 99).sort((a, b) => COL[a] - COL[b] || ROW[a] - ROW[b]); sub.forEach((i, j) => { s1.who[j] = i; s1.role[i] = j; }); })();
 const xS = v => s1.x0 + Math.log10(v) * s1.ppd;
 function s1geom() {
-  s1.x0 = S.x + (mob ? 8 : 22); s1.x1 = S.x + S.w - (mob ? 6 : 12); s1.ppd = (s1.x1 - s1.x0 - (mob ? 44 : 150)) / 4.6;
+  s1.x0 = S.x + (mob ? 8 : 22); s1.x1 = S.x + S.w - (mob ? 6 : 12); s1.ppd = (s1.x1 - s1.x0 - (mob ? 44 : 186)) / 4.6;
   s1.k = mob ? clamp(S.h / 370, 0.9, 1.45) : 1;
   s1.yb = mob ? S.y + Math.max(S.h * 0.5 + 18 * s1.k, 42 + 150 * s1.k) : S.y + S.h * 0.615; s1.rw = mob ? 2.5 * s1.k : 6.1; s1.xm = s1.x1 - (mob ? 8 : 14);
   const d = s1.rw * 2 + (mob ? 0.9 : 1.6), pts = [];
@@ -532,13 +533,19 @@ const LM = [
   { id: 'anthropic-patterns', lv: 5, st: 5 },
   { v: 50, lv: 6, st: 5 }
 ].map((m, k) => Object.assign(m, { a: L.lm[k][0], b: L.lm[k][1], m: L.lm[k][2] }));
+const SCALE_LM = DATA.scaleLm;
+const s1lmInfo = k => ({ t: SCALE_LM[k][1], m: SCALE_LM[k][2] + ' · ' + L.s1agents + fmt(SCALE_LM[k][0]), url: SCALE_LM[k][3] });
+const s1lmXY = m => { const x = xS(m.v) - (m.v === 1000 ? s1.rw * 0.2 : 0); return [x, s1topAt(x) - (mob ? 5 : 9)]; };
 const s1info = j => ({ t: SCALE[j][1], m: (SCALE[j][2] ? SCALE[j][2] + ' · ' : '') + L.s1agents + fmt(SCALE[j][0]), url: SCALE[j][3] });
 SC[1] = {
   st: 0, t0: 0,
   enter(st, fresh) {
     stiff = 62; s1geom();
     for (let i = 0; i < N; i++) { const j = s1.role[i]; if (j < 0) rest(i, 0.075, fresh ? hash(i) * 0.5 : 0); else { set(i, s1.pts[j].x, s1.pts[j].y, s1.rw, 0.9, C_INK, fresh ? 0.1 + j * 0.011 : 0); tl[i] = 0; } }
-    hovSet = { ids: Array.from(s1.who), info: s1info, rad: mob ? 14 : 12 };
+    /* the labelled points outside the 3 October sample get a dot of their own, so they open their source too */
+    s1.lmI = SCALE_LM.map((r, k) => PERM[99 + k]);
+    s1.lmI.forEach((i, k) => { const m = LM.find(o => o.v === SCALE_LM[k][0]), p = s1lmXY(m); set(i, p[0], p[1], s1.rw * 0.55, 0, C_EM, 0); tl[i] = 0; });
+    hovSet = { ids: Array.from(s1.who).concat(s1.lmI), info: j => j < 99 ? s1info(j) : s1lmInfo(j - 99), rad: mob ? 14 : 12 };
   },
   tick(t, st) {
     const rev = Math.min(4, 1 + Math.floor(t / 1.0)), fin = t > 4.5;
@@ -552,6 +559,7 @@ SC[1] = {
       if (hov === j && hovSet && curSc === 1) { r = s1.rw * 1.5; a = 1; }
       sty(i, r, a, c);
     }
+    s1.lmI.forEach((i, k) => { const m = LM.find(o => o.v === SCALE_LM[k][0]); sty(i, s1.rw * (hov === 99 + k && curSc === 1 ? 0.95 : 0.55), m && st >= m.st ? 0.95 : 0, C_EM); });
   },
   under(a) {
     const st = this.st, t = T_OF(1), x0 = s1.x0, yb = s1.yb, xe = xS(30000) + (mob ? 7 : 14), xm = s1.xm;
@@ -564,7 +572,7 @@ SC[1] = {
       const f = a * (st === 0 ? ss((t - 0.9) / 0.5) : 0.9), x = xS(7), top = s1.top - (mob ? 8 : 16);
       seg(x, yb + 1, x, top + 4, rgba(EM, 0.6 * f), 1, [2, 4]);
       TN('7', x, top - (mob ? 3 : 6), { s: mob ? 30 : 68, w: 600, al: 'center', c: rgba(INK, f) });
-      if (mob) T(L.median, x - 13, top - 6, { s: 11, w: 500, al: 'right', c: rgba(INK3, f) }); else T(L.median, x + 29, top - 10, { s: 14, w: 500, c: rgba(INK3, f) });
+      if (mob) T(L.median, x - 13, top - 6, { s: 11, w: 500, al: 'right', c: rgba(INK3, f) }); else T(L.median, x - 30, top - 10, { s: 14, w: 500, al: 'right', c: rgba(INK3, f) });
     }
     /* thresholds */
     if (st >= 2) {
@@ -585,22 +593,29 @@ SC[1] = {
       for (const o of [0, mob ? 4 : 6]) seg(xe + (mob ? 2 : 3) + o - 3, yb + 5, xe + (mob ? 2 : 3) + o + 3, yb - 5, rgba(INK, 0.5 * f), 1);
       ring(xm, y, mob ? 6 : 10, rgba(INK, 0.8 * f), 1.25, [2.5, 3.5]);
       TN(L.molt[0], xm, yb + (mob ? 17 : 21), { s: mob ? 10 : 12.5, w: 500, al: 'center', c: rgba(INK3, f) });
-      const ML = mob ? L.molt[1] : L.molt[2], lh = mob ? 12 : 17, yT = y - (mob ? 12 : 20) - (ML.length - 1) * lh;
-      ML.forEach((l, q) => T(l, xm + (mob ? 7 : 11), yT + q * lh, { s: mob ? 10 : q ? 12.5 : 13.5, w: q ? 500 : 600, al: 'right', c: rgba(q ? INK3 : INK, f) }));
+      const ML = mob ? L.molt[1] : L.molt[2], lh = mob ? 12 : 17, yT = y - (mob ? 12 : 16) - (ML.length - 1) * lh;
+      ML.forEach((l, q) => T(l, xm + (mob ? 7 : 11), yT + q * lh, { s: mob ? 10 : q ? 12.5 : 13.5, w: q ? 500 : 600, al: 'right', c: rgba(q ? INK3 : INK, f), h: mob ? 3.5 : 5, ha: f }));
     }
   },
   over(a) {
     const st = this.st, t = T_OF(1); if (st < 3) return;
+    /* leader lines first, then every label on a halo: a line never runs through letters */
+    const lab = [];
     for (const m of LM) {
       if (st < m.st) continue;
-      const hot = st === m.st, f = a * (hot ? ss(t / 0.5) : 0.78);
+      const hot = st === m.st, f = a * (hot ? ss(t / 0.5) : st === 6 ? 0.42 : 0.78);
       let x, y;
       if (m.id) { const i = s1.who[s1.id[m.id]]; x = px[i]; y = py[i] - rr[i] - 3; }
-      else { x = xS(m.v) - (m.v === 1000 ? s1.rw * 0.2 : 0); y = s1topAt(x) - (mob ? 5 : 9); if (hot) glow(x, y, mob ? 9 : 16, EM, 0.4 * f); ring(x, y, mob ? 2.6 : 5, rgba(EM, f), 1.5); y -= (mob ? 4 : 7); }
+      else { [x, y] = s1lmXY(m); if (hot) glow(x, y, mob ? 9 : 16, EM, 0.4 * f); ring(x, y, mob ? 2.6 : 5, rgba(EM, f), 1.5); y -= (mob ? 4 : 7); }
       const yt = s1.yb - (mob ? (50 + m.lv * 14.5) * s1.k : 126 + m.lv * 43);
       seg(x, y - 2, x, yt, rgba(EM, 0.5 * f), 1);
-      if (mob) { const right = x > S.x + S.w * 0.62; T(m.m, x + (right ? -4 : 4), yt + 4, { s: 10.5, w: 600, al: right ? 'right' : 'left', c: rgba(hot ? EM : INK, f) }); }
-      else { T(m.a, x + 8, yt + 4, { s: 13.5, w: 600, c: rgba(hot && !m.id ? EM : INK, f) }); T(m.b, x + 8, yt + 20, { s: 12.5, c: rgba(INK3, f) }); }
+      lab.push([m, x, yt, hot, f]);
+    }
+    for (const [m, x, yt, hot, f] of lab) {
+      const hl = { h: mob ? 3.5 : 5, ha: f };
+      if (mob) { const right = x + 4 + TW(m.m, { s: 10.5, w: 600 }) > S.x + S.w - 2; T(m.m, x + (right ? -4 : 4), yt + 4, Object.assign({ s: 10.5, w: 600, al: right ? 'right' : 'left', c: rgba(hot ? EM : INK, f) }, hl)); }
+      else { const wl = Math.max(TW(m.a, { s: 13.5, w: 600 }), TW(m.b, { s: 12.5 })), k = Math.min(1, (S.x + S.w - 4 - x - 8) / wl);
+        T(m.a, x + 8, yt + 4, Object.assign({ s: 13.5 * k, w: 600, c: rgba(hot && !m.id ? EM : INK, f) }, hl)); T(m.b, x + 8, yt + 20, Object.assign({ s: 12.5 * k, c: rgba(INK3, f) }, hl)); }
     }
   }
 };
@@ -1007,7 +1022,7 @@ SC[3] = {
       T(mob ? L.s3u[4] : L.s3u[5], S.x + (mob ? 3 : 10), y0 + 13 * p + (mob ? 12 : 20), { s: mob ? 9.5 : 12, c: rgba(INK3, f) });
       const y3 = y0 + 26 * p + (mob ? 30 : 46) + (mob ? 22 : 40);
       if (mob) T(L.s3u[6], S.x + 3, y3, { s: 10.5, c: rgba(INK2, f) });
-      else { const w1 = TN('≈−50%', S.x + 10, y3, { s: 24, w: 600, c: rgba(INK, f) }); T(L.s3u[7], S.x + 10 + w1 + 12, y3 - 2, { s: 13, c: rgba(INK3, f) }); }
+      else { const w1 = TW(L.s3u[8], { s: 24, w: 600 }); T(L.s3u[8], S.x + 10, y3, { s: 24, w: 600, c: rgba(INK, f) }); T(L.s3u[7], S.x + 10 + w1 + 12, y3 - 2, { s: 13, c: rgba(INK3, f) }); }
     } else if (st === 7) {
       const f = a * ss((t - 0.4) / 0.5), after = s3.phase === 1, gs = G.gs;
       T(mob ? L.plans[0] : L.plans[1], hx_, S.y + (mob ? 12 : 20), { s: mob ? 10.5 : 13, w: 600, c: rgba(INK2, a) });
@@ -1101,12 +1116,33 @@ function s4start(j) {
   const a = M.phi[j], r = G.tr + (g === 1 ? G.po : 0); return [c[0] + r * Math.cos(a), c[1] + r * Math.sin(a)];
 }
 function s4rec(j) { const u = clamp(s4.m * 1.7 - (j / 128) * 0.7), e = eio(u), a = s4start(j), b = s4cell(j); return [lerp(a[0], b[0], e), lerp(a[1], b[1], e), e]; }
+/* the OpenAI report (two ExploitGym runs): 35 messages left by agents of other runs, the 79 agents that read them, five with root */
+const OAI_READ = 79, OAI_MSG = 35, OAI_ROOT = [6, 22, 38, 54, 70];
+/* on a phone the ring leaves room for its three-line legend however short the screen */
+const s4oR = () => { const G = s4.G, R = mob ? Math.min(G.R, (S.h - 100) / 2) : G.R; return [R, mob ? Math.min(G.cy, S.y + 40 + R) : G.cy, R / G.R]; };
+const s4oai = j => { const G = s4.G, [R, cy] = s4oR(), an = -Math.PI / 2 + j / OAI_READ * 6.28319; return [G.cx + R * Math.cos(an), cy + R * Math.sin(an)]; };
+const s4msg = k => { const G = s4.G, [, cy, k1] = s4oR(), sp = G.rp * 0.92 * k1; return [G.cx + ((k % 7) - 3) * sp, cy + (Math.floor(k / 7) - 2) * sp]; };
+function s4oaiDraw(a, t) {
+  const G = s4.G, tt = RM ? 99 : t, sz = G.rs * 1.5, fr = a * clamp((tt - 3.4) / 0.5);
+  ctx.lineWidth = 1; ctx.strokeStyle = rgba(EM, 0.16 * a); ctx.beginPath();
+  for (let j = 0; j < OAI_READ; j++) { if (tt < 0.6 + j * 0.03) continue; const i = s4.ring[j], m = s4msg((j * 13) % OAI_MSG); ctx.moveTo(px[i], py[i]); ctx.lineTo(m[0], m[1]); }
+  ctx.stroke();
+  for (let k = 0; k < OAI_MSG; k++) { const m = s4msg(k); ctx.fillStyle = rgba(INK, 0.85 * a); ctx.fillRect(m[0] - sz / 2, m[1] - sz / 2, sz, sz); }
+  if (fr > 0.01) for (const j of OAI_ROOT) { const i = s4.ring[j]; ring(px[i], py[i], G.ra * 3.4, rgba(WARM, fr), 1.25); }
+  const [R, cy] = s4oR(), y0 = cy + R + (mob ? 26 : 48), stp = mob ? 18 : 28, x0 = S.x + (mob ? 2 : 6);
+  [[fmt(OAI_MSG), L.oai[4], INK, 0, a], [fmt(OAI_READ), L.oai[5], EM, 1, a], [String(OAI_ROOT.length), L.oai[6], WARM, 2, fr]].forEach((r, q) => {
+    const y = y0 + q * stp, f = r[4]; if (f < 0.01) return;
+    if (r[3] === 0) { ctx.fillStyle = rgba(INK, 0.85 * f); ctx.fillRect(x0 + 1, y - 9, 7, 7); } else if (r[3] === 1) dot(x0 + 4, y - 5, mob ? 3 : 4, rgba(EM, f)); else ring(x0 + 4, y - 5, mob ? 3.5 : 5, rgba(WARM, f), 1.25);
+    const w = TN(r[0], x0 + 16, y + (mob ? 1 : 3), { s: mob ? 15 : 22, w: 600, c: rgba(r[2], f) }); T(r[1], x0 + 16 + w + 8, y, { s: mob ? 11 : 13.5, c: rgba(INK2, f) });
+  });
+}
 function s4layout(st) {
   const G = s4.G;
   for (let i = 0; i < N; i++) {
     const j = s4.idx[i];
     if (j < 0) { rest(i, st === 5 ? 0 : 0.045, 0); continue; }
-    const p = st <= 1 ? s4tri(j) : s4agent(j);
+    if (st === 6 && j >= OAI_READ) { rest(i, 0.05, 0); continue; }
+    const p = st <= 1 ? s4tri(j) : st === 6 ? s4oai(j) : s4agent(j);
     if (st === 5) { const q = MC.indexOf(j); if (q >= 0) { const an = -2.356 + q * 1.5708; set(i, G.cx + G.R * 0.8 * Math.cos(an), G.cy + G.R * 0.8 * Math.sin(an), mob ? 5 : 9, 1, C_EM, 0); } else set(i, p[0], p[1], G.ra, 0, C_INK, 0); }
     else set(i, p[0], p[1], G.ra, 0.9, C_INK, 0);
     tl[i] = 0;
@@ -1126,6 +1162,11 @@ SC[4] = {
       if (!RM) { const due = p < 0.999 ? 0.5 : 1.9; if (now - s4.nd > due) { s4.nd = now; s4.dead[(Math.random() * 4) | 0] = now; } }
       MC.forEach((j, q) => { const i = s4.ring[j], d = now - s4.dead[q]; if (RM || d > 1.2) sty(i, mob ? 5 : 9, 1, C_EM); else if (d < 0.3) sty(i, mob ? 6 : 11, 1, C_WARM); else if (d < 0.65) sty(i, mob ? 5 : 9, 0.05, C_WARM); else sty(i, mob ? 5 : 9, 1, C_EM); });
       return;
+    }
+    if (st === 6) {
+      const tt = RM ? 99 : t;
+      for (let j = 0; j < OAI_READ; j++) { const on = tt > 0.6 + j * 0.03, root = OAI_ROOT.indexOf(j) >= 0 && tt > 3.4; sty(s4.ring[j], root ? G.ra * 2 : G.ra * 1.25, on ? 1 : 0.35, root ? C_WARM : on ? C_EM : C_INK); }
+      s4.op = null; return;
     }
     for (let j = 0; j < 128; j++) {
       const i = s4.ring[j]; let a = st === 4 ? 0.32 : 0.9, c = C_INK, r = G.ra;
@@ -1157,6 +1198,7 @@ SC[4] = {
     } else if (st === 4) { T(mob ? L.cmH[0] : L.cmH[1], hx_, S.y + (mob ? 12 : 20), { s: mob ? 10.5 : 13, w: 600, c: rgba(INK2, a) }); }
     else if (st === 6) { T(mob ? L.oai[0] : L.oai[1], hx_, S.y + (mob ? 12 : 20), { s: mob ? 11 : 13, w: 600, c: rgba(INK2, a) }); T(mob ? L.oai[2] : L.oai[3], hx_, S.y + (mob ? 27 : 39), { s: mob ? 10.5 : 12.5, c: rgba(INK4, a) }); }
     else { T(L.mc[0], hx_, S.y + (mob ? 12 : 20), { s: mob ? 11 : 13, w: 600, c: rgba(INK2, a) }); T(L.mc[1], hx_, S.y + (mob ? 27 : 39), { s: mob ? 10.5 : 12.5, c: rgba(INK4, a) }); }
+    if (st === 6) { s4oaiDraw(a, t); return; }
     /* links */
     const dim = st === 4 ? 0.22 : 1, lm = clamp((s4.m - 0.75) * 4);
     if (lm > 0.01) {
@@ -1218,7 +1260,7 @@ SC[4] = {
     if (st === 3 || st === 6) {
       const k = op && op.found.find(q => s4.gone[q]);
       if (op && k !== undefined && op.u > 0.9) { const p = s4cell(k), f = a * clamp((op.u - 0.9) * 3) * (1 - clamp((op.u - 2.8) / 0.4)); ring(p[0], p[1], G.rs * 2.1, rgba(EM, f), 1.25); tag(L.s4found, p[0] + G.rs * 2.6, p[1] - G.rs * 3.2, { s: mob ? 10 : 12.5, c: rgba(EM, f), a: f }); }
-      if (st === 3) { const rows = [[L.s4lb[2], 55.1, 1], [L.s4lb[1], 46.8, 0], [L.s4lb[0], 38.0, 0]], y0 = G.cy + G.R + (mob ? 24 : 46), stp = mob ? 17 : 27, bx0 = S.x + (mob ? 104 : 190), bx1 = S.x + S.w - (mob ? 54 : 110), e = RM ? 1 : eo((t - 0.4) / 1.1);
+      if (st === 3) { const rows = [[L.s4lb[2], 55.1, 1], [L.s4lb[1], 46.8, 0], [L.s4lb[0], 38.0, 0]], y0 = G.cy + G.R + (mob ? 24 : 46), stp = mob ? 17 : 27, bx0 = S.x + (mob ? 120 : 190), bx1 = S.x + S.w - (mob ? 54 : 110), e = RM ? 1 : eo((t - 0.4) / 1.1);
       rows.forEach((r, q) => {
         const y = y0 + q * stp, hh = mob ? 5 : 7, w = (bx1 - bx0) * r[1] / 60 * e;
         T(r[0], S.x + (mob ? 2 : 6), y + 4, { s: mob ? 10.5 : 13, w: r[2] ? 600 : 500, c: rgba(r[2] ? INK : INK3, a) });
@@ -1230,12 +1272,12 @@ SC[4] = {
       const cs = mob ? 62 : 112, f = a * ss((t - 0.2) / 0.6), OPS = L.cmOps;
       const act = RM ? -1 : Math.floor(t / 0.9) % 6;
       OPS.forEach((o, k) => {
-        const an = -1.5708 + k * 1.0472, r1 = G.R * 0.6, x = G.cx + r1 * Math.cos(an), y = G.cy + r1 * Math.sin(an), on = act === k;
+        const an = -1.5708 + k * 1.0472, r1 = G.R * (mob ? 0.56 : 0.6), x = G.cx + r1 * Math.cos(an), y = G.cy + r1 * Math.sin(an), on = act === k;
         seg(G.cx + cs * 0.56 * Math.cos(an), G.cy + cs * 0.56 * Math.sin(an), x, y, rgba(on ? EM : INK, (on ? 0.8 : 0.2) * f), 1.25);
         if (on) glow(x, y, mob ? 12 : 20, EM, 0.3 * f);
         dot(x, y, mob ? 3 : 5, 'rgba(9,11,12,' + f.toFixed(3) + ')'); ring(x, y, mob ? 3 : 5, rgba(on ? EM : INK, (on ? 1 : 0.6) * f), 1.5);
         const up = Math.sin(an) < -0.2, al = 'center', ox = 0, oy = up ? -(mob ? 21 : 33) : (mob ? 15 : 25);
-        T(o[0], x + ox, y + oy, { s: mob ? 10.5 : 14, w: 600, al, c: rgba(on ? EM : INK, f) }); T(o[1], x + ox, y + oy + (mob ? 12 : 17), { s: mob ? 9.5 : 12, al, c: rgba(INK4, f) });
+        T(o[0], x + ox, y + oy, { s: mob ? 10.5 : 14, w: 600, al, c: rgba(on ? EM : INK, f), h: mob ? 3.5 : 5, ha: f }); T(o[1], x + ox, y + oy + (mob ? 12 : 17), { s: mob ? 9.5 : 12, al, c: rgba(INK4, f), h: mob ? 3.5 : 5, ha: f });
       });
       rrect(G.cx - cs / 2, G.cy - cs / 2, cs, cs, cs * 0.2); ctx.fillStyle = 'rgba(13,17,18,' + f.toFixed(3) + ')'; ctx.fill(); ctx.strokeStyle = rgba(EM, 0.6 * f); ctx.lineWidth = 1.5; ctx.stroke();
       TN(dec(69.6) + '%', G.cx, G.cy + (mob ? 2 : 4), { s: mob ? 15 : 26, w: 600, al: 'center', c: rgba(INK, f) });
@@ -1266,7 +1308,7 @@ const s5 = { G: {}, sp: [], cas: [], cc: [], lead: 0, cnt: 0, tq: new Float32Arr
   for (let n = 0; n < N; n++) { const w = cnt.map(c => Math.pow(c + 1, 1.3)); let tot = 0; for (const x of w) tot += x; let p = r() * tot, k = 0; for (; k < 8; k++) { p -= w[k]; if (p <= 0) break; } k = Math.min(k, 7); s5.cas.push([k, cnt[k]]); cnt[k]++; }
   s5.cc = cnt; s5.lead = cnt.indexOf(Math.max.apply(null, cnt));
 })();
-const W5 = [77, 20, 3], COLL = [0, 100, 100, 100];
+const W5 = [77, 20, 3], COLL = [0, 100, 100, 86];
 function s5geom() {
   const G = s5.G;
   G.cx = S.cx - (mob ? 0 : 50); G.cy = S.cy + (mob ? 12 : 8); G.R = Math.min(S.w, S.h) / 2 - (mob ? 20 : 40); G.a = mob ? 30 : 62; G.turn = mob ? 12.5 : 24; G.r = mob ? 1.7 : 3;
@@ -1278,7 +1320,7 @@ function s5geom() {
   G.wq = Math.min(mob ? 12 : 23, (S.h - (mob ? 124 : 250)) / 20, S.w / (mob ? 17 : 20)); G.wyb = S.cy + 9.5 * G.wq + (mob ? 6 : 8);
   G.kq = Math.min(mob ? 11 : 21, (S.h - (mob ? 124 : 250)) / 20, S.w / (mob ? 24 : 26)); G.kyb = S.cy + 9.5 * G.kq + (mob ? 0 : 0);
 }
-const W5X = w => S.x + S.w * (0.2 + w * 0.3), K5X = w => S.x + S.w * (mob ? 0.12 + w * 0.255 : 0.105 + w * 0.243);
+const W5X = w => S.x + S.w * (0.2 + w * 0.3), K5X = w => S.x + S.w * (mob ? 0.12 + w * 0.255 : 0.105 + w * 0.243 + (w === 3 ? 0.03 : 0));
 function s5spiral(d) { const G = s5.G; for (let q = 0; q < N; q++) { const i = ORD_CEN[q]; set(i, s5.sp[q][0], s5.sp[q][1], G.r, 0.62, C_INK, d ? hash(q) * 0.2 + q * 0.0003 : 0); tl[i] = 0; } }
 function s5cascade() {
   const G = s5.G;
@@ -1290,7 +1332,7 @@ function s5cols(n, X, q5, yb, vals, colOn, kind) {
     const ids = ORD_COL.slice(Math.round(w * (N - 100) / (n - 1)), Math.round(w * (N - 100) / (n - 1)) + 100).sort((a, b) => ROW[b] - ROW[a] || COL[a] - COL[b]), cx = X(w);
     ids.forEach((i, q) => {
       used[i] = 1; const on = q < vals[w]; let a = on ? 0.98 : 0, c = on ? colOn : C_INK, r = q5 * 0.3;
-      if (kind === 0 && w === 2 && on) a = 0.5; if (kind === 1) { if (!on) a = 0.17; if (w === 3) { a = 0.85; r = q5 * 0.24; } }
+      if (kind === 0 && w === 2 && on) a = 0.5; if (kind === 1) { if (!on) a = 0.17; if (w === 3) { a = on ? 0.85 : 0.17; r = q5 * 0.24; c = on ? C_EM : C_INK; } }
       set(i, cx + ((q % 5) - 2) * q5, yb - Math.floor(q / 5) * q5, r, a, c, 0.1 + w * 0.25 + q * 0.004); tl[i] = 0;
     });
   }
@@ -1350,9 +1392,10 @@ SC[5] = {
       }
       const yl = G.wyb + (mob ? 38 : 62);
       dot(hx_ + 4, yl - 4, mob ? 3 : 4.4, rgba(EM, f)); T(L.cy[3], hx_ + 13, yl, { s: mob ? 10 : 12.5, c: rgba(INK2, f) });
-      const x2 = hx_ + (mob ? 108 : 160); ring(x2 + 4, yl - 4, mob ? 3 : 4.4, rgba(INK, 0.6 * f), 1); T(mob ? L.cy[4] : L.cy[5], x2 + 13, yl, { s: mob ? 10 : 12.5, c: rgba(INK2, f) });
+      const x2 = hx_ + 13 + TW(L.cy[3], { s: mob ? 10 : 12.5 }) + (mob ? 14 : 22); ring(x2 + 4, yl - 4, mob ? 3 : 4.4, rgba(INK, 0.6 * f), 1); T(L.cyRun, x2 + 13, yl, { s: mob ? 10 : 12.5, c: rgba(INK2, f) });
+      T(mob ? L.cy[4] : L.cy[5], hx_, yl + (mob ? 16 : 22), { s: mob ? 10 : 12.5, c: rgba(INK3, f) });
     } else {
-      const f = a * ss((t - 0.2) / 0.5), NM = ['0%', '100%', '100%', '86%'], LB = [mob ? 'Sonnet 4.5' : 'Claude Sonnet 4.5', 'GPT-4.1', mob ? 'Gemini 2.5' : 'Gemini 2.5 Flash', mob ? L.col[0] : L.col[1]], q5 = G.kq, top = G.kyb - 19 * q5;
+      const f = a * ss((t - 0.2) / 0.5), NM = ['0%', '100%', '100%', '86%'], LB = [mob ? 'Sonnet 4.5' : 'Claude Sonnet 4.5', 'GPT-4.1', mob ? 'Gemini 2.5' : 'Gemini 2.5 Flash', L.col[6]], q5 = G.kq, top = G.kyb - 19 * q5;
       T(mob ? L.col[2] : L.col[3], hx_, S.y + (mob ? 12 : 20), { s: mob ? 11 : 13, w: 600, c: rgba(INK2, a) });
       if (!mob) T(L.col[4], hx_, S.y + 40, { s: 12.5, c: rgba(INK4, a) });
       for (let w = 0; w < 4; w++) {
@@ -1360,15 +1403,22 @@ SC[5] = {
         TN(NM[w], x0, top - (mob ? 12 : 24), { s: mob ? 17 : 38, w: 600, c: rgba(w === 0 ? INK : w === 3 ? EM : WARM, fq) });
         T(LB[w], x0, G.kyb + (mob ? 19 : 32), { s: mob ? 9 : 13.5, w: 600, c: rgba(INK2, fq) });
         if (w === 3) {
-          T(mob ? L.col[5] : L.col[6], x0, G.kyb + (mob ? 31 : 51), { s: mob ? 9 : 12, c: rgba(INK4, fq) }); if (!mob) { T('DeepSeek-V4-Flash,', x0, G.kyb + 68, { s: 12, c: rgba(INK4, fq) }); T(L.col[7], x0, G.kyb + 85, { s: 12, c: rgba(INK4, fq) }); }
+          /* another paper, another model and measure: its own heading, and the honest agents of the same paper beside it */
+          const xr = cx + 2 * q5 + q5 * 0.45, ym = G.kyb - 6.5 * q5;
+          T(L.col[8], xr, top - (mob ? 44 : 92), { s: mob ? 10.5 : 13.5, w: 600, al: 'right', c: rgba(INK, fq) });
+          T(L.col[7], xr, top - (mob ? 32 : 72), { s: mob ? 9 : 12, al: 'right', c: rgba(INK3, fq) });
+          if (!mob) T(L.col[9], xr, G.kyb + 51, { s: 12, al: 'right', c: rgba(INK4, fq) });
+          s5.mk = [cx, ym, q5, fq];   /* the honest agents' mark is drawn above the dots, in over() */
           ctx.strokeStyle = rgba(EM, 0.95 * fq); ctx.lineWidth = mob ? 1 : 1.5; ctx.beginPath(); for (let q = 0; q < 86; q++) { const x = cx + ((q % 5) - 2) * q5, y = G.kyb - Math.floor(q / 5) * q5; ctx.moveTo(x + q5 * 0.4, y); ctx.arc(x, y, q5 * 0.4, 0, 6.2832); } ctx.stroke();
         }
       }
-      const xd = (K5X(2) + K5X(3)) / 2; seg(xd, top - (mob ? 30 : 60), xd, G.kyb + (mob ? 34 : 70), rgba(INK, 0.12 * f), 1);
+      const xd = (K5X(2) + K5X(3)) / 2; seg(xd, top - (mob ? 50 : 96), xd, G.kyb + (mob ? 34 : 70), rgba(INK, 0.3 * f), 1);
     }
   },
   over(a) {
-    const st = this.st, G = s5.G, t = T_OF(5); if (st > 2) return;
+    const st = this.st, G = s5.G, t = T_OF(5);
+    if (st === 5 && s5.mk) { const [cx, ym, q5, fq] = s5.mk, fm = fq * a; seg(cx - 2.7 * q5, ym, cx + 2.7 * q5, ym, rgba(INK, 0.9 * fm), 1.5, [3, 3]); tag(L.col[5] + ' 33%', cx, ym, { s: mob ? 9 : 11.5, al: 'center', pad: mob ? 4 : 6, c: rgba(INK, fm), a: fm }); }
+    if (st > 2) return;
     const fw = st === 2 ? (RM ? 1 : ss((t - 0.8) / 0.5)) : 0;
     s5page(a, fw);
     if (st === 2 && fw > 0.02) { const px_ = G.cx + (mob ? 16 : 31), py_ = G.cy - (mob ? 5 : 9), ex = G.cx + G.a + (mob ? 26 : 64), ey = py_ - (mob ? 34 : 70); seg(px_, py_, ex, ey, rgba(EM, 0.7 * fw * a), 1.25); tag(mob ? L.mv[5] : L.mv[6], ex, ey, { s: mob ? 10 : 12.5, c: rgba(EM, fw * a), a: fw * a, stroke: rgba(EM, 0.4 * fw * a) }); }
@@ -1378,7 +1428,7 @@ SC[5] = {
 /* ============ Scene 6: the full-frame map of works ============ */
 const WORKS = DATA.works, NW = WORKS.length;
 /* notable works: they sit on top of their month columns and lead the idle tour */
-const NOTES = [["2508.17536", 0], ["wiz.io", 0], ["2608.10218", 1], ["2609.26781", 1], ["navier-stokes", 1], ["2610.16120", 1], ["safely-scaling", 1], ["avalonm1", 1]].map(n => ({ w: WORKS.findIndex(x => x[5].indexOf(n[0]) >= 0), side: n[1] })).filter(n => n.w >= 0);
+const NOTES = [["2508.17536", 0], ["wiz.io", 0], ["2608.10218", 1], ["2609.26781", 1], ["navier-stokes", 1], ["2610.16120", 1], ["safely-scaling", 1], ["avalonm1", 1]].map((n, k) => ({ w: WORKS.findIndex(x => x[5].indexOf(n[0]) >= 0), side: n[1], a: L.notes[k][0], b: L.notes[k][1], m: L.notes[k][2] })).filter(n => n.w >= 0);
 const isNote = new Uint8Array(NW); NOTES.forEach(n => { isNote[n.w] = 1; });
 const s6 = { G: {}, who: new Int16Array(NW), role: new Int16Array(N).fill(-1), col: new Int16Array(NW), k: new Int16Array(NW), hl: -1, tk: -1, tw: -1, cnt: new Array(25).fill(0), ground: [] };
 (function () {
@@ -1442,20 +1492,34 @@ SC[6] = {
       if (mm === 0) { T(String(2025 + Math.floor(m / 12)), x, yl + (mob ? 13 : 19), { s: mob ? 10 : 13, w: 600, al: 'center', c: rgba(INK2, a) }); if (m > 0) seg(G.cx(m + 2) - G.gi / 2, G.yb - G.tall * 0.6, G.cx(m + 2) - G.gi / 2, G.yb - 4, rgba(INK, 0.1 * a), 1, [2, 4]); }
     }
     if (!mob) { T(L.pre2025[0], G.cx(0) + G.cw / 2, yl, { s: 11.5, al: 'center', c: rgba(INK4, a) }); T(L.pre2025[1], G.cx(0) + G.cw / 2, yl + 16, { s: 11.5, al: 'center', c: rgba(INK4, a) }); }
-    T(L.noDate[0], G.cx(1) + G.cw, yl, { s: mob ? 8.5 : 11.5, al: 'center', c: rgba(INK4, a) }); T(L.noDate[1], G.cx(1) + G.cw, yl + (mob ? 11 : 16), { s: mob ? 8.5 : 11.5, al: 'center', c: rgba(INK4, a) });
-    /* fresh works: a bracket under October and November */
-    const xa = G.cx(23) + G.gi / 2, xb = G.cx(24) + G.cw - G.gi / 2, yf = yl + (mob ? 7 : 9);
-    ctx.beginPath(); ctx.moveTo(xa, yf - 3); ctx.lineTo(xa, yf); ctx.lineTo(xb, yf); ctx.lineTo(xb, yf - 3); ctx.strokeStyle = rgba(WARM, 0.75 * a); ctx.lineWidth = 1; ctx.stroke();
-    T(L.fresh, (xa + xb) / 2, yf + (mob ? 11 : 14), { s: mob ? 9 : 11.5, al: 'center', c: rgba(INK2, a) });
+    const xn = mob ? G.x0 : G.cx(1) + G.cw, an = mob ? 'left' : 'center';   /* on a phone the label keeps clear of the year under January */
+    T(L.noDate[0], xn, yl, { s: mob ? 8.5 : 11.5, al: an, c: rgba(INK4, a) }); T(L.noDate[1], xn, yl + (mob ? 11 : 16), { s: mob ? 8.5 : 11.5, al: an, c: rgba(INK4, a) });
   },
   over(a) {
     const hl = s6.hl;
     for (let w = 0; w < NW; w++) {
       if (!WORKS[w][6]) continue; const i = s6.who[w]; if (aa[i] < 0.3 && hl !== 99) continue;
-      ring(px[i], py[i], rr[i] + (mob ? 1.5 : 2.6), rgba(WARM, 0.95 * a), mob ? 1 : 1.4);
+      ring(px[i], py[i], Math.max(1, rr[i] - (mob ? 0.2 : 0.3)), rgba(WARM, 0.95 * a), mob ? 1 : 1.3);   /* inside the dot's own size: neighbours never touch */
     }
     const sel = hov >= 0 && curSc === 6 ? hov : s6.tw;
     if (sel >= 0 && sel !== undefined && curSc === 6) { const i = s6.who[sel]; ring(px[i], py[i], rr[i] + (mob ? 3.5 : 5.5), rgba(INK, a), 1.5); }
+    /* labels of the notable works: leader lines first, then the text on a halo */
+    const G = s6.G, t = T_OF(6), f = a * (RM ? 1 : ss((t - 1.2) / 0.7)) * (hl >= 0 ? 0.25 : 1); if (f < 0.01) return;
+    let kr = 0; const lab = [], hh = { h: mob ? 3.5 : 5, ha: f };
+    for (const n of NOTES) {
+      if (mob && !n.m) continue;
+      const i = s6.who[n.w], x = px[i], y0 = py[i] - rr[i] - 3;
+      if (n.side === 1) {
+        const yt = G.yb - G.tall - (mob ? 26 : 62) - kr * (mob ? 16 : 44); kr++;
+        seg(x, y0, x, yt, rgba(INK, 0.4 * f), 1); if (!WORKS[n.w][6]) ring(x, py[i], rr[i] + (mob ? 2.2 : 3.4), rgba(INK, 0.9 * f), 1.2);
+        lab.push([n, x, yt, 1]);
+      } else { const yt = y0 - 44; seg(x, y0, x, yt, rgba(INK, 0.4 * f), 1); ring(x, py[i], rr[i] + 3.4, rgba(INK, 0.9 * f), 1.2); lab.push([n, x, yt, 0]); }
+    }
+    for (const [n, x, yt, side] of lab) {
+      if (mob) T(n.m, x - 5, yt + 4, Object.assign({ s: 10.5, w: 600, al: 'right', c: rgba(INK, f) }, hh));
+      else if (side === 1) { T(n.a, x - 10, yt + 5, Object.assign({ s: 14, w: 600, al: 'right', c: rgba(INK, f) }, hh)); T(n.b, x - 10, yt + 22, Object.assign({ s: 12, al: 'right', c: rgba(INK3, f) }, hh)); }
+      else { T(n.a, x + 10, yt + 5, Object.assign({ s: 14, w: 600, c: rgba(INK, f) }, hh)); T(n.b, x + 10, yt + 22, Object.assign({ s: 12, c: rgba(INK3, f) }, hh)); }
+    }
   }
 };
 
@@ -1488,7 +1552,7 @@ function setStage() {
     /* on a phone the figure takes all the space between the header and the current step's card */
     const ch = stepIdx >= 0 ? steps[stepIdx].card.offsetHeight : (aEl.offsetHeight || 280), free = H - 62 - ch - 26;
     const sc = stepIdx >= 0 ? steps[stepIdx].sc : 0, st = stepIdx >= 0 ? steps[stepIdx].st : 0, want = (MH[sc][st] || MH[sc][0]) * (W - 28);
-    S.x = 14; S.w = W - 28; S.y = 60; S.h = Math.round(clamp(Math.min(free, want), H * 0.3, H * 0.62));
+    S.x = 14; S.w = W - 28; S.y = 60; S.h = Math.round(clamp(Math.min(free, want), Math.max(170, H * 0.24), H * 0.62));
     root.style.setProperty('--ct', (S.y + S.h + 12) + 'px');
   } else {
     const left = Math.max(48, (W - 1280) / 2 + 16), colw = clamp(W * 0.27, 300, 388), gap = clamp(W * 0.03, 28, 44);
