@@ -286,10 +286,11 @@ def src_html(s):
 
 
 def step_html(sc, st, s, site, extra):
-    """One step of a scene. extra: lines added at the end of the card (the legend of the map, the survey link)."""
+    """One step of a scene. extra: lines added at the end of the card (the legend of the map, the survey link).
+    The card's content sits in div.ci: when the text is taller than the space the card has, field.js keeps the box and moves .ci."""
     cls = " " + s["cls"] if s.get("cls") else ""
     sid = f' id="s{sc}-{st}"' if site else ""
-    out = [f'  <div class="step{cls}"{sid} data-sc="{sc}" data-st="{st}"><div class="card">']
+    out = [f'  <div class="step{cls}"{sid} data-sc="{sc}" data-st="{st}"><div class="card"><div class="ci">']
     if "kick" in s:
         out.append(f'    <p class="kick"><i>{sc:02d}</i>{s["kick"]}</p>')
     if "h2" in s:
@@ -305,7 +306,7 @@ def step_html(sc, st, s, site, extra):
     if "sign" in s:
         out.append(f'    <p class="sign">{s["sign"]}</p>')
     out += extra
-    out.append("  </div></div>")
+    out.append("  </div></div></div>")
     return out
 
 
@@ -356,10 +357,10 @@ def page(lang, site=False):
                   for i, x in enumerate(m["src"])]
         lines.append("        </div>")
     A = H["aside"]
-    lines += ["      </div>", "    </div>", '    <div class="h-a" id="hA">', f'      <h2>{A["h2"]}</h2>']
+    lines += ["      </div>", "    </div>", '    <div class="h-a" id="hA"><div class="ci">', f'      <h2>{A["h2"]}</h2>']
     lines += [f"      <p>{p}</p>" if i == 0 else f'      <p style="margin-top:12px">{p}</p>' for i, p in enumerate(A["p"])]
     lines += [f'      <p class="src">{src_html(x)}</p>' for x in A["src"]]
-    lines += ["    </div>", "  </div>"]
+    lines += ["    </div></div>", "  </div>"]
     if site:
         lines.append('  <div class="mark" id="s0-1" aria-hidden="true"></div>')
     lines.append("</section>")

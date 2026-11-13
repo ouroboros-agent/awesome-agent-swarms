@@ -792,9 +792,10 @@
    "swarm twice the training size, by the authors",
    "online SFT",
    "baseline: online SFT",
-   "repeated work: almost −50%",
+   "room tree: repeated work almost −50%",
    "repeated work in the room tree vs agents that do not communicate",
-   "almost −50%"
+   "almost −50%",
+   "vs agents that do not communicate"
   ],
   "plans": [
    "Avalon-M1 · a hundred opening plans",

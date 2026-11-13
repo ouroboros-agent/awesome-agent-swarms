@@ -86,10 +86,13 @@ function T(s, x, y, o) {
   o = o || {};
   ctx.font = (o.w || 500) + ' ' + ((o.s || 13) * TS).toFixed(2) + 'px ' + FONT;
   ctx.textAlign = o.al || 'left'; ctx.textBaseline = o.bl || 'alphabetic';
+  const w_ = ctx.measureText(s).width; x += inView(x - (ctx.textAlign === 'right' ? w_ : ctx.textAlign === 'center' ? w_ / 2 : 0), w_);
   if (o.h) { halo(o); ctx.strokeText(s, x, y); }
   ctx.fillStyle = o.c || rgba(INK, o.a === undefined ? 1 : o.a);
   ctx.fillText(s, x, y);
 }
+/* a label never runs off the screen sideways: near an edge it moves inward (only in unrotated screen space) */
+function inView(l, w) { const m = ctx.getTransform(); if (m.b || m.c || m.e || m.f || Math.abs(m.a - DPR) > 1e-6) return 0; return l < 4 ? 4 - l : l + w > W - 4 ? W - 4 - l - w : 0; }
 /* a background-coloured halo: lines or dots behind a label do not merge with the letters */
 function halo(o) { ctx.lineJoin = 'round'; ctx.lineWidth = o.h; ctx.strokeStyle = 'rgba(9,11,12,' + clamp(o.ha === undefined ? 1 : o.ha).toFixed(3) + ')'; }
 let TS = 1;
@@ -100,7 +103,7 @@ function TN(s, x, y, o) {
   ctx.font = (o.w || 600) + ' ' + ((o.s || 13) * TS).toFixed(2) + 'px ' + FONT;
   const w0 = ctx.measureText('0').width; let tot = 0; const ws = [];
   for (let i = 0; i < s.length; i++) { const ch = s[i]; const w = (ch >= '0' && ch <= '9') ? w0 : ctx.measureText(ch).width; ws.push(w); tot += w; }
-  let cx = x - (o.al === 'right' ? tot : o.al === 'center' ? tot / 2 : 0);
+  let cx = x - (o.al === 'right' ? tot : o.al === 'center' ? tot / 2 : 0); cx += inView(cx, tot);
   ctx.textAlign = 'center'; ctx.textBaseline = o.bl || 'alphabetic';
   if (o.h) { halo(o); let hx_ = cx; for (let i = 0; i < s.length; i++) { ctx.strokeText(s[i], hx_ + ws[i] / 2, y); hx_ += ws[i]; } }
   ctx.fillStyle = o.c || rgba(INK, o.a === undefined ? 1 : o.a);
@@ -109,13 +112,14 @@ function TN(s, x, y, o) {
 }
 function rrect(x, y, w, h, r) { ctx.beginPath(); ctx.moveTo(x + r, y); ctx.arcTo(x + w, y, x + w, y + h, r); ctx.arcTo(x + w, y + h, x, y + h, r); ctx.arcTo(x, y + h, x, y, r); ctx.arcTo(x, y, x + w, y, r); ctx.closePath(); }
 function seg(x0, y0, x1, y1, c, w, dash) { ctx.beginPath(); ctx.moveTo(x0, y0); ctx.lineTo(x1, y1); ctx.strokeStyle = c; ctx.lineWidth = w || 1; if (dash) ctx.setLineDash(dash); ctx.stroke(); if (dash) ctx.setLineDash([]); }
-function dot(x, y, r, c) { ctx.beginPath(); ctx.arc(x, y, r, 0, 6.2832); ctx.fillStyle = c; ctx.fill(); }
-function ring(x, y, r, c, w, dash) { ctx.beginPath(); ctx.arc(x, y, r, 0, 6.2832); ctx.strokeStyle = c; ctx.lineWidth = w || 1; if (dash) ctx.setLineDash(dash); ctx.stroke(); if (dash) ctx.setLineDash([]); }
-function glow(x, y, r, c, a) { const gr = ctx.createRadialGradient(x, y, 0, x, y, r); gr.addColorStop(0, rgba(c, a)); gr.addColorStop(1, rgba(c, 0)); ctx.fillStyle = gr; ctx.beginPath(); ctx.arc(x, y, r, 0, 6.2832); ctx.fill(); }
+/* a radius that a spring carries below zero draws nothing (a negative radius throws and would end the frame) */
+function dot(x, y, r, c) { ctx.beginPath(); ctx.arc(x, y, Math.max(0, r), 0, 6.2832); ctx.fillStyle = c; ctx.fill(); }
+function ring(x, y, r, c, w, dash) { ctx.beginPath(); ctx.arc(x, y, Math.max(0, r), 0, 6.2832); ctx.strokeStyle = c; ctx.lineWidth = w || 1; if (dash) ctx.setLineDash(dash); ctx.stroke(); if (dash) ctx.setLineDash([]); }
+function glow(x, y, r, c, a) { r = Math.max(0, r); const gr = ctx.createRadialGradient(x, y, 0, x, y, r); gr.addColorStop(0, rgba(c, a)); gr.addColorStop(1, rgba(c, 0)); ctx.fillStyle = gr; ctx.beginPath(); ctx.arc(x, y, r, 0, 6.2832); ctx.fill(); }
 /* a label on a dark plate, readable over dots */
 function tag(s, x, y, o) {
   o = o || {}; const sz = o.s || 12, w = TW(s, { s: sz, w: o.w || 600 }), pad = o.pad === undefined ? 7 : o.pad, hh = sz * TS + 9;
-  const xx = o.al === 'right' ? x - w - pad * 2 : o.al === 'center' ? x - w / 2 - pad : x;
+  let xx = o.al === 'right' ? x - w - pad * 2 : o.al === 'center' ? x - w / 2 - pad : x; xx += inView(xx, w + pad * 2);
   rrect(xx, y - hh / 2, w + pad * 2, hh, hh / 2); ctx.fillStyle = 'rgba(9,11,12,' + (0.86 * (o.a === undefined ? 1 : o.a)).toFixed(3) + ')'; ctx.fill();
   if (o.stroke) { ctx.strokeStyle = o.stroke; ctx.lineWidth = 1; ctx.stroke(); }
   T(s, xx + pad, y + 0.5, { s: sz, w: o.w || 600, bl: 'middle', c: o.c || rgba(INK, o.a === undefined ? 1 : o.a) });
@@ -168,16 +172,87 @@ const SC = [];
 const vis = new Float32Array(8);
 const NAMES = L.names;
 const stepEls = [...D.querySelectorAll('.step')];
-const steps = stepEls.map(el => ({ el, sc: +el.dataset.sc, st: +el.dataset.st, top: 0, ctop: 0, card: el.querySelector('.card'), long: el.classList.contains('long') }));
+const steps = stepEls.map(el => ({ el, sc: +el.dataset.sc, st: +el.dataset.st, top: 0, ctop: 0, h: 0, card: el.querySelector('.card'), ci: el.querySelector('.ci') || el.querySelector('.card'),
+  long: el.classList.contains('long'), fin: el.classList.contains('fin'), hold: false, nat: 0, pin: 0, box: 0, ov: 0, p: -1 }));
 let curSc = 0, curSt = 0, key = -1, stepIdx = -2, docH = 1;
 const whereEl = $('where'), progEl = $('prog'), langEl = $('lang'), langBase = langEl ? langEl.getAttribute('href') : '';
 let place = '';
 
+/* ---------- cards that do not fit ---------- */
+/* A card stays on screen. On a phone the figure keeps at least its minimum height (MN) and the card gets the rest; on a
+   desktop a card taller than the window is held below the header. When the text is still taller than the card's box,
+   the box stays and the text inside moves with the page (revealCards): it is read top to bottom by scrolling as usual. */
+const HOLD = 72, LEAD = 0.1, TAIL = 0.12, MINBOX = 120, hA = { nat: 0, box: 0, ov: 0, p: -1 };
+let aCi = null;
+function fitCards() {
+  for (const s of steps) { s.card.classList.remove('ov'); s.el.classList.remove('hold'); s.card.style.maxHeight = s.card.style.top = s.el.style.minHeight = s.ci.style.transform = ''; }
+  aEl.classList.remove('ov'); aEl.style.maxHeight = aEl.style.top = ''; aCi.style.transform = ''; hA.ov = 0; hA.p = -1;
+  for (const s of steps) s.nat = s.card.offsetHeight;
+  hA.nat = aEl.offsetHeight; hA.box = H - (mob ? S.y + stageH(0, 0, hA.nat) + 12 : HOLD) - 8;
+  if (mob && hA.nat > hA.box && hA.box < MINBOX) { const t = Math.max(56, H - 8 - Math.min(hA.nat, H - 64)); aEl.style.top = t + 'px'; hA.box = H - t - 8; }   /* a very short screen: the panel covers the figure rather than show a sliver */
+  if (hA.nat > hA.box) { hA.ov = hA.nat - hA.box; aEl.classList.add('ov'); aEl.style.maxHeight = hA.box + 'px'; }
+  for (const s of steps) {
+    const c = s.card; let top = 0;
+    s.hold = false; s.ov = 0; s.box = s.nat; s.p = -1;
+    if (mob) top = S.y + stageH(s.sc, s.st, s.nat) + 12;
+    else if (s.long || s.fin) { top = parseFloat(getComputedStyle(c).top) || HOLD; if (s.nat > H - top - 8) { top = Math.max(HOLD, H - 8 - s.nat); c.style.top = top + 'px'; } }
+    else if (s.nat > H - HOLD - 8) { s.hold = true; s.el.classList.add('hold'); top = HOLD; }
+    s.pin = top;
+    if (!top || s.nat <= H - top - 8 || H - top - 8 < MINBOX) continue;   /* a box too small to read: the card scrolls as a whole */
+    s.box = H - top - 8; s.ov = s.nat - s.box;
+    c.classList.add('ov'); c.style.maxHeight = s.box + 'px';
+    const need = s.box + s.ov + (LEAD + TAIL) * H + 1;
+    if (s.el.offsetHeight < need) s.el.style.minHeight = Math.ceil(need) + 'px';
+  }
+}
+/* the edge fades are as strong as the text hidden beyond each edge: a few hidden pixels give almost no fade */
+function fades(el, p, ov) { el.style.setProperty('--ft', Math.min(1, p * ov / 26).toFixed(2)); el.style.setProperty('--fb', Math.min(1, (1 - p) * ov / 26).toFixed(2)); }
+function revealCards() {
+  const sy = scrollY;
+  if (hA.ov) {   /* the first screen's panel is shown from about 0.55 to 1.4 screens of scroll: its text moves in the middle of that */
+    const p = clamp((sy / H - 0.62) / 0.55);
+    if (Math.abs(p - hA.p) >= 1e-4) { hA.p = p; aCi.style.transform = 'translateY(' + (-p * hA.ov).toFixed(1) + 'px)'; fades(aEl, p, hA.ov); }
+  }
+  for (const s of steps) {
+    if (!s.ov) continue;
+    if (s.card.scrollTop) s.card.scrollTop = 0;   /* browsers without overflow:clip */
+    const p = clamp((s.pin - (s.top - sy) - LEAD * H) / Math.max(1, s.h - s.box - (LEAD + TAIL) * H));
+    if (Math.abs(p - s.p) < 1e-4) continue;
+    s.p = p; s.ci.style.transform = 'translateY(' + (-p * s.ov).toFixed(1) + 'px)'; fades(s.card, p, s.ov);
+  }
+}
+/* the keyboard reaches a link beyond the edge of a box whose text moves (a card, the first screen's panel): the browser's own
+   scroll cannot know that the box is pinned, so the page goes to the place where the text inside shows that link. A tap is
+   not keyboard focus (:focus-visible) and moves nothing. */
+function textOffset(box, ci, el, ov, p) {   /* the offset in [0, ov] nearest to the current one that shows el inside the box */
+  const cs = getComputedStyle(box), inner = box.clientHeight - (parseFloat(cs.paddingTop) || 0) - (parseFloat(cs.paddingBottom) || 0);
+  const c0 = ci.getBoundingClientRect().top, r = el.getBoundingClientRect(), m = 24;
+  const lo = Math.min(ov, Math.max(0, r.bottom - c0 + m - inner)), hi = Math.min(ov, Math.max(0, r.top - c0 - m));
+  return clamp(clamp(p) * ov, lo, Math.max(lo, hi));
+}
+D.addEventListener('focusin', e => {
+  let kb = true; try { kb = e.target.matches(':focus-visible'); } catch (x) { /* no :focus-visible: treat as keyboard */ }
+  const s = steps.find(x => x.ov && x.card.contains(e.target)), inA = hA.ov && aEl.contains(e.target);
+  if (!kb || (!s && !inA)) return;
+  requestAnimationFrame(() => requestAnimationFrame(() => {
+    if (s) { s.card.scrollTop = 0; scrollTo(0, s.top - s.pin + LEAD * H + textOffset(s.card, s.ci, e.target, s.ov, s.p) / s.ov * Math.max(1, s.h - s.box - (LEAD + TAIL) * H)); }
+    else { aEl.scrollTop = 0; scrollTo(0, (0.62 + 0.55 * textOffset(aEl, aCi, e.target, hA.ov, hA.p) / hA.ov) * H); }
+  }));
+});
+/* arriving at a place by its address (the language link keeps the reader's place): text that moves inside its box starts at its
+   first line, not wherever the browser's jump to the step left it */
+function arrive() {
+  const m = /^#s(\d)-(\d+)$/.exec(location.hash); if (!m) return;
+  if (m[1] === '0') { if (m[2] === '1' && hA.ov && Math.abs(scrollY - H) < 3) scrollTo(0, Math.ceil(0.62 * H) + 1); return; }
+  const s = steps.find(x => x.sc === +m[1] && x.st === +m[2]);
+  if (s && s.ov && Math.abs(scrollY - s.top) < 3) scrollTo(0, Math.ceil(s.top - s.pin + LEAD * H) + 1);
+}
 function measure() {
+  fitCards();
   const sy = scrollY;
   for (const s of steps) {
-    const r = s.el.getBoundingClientRect(); s.top = r.top + sy;
-    if (mob) s.ctop = s.top; else if (s.long) s.ctop = s.top + H * 0.15; else s.ctop = s.card.getBoundingClientRect().top + sy;
+    const r = s.el.getBoundingClientRect(); s.top = r.top + sy; s.h = r.height;
+    if (mob || s.fin || s.hold) s.ctop = s.top; else if (s.long) s.ctop = s.top + s.pin; else s.ctop = s.card.getBoundingClientRect().top + sy;
     if (s.sc === 1 && s.st === 0 && !mob) s.ctop -= H * 0.16;
   }
   docH = Math.max(1, root.scrollHeight - H);
@@ -203,6 +278,7 @@ function update() {
     go(a < 0 ? 0 : steps[a].sc, a < 0 ? 0 : steps[a].st);
   }
   progEl.style.transform = 'scaleX(' + clamp(scrollY / docH).toFixed(4) + ')';
+  revealCards();
   if (langEl) { const pl = stepIdx >= 0 ? 's' + steps[stepIdx].sc + '-' + steps[stepIdx].st : scrollY > H * 0.6 ? 's0-1' : 's0'; if (pl !== place) { place = pl; langEl.href = langBase + '#' + pl; } }
 }
 const T_OF = sc => RM ? 999 : now - SC[sc].t0;
@@ -266,24 +342,27 @@ const hopOf = i => Math.abs(COL[i] - 17) + Math.abs(ROW[i] - 15);
 
 const hero = { m: 0, mt: 0, sub: 0, fade: [1, 0, 0, 0], ta: 0, pA: 0, pZ: 0, C: { x: 0, y: 0 }, R: 100, rA: 20, CA: { x: 0, y: 0 }, RA: 80, chipA: new Float32Array(6) };
 const copyEl = $('hCopy'), capEl = $('hCap'), aEl = $('hA'), cueEl = $('cue');
+aCi = aEl.querySelector('.ci') || aEl;
 const tabEls = [...D.querySelectorAll('.tab')], modeEls = [...D.querySelectorAll('.mode')];
 function setMode(m) {
   hero.m = m; hero.mt = RM ? 6.4 : 0;
   tabEls.forEach((e, i) => { e.classList.toggle('on', i === m); e.setAttribute('aria-selected', i === m ? 'true' : 'false'); if (i !== m) e.querySelector('.pb').style.transform = 'scaleX(0)'; });
   modeEls.forEach((e, i) => e.classList.toggle('on', i === m));
-  if (mob) { const bar = tabEls[m].parentNode, br = bar.getBoundingClientRect(), r = tabEls[m].getBoundingClientRect(), d = r.left < br.left + 16 ? r.left - br.left - 16 : r.right > br.right - 16 ? r.right - br.right + 16 : 0; if (d) bar.scrollBy({ left: d, behavior: RM ? 'auto' : 'smooth' }); }
+  showTab(tabEls[m], !RM);
 }
-tabEls.forEach((e, i) => e.addEventListener('click', () => { setMode(i); kick(); }));
+/* on a phone the tab row scrolls sideways: the selected tab, and a tab the keyboard reaches, is brought fully into view */
+function showTab(t, smooth) { if (!mob) return; const bar = t.parentNode, br = bar.getBoundingClientRect(), r = t.getBoundingClientRect(), d = r.left < br.left + 16 ? r.left - br.left - 16 : r.right > br.right - 16 ? r.right - br.right + 16 : 0; if (d) bar.scrollBy({ left: d, behavior: smooth ? 'smooth' : 'auto' }); }
+tabEls.forEach((e, i) => { e.addEventListener('click', () => { setMode(i); kick(); }); e.addEventListener('focus', () => showTab(e, false)); });
 $('hCap').querySelector('.tabs').addEventListener('keydown', e => { const d = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0; if (!d) return; e.preventDefault(); const m = (hero.m + d + 4) % 4; setMode(m); tabEls[m].focus(); kick(); });
 
 function heroGeom() {
   const y0 = mob ? copyEl.offsetTop + copyEl.offsetHeight + 2 : 108, y1 = capEl.offsetTop - (mob ? 4 : 30);
   hero.C.x = S.cx; hero.C.y = (y0 + y1) / 2;
-  hero.R = Math.min(S.w * 0.30, (y1 - y0) * (mob ? 0.40 : 0.36), S.w / 3.75); hero.rA = hero.R * 0.21;
+  hero.R = Math.min(S.w * 0.30, (y1 - y0) * 0.36, S.w / 3.75); hero.rA = hero.R * 0.21;
   hero.CA.x = S.cx; hero.CA.y = S.y + S.h * (mob ? 0.30 : 0.32); hero.RA = Math.min(S.w * 0.25, S.h * (mob ? 0.235 : 0.245));
 }
 function mpos(m, k) { if (m === 0) return [(k - 2.5) * (mob ? 0.64 : 0.6) + (mob ? 0 : 0.12), -0.5]; if (m === 3) return [((k % 3) - 1) * 0.8, k < 3 ? -0.4 : 0.4]; return HEX[k]; }
-const P6 = k => { const i = SIX[k]; return { x: px[i], y: py[i], r: rr[i] }; };
+const P6 = k => { const i = SIX[k]; return { x: px[i], y: py[i], r: Math.max(0, rr[i]) }; };
 function bez(a, b, c, d, t) { const q = 1 - t; return q * q * q * a + 3 * q * q * t * b + 3 * q * t * t * c + t * t * t * d; }
 
 /* the finding: a diamond with a trail */
@@ -308,6 +387,7 @@ function link(A, B, c, w, dash) {
 }
 function chip(s, x, y, f, solid) {
   const sz = mob ? 10.5 : 12.5, w = TW(s, { s: sz, w: 600 }), pad = mob ? 7 : 9, hh = sz + (mob ? 8 : 10);
+  x += inView(x - w / 2 - pad, w + pad * 2);
   rrect(x - w / 2 - pad, y - hh / 2, w + pad * 2, hh, hh / 2);
   ctx.fillStyle = solid ? rgba([12, 40, 31], f) : 'rgba(9,11,12,' + (0.9 * f).toFixed(3) + ')'; ctx.fill();
   ctx.strokeStyle = rgba(EM, (solid ? 0.75 : 0.4) * f); ctx.lineWidth = 1; ctx.stroke();
@@ -385,11 +465,8 @@ function heroLocal(f, mt) {
 const A_ROWS = [[L.aRows[0], 94, 99, 1], [L.aRows[1], 47, 67, 1], [L.aRows[2], 56, 68, 0], [L.aRows[3], 19, 36, 0]];
 const A_IN = { 0: 0, 2: 1, 5: 2 }, A_SEND = [0, 1, 2, 3, 5];
 function heroA(f) {
-  const tA = RM ? 5.2 : (now - hero.ta) % 9, pc = P6(4), fadeLoop = RM ? 1 : (1 - ss((tA - 8.3) / 0.6)) * ss(tA / 0.4);
+  const pc = P6(4);
   for (const k of A_SEND) link(pc, P6(k), rgba(INK, 0.16 * f), 1.25);
-  const cap = tA < 1.9 ? '' : tA < 3.4 ? L.aCap[0] : tA < 4.3 ? L.aCap[1] : L.aCap[2];
-  T(mob ? L.aOrder[0] : L.aOrder[1], pc.x, pc.y + pc.r + (mob ? 15 : 24), { s: mob ? 10.5 : 13, w: 600, al: 'center', c: rgba(INK2, f) });
-  if (cap) T(cap, pc.x, pc.y + pc.r + (mob ? 29 : 43), { s: mob ? 10.5 : 13, w: 500, al: 'center', c: rgba(tA >= 4.3 ? EM : INK3, f * fadeLoop) });
   /* ranges */
   const bx0 = S.x + (mob ? 2 : 36), bx1 = S.x + S.w - (mob ? 78 : 168), by0 = S.y + S.h * (mob ? 0.655 : 0.675), stp = mob ? 30 : 46, tE = RM ? 9 : now - hero.ta;
   T(L.aShare, bx0, by0 - (mob ? 24 : 38), { s: mob ? 9.5 : 11.5, c: rgba(INK4, f) });
@@ -407,6 +484,10 @@ function heroA(f) {
 function heroAover(f) {
   const tA = RM ? 5.2 : (now - hero.ta) % 9, pc = P6(4), ord = tA > 4.3 ? eo((tA - 4.3) / 0.5) : 0, fadeLoop = RM ? 1 : (1 - ss((tA - 8.3) / 0.6)) * ss(tA / 0.4);
   ring(pc.x, pc.y, pc.r * 0.72, rgba(INK, 0.3 * f), 1, [2, 5]);
+  /* the coordinator's caption is drawn above the agents, on a halo: the circles of agents 4 and 6 never cut its letters */
+  const cap = tA < 1.9 ? '' : tA < 3.4 ? L.aCap[0] : tA < 4.3 ? L.aCap[1] : L.aCap[2], hl = { h: mob ? 4 : 6, ha: f };
+  T(mob ? L.aOrder[0] : L.aOrder[1], pc.x, pc.y + pc.r + (mob ? 15 : 24), Object.assign({ s: mob ? 10.5 : 13, w: 600, al: 'center', c: rgba(INK2, f) }, hl));
+  if (cap) T(cap, pc.x, pc.y + pc.r + (mob ? 29 : 43), Object.assign({ s: mob ? 10.5 : 13, w: 500, al: 'center', c: rgba(tA >= 4.3 ? EM : INK3, f * fadeLoop) }, hl));
   if (ord > 0 && tA < 6) { const u = (tA - 4.3) / 1.2; ring(pc.x, pc.y, pc.r + 6 + u * pc.r * 1.1, rgba(EM, (1 - clamp(u)) * 0.6 * f), 1.5); }
   A_SEND.forEach((k, j) => {
     const ps = P6(k), dx = ps.x - pc.x, dy = ps.y - pc.y, d = Math.hypot(dx, dy) || 1, ux = dx / d, uy = dy / d;
@@ -435,9 +516,9 @@ SC[0] = {
     const o1 = 1 - ss((sy - 0.03) / 0.26);
     copyEl.style.opacity = o1.toFixed(3); copyEl.style.transform = 'translateY(' + (-36 * (1 - o1)).toFixed(1) + 'px)';
     capEl.style.opacity = o1.toFixed(3); capEl.style.transform = 'translateY(' + (-18 * (1 - o1)).toFixed(1) + 'px)';
-    capEl.style.pointerEvents = o1 < 0.5 ? 'none' : ''; cueEl.style.opacity = o1.toFixed(3);
+    capEl.style.pointerEvents = o1 < 0.5 ? 'none' : ''; capEl.style.visibility = o1 > 0.004 ? '' : 'hidden'; cueEl.style.opacity = o1.toFixed(3);
     const oA = ss((sy - 0.34) / 0.2) * (1 - ss((sy - 1.5) / 0.2));
-    aEl.style.opacity = oA.toFixed(3); aEl.classList.toggle('live', oA > 0.5);
+    aEl.style.opacity = oA.toFixed(3); aEl.classList.toggle('live', oA > 0.5); aEl.style.visibility = oA > 0.004 ? '' : 'hidden';   /* hidden: no invisible tab stop */
     stiff = sub === 2 ? 190 : 72;
     if (sub === 0 && !RM) { hero.mt += dt; if (hero.mt > MODES[hero.m].dur) setMode((hero.m + 1) % 4); tabEls[hero.m].querySelector('.pb').style.transform = 'scaleX(' + clamp(hero.mt / MODES[hero.m].dur).toFixed(4) + ')'; }
     for (let m = 0; m < 4; m++) hero.fade[m] += ((sub === 0 && m === hero.m ? 1 : 0) - hero.fade[m]) * (RM ? 1 : Math.min(1, dt * 7));
@@ -514,6 +595,7 @@ function s1geom() {
   s1.x0 = S.x + (mob ? 8 : 22); s1.x1 = S.x + S.w - (mob ? 6 : 12); s1.ppd = (s1.x1 - s1.x0 - (mob ? 44 : 186)) / 4.6;
   s1.k = mob ? clamp(S.h / 370, 0.9, 1.45) : 1;
   s1.yb = mob ? S.y + Math.max(S.h * 0.5 + 18 * s1.k, 42 + 150 * s1.k) : S.y + S.h * 0.615; s1.rw = mob ? 2.5 * s1.k : 6.1; s1.xm = s1.x1 - (mob ? 8 : 14);
+  s1.ls = Math.max(30, Math.min(43, (s1.yb - 126 - (S.y - 16)) / 6));   /* desktop: the seven label rows stay below the header */
   const d = s1.rw * 2 + (mob ? 0.9 : 1.6), pts = [];
   for (let j = 0; j < 99; j++) {
     const x = xS(SCALE[j][0]); let yy = 0, moved = true, guard = 0;
@@ -607,7 +689,7 @@ SC[1] = {
       let x, y;
       if (m.id) { const i = s1.who[s1.id[m.id]]; x = px[i]; y = py[i] - rr[i] - 3; }
       else { [x, y] = s1lmXY(m); if (hot) glow(x, y, mob ? 9 : 16, EM, 0.4 * f); ring(x, y, mob ? 2.6 : 5, rgba(EM, f), 1.5); y -= (mob ? 4 : 7); }
-      const yt = s1.yb - (mob ? (50 + m.lv * 14.5) * s1.k : 126 + m.lv * 43);
+      const yt = s1.yb - (mob ? (50 + m.lv * 14.5) * s1.k : 126 + m.lv * s1.ls);
       seg(x, y - 2, x, yt, rgba(EM, 0.5 * f), 1);
       lab.push([m, x, yt, hot, f]);
     }
@@ -638,10 +720,12 @@ function s2geom() {
     for (let q = 0; q < 40; q++) { const u = q / 40, u2 = u * u, u3 = u2 * u; cur.push([0.5 * (2 * p1[0] + (-p0[0] + p2[0]) * u + (2 * p0[0] - 5 * p1[0] + 4 * p2[0] - p3[0]) * u2 + (-p0[0] + 3 * p1[0] - 3 * p2[0] + p3[0]) * u3), 0.5 * (2 * p1[1] + (-p0[1] + p2[1]) * u + (2 * p0[1] - 5 * p1[1] + 4 * p2[1] - p3[1]) * u2 + (-p0[1] + 3 * p1[1] - 3 * p2[1] + p3[1]) * u3)]); }
   }
   cur.push(P[4]); G.curve = cur;
-  /* Avalon-M1 bars */
-  G.p = mob ? Math.min(5.1, (S.w - 46) / 66) : Math.min(10.8, S.w * 0.84 / 66); G.bl = S.x + (mob ? 4 : 30);
+  /* Avalon-M1 bars. On a stage lower than this figure needs (a short landscape phone) the dots get smaller and the rows start
+     right under the legend, so that the three rows keep clear of the legend above and of the card below */
+  const sq = mob && S.h < MN[2][5];
+  G.p = mob ? Math.min(5.1, (S.w - 46) / 66, sq ? Math.max(2, (S.h - 175) / 24) : 5.1) : Math.min(10.8, S.w * 0.84 / 66); G.bl = S.x + (mob ? 4 : 30);
   G.gt = mob ? 24 : 42; G.gi = mob ? 6 : 12; G.go = mob ? 18 : 46; G.gh = 8 * G.p + G.gi + G.gt + G.go;
-  G.gy0 = S.y + (S.h - 3 * G.gh + G.go) / 2 + (mob ? 22 : 30);
+  G.gy0 = sq ? S.y + 44 : S.y + (S.h - 3 * G.gh + G.go) / 2 + (mob ? 22 : 30);
   /* three ways to spend a hundred agents: three rows */
   const top = mob ? 42 : 66; G.rh = Math.min((S.h - top) / 3, mob ? 132 : 222); G.fs = G.rh * (mob ? 0.84 : 0.88); G.hp = G.fs / 10;
   G.hy0 = S.y + top + (S.h - top - 3 * G.rh) / 2; G.hx = S.x + (mob ? 4 : 18) + G.fs / 2;
@@ -830,12 +914,13 @@ function s3geom() {
   G.ty = S.y + Math.max(mob ? 62 : 126, (S.h - 10 * (3 * G.tp + G.tg)) / 2 + (mob ? 6 : 10));
   G.tcx = S.x + S.w * (mob ? 0.82 : 0.8); G.tcc = mob ? 1.5 : 3.4;
   G.tcy = G.ty + 9 * (3 * G.tp + G.tg) + 3 * G.tp - G.tcc * Math.sqrt(750) * 0.72;
+  G.tcy = Math.min(G.tcy, (mob ? S.y + S.h : H - 8) - G.tcc * Math.sqrt(750) - (mob ? 52 : 90));   /* the caption under the cluster stays on screen */
   /* two ParallACT waffles */
   G.wp = Math.min(30, (S.w - (mob ? 30 : 130)) / 21, (S.h - (mob ? 130 : 240)) / 10); G.wy = S.y + S.h * 0.5 + (mob ? 4 : 2);
   /* s³ blocks: two rows of thirteen */
-  G.up = Math.min((S.w - (mob ? 6 : 20)) / (14 * 3.55), (S.h - (mob ? 170 : 262)) / 29); G.uy = S.y + (mob ? 74 : 128) + Math.max(0, (S.h - (mob ? 170 : 262) - 29 * G.up) / 2);
+  G.up = Math.max(mob ? 1.8 : 3, Math.min((S.w - (mob ? 6 : 20)) / (14 * 3.55), (S.h - (mob ? 170 : 262)) / 29)); G.uy = S.y + (mob ? 74 : 128) + Math.max(0, (S.h - (mob ? 170 : 262) - 29 * G.up) / 2);
   /* Avalon-M1 plans */
-  G.gs = Math.min(S.w * (mob ? 1 : 0.69), S.h * (mob ? 0.8 : 0.86)) / 10; G.gx = S.x + (mob ? (S.w - 10 * G.gs) / 2 : 6); G.gy = S.y + (mob ? 26 : (S.h - 10 * G.gs) / 2 + 14);
+  G.gs = Math.min(S.w * (mob ? 1 : 0.69), S.h * (mob ? 0.8 : 0.86), mob ? S.h - 80 : 1e9) / 10;   /* a phone keeps two caption lines under the grid */ G.gx = S.x + (mob ? (S.w - 10 * G.gs) / 2 : 6); G.gy = S.y + (mob ? 26 : (S.h - 10 * G.gs) / 2 + 14);
 }
 const s3cell = q => { const G = s3.G, c = Math.floor(q / G.trw), r = q % G.trw; return [G.brd.x + G.pad + c * G.tpx, G.brd.y + G.head + r * G.tpy]; };
 const s3fail = (q, tot) => hash(q + 17) < (q / tot < 0.14 ? 0.1 : 0.427);
@@ -1021,7 +1106,7 @@ SC[3] = {
       T(L.s3u[2], x1 + wn + (mob ? 8 : 14), y0 - (mob ? 21 : 38), { s: mob ? 11 : 16, w: 600, c: rgba(EM, f) }); T(L.s3u[3], x1 + wn + (mob ? 8 : 14), y0 - (mob ? 9 : 18), { s: mob ? 10 : 13, c: rgba(INK3, f) });
       T(mob ? L.s3u[4] : L.s3u[5], S.x + (mob ? 3 : 10), y0 + 13 * p + (mob ? 12 : 20), { s: mob ? 9.5 : 12, c: rgba(INK3, f) });
       const y3 = y0 + 26 * p + (mob ? 30 : 46) + (mob ? 22 : 40);
-      if (mob) T(L.s3u[6], S.x + 3, y3, { s: 10.5, c: rgba(INK2, f) });
+      if (mob) { T(L.s3u[6], S.x + 3, y3, { s: 10.5, c: rgba(INK2, f) }); T(L.s3u[9], S.x + 3, y3 + 13, { s: 10.5, c: rgba(INK3, f) }); }   /* the task and its baseline: not a second online SFT result */
       else { const w1 = TW(L.s3u[8], { s: 24, w: 600 }); T(L.s3u[8], S.x + 10, y3, { s: 24, w: 600, c: rgba(INK, f) }); T(L.s3u[7], S.x + 10 + w1 + 12, y3 - 2, { s: 13, c: rgba(INK3, f) }); }
     } else if (st === 7) {
       const f = a * ss((t - 0.4) / 0.5), after = s3.phase === 1, gs = G.gs;
@@ -1029,7 +1114,7 @@ SC[3] = {
       const rows = [[L.plans[2], L.plans[3], 71, 31, INK], [L.plans[4], L.plans[5], 16, 54, EM]];
       if (mob) {
         const y0 = G.gy + 10 * gs + 22;
-        rows.forEach((r, k) => { const x = S.x + 4 + k * (S.w / 2); const w = TN(r[2] + '%', x, y0, { s: 17, w: 600, c: rgba(r[4], f * (after ? 0.4 : 1)) }); T('→', x + w + 4, y0 - 1, { s: 12, c: rgba(INK4, f) }); TN(r[3] + '%', x + w + 20, y0, { s: 17, w: 600, c: rgba(r[4], f * (after ? 1 : 0.4)) }); T(r[0] + ' ' + r[1], x, y0 + 14, { s: 10, c: rgba(INK3, f) }); });
+        rows.forEach((r, k) => { const x = S.x + 4 + k * (S.w / 2); const w = TN(r[2] + '%', x, y0, { s: 17, w: 600, c: rgba(r[4], f * (after ? 0.4 : 1)) }); T('→', x + w + 4, y0 - 1, { s: 12, c: rgba(INK4, f) }); TN(r[3] + '%', x + w + 20, y0, { s: 17, w: 600, c: rgba(r[4], f * (after ? 1 : 0.4)) }); T(r[0], x, y0 + 14, { s: 10, c: rgba(INK3, f) }); T(r[1], x, y0 + 26, { s: 10, c: rgba(INK3, f) }); });   /* two lines, as on a desktop: one line runs into the next column */
         T(after ? L.plans[7] : L.plans[6], S.x + S.w, S.y + 12, { s: 10.5, w: 600, al: 'right', c: rgba(EM, f) });
       } else {
         const x = G.gx + 10 * gs + 36, y0 = G.gy + gs * 1.1;
@@ -1097,6 +1182,7 @@ function s4geom() {
   const G = s4.G;
   G.cx = S.cx; G.R = mob ? Math.min(S.w, S.h) * 0.37 : Math.min(Math.min(S.w, S.h) * 0.37, (S.h - 172) / 2); G.ra = mob ? 1.7 : 3.3;
   G.cy = mob ? S.y + S.h * 0.455 : Math.max(S.y + S.h * 0.445, S.y + 62 + G.R);
+  if (mob && SC[4].st === 3) G.R = Math.min(G.R, S.y + S.h - 66 - G.cy);   /* step 3 draws three rows of bars under the ring */
   G.rp = Math.min(G.R * 1.36 / 13, mob ? 12.5 : 27); G.rs = mob ? 2.5 : 4.6;
   /* three rings: in a row on a wide screen, in a column on a narrow one */
   const vert = mob || S.w < 560, top = S.y + (mob ? 38 : 58); G.vert = vert; G.po = mob ? 7 : 13; G.map = S4M[vert ? 1 : 0];
@@ -1412,7 +1498,7 @@ SC[5] = {
           ctx.strokeStyle = rgba(EM, 0.95 * fq); ctx.lineWidth = mob ? 1 : 1.5; ctx.beginPath(); for (let q = 0; q < 86; q++) { const x = cx + ((q % 5) - 2) * q5, y = G.kyb - Math.floor(q / 5) * q5; ctx.moveTo(x + q5 * 0.4, y); ctx.arc(x, y, q5 * 0.4, 0, 6.2832); } ctx.stroke();
         }
       }
-      const xd = (K5X(2) + K5X(3)) / 2; seg(xd, top - (mob ? 50 : 96), xd, G.kyb + (mob ? 34 : 70), rgba(INK, 0.3 * f), 1);
+      const xd = (K5X(2) + K5X(3)) / 2; seg(xd, top - (mob ? 24 : 60), xd, G.kyb + (mob ? 34 : 38), rgba(INK, 0.3 * f), 1);   /* from under the J-Space heading to above its note */
     }
   },
   over(a) {
@@ -1421,7 +1507,7 @@ SC[5] = {
     if (st > 2) return;
     const fw = st === 2 ? (RM ? 1 : ss((t - 0.8) / 0.5)) : 0;
     s5page(a, fw);
-    if (st === 2 && fw > 0.02) { const px_ = G.cx + (mob ? 16 : 31), py_ = G.cy - (mob ? 5 : 9), ex = G.cx + G.a + (mob ? 26 : 64), ey = py_ - (mob ? 34 : 70); seg(px_, py_, ex, ey, rgba(EM, 0.7 * fw * a), 1.25); tag(mob ? L.mv[5] : L.mv[6], ex, ey, { s: mob ? 10 : 12.5, c: rgba(EM, fw * a), a: fw * a, stroke: rgba(EM, 0.4 * fw * a) }); }
+    if (st === 2 && fw > 0.02) { const px_ = G.cx + (mob ? 16 : 31), py_ = G.cy - (mob ? 5 : 9), ex = G.cx + G.a + (mob ? 26 : 64), ey = mob ? py_ - 34 : Math.max(py_ - 70, S.y + 230);   /* desktop: below the 1% and its two lines */ seg(px_, py_, ex, ey, rgba(EM, 0.7 * fw * a), 1.25); tag(mob ? L.mv[5] : L.mv[6], ex, ey, { s: mob ? 10 : 12.5, c: rgba(EM, fw * a), a: fw * a, stroke: rgba(EM, 0.4 * fw * a) }); }
   }
 };
 
@@ -1458,6 +1544,7 @@ function s6geom() {
   G.cw = G.wd / 26.6; G.gi = G.cw * 0.12; G.p = (G.cw - G.gi) / G.per; G.r = G.p * 0.42;
   G.cx = c => G.x0 + (c === 0 ? 0 : c === 1 ? 1 : c + 1.6) * G.cw;
   let mx = 0; for (let c = 2; c < 25; c++) mx = Math.max(mx, s6.cnt[c]); G.tall = Math.ceil(mx / G.per) * G.p;
+  s6.ls = Math.max(30, Math.min(44, (G.yb - G.tall - 62 - 78) / Math.max(1, NOTES.filter(n => n.side === 1).length - 1)));   /* desktop label rows stay below the header */
 }
 const s6pos = w => { const G = s6.G, c = s6.col[w], k = s6.k[w], per = c === 1 ? G.per * 2 : G.per; return [G.cx(c) + G.gi / 2 + G.p / 2 + (k % per) * G.p, G.yb - G.p / 2 - Math.floor(k / per) * G.p - 2]; };
 SC[6] = {
@@ -1510,7 +1597,7 @@ SC[6] = {
       if (mob && !n.m) continue;
       const i = s6.who[n.w], x = px[i], y0 = py[i] - rr[i] - 3;
       if (n.side === 1) {
-        const yt = G.yb - G.tall - (mob ? 26 : 62) - kr * (mob ? 16 : 44); kr++;
+        const yt = G.yb - G.tall - (mob ? 26 : 62) - kr * (mob ? 16 : s6.ls); kr++;
         seg(x, y0, x, yt, rgba(INK, 0.4 * f), 1); if (!WORKS[n.w][6]) ring(x, py[i], rr[i] + (mob ? 2.2 : 3.4), rgba(INK, 0.9 * f), 1.2);
         lab.push([n, x, yt, 1]);
       } else { const yt = y0 - 44; seg(x, y0, x, yt, rgba(INK, 0.4 * f), 1); ring(x, py[i], rr[i] + 3.4, rgba(INK, 0.9 * f), 1.2); lab.push([n, x, yt, 0]); }
@@ -1547,12 +1634,18 @@ SC[7] = {
 /* ============ Frame assembly ============ */
 /* desired figure height on a phone, as a fraction of width: per scene and step */
 const MH = [[1.08], [1.2], [1.15, 1.15, 1.15, 1.22, 1.15, 0.98], [1.04, 1.04, 1.1, 1.04, 0.92, 0.9, 1.0, 1.2], [1.14], [1.12, 1.12, 1.12, 1.1, 1.08, 1.08, 1.1], [0.86], [1.05]];
+/* the smallest figure on a phone, in CSS px: the drawing fits above the card and stays legible (the scale's rows, s³ units,
+   the J-Space column); a card that does not fit in the rest of the screen moves its text inside (fitCards) */
+const MN = [[290], [217, 217, 288, 288, 288, 288, 288], [217, 217, 217, 217, 217, 296], [217, 217, 217, 217, 217, 217, 304, 275], [217, 217, 217, 272, 217, 217, 217], [217, 217, 217, 217, 217, 239, 217], [290], [217]];
+function stageH(sc, st, ch) {
+  const want = (MH[sc][st] || MH[sc][0]) * (W - 28), need = Math.min(want, MN[sc][st] === undefined ? MN[sc][0] : MN[sc][st]);
+  return Math.round(clamp(Math.min(H - 62 - ch - 26, want), Math.min(H * 0.62, Math.max(170, H * 0.24, need)), H * 0.62));
+}
 function setStage() {
   if (mob) {
-    /* on a phone the figure takes all the space between the header and the current step's card */
-    const ch = stepIdx >= 0 ? steps[stepIdx].card.offsetHeight : (aEl.offsetHeight || 280), free = H - 62 - ch - 26;
-    const sc = stepIdx >= 0 ? steps[stepIdx].sc : 0, st = stepIdx >= 0 ? steps[stepIdx].st : 0, want = (MH[sc][st] || MH[sc][0]) * (W - 28);
-    S.x = 14; S.w = W - 28; S.y = 60; S.h = Math.round(clamp(Math.min(free, want), Math.max(170, H * 0.24), H * 0.62));
+    /* on a phone the figure takes the space between the header and the current step's card, but never less than its minimum */
+    const cur = stepIdx >= 0 ? steps[stepIdx] : null;
+    S.x = 14; S.w = W - 28; S.y = 60; S.h = stageH(cur ? cur.sc : 0, cur ? cur.st : 0, cur ? (cur.nat || cur.card.offsetHeight) : (hA.nat || aEl.offsetHeight || 280));
     root.style.setProperty('--ct', (S.y + S.h + 12) + 'px');
   } else {
     const left = Math.max(48, (W - 1280) / 2 + 16), colw = clamp(W * 0.27, 300, 388), gap = clamp(W * 0.03, 28, 44);
@@ -1567,6 +1660,7 @@ function resize() {
   setStage();
   root.style.setProperty('--sx', S.x + 'px'); root.style.setProperty('--sw', S.w + 'px');
   measure();
+  if (mob) setStage();   /* the card heights measured just now decide the figure's height */
   if (key >= 0) { SC[curSc].enter(curSt, false); }
   kick();
 }
@@ -1592,7 +1686,7 @@ function kick() { if (!raf) raf = requestAnimationFrame(frame); }
   let rt = 0;
   addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(resize, 120); });
   addEventListener('scroll', kick, { passive: true });
-  addEventListener('load', () => { measure(); kick(); });
+  addEventListener('load', () => { measure(); requestAnimationFrame(() => { arrive(); kick(); }); });
   D.addEventListener('visibilitychange', () => { if (D.hidden) { if (raf) cancelAnimationFrame(raf); raf = 0; } else { last = performance.now() / 1000; kick(); } });
   if (D.fonts && D.fonts.ready) D.fonts.ready.then(() => { measure(); kick(); });
   kick();

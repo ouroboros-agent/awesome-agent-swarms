@@ -52,8 +52,8 @@ h1 span,h2 span{color:var(--ink3)}
 .tab .pb{position:absolute;left:0;right:0;bottom:-1px;height:2px;background:var(--em);transform:scaleX(0);transform-origin:0 50%;opacity:0}
 .tab.on .pb{opacity:1}
 .modes{display:grid}
-.mode{grid-area:1/1;display:grid;grid-template-columns:minmax(0,calc(var(--sx) - var(--left) - 44px)) minmax(0,1fr);column-gap:44px;align-items:start;opacity:0;transform:translateY(8px);transition:opacity .45s,transform .45s;pointer-events:none}
-.mode.on{opacity:1;transform:none;pointer-events:auto}
+.mode{grid-area:1/1;display:grid;grid-template-columns:minmax(0,calc(var(--sx) - var(--left) - 44px)) minmax(0,1fr);column-gap:44px;align-items:start;opacity:0;transform:translateY(8px);transition:opacity .45s,transform .45s,visibility 0s .45s;pointer-events:none;visibility:hidden}
+.mode.on{opacity:1;transform:none;pointer-events:auto;visibility:inherit;transition:opacity .45s,transform .45s,visibility 0s}
 .mech{font-size:18px;line-height:1.45;color:var(--ink);letter-spacing:-.012em}
 .meas{font-size:16px;line-height:1.5;color:var(--ink2);max-width:70ch}
 b,.card b{color:var(--ink);font-weight:600}
@@ -64,7 +64,7 @@ b,.card b{color:var(--ink);font-weight:600}
 .src a:hover{color:var(--ink);background-size:100% 1px}
 .src + .src{margin-top:5px}
 
-.h-a{position:absolute;left:var(--left);top:50%;width:var(--colw);transform:translateY(-50%);opacity:0;pointer-events:none;will-change:opacity}
+.h-a{position:absolute;left:var(--left);top:calc(50% + 28px);width:var(--colw);transform:translateY(-50%);opacity:0;pointer-events:none;will-change:opacity}
 .h-a.live{pointer-events:auto}
 .h-a h2{margin-bottom:22px}
 
@@ -75,7 +75,7 @@ h2{margin:0;font:600 clamp(30px,3.05vw,44px)/1.07 var(--display);letter-spacing:
 .step{position:relative;min-height:96vh;display:flex;align-items:center;padding-left:var(--left)}
 .step.ttl{min-height:104vh}
 .card{width:var(--colw);opacity:.22;transition:opacity .55s}
-.step.on .card{opacity:1}
+.step.on .card,.card:focus-within{opacity:1}
 .card p{font-size:18px;line-height:1.52;letter-spacing:-.008em;color:var(--ink2)}
 .card p + p{margin-top:14px}
 .card p.src{font-size:13px;line-height:1.45;margin-top:14px;letter-spacing:0;color:var(--ink3)}
@@ -90,6 +90,14 @@ h2{margin:0;font:600 clamp(30px,3.05vw,44px)/1.07 var(--display);letter-spacing:
 }
 .step.fin{min-height:150vh;align-items:flex-start}
 .step.fin .card{position:sticky;top:max(92px,13vh)}
+/* a card taller than the space it has keeps its box on screen; field.js moves the text inside it with the page */
+.card.ov,.h-a.ov{overflow:hidden;overflow:clip}   /* clip: not a scroll container, so focus or find-in-page never scroll it */
+.ov .ci{will-change:transform}
+.ov::before,.ov::after{content:"";position:absolute;left:0;right:0;height:26px;z-index:1;pointer-events:none;transition:opacity .25s}
+.ov::before{top:0;background:linear-gradient(var(--fade,#090b0c),rgba(9,11,12,0));opacity:var(--ft,0)}
+.ov::after{bottom:0;background:linear-gradient(rgba(9,11,12,0),var(--fade,#090b0c));opacity:var(--fb,1)}
+.step.hold{align-items:flex-start}
+.step.hold .card{position:sticky;top:72px}
 .legend{list-style:none;margin:22px 0 0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:2px 18px}
 .legend li{display:flex;align-items:center;gap:9px;font-size:13.5px;line-height:1.25;color:var(--ink2);padding:5px 0;cursor:default;transition:opacity .25s,color .25s}
 .legend li i{flex:none;width:9px;height:9px;border-radius:50%;background:var(--c)}
@@ -114,7 +122,7 @@ h2{margin:0;font:600 clamp(30px,3.05vw,44px)/1.07 var(--display);letter-spacing:
 .tip .th i{width:8px;height:8px;border-radius:50%;background:var(--c)}
 .tip a{display:none;margin-top:9px;font-size:13px;font-weight:600;color:var(--em)}
 .tip.touch{pointer-events:auto}
-.tip.touch a{display:inline-block}
+.tip.touch a{display:block}
 
 @media (max-width:759px){
   :root{--left:16px;--colw:calc(100vw - 32px)}
@@ -144,7 +152,7 @@ h2{margin:0;font:600 clamp(30px,3.05vw,44px)/1.07 var(--display);letter-spacing:
   .h-a h2{font-size:23px;margin-bottom:10px}
   .step,.step.ttl{min-height:112svh;align-items:flex-start;padding:0 12px}
   .card{position:sticky;top:var(--ct,56vh);width:100%;background:rgba(13,16,18,.96);border:1px solid var(--line);border-radius:18px;padding:16px 16px 15px;opacity:0;transform:translateY(10px);transition:opacity .3s,transform .3s}
-  .step.on .card{opacity:1;transform:none}
+  .step.on .card,.card:focus-within{opacity:1;transform:none}
   .card p,.h-a p{font-size:15.5px;line-height:1.44}
   .card p + p{margin-top:9px}
   .card p.src,.h-a p.src{font-size:12px;margin-top:9px}
@@ -164,18 +172,20 @@ h2{margin:0;font:600 clamp(30px,3.05vw,44px)/1.07 var(--display);letter-spacing:
   .qs li::before{width:20px;height:20px;line-height:20px;font-size:11px}
   .sign{margin-top:14px!important;font-size:12px!important}
   .tip{max-width:calc(100vw - 32px)}
+  .card,.h-a{--fade:rgba(13,16,18,.96)}
 }
 @media (min-width:760px) and (max-height:760px){
   .h-copy{top:84px}
   .lead{font-size:17px;margin-top:16px}
   .mech{font-size:16px}
   .card p{font-size:17px}
+  .step.long .card{top:72px;box-shadow:0 0 12px 10px rgba(9,11,12,.92)}
 }
 html:not(.js) #field{display:none}
 html:not(.js) .hero{height:auto}
 html:not(.js) .pin{position:static;height:auto;padding:90px 0 40px}
-html:not(.js) .h-copy,html:not(.js) .h-cap,html:not(.js) .h-a{position:static;opacity:1;transform:none;margin:0 0 30px var(--left)}
-html:not(.js) .mode{opacity:1;transform:none;grid-area:auto;margin-bottom:18px}
+html:not(.js) .h-copy,html:not(.js) .h-cap,html:not(.js) .h-a{position:static;opacity:1;transform:none;margin:0 var(--left) 30px;pointer-events:auto}
+html:not(.js) .mode{opacity:1;transform:none;grid-area:auto;margin-bottom:18px;pointer-events:auto;visibility:visible}
 html:not(.js) .card{opacity:1;position:static}
 html:not(.js) .step{min-height:0;padding-top:40px;padding-bottom:40px}
 /* repository layout: a language link that keeps the place, the hero's second state as a link target, a quiet link to the detailed survey */
