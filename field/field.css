@@ -31,8 +31,13 @@ main{position:relative;z-index:1}
 .prog{position:fixed;z-index:7;left:0;top:0;height:2px;width:100%;transform-origin:0 50%;transform:scaleX(0);background:var(--em);opacity:.75}
 
 /* first screen */
-.hero{position:relative;height:385vh;height:385svh}
-.pin{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden}
+/* --hx: by how much the first screen's sheet is taller than the window (field.js heroGeom); the page is that much longer */
+.hero{position:relative;height:calc(385vh + var(--hx,0px));height:calc(385svh + var(--hx,0px))}
+/* clip: not a scroll container. The sheet may go on below the pin's edge; focus or find-in-page on a control down there moves
+   the page, with which the canvas moves too (field.js showSheetStop), and never a scroll of the pin's own that the canvas cannot see */
+.pin{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;overflow:clip}
+/* while the sheet goes on below the window, its lower edge fades (--hf, set by field.js) */
+.pin::after{content:"";position:absolute;left:0;right:0;bottom:0;height:26px;background:linear-gradient(rgba(9,11,12,0),var(--bg));opacity:var(--hf,0);pointer-events:none}
 .h-copy{position:absolute;left:var(--left);top:clamp(92px,17vh,160px);width:min(548px,calc(var(--sx) - var(--left) + 60px));will-change:opacity,transform}
 .eyebrow{font-size:14px;font-weight:600;color:var(--em);letter-spacing:-.005em;margin:0 0 20px}
 h1{margin:0;font:600 clamp(38px,3.9vw,58px)/1.04 var(--display);letter-spacing:-.038em;color:#fff}
@@ -82,7 +87,8 @@ h2{margin:0;font:600 clamp(30px,3.05vw,44px)/1.07 var(--display);letter-spacing:
 .card p.src + p.src{margin-top:5px}
 .step.long{min-height:250vh;align-items:flex-start}
 .step.long .card{position:sticky;top:15vh}
-@media (min-width:760px){
+/* the desktop layout needs height as well as width: a window lower than 500 px (a phone held sideways) gets the phone layout below */
+@media (min-width:760px) and (min-height:500px){
   .step.long .card{width:min(600px,50vw)}
   .step.long .legend{grid-template-columns:repeat(3,1fr);gap:2px 18px}
   .step.long .legend li{font-size:13px}
@@ -124,12 +130,12 @@ h2{margin:0;font:600 clamp(30px,3.05vw,44px)/1.07 var(--display);letter-spacing:
 .tip.touch{pointer-events:auto}
 .tip.touch a{display:block}
 
-@media (max-width:759px){
+@media (max-width:759px),(max-height:499px){
   :root{--left:16px;--colw:calc(100vw - 32px)}
   .top{height:48px;padding:0 16px}
   .brand{font-size:14px}
   .where{font-size:12px}
-  .hero{height:400svh}
+  .hero{height:calc(400svh + var(--hx,0px))}
   .h-copy{left:16px;right:16px;top:58px;width:auto}
   .eyebrow{font-size:12.5px;margin-bottom:10px}
   h1{font-size:30px;letter-spacing:-.034em;line-height:1.05}
@@ -174,7 +180,7 @@ h2{margin:0;font:600 clamp(30px,3.05vw,44px)/1.07 var(--display);letter-spacing:
   .tip{max-width:calc(100vw - 32px)}
   .card,.h-a{--fade:rgba(13,16,18,.96)}
 }
-@media (min-width:760px) and (max-height:760px){
+@media (min-width:760px) and (min-height:500px) and (max-height:760px){
   .h-copy{top:84px}
   .lead{font-size:17px;margin-top:16px}
   .mech{font-size:16px}
@@ -184,6 +190,7 @@ h2{margin:0;font:600 clamp(30px,3.05vw,44px)/1.07 var(--display);letter-spacing:
 html:not(.js) #field{display:none}
 html:not(.js) .hero{height:auto}
 html:not(.js) .pin{position:static;height:auto;padding:90px 0 40px}
+html:not(.js) .pin::after{display:none}
 html:not(.js) .h-copy,html:not(.js) .h-cap,html:not(.js) .h-a{position:static;opacity:1;transform:none;margin:0 var(--left) 30px;pointer-events:auto}
 html:not(.js) .mode{opacity:1;transform:none;grid-area:auto;margin-bottom:18px;pointer-events:auto;visibility:visible}
 html:not(.js) .card{opacity:1;position:static}
@@ -192,8 +199,8 @@ html:not(.js) .step{min-height:0;padding-top:40px;padding-bottom:40px}
 .where{margin-left:auto}
 .lang{pointer-events:auto;margin-left:18px;padding:8px 0 8px 4px;font-size:13px;font-weight:600;letter-spacing:.02em;color:var(--ink3);transition:color .2s}
 .lang:hover{color:var(--ink)}
-.mark{position:absolute;left:0;top:100vh;width:1px;height:1px}
+.mark{position:absolute;left:0;top:calc(100vh + var(--hx,0px));width:1px;height:1px}
 .more{margin-top:16px!important;font-size:14px!important;line-height:1.45!important;color:var(--ink3)!important}
 .more a{color:var(--ink2);background:linear-gradient(currentColor,currentColor) 0 100%/100% 1px no-repeat;transition:color .2s}
 .more a:hover{color:var(--ink)}
-@media (max-width:759px){.lang{font-size:12px;margin-left:12px}.more{margin-top:10px!important;font-size:12.5px!important}}
+@media (max-width:759px),(max-height:499px){.lang{font-size:12px;margin-left:12px}.more{margin-top:10px!important;font-size:12.5px!important}}

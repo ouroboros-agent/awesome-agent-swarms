@@ -45,8 +45,13 @@ main{position:relative;z-index:1}
 .prog{position:fixed;z-index:7;left:0;top:0;height:2px;width:100%;transform-origin:0 50%;transform:scaleX(0);background:var(--em);opacity:.75}
 
 /* first screen */
-.hero{position:relative;height:385vh;height:385svh}
-.pin{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden}
+/* --hx: by how much the first screen's sheet is taller than the window (field.js heroGeom); the page is that much longer */
+.hero{position:relative;height:calc(385vh + var(--hx,0px));height:calc(385svh + var(--hx,0px))}
+/* clip: not a scroll container. The sheet may go on below the pin's edge; focus or find-in-page on a control down there moves
+   the page, with which the canvas moves too (field.js showSheetStop), and never a scroll of the pin's own that the canvas cannot see */
+.pin{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;overflow:clip}
+/* while the sheet goes on below the window, its lower edge fades (--hf, set by field.js) */
+.pin::after{content:"";position:absolute;left:0;right:0;bottom:0;height:26px;background:linear-gradient(rgba(9,11,12,0),var(--bg));opacity:var(--hf,0);pointer-events:none}
 .h-copy{position:absolute;left:var(--left);top:clamp(92px,17vh,160px);width:min(548px,calc(var(--sx) - var(--left) + 60px));will-change:opacity,transform}
 .eyebrow{font-size:14px;font-weight:600;color:var(--em);letter-spacing:-.005em;margin:0 0 20px}
 h1{margin:0;font:600 clamp(38px,3.9vw,58px)/1.04 var(--display);letter-spacing:-.038em;color:#fff}
@@ -96,7 +101,8 @@ h2{margin:0;font:600 clamp(30px,3.05vw,44px)/1.07 var(--display);letter-spacing:
 .card p.src + p.src{margin-top:5px}
 .step.long{min-height:250vh;align-items:flex-start}
 .step.long .card{position:sticky;top:15vh}
-@media (min-width:760px){
+/* the desktop layout needs height as well as width: a window lower than 500 px (a phone held sideways) gets the phone layout below */
+@media (min-width:760px) and (min-height:500px){
   .step.long .card{width:min(600px,50vw)}
   .step.long .legend{grid-template-columns:repeat(3,1fr);gap:2px 18px}
   .step.long .legend li{font-size:13px}
@@ -138,12 +144,12 @@ h2{margin:0;font:600 clamp(30px,3.05vw,44px)/1.07 var(--display);letter-spacing:
 .tip.touch{pointer-events:auto}
 .tip.touch a{display:block}
 
-@media (max-width:759px){
+@media (max-width:759px),(max-height:499px){
   :root{--left:16px;--colw:calc(100vw - 32px)}
   .top{height:48px;padding:0 16px}
   .brand{font-size:14px}
   .where{font-size:12px}
-  .hero{height:400svh}
+  .hero{height:calc(400svh + var(--hx,0px))}
   .h-copy{left:16px;right:16px;top:58px;width:auto}
   .eyebrow{font-size:12.5px;margin-bottom:10px}
   h1{font-size:30px;letter-spacing:-.034em;line-height:1.05}
@@ -188,7 +194,7 @@ h2{margin:0;font:600 clamp(30px,3.05vw,44px)/1.07 var(--display);letter-spacing:
   .tip{max-width:calc(100vw - 32px)}
   .card,.h-a{--fade:rgba(13,16,18,.96)}
 }
-@media (min-width:760px) and (max-height:760px){
+@media (min-width:760px) and (min-height:500px) and (max-height:760px){
   .h-copy{top:84px}
   .lead{font-size:17px;margin-top:16px}
   .mech{font-size:16px}
@@ -198,6 +204,7 @@ h2{margin:0;font:600 clamp(30px,3.05vw,44px)/1.07 var(--display);letter-spacing:
 html:not(.js) #field{display:none}
 html:not(.js) .hero{height:auto}
 html:not(.js) .pin{position:static;height:auto;padding:90px 0 40px}
+html:not(.js) .pin::after{display:none}
 html:not(.js) .h-copy,html:not(.js) .h-cap,html:not(.js) .h-a{position:static;opacity:1;transform:none;margin:0 var(--left) 30px;pointer-events:auto}
 html:not(.js) .mode{opacity:1;transform:none;grid-area:auto;margin-bottom:18px;pointer-events:auto;visibility:visible}
 html:not(.js) .card{opacity:1;position:static}
@@ -206,11 +213,11 @@ html:not(.js) .step{min-height:0;padding-top:40px;padding-bottom:40px}
 .where{margin-left:auto}
 .lang{pointer-events:auto;margin-left:18px;padding:8px 0 8px 4px;font-size:13px;font-weight:600;letter-spacing:.02em;color:var(--ink3);transition:color .2s}
 .lang:hover{color:var(--ink)}
-.mark{position:absolute;left:0;top:100vh;width:1px;height:1px}
+.mark{position:absolute;left:0;top:calc(100vh + var(--hx,0px));width:1px;height:1px}
 .more{margin-top:16px!important;font-size:14px!important;line-height:1.45!important;color:var(--ink3)!important}
 .more a{color:var(--ink2);background:linear-gradient(currentColor,currentColor) 0 100%/100% 1px no-repeat;transition:color .2s}
 .more a:hover{color:var(--ink)}
-@media (max-width:759px){.lang{font-size:12px;margin-left:12px}.more{margin-top:10px!important;font-size:12.5px!important}}
+@media (max-width:759px),(max-height:499px){.lang{font-size:12px;margin-left:12px}.more{margin-top:10px!important;font-size:12.5px!important}}
 </style>
 </head>
 <body>
@@ -489,6 +496,8 @@ const fmt = n => String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, L.num.g)
 const dec = (v, d) => v.toFixed(d === undefined ? 1 : d).replace('.', L.num.d);
 
 let W = 0, H = 0, DPR = 1, mob = false, now = 0, dt = 0.016, stiff = 70, last = 0, raf = 0;
+/* the phone layout: the same condition as in field.css. A narrow window, or a low one (a phone held sideways is up to 960 px wide) */
+const PHONE = matchMedia('(max-width:759px),(max-height:499px)');
 const S = { x: 0, y: 0, w: 0, h: 0, cx: 0, cy: 0 };
 let g = 20, rd = 2;
 
@@ -644,7 +653,7 @@ const stepEls = [...D.querySelectorAll('.step')];
 const steps = stepEls.map(el => ({ el, sc: +el.dataset.sc, st: +el.dataset.st, top: 0, ctop: 0, h: 0, card: el.querySelector('.card'), ci: el.querySelector('.ci') || el.querySelector('.card'),
   long: el.classList.contains('long'), fin: el.classList.contains('fin'), hold: false, nat: 0, pin: 0, box: 0, ov: 0, p: -1 }));
 let curSc = 0, curSt = 0, key = -1, stepIdx = -2, docH = 1;
-const whereEl = $('where'), progEl = $('prog'), langEl = $('lang'), langBase = langEl ? langEl.getAttribute('href') : '';
+const whereEl = $('where'), progEl = $('prog'), topEl = D.querySelector('.top'), langEl = $('lang'), langBase = langEl ? langEl.getAttribute('href') : '';
 let place = '';
 
 /* ---------- cards that do not fit ---------- */
@@ -678,8 +687,8 @@ function fitCards() {
 function fades(el, p, ov) { el.style.setProperty('--ft', Math.min(1, p * ov / 26).toFixed(2)); el.style.setProperty('--fb', Math.min(1, (1 - p) * ov / 26).toFixed(2)); }
 function revealCards() {
   const sy = scrollY;
-  if (hA.ov) {   /* the first screen's panel is shown from about 0.55 to 1.4 screens of scroll: its text moves in the middle of that */
-    const p = clamp((sy / H - 0.62) / 0.55);
+  if (hA.ov) {   /* the first screen's panel is shown from about 0.55 to 1.4 screens of scroll (after the sheet's excess): its text moves in the middle of that */
+    const p = clamp(((sy - hero.ex) / H - 0.62) / 0.55);
     if (Math.abs(p - hA.p) >= 1e-4) { hA.p = p; aCi.style.transform = 'translateY(' + (-p * hA.ov).toFixed(1) + 'px)'; fades(aEl, p, hA.ov); }
   }
   for (const s of steps) {
@@ -701,22 +710,41 @@ function textOffset(box, ci, el, ov, p) {   /* the offset in [0, ov] nearest to 
 }
 D.addEventListener('focusin', e => {
   let kb = true; try { kb = e.target.matches(':focus-visible'); } catch (x) { /* no :focus-visible: treat as keyboard */ }
+  if (kb && hero.ex > 0 && (capEl.contains(e.target) || copyEl.contains(e.target))) { sheetStop = { el: e.target, dy: hero.dy }; kick(); return; }
   const s = steps.find(x => x.ov && x.card.contains(e.target)), inA = hA.ov && aEl.contains(e.target);
   if (!kb || (!s && !inA)) return;
   requestAnimationFrame(() => requestAnimationFrame(() => {
     if (s) { s.card.scrollTop = 0; scrollTo(0, s.top - s.pin + LEAD * H + textOffset(s.card, s.ci, e.target, s.ov, s.p) / s.ov * Math.max(1, s.h - s.box - (LEAD + TAIL) * H)); }
-    else { aEl.scrollTop = 0; scrollTo(0, (0.62 + 0.55 * textOffset(aEl, aCi, e.target, hA.ov, hA.p) / hA.ov) * H); }
+    else { aEl.scrollTop = 0; scrollTo(0, hero.ex + (0.62 + 0.55 * textOffset(aEl, aCi, e.target, hA.ov, hA.p) / hA.ov) * H); }
   }));
 });
+/* The same on a first screen whose sheet is taller than the window (hero.ex): the keyboard reaches a tab or a source link
+   that lies below the window's edge. The browser's own scroll aims the control at the middle of the window and would carry
+   the page into the first screen's later states, where the caption fades. So at the next frame, before anything is drawn,
+   the page goes to the place nearest to where it was at which the sheet shows that control (hero.dy is the sheet's offset as
+   last drawn: one browser scrolls before it reports the focus, another after), and the sheet and the canvas move there
+   together (SC[0].tick). The pin itself never keeps a scroll of its own (field.css; undone below where a browser has no
+   overflow:clip). */
+let sheetStop = null;
+function showSheetStop() {
+  const q = sheetStop, el = q.el, box = capEl.contains(el) ? capEl : copyEl; sheetStop = null;
+  if (!hero.ex || D.activeElement !== el) return;
+  if (pinEl.scrollTop) pinEl.scrollTop = 0;
+  /* where the control lies on the sheet: its place inside its block does not depend on how far the sheet has moved */
+  const r = el.getBoundingClientRect(), top = box.offsetTop + (box === capEl ? hero.ex : 0) + r.top - box.getBoundingClientRect().top;
+  const lo = top + r.height + 30 - H, hi = top - topEl.offsetHeight - 20;   /* above the lower edge's fade, below the header's */
+  scrollTo(0, clamp(clamp(q.dy, lo, Math.max(lo, hi)), 0, hero.ex));
+}
 /* arriving at a place by its address (the language link keeps the reader's place): text that moves inside its box starts at its
    first line, not wherever the browser's jump to the step left it */
 function arrive() {
   const m = /^#s(\d)-(\d+)$/.exec(location.hash); if (!m) return;
-  if (m[1] === '0') { if (m[2] === '1' && hA.ov && Math.abs(scrollY - H) < 3) scrollTo(0, Math.ceil(0.62 * H) + 1); return; }
+  if (m[1] === '0') { if (m[2] === '1' && hA.ov && Math.abs(scrollY - hero.ex - H) < 3) scrollTo(0, hero.ex + Math.ceil(0.62 * H) + 1); return; }
   const s = steps.find(x => x.sc === +m[1] && x.st === +m[2]);
   if (s && s.ov && Math.abs(scrollY - s.top) < 3) scrollTo(0, Math.ceil(s.top - s.pin + LEAD * H) + 1);
 }
 function measure() {
+  heroGeom();   /* the first screen's excess (--hx) is part of the page's height: set before the steps are measured */
   fitCards();
   const sy = scrollY;
   for (const s of steps) {
@@ -748,7 +776,7 @@ function update() {
   }
   progEl.style.transform = 'scaleX(' + clamp(scrollY / docH).toFixed(4) + ')';
   revealCards();
-  if (langEl) { const pl = stepIdx >= 0 ? 's' + steps[stepIdx].sc + '-' + steps[stepIdx].st : scrollY > H * 0.6 ? 's0-1' : 's0'; if (pl !== place) { place = pl; langEl.href = langBase + '#' + pl; } }
+  if (langEl) { const pl = stepIdx >= 0 ? 's' + steps[stepIdx].sc + '-' + steps[stepIdx].st : scrollY - hero.ex > H * 0.6 ? 's0-1' : 's0'; if (pl !== place) { place = pl; langEl.href = langBase + '#' + pl; } }
 }
 const T_OF = sc => RM ? 999 : now - SC[sc].t0;
 
@@ -809,9 +837,11 @@ const PATCH = []; for (let i = 0; i < N; i++) if (Math.abs(COL[i] - 16) <= 2 && 
 const inPatch = new Uint8Array(N); PATCH.forEach(i => { inPatch[i] = 1; });
 const hopOf = i => Math.abs(COL[i] - 17) + Math.abs(ROW[i] - 15);
 
-const hero = { m: 0, mt: 0, sub: 0, fade: [1, 0, 0, 0], ta: 0, pA: 0, pZ: 0, C: { x: 0, y: 0 }, R: 100, rA: 20, CA: { x: 0, y: 0 }, RA: 80, chipA: new Float32Array(6) };
-const copyEl = $('hCopy'), capEl = $('hCap'), aEl = $('hA'), cueEl = $('cue');
+const hero = { m: 0, mt: 0, sub: 0, fade: [1, 0, 0, 0], ta: 0, pA: 0, pZ: 0, C: { x: 0, y: 0 }, R: 100, rA: 20, CA: { x: 0, y: 0 }, RA: 80, chipA: new Float32Array(6), ex: 0, dy: 0, cy: 0, hf: -1, ls: 1 };
+const copyEl = $('hCopy'), capEl = $('hCap'), aEl = $('hA'), cueEl = $('cue'), pinEl = $('pin');
 aCi = aEl.querySelector('.ci') || aEl;
+/* a browser without overflow:clip can still scroll the pin (focus, a selection dragged past its edge): that scroll is undone at once */
+pinEl.addEventListener('scroll', () => { if (pinEl.scrollTop || pinEl.scrollLeft) pinEl.scrollTop = pinEl.scrollLeft = 0; });
 const tabEls = [...D.querySelectorAll('.tab')], modeEls = [...D.querySelectorAll('.mode')];
 function setMode(m) {
   hero.m = m; hero.mt = RM ? 6.4 : 0;
@@ -824,10 +854,39 @@ function showTab(t, smooth) { if (!mob) return; const bar = t.parentNode, br = b
 tabEls.forEach((e, i) => { e.addEventListener('click', () => { setMode(i); kick(); }); e.addEventListener('focus', () => showTab(e, false)); });
 $('hCap').querySelector('.tabs').addEventListener('keydown', e => { const d = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0; if (!d) return; e.preventDefault(); const m = (hero.m + d + 4) % 4; setMode(m); tabEls[m].focus(); kick(); });
 
+/* The first screen is a sheet: the intro, the six agents, the tabs with their caption. The figure has an area of its own,
+   large enough for the radius below which its labels start to touch (FIG_R; on a phone also FIG_AIR above and below).
+   In a window too short for all three the sheet is taller than the window by hero.ex px: nothing shrinks or overlaps,
+   the sheet moves up with the page (SC[0].tick) and the scroll-driven phases of the first screen begin after it. */
+const FIG_R = [82, 96], FIG_AIR = [8, 0];   /* phone, desktop */
+/* how far the figure reaches sideways from its centre: the outer agents of schemes 1 and 4, or a chip over an outer agent */
+const figHalf = R => 1.6 * R + Math.max(0.19 * R, 46);
+function introRight() { let r = 0; const rg = D.createRange(); for (const el of copyEl.children) { rg.selectNodeContents(el); for (const b of rg.getClientRects()) if (b.right > r) r = b.right; } return r; }
 function heroGeom() {
-  const y0 = mob ? copyEl.offsetTop + copyEl.offsetHeight + 2 : 108, y1 = capEl.offsetTop - (mob ? 4 : 30);
-  hero.C.x = S.cx; hero.C.y = (y0 + y1) / 2;
-  hero.R = Math.min(S.w * 0.30, (y1 - y0) * 0.36, S.w / 3.75); hero.rA = hero.R * 0.21;
+  const q = mob ? 0 : 1, air = FIG_AIR[q], below = copyEl.offsetTop + copyEl.offsetHeight, cap = capEl.offsetTop, pad = mob ? 4 : 30;
+  const fit = (rmax, y0) => {
+    let ex = y0 + Math.min(FIG_R[q], rmax) / 0.36 + 2 * air + pad - cap;
+    if (!mob) ex = Math.max(ex, below + 28 - cap);   /* beside the figure, the intro still ends above the caption */
+    ex = Math.max(0, Math.ceil(ex));
+    return { ex, y0, y1: cap + ex - pad, R: Math.max(1, Math.min(rmax, (cap + ex - pad - y0 - 2 * air) * 0.36)) };
+  };
+  const rmax = Math.min(S.w * 0.30, S.w / 3.75);
+  let f = fit(rmax, mob ? below + 2 : 108), cx = S.cx;
+  /* beside the intro in a narrow window (a tablet) the figure would run behind the intro's longest line: then it keeps right of
+     that line, moving right as far as the window allows and getting smaller only after that; where that leaves it smaller
+     than a phone's figure (a window under about 800 px), it goes under the intro at its full size instead */
+  if (!mob) {
+    const ir = introRight();
+    if (S.cx - 1.79 * f.R < ir + 8) {
+      f = fit(Math.min(rmax, Math.max(1, ((W - 24 - ir) / 2 - 46) / 1.6)), 108); cx = Math.max(S.cx, ir + 12 + figHalf(f.R));
+      if (f.R < FIG_R[0]) { f = fit(rmax, below + 16); cx = S.cx; }
+    }
+  }
+  hero.ex = f.ex;
+  root.style.setProperty('--hx', hero.ex + 'px');
+  hero.cy = (f.y0 + f.y1) / 2; hero.C.x = cx; hero.C.y = hero.cy - clamp(scrollY, 0, hero.ex);
+  hero.R = f.R; hero.rA = hero.R * 0.21;
+  hero.ls = mob ? clamp(hero.R / 76, 0.84, 1) : clamp(hero.R / 96, 0.78, 1);   /* where the width limits the figure below FIG_R, its labels get smaller with it */
   hero.CA.x = S.cx; hero.CA.y = S.y + S.h * (mob ? 0.30 : 0.32); hero.RA = Math.min(S.w * 0.25, S.h * (mob ? 0.235 : 0.245));
 }
 function mpos(m, k) { if (m === 0) return [(k - 2.5) * (mob ? 0.64 : 0.6) + (mob ? 0 : 0.12), -0.5]; if (m === 3) return [((k % 3) - 1) * 0.8, k < 3 ? -0.4 : 0.4]; return HEX[k]; }
@@ -855,7 +914,7 @@ function link(A, B, c, w, dash) {
   seg(A.x + ux * (A.r + 6), A.y + uy * (A.r + 6), B.x - ux * (B.r + 6), B.y - uy * (B.r + 6), c, w, dash);
 }
 function chip(s, x, y, f, solid) {
-  const sz = mob ? 10.5 : 12.5, w = TW(s, { s: sz, w: 600 }), pad = mob ? 7 : 9, hh = sz + (mob ? 8 : 10);
+  const k = hero.ls, sz = (mob ? 10.5 : 12.5) * k, w = TW(s, { s: sz, w: 600 }), pad = (mob ? 7 : 9) * k, hh = sz + (mob ? 8 : 10) * k;
   x += inView(x - w / 2 - pad, w + pad * 2);
   rrect(x - w / 2 - pad, y - hh / 2, w + pad * 2, hh, hh / 2);
   ctx.fillStyle = solid ? rgba([12, 40, 31], f) : 'rgba(9,11,12,' + (0.9 * f).toFixed(3) + ')'; ctx.fill();
@@ -865,7 +924,7 @@ function chip(s, x, y, f, solid) {
 
 function heroLanes(f, mt) {
   const C = hero.C, R = hero.R, yb = C.y + 0.36 * R, vy_ = C.y + 0.84 * R;
-  const vw = mob ? 98 : 132, vh = mob ? 24 : 32, found = { 0: 1, 2: 1, 4: 1 };
+  const vw = (mob ? 98 : 132) * hero.ls, vh = (mob ? 24 : 32) * hero.ls, found = { 0: 1, 2: 1, 4: 1 };
   for (let k = 0; k < 6; k++) {
     const p = P6(k), x = p.x, y0 = p.y + p.r + 9, xe = C.x + (k - 2.5) * (vw / 7.5);
     ctx.strokeStyle = rgba(INK, 0.17 * f); ctx.lineWidth = 1.25;
@@ -885,7 +944,7 @@ function heroLanes(f, mt) {
   const vl = mt > 6.0 ? eo((mt - 6.0) / 0.4) : 0;
   rrect(C.x - vw / 2, vy_ - vh / 2, vw, vh, vh / 2); ctx.fillStyle = rgba([lerp(14, 12, vl), lerp(18, 40, vl), lerp(19, 31, vl)].map(Math.round), f); ctx.fill();
   ctx.strokeStyle = rgba(vl > 0.5 ? EM : INK, lerp(0.26, 0.8, vl) * f); ctx.lineWidth = 1.25; ctx.stroke();
-  T(L.vote, C.x, vy_ + 0.5, { s: mob ? 10.5 : 13, w: 600, al: 'center', bl: 'middle', c: rgba(vl > 0.5 ? EM : INK2, f) });
+  T(L.vote, C.x, vy_ + 0.5, { s: (mob ? 10.5 : 13) * hero.ls, w: 600, al: 'center', bl: 'middle', c: rgba(vl > 0.5 ? EM : INK2, f) });
 }
 function heroHub(m, f, mt) {
   const C = hero.C, R = hero.R, hr = R * (m === 1 ? 0.2 : 0.24), hub = { x: C.x, y: C.y, r: hr };
@@ -895,10 +954,10 @@ function heroHub(m, f, mt) {
   if (m === 1) { hl = ss((mt - 2.0) / 0.3) * (1 - ss((mt - 3.5) / 0.5)); if (mt > 50) hl = 0; }
   if (hl > 0.02) glow(C.x, C.y, hr * 2.6, EM, 0.22 * hl * f);
   if (m === 1) {
-    ctx.beginPath(); ctx.arc(C.x, C.y, hr, 0, 6.2832); ctx.fillStyle = rgba([14, 18, 19], f); ctx.fill();
+    ctx.beginPath(); ctx.arc(C.x, C.y, Math.max(0, hr), 0, 6.2832); ctx.fillStyle = rgba([14, 18, 19], f); ctx.fill();
     ctx.strokeStyle = rgba(hl > 0.5 ? EM : INK, lerp(0.42, 0.95, hl) * f); ctx.lineWidth = 1.5; ctx.stroke();
     ring(C.x, C.y, hr * 0.46, rgba(hl > 0.5 ? EM : INK, lerp(0.3, 0.8, hl) * f), 1.25); dot(C.x, C.y, hr * 0.14, rgba(hl > 0.5 ? EM : INK, lerp(0.6, 1, hl) * f));
-    T(L.coord, C.x, C.y + hr + (mob ? 13 : 19), { s: mob ? 10.5 : 13, w: 600, al: 'center', c: rgba(INK2, f) });
+    T(L.coord, C.x, C.y + hr + (mob ? 13 : 19) * hero.ls, { s: (mob ? 10.5 : 13) * hero.ls, w: 600, al: 'center', c: rgba(INK2, f) });
   } else {
     const s = hr * 1.9, rec = mt >= 2.0 ? eo((mt - 2.0) / 0.4) : 0;
     rrect(C.x - s / 2, C.y - s / 2, s, s, s * 0.2); ctx.fillStyle = rgba([14, 18, 19], f); ctx.fill(); ctx.strokeStyle = rgba(INK, 0.4 * f); ctx.lineWidth = 1.5; ctx.stroke();
@@ -908,7 +967,7 @@ function heroHub(m, f, mt) {
       if (isNew) { if (rec > 0.02) { glow(C.x, yy, s * 0.5, EM, 0.2 * rec * f); seg(C.x - lw / 2, yy, C.x - lw / 2 + lw * rec, yy, rgba(EM, f), mob ? 2 : 3); } else seg(C.x - lw / 2, yy, C.x + lw / 2, yy, rgba(INK, 0.07 * f), mob ? 2 : 3); }
       else seg(C.x - lw / 2, yy, C.x - lw / 2 + lw * (q === 3 ? 0.62 : q === 0 ? 0.85 : 1), yy, rgba(INK, 0.22 * f), mob ? 2 : 3);
     }
-    T(L.mem, C.x, C.y + s / 2 + (mob ? 13 : 19), { s: mob ? 10.5 : 13, w: 600, al: 'center', c: rgba(INK2, f) });
+    T(L.mem, C.x, C.y + s / 2 + (mob ? 13 : 19) * hero.ls, { s: (mob ? 10.5 : 13) * hero.ls, w: 600, al: 'center', c: rgba(INK2, f) });
   }
   for (const k of [0, 4]) { if (mt < MODES[m].lit[k]) { const p = P6(k); ring(p.x, p.y, p.r + 7, rgba(INK, 0.4 * f), 1.25, [3, 5]); } }
   if (mt < 50) for (const tk of tok) { if (mt >= tk[0] && mt <= tk[1]) travel(tk[2] < 0 ? hub : P6(tk[2]), tk[3] < 0 ? hub : P6(tk[3]), (mt - tk[0]) / (tk[1] - tk[0]), f, tk[4]); }
@@ -978,13 +1037,17 @@ SC[0] = {
   st: 0, t0: 0,
   enter() { heroGeom(); hovSet = null; },
   tick() {
-    const sy = scrollY / H, pA = ss((sy - 0.10) / 0.36), pZ = clamp((sy - 1.72) / 1.12);
-    hero.pA = pA; hero.pZ = pZ;
+    /* a first screen taller than the window (hero.ex) moves with the page first: dy; its phases count from the end of that */
+    const ex = hero.ex, dy = clamp(scrollY, 0, ex), sy = Math.max(0, scrollY - ex) / H, pA = ss((sy - 0.10) / 0.36), pZ = clamp((sy - 1.72) / 1.12);
+    hero.pA = pA; hero.pZ = pZ; hero.dy = dy;
+    const sh = hero.cy - dy - hero.C.y;
+    if (sh) { hero.C.y += sh; for (let i = 0; i < N; i++) py[i] += sh; }   /* the agents move with the sheet as one piece: no spring lag behind the text */
     const sub = pZ > 0.001 ? 2 : pA > 0.5 ? 1 : 0;
     if (sub !== hero.sub) { if (sub === 1 && hero.sub === 0) hero.ta = now; hero.sub = sub; }
     const o1 = 1 - ss((sy - 0.03) / 0.26);
-    copyEl.style.opacity = o1.toFixed(3); copyEl.style.transform = 'translateY(' + (-36 * (1 - o1)).toFixed(1) + 'px)';
-    capEl.style.opacity = o1.toFixed(3); capEl.style.transform = 'translateY(' + (-18 * (1 - o1)).toFixed(1) + 'px)';
+    copyEl.style.opacity = o1.toFixed(3); copyEl.style.transform = 'translateY(' + (-dy - 36 * (1 - o1)).toFixed(1) + 'px)';
+    capEl.style.opacity = o1.toFixed(3); capEl.style.transform = 'translateY(' + (ex - dy - 18 * (1 - o1)).toFixed(1) + 'px)';
+    const hf = Math.min(1, (ex - dy) / 26); if (Math.abs(hf - hero.hf) > 0.004) { hero.hf = hf; pinEl.style.setProperty('--hf', hf.toFixed(2)); }   /* the sheet goes on below the window: its lower edge fades */
     capEl.style.pointerEvents = o1 < 0.5 ? 'none' : ''; capEl.style.visibility = o1 > 0.004 ? '' : 'hidden'; cueEl.style.opacity = o1.toFixed(3);
     const oA = ss((sy - 0.34) / 0.2) * (1 - ss((sy - 1.5) / 0.2));
     aEl.style.opacity = oA.toFixed(3); aEl.classList.toggle('live', oA > 0.5); aEl.style.visibility = oA > 0.004 ? '' : 'hidden';   /* hidden: no invisible tab stop */
@@ -1039,7 +1102,7 @@ SC[0] = {
     if (oh > 0.01 && hero.sub === 0) {
       const m = hero.m, mt = hero.mt, f = hero.fade[m] * oh, last = {};
       for (const c of MODES[m].chip) if (mt >= c[1]) last[c[0]] = c;
-      for (const k in last) { const c = last[k], p = P6(+k), fa = Math.min(1, (mt - c[1]) * 4) * f; chip(c[2], p.x, p.y - p.r - (mob ? 14 : 19), fa, +k === 2); }
+      for (const k in last) { const c = last[k], p = P6(+k), fa = Math.min(1, (mt - c[1]) * 4) * f; chip(c[2], p.x, p.y - p.r - (mob ? 14 : 19) * hero.ls, fa, +k === 2); }
     }
     this.overA(a);
     const lz = ss((hero.pZ - 0.74) / 0.2) * a;
@@ -2010,9 +2073,17 @@ function s6geom() {
   const G = s6.G;
   if (mob) { G.x0 = S.x; G.wd = S.w; G.yb = S.y + S.h - 38; G.per = 2; }
   else { G.x0 = Math.max(48, (W - 1280) / 2 + 16); G.wd = W - G.x0 - Math.max(40, G.x0 - 40); G.yb = H - 92; G.per = 3; }
-  G.cw = G.wd / 26.6; G.gi = G.cw * 0.12; G.p = (G.cw - G.gi) / G.per; G.r = G.p * 0.42;
+  G.cw = G.wd / 26.6; G.gi = G.cw * 0.12;
+  let mx = 0; for (let c = 2; c < 25; c++) mx = Math.max(mx, s6.cnt[c]);
+  /* On a phone the stage's height can be the scarce side (a phone held sideways, where stageH cannot give the map what its
+     width asks for). The tallest column has S.h - 104 px: 38 below it for the months and years, 62 above it for the three
+     label rows, 4 between the top label and the header's fade. Where two dots a row do not fit in that, a column gets more
+     dots a row and so gets wider and lower: as many as give the largest dot. Where two fit, nothing changes. */
+  if (mob) { const room = Math.max(40, S.h - 104); let p = 0; for (let n = 2; n <= 8; n++) { const q = Math.min((G.cw - G.gi) / n, room / Math.ceil(mx / n)); if (q > p) { p = q; G.per = n; } } G.p = p; }
+  else G.p = (G.cw - G.gi) / G.per;
+  G.r = G.p * 0.42;
   G.cx = c => G.x0 + (c === 0 ? 0 : c === 1 ? 1 : c + 1.6) * G.cw;
-  let mx = 0; for (let c = 2; c < 25; c++) mx = Math.max(mx, s6.cnt[c]); G.tall = Math.ceil(mx / G.per) * G.p;
+  G.tall = Math.ceil(mx / G.per) * G.p;
   s6.ls = Math.max(30, Math.min(44, (G.yb - G.tall - 62 - 78) / Math.max(1, NOTES.filter(n => n.side === 1).length - 1)));   /* desktop label rows stay below the header */
 }
 const s6pos = w => { const G = s6.G, c = s6.col[w], k = s6.k[w], per = c === 1 ? G.per * 2 : G.per; return [G.cx(c) + G.gi / 2 + G.p / 2 + (k % per) * G.p, G.yb - G.p / 2 - Math.floor(k / per) * G.p - 2]; };
@@ -2107,7 +2178,9 @@ const MH = [[1.08], [1.2], [1.15, 1.15, 1.15, 1.22, 1.15, 0.98], [1.04, 1.04, 1.
    the J-Space column); a card that does not fit in the rest of the screen moves its text inside (fitCards) */
 const MN = [[290], [217, 217, 288, 288, 288, 288, 288], [217, 217, 217, 217, 217, 296], [217, 217, 217, 217, 217, 217, 304, 275], [217, 217, 217, 272, 217, 217, 217], [217, 217, 217, 217, 217, 239, 217], [290], [217]];
 function stageH(sc, st, ch) {
-  const want = (MH[sc][st] || MH[sc][0]) * (W - 28), need = Math.min(want, MN[sc][st] === undefined ? MN[sc][0] : MN[sc][st]);
+  /* the map's columns grow with the width: on a phone wider than 390 px its three label rows need more than MN to stay below the header */
+  const mn = sc === 6 ? Math.max(MN[6][0], 110 + 0.5 * (W - 28)) : MN[sc][st] === undefined ? MN[sc][0] : MN[sc][st];
+  const want = (MH[sc][st] || MH[sc][0]) * (W - 28), need = Math.min(want, mn);
   return Math.round(clamp(Math.min(H - 62 - ch - 26, want), Math.min(H * 0.62, Math.max(170, H * 0.24, need)), H * 0.62));
 }
 function setStage() {
@@ -2124,7 +2197,7 @@ function setStage() {
   for (let i = 0; i < N; i++) { hx[i] = S.cx + (COL[i] - 15.5) * g; hy[i] = S.cy + (ROW[i] - 15.5) * g; }
 }
 function resize() {
-  W = innerWidth; H = innerHeight; mob = W < 760; TS = mob ? 1.05 : 1.1;
+  W = innerWidth; H = innerHeight; mob = PHONE.matches; TS = mob ? 1.05 : 1.1;
   DPR = Math.min(devicePixelRatio || 1, 2); cv.width = Math.round(W * DPR); cv.height = Math.round(H * DPR);
   setStage();
   root.style.setProperty('--sx', S.x + 'px'); root.style.setProperty('--sw', S.w + 'px');
@@ -2135,16 +2208,20 @@ function resize() {
 }
 function frame(ts) {
   raf = 0; now = ts / 1000; dt = clamp(now - last, 0.001, 0.05); last = now;
-  update();
-  const sc = curSc;
-  SC[sc].tick(T_OF(sc), curSt);
-  for (let i = 0; i < 8; i++) vis[i] = RM ? (i === sc ? 1 : 0) : vis[i] + ((i === sc ? 1 : 0) - vis[i]) * Math.min(1, dt * 5.5);
-  physics(); hoverFrame();
-  ctx.setTransform(DPR, 0, 0, DPR, 0, 0); ctx.clearRect(0, 0, W, H);
-  for (let i = 0; i < 8; i++) if (vis[i] > 0.01) SC[i].under(vis[i]);
-  drawAgents(); drawParts();
-  for (let i = 0; i < 8; i++) if (vis[i] > 0.01) SC[i].over(vis[i]);
-  if (!RM && !D.hidden) raf = requestAnimationFrame(frame);
+  try {
+    if (sheetStop) showSheetStop();
+    update();
+    const sc = curSc;
+    SC[sc].tick(T_OF(sc), curSt);
+    for (let i = 0; i < 8; i++) vis[i] = RM ? (i === sc ? 1 : 0) : vis[i] + ((i === sc ? 1 : 0) - vis[i]) * Math.min(1, dt * 5.5);
+    physics(); hoverFrame();
+    ctx.setTransform(DPR, 0, 0, DPR, 0, 0); ctx.clearRect(0, 0, W, H);
+    for (let i = 0; i < 8; i++) if (vis[i] > 0.01) SC[i].under(vis[i]);
+    drawAgents(); drawParts();
+    for (let i = 0; i < 8; i++) if (vis[i] > 0.01) SC[i].over(vis[i]);
+  } finally {   /* a frame that throws is reported by the browser and must not be the last one */
+    if (!RM && !D.hidden && !raf) raf = requestAnimationFrame(frame);
+  }
 }
 function kick() { if (!raf) raf = requestAnimationFrame(frame); }
 (function start() {

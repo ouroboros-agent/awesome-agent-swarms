@@ -25,7 +25,8 @@ refused: any request other than file: / data: / about: is recorded as a failure 
   resize     desktop → phone → desktop on one page without reloading: layout switches, nothing overflows, no errors
   map        hover shows a work's title, lab, date and theme; click opens its source in a new tab; touch tap pins a tooltip
              with a link (on a phone titles appear only on a tap); the idle tour shows notable works on a desktop; hovering or
-             focusing the legend highlights a theme
+             focusing the legend highlights a theme; on a phone held sideways (844x390, 932x430, 667x375) every dot and the
+             three labels are drawn below the header and a tap reaches the topmost dot
   keyboard   Tab reaches the scheme tabs with a visible focus ring; arrow keys change the scheme
   schemes    the first screen switches schemes by itself; a click on a tab selects that scheme
   site       repository layout: the language link carries the current scene and step and the other language opens there;
@@ -145,6 +146,9 @@ def scroll_to(pg, y, settle):
 
 
 HSCROLL = "document.documentElement.scrollWidth > document.documentElement.clientWidth + 1"
+# In a window too short for the first screen (intro, figure, tabs and caption) its sheet is taller than the window by --hx px and
+# moves with the page first: the first screen's later states (the panel, the pull-out) begin that much further down.
+HX = "(parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--hx')) || 0)"
 
 
 def sweep(b, eng, lang, vname, opts, path, fast=False):
@@ -154,7 +158,8 @@ def sweep(b, eng, lang, vname, opts, path, fast=False):
     frames, bad_active, empty = [], [], []
     p0 = shot(pg, f"sweep-{eng}-{lang}-{vname}-h0")
     frames.append(p0)
-    for k, y in (("h1", H), ("h2", int(H * 2.6))):
+    hx = pg.evaluate(HX)
+    for k, y in (("h1", round(hx + H)), ("h2", round(hx + H * 2.6))):
         scroll_to(pg, y, 1400)
         frames.append(shot(pg, f"sweep-{eng}-{lang}-{vname}-{k}"))
     st = steps(pg)
@@ -262,7 +267,8 @@ READ = """async ([k, stride]) => {
   const card = hero ? document.getElementById('hA') : el.querySelector('.card'), ci = card.querySelector('.ci') || card;
   const kids = [...ci.children].filter(x => x.offsetHeight > 0), first = kids[0], last = kids[kids.length - 1];
   const vis = (e, lo, hi) => { const r = e.getBoundingClientRect(); return r.top >= lo - 0.5 && r.bottom <= hi + 0.5; };
-  const a = hero ? 0 : el.getBoundingClientRect().top + scrollY - H, b = hero ? 1.6 * H : el.getBoundingClientRect().bottom + scrollY;
+  const hx = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--hx')) || 0;
+  const a = hero ? 0 : el.getBoundingClientRect().top + scrollY - H, b = hero ? hx + 1.6 * H : el.getBoundingClientRect().bottom + scrollY;
   const ov = card.classList.contains('ov');
   let active = 0, f = false, l = false, outside = null, yOn = null;
   for (let y = Math.max(0, Math.round(a)); y <= b; y += stride) {
@@ -303,7 +309,7 @@ def phone_read(b, eng, lang, w, h, path):
         if not (r["active"] and r["first"] and r["last"] and not r["outside"]):
             bad.append(r)
         if r["yOn"] is not None and k in ("hA", "1-4", "2-5", "3-6", "5-4", "6-0"):
-            scroll_to(pg, h if k == "hA" else r["yOn"] + 48, 1500 if k in ("3-6", "6-0") else 700)
+            scroll_to(pg, round(pg.evaluate(HX)) + h if k == "hA" else r["yOn"] + 48, 1500 if k in ("3-6", "6-0") else 700)
             if k == "3-6" and pg.evaluate("(s => s ? s.dataset.sc + '-' + s.dataset.st : null)(document.querySelector('.step.on'))") == "3-6":
                 dots = pg.evaluate("window.__dots.last")
             shot(pg, f"land-{eng}-{lang}-{w}x{h}-s{k}")
@@ -398,7 +404,53 @@ def hover_scan(pg, W, H):
     return None
 
 
+# What the map's last frame drew, in CSS px: every circle (a dot; the rows of small squares under the columns are not circles)
+# and every label the canvas wrote, with its font size.
+MAPINK = """(() => { const C = CanvasRenderingContext2D.prototype, P = window.__map = { cur: { arcs: [], texts: [] }, last: { arcs: [], texts: [] } };
+  const cr = C.clearRect; C.clearRect = function (x, y, w, h) { if (w * (this.canvas.width / Math.max(1, this.canvas.clientWidth)) >= this.canvas.width - 2) { P.last = P.cur; P.cur = { arcs: [], texts: [] }; } return cr.apply(this, arguments); };
+  const ar = C.arc; C.arc = function (x, y, r) { P.cur.arcs.push([x, y, r]); return ar.apply(this, arguments); };
+  const ft = C.fillText; C.fillText = function (s, x, y) { P.cur.texts.push([String(s), x, y, parseFloat(this.font.match(/([\\d.]+)px/)[1])]); return ft.apply(this, arguments); };
+})()"""
+
+
+def map_sideways(b, eng, lang, w, h, path, labels):
+    """A phone held sideways: the map's stage is wide and low. Every dot and the three labels above the columns are drawn
+    below the header (a column gets more dots a row instead of running under it), and a tap reaches the topmost dot."""
+    kw = dict(PHONE, viewport={"width": w, "height": h}, device_scale_factor=1)
+    if eng != "chromium":
+        kw.pop("is_mobile", None)
+    ctx = b.new_context(**kw)
+    ctx.set_default_timeout(30000)
+    ctx.add_init_script(MAPINK)
+    errors, net = [], []
+    ctx.route("**/*", lambda route: (net.append(route.request.url), route.abort()) if not route.request.url.startswith(("file:", "data:", "about:", "blob:")) else route.continue_())
+    pg = ctx.new_page()
+    pg.on("pageerror", lambda e: errors.append("pageerror: " + str(e)[:200]))
+    pg.goto("file://" + path, wait_until="load")
+    pg.wait_for_timeout(600)
+    scroll_to(pg, dict(steps(pg))["6-0"], 4200)          # the columns have formed and the labels are shown
+    f = pg.evaluate("({ink: __map.last, hdr: document.querySelector('.top').getBoundingClientRect().bottom + 14, on: (s => s ? s.dataset.sc + '-' + s.dataset.st : null)(document.querySelector('.step.on'))})")
+    dots = [a for a in f["ink"]["arcs"] if a[2] >= 1.3]
+    under = [a for a in dots if a[1] - a[2] < f["hdr"]]
+    lab = {t[0]: round(t[2] - 0.78 * t[3], 1) for t in f["ink"]["texts"] if t[0] in labels}       # the top of each label's letters
+    shot(pg, f"map-{eng}-{lang}-sideways-{w}x{h}")
+    top = min(dots, key=lambda a: a[1]) if dots else None
+    tip = None
+    if top and not under:
+        pg.touchscreen.tap(top[0], top[1])
+        pg.wait_for_timeout(300)
+        tip = pg.evaluate("(() => { const t = document.getElementById('tip'); return t.classList.contains('on') && t.classList.contains('touch') ? t.querySelector('.t').textContent.slice(0, 60) : null; })()")
+    rec("map", eng, f"{lang} {w}x{h}, a phone held sideways: all {len(dots)} circles of the map and its {len(labels)} labels are drawn below the header, and a tap on the topmost dot pins its tooltip",
+        f["on"] == "6-0" and len(dots) >= 300 and not under and len(lab) == len(labels) and all(v >= f["hdr"] for v in lab.values()) and bool(tip) and not errors and not net,
+        dict(active=f["on"], header=f["hdr"], circles=len(dots), under_header=len(under), highest=round(top[1] - top[2], 1) if top else None, label_tops=lab, tap=tip, errors=errors[:3], net=net[:3]))
+    ctx.close()
+
+
 def map_checks(b, eng, paths):
+    for lang in F.LANGS:
+        labels = [n[2] for n in F.read_json("field", f"{lang}.json")["labels"]["notes"] if n[2]]
+        for w, h in ((844, 390), (932, 430), (667, 375)) if lang == "ru" else ((844, 390),):
+            map_sideways(b, eng, lang, w, h, paths[lang], labels)
     for lang in F.LANGS:
         L = F.read_json("field", f"{lang}.json")["labels"]
         ctx, pg, errors, net = open_page(b, DESK, paths[lang])
@@ -563,7 +615,7 @@ def focus_checks(b, eng, paths):
     ctx.close()
     ctx, pg, errors, net = open_page(b, ph, paths["en"])   # a reader scrolls to the panel, then presses Tab
     pg.wait_for_timeout(1200)
-    scroll_to(pg, round(0.45 * H), 900)                # the panel is shown and its text is at its first line: the link lies beyond the box
+    scroll_to(pg, round(pg.evaluate(HX) + 0.45 * H), 900)   # the panel is shown and its text is at its first line: the link lies beyond the box
     link = "document.querySelector('#hA .src a')"
     hidden = not pg.evaluate("(" + FOCUS_INFO + f")({link})")["inside"]
     got = None

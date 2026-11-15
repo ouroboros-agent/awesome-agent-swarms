@@ -1,7 +1,7 @@
 PY ?= .venv/bin/python
 S ?= research-archive
 
-.PHONY: all site field check charts catalog registry preserve qa qa-features qa-regress qa-field coverage
+.PHONY: all site field check charts catalog registry preserve qa qa-features qa-regress qa-field qa-first-screen showcase coverage
 all: charts site field catalog check
 
 venv:
@@ -46,6 +46,13 @@ qa-features:         ## scenes move/stop/pause, reduced motion, language keeps t
 
 qa-field:            ## the Field pages and exports from file:// in Chromium and WebKit (desktop, phone, no-JS, reduced motion, map, keyboard, language link); OUT=<dir>
 	$(PY) scripts/qa_field.py $(OUT)
+
+qa-first-screen:     ## the Field pages' first screen in Chromium and WebKit at 14 phone and 9 tablet and desktop window sizes, four schemes each: the figure keeps its size, nothing lies over text, labels do not clash, the animation runs; also reduced motion, turning the phone, no JavaScript, the keyboard where the first screen is taller than the window; OUT=<dir>
+	$(PY) scripts/showcase/hero_probe.py $(if $(OUT),$(OUT),qa/first-screen) --label site --strict --states --page ru=site/ru/index.html --page en=site/en/index.html
+
+showcase:            ## two videos of the Field page from real browser frames (needs ffmpeg): every part of the page in under 25 s, or BOARD=teaser for the selection of 15 November 2026; OUT=<dir>, see scripts/showcase/README.md
+	$(PY) scripts/showcase/render.py $(if $(OUT),$(OUT),qa/showcase) --kind mobile $(if $(BOARD),--board $(BOARD))
+	$(PY) scripts/showcase/render.py $(if $(OUT),$(OUT),qa/showcase) --kind desktop $(if $(BOARD),--board $(BOARD))
 
 qa-regress:          ## the defects found in the final reviews stay fixed: atlas place after search/filter/reset, scenes settle in every layout, theme and skip focus keep the place, no-JS former-page entries, λ labels, phone legend
 	$(PY) scripts/qa_regress.py
