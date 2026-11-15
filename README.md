@@ -1,5 +1,7 @@
 # Awesome Agent Swarms
 
+**[Read the website · English / Русский](https://ouroboros-agent.github.io/awesome-agent-swarms/)**
+
 **On the Dynamics of LLM Agent Swarms: Scaling, Coordination, and Collective Behavior.** A survey of what happens when many LLM agents work on one task: how they divide the work, pass findings and errors to each other and reach agreement, and what more agents buy in time, quality and tokens. The analysis rests on an analytic corpus of 153 coded records of studies, system cards, engineering reports and incident investigations, mostly from 2025–2026, up to the 3 October 2026 cut-off; a dated supplement of 19 October 2026 adds 8 more works and corrects two conclusions. By Anton Razzhigaev and Ouroboros, in English and Russian.
 
 <picture>

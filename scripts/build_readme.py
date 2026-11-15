@@ -124,6 +124,8 @@ def write_scale_posters():
 
 EN = f"""# Awesome Agent Swarms
 
+**[Read the website · English / Русский](https://ouroboros-agent.github.io/awesome-agent-swarms/)**
+
 **On the Dynamics of LLM Agent Swarms: Scaling, Coordination, and Collective Behavior.** A survey of what happens when many LLM agents work on one task: how they divide the work, pass findings and errors to each other and reach agreement, and what more agents buy in time, quality and tokens. The analysis rests on an analytic corpus of {K['corpus']} coded records of studies, system cards, engineering reports and incident investigations, mostly from 2025–2026, up to the 3 October 2026 cut-off; a dated supplement of 19 October 2026 adds {K['sup']} more works and corrects two conclusions. By Anton Razzhigaev and Ouroboros, in English and Russian.
 
 {picture("topologies", "en", "Six agents drawn as context windows, connected in three ways: independently, through a coordinator, through a shared log. Agent 3's finding is a lime block; agents 1 and 5 redo the work in coral, receive a copy from the coordinator, or find the entry in the log.")}
@@ -214,6 +216,8 @@ The Field edition is built from one shared page style and renderer (`field/field
 """
 
 RU = f"""# Awesome Agent Swarms
+
+**[Открыть сайт · Русский / English](https://ouroboros-agent.github.io/awesome-agent-swarms/)**
 
 **Динамика роёв LLM-агентов: масштабирование, координация и коллективное поведение.** Обзор того, что происходит, когда над одной задачей работает много LLM-агентов: как они делят работу, передают друг другу находки и ошибки, приходят к согласию и что дают лишние агенты по времени, качеству и токенам. Анализ опирается на аналитический корпус из {K['corpus']} записей: исследования, системные карты, инженерные отчёты и разборы инцидентов, в основном 2025–2026 годов, до среза 3 октября 2026 года; датированное дополнение от 19 октября 2026 года добавляет ещё {K['sup']} работ и уточняет два вывода. Авторы — Anton Razzhigaev и Ouroboros; текст на русском и английском.
 
