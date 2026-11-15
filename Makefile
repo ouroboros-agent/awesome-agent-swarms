@@ -13,8 +13,9 @@ registry:            ## rebuild data/works.json from the October tree (read-only
 	$(PY) scripts/identity_audit.py $(S)
 	$(PY) scripts/preservation_map.py $(S)
 
-charts:
+charts:              ## the survey's own corpus charts (assets/charts/) and the README's variant of the scale chart (assets/readme/)
 	$(PY) scripts/build_charts.py
+	$(PY) scripts/build_readme_scale_chart.py
 
 site:                ## site/: the Field pages (index.html), the detailed survey of 19 October (survey-2026-10-19.html), former addresses, root page
 	$(PY) scripts/build_site.py --check

@@ -10,8 +10,8 @@ Sources:
   updates/2026-10-19/catalogue.json the catalogue of 19 October 2026 (288 records), unchanged
   updates/2026-11-12/map-catalogue.json  the 26 records added for this edition and the map rules
                                     (one point per primary source, theme overrides, English display fields)
-  data/works.json                   the registry of 3 October 2026: the 99 works of the 153-work analytic corpus
-                                    that state how many agents run at once (the scale scene)
+  data/works.json                   the registry of 3 October 2026: the 99 of the 153 analytic-corpus records that
+                                    report one population size (the scale scene; see scale_rows for what they mix)
 
 Two outputs per language from the same sources. delivery/Swarm-Field-*.html is one self-contained file that works
 alone in an empty folder (file://, no server, no network): no link to any other local file. site/<lang>/index.html is
@@ -207,8 +207,11 @@ def map_rows(lang):
 
 
 def scale_rows(lang):
-    """The 99 works of the analytic corpus (3 October 2026) that state how many agents run at once, shown with the same
-    titles and bylines as their map points (the catalogue record with the same primary URL)."""
+    """The 99 records of the analytic corpus (3 October 2026) that report one population size, shown with the same
+    titles and bylines as their map points (the catalogue record with the same primary URL). Their registry class,
+    scale_kind "simultaneous", is historical: it holds the size a source reports for one run or one system, and that
+    system may be a live run, a simulation with surrogate models or a whole platform working on unrelated tasks. The
+    page therefore calls these values reported population sizes, not agents running at once or a census of swarms."""
     works = read_json("data", "works.json")["works"]
     recs, rules = catalogue_records()
     merged = {m["record"] for m in rules["merged"]}
@@ -373,6 +376,7 @@ def page(lang, site=False):
                 extra.append(f'    <ul class="legend" id="legend">{legend_html(C["labels"], rows)}</ul>')
             if s.get("cls") == "fin" and site:
                 extra.append(f'    <p class="more"><a href="{SURVEY_PAGE}">{C["site"]["survey"]}</a></p>')
+                extra.append(f'    <p class="more"><a href="../paper/index.html">{C["site"]["paper"]}</a></p>')
             lines += step_html(sc, st, s, site, extra)
         if sc == 7:
             lines.append('  <div class="end"></div>')

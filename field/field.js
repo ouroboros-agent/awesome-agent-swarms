@@ -704,7 +704,7 @@ SC[1] = {
 
 /* ============ Scene 2: the Agensh curve, a hundred agents three ways, N^λ and Avalon-M1 ============ */
 const TEAM = [1, 8, 32, 128, 1024], SCORE = [33.89, 41.75, 43.11, 50.94, 55.06], TEAM_L = L.teamL;
-const AV = [['FrontierScience', 55.9, 63.5, 55.5, L.avNote[0]], ['SWE-Bench Pro', 21.6, 23.5, 37.3, L.avNote[1]], ['IMO-ProofBench', 29.8, 37.5, 37.7, L.avNote[2]]];
+const AV = [['FrontierScience', 55.9, 63.5, 55.5, L.avNote[0]], ['SWE-Bench Pro V2 (hard)', 21.6, 23.5, 37.3, L.avNote[1]], ['IMO-ProofBench', 29.8, 37.5, 37.7, L.avNote[2]]];
 const s2 = { stage: -1, cp: 0, G: {} };
 function s2geom() {
   const G = s2.G;

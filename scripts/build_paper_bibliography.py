@@ -330,17 +330,16 @@ def main():
         if m and d.get('_partial_authors') and len(m.get('authors',[])) >= len(d['author']):
             d['author']=m['authors']
             d['_partial_authors']=False
-            provenance[k]['author_metadata_source']=str(meta_path.relative_to(args.archive))
+            provenance[k]['author_metadata_source']='arXiv metadata snapshot in the October research archive'
     update('ashery-conventions',author=['Ariel Flint Ashery','Luca Maria Aiello','Andrea Baronchelli'],
            volume='11',number='20',pages='eadu9368',_partial_authors=False)
-    provenance['ashery-conventions']['author_metadata_source']='lanes/lc_g15/scratch/src/texsrc/main.bib:ashery2025emergent'
+    provenance['ashery-conventions']['author_metadata_source']="BibTeX of the authors' LaTeX source in the October research archive"
 
     # Complete bylines for the 18 entries left partial by the cards. Values were
     # read from primary arXiv, publisher, and journal pages on 2026-10-09 and are
-    # recorded in swarm-recovery-20261009/metadata-18-bylines.md. Source date and
+    # kept in the October research records. Source date and
     # spelling conflicts are kept in the citation map, not resolved by guesswork.
-    byline_source=('swarm-recovery-20261009/metadata-18-bylines.md '
-                   '(primary arXiv, publisher and journal pages, checked 2026-10-09)')
+    byline_source='Primary arXiv, publisher and journal pages, checked 2026-10-09'
     bylines={
         'agentworm':dict(author=['Yihao Zhang','Zeming Wei','Xiaokun Luan','Chengcan Wu','Zhixin Zhang','Jiangrong Wu','Haolin Wu','Huanran Chen','Jun Sun','Meng Sun'],
             _dates='arXiv v1 2026-03-16; v3 2026-07-16',
@@ -457,6 +456,15 @@ def main():
     aliases.update({'openai-hf-incident-2026':'hf-incident-case',
                     'piao2025':'piao-polarization','piao2026':'piao-polarization',
                     '2501.05171':'piao-polarization'})
+
+    # November 2026 edition: the versions read for three inherited entries. Post-cohort
+    # additions live in paper/references-2026-11.bib, which this script never writes.
+    update('multi-agent-transactive-memory', url='https://arxiv.org/abs/2606.19911v2',
+           note='arXiv v2, 15 October 2026; v1 18 June 2026')
+    update('safety-of-latent-communication', url='https://arxiv.org/abs/2609.39788v3',
+           note='arXiv v3, 5 October 2026; the cited result appears from v2, 1 October 2026')
+    update('worse-together', url='https://arxiv.org/abs/2610.00583v1', note='arXiv v1, 30 September 2026')
+    update('voluntary-collusion-secret-tools', url='https://arxiv.org/abs/2605.27593v2', note='arXiv v2, 5 October 2026; v1 26 May 2026')
 
     lines=['% Generated from preserved October 2026 research cards.',
            '% Do not interpret entry count as a deduplicated count of research works.',

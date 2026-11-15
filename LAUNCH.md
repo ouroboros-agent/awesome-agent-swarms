@@ -1,6 +1,6 @@
 # Launch notes — unpublished drafts
 
-Publication remains subject to the authors' final review. The repository is private and Pages is disabled. These drafts authorize no posting, outreach or submission.
+Publication remains subject to the authors' final review. These drafts authorize no posting, outreach or submission.
 
 ## Russian announcement
 
@@ -8,9 +8,9 @@ Publication remains subject to the authors' final review. The repository is priv
 
 Мы с Ouroboros собрали *On the Dynamics of LLM Agent Swarms* — обзор масштабирования, координации, памяти, разнообразия моделей, коллективных убеждений и безопасности.
 
-Число агентов мало говорит без условий сравнения. В собранных лабораторных кривых с одинаковым бюджетом токенов сильный одиночный агент не уступал рою, а выигрыш роя проявлялся во времени выполнения. В других конкретных постановках команды улучшали качество. Мы разделяем эти результаты, а не сводим их к общему «рои работают» или «рои бесполезны».
+Число агентов мало говорит без условий сравнения. При равных выходных токенах кривые OpenAI были в пользу одного агента, а в Avalon-M1 такое же уравнивание дало на трёх бенчмарках победу команды, проигрыш и почти равный результат. В других постановках совместная работа повышала качество или сокращала время. Мы разделяем эти результаты, а не сводим их к общему «рои работают» или «рои бесполезны».
 
-Внутри — полный RU/EN-текст, каталог источников, фильтруемый атлас, карта доказательств и открытых вопросов, PDF в ACL-формате и LaTeX-исходники. Основной срез: 3 октября 2026; отдельно отмечены последующие обновления метаданных.
+Внутри — полный RU/EN-текст, каталог источников, фильтруемый атлас, карта доказательств и открытых вопросов, PDF в ACL-формате и редактируемые LaTeX-исходники. PDF охватывает литературу по 12 ноября 2026 года; статистика по 153 записям аналитического корпуса сохраняет дату 3 октября.
 
 Авторы: Anton Razzhigaev и Ouroboros. Самостоятельный technical report, подготовленный человеком и ИИ, не публикация ACL.
 
@@ -22,9 +22,9 @@ Publication remains subject to the authors' final review. The repository is priv
 
 Anton Razzhigaev and Ouroboros put together *On the Dynamics of LLM Agent Swarms*, covering scaling, coordination, memory, model diversity, collective beliefs, and safety.
 
-The comparison matters as much as the agent count. In the matched-token laboratory curves collected in the survey, a strong single agent matched or beat the swarm, while the swarm's measured advantage was wall-clock time. Other specific setups showed quality gains from collaboration. We keep those settings distinct rather than turn them into a universal claim for or against swarms.
+The comparison matters as much as the agent count. At matched output tokens, OpenAI's curves favored a single agent, while a matched-token control in Avalon-M1 found a team win, a loss, and about the same score on three benchmarks. Other setups showed quality gains or wall-clock gains from collaboration. We keep those settings distinct rather than turn them into a universal claim for or against swarms.
 
-The project includes a full English/Russian survey, a source catalogue, a filterable atlas, an evidence map, open research questions, and an ACL-format PDF with editable LaTeX sources. The main corpus cut-off is 3 October 2026; subsequent metadata updates are identified separately.
+The project includes a full English/Russian survey, a source catalogue, a filterable atlas, an evidence map, open research questions, and an ACL-format PDF with editable LaTeX sources. The PDF covers literature through 12 November 2026; statistics of the 153-record analytic corpus keep their 3 October date.
 
 A self-published technical report by a human–AI collaboration, not an ACL publication.
 

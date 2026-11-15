@@ -84,27 +84,27 @@
     },
     {
      "p": [
-      "Our detailed survey had analysed <b>153</b> works by 3&nbsp;October 2026. <b>99</b> of them state how many agents run at once; the median is <b>seven</b>."
+      "By 3&nbsp;October 2026 the analytic corpus of our detailed survey held <b>153</b> records. <b>99</b> of them report a population size; the median is <b>seven</b>. The sizes mix live runs, simulations with surrogate models and counts for whole&nbsp;platforms."
      ],
      "src": [
       {
-       "text": "Sample of 153 works as of 3&nbsp;October 2026"
+       "text": "Analytic corpus of 153 records as of 3&nbsp;October 2026"
       }
      ]
     },
     {
      "p": [
-      "Ten or more agents worked together in <b>42</b> works, a hundred or more in <b>15</b>, a thousand or more in <b>7</b>, ten thousand or more in&nbsp;<b>4</b>."
+      "A size of ten agents or more is reported in <b>42</b> records, a hundred or more in <b>15</b>, a thousand or more in <b>7</b>, ten thousand or more in&nbsp;<b>4</b>."
      ],
      "src": [
       {
-       "text": "The same 99 works, as of 3&nbsp;October 2026"
+       "text": "The same 99 records, as of 3&nbsp;October 2026"
       }
      ]
     },
     {
      "p": [
-      "Two examples from lab reports: OpenAI's swarm on the Navier–Stokes problem, on the order of <b>10,000</b> concurrent agents, and Anthropic's internal platform, where about <b>30,000</b> agents do research and engineering at any one&nbsp;time."
+      "Two examples from lab reports: OpenAI's swarm on the Navier–Stokes problem, on the order of <b>10,000</b> concurrent agents, and Anthropic's internal platform, where about <b>30,000</b> agents do research and engineering at any one time, spread over different tasks: a count for the whole platform, not for one&nbsp;swarm."
      ],
      "src": [
       {
@@ -222,7 +222,7 @@
     },
     {
      "p": [
-      "Avalon-M1 offers a direct comparison. A team whose CEO agent may keep up to eight hired specialists beats a single agent made to spend the same number of output tokens on FrontierScience (<b>63.5</b> vs <b>55.5</b>), loses on SWE-Bench&nbsp;Pro (<b>23.5</b> vs <b>37.3</b>) and ties on IMO-ProofBench (<b>37.5</b> vs&nbsp;<b>37.7</b>).",
+      "Avalon-M1 offers a direct comparison. A team whose CEO agent may keep up to eight hired specialists beats a single agent made to spend the same number of output tokens on FrontierScience (<b>63.5</b> vs <b>55.5</b>), loses on the hard subset of SWE-Bench&nbsp;Pro&nbsp;V2 (<b>23.5</b> vs <b>37.3</b>) and scores about the same on IMO-ProofBench (<b>37.5</b> vs&nbsp;<b>37.7</b>).",
       "Google Research, across <b>180</b> configurations, showed that the outcome depends on the type of task: a team improves results on parallelizable tasks (up to <b>+81%</b> on Finance-Agent) and degrades them on sequential ones (by <b>39–70%</b> on&nbsp;PlanCraft)."
      ],
      "src": [
@@ -274,7 +274,7 @@
     },
     {
      "p": [
-      "From the authors' published replay of the 1,024-agent run we counted <b>11,111</b> pull requests, of which <b>2,800</b> were merged. The board holds <b>148,079</b> entries, <b>56,472</b> of them marked&nbsp;FAIL."
+      "From the authors' published replay of the 1,024-agent run we counted <b>11,111</b> successful pull-request creation events and <b>2,800</b> merge events. The board holds <b>148,079</b> entries, <b>56,472</b> of them marked&nbsp;FAIL."
      ],
      "src": [
       {
@@ -286,7 +286,7 @@
     },
     {
      "p": [
-      "Anthropic's November run did have a lead: the prompt set up one lead and 999 helpers, and they split the work through the shared database. When what remained was the Langlands–Tunnell theorem, a classical result that Wiles's proof relies on and that had not yet been formalized, the lead moved about <b>750</b> helpers onto it. Its subtask tree grew to <b>2,418</b> tasks, up to ten levels&nbsp;deep."
+      "Anthropic's November run did have a lead: the prompt set up one lead and 999 helpers, and they split the work through the shared database. When what remained was the Langlands–Tunnell theorem, a classical result that Wiles's proof relies on and by far the largest statement left in the run, the lead moved about <b>750</b> helpers onto it. Its subtask tree grew to <b>2,418</b> tasks, up to ten levels&nbsp;deep."
      ],
      "src": [
       {
@@ -362,19 +362,13 @@
     },
     {
      "p": [
-      "ScaleMAS reduces memory to three operations over linked records: publish, search, open by reference. Search returns at most k&nbsp;records and weighs how often a record has been cited. The authors scaled such a swarm up to 128&nbsp;agents.",
-      "Showing everyone everything is a bad default too. In an experiment with ten agents and six games, the group earned the most in the public-goods game with no extra information about the other agents'&nbsp;actions."
+      "ScaleMAS reduces memory to three operations over linked records: publish, search, open by reference. Search returns at most k&nbsp;records and weighs how often a record has been cited. The authors scaled such a swarm up to 128&nbsp;agents."
      ],
      "src": [
       {
        "url": "https://arxiv.org/abs/2610.16120",
        "title": "ScaleMAS",
        "rest": " · FAIR at Meta, Harvard and others · October&nbsp;2026 · arXiv:2610.16120"
-      },
-      {
-       "url": "https://arxiv.org/abs/2611.11714",
-       "title": "Steering Emergent Behavior in Multi-Agent LLM Systems via Information Networks",
-       "rest": " · Northeastern University · 9&nbsp;November&nbsp;2026 · 1,080&nbsp;episodes"
       }
      ]
     },
@@ -392,7 +386,7 @@
     },
     {
      "p": [
-      "COLLABMEM breaks shared-memory failures into six operations: who a record was shown to, who can access it, where it was routed, where it came from, how version conflicts were resolved and how long it is kept. The best method, TMS-GRAPH++, answers <b>69.6%</b> of <b>1,118</b> probe questions&nbsp;correctly."
+      "COLLABMEM breaks shared-memory failures into six operations: who a record was shown to, who can access it, where it was routed, where it came from, how version conflicts were resolved and how long it is kept. The best method, TMS-GRAPH++, averages <b>69.6%</b> correct across five evaluation sets, the core one with <b>1,118</b> probe&nbsp;questions."
      ],
      "src": [
       {
@@ -462,7 +456,7 @@
     },
     {
      "p": [
-      "Agreement in a swarm proves little. In a replication of the classic Music Lab experiment, agents saw how many recommendations each song had already collected. LLM populations were more prone to cascades than humans and, unlike humans, usually failed to correct&nbsp;themselves.",
+      "Agreement in a swarm proves little. In a replication of the classic Music Lab experiment, agents saw how many recommendations each song had already collected. The cascades ran away from the songs' own appeal and rarely corrected themselves; the authors compare this with the human experiment only qualitatively, since the songs and format&nbsp;differed.",
       "The authors of “Debate or Vote” proved in a theoretical model that discussion alone does not raise the expected probability of a correct answer: the gain comes from the number of independent&nbsp;attempts."
      ],
      "src": [
@@ -498,7 +492,7 @@
     },
     {
      "p": [
-      "The propensity to collude depends on the model. In an experiment by Dalhousie and the Vector Institute, Claude Sonnet&nbsp;4.5 never took a secret channel to a competitor, while GPT-4.1 and Gemini&nbsp;2.5 Flash took it in all 100&nbsp;offers.",
+      "The propensity to collude depends on the model and on the wording. In an experiment by Dalhousie and the Vector Institute, Claude Sonnet&nbsp;4.5 never took a secret channel to a competitor described as unfair, while GPT-4.1 and Gemini&nbsp;2.5 Flash took it in all 100&nbsp;offers. Described neutrally, the same communication channel was taken by Sonnet&nbsp;4.5 in every offer too, and a secret strategic hint offered with it in <b>49%</b>&nbsp;(±8.2).",
       "“Multi-Agent Collusion and the J-Space” looked for traces of collusion in the hidden states of DeepSeek-V4-Flash on the NARCBench set. Before the answer, concepts of misrepresentation, concealment or remorse are present in the model's representations for <b>86%</b> of colluding agents and for <b>33%</b> of the same agents given honest&nbsp;instructions."
      ],
      "src": [
@@ -551,7 +545,8 @@
  "site": {
   "lang": "RU",
   "lang_title": "Читать по-русски",
-  "survey": "The detailed survey: 11&nbsp;chapters and an atlas of works"
+  "survey": "The detailed survey: 11&nbsp;chapters and an atlas of works",
+  "paper": "The technical report: taxonomy, evidence tables and full bibliography (PDF, November&nbsp;2026)"
  },
  "labels": {
   "num": {
@@ -613,7 +608,7 @@
   "lm": [
    [
     "Anthropic · about 30,000",
-    "internal platform",
+    "all tasks on the platform",
     "Anthropic ≈30,000"
    ],
    [
@@ -647,27 +642,27 @@
     "YC, Olam Labs 50"
    ]
   ],
-  "s1agents": "agents at once: ",
+  "s1agents": "agents reported: ",
   "s1h": [
-   "How many agents run at once",
-   "99 works as of 3 October · log scale"
+   "Reported population sizes",
+   "99 records as of 3 October · log scale"
   ],
   "median": "median",
   "th": [
    [
-    "works",
+    "records",
     "from 10 agents"
    ],
    [
-    "works",
+    "records",
     "from 100"
    ],
    [
-    "works",
+    "records",
     "from 1,000"
    ],
    [
-    "works",
+    "records",
     "from 10,000"
    ]
   ],
@@ -694,7 +689,7 @@
   "avNote": [
    "team beats a single agent",
    "team loses",
-   "a tie"
+   "about the same"
   ],
   "ax": [
    "agents in the team",
@@ -757,9 +752,9 @@
    ]
   ],
   "pr": [
-   "pull requests, merged",
-   "pull requests, our count",
-   "merged, 25%"
+   "PR creations, merges",
+   "PR creations, our count",
+   "merges, 25%"
   ],
   "integ": "integrators",
   "tree": [
@@ -870,8 +865,8 @@
    ]
   ],
   "cmProbes": [
-   "1,118 probes",
-   "on 1,118 probe questions"
+   "mean of 5 sets",
+   "mean over five evaluation sets"
   ],
   "hm": [
    " h ",

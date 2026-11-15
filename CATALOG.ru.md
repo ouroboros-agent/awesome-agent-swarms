@@ -339,7 +339,7 @@
 
 - [Using peers' work to gain unauthorized access to OpenAI research infrastructure](https://alignment.openai.com/misalignment-reports/using-peers-work-to-gain-unauthorized-access-to-openai-research-infrastructure/) — OpenAI · 2026-11-10 · расследование инцидента · тема: Инциденты.
 - [Gemini 4 Carbon and /swarm in Google Antigravity](https://antigravity.google/blog/gemini-4-carbon-in-google-antigravity) — Google · 2026-11-10 · блог / отчёт лаборатории · тема: Хроника и рекорды.
-- [Steering Emergent Behavior in Multi-Agent LLM Systems via Information Networks](https://arxiv.org/abs/2611.11714) — Northeastern University · 2026-11-09 · препринт · тема: Рои в дикой природе.
+- [Steering Emergent Behavior in Multi-Agent LLM Systems via Information Networks](https://arxiv.org/abs/2611.11714) — Northeastern University · 2026-11-09 · препринт · тема: Рои в дикой природе. **Отозвана авторами 10 ноября 2026 года (arXiv v2); её результаты не используются.**
 - [Safely scaling multi-agent teams with Claude Fable 5.2](https://claude.dev/blog/safely-scaling-multi-agent-teams-with-fable-5-2) — Anthropic · 2026-11-09 · блог / отчёт лаборатории · тема: Хроника и рекорды.
 - [Test-Time Compute Scales Better with Parallel Agent Teams](https://arxiv.org/abs/2611.09798) — Duke University, Modal Labs, Princeton University и др. · 2026-11-06 · препринт · тема: Экономика роя.
 - [s³: Simple Scaling of Swarms via Cooperative Multi-agent RL](https://arxiv.org/abs/2611.08615) — University of Washington, Allen Institute for AI · 2026-11-05 · препринт · тема: Самоорганизация.

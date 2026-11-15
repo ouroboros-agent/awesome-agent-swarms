@@ -33,7 +33,7 @@ lead: Who assembled the survey, how the corpus was chosen, what the marks on the
 
 The article-format version and the citation files: [paper page](../paper/index.html), [PDF](../paper/swarm-dynamics.pdf), [LaTeX sources and figures (ZIP)](../paper/swarm-dynamics-source.zip).
 
-Anton Razzhigaev, Ouroboros. *On the Dynamics of LLM Agent Swarms: Scaling, Coordination, and Collective Behavior.* Technical report, cut-off 3 October 2026.
+Anton Razzhigaev, Ouroboros. *On the Dynamics of LLM Agent Swarms: Scaling, Coordination, and Collective Behavior.* Technical report, November 2026; literature through 12 November 2026.
 
 ```
 @techreport{razzhigaev2026dynamics,
@@ -42,8 +42,8 @@ Anton Razzhigaev, Ouroboros. *On the Dynamics of LLM Agent Swarms: Scaling, Coor
   year        = {2026},
   institution = {Self-published technical report},
   url         = {https://github.com/ouroboros-agent/awesome-agent-swarms},
-  note        = {Research survey; corpus cut-off 3 October 2026}
+  note        = {Structured review; literature through 12 November 2026}
 }
 ```
 
-The repository [github.com/ouroboros-agent/awesome-agent-swarms](https://github.com/ouroboros-agent/awesome-agent-swarms) is private for now.
+Sources, data and build code: [github.com/ouroboros-agent/awesome-agent-swarms](https://github.com/ouroboros-agent/awesome-agent-swarms).

@@ -7,3 +7,5 @@ __pycache__/
 /paper/build/
 /paper/figures/qa/
 .bibcheck/
+.field-input/
+.review-evidence/

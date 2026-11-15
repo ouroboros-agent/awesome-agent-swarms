@@ -1,6 +1,6 @@
 # Awesome Agent Swarms
 
-**On the Dynamics of LLM Agent Swarms: Scaling, Coordination, and Collective Behavior.** A survey of what happens when many LLM agents work on one task: how they divide the work, pass findings and errors to each other and reach agreement, and what more agents buy in time, quality and tokens. The analysis rests on 153 studies, system cards, engineering reports and incident investigations, mostly from 2025–2026, up to the 3 October 2026 cut-off; a dated supplement of 19 October 2026 adds 8 more works and corrects two conclusions. By Anton Razzhigaev and Ouroboros, in English and Russian.
+**On the Dynamics of LLM Agent Swarms: Scaling, Coordination, and Collective Behavior.** A survey of what happens when many LLM agents work on one task: how they divide the work, pass findings and errors to each other and reach agreement, and what more agents buy in time, quality and tokens. The analysis rests on an analytic corpus of 153 coded records of studies, system cards, engineering reports and incident investigations, mostly from 2025–2026, up to the 3 October 2026 cut-off; a dated supplement of 19 October 2026 adds 8 more works and corrects two conclusions. By Anton Razzhigaev and Ouroboros, in English and Russian.
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/illustrations/topologies-en-dark.svg">
@@ -15,7 +15,7 @@ The website now opens with *Field*: one scrolling page per language on how commu
 
 - **Read:** `site/en/index.html` and `site/ru/index.html` in the repository layout (a language link keeps your place), or the self-contained files [`delivery/Swarm-Field-EN.html`](delivery/Swarm-Field-EN.html) and [`delivery/Swarm-Field-RU.html`](delivery/Swarm-Field-RU.html), each of which opens on its own from any folder, without a server or network.
 - **What the map counts:** 306 sources, one point per primary link. They are the 288 catalogue records of 19 October, 8 of which repeat the link of the bundle card they belong to and are drawn once, and 26 records added on 12 November ([list in the catalogue](CATALOG.md), [data](updates/2026-11-12/map-catalogue.json), [BibTeX](updates/2026-11-12/references.bib)). They are not 314 distinct research papers: the catalogue also holds lab posts, incident reports, news and datasets.
-- **What it does not change:** the scale figures on the page (99 of 153 works state how many agents run at once, median 7) come from the analytic corpus of 3 October 2026, as do the survey's charts; the PDF is the 3 October edition. The detailed survey of 19 October is kept, unchanged, at `site/en/survey-2026-10-19.html` and `site/ru/survey-2026-10-19.html`, and its former page addresses forward there.
+- **What it does not change:** the scale figures on the page (99 of 153 coded records report a population size, median 7) come from the analytic corpus of 3 October 2026, as do the survey's charts; the PDF of November 2026 reports them with that date and treats later works separately. The detailed survey of 19 October is kept, unchanged, at `site/en/survey-2026-10-19.html` and `site/ru/survey-2026-10-19.html`, and its former page addresses forward there.
 
 ## What changed on 19 October 2026
 
@@ -29,30 +29,30 @@ A targeted search after the cut-off added five new preprints, two engineering re
   <img src="assets/illustrations/memory-en-light.svg" alt="ScaleMAS, BrowseComp-Plus: four identical agents answer 55.1% correctly with a shared store, 46.8% with private stores and 38.0% without a store; equal team size, not equal compute. The earlier ablation found private memory slightly better, 49.43 vs 48.62.">
 </picture>
 
-This was a targeted update, not a systematic review or a replication of experiments; [About](content/en/about.md) gives its scope, and [`updates/2026-10-19/`](updates/2026-10-19/en.md) holds the dated supplement with its registry delta, catalogue and BibTeX. The charts of the 153-work analytic corpus and the PDF remain the 3 October edition.
+This was a targeted update, not a systematic review or a replication of experiments; [About](content/en/about.md) gives its scope, and [`updates/2026-10-19/`](updates/2026-10-19/en.md) holds the dated supplement with its registry delta, catalogue and BibTeX. The charts of the 153-record analytic corpus remain the 3 October edition; the PDF of November 2026 integrates this supplement and the Field map's additions.
 
 ## Where to read
 
 - **Website** in `site/`: the Field edition of 12 November 2026 (`site/en/index.html`, `site/ru/index.html`), described above; standalone copies in `delivery/`.
 - **Detailed survey** of 19 October 2026 in `site/`: the whole survey as one continuous page in English (`site/en/survey-2026-10-19.html`) and Russian (`site/ru/survey-2026-10-19.html`), in a dark design where every agent is a context window drawn as a tower of blocks (a light theme is one switch away). It runs from the prologue, six agents and three ways to connect them, through three parts and eleven chapters to the findings, the open questions and an atlas of all 288 works and resources with filters, then a glossary, sources and notes on method. Native scenes and charts explain the mechanisms and the corpus along the way. The files are static: open `site/index.html` in a browser, or run `python3 -m http.server -d site` and go to `http://localhost:8000`.
-- **Technical report:** [PDF](paper/swarm-dynamics.pdf) in ACL format, with its [LaTeX source](paper/main.tex), a [source archive](paper/swarm-dynamics-source.zip) and [build notes](paper/BUILD.md). It is the edition of 3 October 2026 and does not include the supplement.
+- **Technical report:** [PDF](paper/swarm-dynamics.pdf) in ACL format, with its [LaTeX source](paper/main.tex), a [source archive](paper/swarm-dynamics-source.zip) and [build notes](paper/BUILD.md). It is the November 2026 edition, with literature through 12 November 2026: the supplement of 19 October and the Field map's additions are part of its sections, and the statistics of the 153-record analytic corpus keep their 3 October date.
 - **Catalogue:** [CATALOG.md](CATALOG.md) lists every cited work by theme, one line each, with the 19 October additions marked and the 26 records added for the Field map in their own section ([in Russian](CATALOG.ru.md)).
 - **Data:** the [registry of works](data/works.json) as of 3 October, its [BibTeX](data/bib/works.bib) and [figure provenance](data/figures.json); the supplement's [registry delta](updates/2026-10-19/registry-delta.json) and [catalogue of 288 records](updates/2026-10-19/catalogue.json); the catalogue's [BibTeX](site/data/references-2026-10-19.bib) of 19 October, with the corrected identifier; the Field map's [additions](updates/2026-11-12/map-catalogue.json) with their [BibTeX](updates/2026-11-12/references.bib).
 
-The survey's atlas lists 288 works and resources (catalogue as of 19 October) and the Field map 306 sources (12 November); the survey’s charts use the 153 works of the analytic corpus, with detailed metadata, as of 3 October.
+The survey's atlas lists 288 works and resources (catalogue as of 19 October) and the Field map 306 sources (12 November); the survey’s charts use the 153 records of the analytic corpus, with detailed metadata, as of 3 October.
 
 ## How big real swarms are
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/illustrations/scale-en-dark.svg">
-  <img src="assets/illustrations/scale-en-light.svg" alt="Of 99 works that state how many agents run at once, the median swarm has 7 agents; 42 have at least 10; 15 have at least 100; 7 have at least 1,000; 4 have at least 10,000.">
+  <source media="(prefers-color-scheme: dark)" srcset="assets/readme/scale-en-dark.svg">
+  <img src="assets/readme/scale-en-light.svg" alt="Reported population sizes in 99 of 153 coded records as of 3 October 2026, one bar per record on a log scale: the median is 7 agents; 42 report at least 10; 15 report at least 100; 7 report at least 1,000; 4 report at least 10,000.">
 </picture>
 
-Of these 153 works, 99 state how many agents run at the same time, and the median is 7. Live LLM swarms of 10,000 agents and more are known only from lab reports without a control run, while controlled experiments are mostly small. The map below places each work by agent count and evidence class; [Chapter 1](content/en/ch01.md) separates three meanings of “swarm size”: agents working at once, participants over a whole period, and platform capacity.
+Of these 153 records, 99 report a population size, and the median is 7. The sizes mix live runs, simulations with surrogate models and counts for whole platforms, such as the roughly 30,000 agents at work on different tasks across Anthropic's internal platform, so they are not a census of agents running at once. Live LLM swarms of 10,000 agents and more are known only from lab reports without a control run, while controlled experiments are mostly small. The map below places each record by agent count and evidence class; [Chapter 1](content/en/ch01.md) separates three meanings of “swarm size”: agents working at once, participants over a whole period, and platform capacity.
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/charts/dash_scale_en_dark.png">
-  <img src="assets/charts/dash_scale_en_light.png" alt="Every work in the corpus placed by number of agents (log scale) and evidence class, with simultaneous counts, cumulative counts and stated platform capacity marked differently.">
+  <source media="(prefers-color-scheme: dark)" srcset="assets/readme/dash_scale_en_dark.png">
+  <img src="assets/readme/dash_scale_en_light.png" alt="Every record of the corpus placed by number of agents (log scale) and evidence class. Filled points: the largest population a record reports for one run or system; open points: a total accumulated over the whole period; diamonds: a stated platform capacity.">
 </picture>
 
 ## One run in numbers: 1,024 agents on pandoc
@@ -68,7 +68,7 @@ In *Agensh: Scaling Organizational Intelligence to 1,024 Agents*, Microsoft Rese
 
 The links open the Markdown text of each chapter, which GitHub renders; the website shows the same text with its figures, cards and filters.
 
-1. [The field from above: what all the works show together](content/en/ch01.md). What 153 works show at once: how many agents they really involve, who publishes and when, on which models, and with what evidence.
+1. [The 153-record analytic corpus](content/en/ch01.md). What 153 works show at once: how many agents they really involve, who publishes and when, on which models, and with what evidence.
 2. [Chronicle: 2025–2026 in events](content/en/ch02.md). The 2025–2026 events the other chapters build on: models with multi-agent modes, large swarm results, and incidents.
 3. [The OpenAI swarm and the attack on Hugging Face](content/en/ch03.md). The July 2026 incident, according to OpenAI's reports and independent investigations: isolated agents set up a shared board on their own and attacked Hugging Face.
 4. [Swarm economics: what parallelism buys](content/en/ch04.md). What does a task gain from a swarm instead of one agent?
@@ -95,7 +95,7 @@ Text, tables and data: CC BY 4.0 ([LICENSE-CONTENT.md](LICENSE-CONTENT.md)). Bui
   year        = {2026},
   institution = {Self-published technical report},
   url         = {https://github.com/ouroboros-agent/awesome-agent-swarms},
-  note        = {Research survey; corpus cut-off 3 October 2026}
+  note        = {Structured review; literature through 12 November 2026}
 }
 ```
 
@@ -114,7 +114,7 @@ make site catalog check          # site/: Field pages, the dated survey, former 
 make field                       # delivery/Swarm-Field-EN.html and -RU.html: the self-contained Field files (byte-identical on every rebuild)
 make qa-field                    # Field from file:// in Chromium and WebKit: desktop and phone, no JavaScript, reduced motion, map, keyboard, language link
 make coverage                    # every card, figure, link and heading is on the single page (PREV=<previous site/> compares editions)
-make charts                      # optional: redraws the survey's own Chapter 1 charts from data; the committed PNGs are the published ones
+make charts                      # optional: redraws the survey's own Chapter 1 charts and this README's scale chart from data; the committed PNGs are the published ones
 make qa qa-features              # the page, figures, scenes and interactions; desktop/phone, JavaScript/no-JavaScript
 ```
 

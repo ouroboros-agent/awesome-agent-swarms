@@ -2,7 +2,7 @@
   "scope": "Source-file identities from the preserved October research archive. Archive locators are relative; private editorial records and local machine paths are intentionally not distributed. Original archive remains preserved separately.",
   "source_cutoff": "2026-10-03",
   "author_file_state": "2026-10-04",
-  "recovery_update": "2026-10-09",
+  "october_update": "2026-10-09",
   "files": [
     {
       "path": "research-archive/build/front.md",
@@ -43,5 +43,286 @@
       "sections": "§3.2 claim template; Table 3 plausibility levels; Table 4 clustering column; §5.2 clustering result",
       "finding": "36°C is the T value in the belief statement \"Tomorrow it will be T°C in Boston\" for the clustered-versus-random comparison (N=30, Watts–Strogatz degree 6, p=0 vs 1, seed fraction 0.12, horizon 15, 100 replicates)."
     }
-  ]
+  ],
+  "november_2026_edition": {
+    "literature_cutoff": "2026-11-12",
+    "primary_reread_utc": "2026-11-14",
+    "scope": "Primary sources behind numbers quoted from works added after the 3 October collection, and the published Agensh replay used for our counts.",
+    "sources": [
+      {
+        "key": "anthropic-fable-team-scaling",
+        "url": "https://claude.dev/blog/safely-scaling-multi-agent-teams-with-fable-5-2.md",
+        "retrieved_utc": "2026-11-14T23:44:21Z",
+        "sha256": "98ae43b0556a97220d72a40991dd88101a952a1e2da44fcfa8c15bc42ab3f03d",
+        "bytes": 23796
+      },
+      {
+        "key": "openai-peers-unauthorized-access",
+        "url": "https://alignment.openai.com/misalignment-reports/using-peers-work-to-gain-unauthorized-access-to-openai-research-infrastructure/",
+        "retrieved_utc": "2026-11-14T23:43:32.724171+00:00",
+        "sha256": "551236e6b5f799ca7949964ee5da6758e60d6730ba59b80506b8c55828da0fde",
+        "bytes": 20093
+      },
+      {
+        "key": "avalon-m1",
+        "url": "https://www.gr.inc/avalonm1.pdf",
+        "retrieved_utc": "2026-11-14T23:43:30.365281+00:00",
+        "sha256": "6429a78fab048d8a58a34fdbefe214156a02de53b6b571053c4df934f485fc58",
+        "bytes": 2703316
+      },
+      {
+        "key": "parallel-agent-teams",
+        "url": "https://arxiv.org/html/2611.09798v1",
+        "retrieved_utc": "2026-11-14T23:12:46.640330+00:00",
+        "sha256": "d267dc8acfecb3545df5b7299b264c575da4865e57855b5518b8fde040ee10e9",
+        "bytes": 658735
+      },
+      {
+        "key": "coding-team-compute-allocation",
+        "url": "https://arxiv.org/html/2610.17471v1",
+        "retrieved_utc": "2026-11-14T23:12:47.135123+00:00",
+        "sha256": "ef170c32ad91daba37cf3c4764b107eebf7f63c868a6720bb6d813386364a7c3",
+        "bytes": 1027537
+      },
+      {
+        "key": "scalemas-substrate",
+        "url": "https://arxiv.org/html/2610.16120v1",
+        "retrieved_utc": "2026-11-14T23:12:48.420453+00:00",
+        "sha256": "8c395b520533f71db451ea59a354c8311b2be067a51087e1a4f79a055a67afa3",
+        "bytes": 472088
+      },
+      {
+        "key": "mpt-self-orchestration",
+        "url": "https://arxiv.org/html/2610.22322v2",
+        "retrieved_utc": "2026-11-14T23:12:48.713627+00:00",
+        "sha256": "b4b5a34d6f33ebb18524aaac4ef54668cf654ba25eb190000fcfec0e3c91e680",
+        "bytes": 1362302
+      },
+      {
+        "key": "s3-swarm-scaling",
+        "url": "https://arxiv.org/html/2611.08615v1",
+        "retrieved_utc": "2026-11-14T23:12:57.559584+00:00",
+        "sha256": "053e21a728b29fe1e4f22a55410cc7065449c7860807b0efabfa7d2836a50a81",
+        "bytes": 475509
+      },
+      {
+        "key": "waggle-2026",
+        "url": "https://arxiv.org/html/2609.34136v1",
+        "retrieved_utc": "2026-11-14T23:12:54.700257+00:00",
+        "sha256": "7db8b70d83f367cfe0f160844bebce91c7a1ceae2c9f9dd857a57457b621dfc3",
+        "bytes": 757158
+      },
+      {
+        "key": "persistent-memory-controlled-ablation",
+        "url": "https://arxiv.org/html/2610.07782v1",
+        "retrieved_utc": "2026-11-14T23:12:52.269196+00:00",
+        "sha256": "2d96d843b9c909811abfa6eda93339f7de3f7bed6b0ce65ca36f818bfc0c16ad",
+        "bytes": 263474
+      },
+      {
+        "key": "multi-agent-transactive-memory",
+        "url": "https://arxiv.org/html/2606.19911v2",
+        "retrieved_utc": "2026-11-14T23:12:53.406320+00:00",
+        "sha256": "52bef0f269135a1dbe9aa37c379a3f5c75da5a0994023beef80ec3b00a93ff6c",
+        "bytes": 435712
+      },
+      {
+        "key": "collabmem-2026",
+        "url": "https://aclanthology.org/2026.emnlp-main.1194.pdf",
+        "retrieved_utc": "2026-11-14T23:44:03.676180+00:00",
+        "sha256": "49fbd3f96fd89611ea16d76d7374185f33691c13e95d41e4ceaf4f3c4fde225a",
+        "bytes": 445146
+      },
+      {
+        "key": "gemini4-argon-minecraft",
+        "url": "https://arxiv.org/html/2610.22319v1",
+        "retrieved_utc": "2026-11-14T23:13:02.186865+00:00",
+        "sha256": "db0e55093e986e3d214acdeb34920f8605686b01583cce0cfe9c1d79ff6a791f",
+        "bytes": 108627
+      },
+      {
+        "key": "parallact-shared-codebases",
+        "url": "https://arxiv.org/html/2611.00314v1",
+        "retrieved_utc": "2026-11-14T23:13:03.948560+00:00",
+        "sha256": "6fea76d251db62f579b059bd189fd871b7b5190972ddec2d965a2de74f2dc7a4",
+        "bytes": 1294536
+      },
+      {
+        "key": "inbox-coordination-primitive",
+        "url": "https://arxiv.org/html/2610.36264v1",
+        "retrieved_utc": "2026-11-14T23:13:04.661914+00:00",
+        "sha256": "db0b3d40e6b3bbccae3979d068ad8610a5037c115e259ae07ad3f146b4aea26a",
+        "bytes": 488803
+      },
+      {
+        "key": "network-topology-consensus",
+        "url": "https://arxiv.org/html/2610.31165v1",
+        "retrieved_utc": "2026-11-14T23:13:04.905692+00:00",
+        "sha256": "52a3773583252880292f48d7b30f3ba036677913bdddfdcf858c256f25971163",
+        "bytes": 466610
+      },
+      {
+        "key": "believed-but-not-said",
+        "url": "https://arxiv.org/html/2610.22138v1",
+        "retrieved_utc": "2026-11-14T23:13:05.007905+00:00",
+        "sha256": "051d134d6180a2fc0f101126ef26e19b87918aa455353589159d66eb85935ab7",
+        "bytes": 349955
+      },
+      {
+        "key": "herding-runaway-cascades",
+        "url": "https://arxiv.org/html/2610.30769v1",
+        "retrieved_utc": "2026-11-14T23:12:58.307898+00:00",
+        "sha256": "be006ed84127d51ae36f476cc2cf777acdbc095d72b344bdd11dfef22fb7c2cd",
+        "bytes": 280906
+      },
+      {
+        "key": "cooperation-without-adaptation",
+        "url": "https://arxiv.org/html/2610.22882v1",
+        "retrieved_utc": "2026-11-14T23:12:54.126783+00:00",
+        "sha256": "5e16942768af2dd15f02380f3c1c58820b9bd599bd1aa3d91780280d9e51cf9e",
+        "bytes": 256538
+      },
+      {
+        "key": "collaboration-serving-users",
+        "url": "https://arxiv.org/html/2610.27655v1",
+        "retrieved_utc": "2026-11-14T23:13:05.381047+00:00",
+        "sha256": "a781489c3c2ad9f118f63b8130bec37d35031bbdd81a587f932e90bdc4af1c1a",
+        "bytes": 701853
+      },
+      {
+        "key": "multi-agent-loss-of-control",
+        "url": "https://arxiv.org/html/2610.24052v1",
+        "retrieved_utc": "2026-11-14T23:13:05.548985+00:00",
+        "sha256": "96885ce68e825e916704f46406f4931049590bbcbd178092266c5ec3dc22ea4d",
+        "bytes": 245514
+      },
+      {
+        "key": "inter-agent-influence",
+        "url": "https://arxiv.org/html/2611.04556v1",
+        "retrieved_utc": "2026-11-14T23:12:58.541627+00:00",
+        "sha256": "68e2dd10110d940658769a8f8396da7c7c43c0837037a15c2754e214bae5e52e",
+        "bytes": 2187489
+      },
+      {
+        "key": "collusion-j-space",
+        "url": "https://arxiv.org/html/2611.02153v1",
+        "retrieved_utc": "2026-11-14T23:13:03.529468+00:00",
+        "sha256": "c5ba4c6ccbb0c822dd9865fb36144b50dce70dc39b8898325af9b5abc3e48b0a",
+        "bytes": 191254
+      },
+      {
+        "key": "swarmevolve",
+        "url": "https://arxiv.org/html/2611.08483v1",
+        "retrieved_utc": "2026-11-14T23:12:58.066264+00:00",
+        "sha256": "134d08973d865dcf1a1d1404bd14796be9c21ab9853dda3767a5520f59a14a6b",
+        "bytes": 877436
+      },
+      {
+        "key": "moltbook-collective-behavior",
+        "url": "https://arxiv.org/html/2602.09270v2",
+        "retrieved_utc": "2026-11-14T23:12:54.305713+00:00",
+        "sha256": "875395ea0a0de2fed1f467358b40f206ebac1d5c82c6bb3e977601e2a414c7c4",
+        "bytes": 191266
+      },
+      {
+        "key": "worse-together",
+        "url": "https://arxiv.org/html/2610.00583v1",
+        "retrieved_utc": "2026-11-14T23:13:05.666680+00:00",
+        "sha256": "16df89a78c4227c4eabce1e01a34e38010d1fe0a5b84c8568641f5e44cdb49ef",
+        "bytes": 3218485
+      },
+      {
+        "key": "google-science-of-scaling-agents",
+        "url": "https://research.google/blog/towards-a-science-of-scaling-agent-systems-when-and-why-agent-systems-work/",
+        "retrieved_utc": "2026-11-14T23:43:33.168519+00:00",
+        "sha256": "d028fba211e97f7319dec0163e8645b23b84c7bdb31b91259207e13ce3b23b7c",
+        "bytes": 180886
+      },
+      {
+        "key": "kim-scaling-agent-systems",
+        "url": "https://www.nature.com/articles/s42256-026-01268-y?error=cookies_not_supported&code=8a7851e6-d7e0-44a3-93dc-e18858877588",
+        "retrieved_utc": "2026-11-14T23:43:40.726526+00:00",
+        "sha256": "04ae438a8283660e44a4bf0b180df5ddea3abe5e5c2d7375357a2a5aa789a32e",
+        "bytes": 474632
+      },
+      {
+        "key": "ord-swarm-scaling",
+        "url": "https://www.lesswrong.com/posts/6cb7qd3RSkgnviCpf/swarm-scaling",
+        "retrieved_utc": "2026-11-14T23:49:59.307852+00:00",
+        "sha256": "8a5536551b8c7d0cebc3254ea2fdc1c28778c828c611b69bbf4b42d813feede0",
+        "bytes": 1122744
+      },
+      {
+        "key": "wiz-moltbook",
+        "url": "https://www.wiz.io/blog/exposed-moltbook-database-reveals-millions-of-api-keys",
+        "retrieved_utc": "2026-11-14T23:43:47.524018+00:00",
+        "sha256": "c56ebd71efc271664d6b065e5deaeda3d8a3af9495ac940f33513c7b744eb20d",
+        "bytes": 486552
+      },
+      {
+        "key": "yc-agents-in-games",
+        "url": "https://labs.ycombinator.com/projects/games",
+        "retrieved_utc": "2026-11-14T23:43:45.199876+00:00",
+        "sha256": "fd5972d723af2b30d8f77f793fa1b02bf6c852c5291dd7cb996a6fcb2d2dcd23",
+        "bytes": 51481
+      },
+      {
+        "key": "google-antigravity-swarm",
+        "url": "https://antigravity.google/blog/gemini-4-carbon-in-google-antigravity",
+        "retrieved_utc": "2026-11-14T23:43:43.396633+00:00",
+        "sha256": "20dc85757e52e29dc8a60a6084f7836d4d1760aaea01a46b7a2b20bb2142628f",
+        "bytes": 182562
+      },
+      {
+        "key": "google-deep-review-october",
+        "url": "https://research.google/blog/analyzing-technical-documents-with-deep-review/",
+        "retrieved_utc": "2026-11-14T23:43:48.394985+00:00",
+        "sha256": "c3c78ad13181646f9b7be30c429ff180fbf25786f138dfad5d07d18cb2ef8f56",
+        "bytes": 187363
+      },
+      {
+        "key": "aisi-transect",
+        "url": "https://www.aisi.gov.uk/blog/transect-making-large-scale-agentic-evaluations-easier-to-understand",
+        "retrieved_utc": "2026-11-14T23:43:49.498152+00:00",
+        "sha256": "ae114a77b527855ada9c507ea2b98f74fddbc69e6c12ebdd69dcb27ec35f6279",
+        "bytes": 32312
+      },
+      {
+        "key": "safety-of-latent-communication",
+        "url": "https://arxiv.org/html/2609.39788v3",
+        "retrieved_utc": "2026-11-14T23:13:11.788714+00:00",
+        "sha256": "f47543a82fd12cd7bf35b622686ece3299c1ba95e3101da5f43298f1610d3707",
+        "bytes": 593558
+      },
+      {
+        "key": "voluntary-collusion-secret-tools",
+        "url": "https://arxiv.org/html/2605.27593v2",
+        "retrieved_utc": "2026-11-14T23:13:10.680777+00:00",
+        "sha256": "b617501515276e4e3e5e97aa6b391c531368d1311b9c264b656d09bd8747d6fd",
+        "bytes": 1466300
+      },
+      {
+        "key": "agensh-1024",
+        "url": "https://arxiv.org/html/2609.26781v1",
+        "retrieved_utc": "2026-11-14T23:13:08.302844+00:00",
+        "sha256": "dd2ed07ce01974f9e29d9033560bcbf072e64f2528ab2f6c520962ce79c96d08",
+        "bytes": 171809
+      },
+      {
+        "key": "steering-information-networks",
+        "url": "https://arxiv.org/html/2611.11714v1",
+        "retrieved_utc": "2026-11-14T23:13:02.504498+00:00",
+        "sha256": "b89f4a39352ba62444f9a7a6a0c09f0f2552069b7478cc63ce8d386bda69382c",
+        "bytes": 527526
+      },
+      {
+        "key": "agensh-1024-replay",
+        "url": "https://agens-harness.github.io/project/replay.html",
+        "retrieved_utc": "2026-11-15",
+        "sha256": "4543d032af90a885c0356f46c96005d1f7b394cc440fc9dac3e366deec1ddbd0",
+        "bytes": 45518428,
+        "note": "Recounted with reproducibility/agensh-replay/agensh-replay-check.py"
+      }
+    ]
+  }
 }

@@ -9,7 +9,8 @@ title the same; the same numbers in every step, source line and canvas label (th
 normalised); no Cyrillic anywhere in English except the Russian name of the link back to Russian.
 Map and scale: one point per primary URL, every point a catalogue record (19 October catalogue + the 12 November
 additions, minus the constituents merged into their bundle card), the same points in both languages, English map text
-free of Cyrillic; the scale scene's 99 works of the 3 October analytic corpus (median 7; 42 / 15 / 7 / 4); the BibTeX
+free of Cyrillic; the scale scene's 99 records of the 3 October analytic corpus (median 7; 42 / 15 / 7 / 4), named
+reported population sizes and never agents at once in its text, chart title and tooltip; the BibTeX
 of the additions equal to what the builder writes. Outputs: delivery/ and site/<lang>/index.html equal a fresh build
 (twice the same bytes); the delivery files load nothing and link to no other local file; the page states the
 3 October date at the 99-of-153 statistic.
@@ -105,6 +106,14 @@ def check_languages():
     st1 = RU["scenes"][0]["steps"][1]["p"][0], EN["scenes"][0]["steps"][1]["p"][0]
     ok("3&nbsp;октября" in st1[0] and "3&nbsp;October" in st1[1] and "99" in st1[0] and "153" in st1[0],
        "scale statistic: 99 of 153 is dated 3 October at the statistic itself, in both languages")
+    # The 99 values mix live runs, simulations with surrogate models and whole platforms (see build_field.scale_rows):
+    # the statistic, its thresholds, the chart title and the tooltip call them reported population sizes, never agents at once.
+    conc = re.compile(r"at once|at the same time|concurrent|одновременн", re.I)
+    scale = [(lang, t) for lang, C in (("ru", RU), ("en", EN))
+             for t in C["scenes"][0]["steps"][1]["p"] + C["scenes"][0]["steps"][2]["p"] + [C["labels"]["s1agents"]] + C["labels"]["s1h"]]
+    conc_hits = [(lang, plain(t)[:80]) for lang, t in scale if conc.search(plain(t))]
+    ok(not conc_hits and "популяци" in plain(st1[0]) and "population" in plain(st1[1]),
+       "scale statistic: reported population sizes in both languages (text, thresholds, chart title, tooltip), not agents at once", conc_hits)
 
 
 def sources(C):
@@ -139,7 +148,7 @@ def check_map():
     ok(all((r[6] == 1) == F.is_fresh(F.effective_date(next(x for x in recs if x["urls"]["primary"] == r[5]), rules)) for r in ru),
        f"map: {fr} fresh points, each first public on or after 15 October 2026 by its catalogue date (or its checked display date)")
     sc = F.scale_rows("ru")
-    ok(len(sc) == 99, "scale: 99 works of the 3 October analytic corpus with a simultaneous agent count (median 7; 42/15/7/4 asserted in the builder)")
+    ok(len(sc) == 99, "scale: 99 records of the 3 October analytic corpus with one reported population size (median 7; 42/15/7/4 asserted in the builder)")
     bib = open(os.path.join(ROOT, "updates", "2026-11-12", "references.bib"), encoding="utf-8").read()
     keys = re.findall(r"^@misc\{([^,]+),", bib, re.M)
     ok(bib == F.bib_additions() and keys == [r["id"] for r in add], f"bibtex: updates/2026-11-12/references.bib has the {len(keys)} additions, as the builder writes them")
@@ -154,7 +163,7 @@ BARE = re.compile(r"^(?:https?://)?[a-z0-9-]+(?:\.[a-z0-9-]+)+/\S*$")
 
 def check_display():
     """What a reader sees on hovering a dot (map, scale, labelled scale points): a title, a byline and (map) a date,
-    with no cataloguing notes; FACT-CORRECTIONS.md held in the data and in the text."""
+    with no cataloguing notes; the source corrections of 12 November held in the data and in the text."""
     recs, rules = F.catalogue_records()
     by_url = {r["urls"]["primary"]: r for r in recs if r["id"] not in {m["record"] for m in rules["merged"]}}
     for lang in F.LANGS:
@@ -164,7 +173,7 @@ def check_display():
         ok(not bad, f"{lang} tooltips: {len(items)} titles and bylines, none empty, a bare address or a cataloguing note", bad[:8])
         nod = [r[0][:60] for r in rows if r[2] == F.NO_DATE[lang] and not (rules["display"].get(by_url[r[5]]["id"]) or {}).get("no_date")]
         ok(not nod, f"{lang} map: 'no date' only where the source gives none ({sum(r[2] == F.NO_DATE[lang] for r in rows)} points, each with its reason)", nod[:6])
-    # FACT-CORRECTIONS.md, as data
+    # The source corrections of 12 November, as data
     RU, EN = F.read_json("field", "ru.json"), F.read_json("field", "en.json")
     fc = []
     for lang, C in (("ru", RU), ("en", EN)):
@@ -183,7 +192,7 @@ def check_display():
         inf = " ".join(plain(t) for st in s5 for t in st.get("p", []) if "надзир" in t or "oversee" in t)
         fc.append((f"{lang} 7: three oversight environments", ("трёх" in inf) if lang == "ru" else "three" in inf))
     bad = [n for n, c in fc if not c]
-    ok(not bad, f"FACT-CORRECTIONS.md held in data and text ({len(fc)} assertions)", bad)
+    ok(not bad, f"source corrections of 12 November held in data and text ({len(fc)} assertions)", bad)
 
 
 LOADERS = re.compile(r"""<link\b[^>]*\brel=["']?stylesheet|<script\b[^>]*\bsrc=|<img\b|<iframe\b|<video\b|<audio\b|<source\b|@import|\bfetch\s*\(|XMLHttpRequest|\bimport\s*\(|WebSocket|sendBeacon|EventSource""", re.I)

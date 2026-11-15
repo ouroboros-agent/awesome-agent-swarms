@@ -7,7 +7,10 @@ Chapter titles and leads come from content/{en,ru}/chNN.md; counts come from dat
 analytic corpus and registry as of the 3 October 2026 cut-off) and from scripts/catalogue.py (the catalogue with the
 19 October 2026 supplement). The posters and charts are standalone SVG files in assets/illustrations/ (written by
 scripts/site_story.py in the B «Контекст» design: no script, web fonts or network), shown through <picture> so GitHub
-picks the dark or light variant.
+picks the dark or light variant. The scale poster and the scale chart are README variants in assets/readme/: the
+poster is drawn here by site_story.scale_chart_svg with this README's labels (SCALE_WORDS), the chart by
+scripts/build_readme_scale_chart.py; both call the 99 values reported population sizes. site_story.py, its own
+posters and the survey's charts in assets/charts/ stay as they are.
 """
 import json, os, re, sys
 
@@ -60,18 +63,19 @@ def chapters(lang):
     for n in range(1, 12):
         fm = front(lang, f"ch{n:02d}")
         lead = first_sentence(plain(fm.get("lead", ""), lang))
-        out.append(f"{n}. [{fm.get('title', '')}](content/{lang}/ch{n:02d}.md). {lead}".rstrip())
+        title = fm.get("title", "")
+        if n == 1:
+            title = f"The {ST['corpus']}-record analytic corpus" if lang == "en" else f"{ST['corpus']} записи аналитического корпуса"
+        out.append(f"{n}. [{title}](content/{lang}/ch{n:02d}.md). {lead}".rstrip())
     return "\n".join(out)
 
 
-def picture(name, lang, alt):
-    base = "assets/illustrations"
+def picture(name, lang, alt, base="assets/illustrations"):
     return (f'<picture>\n  <source media="(prefers-color-scheme: dark)" srcset="{base}/{name}-{lang}-dark.svg">\n'
             f'  <img src="{base}/{name}-{lang}-light.svg" alt="{alt}">\n</picture>')
 
 
-def chart(name, lang, alt):
-    base = "assets/charts"
+def chart(name, lang, alt, base="assets/charts"):
     return (f'<picture>\n  <source media="(prefers-color-scheme: dark)" srcset="{base}/{name}_{lang}_dark.png">\n'
             f'  <img src="{base}/{name}_{lang}_light.png" alt="{alt}">\n</picture>')
 
@@ -83,7 +87,7 @@ BIB = """```bibtex
   year        = {2026},
   institution = {Self-published technical report},
   url         = {https://github.com/ouroboros-agent/awesome-agent-swarms},
-  note        = {Research survey; corpus cut-off 3 October 2026}
+  note        = {Structured review; literature through 12 November 2026}
 }
 ```"""
 
@@ -93,9 +97,34 @@ K = dict(corpus=ST["corpus"], known=LD["known"], med=LD["median"], fig_works=ST[
 K["all"] = K["cat"] + K["nadd"]
 MEM = dict(site_story.MEMORY)
 
+# The 99 values of the scale poster and chart mix live runs, simulations with surrogate models and whole platforms
+# (scripts/build_field.py, scale_rows), so this README calls them reported population sizes. The poster is
+# site_story.scale_chart_svg drawn with these labels into assets/readme/; site_story's own wording is left as written.
+README_ASSETS = "assets/readme"
+SCALE_WORDS = {
+    "en": dict(rs_t="Reported population sizes", rs_s="{known} of {corpus} coded records report a population size; the median is {med}",
+               st_sky_cap="{n} records, by reported population size"),
+    "ru": dict(rs_t="Указанные размеры популяций", rs_s="В {known} из {corpus} записей корпуса указан размер популяции; медиана — {med}",
+               st_sky_cap="{n} записей по возрастанию указанного размера популяции"),
+}
+
+
+def write_scale_posters():
+    """assets/readme/scale-<lang>-<theme>.svg: the README's scale poster, in the October design, with SCALE_WORDS."""
+    os.makedirs(os.path.join(ROOT, README_ASSETS), exist_ok=True)
+    for lang, words in SCALE_WORDS.items():
+        kept = site_story.T[lang]
+        site_story.T[lang] = dict(kept, **words)
+        try:
+            for theme in ("dark", "light"):
+                with open(os.path.join(ROOT, README_ASSETS, f"scale-{lang}-{theme}.svg"), "w", encoding="utf-8", newline="\n") as f:
+                    f.write(site_story.scale_chart_svg(lang, theme, LD))
+        finally:
+            site_story.T[lang] = kept
+
 EN = f"""# Awesome Agent Swarms
 
-**On the Dynamics of LLM Agent Swarms: Scaling, Coordination, and Collective Behavior.** A survey of what happens when many LLM agents work on one task: how they divide the work, pass findings and errors to each other and reach agreement, and what more agents buy in time, quality and tokens. The analysis rests on {K['corpus']} studies, system cards, engineering reports and incident investigations, mostly from 2025–2026, up to the 3 October 2026 cut-off; a dated supplement of 19 October 2026 adds {K['sup']} more works and corrects two conclusions. By Anton Razzhigaev and Ouroboros, in English and Russian.
+**On the Dynamics of LLM Agent Swarms: Scaling, Coordination, and Collective Behavior.** A survey of what happens when many LLM agents work on one task: how they divide the work, pass findings and errors to each other and reach agreement, and what more agents buy in time, quality and tokens. The analysis rests on an analytic corpus of {K['corpus']} coded records of studies, system cards, engineering reports and incident investigations, mostly from 2025–2026, up to the 3 October 2026 cut-off; a dated supplement of 19 October 2026 adds {K['sup']} more works and corrects two conclusions. By Anton Razzhigaev and Ouroboros, in English and Russian.
 
 {picture("topologies", "en", "Six agents drawn as context windows, connected in three ways: independently, through a coordinator, through a shared log. Agent 3's finding is a lime block; agents 1 and 5 redo the work in coral, receive a copy from the coordinator, or find the entry in the log.")}
 
@@ -107,7 +136,7 @@ The website now opens with *Field*: one scrolling page per language on how commu
 
 - **Read:** `site/en/index.html` and `site/ru/index.html` in the repository layout (a language link keeps your place), or the self-contained files [`delivery/Swarm-Field-EN.html`](delivery/Swarm-Field-EN.html) and [`delivery/Swarm-Field-RU.html`](delivery/Swarm-Field-RU.html), each of which opens on its own from any folder, without a server or network.
 - **What the map counts:** {K['pts']} sources, one point per primary link. They are the {K['cat']} catalogue records of 19 October, {K['merged']} of which repeat the link of the bundle card they belong to and are drawn once, and {K['nadd']} records added on 12 November ([list in the catalogue](CATALOG.md), [data](updates/2026-11-12/map-catalogue.json), [BibTeX](updates/2026-11-12/references.bib)). They are not {K['all']} distinct research papers: the catalogue also holds lab posts, incident reports, news and datasets.
-- **What it does not change:** the scale figures on the page ({K['known']} of {K['corpus']} works state how many agents run at once, median {K['med']}) come from the analytic corpus of 3 October 2026, as do the survey's charts; the PDF is the 3 October edition. The detailed survey of 19 October is kept, unchanged, at `site/en/survey-2026-10-19.html` and `site/ru/survey-2026-10-19.html`, and its former page addresses forward there.
+- **What it does not change:** the scale figures on the page ({K['known']} of {K['corpus']} coded records report a population size, median {K['med']}) come from the analytic corpus of 3 October 2026, as do the survey's charts; the PDF of November 2026 reports them with that date and treats later works separately. The detailed survey of 19 October is kept, unchanged, at `site/en/survey-2026-10-19.html` and `site/ru/survey-2026-10-19.html`, and its former page addresses forward there.
 
 ## What changed on 19 October 2026
 
@@ -118,25 +147,25 @@ A targeted search after the cut-off added five new preprints, two engineering re
 
 {picture("memory", "en", f"ScaleMAS, BrowseComp-Plus: four identical agents answer {MEM['shared']}% correctly with a shared store, {MEM['private']}% with private stores and {MEM['none']}% without a store; equal team size, not equal compute. The earlier ablation found private memory slightly better, 49.43 vs 48.62.")}
 
-This was a targeted update, not a systematic review or a replication of experiments; [About](content/en/about.md) gives its scope, and [`updates/2026-10-19/`](updates/2026-10-19/en.md) holds the dated supplement with its registry delta, catalogue and BibTeX. The charts of the {K['corpus']}-work analytic corpus and the PDF remain the 3 October edition.
+This was a targeted update, not a systematic review or a replication of experiments; [About](content/en/about.md) gives its scope, and [`updates/2026-10-19/`](updates/2026-10-19/en.md) holds the dated supplement with its registry delta, catalogue and BibTeX. The charts of the {K['corpus']}-record analytic corpus remain the 3 October edition; the PDF of November 2026 integrates this supplement and the Field map's additions.
 
 ## Where to read
 
 - **Website** in `site/`: the Field edition of 12 November 2026 (`site/en/index.html`, `site/ru/index.html`), described above; standalone copies in `delivery/`.
 - **Detailed survey** of 19 October 2026 in `site/`: the whole survey as one continuous page in English (`site/en/survey-2026-10-19.html`) and Russian (`site/ru/survey-2026-10-19.html`), in a dark design where every agent is a context window drawn as a tower of blocks (a light theme is one switch away). It runs from the prologue, six agents and three ways to connect them, through three parts and eleven chapters to the findings, the open questions and an atlas of all {fnum(K['cat'], 'en')} works and resources with filters, then a glossary, sources and notes on method. Native scenes and charts explain the mechanisms and the corpus along the way. The files are static: open `site/index.html` in a browser, or run `python3 -m http.server -d site` and go to `http://localhost:8000`.
-- **Technical report:** [PDF](paper/swarm-dynamics.pdf) in ACL format, with its [LaTeX source](paper/main.tex), a [source archive](paper/swarm-dynamics-source.zip) and [build notes](paper/BUILD.md). It is the edition of 3 October 2026 and does not include the supplement.
+- **Technical report:** [PDF](paper/swarm-dynamics.pdf) in ACL format, with its [LaTeX source](paper/main.tex), a [source archive](paper/swarm-dynamics-source.zip) and [build notes](paper/BUILD.md). It is the November 2026 edition, with literature through 12 November 2026: the supplement of 19 October and the Field map's additions are part of its sections, and the statistics of the 153-record analytic corpus keep their 3 October date.
 - **Catalogue:** [CATALOG.md](CATALOG.md) lists every cited work by theme, one line each, with the 19 October additions marked and the {K['nadd']} records added for the Field map in their own section ([in Russian](CATALOG.ru.md)).
 - **Data:** the [registry of works](data/works.json) as of 3 October, its [BibTeX](data/bib/works.bib) and [figure provenance](data/figures.json); the supplement's [registry delta](updates/2026-10-19/registry-delta.json) and [catalogue of {K['cat']} records](updates/2026-10-19/catalogue.json); the catalogue's [BibTeX](site/data/references-2026-10-19.bib) of 19 October, with the corrected identifier; the Field map's [additions](updates/2026-11-12/map-catalogue.json) with their [BibTeX](updates/2026-11-12/references.bib).
 
-The survey's atlas lists {K['cat']} works and resources (catalogue as of 19 October) and the Field map {K['pts']} sources (12 November); the survey’s charts use the {K['corpus']} works of the analytic corpus, with detailed metadata, as of 3 October.
+The survey's atlas lists {K['cat']} works and resources (catalogue as of 19 October) and the Field map {K['pts']} sources (12 November); the survey’s charts use the {K['corpus']} records of the analytic corpus, with detailed metadata, as of 3 October.
 
 ## How big real swarms are
 
-{picture("scale", "en", f"Of {K['known']} works that state how many agents run at once, the median swarm has {K['med']} agents; " + "; ".join(f"{v} have at least {fnum(t, 'en')}" for t, v in LD['rows']) + ".")}
+{picture("scale", "en", f"Reported population sizes in {K['known']} of {K['corpus']} coded records as of 3 October 2026, one bar per record on a log scale: the median is {K['med']} agents; " + "; ".join(f"{v} report at least {fnum(t, 'en')}" for t, v in LD['rows']) + ".", README_ASSETS)}
 
-Of these {K['corpus']} works, {K['known']} state how many agents run at the same time, and the median is {K['med']}. Live LLM swarms of 10,000 agents and more are known only from lab reports without a control run, while controlled experiments are mostly small. The map below places each work by agent count and evidence class; [Chapter 1](content/en/ch01.md) separates three meanings of “swarm size”: agents working at once, participants over a whole period, and platform capacity.
+Of these {K['corpus']} records, {K['known']} report a population size, and the median is {K['med']}. The sizes mix live runs, simulations with surrogate models and counts for whole platforms, such as the roughly 30,000 agents at work on different tasks across Anthropic's internal platform, so they are not a census of agents running at once. Live LLM swarms of 10,000 agents and more are known only from lab reports without a control run, while controlled experiments are mostly small. The map below places each record by agent count and evidence class; [Chapter 1](content/en/ch01.md) separates three meanings of “swarm size”: agents working at once, participants over a whole period, and platform capacity.
 
-{chart("dash_scale", "en", "Every work in the corpus placed by number of agents (log scale) and evidence class, with simultaneous counts, cumulative counts and stated platform capacity marked differently.")}
+{chart("dash_scale", "en", "Every record of the corpus placed by number of agents (log scale) and evidence class. Filled points: the largest population a record reports for one run or system; open points: a total accumulated over the whole period; diamonds: a stated platform capacity.", README_ASSETS)}
 
 ## One run in numbers: 1,024 agents on pandoc
 
@@ -175,7 +204,7 @@ make site catalog check          # site/: Field pages, the dated survey, former 
 make field                       # delivery/Swarm-Field-EN.html and -RU.html: the self-contained Field files (byte-identical on every rebuild)
 make qa-field                    # Field from file:// in Chromium and WebKit: desktop and phone, no JavaScript, reduced motion, map, keyboard, language link
 make coverage                    # every card, figure, link and heading is on the single page (PREV=<previous site/> compares editions)
-make charts                      # optional: redraws the survey's own Chapter 1 charts from data; the committed PNGs are the published ones
+make charts                      # optional: redraws the survey's own Chapter 1 charts and this README's scale chart from data; the committed PNGs are the published ones
 make qa qa-features              # the page, figures, scenes and interactions; desktop/phone, JavaScript/no-JavaScript
 ```
 
@@ -186,7 +215,7 @@ The Field edition is built from one shared page style and renderer (`field/field
 
 RU = f"""# Awesome Agent Swarms
 
-**Динамика роёв LLM-агентов: масштабирование, координация и коллективное поведение.** Обзор того, что происходит, когда над одной задачей работает много LLM-агентов: как они делят работу, передают друг другу находки и ошибки, приходят к согласию и что дают лишние агенты по времени, качеству и токенам. Анализ опирается на {K['corpus']} исследования, системные карты, инженерные отчёты и разборы инцидентов, в основном 2025–2026 годов, до среза 3 октября 2026 года; датированное дополнение от 19 октября 2026 года добавляет ещё {K['sup']} работ и уточняет два вывода. Авторы — Anton Razzhigaev и Ouroboros; текст на русском и английском.
+**Динамика роёв LLM-агентов: масштабирование, координация и коллективное поведение.** Обзор того, что происходит, когда над одной задачей работает много LLM-агентов: как они делят работу, передают друг другу находки и ошибки, приходят к согласию и что дают лишние агенты по времени, качеству и токенам. Анализ опирается на аналитический корпус из {K['corpus']} записей: исследования, системные карты, инженерные отчёты и разборы инцидентов, в основном 2025–2026 годов, до среза 3 октября 2026 года; датированное дополнение от 19 октября 2026 года добавляет ещё {K['sup']} работ и уточняет два вывода. Авторы — Anton Razzhigaev и Ouroboros; текст на русском и английском.
 
 {picture("topologies", "ru", "Шесть агентов как окна контекста, связанные тремя способами: независимо, через координатора и через общий журнал. Находка агента 3 — салатовый блок; агенты 1 и 5 делают ту же работу заново (коралловые блоки), получают копию от координатора или находят запись в журнале.")}
 
@@ -198,7 +227,7 @@ RU = f"""# Awesome Agent Swarms
 
 - **Где читать:** `site/ru/index.html` и `site/en/index.html` в раскладке репозитория (ссылка на другой язык сохраняет место чтения) или самостоятельные файлы [`delivery/Swarm-Field-RU.html`](delivery/Swarm-Field-RU.html) и [`delivery/Swarm-Field-EN.html`](delivery/Swarm-Field-EN.html): каждый открывается сам по себе из любой папки, без сервера и сети.
 - **Что считает карта:** {fnum(K['pts'], 'ru')} источников, по точке на первичную ссылку. Это {K['cat']} записей каталога на 19 октября, из которых {K['merged']} повторяют ссылку своей сводной карточки и нарисованы один раз, и {K['nadd']} записей, добавленных 12 ноября ([список в каталоге](CATALOG.ru.md), [данные](updates/2026-11-12/map-catalogue.json), [BibTeX](updates/2026-11-12/references.bib)). Это не {K['all']} разных научных статей: в каталоге есть и посты лабораторий, разборы инцидентов, новости, датасеты.
-- **Что не меняется:** числа масштаба на странице ({K['known']} из {K['corpus']} работ называют одновременное число агентов, медиана {K['med']}) взяты из аналитического корпуса на 3 октября 2026 года, как и графики обзора; PDF — редакция 3 октября. Подробный обзор от 19 октября сохранён без изменений по адресам `site/ru/survey-2026-10-19.html` и `site/en/survey-2026-10-19.html`, прежние адреса его страниц ведут туда.
+- **Что не меняется:** числа масштаба на странице (в {K['known']} из {K['corpus']} записей корпуса указан размер популяции, медиана {K['med']}) взяты из аналитического корпуса на 3 октября 2026 года, как и графики обзора; в PDF ноября 2026 года они даны с этой датой, а более поздние работы разобраны отдельно. Подробный обзор от 19 октября сохранён без изменений по адресам `site/ru/survey-2026-10-19.html` и `site/en/survey-2026-10-19.html`, прежние адреса его страниц ведут туда.
 
 ## Что изменилось 19 октября 2026 года
 
@@ -209,25 +238,25 @@ RU = f"""# Awesome Agent Swarms
 
 {picture("memory", "ru", f"ScaleMAS, BrowseComp-Plus: четыре одинаковых агента отвечают верно на {fnum_d(MEM['shared'])}% вопросов с общим хранилищем, на {fnum_d(MEM['private'])}% с личными и на {fnum_d(MEM['none'])}% без хранилища; равное число агентов, а не равные вычисления. Прежняя абляция дала обратное: личная память чуть лучше, 49,43 против 48,62.")}
 
-Это целевое обновление, а не систематический обзор и не повторение опытов; его границы описаны в разделе [«Об обзоре»](content/ru/about.md), а само датированное дополнение с реестром изменений, каталогом и BibTeX лежит в [`updates/2026-10-19/`](updates/2026-10-19/ru.md). Графики по {K['corpus']} работам аналитического корпуса и PDF остаются редакцией 3 октября.
+Это целевое обновление, а не систематический обзор и не повторение опытов; его границы описаны в разделе [«Об обзоре»](content/ru/about.md), а само датированное дополнение с реестром изменений, каталогом и BibTeX лежит в [`updates/2026-10-19/`](updates/2026-10-19/ru.md). Графики по {K['corpus']} записям аналитического корпуса остаются редакцией 3 октября; PDF ноября 2026 года включает это дополнение и добавления карты «Поле».
 
 ## Где читать
 
 - **Сайт** в `site/`: редакция «Поле» от 12 ноября 2026 года (`site/ru/index.html`, `site/en/index.html`), описанная выше; самостоятельные копии в `delivery/`.
 - **Подробный обзор** от 19 октября 2026 года в `site/`: весь обзор одной непрерывной страницей, по-русски (`site/ru/survey-2026-10-19.html`) и по-английски (`site/en/survey-2026-10-19.html`), в тёмном оформлении, где каждый агент — окно контекста, нарисованное башней блоков (светлая тема включается одним переключателем). Он идёт от пролога — шесть агентов и три способа их связать — через три части и одиннадцать глав к выводам, открытым вопросам и атласу всех {fnum(K['cat'], 'ru')} работ и ресурсов с фильтрами, а за ними — словарик, источники и заметки о методе. По ходу текста механизмы и корпус объясняют встроенные схемы и графики. Это статические файлы: откройте `site/index.html` в браузере или запустите `python3 -m http.server -d site` и перейдите на `http://localhost:8000`.
-- **Технический отчёт:** [PDF](paper/swarm-dynamics.pdf) в формате ACL (на английском), [исходник LaTeX](paper/main.tex), [архив исходников](paper/swarm-dynamics-source.zip) и [инструкция по сборке](paper/BUILD.md). Это редакция 3 октября 2026 года, дополнение в неё не входит.
+- **Технический отчёт:** [PDF](paper/swarm-dynamics.pdf) в формате ACL (на английском), [исходник LaTeX](paper/main.tex), [архив исходников](paper/swarm-dynamics-source.zip) и [инструкция по сборке](paper/BUILD.md). Это редакция ноября 2026 года с литературой по 12 ноября: дополнение 19 октября и добавления карты «Поле» вошли в её разделы, а статистика по 153 записям аналитического корпуса дана с датой 3 октября.
 - **Каталог:** [CATALOG.ru.md](CATALOG.ru.md) — все цитируемые работы по темам, по строке на работу; добавленные 19 октября помечены, {K['nadd']} записей карты «Поля» собраны в отдельном разделе ([на английском](CATALOG.md)).
 - **Данные:** [реестр работ](data/works.json) на 3 октября, его [BibTeX](data/bib/works.bib) и [происхождение рисунков](data/figures.json); в дополнении — [реестр изменений](updates/2026-10-19/registry-delta.json) и [каталог из {K['cat']} записей](updates/2026-10-19/catalogue.json); [BibTeX](site/data/references-2026-10-19.bib) каталога на 19 октября, с исправленным идентификатором; [добавления карты «Поля»](updates/2026-11-12/map-catalogue.json) и их [BibTeX](updates/2026-11-12/references.bib).
 
-В атласе обзора {K['cat']} работ и ресурсов (каталог на 19 октября), на карте «Поля» {fnum(K['pts'], 'ru')} источников (12 ноября); графики обзора построены по {K['corpus']} работам аналитического корпуса с подробными метаданными (на 3 октября).
+В атласе обзора {K['cat']} работ и ресурсов (каталог на 19 октября), на карте «Поля» {fnum(K['pts'], 'ru')} источников (12 ноября); графики обзора построены по {K['corpus']} записям аналитического корпуса с подробными метаданными (на 3 октября).
 
 ## Насколько велики настоящие рои
 
-{picture("scale", "ru", f"Из {K['known']} работ, где названо число одновременно работающих агентов, медианный рой — {K['med']} агентов; " + "; ".join(f"не меньше {fnum(t, 'ru')} агентов — в {v}" for t, v in LD['rows']) + ".")}
+{picture("scale", "ru", f"Указанные в источниках размеры популяций в {K['known']} из {K['corpus']} записей корпуса на 3 октября 2026 года, по столбцу на запись, логарифмическая шкала: медиана — {K['med']} агентов; " + "; ".join(f"не меньше {fnum(t, 'ru')} агентов — в {v}" for t, v in LD['rows']) + ".", README_ASSETS)}
 
-Из этих {K['corpus']} работ {K['known']} называют число агентов, работающих одновременно; медиана — {K['med']}. Живые рои LLM из 10{' '}000 агентов и больше известны только по отчётам лабораторий без контрольного запуска, а контролируемые опыты в основном малы. Карта ниже показывает каждую работу по числу агентов и классу доказательств; в [главе 1](content/ru/ch01.md) разведены три смысла «размера роя»: агенты, работающие одновременно, участники за весь период и ёмкость платформы.
+Из этих {K['corpus']} записей в {K['known']} указан размер популяции; медиана — {K['med']}. Здесь смешаны живые прогоны, симуляции на суррогатных моделях и счётчики целых платформ (например, около 30{' '}000 агентов, занятых разными задачами на внутренней платформе Anthropic), так что это не перепись агентов, работающих одновременно. Живые рои LLM из 10{' '}000 агентов и больше известны только по отчётам лабораторий без контрольного запуска, а контролируемые опыты в основном малы. Карта ниже показывает каждую запись по числу агентов и классу доказательств; в [главе 1](content/ru/ch01.md) разведены три смысла «размера роя»: агенты, работающие одновременно, участники за весь период и ёмкость платформы.
 
-{chart("dash_scale", "ru", "Каждая работа корпуса по числу агентов (логарифмическая шкала) и классу доказательств; одновременное число, накопленный итог и заявленная ёмкость платформы отмечены по-разному.")}
+{chart("dash_scale", "ru", "Каждая запись корпуса по числу агентов (логарифмическая шкала) и классу доказательств. Закрашенные точки — наибольшая популяция, указанная для одного прогона или системы; пустые — итог, накопленный за весь период; ромбы — заявленная ёмкость платформы.", README_ASSETS)}
 
 ## Один запуск в числах: 1 024 агента на pandoc
 
@@ -266,7 +295,7 @@ make site catalog check          # site/: страницы «Поля», дат�
 make field                       # delivery/Swarm-Field-RU.html и -EN.html: самостоятельные файлы «Поля» (при пересборке байт в байт те же)
 make qa-field                    # «Поле» из file:// в Chromium и WebKit: компьютер и телефон, без JavaScript, без анимации, карта, клавиатура, ссылка языка
 make coverage                    # каждая карточка, рисунок, ссылка и заголовок есть на единой странице (PREV=<прежний site/> сравнивает редакции)
-make charts                      # по желанию: перерисовывает собственные графики главы 1 по данным; в репозитории лежат опубликованные PNG
+make charts                      # по желанию: перерисовывает собственные графики главы 1 и график масштаба этого README по данным; в репозитории лежат опубликованные PNG
 make qa qa-features              # страница, рисунки, схемы и интерактив; компьютер/телефон, JavaScript и без него
 ```
 
@@ -277,6 +306,7 @@ make qa qa-features              # страница, рисунки, схемы 
 
 if __name__ == "__main__":
     site_story.write_illustrations()
+    write_scale_posters()
     for name, text in (("README.md", EN), ("README.ru.md", RU)):
         assert "{" not in re.sub(r"```bibtex.*?```", "", text, flags=re.S), f"unfilled placeholder in {name}"
         for path in re.findall(r'(?:src|srcset)="([^"]+)"|\]\(((?!https?:)[^)#]+)', text):

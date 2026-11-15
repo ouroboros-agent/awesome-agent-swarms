@@ -52,7 +52,7 @@ UI = {
             fig="Рис.", pass_s="Авторы и источник", cards_full=("подробная карточка", "подробные карточки", "подробных карточек"), cards_short=("краткая", "краткие", "кратких"),
             figs=("рисунок", "рисунка", "рисунков"), scenes_n=("схема", "схемы", "схем"), minutes="≈{nb}{n}{nb}мин чтения",
             findings_h="Что показывают работы", findings_note="Каждый вывод сформулирован для корпуса на 3 октября 2026 и ведёт в главу с доказательствами и условиями сравнения; где работы дополнения 19 октября уточняют вывод, это сказано в нём отдельно.",
-            report_d="Технический отчёт · 3 октября", pdf="PDF · 3 октября", zip="LaTeX и рисунки (ZIP) · 3 октября", bib="BibTeX реестра · 3 октября", data="Реестр работ (JSON) · 3 октября",
+            report_d="Технический отчёт · 15 ноября", pdf="PDF · 15 ноября", zip="LaTeX и рисунки (ZIP) · 15 ноября", bib="BibTeX реестра · 3 октября", data="Реестр работ (JSON) · 3 октября",
             cat="Каталог с дополнением (JSON) · 19 октября", sup_bib="BibTeX каталога · 19 октября",
             materials="Материалы", survey="Обзор", rights="Права и цитирование", about_l="Об обзоре", glossary="Словарик", sources="Источники", atlas="Атлас работ",
             n_corpus="работ, по которым посчитаны графики обзора (на 3 октября)", n_unique="работ и ресурсов в каталоге (на 19 октября)", n_cards="карточек: {f} подробных и {s} кратких", n_figs="рисунков: {w} из работ, {o} собственных",
@@ -71,7 +71,7 @@ UI = {
             fig="Fig.", pass_s="Authors and source", cards_full=("full card", "full cards"), cards_short=("short card", "short cards"),
             figs=("figure", "figures"), scenes_n=("scene", "scenes"), minutes="≈{nb}{n}{nb}min read",
             findings_h="What the studies show", findings_note="Each finding is stated for the corpus as of 3 October 2026 and leads to the chapter with its evidence and comparison conditions; where works of the 19 October supplement refine a finding, it says so separately.",
-            report_d="Technical report · 3 October", pdf="PDF · 3 October", zip="LaTeX and figures (ZIP) · 3 October", bib="Registry BibTeX · 3 October", data="Registry of works (JSON) · 3 October",
+            report_d="Technical report · 15 November", pdf="PDF · 15 November", zip="LaTeX and figures (ZIP) · 15 November", bib="Registry BibTeX · 3 October", data="Registry of works (JSON) · 3 October",
             cat="Catalogue with the supplement (JSON) · 19 October", sup_bib="Catalogue BibTeX · 19 October",
             materials="Materials", survey="Survey", rights="Rights and citation", about_l="About the survey", glossary="Glossary", sources="Sources", atlas="Atlas of works",
             n_corpus="works behind the survey's charts (as of 3 October)", n_unique="works and resources in the catalogue (as of 19 October)", n_cards="cards: {f} full and {s} short", n_figs="figures: {w} from the works, {o} our own",
@@ -1172,7 +1172,7 @@ def root_page():
 <header>{RING.replace('<svg ', '<svg class="ring" ', 1)}<h1>{SITE_TITLE['en']}</h1><p class="subtitle">{SITE_SUB['en']}</p><p class="byline">{AUTHORS} · November 2026</p></header>
 <nav class="choose" aria-label="Language"><a href="en/index.html" hreflang="en" data-lang="en"><b>English</b><span>How communication, scale, memory and collective errors change LLM swarms: eight scenes on one page and a map of about 300 sources, November 2026.</span></a>
 <a href="ru/index.html" hreflang="ru" lang="ru" data-lang="ru"><b>Русский</b><span>Как связь, масштаб, память и коллективные ошибки меняют рои LLM-агентов: восемь сцен на одной странице и карта около 300 источников, ноябрь 2026.</span></a></nav>
-<p class="rootmore">The detailed survey, {UI['en']['edition']}: <a href="en/{PAGE}" hreflang="en">English</a> · <a href="ru/{PAGE}" hreflang="ru" lang="ru">Русский</a> · <a href="paper/index.html">technical report (PDF, 3 October 2026)</a></p>
+<p class="rootmore">The detailed survey, {UI['en']['edition']}: <a href="en/{PAGE}" hreflang="en">English</a> · <a href="ru/{PAGE}" hreflang="ru" lang="ru">Русский</a> · <a href="paper/index.html">technical report (PDF, 15 November 2026)</a></p>
 {poster}
 </main><script>(function(){{try{{var l=(navigator.language||'').slice(0,2)==='ru'?'ru':'en';var a=document.querySelector('.choose a[data-lang="'+l+'"]');if(a)a.classList.add('pref');}}catch(e){{}}}})();</script></body></html>"""
 

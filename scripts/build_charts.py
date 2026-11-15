@@ -86,6 +86,10 @@ def ecol(T, e): return T["SLOTS"][EVID_ORDER.index(e) % 8]
 
 def fmt(n, lang): return f"{n:,}".replace(",", " ") if lang == "ru" else f"{n:,}"
 
+# Legend of the scale map; scripts/build_paper_scale_chart.py substitutes wording for the paper's variant.
+SCALE_LEGEND = [["одновременно в одном прогоне или системе", "simultaneous, in one run or system"], ["накопленным итогом за всё время", "accumulated over the whole period"],
+                ["заявленная ёмкость платформы", "stated platform capacity"]]
+
 def scale_map(T, lang, th):
     i = 0 if lang == "ru" else 1
     rows = ["incident", "engineering_report", "field_observation", "system_card_eval", "live_experiment", "benchmark", "surrogate_simulation"]
@@ -119,8 +123,7 @@ def scale_map(T, lang, th):
     ax.set_xticks(ticks); ax.set_xticklabels(names); ax.minorticks_off()
     ax.grid(axis="x", color=T["LINE"], lw=0.6); ax.tick_params(axis="y", length=0); ax.set_axisbelow(True)
     ax.set_xlabel(["Число агентов, логарифмическая шкала", "Number of agents, log scale"][i], fontsize=9)
-    leg = [["одновременно в одном прогоне или системе", "simultaneous, in one run or system"], ["накопленным итогом за всё время", "accumulated over the whole period"],
-           ["заявленная ёмкость платформы", "stated platform capacity"]]
+    leg = SCALE_LEGEND
     h = [Line2D([], [], marker="o", ls="", color=T["SOFT"], label=leg[0][i], markersize=6),
          Line2D([], [], marker="o", ls="", markerfacecolor="none", markeredgecolor=T["SOFT"], label=leg[1][i], markersize=6),
          Line2D([], [], marker="D", ls="", markerfacecolor="none", markeredgecolor=T["SOFT"], label=leg[2][i], markersize=6)]

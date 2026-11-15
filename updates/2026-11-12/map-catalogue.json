@@ -140,7 +140,7 @@
    },
    "theme": "ch04",
    "added": "2026-11-12",
-   "org_note": "General Reasoning Inc.; Avalon-M1-Mini (120B) as lead may hire up to eight agents (FACT-CORRECTIONS 12 November 2026, item 4)."
+   "org_note": "General Reasoning Inc.; Avalon-M1-Mini (120B) as lead may hire up to eight agents (primary PDF, checked 12 November 2026)."
   },
   {
    "id": "s3-swarm-scaling",
@@ -297,7 +297,8 @@
    },
    "theme": "ch10",
    "added": "2026-11-12",
-   "org_source": "PDF title page, read 13 November 2026"
+   "org_source": "PDF title page, read 13 November 2026",
+      "date_note": "Withdrawn by the authors on 10 November 2026 (arXiv v2); its results are not used"
   },
   {
    "id": "collusion-j-space",
@@ -711,6 +712,7 @@
   "merged_reason": "Each of these constituent records repeats the primary URL of the bundle card it is part of; the bundle card is the dated record on the map, the constituent stays in the catalogue.",
   "theme_rule": "A record's map theme is the first chapter in its source_pages (a constituent without pages takes its bundle's); the eight records of the 19 October supplement list several chapters, so their theme is set here.",
   "display": {
+      "steering-information-networks": {"why": "arXiv v2 of 10 November 2026 withdraws the preprint; the authors call it preliminary and not suitable for public release yet.", "en": {"title": "Steering Emergent Behavior in Multi-Agent LLM Systems via Information Networks (withdrawn by the authors)"}, "ru": {"title": "Steering Emergent Behavior in Multi-Agent LLM Systems via Information Networks (отозвана авторами)"}},
    "note": "Display corrections of catalogue fields for the map and the scale, both languages (source audit of 12 November and display audit of 13 November 2026); the 19 October catalogue itself is unchanged. 'title'/'who' are language-neutral, 'ru'/'en' per language, 'date_iso' places the point and was read from the named primary metadata.",
    "worse-together": {
     "why": "The preprint's byline (arXiv 2610.00583v1) lists Independent Researcher, Stanford University and Anthropic, with the first two authors in the Anthropic Fellows Program; the blog post of 11 November 2026 names Anthropic Fellows, independent authors and Anthropic. Same work.",
@@ -741,7 +743,7 @@
     }
    },
    "ord-swarm-scaling": {
-    "why": "The post states no affiliation (FACT-CORRECTIONS 3): author and platform only.",
+    "why": "The post states no affiliation: author and platform only.",
     "who": "Toby Ord · LessWrong"
    },
    "vidal-models-identify-as-swarm": {

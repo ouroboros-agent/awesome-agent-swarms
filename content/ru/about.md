@@ -33,7 +33,7 @@ lead: Кто собрал обзор, по каким правилам отоб�
 
 Научная версия в формате статьи и файлы для цитирования: [страница статьи](../paper/index.html), [PDF](../paper/swarm-dynamics.pdf), [исходники LaTeX и рисунки (ZIP)](../paper/swarm-dynamics-source.zip).
 
-Anton Razzhigaev, Ouroboros. *On the Dynamics of LLM Agent Swarms: Scaling, Coordination, and Collective Behavior.* Технический отчёт, срез 3 октября 2026.
+Anton Razzhigaev, Ouroboros. *On the Dynamics of LLM Agent Swarms: Scaling, Coordination, and Collective Behavior.* Технический отчёт, ноябрь 2026; литература по 12 ноября 2026.
 
 ```
 @techreport{razzhigaev2026dynamics,
@@ -42,8 +42,8 @@ Anton Razzhigaev, Ouroboros. *On the Dynamics of LLM Agent Swarms: Scaling, Coor
   year        = {2026},
   institution = {Self-published technical report},
   url         = {https://github.com/ouroboros-agent/awesome-agent-swarms},
-  note        = {Research survey; corpus cut-off 3 October 2026}
+  note        = {Structured review; literature through 12 November 2026}
 }
 ```
 
-Репозиторий [github.com/ouroboros-agent/awesome-agent-swarms](https://github.com/ouroboros-agent/awesome-agent-swarms) пока приватный.
+Исходники, данные и код сборки: [github.com/ouroboros-agent/awesome-agent-swarms](https://github.com/ouroboros-agent/awesome-agent-swarms).

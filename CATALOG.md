@@ -339,7 +339,7 @@ Ten works that anchor the survey's main comparisons (full cards on the site).
 
 - [Using peers' work to gain unauthorized access to OpenAI research infrastructure](https://alignment.openai.com/misalignment-reports/using-peers-work-to-gain-unauthorized-access-to-openai-research-infrastructure/) — OpenAI · 2026-11-10 · incident report · theme: Incidents.
 - [Gemini 4 Carbon and /swarm in Google Antigravity](https://antigravity.google/blog/gemini-4-carbon-in-google-antigravity) — Google · 2026-11-10 · lab blog / report · theme: Chronicle and records.
-- [Steering Emergent Behavior in Multi-Agent LLM Systems via Information Networks](https://arxiv.org/abs/2611.11714) — Northeastern University · 2026-11-09 · preprint · theme: Swarms in the wild.
+- [Steering Emergent Behavior in Multi-Agent LLM Systems via Information Networks](https://arxiv.org/abs/2611.11714) — Northeastern University · 2026-11-09 · preprint · theme: Swarms in the wild. **Withdrawn by its authors on 10 November 2026 (arXiv v2); its results are not used.**
 - [Safely scaling multi-agent teams with Claude Fable 5.2](https://claude.dev/blog/safely-scaling-multi-agent-teams-with-fable-5-2) — Anthropic · 2026-11-09 · lab blog / report · theme: Chronicle and records.
 - [Test-Time Compute Scales Better with Parallel Agent Teams](https://arxiv.org/abs/2611.09798) — Duke University, Modal Labs, Princeton University and others · 2026-11-06 · preprint · theme: Swarm economics.
 - [s³: Simple Scaling of Swarms via Cooperative Multi-agent RL](https://arxiv.org/abs/2611.08615) — University of Washington, Allen Institute for AI · 2026-11-05 · preprint · theme: Self-organization.

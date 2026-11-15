@@ -9,6 +9,10 @@ DATA = ROOT / 'paper/evidence-matrix.json'
 OUT = ROOT / 'paper/appendix-evidence.tex'
 
 def esc(s):
+    # Powers of ten such as 10^3 are typeset as mathematics, not as literal carets.
+    parts = re.split(r'(10\^\d+)', str(s))
+    if len(parts) > 1:
+        return ''.join('$10^{' + p[3:] + '}$' if re.fullmatch(r'10\^\d+', p) else esc(p) for p in parts)
     replacements = {'\\': r'\textbackslash{}', '&': r'\&', '%': r'\%', '$': r'\$', '#': r'\#', '_': r'\_', '{': r'\{', '}': r'\}', '~': r'\textasciitilde{}', '^': r'\textasciicircum{}', '–':'--', '—':'---', '×':r'$\times$', '≈':r'$\approx$', '→':r'$\rightarrow$', '≥':r'$\geq$', '≤':r'$\leq$', '−':'-', 'ρ':r'$\rho$', 'λ':r'$\lambda$', '°':r'\textdegree{}', '“':'``', '”':"''", 'ő':r'\H{o}'}
     return ''.join(replacements.get(c,c) for c in str(s))
 
@@ -21,11 +25,12 @@ INTRO = r'''
 \onecolumn
 \section{Evidence coding and comparative records}
 \label{app:evidence}
+\begin{multicols}{2}\raggedcolumns
 
-This appendix makes the review's comparisons inspectable. It codes selected evidence units from the research collection's chapters and source cards, plus the two targeted additions described in Section~\ref{sec:methods}, a 30 September and a 2 October preprint. Selection prioritizes comparisons that distinguish mechanisms, studies with unusually large populations, and counterexamples to a simple ``more agents'' explanation. It does not estimate coverage of the literature. The collection's 153 metadata records and 147 source cards are different administrative units, not an audited count of unique publications; some cards group a report, later versions, and commentary. The records below cite their actual sources and should not be added to the inventory to obtain a publication count.
+This appendix makes the review's comparisons inspectable. It codes selected evidence units from the frozen research collection's chapters and source cards, the two works recovered on 9 October, and works added on 19 October and 7--12 November 2026, which were coded directly from their primary sources (Section~\ref{sec:methods}). Selection prioritizes comparisons that distinguish mechanisms, studies with unusually large populations, and counterexamples to a simple ``more agents'' explanation. It does not estimate coverage of the literature. The collection's 153 metadata records and 147 source cards are different administrative units, not an audited count of unique publications; some cards group a report, later versions, and commentary. The records below cite their actual sources and should not be added to the inventory to obtain a publication count.
 
 \paragraph{Extraction and provenance.}
-The evidence layer is a secondary coding of the collection, not a new screening exercise or a reproduction of experiments. Numerical observations and their qualifications come from the collection's chapters, with detailed cards and metadata used to resolve scale and model fields. The two added belief-dynamics records were coded from notes on the primary papers' methods and results sections. We did not infer a communication graph from a model list, simultaneous population from session counts, or equal spending from an equal limit. The machine-readable companion, \texttt{evidence-matrix.json}, records the source chapter and card locator for each row; the bibliographic citation points to the original work. No independent dual-coder agreement study was performed.
+The evidence layer is a secondary coding of the collection, not a new screening exercise or a reproduction of experiments. Numerical observations and their qualifications come from the collection's chapters, with detailed cards and metadata used to resolve scale and model fields. Units from the later additions were coded directly from the primary source; their machine-readable provenance records the URL, version, retrieval date, reading depth, and a hash of the retrieved file. Units marked \emph{abstract-level reading} were coded from the authors' summary and the numbers located in the full text; the others from methods and results sections or tables. Italic affiliations come from title pages or, for inherited units, from the inventory's affiliation field. We did not infer a communication graph from a model list, simultaneous population from session counts, or equal spending from an equal limit. The machine-readable companion, \texttt{evidence-matrix.json}, records the source chapter and card locator for each row; the bibliographic citation points to the original work. No independent dual-coder agreement study was performed.
 
 \paragraph{Coding rules.}
 \emph{Composition} distinguishes copies of one model within a run from mixtures of models; a study testing several homogeneous teams is not a heterogeneous team. \emph{Graph} describes available or observed communication separately from the \emph{medium} carrying it. A shared repository permits indirect coordination without a complete message graph. \emph{Organization} distinguishes designed infrastructure or roles, learned policies or strategies, and roles that emerge during deployment; multiple labels can apply to the same system. \emph{Memory} describes the state accessible across turns or sessions, not an inferred capacity in tokens. \emph{Concurrent} counts agents maintained within one run (the distinction from simultaneous inference calls is stated where available), \emph{cumulative} counts participants or sessions over time, and \emph{capacity} records an offered or configured ceiling. For sequential role-playing, active inference can be one even when the protocol contains several agents; logical populations and active-call counts are marked explicitly. A simulated population sampled from cached LLM policies is marked separately from live inference.
@@ -38,6 +43,9 @@ NR means \emph{not reported in the extracted evidence}; it does not prove absenc
 
 \paragraph{Negative average effects do not exclude conditional gains.}
 Kim et al.'s fixed-ceiling comparisons and Tran and Kiela's short-answer tasks test whether communication earns back its overhead under a limited budget. Park et al. instead compare agents that can accumulate externally checkable discoveries with independent searches; on ARC-AGI-3 the advantage arrives only after enough search. The same study's negative Terminal-Bench result prevents generalizing from its strongest games. CORAL's shared history improves a measured optimization objective but consumes more evaluations. These findings motivate a conditional hypothesis about feedback and reuse; they do not establish feedback as a sufficient causal explanation across tasks \citep{kim-scaling-agent-systems,tran-kiela-equal-budget,test-time-communication,coral}.
+
+\paragraph{Equal output tokens can favor either side.}
+OpenAI's GPT-5.6 Sol curves and Ord's fitted exponents favor one agent at matched output tokens on three agentic benchmarks. Avalon-M1's control forces a single agent to spend as many output tokens as an eight-hire organization and finds the team higher on FrontierScience, lower on the hard subset of SWE-Bench Pro V2, and about the same on IMO-ProofBench. The two sources use different models, tasks, and orchestration, so they do not conflict; together they show that a matched-token result must be reported per task \citep{openai-gpt56-ultra,ord-swarm-scaling,avalon-m1}.
 
 \paragraph{Equal allowances and equal bills answer different questions.}
 Opus 5's BrowseComp comparison gives the ten-agent team and the strongest single-agent condition equal nominal token allowances, yet their realized spending differs. Agensh fixes a six-hour deadline while adding workers gradually. Its larger system therefore demonstrates a benefit under a deadline without identifying a benefit per token. Conversely, the small-team curves reported for Opus 5.5 support faster attainment of a target score with extra tokens, not a universal upper bound on collective quality. A single fitted exponent from the GPT-5.6 curves is restricted to that model, orchestration method, task, and tested range \citep{opus5-card-multiagent,agensh-1024,opus55-card,ord-swarm-scaling}.
@@ -62,11 +70,13 @@ The wiki studies count edits, names, and reconstructed sessions differently. The
 
 \subsection{Record layout}
 Each row contains the model composition, communication graph and medium, organization, memory, three scale meanings, control, resource basis, evaluation extent where available, outcome, and the main limit on interpretation. ``Fixed'' refers only to the explicitly named quantity. Reported approximate values remain approximate. Where a study contains distinct experiments, the row identifies their scope instead of manufacturing one average scale or outcome.
+\end{multicols}
 '''
 
 FOOT = r'''
 \section{Reporting gaps and discriminating comparisons}
 \label{app:gaps}
+\begin{multicols}{2}\raggedcolumns
 
 The matrix identifies recurrent gaps, not a checklist that every source was intended to satisfy. Engineering reports often provide a successful artifact and an elapsed time but omit unsuccessful runs, a long single-agent control, or realized spending. Short-answer experiments report precise outcomes but often use small populations and limited horizons. Social simulations can vary population size extensively while leaving model snapshots, prompt sensitivity, or the distinction between live and cached updates underdescribed. Field studies provide richer histories but weak identity resolution and few interventions.
 
@@ -77,6 +87,7 @@ Memory requires its own evaluation: control corpus size and information distribu
 For collective safety, evaluation should distinguish an externally instructed attack, spontaneous policy deviation under a neutral task, and compliance with a malicious message. A factorial intervention can vary live peers, stored peer messages, memory persistence, incentives, and enforcement independently. Monitors need both transcript-level and system-level views, with false-positive rates and action consequences reported. Heterogeneous monitoring is a testable design choice, not a guarantee of independence: shared training data, tools, and incentives can still correlate failures.
 
 The present synthesis supplies an inspectable coding layer and conditional questions. It does not supply a causal estimate of the benefit of scale, a universal superiority ordering of topologies, an exhaustive census, or a new experimental result.
+\end{multicols}
 '''
 
 
@@ -84,10 +95,12 @@ INVENTORY_INTRO = r"""
 \clearpage
 \section{Complete analytical inventory}
 \label{app:inventory}
+\begin{multicols}{2}\raggedcolumns
 
-The following table lists all 153 administrative records in the collection's analytical inventory. It is separate from the selected, manually coded evidence matrix in Appendix~\ref{app:evidence}. A row may describe a publication, a developer evaluation, an incident, or a bundle of related documents. It is not a deduplicated bibliography, a claim of exhaustive literature coverage, or a claim that all 153 records have been coded along every taxonomy dimension. The snapshot predates the two targeted additions and later publication-status updates. Component citations resolve bundles to actual documents rather than an invented aggregate publication; not every subsidiary link in a grouped card has its own bibliography entry.
+The following table lists all 153 administrative records in the collection's analytical inventory. It is separate from the selected, manually coded evidence matrix in Appendix~\ref{app:evidence}. A row may describe a publication, a developer evaluation, an incident, or a bundle of related documents. It is not a deduplicated bibliography, a claim of exhaustive literature coverage, or a claim that all 153 records have been coded along every taxonomy dimension. The snapshot predates the additions of 9 October, 19 October, and 7--12 November 2026 and later publication-status updates. Italic affiliations under each title reproduce the snapshot's own affiliation field. Component citations resolve bundles to actual documents rather than an invented aggregate publication; not every subsidiary link in a grouped card has its own bibliography entry.
 
-The snapshot is preserved unchanged in \texttt{corpus-inventory.json}, including complete model lists, topic tags, source-class annotations, and original scale notes. The table shows its model-family, evidence, and scale fields. \textbf{N} is the snapshot's maximum within-run population field; it can mean a logical population rather than simultaneous inference calls. \textbf{Total} is cumulative and may count sessions, accounts, names, or participants. \textbf{Cap} is a configured or advertised ceiling; registration totals are labeled explicitly. Where the snapshot's own scale note shows that a value is a peak within a time bin, an interview estimate, a supplementary condition, a reproduction inside a literature audit, or platform-wide activity, a bracketed qualifier taken from that note follows the unchanged value. NR means the snapshot has no value. For surrogate simulations, N counts simulated population states. These fields are not fresh primary-source verification; the manually coded records provide finer qualifications where available.
+The snapshot is preserved unchanged in \texttt{corpus-inventory.json}, including complete model lists, topic tags, source-class annotations, and original scale notes. The table shows its model-family, evidence, and scale fields. \textbf{N} is the snapshot's largest population reported as simultaneous within one run or one system; it can be a logical or surrogate population or a platform-wide count rather than simultaneous inference calls in one experiment. \textbf{Total} is cumulative and may count sessions, accounts, names, or participants. \textbf{Cap} is a configured or advertised ceiling; registration totals are labeled explicitly. Where the snapshot's own scale note shows that a value is a peak within a time bin, an interview estimate, a supplementary condition, a reproduction inside a literature audit, or platform-wide activity, a bracketed qualifier taken from that note follows the unchanged value. NR means the snapshot has no value. For surrogate simulations, N counts simulated population states. These fields are not fresh primary-source verification; the manually coded records provide finer qualifications where available.
+\end{multicols}
 
 \begingroup
 \fontsize{9}{10.5}\selectfont
@@ -113,7 +126,7 @@ Record and source & Evidence class & Model families and scale semantics \\
 # English renderings of the snapshot's own scale_note_ru for rows whose bare value
 # is not a within-run concurrent count. The raw values above are not changed.
 SCALE_QUALIFIERS = {
-    'agensh-1024': 'peak active identities in one 37.5-second interval',
+    'agensh-1024': 'our count from the authors\' replay: peak of non-idle identities in one displayed 37.5-second bin, not simultaneous model calls',
     'cursor-scaling': 'approximate peak across machines from an interview; the flat self-coordination test used 20',
     'colosseum': 'team in the Jira example; the coalition has 2 agents',
     'physics-of-agents': 'one supplementary mixed community; main-experiment communities have 32',
@@ -161,6 +174,7 @@ def render_inventory():
         a=esc(str(index)+'. '+title)
         if is_bundle:a+=r' \emph{(source bundle)}'
         a+=r' \citep{'+','.join(keys)+'}'
+        if record.get('orgs'):a+=r'\par\emph{'+esc(', '.join(record['orgs']))+'}'
         b=esc(evidence_labels[record['evidence']])
         families=', '.join(record['model_families']) or 'NR'
         scale_kind=record['scale_kind']
@@ -198,6 +212,7 @@ def render_inventory():
 def render():
     d=json.loads(DATA.read_text())
     rows=d['records']
+    inventory_orgs={rec['id']:rec.get('orgs') or [] for rec in json.loads((ROOT / 'paper/corpus-inventory.json').read_text())}
     if len({r['id'] for r in rows}) != len(rows):
         raise ValueError('Repeated evidence-unit identifier')
     required=['models','composition','graph','exchange','organization','memory','baseline','matching','budget','outcome','limits','provenance']
@@ -209,8 +224,6 @@ def render():
             raise ValueError('Evaluation extent placed in cumulative-agent scale: '+r['id'])
     parts=['% Generated by scripts/build_paper_evidence.py; edit evidence-matrix.json for records.\n',INTRO]
     for domain in dict.fromkeys(r['domain'] for r in rows):
-        if domain in {'Field observations and identity', 'Methodological controls'}:
-            parts.append('\n\\clearpage\n')
         # Reserve the heading, longtable header and a substantial first evidence row.
         parts.append('\n\\Needspace{20\\baselineskip}\n\\subsection{'+esc(domain)+'}\n')
         parts.append(r'''\begingroup
@@ -236,6 +249,9 @@ Evidence unit & Composition, interaction, organization, memory & Scale, comparis
         for position, r in enumerate(domain_rows, 1):
             cite=r'\citep{'+','.join(r['citation_keys'])+'}'
             a=r'\textbf{'+esc(r['label'])+r'}\par '+cite+r'\par '+esc(r['source_class'])
+            if r.get('reading')=='abstract-level':a+=r'\par\emph{Abstract-level reading}'
+            orgs=[o for o in (r.get('orgs') or inventory_orgs.get(r['id']) or inventory_orgs.get(r['citation_keys'][0]) or []) if o and o!='NR']
+            if orgs:a+=r'\par\emph{'+esc(', '.join(orgs))+'}'
             b=' '.join(r'\textbf{'+label+'} '+esc(r[field]) for label,field in [('Models.','models'),('Composition.','composition'),('Graph.','graph'),('Medium.','exchange'),('Organization.','organization'),('Memory.','memory')])
             evidence_fields=[('Control.','baseline'),('Matched.','matching'),('Resources.','budget')]
             if r.get('evaluation_extent'):

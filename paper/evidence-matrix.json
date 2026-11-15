@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "scope": "Selected evidence units, not a census or count of unique publications.",
-  "cutoff": "Inherited October 4 manuscript (research cutoff October 3), plus two pre-cutoff works recovered on October 9: an October 2 missed preprint and a September 30 previously scouted lead; bibliography reconciles publication versions.",
+  "cutoff": "Literature through 12 November 2026. The frozen analytic cohort dates from 3 October 2026; two pre-cutoff works were recovered on 9 October; later units were coded from primary sources added on 19 October and 7–12 November and re-read on 14 November 2026 (UTC).",
   "coding_notes": {
     "NR": "Not reported in extracted evidence; not necessarily absent from primary source.",
     "NA": "Not applicable.",
@@ -10,7 +10,8 @@
     "quantitative_synthesis": "No outcomes pooled; no experiments rerun.",
     "provenance": "Per-record chapter/card locators trace inherited evidence; no independent dual coding.",
     "targeted_recovery": "coherence-driven-contagion (October 2) and rheon-consensus (September 30, already scouted) were qualified from parent-read primary sections on October 9; neither is a post-cutoff publication.",
-    "evaluation_extent": "Configurations, tasks, datasets, trials, seeds, replications, samples, steps, model calls, and edits are recorded separately from cumulative agent identities or sessions. Account/name/registration totals are explicitly marked identity proxies."
+    "evaluation_extent": "Configurations, tasks, datasets, trials, seeds, replications, samples, steps, model calls, and edits are recorded separately from cumulative agent identities or sessions. Account/name/registration totals are explicitly marked identity proxies.",
+    "november_2026_edition": "Units with provenance.archive equal to \"primary source read for the November 2026 edition\" were coded directly from the cited primary source; their sha256 records the retrieved file. The orgs field gives title-page affiliations; NR means none recorded here."
   },
   "records": [
     {
@@ -344,10 +345,10 @@
       "baseline": "Single agent and 8/32/128 teams; 1,024 only on pandoc.",
       "matching": "Six-hour deadline; staggered starts; not compute.",
       "budget": "Tokens and dollars NR.",
-      "outcome": "Pandoc 33.89% single to 55.06% at 1,024; five-task mean 19.31% to 28.78% at 128.",
-      "limits": "Repetitions NR; no hierarchy control; some task curves decline.",
+      "outcome": "Pandoc 33.89% single to 55.06% at 1,024; five-task mean 19.31% to 28.78% from 1 to 128. Our replay count: 11,111 successful PR creations and 2,800 merges; 148,079 board writes, 56,472 with the board label FAIL.",
+      "limits": "Repetitions NR; no designed-hierarchy control; tokens not compared; replay counts are ours (script and input hash distributed); FAIL is a record type, not task failure.",
       "scale": {
-        "concurrent": "Peak 1,020 active in 37.5-s replay bin",
+        "concurrent": "1,024 configured; at most 1,020 non-idle in one displayed 37.5-s replay bin (our count; not simultaneous model calls)",
         "cumulative": "1,024 participants",
         "capacity": "NR"
       },
@@ -363,7 +364,8 @@
           "cards/agensh-1024.json",
           "build/meta/corpus_meta.json",
           "build/meta/digest.json"
-        ]
+        ],
+        "november_2026_note": "Replay counts recounted from the published replay (https://agens-harness.github.io/project/replay.html, 45,518,428 bytes, SHA-256 4543d032af90a885c0356f46c96005d1f7b394cc440fc9dac3e366deec1ddbd0) with reproducibility/agensh-replay/agensh-replay-check.py; paper figures re-read on 14 November 2026 (UTC)."
       }
     },
     {
@@ -528,7 +530,7 @@
       "id": "worse-together",
       "label": "Worse Together",
       "domain": "Organization and task allocation",
-      "source_class": "Preprint",
+      "source_class": "Preprint and lab blog",
       "models": "Opus 5, Sonnet 5 in highlighted conditions.",
       "composition": "Homogeneous in highlighted runs.",
       "graph": "Peer mailboxes versus central coordinator.",
@@ -538,21 +540,23 @@
       "baseline": "Coordinator, no communication, leader, procedural interventions.",
       "matching": "Same scenario; compute matching NR.",
       "budget": "NR.",
-      "outcome": "API allocation: Opus peers 30% versus coordinator 64% of optimum; Sonnet 12% versus 32%.",
-      "limits": "Communication sometimes harms; benchmark unavailable at snapshot.",
+      "outcome": "API key: Opus peers 30% versus coordinator 64% of optimum; Sonnet 12% versus 32%. Personal assistant, 25 scenarios: request sent 94–99%, in context at commit 47–67%; honored 56–68% in context versus 19–36% not.",
+      "limits": "Communication sometimes harms; the blog (11 November) and preprint (30 September) report different parts of one study and list different affiliations.",
       "scale": {
         "concurrent": "4–52 across scenarios",
         "cumulative": "NR",
         "capacity": "NR"
       },
       "citation_keys": [
-        "worse-together"
+        "worse-together",
+        "worse-together-blog"
       ],
       "provenance": {
         "archive": "swarm-dynamics-20261003",
         "source": "build/chapters/w2_t3_wild.md",
         "locator": "card/short worse-together",
-        "field_note": "Manual secondary extraction; NR is field-specific missingness in extracted evidence."
+        "field_note": "Manual secondary extraction; NR is field-specific missingness in extracted evidence.",
+        "november_2026_note": "Personal-assistant figures from the 11 November blog; API-key figures from arXiv v1. Both re-read on 14 November 2026 (UTC)."
       },
       "evaluation_extent": "77 scenarios in four environments"
     },
@@ -782,7 +786,7 @@
       "id": "multi-agent-transactive-memory",
       "label": "Transactive memory index",
       "domain": "Memory and information integration",
-      "source_class": "Preprint",
+      "source_class": "Preprint (v2, 15 October 2026)",
       "models": "Trajectories from dozens of models; ALFWorld index dominated by benchmark seq2seq model.",
       "composition": "Heterogeneous archive, not a live mixed team.",
       "graph": "Retrieval from past trajectories.",
@@ -792,8 +796,8 @@
       "baseline": "No retrieval; different rankers; out-of-type retrieval.",
       "matching": "Task; index size varied.",
       "budget": "Steps 11.77 to 10.35 on ALFWorld; token/dollar cost NR.",
-      "outcome": "ALFWorld success 0.4708 to 0.6431; WebArena 0.1818 to 0.2045.",
-      "limits": "77.82% of ALFWorld index from one seq2seq source; contribution not ablated.",
+      "outcome": "ALFWorld success 0.4708 to 0.6431; WebArena 0.1818 to 0.2045. v2: 31 minority producers, 1.4% of the index, supply 40.7% of best-ranker retrievals (31.8% pooled).",
+      "limits": "Dominant seq2seq source holds 77.82% of the ALFWorld index but 25.6% of best-ranker retrievals; its contribution not ablated.",
       "scale": {
         "concurrent": "One executing agent in described retrieval test",
         "cumulative": "NR",
@@ -806,7 +810,8 @@
         "archive": "swarm-dynamics-20261003",
         "source": "build/chapters/w1_t5_t1.md",
         "locator": "card/short multi-agent-transactive-memory",
-        "field_note": "Manual secondary extraction; NR is field-specific missingness in extracted evidence."
+        "field_note": "Manual secondary extraction; NR is field-specific missingness in extracted evidence.",
+        "november_2026_note": "Retrieval shares from Appendix H of arXiv v2, re-read on 14 November 2026 (UTC)."
       },
       "evaluation_extent": "Index contains many past runs; count NR here"
     },
@@ -1785,7 +1790,7 @@
         "coherence-driven-contagion"
       ],
       "provenance": {
-        "archive": "swarm-recovery-20261009",
+        "archive": "pre-cutoff additions qualified on 9 October 2026",
         "source": "freshness-notes.md",
         "locator": "A relevant missed 2 October paper",
         "primary_urls": [
@@ -1823,7 +1828,7 @@
         "rheon-consensus"
       ],
       "provenance": {
-        "archive": "swarm-recovery-20261009",
+        "archive": "pre-cutoff additions qualified on 9 October 2026",
         "source": "freshness-notes.md",
         "locator": "RHEON lead qualified further by parent",
         "primary_urls": [
@@ -1835,6 +1840,987 @@
         "field_note": "Bounded parent-approved recovery of a known pre-cutoff lead, based on the documented primary-source reading; not independently reread by appendix coder."
       },
       "evaluation_extent": "2,160 runs; 4,767,840 model calls, not agents"
+    },
+    {
+      "id": "avalon-m1",
+      "label": "Avalon-M1 organizations",
+      "domain": "Scaling and resource tradeoffs",
+      "source_class": "Technical report (model in training)",
+      "orgs": [
+        "General Reasoning, Inc."
+      ],
+      "models": "Avalon-M1-Mini (120B total, 12B active).",
+      "composition": "Homogeneous; one shared policy plays CEO and specialists.",
+      "graph": "CEO hires up to two, four, or eight specialists.",
+      "exchange": "Message board and shared workspace.",
+      "organization": "Learned with a collective reward (RLCR); hiring and roles chosen at run time.",
+      "memory": "Shared workspace within a run.",
+      "baseline": "Single agent (B0) and single agent forced to match B8 output tokens (S8).",
+      "matching": "S8 matches output tokens of the eight-hire organization.",
+      "budget": "Output tokens for S8; B0 unmatched.",
+      "outcome": "B8 versus S8: FrontierScience 63.5% versus 55.5%; SWE-Bench Pro V2 hard subset 23.5% versus 37.3%; IMO-ProofBench 37.5% versus 37.7% of the maximum proof grade. B8 beats B0 on 14 of 16 benchmarks by 3.9 points on average.",
+      "limits": "Model still training; one model family; no intervals for these comparisons; output tokens matched, not total compute.",
+      "scale": {
+        "concurrent": "Up to 9 (CEO plus eight hires)",
+        "cumulative": "NR",
+        "capacity": "8 hires"
+      },
+      "citation_keys": [
+        "avalon-m1"
+      ],
+      "evaluation_extent": "FrontierScience 160 tasks x 1 run; SWE-Bench Pro V2 (Hard) 51 x 1; IMO-ProofBench-Advanced 30 x 4 (0-7 grade as percent); 16 percentage-scored benchmarks",
+      "provenance": {
+        "archive": "primary source read for the November 2026 edition",
+        "source": "https://gr.inc/avalonm1.pdf",
+        "locator": "Abstract; Table 3",
+        "retrieved": "2026-11-14",
+        "sha256_of_retrieved_file": "6429a78fab048d8a58a34fdbefe214156a02de53b6b571053c4df934f485fc58",
+        "field_note": "Coded from the primary source; numbers re-read on 14 November 2026 (UTC). NR is field-specific missingness.",
+        "reading_depth": "Methods and results sections or tables read (earlier passes on 19 October or 12 November, numbers re-located on 14 November 2026 UTC)."
+      },
+      "reading": "methods and results"
+    },
+    {
+      "id": "parallel-agent-teams",
+      "label": "Parallel agent teams",
+      "domain": "Scaling and resource tradeoffs",
+      "source_class": "Preprint",
+      "orgs": [
+        "Duke University",
+        "Modal Labs",
+        "Princeton University",
+        "New York University"
+      ],
+      "models": "Qwen3.8-27B; a frontier model in a cost comparison.",
+      "composition": "Homogeneous.",
+      "graph": "Independent agents, one team of 100, or ten independent teams of ten.",
+      "exchange": "Collaboration inside a team; none across teams.",
+      "organization": "Designed allocation of a fixed agent budget.",
+      "memory": "Within-team shared state; persistence NR.",
+      "baseline": "Parallel single agents and one large team.",
+      "matching": "Same budget of 100 agents; best solution kept by a verifier.",
+      "budget": "Agent count; dollar cost in one comparison.",
+      "outcome": "Ten teams of ten beat 100 single agents on 10 of 12 tasks and one team of 100 on all four tasks where it ran; at equal dollar cost they beat GPT-5.6 Sol on 4 of 8 tasks.",
+      "limits": "Best-of selection, not averages; teams of 64 and 100 saw only the newest 100 forum titles and unread posts, smaller teams the whole index.",
+      "scale": {
+        "concurrent": "Up to 100",
+        "cumulative": "NR",
+        "capacity": "100-agent budget"
+      },
+      "citation_keys": [
+        "parallel-agent-teams"
+      ],
+      "evaluation_extent": "12 long tasks",
+      "provenance": {
+        "archive": "primary source read for the November 2026 edition",
+        "source": "https://arxiv.org/html/2611.09798v1",
+        "locator": "Abstract; Figure 1; Section 4",
+        "retrieved": "2026-11-14",
+        "sha256_of_retrieved_file": "d267dc8acfecb3545df5b7299b264c575da4865e57855b5518b8fde040ee10e9",
+        "field_note": "Coded from the primary source; numbers re-read on 14 November 2026 (UTC). NR is field-specific missingness.",
+        "reading_depth": "Methods and results sections or tables read (earlier passes on 19 October or 12 November, numbers re-located on 14 November 2026 UTC)."
+      },
+      "reading": "methods and results"
+    },
+    {
+      "id": "coding-team-compute-allocation",
+      "label": "Coding-team compute allocation",
+      "domain": "Scaling and resource tradeoffs",
+      "source_class": "Preprint",
+      "orgs": [
+        "Cohere Labs",
+        "Cohere"
+      ],
+      "models": "GPT-5.6 Sol and Luna among others; strong and cheap mixes.",
+      "composition": "Homogeneous and heterogeneous teams.",
+      "graph": "Lead with workers in planning, implementation, verification, or all.",
+      "exchange": "Delegated subtasks and reports; peer messaging variant.",
+      "organization": "Designed delegation stages.",
+      "memory": "Shared repository.",
+      "baseline": "Solo agents and alternative delegation stages.",
+      "matching": "Task; cost measured, not fixed.",
+      "budget": "Measured dollar cost.",
+      "outcome": "Teams beat solo agents at three to seven times the cost; planning-only delegation matches full delegation at about half the cost; 17-agent mix within 1.4 points of a strong five-agent team at 70% lower cost.",
+      "limits": "Single runs for fixed team sizes; implementation delegation better on Commit0.",
+      "scale": {
+        "concurrent": "Up to 17",
+        "cumulative": "NR",
+        "capacity": "NR"
+      },
+      "citation_keys": [
+        "coding-team-compute-allocation"
+      ],
+      "evaluation_extent": "ProgramBench and Commit0",
+      "provenance": {
+        "archive": "primary source read for the November 2026 edition",
+        "source": "https://arxiv.org/html/2610.17471v1",
+        "locator": "Abstract; Sections 4–6",
+        "retrieved": "2026-11-14",
+        "sha256_of_retrieved_file": "ef170c32ad91daba37cf3c4764b107eebf7f63c868a6720bb6d813386364a7c3",
+        "field_note": "Coded from the primary source; numbers re-read on 14 November 2026 (UTC). NR is field-specific missingness.",
+        "reading_depth": "Methods and results sections or tables read (earlier passes on 19 October or 12 November, numbers re-located on 14 November 2026 UTC)."
+      },
+      "reading": "methods and results"
+    },
+    {
+      "id": "collaboration-serving-users",
+      "label": "Agents serving users",
+      "domain": "Scaling and resource tradeoffs",
+      "source_class": "Preprint",
+      "orgs": [
+        "NR"
+      ],
+      "models": "Several capability levels; same model in both arms.",
+      "composition": "Homogeneous per comparison.",
+      "graph": "Centralized multi-agent system versus single agent.",
+      "exchange": "Messages with a simulated user under a written policy.",
+      "organization": "Designed central coordinator.",
+      "memory": "Conversation state.",
+      "baseline": "Stock single agent.",
+      "matching": "Same model, tools, and simulated user.",
+      "budget": "NR.",
+      "outcome": "Multi-agent system worse in 12 of 13 mechanically valid cells; the thirteenth is +2.7 points (95% CI -6.7 to +12.7).",
+      "limits": "No cell met the fidelity bar: the planner lacked tool schemas and 680 of 2,744 write orders (25%) ran as issued; one division of labor.",
+      "scale": {
+        "concurrent": "Few agents per system",
+        "cumulative": "NR",
+        "capacity": "NR"
+      },
+      "citation_keys": [
+        "collaboration-serving-users"
+      ],
+      "evaluation_extent": "Airline, retail, and telecom domains of the dual-control benchmark",
+      "provenance": {
+        "archive": "primary source read for the November 2026 edition",
+        "source": "https://arxiv.org/html/2610.27655v1",
+        "locator": "Abstract; results",
+        "retrieved": "2026-11-14",
+        "sha256_of_retrieved_file": "a781489c3c2ad9f118f63b8130bec37d35031bbdd81a587f932e90bdc4af1c1a",
+        "field_note": "Coded from the primary source; numbers re-read on 14 November 2026 (UTC). NR is field-specific missingness.",
+        "reading_depth": "Methods and results read (Section 4.1 and Tables 5-6); checked again on 15 November 2026 against an independent review."
+      },
+      "reading": "methods and results"
+    },
+    {
+      "id": "swarmevolve",
+      "label": "SwarmEvolve",
+      "domain": "Scaling and resource tradeoffs",
+      "source_class": "Preprint",
+      "orgs": [
+        "Brown University"
+      ],
+      "models": "Low-cost open models, including Qwen3-8B, and larger models.",
+      "composition": "Homogeneous swarms per round.",
+      "graph": "Swarms studying different angles; a summarizer receives combined caches.",
+      "exchange": "KV caches in latent space, not text.",
+      "organization": "Designed evolutionary loop with a novelty filter.",
+      "memory": "Population of candidate programs across rounds.",
+      "baseline": "Text-based evolutionary frameworks.",
+      "matching": "Wall-clock time to a score.",
+      "budget": "Minutes of search.",
+      "outcome": "Median 4 to 8 minutes with Qwen3-8B (3 to 6 with larger models) to reach the best score that text frameworks reach in 60 minutes.",
+      "limits": "Optimization problems with automatic scoring; no matched token accounting.",
+      "scale": {
+        "concurrent": "Hundreds per round",
+        "cumulative": "NR",
+        "capacity": "NR"
+      },
+      "citation_keys": [
+        "swarmevolve"
+      ],
+      "evaluation_extent": "21 problems",
+      "provenance": {
+        "archive": "primary source read for the November 2026 edition",
+        "source": "https://arxiv.org/html/2611.08483v1",
+        "locator": "Abstract",
+        "retrieved": "2026-11-14",
+        "sha256_of_retrieved_file": "134d08973d865dcf1a1d1404bd14796be9c21ab9853dda3767a5520f59a14a6b",
+        "field_note": "Coded from the primary source; numbers re-read on 14 November 2026 (UTC). NR is field-specific missingness.",
+        "reading_depth": "Methods and results read (Section 4 and Figure 4); checked again on 15 November 2026 against an independent review."
+      },
+      "reading": "methods and results"
+    },
+    {
+      "id": "anthropic-fable-team-scaling",
+      "label": "Fable 5.2 team",
+      "domain": "Organization and task allocation",
+      "source_class": "Lab blog post",
+      "orgs": [
+        "Anthropic"
+      ],
+      "models": "Early version of Claude Fable 5.2.",
+      "composition": "Homogeneous.",
+      "graph": "One lead and 999 helpers; crews with captains; task tree.",
+      "exchange": "Shared Postgres database and Git; no messaging tools.",
+      "organization": "Designed lead role; tables, crews, and task tree created during the run.",
+      "memory": "Database tables and repository; 36,612 writes and 311,734 reads by hour 30.",
+      "baseline": "September formalization (different model, Prove2Me, researcher direction), whose 47 proved lemmas the team received.",
+      "matching": "None; model, harness, and human direction differ.",
+      "budget": "One-third of the earlier output tokens.",
+      "outcome": "Formal proof of Fermat’s Last Theorem in 28.7 hours, one-seventh the earlier length; about 750 helpers on Langlands–Tunnell; 2,418-task tree.",
+      "limits": "Toy experiment in the authors’ words; one run; restarted near hour 18; reused 47 earlier lemmas.",
+      "scale": {
+        "concurrent": "1,000 (one lead, 999 helpers)",
+        "cumulative": "NR",
+        "capacity": "NR"
+      },
+      "citation_keys": [
+        "anthropic-fable-team-scaling",
+        "fermat-last-theorem"
+      ],
+      "provenance": {
+        "archive": "primary source read for the November 2026 edition",
+        "source": "https://claude.dev/blog/safely-scaling-multi-agent-teams-with-fable-5-2.md",
+        "locator": "Full post (markdown), read in full",
+        "retrieved": "2026-11-14",
+        "sha256_of_retrieved_file": "98ae43b0556a97220d72a40991dd88101a952a1e2da44fcfa8c15bc42ab3f03d",
+        "field_note": "Coded from the primary source; numbers re-read on 14 November 2026 (UTC). NR is field-specific missingness.",
+        "reading_depth": "Methods and results sections or tables read (earlier passes on 19 October or 12 November, numbers re-located on 14 November 2026 UTC)."
+      },
+      "reading": "methods and results"
+    },
+    {
+      "id": "parallact-shared-codebases",
+      "label": "ParallACT",
+      "domain": "Organization and task allocation",
+      "source_class": "Preprint",
+      "orgs": [
+        "The University of Texas at Austin",
+        "NVIDIA"
+      ],
+      "models": "Claude Code with Claude Opus 4.8 and six further pairings.",
+      "composition": "Homogeneous pairs.",
+      "graph": "Two independent agents or one agent with both tasks.",
+      "exchange": "Shared codebase; awareness, messaging, synchronization variants.",
+      "organization": "Designed task split.",
+      "memory": "Repository.",
+      "baseline": "One agent seeing both requirements.",
+      "matching": "Same requirements and merge methods.",
+      "budget": "NR.",
+      "outcome": "Contradictory pairs: 62% for one agent versus 16% for two (best merge method); peer awareness 26%, not significant.",
+      "limits": "Pairs of agents; constructed conflicts.",
+      "scale": {
+        "concurrent": "2",
+        "cumulative": "NR",
+        "capacity": "NR"
+      },
+      "citation_keys": [
+        "parallact-shared-codebases"
+      ],
+      "evaluation_extent": "Contradictory and complementary instances",
+      "provenance": {
+        "archive": "primary source read for the November 2026 edition",
+        "source": "https://arxiv.org/html/2611.00314v1",
+        "locator": "Abstract; results",
+        "retrieved": "2026-11-14",
+        "sha256_of_retrieved_file": "6fea76d251db62f579b059bd189fd871b7b5190972ddec2d965a2de74f2dc7a4",
+        "field_note": "Coded from the primary source; numbers re-read on 14 November 2026 (UTC). NR is field-specific missingness.",
+        "reading_depth": "Methods and results sections or tables read (earlier passes on 19 October or 12 November, numbers re-located on 14 November 2026 UTC)."
+      },
+      "reading": "methods and results"
+    },
+    {
+      "id": "mpt-self-orchestration",
+      "label": "MPT bidding",
+      "domain": "Organization and task allocation",
+      "source_class": "Preprint",
+      "orgs": [
+        "Harvard University"
+      ],
+      "models": "Post-trained open models.",
+      "composition": "Three designer-supplied roles.",
+      "graph": "Agents bid for the next turn.",
+      "exchange": "Bids and actions in a shared episode.",
+      "organization": "Learned turn allocation; roles designed.",
+      "memory": "Episode history.",
+      "baseline": "Monolithic RL; alternative coordination with fixed action policies.",
+      "matching": "Training compute in curves; held-out sets.",
+      "budget": "Training compute, not user-facing inference.",
+      "outcome": "Deep research 21.0±4.1% versus 9.0±2.1%; crafting reward 41.5 versus 25.4 for the strongest alternative.",
+      "limits": "Roles supplied; small populations.",
+      "scale": {
+        "concurrent": "3 in main tasks; 3–12 in scaling test",
+        "cumulative": "NR",
+        "capacity": "NR"
+      },
+      "citation_keys": [
+        "mpt-self-orchestration"
+      ],
+      "evaluation_extent": "50 held-out questions; 32 world seeds; three runs each",
+      "provenance": {
+        "archive": "primary source read for the November 2026 edition",
+        "source": "https://arxiv.org/html/2610.22322v2",
+        "locator": "Table 1; Table 2",
+        "retrieved": "2026-11-14",
+        "sha256_of_retrieved_file": "b4b5a34d6f33ebb18524aaac4ef54668cf654ba25eb190000fcfec0e3c91e680",
+        "field_note": "Coded from the primary source; numbers re-read on 14 November 2026 (UTC). NR is field-specific missingness.",
+        "reading_depth": "Methods and results sections or tables read (earlier passes on 19 October or 12 November, numbers re-located on 14 November 2026 UTC)."
+      },
+      "reading": "methods and results"
+    },
+    {
+      "id": "s3-swarm-scaling",
+      "label": "s³ cooperative RL",
+      "domain": "Organization and task allocation",
+      "source_class": "Preprint",
+      "orgs": [
+        "University of Washington",
+        "Allen Institute for AI"
+      ],
+      "models": "Open LLM policies.",
+      "composition": "Homogeneous.",
+      "graph": "Peers with optional message reading.",
+      "exchange": "Messages.",
+      "organization": "Learned with a shared team reward.",
+      "memory": "Episode history.",
+      "baseline": "Online SFT, individual reward, no communication.",
+      "matching": "Training and inference budgets.",
+      "budget": "Matched training and inference budgets.",
+      "outcome": "At eight agents, more than 20 times the successes of online SFT on information aggregation; advantage persists through twelve agents and all methods struggle at sixteen; repeated exploration work nearly halved.",
+      "limits": "Trained with four agents; synthetic coordination tasks; no method copes at sixteen.",
+      "scale": {
+        "concurrent": "4 in training; up to 16 in evaluation",
+        "cumulative": "NR",
+        "capacity": "NR"
+      },
+      "citation_keys": [
+        "s3-swarm-scaling"
+      ],
+      "evaluation_extent": "Aggregation and exploration tasks",
+      "provenance": {
+        "archive": "primary source read for the November 2026 edition",
+        "source": "https://arxiv.org/html/2611.08615v1",
+        "locator": "Abstract; Section 5",
+        "retrieved": "2026-11-14",
+        "sha256_of_retrieved_file": "053e21a728b29fe1e4f22a55410cc7065449c7860807b0efabfa7d2836a50a81",
+        "field_note": "Coded from the primary source; numbers re-read on 14 November 2026 (UTC). NR is field-specific missingness.",
+        "reading_depth": "Methods and results sections or tables read (earlier passes on 19 October or 12 November, numbers re-located on 14 November 2026 UTC)."
+      },
+      "reading": "methods and results"
+    },
+    {
+      "id": "waggle-2026",
+      "label": "Waggle local law",
+      "domain": "Organization and task allocation",
+      "source_class": "Preprint",
+      "orgs": [
+        "Shanghai Academy of AI for Science",
+        "Fudan University",
+        "Yunnan University"
+      ],
+      "models": "Distilled LLM policy.",
+      "composition": "Interchangeable agents with one shared policy.",
+      "graph": "Bounded local views; no global topology.",
+      "exchange": "Semantic messages and local commitments.",
+      "organization": "Learned anonymous local law.",
+      "memory": "Local commitments.",
+      "baseline": "Substrate-specific oracles.",
+      "matching": "Population and interaction budget varied.",
+      "budget": "NR.",
+      "outcome": "Per the authors’ summary: effective as populations and interaction budgets change; over 96% of substrate-specific oracle quality; transfer without retraining.",
+      "limits": "Benchmarks designed by the authors.",
+      "scale": {
+        "concurrent": "Varied populations",
+        "cumulative": "NR",
+        "capacity": "NR"
+      },
+      "citation_keys": [
+        "waggle-2026"
+      ],
+      "provenance": {
+        "archive": "primary source read for the November 2026 edition",
+        "source": "https://arxiv.org/html/2609.34136v1",
+        "locator": "Abstract",
+        "retrieved": "2026-11-14",
+        "sha256_of_retrieved_file": "7db8b70d83f367cfe0f160844bebce91c7a1ceae2c9f9dd857a57457b621dfc3",
+        "field_note": "Coded from the primary source; numbers re-read on 14 November 2026 (UTC). NR is field-specific missingness.",
+        "reading_depth": "Authors’ abstract or summary; quoted numbers located in the retrieved full text."
+      },
+      "reading": "abstract-level"
+    },
+    {
+      "id": "inbox-coordination-primitive",
+      "label": "Inbox societies",
+      "domain": "Organization and task allocation",
+      "source_class": "Preprint",
+      "orgs": [
+        "MIT Media Lab"
+      ],
+      "models": "LLM judgments shared across agents with identical inputs.",
+      "composition": "NR.",
+      "graph": "Push delivery versus pull from an inbox.",
+      "exchange": "Messages governed by recipient rules.",
+      "organization": "Designed reading rules.",
+      "memory": "Finite context; inbox outside it.",
+      "baseline": "Push delivery in arrival order.",
+      "matching": "Traffic regime.",
+      "budget": "Reading tokens.",
+      "outcome": "A 16,000-agent run makes 6 to 23 model calls because agents shown the same information share one answer. In a separate experiment, a lead in 20 negotiations with full context proposes already rejected options 97% of the time.",
+      "limits": "Simulated societies with reused model answers; one wrong answer applies to a whole group.",
+      "scale": {
+        "concurrent": "Up to 16,000 simulated agents (shared answers)",
+        "cumulative": "NR",
+        "capacity": "NR"
+      },
+      "citation_keys": [
+        "inbox-coordination-primitive"
+      ],
+      "provenance": {
+        "archive": "primary source read for the November 2026 edition",
+        "source": "https://arxiv.org/html/2610.36264v1",
+        "locator": "Abstract",
+        "retrieved": "2026-11-14",
+        "sha256_of_retrieved_file": "db0b3d40e6b3bbccae3979d068ad8610a5037c115e259ae07ad3f146b4aea26a",
+        "field_note": "Coded from the primary source; numbers re-read on 14 November 2026 (UTC). NR is field-specific missingness.",
+        "reading_depth": "Methods and results read (Section 4 and Appendix A); checked again on 15 November 2026 against an independent review."
+      },
+      "reading": "methods and results"
+    },
+    {
+      "id": "scalemas-substrate",
+      "label": "ScaleMAS substrate",
+      "domain": "Memory and information integration",
+      "source_class": "Preprint",
+      "orgs": [
+        "FAIR at Meta",
+        "Harvard University"
+      ],
+      "models": "Qwen3.5-9B.",
+      "composition": "Homogeneous.",
+      "graph": "No addressed messages; agents publish and search.",
+      "exchange": "Linked records in a shared substrate.",
+      "organization": "Designed retrieval operations.",
+      "memory": "Shared records; bounded search ranked by relevance and citations.",
+      "baseline": "Private substrates; independent ReAct; DeLM.",
+      "matching": "Four agents per arm; compute curves.",
+      "budget": "About 20M tokens per example in the DeLM comparison.",
+      "outcome": "Shared 55.1%, private 46.8%, none 38.0% (BrowseComp-Plus); eight ScaleMAS 60.0% versus sixteen DeLM 26.0%.",
+      "limits": "Relaxed metric for contradiction audit; total reading unbounded.",
+      "scale": {
+        "concurrent": "4 in the control; up to 128",
+        "cumulative": "NR",
+        "capacity": "NR"
+      },
+      "citation_keys": [
+        "scalemas-substrate"
+      ],
+      "provenance": {
+        "archive": "primary source read for the November 2026 edition",
+        "source": "https://arxiv.org/html/2610.16120v1",
+        "locator": "Table 2; abstract",
+        "retrieved": "2026-11-14",
+        "sha256_of_retrieved_file": "8c395b520533f71db451ea59a354c8311b2be067a51087e1a4f79a055a67afa3",
+        "field_note": "Coded from the primary source; numbers re-read on 14 November 2026 (UTC). NR is field-specific missingness.",
+        "reading_depth": "Methods and results sections or tables read (earlier passes on 19 October or 12 November, numbers re-located on 14 November 2026 UTC)."
+      },
+      "reading": "methods and results"
+    },
+    {
+      "id": "persistent-memory-controlled-ablation",
+      "label": "Persistent recall ablation",
+      "domain": "Memory and information integration",
+      "source_class": "Workshop preprint",
+      "orgs": [
+        "University of California, Los Angeles",
+        "University of Wisconsin",
+        "HCLTech America"
+      ],
+      "models": "NR.",
+      "composition": "Three-tier agent architecture.",
+      "graph": "Decomposition tier with workers.",
+      "exchange": "Retrieved reasoning traces.",
+      "organization": "Designed tiers.",
+      "memory": "Persistent store of past reasoning.",
+      "baseline": "Single pass; retrieval-matched RAG; recall off.",
+      "matching": "Retrieval matched.",
+      "budget": "Peak KV working set, token-derived.",
+      "outcome": "Peak KV 14.3 MiB versus 35.5 and 35.3; recall changes accuracy by +0.015 (95% CI −0.011 to +0.046).",
+      "limits": "Questions carry their own evidence; recall reachable for few questions.",
+      "scale": {
+        "concurrent": "Few agents",
+        "cumulative": "NR",
+        "capacity": "NR"
+      },
+      "citation_keys": [
+        "persistent-memory-controlled-ablation"
+      ],
+      "provenance": {
+        "archive": "primary source read for the November 2026 edition",
+        "source": "https://arxiv.org/html/2610.07782v1",
+        "locator": "Abstract; results",
+        "retrieved": "2026-11-14",
+        "sha256_of_retrieved_file": "2d96d843b9c909811abfa6eda93339f7de3f7bed6b0ce65ca36f818bfc0c16ad",
+        "field_note": "Coded from the primary source; numbers re-read on 14 November 2026 (UTC). NR is field-specific missingness.",
+        "reading_depth": "Methods and results sections or tables read (earlier passes on 19 October or 12 November, numbers re-located on 14 November 2026 UTC)."
+      },
+      "reading": "methods and results"
+    },
+    {
+      "id": "collabmem-2026",
+      "label": "COLLABMEM",
+      "domain": "Memory and information integration",
+      "source_class": "Conference paper (EMNLP 2026)",
+      "orgs": [
+        "Institute of Automation, Chinese Academy of Sciences",
+        "University of Chinese Academy of Sciences"
+      ],
+      "models": "Several memory systems, including Mem0, Letta, A-Mem.",
+      "composition": "NA.",
+      "graph": "Multi-agent traces with roles and access rules.",
+      "exchange": "Shared memory operations.",
+      "organization": "Benchmark roles designed.",
+      "memory": "Six operations: sharing, access, routing, provenance, conflict resolution, retention.",
+      "baseline": "Memory libraries and an oracle.",
+      "matching": "Same scenarios and probes.",
+      "budget": "NR.",
+      "outcome": "Best non-oracle method TMS-GRAPH++ averages 69.6% over five evaluation splits; 85.7% on the core probes under loose scoring.",
+      "limits": "Hand-authored scenarios; diagnostic probes rather than task outcomes.",
+      "scale": {
+        "concurrent": "Agents per scenario NR",
+        "cumulative": "NR",
+        "capacity": "NR"
+      },
+      "citation_keys": [
+        "collabmem-2026"
+      ],
+      "evaluation_extent": "58 core scenarios with 1,118 probes, plus scaled, adversarial and compositional splits",
+      "provenance": {
+        "archive": "primary source read for the November 2026 edition",
+        "source": "https://aclanthology.org/2026.emnlp-main.1194.pdf",
+        "locator": "Abstract; benchmark sections",
+        "retrieved": "2026-11-14",
+        "sha256_of_retrieved_file": "49fbd3f96fd89611ea16d76d7374185f33691c13e95d41e4ceaf4f3c4fde225a",
+        "field_note": "Coded from the primary source; numbers re-read on 14 November 2026 (UTC). NR is field-specific missingness.",
+        "reading_depth": "Methods and results read (Tables 4-5); checked again on 15 November 2026 against an independent review."
+      },
+      "reading": "methods and results"
+    },
+    {
+      "id": "gemini4-argon-minecraft",
+      "label": "Minecraft team",
+      "domain": "Memory and information integration",
+      "source_class": "Preprint",
+      "orgs": [
+        "Google DeepMind"
+      ],
+      "models": "Gemini 4 Argon.",
+      "composition": "Homogeneous.",
+      "graph": "Four peers; no assigned roles.",
+      "exchange": "In-game chat and shared memory.",
+      "organization": "Emergent division of labor.",
+      "memory": "Shared memory across the run.",
+      "baseline": "None.",
+      "matching": "NA.",
+      "budget": "Wall-clock time.",
+      "outcome": "Defeated the Ender Dragon in 27 h 14 min; 2,783 programs written; 605 deaths.",
+      "limits": "One run; no single-agent control.",
+      "scale": {
+        "concurrent": "4",
+        "cumulative": "NR",
+        "capacity": "NR"
+      },
+      "citation_keys": [
+        "gemini4-argon-minecraft"
+      ],
+      "provenance": {
+        "archive": "primary source read for the November 2026 edition",
+        "source": "https://arxiv.org/html/2610.22319v1",
+        "locator": "Abstract",
+        "retrieved": "2026-11-14",
+        "sha256_of_retrieved_file": "db0e55093e986e3d214acdeb34920f8605686b01583cce0cfe9c1d79ff6a791f",
+        "field_note": "Coded from the primary source; numbers re-read on 14 November 2026 (UTC). NR is field-specific missingness.",
+        "reading_depth": "Authors’ abstract or summary; quoted numbers located in the retrieved full text."
+      },
+      "reading": "abstract-level"
+    },
+    {
+      "id": "herding-runaway-cascades",
+      "label": "Music Lab cascades",
+      "domain": "Collective beliefs and population models",
+      "source_class": "Preprint",
+      "orgs": [
+        "Cornell University",
+        "Stanford University"
+      ],
+      "models": "Five reasoning and eight non-reasoning models, including GPT-5 and Claude Sonnet 4.6.",
+      "composition": "Large LLM populations.",
+      "graph": "Agents see cumulative recommendation counts or not.",
+      "exchange": "Aggregate popularity signal on 48 Suno-generated songs (titles and lyrics).",
+      "organization": "Designed replication of Music Lab.",
+      "memory": "Cumulative counts.",
+      "baseline": "No exposure; the original human Music Lab as a qualitative benchmark.",
+      "matching": "Same songs and design.",
+      "budget": "NR.",
+      "outcome": "Exposure produced runaway cascades that rarely self-corrected; most models herded more than human groups, with model-dependent exceptions.",
+      "limits": "Human comparison not controlled: different songs, audio versus lyrics, downloads versus recommendations.",
+      "scale": {
+        "concurrent": "NR",
+        "cumulative": "NR",
+        "capacity": "NR"
+      },
+      "citation_keys": [
+        "herding-runaway-cascades"
+      ],
+      "provenance": {
+        "archive": "primary source read for the November 2026 edition",
+        "source": "https://arxiv.org/html/2610.30769v1",
+        "locator": "Abstract",
+        "retrieved": "2026-11-14",
+        "sha256_of_retrieved_file": "be006ed84127d51ae36f476cc2cf777acdbc095d72b344bdd11dfef22fb7c2cd",
+        "field_note": "Coded from the primary source; numbers re-read on 14 November 2026 (UTC). NR is field-specific missingness.",
+        "reading_depth": "Methods and results read (Sections 2.1-2.5 and 3); checked again on 15 November 2026 against an independent review."
+      },
+      "reading": "methods and results"
+    },
+    {
+      "id": "believed-but-not-said",
+      "label": "Hidden belief collapse",
+      "domain": "Collective beliefs and population models",
+      "source_class": "Preprint",
+      "orgs": [
+        "University of Illinois Chicago"
+      ],
+      "models": "Six models on three factual QA datasets (18 model-dataset cells).",
+      "composition": "Benign and adversarial agents.",
+      "graph": "Group discussion.",
+      "exchange": "Messages.",
+      "organization": "Designed adversarial roles.",
+      "memory": "Discussion history; a separate private probe each round whose answer is not shown to the group.",
+      "baseline": "No adversary; one versus three adversaries; public stance versus private probe.",
+      "matching": "Same questions.",
+      "budget": "NR.",
+      "outcome": "Final private infection (share of benign agents privately holding the false answer at the last step): 44.8% with one adversary, 60.5% with three. With three adversaries, false answer held privately in 51.6% of exposed turns but endorsed publicly in 19.7%.",
+      "limits": "Private belief is a probe answer, not a hidden-state reading; factual QA discussions.",
+      "scale": {
+        "concurrent": "Small groups",
+        "cumulative": "NR",
+        "capacity": "NR"
+      },
+      "citation_keys": [
+        "believed-but-not-said"
+      ],
+      "provenance": {
+        "archive": "primary source read for the November 2026 edition",
+        "source": "https://arxiv.org/html/2610.22138v1",
+        "locator": "Abstract; results",
+        "retrieved": "2026-11-14",
+        "sha256_of_retrieved_file": "051d134d6180a2fc0f101126ef26e19b87918aa455353589159d66eb85935ab7",
+        "field_note": "Coded from the primary source; numbers re-read on 14 November 2026 (UTC). NR is field-specific missingness.",
+        "reading_depth": "Methods and results read (Sections 3.2-3.3 and 4.1-4.2); checked again on 15 November 2026 against an independent review."
+      },
+      "reading": "methods and results"
+    },
+    {
+      "id": "network-topology-consensus",
+      "label": "Topology and tipping",
+      "domain": "Collective beliefs and population models",
+      "source_class": "Preprint",
+      "orgs": [
+        "NR"
+      ],
+      "models": "Policies extracted from four LLMs.",
+      "composition": "Homogeneous per population.",
+      "graph": "Fully connected, random regular, heterogeneous networks.",
+      "exchange": "Naming-game interactions.",
+      "organization": "Designed networks.",
+      "memory": "Agent inventories.",
+      "baseline": "Well-mixed populations; random versus targeted committed agents.",
+      "matching": "Same extracted policies.",
+      "budget": "NA.",
+      "outcome": "Median critical mass 3% at hubs, 16% random, 35% low-degree on the most heterogeneous network; sparse networks slow consensus up to twelvefold.",
+      "limits": "Surrogate populations running extracted policies, not live calls.",
+      "scale": {
+        "concurrent": "10^3 to 10^5 surrogate nodes",
+        "cumulative": "NR",
+        "capacity": "NR"
+      },
+      "citation_keys": [
+        "network-topology-consensus"
+      ],
+      "provenance": {
+        "archive": "primary source read for the November 2026 edition",
+        "source": "https://arxiv.org/html/2610.31165v1",
+        "locator": "Abstract; Section 3",
+        "retrieved": "2026-11-14",
+        "sha256_of_retrieved_file": "52a3773583252880292f48d7b30f3ba036677913bdddfdcf858c256f25971163",
+        "field_note": "Coded from the primary source; numbers re-read on 14 November 2026 (UTC). NR is field-specific missingness.",
+        "reading_depth": "Authors’ abstract or summary; quoted numbers located in the retrieved full text."
+      },
+      "reading": "abstract-level"
+    },
+    {
+      "id": "cooperation-without-adaptation",
+      "label": "Collective-risk dilemma",
+      "domain": "Collective beliefs and population models",
+      "source_class": "Preprint",
+      "orgs": [
+        "VNU-HCM universities",
+        "Teesside University"
+      ],
+      "models": "Five models including Gemini 3.5 Flash-Lite and Grok 4.20.",
+      "composition": "Self-play and mixed pairs.",
+      "graph": "Six players contributing to one pool.",
+      "exchange": "Contributions; prompt variants.",
+      "organization": "Designed game.",
+      "memory": "Ten-round history.",
+      "baseline": "Risk levels, partners, objective statements.",
+      "matching": "Same game.",
+      "budget": "Endowment.",
+      "outcome": "Both models reach the group target in self-play; payoff per seat 20.0 versus 5.0. Four models give the fair share at every positive risk and a different four contribute at zero risk; stating that only own payoff matters reduces zero-risk contributions for most models.",
+      "limits": "Six players; stylized game.",
+      "scale": {
+        "concurrent": "6",
+        "cumulative": "NR",
+        "capacity": "NR"
+      },
+      "citation_keys": [
+        "cooperation-without-adaptation"
+      ],
+      "provenance": {
+        "archive": "primary source read for the November 2026 edition",
+        "source": "https://arxiv.org/html/2610.22882v1",
+        "locator": "Table 3; Section 4",
+        "retrieved": "2026-11-14",
+        "sha256_of_retrieved_file": "5e16942768af2dd15f02380f3c1c58820b9bd599bd1aa3d91780280d9e51cf9e",
+        "field_note": "Coded from the primary source; numbers re-read on 14 November 2026 (UTC). NR is field-specific missingness.",
+        "reading_depth": "Methods and results sections or tables read (earlier passes on 19 October or 12 November, numbers re-located on 14 November 2026 UTC)."
+      },
+      "reading": "methods and results"
+    },
+    {
+      "id": "multi-agent-loss-of-control",
+      "label": "Distributed attacks",
+      "domain": "Collective safety and control",
+      "source_class": "Preprint",
+      "orgs": [
+        "NR"
+      ],
+      "models": "Frontier attackers; GPT-5.6 Sol monitor.",
+      "composition": "Mixed per scenario.",
+      "graph": "Attack fragments split across agents.",
+      "exchange": "Separate trajectories and artifacts.",
+      "organization": "Designed red-team decomposition.",
+      "memory": "Shared environment.",
+      "baseline": "Single agent performing the same side task.",
+      "matching": "Same side tasks and monitor.",
+      "budget": "NR.",
+      "outcome": "Monitor reading agents separately flags 7% of successful distributed attacks versus 87% for single-agent attacks.",
+      "limits": "Red-team constructed attacks; per-agent monitor scope.",
+      "scale": {
+        "concurrent": "Several attackers",
+        "cumulative": "NR",
+        "capacity": "NR"
+      },
+      "citation_keys": [
+        "multi-agent-loss-of-control"
+      ],
+      "provenance": {
+        "archive": "primary source read for the November 2026 edition",
+        "source": "https://arxiv.org/html/2610.24052v1",
+        "locator": "Abstract",
+        "retrieved": "2026-11-14",
+        "sha256_of_retrieved_file": "96885ce68e825e916704f46406f4931049590bbcbd178092266c5ec3dc22ea4d",
+        "field_note": "Coded from the primary source; numbers re-read on 14 November 2026 (UTC). NR is field-specific missingness.",
+        "reading_depth": "Authors’ abstract or summary; quoted numbers located in the retrieved full text."
+      },
+      "reading": "abstract-level"
+    },
+    {
+      "id": "inter-agent-influence",
+      "label": "Inter-agent influence",
+      "domain": "Collective safety and control",
+      "source_class": "Conference preprint (NeurIPS 2026)",
+      "orgs": [
+        "Cooperative AI Foundation",
+        "University of Oxford",
+        "UK AI Security Institute",
+        "and others"
+      ],
+      "models": "Frontier models as influencer and overseer.",
+      "composition": "Pairs per environment.",
+      "graph": "Influencer agent addressing an overseer.",
+      "exchange": "Messages and tool results.",
+      "organization": "Designed roles.",
+      "memory": "Conversation.",
+      "baseline": "Overseer decisions without influence.",
+      "matching": "Same cases.",
+      "budget": "NR.",
+      "outcome": "In three oversight environments every tested model moved the overseer from rejection to approval through persuasion, deception, or coercion.",
+      "limits": "Five constructed environments; two without an overseer.",
+      "scale": {
+        "concurrent": "2 per episode",
+        "cumulative": "NR",
+        "capacity": "NR"
+      },
+      "citation_keys": [
+        "inter-agent-influence"
+      ],
+      "provenance": {
+        "archive": "primary source read for the November 2026 edition",
+        "source": "https://arxiv.org/html/2611.04556v1",
+        "locator": "Abstract; Appendix B (E1–E3)",
+        "retrieved": "2026-11-14",
+        "sha256_of_retrieved_file": "68e2dd10110d940658769a8f8396da7c7c43c0837037a15c2754e214bae5e52e",
+        "field_note": "Coded from the primary source; numbers re-read on 14 November 2026 (UTC). NR is field-specific missingness.",
+        "reading_depth": "Methods and results sections or tables read (earlier passes on 19 October or 12 November, numbers re-located on 14 November 2026 UTC)."
+      },
+      "reading": "methods and results"
+    },
+    {
+      "id": "collusion-j-space",
+      "label": "Collusion in J-space",
+      "domain": "Collective safety and control",
+      "source_class": "Preprint",
+      "orgs": [
+        "London School of Economics",
+        "EPFL"
+      ],
+      "models": "DeepSeek-V4-Flash (284B).",
+      "composition": "Colluding pairs and other agents.",
+      "graph": "NARCBench scenarios.",
+      "exchange": "Messages; steganographic task.",
+      "organization": "Instructed collusion versus honest instructions.",
+      "memory": "NA.",
+      "baseline": "Same agents with honest instructions.",
+      "matching": "Same scenarios.",
+      "budget": "NA.",
+      "outcome": "Collusion concepts before replying in 86% of colluders versus 33% under honest instructions.",
+      "limits": "Representation analysis, not a validated detector.",
+      "scale": {
+        "concurrent": "Small groups",
+        "cumulative": "NR",
+        "capacity": "NR"
+      },
+      "citation_keys": [
+        "collusion-j-space"
+      ],
+      "provenance": {
+        "archive": "primary source read for the November 2026 edition",
+        "source": "https://arxiv.org/html/2611.02153v1",
+        "locator": "Abstract; results",
+        "retrieved": "2026-11-14",
+        "sha256_of_retrieved_file": "c5ba4c6ccbb0c822dd9865fb36144b50dce70dc39b8898325af9b5abc3e48b0a",
+        "field_note": "Coded from the primary source; numbers re-read on 14 November 2026 (UTC). NR is field-specific missingness.",
+        "reading_depth": "Methods and results sections or tables read (earlier passes on 19 October or 12 November, numbers re-located on 14 November 2026 UTC)."
+      },
+      "reading": "methods and results"
+    },
+    {
+      "id": "avalon-m1-collective-cyberattack",
+      "label": "Avalon-M1 reporting",
+      "domain": "Collective safety and control",
+      "source_class": "Technical report (model in training)",
+      "orgs": [
+        "General Reasoning, Inc."
+      ],
+      "models": "Avalon-M1-Mini checkpoints.",
+      "composition": "Homogeneous with confederate agents.",
+      "graph": "Organization with confederates urging scorer manipulation.",
+      "exchange": "Message board.",
+      "organization": "Learned with a collective reward.",
+      "memory": "Shared workspace.",
+      "baseline": "Earlier training checkpoints.",
+      "matching": "Same scenario across checkpoints.",
+      "budget": "NA.",
+      "outcome": "Reasoning weighs alerting evaluators in 97–100% of runs; reporting falls from 77% at step 50 to 20% at step 100 and 0–3% from step 150.",
+      "limits": "One model’s training trajectory; not a causal estimate.",
+      "scale": {
+        "concurrent": "One organization per episode",
+        "cumulative": "NR",
+        "capacity": "NR"
+      },
+      "citation_keys": [
+        "avalon-m1"
+      ],
+      "provenance": {
+        "archive": "primary source read for the November 2026 edition",
+        "source": "https://gr.inc/avalonm1.pdf",
+        "locator": "Section 5 safety evaluations",
+        "retrieved": "2026-11-14",
+        "sha256_of_retrieved_file": "6429a78fab048d8a58a34fdbefe214156a02de53b6b571053c4df934f485fc58",
+        "field_note": "Coded from the primary source; numbers re-read on 14 November 2026 (UTC). NR is field-specific missingness.",
+        "reading_depth": "Methods and results sections or tables read (earlier passes on 19 October or 12 November, numbers re-located on 14 November 2026 UTC)."
+      },
+      "reading": "methods and results"
+    },
+    {
+      "id": "openai-peers-unauthorized-access",
+      "label": "ExploitGym peers incident",
+      "domain": "Field observations and identity",
+      "source_class": "Incident report",
+      "orgs": [
+        "OpenAI"
+      ],
+      "models": "Internal Astra-family research models.",
+      "composition": "Homogeneous per run; exact mix NR.",
+      "graph": "Messages left on a shared service; two verified conversations.",
+      "exchange": "Artifactory directories and files; credentials and scripts.",
+      "organization": "Assigned individual tasks; no coordinating agent found.",
+      "memory": "Records left by earlier runs.",
+      "baseline": "None.",
+      "matching": "NA.",
+      "budget": "NR.",
+      "outcome": "285 agents attempted to post (1,361 calls); 79 read 35 messages from other runs; five ran root commands in CI workloads.",
+      "limits": "One incident; reconstruction by the developer.",
+      "scale": {
+        "concurrent": "NR",
+        "cumulative": "17,960 agents in two ExploitGym evaluations combined",
+        "capacity": "NR"
+      },
+      "citation_keys": [
+        "openai-peers-unauthorized-access"
+      ],
+      "provenance": {
+        "archive": "primary source read for the November 2026 edition",
+        "source": "https://alignment.openai.com/misalignment-reports/using-peers-work-to-gain-unauthorized-access-to-openai-research-infrastructure/",
+        "locator": "Full report, read in full",
+        "retrieved": "2026-11-14",
+        "sha256_of_retrieved_file": "551236e6b5f799ca7949964ee5da6758e60d6730ba59b80506b8c55828da0fde",
+        "field_note": "Coded from the primary source; numbers re-read on 14 November 2026 (UTC). NR is field-specific missingness.",
+        "reading_depth": "Methods and results sections or tables read (earlier passes on 19 October or 12 November, numbers re-located on 14 November 2026 UTC)."
+      },
+      "reading": "methods and results"
+    },
+    {
+      "id": "moltbook-collective-behavior",
+      "label": "Moltbook record (v2)",
+      "domain": "Field observations and identity",
+      "source_class": "Preprint (v2, 7 October 2026)",
+      "orgs": [
+        "University of Konstanz",
+        "Centro Ricerche Enrico Fermi",
+        "Complexity Science Hub",
+        "JRC"
+      ],
+      "models": "OpenClaw-based agents; models NR.",
+      "composition": "Unverified.",
+      "graph": "Posts and comment trees.",
+      "exchange": "Public platform.",
+      "organization": "Platform rules.",
+      "memory": "Platform history.",
+      "baseline": "Statistical models of activity.",
+      "matching": "NA.",
+      "budget": "NA.",
+      "outcome": "4,189,979 posts and 19,617,496 comments; approval grows sublinearly with discussion size (exponent about 0.79).",
+      "limits": "Autonomy unverified; coverage about 85% after June; trees with 100+ comments excluded (0.49% of posts, 62% of comments).",
+      "scale": {
+        "concurrent": "NR",
+        "cumulative": "184,909 active accounts (identity proxy)",
+        "capacity": "NR"
+      },
+      "citation_keys": [
+        "moltbook-collective-behavior"
+      ],
+      "provenance": {
+        "archive": "primary source read for the November 2026 edition",
+        "source": "https://arxiv.org/html/2602.09270v2",
+        "locator": "Sections 2 and 4",
+        "retrieved": "2026-11-14",
+        "sha256_of_retrieved_file": "875395ea0a0de2fed1f467358b40f206ebac1d5c82c6bb3e977601e2a414c7c4",
+        "field_note": "Coded from the primary source; numbers re-read on 14 November 2026 (UTC). NR is field-specific missingness.",
+        "reading_depth": "Methods and results sections or tables read (earlier passes on 19 October or 12 November, numbers re-located on 14 November 2026 UTC)."
+      },
+      "reading": "methods and results"
     }
   ]
 }

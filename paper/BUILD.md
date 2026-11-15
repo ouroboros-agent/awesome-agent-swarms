@@ -1,58 +1,56 @@
 # Build and inspect the technical report
 
-The editable entry point is `main.tex`; the delivered PDF is `swarm-dynamics.pdf`. `swarm-dynamics-source.zip` contains the portable project (including the PDF, all 52 figure assets in original and display form, and the vendored ACL files with their license notices); extract it and run the build from the directory containing `paper/` and `scripts/`. It excludes regenerable caches: `paper/build/`, page renders and contact sheets, `qa/text-bounds.html`, `qa/swarm-dynamics.txt`, figure contact sheets, and the `qa/pre-apply/` history. This is a self-published technical report by Anton Razzhigaev and Ouroboros, explicitly identified as a human–AI collaboration. The ACL layout does not imply submission, acceptance, or endorsement. No affiliation, ORCID, or email was inferred.
+The editable entry point is `main.tex`; the delivered PDF is `swarm-dynamics.pdf`, the November 2026 edition (literature through 12 November 2026). `swarm-dynamics-source.zip` contains the portable project: the PDF, all LaTeX sources and both bibliography files, the 52 inherited figure assets in original and display form, the three figures added in November, the vendored ACL files with their license notices, the paper scripts, and a `SOURCE-MANIFEST.sha256` of the packed files. Extract it into an empty directory and run the build from the directory that contains `paper/` and `scripts/`. Regenerable output is excluded: `paper/build/`, `paper/qa/` (page renders, contact sheets, text dumps) and `paper/figures/qa/`. This is a self-published technical report by Anton Razzhigaev and Ouroboros, a human–AI collaboration.
 
 ## Rebuild from the repository root
 
-Install a current TeX Live or MacTeX distribution with `latexmk`, pdfLaTeX, BibTeX, and the packages used by `main.tex`. Then run:
+Install a current TeX Live or MacTeX distribution with `latexmk`, pdfLaTeX, BibTeX, and the packages used by `main.tex` (including `multicol`). Then run:
 
 ```sh
 ./scripts/build_paper.sh
 ```
 
-The script resolves the repository relative to itself, sets the official vendored style/bibliography search paths, compiles with fatal-error handling, and copies `paper/build/main.pdf` to `paper/swarm-dynamics.pdf`. The ordinary build is self-contained: no source archive, API credentials, network, external corpus checkout, or Overleaf project is required. `LATEXMK_BIN` can select another latexmk executable; the macOS Homebrew path is an automatic fallback.
+The script resolves the repository relative to itself, sets the vendored style and bibliography search paths, compiles with fatal-error handling, and copies `paper/build/main.pdf` to `paper/swarm-dynamics.pdf`. The ordinary build is self-contained: no source archive, credentials, network, external corpus checkout, or Overleaf project is required. `LATEXMK_BIN` can select another latexmk executable; the macOS Homebrew path is an automatic fallback. For byte-reproducible output, export `SOURCE_DATE_EPOCH=1794700800` and `FORCE_SOURCE_DATE=1` (15 November 2026, 00:00 UTC), as for the delivered PDF.
 
-The official ACL files are unchanged and pinned to upstream commit `d5adc823ff0f80f98c80405ca0ab66c68e684409`. Their URLs and SHA-256 hashes are in `vendor/upstream.json`; original license notices and the LPPL reference text are preserved. See `vendor/LICENSE-NOTES.md` for the precise file-level treatment. The official style sets `acl_natbib` itself, so do not add a second bibliography-style command.
+The official ACL files are unchanged and pinned to upstream commit `d5adc823ff0f80f98c80405ca0ab66c68e684409`. Their URLs and SHA-256 hashes are in `vendor/upstream.json`; original license notices and the LPPL reference text are preserved. See `vendor/LICENSE-NOTES.md` for the file-level treatment. The official style sets `acl_natbib` itself, so do not add a second bibliography-style command.
 
 ## Delivered build
 
-The final PDF contains **57 pages**: main synthesis **1–18**, references **19–25**, evidence coding and gaps **26–39**, complete analytical inventory **40–47**, and selected source figures **48–57**. It was compiled with latexmk 4.87, pdfTeX 1.40.29 (TeX Live 2026/Homebrew), and BibTeX 0.99e. Poppler produced the page renders.
+The PDF has **72 pages**: main text **1–24**, references **25–32**, evidence coding (Appendix A) **33–51**, reporting gaps (Appendix B) **51–52**, the complete 3 October inventory (Appendix C) **53–62**, and selected source figures (Appendix D) **63–72**. It was compiled with latexmk 4.87, pdfTeX 1.40.29 (TeX Live 2026, Homebrew) and BibTeX 0.99e; Poppler produced the page renders.
 
-The final log has zero LaTeX, natbib, or BibTeX warnings, zero missing characters, and zero overfull boxes. It retains **46 underfull-box spacing diagnostics**. All 171 cited keys resolve in the 261-entry local bibliography; all fonts are embedded. Original QA logs and visual-review records are retained outside the release export. Running the verifier below produces new local QA records.
+The log has zero LaTeX, natbib, or BibTeX warnings, zero missing characters, and zero overfull boxes; it keeps **60 underfull-box spacing diagnostics**, mostly from narrow table columns, which were checked on the rendered pages. All **208** cited keys resolve in **296** bibliography entries (261 in `references.bib`, 35 in `references-2026-11.bib`), and all fonts are embedded. Appendix A renders **82** evidence units and Appendix C all **153** inventory records, each exactly once.
 
 ## Files and regeneration
 
-- `sections/*.tex`: the scholarly synthesis, taxonomy, comparisons, limitations, and authorship statement.
-- `references.bib`: paper-local bibliography. `citation-key-map.json` preserves inherited keys, aliases, and proposed constituent-work IDs. `bibliography-notes.md` describes metadata gaps and reconciliation needed by the canonical corpus owner.
-- `evidence-matrix.json`: manually coded analytical evidence units. `corpus-inventory.json`: the byte-identical 153-record administrative inventory; Appendix C shows its values unchanged, with bracketed qualifiers from its own scale notes where a value is not a within-run concurrent count. These are different units and must not be added into a publication count.
-- `appendix-evidence.tex`: render with `python3 scripts/build_paper_evidence.py`; this needs only repository files and the Python standard library.
-- `figures/legacy/` and `figures/print/`: all 52 logical inherited assets, each with an original and display copy. `figure-rights.json` records source, caption, rights, and hashes. Copies are not additional figures.
-- `figures/taxonomy.tex` and `figures/coordination-layers.tex`: original vector diagrams. Rebuild with `python3 scripts/build_paper_figures.py`; it requires pdfLaTeX. The compiled vectors are already included for an ordinary paper build.
-- `appendix-figures.tex`: selected source figures with explanatory English captions and individual attribution.
-- `source-provenance.json`: archive-relative locators and observed hashes for the six author files; private editorial records are excluded.
+- `sections/*.tex`: the synthesis, taxonomy, comparisons, limitations, and authorship statement.
+- `references.bib`: the inherited bibliography, generated by `scripts/build_paper_bibliography.py` from the preserved October research archive. That script needs the archive and is not part of the portable build; it also applies the version notes of three inherited entries.
+- `references-2026-11.bib`: the post-cohort additions of 19 October and 7–12 November 2026, maintained by hand and never written by the generator. Keys equal the catalogue record IDs used on the site.
+- `citation-key-map.json`: inherited keys, aliases, and component IDs. `bibliography-notes.md`: metadata decisions, including the November additions.
+- `evidence-matrix.json`: the coded evidence units. `corpus-inventory.json`: the byte-identical 153-record inventory of 3 October 2026; Appendix C shows its values unchanged, with its affiliation field and bracketed qualifiers where a value is not a count from one experiment. These are different units and must not be added into a publication count.
+- `appendix-evidence.tex`: generated by `python3 scripts/build_paper_evidence.py` (standard library only).
+- `figures/legacy/` and `figures/print/`: the 52 inherited logical figures, each as original and display copy, recorded in `figure-rights.json`. `figures/refresh/` and `figures/charts/`: the two open-licensed figures added in November and the paper variant of the survey's scale chart, recorded in `figure-rights-refresh.json`. The chart is rebuilt from the repository (not from this archive) with `scripts/build_paper_scale_chart.py`, which needs matplotlib and the registry `data/works.json`.
+- `figures/taxonomy.tex` and `figures/coordination-layers.tex`: original vector diagrams, rebuilt with `python3 scripts/build_paper_figures.py` (requires pdfLaTeX); the compiled PDFs are included.
+- `appendix-figures.tex`: the source-figure atlas with captions and individual attribution.
+- `source-provenance.json`: archive-relative locators for the October author files and, for the November edition, the URL and SHA-256 of every primary source re-read on 14 November 2026 (UTC).
+- `reproducibility/agensh-replay/`: the note, script, and output that recount the Agensh figures quoted from the authors' published replay (source URL and SHA-256 inside; the 45 MB replay itself is not redistributed). Run `python3 reproducibility/agensh-replay/agensh-replay-check.py replay.html` on the downloaded file; the script refuses any input whose hash differs.
+- `evidence-notes.md`, `figure-notes.md`, `RIGHTS.md`: coding notes, figure notes, and component rights.
 
-Bibliography regeneration is optional and requires the preserved read-only research archive and the supplied corpus interface. It is not part of the portable compilation path. See `scripts/build_paper_bibliography.py --help` before using it. The bibliography is a local derived artifact, not a replacement for the catalogue builder's canonical `data/works.json`.
+To rebuild the source archive deterministically:
+
+```sh
+python3 scripts/build_paper_package.py
+```
 
 ## Verification
 
 After compilation, install Poppler (`pdftotext`, `pdffonts`, `pdfinfo`, `pdftoppm`) and run:
 
 ```sh
-python3 scripts/build_paper_qa.py
+python3 scripts/build_paper_qa.py            # add --render for page PNGs and contact sheets (needs Pillow)
 ```
 
-To regenerate all page previews and four-page contact sheets, also install Pillow in that Python environment and run:
+The check records PDF identity, page boundaries, citations across both bibliography files, warning counts, embedded fonts, text bounds, figure hashes in both manifests, official-template hashes, exact-once rendering of both appendix tables, and the dated cohort statistics quoted in Section 3 (99 of 153 inventory records with a population reported as simultaneous within one run or one system; median 7; 42, 15, 7 and 4 values at or above 10, 100, 1,000 and 10,000). When the repository's update data are present it also recomputes the catalogue counts quoted in Section 2 (314 records, 306 distinct primary sources). It fails on unresolved or duplicated citations, missing characters, overfull boxes, or a failed integrity check. Automatic checks do not establish readability; the pages were also inspected at readable size.
 
-```sh
-python3 scripts/build_paper_qa.py --render
-```
+## Scope
 
-The check records PDF identity, page boundaries, citations, warning counts, embedded fonts, text bounds, figure hashes, official-template hashes, and exact-once rendering of both evidence tables. It fails on unresolved citations, missing characters, overfull boxes, or a failed integrity check. Underfull-box spacing diagnostics are retained and reviewed visually. Automatic checks do not establish readability. The original page-inspection records and build receipts are retained with the authors outside this clean export; they are not bundled here. The verifier creates fresh machine-readable QA locally, but a new visual review must record its own coverage.
-
-## Scope and remaining limits
-
-This is a structured narrative synthesis of the existing October research, with explicit evidence coding. It is not a preregistered systematic review, a fresh broad search, an independent re-audit of every primary source, or a report of new experiments. Two targeted additions within the cutoff cover the RHEON paper (30 September) and the contagion-kernel paper (2 October); Piao's 8 October journal publication updates the existing work's metadata.
-
-The 18 bylines previously left incomplete were completed from primary arXiv, publisher and journal pages on 9 October 2026; source-date and spelling conflicts are kept per key in `citation-key-map.json` and listed in `bibliography-notes.md`. Component-ID proposals still require integration by the canonical corpus owner. The 153 metadata records, 147 source cards, and bibliography-entry total are not verified unique-publication counts.
-
-Third-party images retain their specific rights. All 52 are preserved in this private candidate as requested; an archived attribution note does not create a blanket redistribution license. Selected source panels retain their original labels; historical Russian dashboards remain available as archive assets. The two new conceptual diagrams and the report's original prose are distinct from these third-party materials. No publication, repository push, venue submission, or claim of independent acceptance is included in this delivery.
+The report is a structured narrative synthesis with explicit evidence coding. The frozen 3 October cohort supplies the inventory statistics; works added later were read at their primary sources and are reported separately. No new agent experiments were run. Third-party images keep their specific rights; the report's own text, tables, diagrams, and charts are CC BY 4.0, and the build code is MIT.

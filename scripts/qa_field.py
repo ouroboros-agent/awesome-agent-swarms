@@ -708,7 +708,7 @@ def site_checks(b, eng):
         st = dict(steps(pg))
         scroll_to(pg, st["7-0"], 1300)
         shot(pg, f"site-{eng}-{lang}-final")
-        pg.locator("p.more a").click(); pg.wait_for_load_state("load"); pg.wait_for_timeout(500)
+        pg.locator(f'p.more a[href="{F.SURVEY_PAGE}"]').click(); pg.wait_for_load_state("load"); pg.wait_for_timeout(500)
         landed = pg.url.split("/site/")[-1]
         rec("site", eng, f"{lang}: the final scene links to the dated detailed survey", landed == f"{lang}/{F.SURVEY_PAGE}", landed)
         rec("site", eng, f"{lang}: no errors on the Field pages (the survey page's own checks are make qa / qa-features)", not [e for e in errors if "survey" not in e], errors[:3])

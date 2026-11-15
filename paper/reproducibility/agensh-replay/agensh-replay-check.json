@@ -1,0 +1,77 @@
+{
+  "source_url": "https://agens-harness.github.io/project/replay.html",
+  "input_bytes": 45518428,
+  "input_sha256": "4543d032af90a885c0356f46c96005d1f7b394cc440fc9dac3e366deec1ddbd0",
+  "data_json_start_character": 25795,
+  "data_json_characters": 45456895,
+  "schema_version": 4,
+  "configured_agent_identities": 1024,
+  "recorded_agent_identities": 1024,
+  "gitea_event_kinds": {
+    "branch": 11016,
+    "issue": 5635,
+    "issue_closed": 1690,
+    "pull_request": 11111,
+    "pull_request_merged": 2800
+  },
+  "gitea_coverage": {
+    "agentsWithCreatedObjects": 1024,
+    "agentsWithLifecycleEvents": 1024,
+    "branchesCreated": 11016,
+    "deduplicatedEvents": 136,
+    "issuesClosed": 1690,
+    "issuesCreated": 5635,
+    "pullRequestsCreated": 11111,
+    "pullRequestsMerged": 2800,
+    "successfulDirectBranchCreateCalls": 0,
+    "successfulIssueCloseCalls": 1731,
+    "successfulIssueCreateCalls": 5635,
+    "successfulPullRequestCreateCalls": 11111,
+    "successfulPullRequestMergeCalls": 2800
+  },
+  "board_records": 148079,
+  "board_record_types": {
+    "CLAIM": 74700,
+    "FACT": 5551,
+    "FAIL": 56472,
+    "OBSERVED": 4497,
+    "PATCH_SUMMARY": 6859
+  },
+  "frames": 576,
+  "replay_clock_bin_seconds": 300,
+  "display_dilation_factor": 8.0,
+  "display_time_bin_seconds": 37.5,
+  "display_duration_seconds": 21600.0,
+  "peak_non_idle_identities_per_bin": 1020,
+  "peak_frame_indices_zero_based": [
+    460,
+    487,
+    539,
+    549
+  ],
+  "activity_categories": [
+    "idle",
+    "thinking",
+    "local",
+    "gitea",
+    "mattermost",
+    "board"
+  ],
+  "non_idle_matches_reported_active_in_every_frame": true,
+  "source_provenance": {
+    "eventsRead": 10855853,
+    "eventsRetained": 5309496,
+    "invalidEvents": 0,
+    "label": "preserved trajectory metadata",
+    "malformedLines": 2,
+    "mode": "measured",
+    "privacy": "content-free allowlisted aggregation",
+    "sourceFiles": 1024
+  },
+  "interpretation": {
+    "activity": "A non-idle category in one retained replay bin; not proof of simultaneous LLM execution.",
+    "board_fail": "A successful board write tagged FAIL, not a failed tool invocation or independent task failure.",
+    "git": "Successful content-free Gitea lifecycle events retained by the replay, with its deduplication/coverage rules.",
+    "time": "Follows the replay's subjectiveTime(wallSeconds) = elapsed(wallSeconds / DATA.run.dilationFactor)."
+  }
+}

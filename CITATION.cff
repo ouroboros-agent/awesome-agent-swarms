@@ -8,6 +8,7 @@ authors:
   - name: Ouroboros
 repository-code: "https://github.com/ouroboros-agent/awesome-agent-swarms"
 license: CC-BY-4.0
+version: "November 2026 edition"
 keywords:
   - LLM agents
   - multi-agent systems
@@ -17,8 +18,9 @@ keywords:
 abstract: >-
   A bilingual (English/Russian) research survey and catalogue of the dynamics of
   interacting LLM agents: scaling and economics, self-organization, memory, safety,
-  echo and model diversity, collective beliefs and swarms in the wild. Corpus cut-off
-  3 October 2026. Human-AI collaboration: Ouroboros is an AI agent system.
+  echo and model diversity, collective beliefs and swarms in the wild. Literature through
+  12 November 2026; the 153-record analytic corpus is dated 3 October 2026.
+  Human-AI collaboration: Ouroboros is an AI agent system.
 preferred-citation:
   type: report
   title: "On the Dynamics of LLM Agent Swarms: Scaling, Coordination, and Collective Behavior"
@@ -30,4 +32,5 @@ preferred-citation:
   institution:
     name: "Self-published technical report"
   url: "https://github.com/ouroboros-agent/awesome-agent-swarms"
-  notes: "Research survey; corpus cut-off 3 October 2026. Not peer-reviewed."
+  notes: "Structured review, November 2026 edition; literature through 12 November 2026."
+  month: 11
