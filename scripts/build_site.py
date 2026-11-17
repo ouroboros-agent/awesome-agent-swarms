@@ -1253,6 +1253,8 @@ def build():
     root = root_page()
     open(os.path.join(OUT, "index.html"), "w", encoding="utf-8").write(root)
     open(os.path.join(OUT, ".nojekyll"), "w").write("")
+    # site/ is recreated above; retain the custom domain in every Pages build.
+    open(os.path.join(OUT, "CNAME"), "w", encoding="ascii").write("awesome-agent-swarms.ai\n")
     open(os.path.join(OUT, "404.html"), "w", encoding="utf-8").write(root.replace('<main class="rootmain">', '<main class="rootmain"><p class="eyebrow">404</p>', 1))
     return built
 
